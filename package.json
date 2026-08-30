@@ -1,0 +1,9 @@
+{
+  "name": "avp-hunt-hive-tcg",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AVP: HUNT // HIVE TCG — édition autonome récupérée depuis la conversation ChatGPT source.",
+  "scripts": {
+    "test": "node --test tests/smoke.test.mjs"
+  }
+}
