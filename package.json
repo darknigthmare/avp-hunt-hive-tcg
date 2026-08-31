@@ -4,6 +4,12 @@
   "private": true,
   "description": "AVP: HUNT // HIVE TCG — édition autonome récupérée depuis la conversation ChatGPT source.",
   "scripts": {
-    "test": "node --test tests/smoke.test.mjs"
+    "prepare:source": "node scripts/prepare-source.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check src/data.js && node --check src/engine.js && node --check src/app.js && node --check sw.js",
+    "balance": "node scripts/balance.mjs",
+    "build": "node scripts/build.mjs",
+    "start": "node scripts/serve.mjs dist",
+    "dev": "node scripts/serve.mjs ."
   }
 }

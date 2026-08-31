@@ -1,0 +1,482 @@
+/* Interface et orchestration locale extraites du standalone vérifié. */
+(function(){
+  'use strict';
+  const D=window.AVP_DATA,E=window.AVPEngine,U=E.U,CARD=E.CARD,RANK=E.RANK;
+  const root=document.getElementById('app'),modalRoot=document.getElementById('modal-root');
+  const STORAGE_KEY='avp-hunt-hive-tcg-save-v1';
+  const BACKUP_KEY=`${STORAGE_KEY}-backup`;
+  const SAVE_SCHEMA='avp-hunt-hive-tcg-save';
+  const SAVE_VERSION=2;
+  const MAX_IMPORT_BYTES=1024*1024;
+  const NAV=[['home','⌂','Accueil'],['play','⚔','Jouer'],['collection','▦','Collection'],['boosters','◇','Boosters'],['decks','▤','Decks'],['campaign','⬡','Campagne'],['archive','◎','Archive']];
+  const TYPE_NAMES={UNIT:'Unité',TACTIC:'Tactique',EQUIPMENT:'Équipement',LOCATION:'Lieu'};
+  const TYPE_ICONS={UNIT:'◆',TACTIC:'✦',EQUIPMENT:'⚙',LOCATION:'⬡'};
+  const RARITY_COLORS={C:'#a7b0aa',R:'#b8d7ed',SR:'#7fe8ff',UR:'#ffc868',SCR:'#e98bff',PR:'#8effd9',GR:'#f5ffff'};
+  const DIFFICULTIES=[{id:'recruit',name:'Recrue',value:.85},{id:'normal',name:'Standard',value:1},{id:'veteran',name:'Vétéran',value:1.35},{id:'nightmare',name:'Cauchemar',value:1.75}];
+
+  const esc=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  const debounce=(fn,ms=160)=>{let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms);};};
+
+  const isRecord=value=>Boolean(value)&&typeof value==='object'&&!Array.isArray(value);
+  const cleanText=(value,fallback='',max=80)=>typeof value==='string'?value.replace(/[\u0000-\u001f\u007f]/g,'').trim().slice(0,max):fallback;
+  const cleanInt=(value,min,max,fallback=0)=>{const n=Number(value);return Number.isFinite(n)?Math.min(max,Math.max(min,Math.trunc(n))):fallback;};
+  const cleanDate=(value,fallback='')=>typeof value==='string'&&value.length<=40&&Number.isFinite(Date.parse(value))?new Date(value).toISOString():fallback;
+
+  function freshSave(){return {
+    schema:SAVE_SCHEMA,version:SAVE_VERSION,createdAt:new Date().toISOString(),lastPlayed:'',starterChosen:false,
+    profile:{name:'Darknigthmare',level:1,xp:0,credits:6500,dust:350,wins:0,losses:0,draws:0,packsOpened:0,pity:0,completedMissions:0,totalTrophies:0,totalDamage:0},
+    settings:{sound:true,motion:!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches,compact:false,contrast:false,largeText:false},
+    tutorial:{completed:false,lastStep:0},collection:{},decks:[],activeDeckId:null,achievements:{},seenCards:{},history:[]
+  };}
+
+  function migrateSaveDocument(document){
+    if(!isRecord(document))throw new Error('La racine de la sauvegarde doit être un objet JSON.');
+    const raw=isRecord(document.data)?document.data:document;
+    if(!isRecord(raw)||!isRecord(raw.profile)||!isRecord(raw.collection)||!Array.isArray(raw.decks))throw new Error('Les données de sauvegarde sont absentes ou invalides.');
+    if(isRecord(document.data)&&document.version!==undefined&&(!Number.isInteger(document.version)||document.version<1||document.version>SAVE_VERSION))throw new Error('Version de sauvegarde invalide ou plus récente.');
+    if(document.schema&&document.schema!==SAVE_SCHEMA)throw new Error('Ce fichier appartient à un autre jeu.');
+    if(raw.schema&&raw.schema!==SAVE_SCHEMA)throw new Error('Schéma de sauvegarde inconnu.');
+    if(raw.version!==undefined&&(!Number.isInteger(raw.version)||raw.version<1))throw new Error('Version de sauvegarde invalide.');
+    const version=raw.version||1;
+    if(version>SAVE_VERSION)throw new Error(`Cette sauvegarde v${version} nécessite une version plus récente du jeu.`);
+    const migrated={...raw};
+    if(version<2){
+      migrated.settings={...(isRecord(raw.settings)?raw.settings:{}),contrast:false,largeText:false};
+      migrated.tutorial={completed:Boolean(raw.starterChosen),lastStep:0};
+    }
+    migrated.schema=SAVE_SCHEMA;migrated.version=SAVE_VERSION;
+    return migrated;
+  }
+
+  function sanitizeSave(document){
+    const raw=migrateSaveDocument(document),base=freshSave(),out={...base};
+    const profile=isRecord(raw.profile)?raw.profile:{};
+    out.createdAt=cleanDate(raw.createdAt,base.createdAt);out.lastPlayed=cleanDate(raw.lastPlayed,'');out.starterChosen=raw.starterChosen===true;
+    out.profile={
+      name:cleanText(profile.name,base.profile.name,32),level:cleanInt(profile.level,1,999,1),xp:cleanInt(profile.xp,0,1000000000,0),
+      credits:cleanInt(profile.credits,0,1000000000,base.profile.credits),dust:cleanInt(profile.dust,0,1000000000,base.profile.dust),
+      wins:cleanInt(profile.wins,0,10000000,0),losses:cleanInt(profile.losses,0,10000000,0),draws:cleanInt(profile.draws,0,10000000,0),
+      packsOpened:cleanInt(profile.packsOpened,0,10000000,0),pity:cleanInt(profile.pity,0,100,0),
+      completedMissions:cleanInt(profile.completedMissions,0,D.campaign.length,0),totalTrophies:cleanInt(profile.totalTrophies,0,1000000000,0),
+      totalDamage:cleanInt(profile.totalDamage,0,1000000000,0)
+    };
+    const settings=isRecord(raw.settings)?raw.settings:{};
+    for(const key of Object.keys(base.settings))out.settings[key]=typeof settings[key]==='boolean'?settings[key]:base.settings[key];
+    const tutorial=isRecord(raw.tutorial)?raw.tutorial:{};
+    out.tutorial={completed:typeof tutorial.completed==='boolean'?tutorial.completed:Boolean(raw.starterChosen),lastStep:cleanInt(tutorial.lastStep,0,3,0)};
+    out.collection={};
+    if(isRecord(raw.collection))for(const [id,value] of Object.entries(raw.collection)){if(!CARD.has(id))continue;const count=cleanInt(value,0,999,0);if(count)out.collection[id]=count;}
+    const usedDeckIds=new Set();
+    out.decks=(Array.isArray(raw.decks)?raw.decks:[]).slice(0,8).map((candidate,index)=>{
+      const source=isRecord(candidate)?candidate:{},cards={};let id=cleanText(source.id,`deck-import-${index+1}`,64).replace(/[^a-zA-Z0-9_-]/g,'');
+      if(!id||usedDeckIds.has(id))id=`deck-import-${index+1}-${U.hash(`${id}-${index}`)}`;usedDeckIds.add(id);
+      if(isRecord(source.cards))for(const [cardId,value] of Object.entries(source.cards)){
+        if(!CARD.has(cardId))continue;const count=Math.min(3,cleanInt(value,0,3,0),out.collection[cardId]||0);if(count)cards[cardId]=count;
+      }
+      const factionId=cleanText(source.faction,'MIXED',24);
+      return {id,name:cleanText(source.name,`Deck importé ${index+1}`,40),faction:factionId==='MIXED'||Object.hasOwn(D.factions,factionId)?factionId:'MIXED',cards,createdAt:cleanDate(source.createdAt,out.createdAt)};
+    });
+    const requestedActive=cleanText(raw.activeDeckId,'',64).replace(/[^a-zA-Z0-9_-]/g,'');out.activeDeckId=out.decks.some(deck=>deck.id===requestedActive)?requestedActive:(out.decks[0]?.id||null);
+    const achievementIds=new Set(D.achievements.map(item=>item.id));out.achievements={};
+    if(isRecord(raw.achievements))for(const [id,value] of Object.entries(raw.achievements)){if(achievementIds.has(id)){const date=cleanDate(value,'');if(date)out.achievements[id]=date;}}
+    out.seenCards={};if(isRecord(raw.seenCards))for(const [id,value] of Object.entries(raw.seenCards)){if(CARD.has(id)&&Boolean(value))out.seenCards[id]=true;}
+    out.history=(Array.isArray(raw.history)?raw.history:[]).slice(0,25).filter(isRecord).map(item=>({
+      date:cleanDate(item.date,out.lastPlayed||out.createdAt),mode:item.mode==='campaign'?'campaign':'quick',
+      mission:item.mode==='campaign'?cleanInt(item.mission,1,D.campaign.length,1):null,winner:[-1,0,1,null].includes(item.winner)?item.winner:null,
+      reward:cleanInt(item.reward,0,10000000,0),xp:cleanInt(item.xp,0,10000000,0),round:cleanInt(item.round,0,10000,0),
+      abandoned:Boolean(item.abandoned),replay:Boolean(item.replay)
+    }));
+    return out;
+  }
+
+  function mergeSave(_base,raw){return sanitizeSave(raw);}
+  const Store={
+    data:null,
+    persistent:true,
+    load(){
+      try{
+        const candidates=[localStorage.getItem(STORAGE_KEY),localStorage.getItem(BACKUP_KEY)].filter(Boolean);
+        for(const source of candidates){try{this.data=sanitizeSave(JSON.parse(source));return this.data;}catch(error){console.warn('Sauvegarde ignorée :',error);}}
+      }catch(error){this.persistent=false;console.warn('Stockage local indisponible :',error);}
+      this.data=freshSave();return this.data;
+    },
+    save(){
+      try{
+        this.data=sanitizeSave(this.data);this.data.lastPlayed=new Date().toISOString();
+        const current=localStorage.getItem(STORAGE_KEY);
+        if(current){try{sanitizeSave(JSON.parse(current));localStorage.setItem(BACKUP_KEY,current);}catch(error){console.warn('Ancienne sauvegarde corrompue, copie de secours non remplacée.');}}
+        localStorage.setItem(STORAGE_KEY,JSON.stringify(this.data));this.persistent=true;return true;
+      }catch(error){this.persistent=false;console.warn('Impossible d’enregistrer la progression :',error);return false;}
+    },
+    reset(){try{localStorage.removeItem(STORAGE_KEY);localStorage.removeItem(BACKUP_KEY);}catch(error){console.warn(error);}this.data=freshSave();this.save();},
+    backup(){try{const raw=localStorage.getItem(BACKUP_KEY);return raw?sanitizeSave(JSON.parse(raw)):null;}catch(error){return null;}},
+    owned(id){return this.data.collection[id]||0;},
+    add(id,count=1){this.data.collection[id]=(this.data.collection[id]||0)+count;},
+    deck(){return this.data.decks.find(d=>d.id===this.data.activeDeckId)||this.data.decks[0]||null;},
+  };
+  Store.load();
+
+  const state={screen:'home',filters:{query:'',faction:'ALL',type:'ALL',rarity:'ALL',set:'ALL',owned:'ALL'},deckFilters:{query:'',faction:'ALL',type:'ALL'},selectedDeckId:null,
+    ui:{difficulty:'normal',enemyFaction:'XENO',pending:null,opening:null,tutorialStep:0,modalLocked:false,collectionLimit:48,deckLimit:40,focusAfterRender:null},battleContext:null,lastQuickConfig:null};
+
+  const AudioSys={ctx:null,
+    cue(kind='click'){
+      if(!Store.data.settings.sound)return;try{this.ctx=this.ctx||new (window.AudioContext||window.webkitAudioContext)();const o=this.ctx.createOscillator(),g=this.ctx.createGain();const map={click:[220,.035,.04],card:[330,.07,.05],rare:[660,.24,.07],attack:[95,.12,.075],win:[520,.5,.07],lose:[90,.45,.07],pack:[180,.32,.06],trophy:[760,.18,.05]};const [freq,dur,vol]=map[kind]||map.click;o.type=kind==='attack'?'sawtooth':'sine';o.frequency.setValueAtTime(freq,this.ctx.currentTime);if(kind==='rare')o.frequency.exponentialRampToValueAtTime(freq*1.8,this.ctx.currentTime+dur);g.gain.setValueAtTime(vol,this.ctx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,this.ctx.currentTime+dur);o.connect(g).connect(this.ctx.destination);o.start();o.stop(this.ctx.currentTime+dur);}catch(e){}
+    }
+  };
+
+  function faction(id){return D.factions[id]||D.factions.NEUTRAL;}
+  function rarity(id){return D.rarities[id]||D.rarities.C;}
+  function activeDeck(){return Store.data.decks.find(d=>d.id===(state.selectedDeckId||Store.data.activeDeckId))||Store.deck();}
+  function deckTotal(deck){return Object.values(deck?.cards||{}).reduce((a,b)=>a+b,0);}
+  function hybridSupportCount(deck){return Object.entries(deck?.cards||{}).reduce((n,[id,count])=>n+(!['HYBRID','NEUTRAL'].includes(CARD.get(id)?.faction)?count:0),0);}
+  function canAddByIdentity(card,deck){return !!deck&&deck.faction!=='MIXED'&&E.allowedForIdentity(card,deck.faction)&&!(deck.faction==='HYBRID'&&!['HYBRID','NEUTRAL'].includes(card.faction)&&hybridSupportCount(deck)>=6);}
+  function deckIdentity(deck){
+    if(!deck||deck.faction==='MIXED'||!D.factions[deck.faction])return {id:'MIXED',name:'Coalition libre',short:'Libre',symbol:'◇',accent:'var(--cyan)'};
+    return {id:deck.faction,...faction(deck.faction)};
+  }
+  function validatePlayableDeck(deck){
+    if(!deck)return {valid:false,total:0,errors:['Aucun deck actif.']};
+    const result=E.validateDeck(deck.cards,Store.data.collection,deck.faction);return deck.faction==='MIXED'?{...result,valid:false,errors:['Choisissez une identité de faction pour cette ancienne coalition.',...result.errors]}:result;
+  }
+  function ownedUnique(){return Object.values(Store.data.collection).filter(n=>n>0).length;}
+  function collectionTotal(){return Object.values(Store.data.collection).reduce((a,b)=>a+b,0);}
+  function xpNeeded(level){return 900+(level-1)*350;}
+  function addXP(amount){let p=Store.data.profile;p.xp+=amount;while(p.xp>=xpNeeded(p.level)){p.xp-=xpNeeded(p.level);p.level++;p.credits+=300;toast(`Niveau ${p.level} atteint — 300 crédits`, 'good');}}
+  function cardReserved(id){return Math.max(0,...Store.data.decks.map(d=>d.cards?.[id]||0));}
+
+  function artSvg(card){
+    const f=faction(card.faction),seed=card.artSeed||1,a=(seed%37)+8,b=((seed>>>5)%43)+10,c=((seed>>>11)%29)+7;const gid=`g${card.index}-${seed}`;
+    let subject='';
+    if(card.faction==='XENO')subject=`<g fill="none" stroke="url(#${gid})" stroke-width="5" stroke-linecap="round"><path d="M84 30 C130 20 174 42 181 76 C150 64 118 70 96 92 C77 110 72 143 83 174"/><path d="M98 88 C124 96 143 120 142 165"/><path d="M78 104 C53 124 42 151 53 187"/><path d="M139 146 C173 155 191 176 185 205"/><path d="M83 170 C111 181 121 204 115 228"/><path d="M144 165 C163 190 158 218 147 236"/></g><ellipse cx="123" cy="65" rx="61" ry="22" fill="url(#${gid})" opacity=".82"/><path d="M165 153 C222 155 237 119 221 88" fill="none" stroke="${f.accent}" stroke-width="4" opacity=".6"/>`;
+    else if(card.faction==='YAUTJA')subject=`<path d="M75 54 Q120 18 166 54 L154 121 Q121 148 87 121Z" fill="url(#${gid})"/><path d="M87 78 L113 69 L109 93 L85 95Z M154 78 L128 69 L132 93 L156 95Z" fill="#07100e" opacity=".9"/><g stroke="${f.accent}" stroke-width="5" stroke-linecap="round" opacity=".7">${[0,1,2,3,4,5].map(i=>`<path d="M${82+i*13} 116 Q${55+i*21} 168 ${62+i*22} 229"/>`).join('')}</g><path d="M90 139 L62 201 M151 139 L182 205" stroke="url(#${gid})" stroke-width="10"/>`;
+    else if(card.faction==='HUMAN')subject=`<circle cx="120" cy="68" r="38" fill="url(#${gid})"/><path d="M71 219 Q74 119 120 110 Q166 119 170 219Z" fill="url(#${gid})"/><path d="M89 65 H151 L142 91 H98Z" fill="#07100e" opacity=".9"/><path d="M58 189 L30 215 M182 189 L215 210" stroke="${f.accent}" stroke-width="12" stroke-linecap="round"/><path d="M155 143 L213 99" stroke="${f.accent}" stroke-width="7"/><path d="M192 102 L226 118" stroke="${f.accent}" stroke-width="9"/>`;
+    else if(card.faction==='ENGINEER')subject=`<ellipse cx="120" cy="70" rx="42" ry="53" fill="url(#${gid})"/><path d="M70 230 Q78 120 120 118 Q162 120 170 230Z" fill="url(#${gid})"/><g fill="none" stroke="${f.accent}" opacity=".45">${[38,55,72].map(r=>`<ellipse cx="120" cy="142" rx="${r}" ry="${r/2}"/>`).join('')}</g><circle cx="105" cy="67" r="5" fill="#050908"/><circle cx="136" cy="67" r="5" fill="#050908"/>`;
+    else subject=`<path d="M120 25 L168 78 L151 140 L193 210 L120 181 L47 210 L89 140 L72 78Z" fill="url(#${gid})"/><circle cx="120" cy="110" r="38" fill="#07100e" opacity=".6"/><path d="M83 108 Q120 76 158 108 Q120 151 83 108Z" fill="${f.accent}" opacity=".72"/>`;
+    const rings=Array.from({length:6},(_,i)=>`<circle cx="${(seed*(i+3))%230}" cy="${(seed*(i+7))%260}" r="${6+((seed>>>i)%22)}" fill="none" stroke="${f.accent}" opacity="${.04+i*.018}"/>`).join('');
+    return `<svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration abstraite ${esc(card.name)}"><defs><linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${f.accent}"/><stop offset=".48" stop-color="${f.dark}"/><stop offset="1" stop-color="#050908"/></linearGradient><filter id="glow${gid}"><feGaussianBlur stdDeviation="${2+(a%4)}" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect width="240" height="260" fill="#050908"/><path d="M0 ${40+a} Q${90+b} ${10+c} 240 ${72+a} V260 H0Z" fill="${f.dark}" opacity=".65"/>${rings}<g filter="url(#glow${gid})" transform="translate(${(a%5)-2} ${(b%5)-2})">${subject}</g><path d="M0 230 L240 190 V260 H0Z" fill="#030504" opacity=".75"/><text x="12" y="247" fill="${f.accent}" opacity=".65" font-size="9" font-family="monospace">${esc(card.collectorNo)} // ${TYPE_ICONS[card.type]}</text></svg>`;
+  }
+
+  function cardHTML(card,opts={}){
+    if(opts.back)return `<div class="tcg-card back ${opts.mini?'mini':''}"><div class="card-inner"><div class="back-mark">⌁</div></div></div>`;
+    const f=faction(card.faction),r=rarity(card.rarity),kws=(card.keywords||[]).slice(0,opts.mini?2:4);
+    const stats=card.type==='UNIT'?`<div class="stat atk">⚔ ${U.format(card.attack)}</div><div class="stat hp">♥ ${U.format(card.health)}</div>`:
+      card.type==='EQUIPMENT'?`<div class="stat atk">+${U.format(card.attack)} ATK</div><div class="stat hp">+${U.format(card.health)} PV</div>`:
+      `<div class="stat">${TYPE_ICONS[card.type]} ${TYPE_NAMES[card.type]}</div>`;
+    return `<div class="tcg-card r-${card.rarity} ${opts.foil?'foil':''} ${opts.mini?'mini':''}" style="--fa:${f.accent};--fd:${f.dark}"><div class="card-inner"><div class="card-top"><div class="card-cost">${card.cost}</div><div class="card-name">${esc(card.name)}</div><div class="card-set">${card.set}</div></div><div class="card-art">${artSvg(card)}</div><div class="card-typebar"><span>${f.symbol} ${TYPE_NAMES[card.type]}</span><span class="card-rarity">${r.short}</span></div><div class="card-text">${kws.length?`<div class="card-keywords">${kws.map(k=>`<span class="kw">${esc(k)}</span>`).join('')}</div>`:''}${esc(card.text)}</div><div class="card-stats">${stats}<span class="collector">${card.collectorNo}</span></div></div></div>`;
+  }
+  function cardWrap(card,opts={}){const owned=Store.owned(card.id);return `<div class="card-wrap ${opts.clickable!==false?'clickable':''}" ${opts.action?`data-action="${opts.action}" aria-label="Voir ${esc(card.name)}, ${owned} exemplaire(s)"`:''} data-card-id="${card.id}">${opts.showOwned!==false?`<span class="owned-badge ${owned?'':'zero'}">${owned}</span>`:''}${cardHTML(card,opts)}</div>`;}
+
+  function navHTML(mobile=false){const items=mobile?NAV.filter(x=>['home','play','collection','boosters','decks'].includes(x[0])):NAV;return items.map(([id,icon,label])=>`<button class="${mobile?'':'nav-btn'} ${state.screen===id?'active':''}" data-action="nav" data-screen="${id}">${mobile?`<i>${icon}</i>`:''}${label}</button>`).join('');}
+  function shell(content,wide=false){
+    const p=Store.data.profile;return `<div class="shell ${Store.data.settings.motion?'':'no-motion'} ${Store.data.settings.contrast?'high-contrast':''} ${Store.data.settings.largeText?'large-text':''}"><header class="topbar"><div class="brand" data-action="nav" data-screen="home" aria-label="Retour à l’accueil"><div class="brand-mark">⌁</div><div class="brand-copy"><b>AVP: HUNT // HIVE</b><span>TACTICAL CARD GAME</span></div></div><nav class="main-nav" aria-label="Navigation principale">${navHTML()}</nav><div class="profile-strip"><div class="currency" role="group" title="Crédits" aria-label="${U.format(p.credits)} crédits"><i>◈</i><span>${U.format(p.credits)}</span></div><div class="currency" role="group" title="Poussière de synthèse" aria-label="${U.format(p.dust)} poussières"><i>✧</i><span>${U.format(p.dust)}</span></div><button class="icon-btn" data-action="tutorial" aria-label="Ouvrir le tutoriel">?</button><button class="icon-btn" data-action="settings" aria-label="Paramètres et sauvegarde">⚙</button></div></header><main class="screen ${wide?'wide':''}" id="main-content" tabindex="-1">${!Store.persistent?'<div class="storage-warning" role="status">Stockage local indisponible : la progression reste temporaire. Exportez votre sauvegarde dans les paramètres.</div>':''}${content}</main><nav class="mobile-nav" aria-label="Navigation mobile">${navHTML(true)}</nav></div>`;
+  }
+  function screenHead(kicker,title,desc,actions=''){return `<div class="screen-head"><div><div class="eyebrow">${kicker}</div><h1>${title}</h1><p>${desc}</p></div>${actions?`<div class="head-actions">${actions}</div>`:''}</div>`;}
+
+  function heroCards(){const ids=['X_BIG_CHAP','Y_JUNGLE_HUNTER','H_RIPLEY'];return ids.map((id,i)=>cardHTML(CARD.get(id),{mini:false,foil:i===2})).join('');}
+  function renderHome(){
+    const p=Store.data.profile,deck=Store.deck(),valid=deck?validatePlayableDeck(deck):{valid:false,total:0};const discovered=ownedUnique();
+    return shell(`<section class="hero"><div class="hero-copy"><div class="eyebrow">JEU COMPLET HORS LIGNE • VERSION ${D.version}</div><h1>HUNT.<br><span>HIVE.</span><br>SURVIVE.</h1><p class="tagline">Construisez un deck Alien, Predator, AVP, Humain ou Engineer. Ouvrez des boosters, collectionnez sept raretés et combattez sur trois voies tactiques.</p><div class="hero-actions"><button class="btn primary" data-action="quick-launch">⚔ Duel rapide</button><button class="btn secondary" data-action="nav" data-screen="boosters">◇ Ouvrir un booster</button><button class="btn ghost" data-action="nav" data-screen="campaign">⬡ Campagne</button></div><div class="hero-meta"><div class="hero-stat"><b>${D.cards.length}</b><span>cartes jouables</span></div><div class="hero-stat"><b>${discovered}/${D.cards.length}</b><span>découvertes</span></div><div class="hero-stat"><b>${p.completedMissions}/8</b><span>missions</span></div><div class="hero-stat"><b>${p.wins}</b><span>victoires</span></div></div></div><div class="hero-stage"><div class="hero-orbit"></div><div class="hero-card-stack">${heroCards()}</div><div class="floating-chip a">7 niveaux de rareté</div><div class="floating-chip b">IA tactique</div><div class="floating-chip c">Sauvegarde locale</div></div></section>
+    <section class="dashboard-grid"><article class="panel dash-card span-4"><div class="eyebrow">DECK ACTIF</div><h3>${deck?esc(deck.name):'Aucun deck'}</h3><p>${deck?`${valid.total}/30 cartes • ${valid.valid?'Prêt au combat':'À corriger'}`:'Choisissez un deck de départ.'}</p><div class="progress" style="margin-top:16px"><i style="width:${Math.min(100,(valid.total||0)/30*100)}%"></i></div><div style="margin-top:14px"><button class="btn small" data-action="nav" data-screen="decks">Gérer le deck</button></div><span class="watermark">▤</span></article>
+    <article class="panel dash-card span-4"><div class="eyebrow">PROGRESSION</div><div class="big">Niv. ${p.level}</div><p>${U.format(p.xp)} / ${U.format(xpNeeded(p.level))} XP</p><div class="progress" style="margin-top:16px"><i style="width:${p.xp/xpNeeded(p.level)*100}%"></i></div><span class="watermark">✦</span></article>
+    <article class="panel dash-card span-4"><div class="eyebrow">COLLECTION</div><div class="big">${Math.round(discovered/D.cards.length*100)}%</div><p>${collectionTotal()} cartes possédées • ${U.format(p.dust)} poussières</p><div class="progress" style="margin-top:16px"><i style="width:${discovered/D.cards.length*100}%"></i></div><span class="watermark">▦</span></article>
+    <article class="panel dash-card span-7"><div class="eyebrow">ACCÈS RAPIDE</div><div class="quick-list"><div class="quick-row" data-action="nav" data-screen="play"><div class="quick-icon">⚔</div><div><b>Exhibition contre l’IA</b><span>Choisir faction et difficulté</span></div><em>›</em></div><div class="quick-row" data-action="nav" data-screen="campaign"><div class="quick-icon">⬡</div><div><b>Campagne narrative</b><span>${p.completedMissions===8?'Toutes les missions terminées':`Prochaine mission : ${Math.min(8,p.completedMissions+1)}/8`}</span></div><em>›</em></div><div class="quick-row" data-action="nav" data-screen="boosters"><div class="quick-icon">◇</div><div><b>Boutique de boosters</b><span>Garantie Rare, protection de malchance</span></div><em>›</em></div></div></article>
+    <article class="panel dash-card span-5"><div class="eyebrow">DOSSIER SOURCE</div><h3>Encyclopédies Alien & Predator</h3><p>Le pool de lancement transforme les catégories des classeurs — castes, humains, armes, équipements, lieux, rituels et prototypes — en cartes équilibrées et traçables.</p><div style="margin-top:15px"><button class="btn small" data-action="nav" data-screen="archive">Consulter l’archive</button></div><span class="watermark">◎</span></article></section>`);
+  }
+
+  function renderPlay(){
+    const deck=Store.deck(),check=deck?validatePlayableDeck(deck):{valid:false,errors:['Aucun deck actif.']};
+    return shell(`${screenHead('MODE EXHIBITION','Choisissez votre chasse','Affrontez une IA générée depuis les factions du catalogue. La campagne applique des modificateurs supplémentaires.',`<button class="btn ghost" data-action="nav" data-screen="decks">▤ Deck actif</button>`)}<div class="play-grid"><section class="panel mode-card"><div class="eyebrow">DUEL RAPIDE</div><h2>${deck?esc(deck.name):'Aucun deck actif'}</h2><p>${check.valid?'Votre deck respecte les 30 cartes et peut entrer en duel.':esc(check.errors.join(' '))}</p><h3 style="font-size:12px;margin:16px 0 3px">Difficulté</h3><div class="difficulty">${DIFFICULTIES.map(d=>`<button class="diff-btn ${state.ui.difficulty===d.id?'active':''}" data-action="difficulty" data-id="${d.id}">${d.name}</button>`).join('')}</div><h3 style="font-size:12px;margin:5px 0 9px">Faction adverse</h3><div class="enemy-select">${['XENO','YAUTJA','HUMAN','ENGINEER','HYBRID'].map(id=>{const f=faction(id);return `<button class="enemy-btn ${state.ui.enemyFaction===id?'active':''}" style="--ep:${f.accent}" data-action="enemy-faction" data-id="${id}">${f.symbol} ${f.short}</button>`}).join('')}</div><button class="btn primary block" data-action="start-quick" ${check.valid?'':'disabled'}>Lancer le duel</button></section><aside class="panel pad"><div class="eyebrow">RÈGLES DU DUEL</div><h2 style="margin:10px 0">Trois voies. 8 000 PV.</h2><div class="quick-list"><div class="quick-row"><div class="quick-icon">1</div><div><b>Énergie croissante</b><span>1 à 10 points au fil des tours</span></div></div><div class="quick-row"><div class="quick-icon">2</div><div><b>Déploiement par voie</b><span>Une unité de chaque camp par voie</span></div></div><div class="quick-row"><div class="quick-icon">3</div><div><b>Effets de faction</b><span>Ruche, Trophée, Escouade, Pathogène</span></div></div><div class="quick-row"><div class="quick-icon">4</div><div><b>Victoire</b><span>Réduire le commandant adverse à 0 PV</span></div></div></div><button class="btn secondary block" style="margin-top:16px" data-action="nav" data-screen="campaign">Voir la campagne</button></aside></div>`,false);
+  }
+
+  function filteredCards(filters=state.filters,ownedOnly=false){
+    const q=(filters.query||'').trim().toLowerCase();return D.cards.filter(c=>{
+      if(q&&!c.searchText.includes(q))return false;if(filters.faction&&filters.faction!=='ALL'&&c.faction!==filters.faction)return false;if(filters.type&&filters.type!=='ALL'&&c.type!==filters.type)return false;if(filters.rarity&&filters.rarity!=='ALL'&&c.rarity!==filters.rarity)return false;if(filters.set&&filters.set!=='ALL'&&c.set!==filters.set)return false;if((ownedOnly||filters.owned==='OWNED')&&!Store.owned(c.id))return false;if(filters.owned==='MISSING'&&Store.owned(c.id))return false;return true;
+    }).sort((a,b)=>RANK[b.rarity]-RANK[a.rarity]||a.name.localeCompare(b.name,'fr'));
+  }
+  function filtersHTML(filters,prefix='collection',full=true){return `<div class="panel filters"><label class="field">⌕ <input data-filter-prefix="${prefix}" data-filter="query" value="${esc(filters.query||'')}" placeholder="Rechercher une carte…"></label><label class="field"><select data-filter-prefix="${prefix}" data-filter="faction"><option value="ALL">Toutes factions</option>${Object.entries(D.factions).map(([id,f])=>`<option value="${id}" ${filters.faction===id?'selected':''}>${f.name}</option>`).join('')}</select></label><label class="field"><select data-filter-prefix="${prefix}" data-filter="type"><option value="ALL">Tous types</option>${Object.entries(TYPE_NAMES).map(([id,n])=>`<option value="${id}" ${filters.type===id?'selected':''}>${n}</option>`).join('')}</select></label>${full?`<label class="field"><select data-filter-prefix="${prefix}" data-filter="rarity"><option value="ALL">Toutes raretés</option>${Object.entries(D.rarities).map(([id,r])=>`<option value="${id}" ${filters.rarity===id?'selected':''}>${r.name}</option>`).join('')}</select></label><label class="field"><select data-filter-prefix="${prefix}" data-filter="set"><option value="ALL">Toutes extensions</option>${Object.entries(D.sets).map(([id,s])=>`<option value="${id}" ${filters.set===id?'selected':''}>${id} — ${s.name}</option>`).join('')}</select></label><label class="field"><select data-filter-prefix="${prefix}" data-filter="owned"><option value="ALL" ${filters.owned==='ALL'?'selected':''}>Tout le catalogue</option><option value="OWNED" ${filters.owned==='OWNED'?'selected':''}>Possédées</option><option value="MISSING" ${filters.owned==='MISSING'?'selected':''}>Manquantes</option></select></label>`:''}<span class="filter-count" data-filter-count></span></div>`;}
+  function renderCollection(){const list=filteredCards(),visible=list.slice(0,state.ui.collectionLimit);return shell(`${screenHead('CATALOGUE MAÎTRE','Collection','Filtrez les 158 cartes, consultez leur origine et fabriquez les exemplaires manquants avec la poussière de synthèse.',`<button class="btn secondary" data-action="nav" data-screen="boosters">◇ Boosters</button>`)}${filtersHTML(state.filters)}<div class="card-grid">${visible.map(c=>cardWrap(c,{action:'view-card'})).join('')||'<div class="panel pad subtle">Aucune carte ne correspond aux filtres.</div>'}</div>${list.length>visible.length?`<div class="load-more"><button class="btn secondary" data-action="more-cards" data-scope="collection">Afficher 48 cartes de plus (${visible.length}/${list.length})</button></div>`:''}`,true);}
+
+  function renderBoosters(){const p=Store.data.profile;return shell(`${screenHead('BOUTIQUE DE LA COMPAGNIE','Boosters','Chaque paquet contient 9 cartes, au moins une Rare et une carte brillante. Les séries se débloquent avec la campagne.',`<button class="btn ghost" data-action="nav" data-screen="collection">▦ Collection</button>`)}<div class="panel pity-box"><div><b>Protection de malchance</b><br><span>${p.pity} booster${p.pity>1?'s':''} sans Ultra Rare ou supérieure</span></div><div class="progress"><i style="width:${Math.min(100,p.pity/10*100)}%"></i></div><strong>${p.pity}/10</strong></div><div class="pack-grid">${D.boosters.map(pack=>{const set=D.sets[pack.set],locked=p.completedMissions<(pack.unlocksAt||0);const glyph={SIGNAL:'⌁',COLONY:'✦',HUNTER:'◈',RITUAL:'☣',EVOLUTION:'⬡',PROTOTYPE:'⟁'}[pack.art];return `<article class="panel pack ${locked?'locked':''}" style="--pc:${set.accent}"><div class="pack-art"><span class="pack-code">${pack.set} // 9 CARTES</span><span class="pack-glyph">${glyph}</span></div><span class="subtitle">${esc(pack.subtitle)}</span><h3>${esc(pack.name)}</h3><p>${esc(pack.description)}</p><div class="pack-footer"><span class="pack-price">◈ ${U.format(pack.price)}</span><button class="btn primary" data-action="buy-pack" data-id="${pack.id}" ${locked||p.credits<pack.price?'disabled':''}>${locked?`Mission ${pack.unlocksAt}`:'Ouvrir'}</button></div></article>`}).join('')}</div>`,true);}
+
+  function renderDecks(){
+    const deck=activeDeck();if(!state.selectedDeckId&&deck)state.selectedDeckId=deck.id;
+    const check=validatePlayableDeck(deck),identity=deckIdentity(deck);
+    const list=filteredCards({...state.deckFilters,rarity:'ALL',set:'ALL',owned:'OWNED'},true).filter(c=>E.allowedForIdentity(c,identity.id));
+    const visible=list.slice(0,state.ui.deckLimit);
+    const deckRows=deck?Object.entries(deck.cards).filter(([,n])=>n>0).sort((a,b)=>CARD.get(a[0]).cost-CARD.get(b[0]).cost||CARD.get(a[0]).name.localeCompare(CARD.get(b[0]).name)).map(([id,n])=>{
+      const c=CARD.get(id);return `<div class="deck-row"><div><b>${esc(c.name)}</b><span>${c.cost} énergie • ${rarity(c.rarity).short} • possédé ${Store.owned(id)}</span></div><div class="count-controls"><button aria-label="Retirer ${esc(c.name)}" data-action="deck-remove" data-card-id="${id}">−</button><strong>${n}</strong><button aria-label="Ajouter ${esc(c.name)}" data-action="deck-add" data-card-id="${id}" ${!canAddByIdentity(c,deck)||n>=Math.min(3,Store.owned(id))||deckTotal(deck)>=30?'disabled':''}>+</button></div></div>`;
+    }).join(''):'';
+    const identities=Object.entries(D.factions).filter(([id])=>id!=='NEUTRAL');
+    return shell(`${screenHead('LABORATOIRE TACTIQUE','Constructeur de decks','30 cartes, trois exemplaires maximum. Votre faction et les cartes Neutres définissent l’identité du deck.',`<button class="btn" data-action="new-deck">＋ Nouveau deck</button><button class="btn secondary" data-action="set-active-deck" ${check.valid?'':'disabled'}>Activer</button>`)}
+      <div class="deck-layout"><aside class="panel pad deck-sidebar" aria-label="Sélection des decks"><div class="eyebrow">MES DECKS</div><div class="deck-tabs" style="margin-top:12px">${Store.data.decks.map(d=>`<button class="deck-tab ${d.id===deck?.id?'active':''}" data-action="select-deck" data-id="${d.id}"><b>${d.id===Store.data.activeDeckId?'● ':''}${esc(d.name)}</b><span>${deckIdentity(d).symbol} ${esc(deckIdentity(d).name)} • ${deckTotal(d)}/30</span></button>`).join('')||'<p class="subtle">Aucun deck.</p>'}</div>
+      ${deck?`<label class="field identity-select">Identité<select data-action="deck-identity" aria-label="Identité du deck">${identity.id==='MIXED'?'<option value="MIXED">Ancienne coalition — à convertir</option>':''}${identities.map(([id,f])=>`<option value="${id}" ${deck.faction===id?'selected':''}>${esc(f.name)}</option>`).join('')}</select></label><button class="btn small block" style="margin-top:12px" data-action="rename-deck">Renommer</button><button class="btn small block" style="margin-top:7px" data-action="auto-fill-deck">Compléter automatiquement</button>`:''}</aside>
+      <aside class="panel pad deck-list-panel" aria-label="Contenu du deck"><div class="eyebrow">LISTE DU DECK</div><p class="identity-note" style="--identity:${identity.accent}">${identity.symbol} ${esc(identity.name)} ${identity.id==='MIXED'?'— choisissez une identité pour jouer':identity.id==='HYBRID'?`+ Neutres • ${hybridSupportCount(deck)}/6 soutiens biologiques (Humains/Xéno, unités de coût ≤2, non synthétiques)`:'+ Neutres'}</p><div class="deck-list">${deckRows||'<p class="subtle">Ajoutez des cartes depuis le catalogue.</p>'}</div></aside>
+      <section class="deck-catalog"><div class="panel pad" style="margin-bottom:14px"><div class="deck-summary"><div><div class="eyebrow">${deck?esc(deck.name):'SÉLECTION'}</div><div class="deck-total ${check.valid?'':'invalid'}">${check.total||0}<small>/30</small></div></div><div style="text-align:right"><b style="color:${check.valid?'var(--good)':'var(--danger)'}">${check.valid?'Deck valide':'Deck à corriger'}</b><div class="subtle" style="font-size:12px;max-width:260px">${check.valid?'Prêt pour le duel.':esc(check.errors[0]||'Ajoutez des cartes.')}</div></div></div><div class="progress"><i style="width:${Math.min(100,(check.total||0)/30*100)}%"></i></div></div>
+      ${filtersHTML(state.deckFilters,'deck',false)}<div class="card-grid">${visible.map(c=>`<div class="card-wrap">${cardHTML(c)}<div class="deck-card-actions"><span>${Store.owned(c.id)} possédée(s) • ${deck?.cards?.[c.id]||0} dans le deck</span><button class="btn small" aria-label="Voir ${esc(c.name)}" data-action="view-card" data-card-id="${c.id}">⌕</button><button class="btn small" aria-label="Ajouter ${esc(c.name)}" data-action="deck-add" data-card-id="${c.id}" ${!canAddByIdentity(c,deck)||deckTotal(deck)>=30||(deck.cards[c.id]||0)>=Math.min(3,Store.owned(c.id))?'disabled':''}>＋</button></div></div>`).join('')||'<p class="subtle">Aucune carte possédée compatible avec ces filtres.</p>'}</div>${list.length>visible.length?`<div class="load-more"><button class="btn secondary" data-action="more-cards" data-scope="deck">Afficher 40 cartes de plus (${visible.length}/${list.length})</button></div>`:''}</section></div>`,true);
+  }
+
+  function renderCampaign(){const p=Store.data.profile,deck=Store.deck(),valid=deck&&validatePlayableDeck(deck).valid;return shell(`${screenHead('DOSSIER AVP','Campagne : Directive Chimère','Huit opérations parcourent Alien, Predator et AVP. Les victoires débloquent des boosters et la série de prototypes séparée du canon.',`<button class="btn ghost" data-action="nav" data-screen="archive">◎ Contexte des sources</button>`)}<div class="mission-grid">${D.campaign.map(m=>{const locked=m.id>p.completedMissions+1,done=m.id<=p.completedMissions;return `<article class="panel mission ${locked?'locked':''}"><span class="mission-num">0${m.id}</span><div class="sub">${esc(m.subtitle)}</div><h3>${esc(m.name)}</h3><div class="faction-pips">${m.factions.map(id=>{const f=faction(id);return `<span class="faction-pip" style="--pip:${f.accent}" title="${f.name}">${f.symbol}</span>`}).join('')}</div><p>${esc(m.description)}</p><div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span class="mission-reward">◈ ${U.format(done?Math.round(m.reward*.35):m.reward)} • ${done?'Récompense de replay':`Booster ${D.boosters.find(b=>b.id===m.pack)?.set}`}</span><button class="btn ${done?'ghost':'primary'} small" data-action="start-mission" data-id="${m.id}" ${locked||!valid?'disabled':''}>${locked?'Verrouillée':done?'Rejouer':'Déployer'}</button></div>${done?'<span class="complete-stamp">OPÉRATION VALIDÉE</span>':''}</article>`}).join('')}</div>${!valid?'<div class="panel pad" style="margin-top:16px;border-color:rgba(255,101,125,.25)"><b style="color:var(--danger)">Deck actif invalide.</b> <span class="subtle">Corrigez-le dans le constructeur avant de lancer une mission.</span></div>':''}`,true);}
+
+  function renderArchive(){const sm=D.sourceManifest,counts=sm.alien.notableCounts;return shell(`${screenHead('ENCYCLOPÉDIE JOUABLE','Archive & règles','Chaque carte conserve un lien de provenance interne vers le classeur et l’onglet ayant inspiré sa traduction de gameplay.',`<button class="btn secondary" data-action="export-catalog">⇩ Exporter le catalogue JSON</button>`)}<div class="archive-grid"><section class="panel source-card span-7"><div class="eyebrow">SOURCE ALIEN / AVP</div><h3>${esc(sm.alien.file)}</h3><p>${esc(sm.alien.role)}</p><div class="source-counts">${[['Véhicules',counts.vehicles],['Humains',counts.detailedHumans],['Lieux',counts.locations],['Rituels',counts.rituals],['Visions',counts.visions],['Faune',counts.fauna],['Flore',counts.flora],['Cartes du jeu',D.cards.length]].map(([n,v])=>`<div class="source-count"><b>${v}</b><span>${n}</span></div>`).join('')}</div></section><section class="panel source-card span-5"><div class="eyebrow">SOURCE PREDATOR</div><h3>${esc(sm.predator.file)}</h3><p>${esc(sm.predator.role)}</p><p class="source-note">Les cartes PX00 sont visuellement et mécaniquement séparées du pool principal afin de ne pas présenter un élément coupé ou annulé comme canon écran.</p></section>
+    <section class="panel source-card span-6"><div class="eyebrow">RÈGLES ESSENTIELLES</div><h3>${D.rules.deckSize} cartes • ${D.rules.startingLife} PV • ${D.rules.lanes} voies</h3><div class="quick-list"><div class="quick-row"><div class="quick-icon">1</div><div><b>Début</b><span>5 cartes en main; l’énergie maximale augmente de 1 par tour.</span></div></div><div class="quick-row"><div class="quick-icon">2</div><div><b>Unités</b><span>Une unité par voie; combat simultané lorsque deux unités s’affrontent.</span></div></div><div class="quick-row"><div class="quick-icon">3</div><div><b>Cartes de soutien</b><span>Tactiques instantanées, Équipements attachés et un Lieu par joueur.</span></div></div><div class="quick-row"><div class="quick-icon">4</div><div><b>Victoire</b><span>Attaque directe dans une voie libre et réduisez les PV adverses à zéro.</span></div></div></div></section><section class="panel source-card span-6"><div class="eyebrow">RARETÉS DE COLLECTION</div><table class="rarity-table"><thead><tr><th>Rareté</th><th>Code</th><th>Valeur</th><th>Booster</th></tr></thead><tbody>${Object.entries(D.rarities).map(([id,r])=>`<tr><td><i class="rarity-dot" style="--rc:${RARITY_COLORS[id]}"></i>${r.name}</td><td>${id}</td><td>${r.dust} poussières</td><td>${r.odds}</td></tr>`).join('')}</tbody></table></section>
+    <section class="panel source-card span-12"><div class="eyebrow">MOTS-CLÉS</div><div class="glossary" style="margin-top:14px">${Object.entries(D.keywords).map(([k,v])=>`<div class="glossary-row"><b>${k}</b><span>${esc(v)}</span></div>`).join('')}</div></section><section class="panel source-card span-12"><div class="eyebrow">EXTENSIONS</div><div class="pack-grid" style="margin-top:14px">${Object.entries(D.sets).map(([id,s])=>`<div class="panel pad" style="border-color:color-mix(in srgb,${s.accent} 24%,transparent)"><b style="color:${s.accent}">${id} — ${esc(s.name)}</b><p>${esc(s.description)}</p><span class="subtle" style="font-size:10px">${D.cards.filter(c=>c.set===id).length} cartes</span></div>`).join('')}</div></section></div>`,true);}
+
+  function unitFlags(battle,u){const out=[];if(u.cloaked)out.push(['◌','Camouflage']);if(u.stunned>0)out.push(['⌁','Étourdi']);if(battle.has(u,'ARMOR')&&!u.armorUsed)out.push(['⬡','Armure']);if(u.equipment.length)out.push([`⚙${u.equipment.length}`,'Équipement']);return out.map(([x,t])=>`<span class="unit-flag" title="${t}">${x}</span>`).join('');}
+  function battleUnitHTML(battle,sideIndex,lane,u,pending){
+    if(!u)return '<span class="slot-empty">Voie libre</span>';const c=CARD.get(u.cardId),max=battle.unitMaxHealth(sideIndex,u),atk=battle.unitAttack(sideIndex,u);const canAttack=sideIndex===0&&battle.legalAttacks(0,lane).length>0&&!state.battleContext?.aiBusy&&!pending;
+    return `<div class="battle-unit" data-unit-side="${sideIndex}" data-unit-lane="${lane}"><div class="unit-card-surface">${cardHTML({...c,attack:atk,health:max},{mini:true,foil:RANK[c.rarity]>=4})}<span class="unit-health">${U.format(u.currentHealth)}/${U.format(max)}</span><div class="unit-flags">${unitFlags(battle,u)}</div>${canAttack?`<button class="attack-btn" data-action="battle-attack" data-lane="${lane}">⚔ ATTAQUER</button>`:''}</div>${!pending?`<button class="unit-detail-btn" data-action="battle-inspect" data-side="${sideIndex}" data-lane="${lane}" aria-label="Consulter les règles de ${esc(c.name)}">Règles ⓘ</button>`:''}</div>`;
+  }
+  function showBattleUnitDetail(sideIndex,lane){
+    if(![0,1].includes(sideIndex)||!Number.isInteger(lane)||lane<0||lane>2)return;
+    const b=state.battleContext?.battle,u=b?.side(sideIndex).board[lane];if(!u)return;
+    const c=CARD.get(u.cardId),attack=b.unitAttack(sideIndex,u),maxHealth=b.unitMaxHealth(sideIndex,u);
+    const status=[u.ready?'Unité prête':'Unité non prête',u.cloaked?'Camouflée':'',u.stunned>0?'Étourdie':'',u.equipment.length?`${u.equipment.length} équipement(s)`:''].filter(Boolean).join(' • ');
+    modal(`Règles : ${esc(c.name)}`,`<div class="card-detail"><div class="card-wrap">${cardHTML({...c,attack,health:maxHealth})}</div><div class="detail-copy"><div class="eyebrow">${sideIndex===0?'VOTRE UNITÉ':'UNITÉ ADVERSE'} • VOIE ${lane+1}</div><h2>${esc(c.name)}</h2><p class="unit-rule-copy">${esc(c.text)}</p><div class="detail-stats"><div class="detail-stat"><b>${U.format(attack)}</b><span>Attaque actuelle</span></div><div class="detail-stat"><b>${U.format(u.currentHealth)}/${U.format(maxHealth)}</b><span>Points de vie</span></div><div class="detail-stat"><b>${c.cost}</b><span>Énergie</span></div></div><p class="source-note">${esc(status)}</p><div class="glossary">${c.keywords.map(k=>`<div class="glossary-row"><b>${esc(k)}</b><span>${esc(D.keywords[k]||'Consultez l’archive des règles.')}</span></div>`).join('')}</div><p class="subtle">Consultation de l’état actuel : fermer cette fenêtre ne joue aucune action.</p></div></div>`);
+  }
+
+  function renderBattle(){
+    const ctx=state.battleContext;if(!ctx)return renderHome();const b=ctx.battle,s=b.state,me=s.sides[0],ai=s.sides[1],pending=state.ui.pending;
+    const targetHas=(kind,lane=null)=>pending?.targets?.some(t=>t.kind===kind&&(lane===null||(t.lane??-1)===lane));
+    const commander=(side,idx,enemy=false)=>`<div class="commander ${enemy?'enemy':''} ${enemy&&targetHas('HERO')?'valid':''}" ${enemy&&targetHas('HERO')?'data-action="battle-target-hero" aria-label="Attaquer le commandant adverse"':''}><div class="avatar">${enemy?'☣':'✦'}</div><div class="commander-name"><b>${esc(side.name)}</b><span>${enemy?'IA tactique':esc(Store.data.profile.name)} • Tour ${s.round}</span></div><div class="life-wrap"><div class="life-label"><span>INTÉGRITÉ</span><b>${U.format(side.life)} / ${U.format(side.maxLife)}</b></div><div class="life-bar"><i style="width:${Math.max(0,side.life/side.maxLife*100)}%"></i></div></div><div class="energy-orbs" title="${side.energy}/${side.maxEnergy} énergie">${Array.from({length:10},(_,i)=>`<i class="orb ${i<side.energy?'full':''}"></i>`).join('')}</div></div>`;
+    const lanes=[0,1,2].map(lane=>{const enemyValid=targetHas('ENEMY_UNIT',lane)||targetHas('UNIT',lane),friendValid=targetHas('FRIENDLY_UNIT',lane)||targetHas('FRIENDLY_LANE',lane);return `<div class="lane"><div class="unit-slot enemy ${enemyValid?'valid':''}" ${enemyValid?`data-action="battle-target" data-kind="${targetHas('UNIT',lane)?'UNIT':'ENEMY_UNIT'}" data-lane="${lane}" aria-label="Cibler la voie ${lane+1}"`:''}>${battleUnitHTML(b,1,lane,ai.board[lane],pending)}</div><div class="lane-center">VOIE 0${lane+1}</div><div class="unit-slot ${friendValid?'valid':''}" ${friendValid?`data-action="battle-target" data-kind="${targetHas('FRIENDLY_LANE',lane)?'FRIENDLY_LANE':'FRIENDLY_UNIT'}" data-lane="${lane}"`:''}>${battleUnitHTML(b,0,lane,me.board[lane],pending)}</div></div>`}).join('');
+    const hand=me.hand.map((id,i)=>{const c=CARD.get(id),check=b.canPlay(0,i),selected=pending?.mode==='play'&&pending.handIndex===i;return `<div class="hand-card ${check.ok?'':'unplayable'} ${selected?'selected':''}" data-action="battle-hand" data-index="${i}" aria-label="${esc(c.name)}, ${c.cost} énergie${check.ok?'':', '+esc(check.reason)}" aria-disabled="${!check.ok}" title="${check.ok?'Jouer la carte':esc(check.reason)}">${cardHTML(c,{mini:true,foil:RANK[c.rarity]>=4})}</div>`}).join('');
+    const pendingText=pending?(pending.mode==='play'?`Choisissez une cible pour ${CARD.get(pending.cardId).name}.`:'Choisissez la cible de l’attaque.'):(ctx.aiBusy?'Directive adverse en cours…':s.active===0?'Jouez une carte ou attaquez, puis terminez le tour.':'Tour adverse.');
+    return shell(`<h1 class="battle-title">Duel tactique <span>— Tour ${s.round}</span></h1><div class="battle-shell"><section class="battle-main">${commander(ai,1,true)}<div class="enemy-hand">${ai.hand.map(()=>'<i class="hand-back"></i>').join('')}</div><div class="location-strip"><span class="location-chip">Lieu adverse : <b>${ai.location?esc(CARD.get(ai.location.cardId).name):'Aucun'}</b></span></div><div class="battle-board">${lanes}</div><div class="location-strip"><span class="location-chip">Votre lieu : <b>${me.location?esc(CARD.get(me.location.cardId).name):'Aucun'}</b></span></div>${commander(me,0,false)}<div class="battle-controls"><span class="pending-text">${esc(pendingText)}</span>${pending?'<button class="btn small" data-action="battle-cancel">Annuler</button>':''}<button class="btn danger small" data-action="battle-surrender">Abandonner</button><button class="btn primary" data-action="battle-end" ${s.active===0&&!ctx.aiBusy&&s.winner===null?'':'disabled'}>Terminer le tour</button></div><div class="player-hand" role="region" aria-label="Votre main" tabindex="0">${hand||'<span class="subtle">Main vide</span>'}</div></section><aside class="battle-side"><div class="panel battle-info"><h2>ÉTAT DU DUEL</h2><div class="battle-stats"><div class="battle-stat"><b>${me.energy}/${me.maxEnergy}</b><span>ÉNERGIE</span></div><div class="battle-stat"><b>${me.trophies}</b><span>TROPHÉES</span></div><div class="battle-stat"><b>${me.deck.length}</b><span>DECK</span></div><div class="battle-stat"><b>${me.discard.length}</b><span>DÉFAUSSE</span></div></div></div><div class="panel battle-info"><h2>JOURNAL TACTIQUE</h2><div class="battle-log" role="region" aria-label="Journal tactique" tabindex="0">${s.log.map(l=>`<div class="log-row ${l.tone}">${esc(l.text)}</div>`).join('')}</div></div><div class="panel battle-info"><h2>RAPPEL</h2><p class="subtle" style="font-size:10px;line-height:1.5">Cliquez une carte de votre main, puis une voie surlignée. Pour attaquer, cliquez « Attaquer » sous une unité prête puis choisissez la cible.</p></div></aside></div>`,true).replace('<main class="screen wide"','<main class="screen wide battle-screen"');
+  }
+
+  // All dynamic screens share keyboard semantics and stable focus restoration.
+  function focusToken(element=document.activeElement){
+    if(!element||!element.dataset)return null;
+    return {id:element.id||'',data:{...element.dataset},start:element.selectionStart,end:element.selectionEnd};
+  }
+  function restoreFocus(token,container=root){
+    if(!token)return false;
+    const keys=Object.keys(token.data||{});
+    const element=Array.from(container.querySelectorAll('[data-action],[data-filter],[id]')).find(el=>token.id?el.id===token.id:keys.length&&keys.every(key=>el.dataset[key]===token.data[key]));
+    if(!element||element.disabled)return false;
+    element.focus({preventScroll:true});if(typeof token.start==='number'&&element.setSelectionRange)element.setSelectionRange(token.start,token.end);return true;
+  }
+  function enhanceActions(container){
+    for(const el of container.querySelectorAll('[data-action]')){
+      if(el.dataset.action==='modal-backdrop'||el.matches('button,input,select,label,a'))continue;
+      el.setAttribute('role','button');el.tabIndex=el.getAttribute('aria-disabled')==='true'?-1:0;
+    }
+    const labels={query:'Rechercher une carte',faction:'Filtrer par faction',type:'Filtrer par type',rarity:'Filtrer par rareté',set:'Filtrer par extension',owned:'Filtrer la possession'};
+    for(const el of container.querySelectorAll('[data-filter]'))el.setAttribute('aria-label',labels[el.dataset.filter]||'Filtrer');
+    for(const el of container.querySelectorAll('[data-action="nav"]'))if(el.dataset.screen===state.screen)el.setAttribute('aria-current','page');
+    for(const el of container.querySelectorAll('[data-action="difficulty"],[data-action="enemy-faction"]'))el.setAttribute('aria-pressed',String(el.classList.contains('active')));
+  }
+  function render(){
+    const focus=focusToken(),map={home:renderHome,play:renderPlay,collection:renderCollection,boosters:renderBoosters,decks:renderDecks,campaign:renderCampaign,archive:renderArchive,battle:renderBattle};
+    root.innerHTML=(map[state.screen]||renderHome)();document.title=`${state.screen==='home'?'AVP: HUNT // HIVE TCG':state.screen.toUpperCase()+' — AVP TCG'}`;
+    document.body.classList.toggle('reduce-motion',!Store.data.settings.motion);
+    document.body.classList.toggle('high-contrast',Store.data.settings.contrast);
+    document.body.classList.toggle('large-text',Store.data.settings.largeText);
+    enhanceActions(root);restoreFocus(focus);
+    document.querySelector('body > .skip-link')?.setAttribute('href','#main-content');
+    const count=root.querySelector('[data-filter-count]');if(count&&state.screen==='collection')count.textContent=`${filteredCards().length} / ${D.cards.length} cartes`;
+  }
+
+  const FOCUSABLE='button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex="0"]';
+  function isolateDialog(active){
+    root.inert=active;const skip=document.querySelector('body > .skip-link');if(skip){skip.inert=active;skip.hidden=active;}
+  }
+  function modal(title,body,opts={}){
+    const replacing=Boolean(modalRoot.innerHTML),previous=replacing?focusToken():null;
+    if(!replacing)state.ui.modalReturnFocus=focusToken();
+    state.ui.modalLocked=Boolean(opts.locked);isolateDialog(true);document.body.classList.add('modal-open');
+    modalRoot.innerHTML=`<div class="modal-layer" data-action="modal-backdrop"><section class="modal ${opts.small?'small':''} ${opts.className||''}" role="dialog" aria-modal="true" aria-labelledby="dialog-title" tabindex="-1"><header class="modal-head"><h2 id="dialog-title">${title}</h2>${opts.locked?'':'<button class="close-btn" data-action="close-modal" aria-label="Fermer">×</button>'}</header><div class="modal-body">${body}</div></section></div>`;
+    enhanceActions(modalRoot);
+    if(!restoreFocus(previous,modalRoot))(modalRoot.querySelector('[data-autofocus]')||modalRoot.querySelector(FOCUSABLE)||modalRoot.querySelector('[role="dialog"]'))?.focus({preventScroll:true});
+  }
+  function closeModal(){
+    modalRoot.innerHTML='';state.ui.opening=null;state.ui.modalLocked=false;isolateDialog(false);document.body.classList.remove('modal-open');
+    restoreFocus(state.ui.modalReturnFocus);state.ui.modalReturnFocus=null;
+  }
+  function toast(text,tone=''){
+    let stack=document.querySelector('.toast-stack');
+    if(!stack){stack=document.createElement('div');stack.className='toast-stack';stack.setAttribute('role','status');stack.setAttribute('aria-live','polite');document.body.appendChild(stack);}
+    const el=document.createElement('div');el.className=`toast ${tone}`;el.textContent=text;stack.appendChild(el);setTimeout(()=>el.remove(),3300);
+  }
+  function showTutorial(step=0){
+    const steps=[
+      {title:'Votre faction, votre stratégie',icon:'▤',text:'Votre deck contient 30 cartes, avec 3 exemplaires maximum d’une carte. Choisissez une faction : elle peut recruter ses propres cartes et les Neutres. Les Hybrides peuvent aussi inclure six petites unités Humaines ou Xéno non synthétiques (coût ≤2). Le constructeur signale chaque erreur avant le duel.',hint:'La Ruche remplit les voies ; les chasseurs exploitent leurs trophées ; les Humains jouent en escouade.'},
+      {title:'Jouer une carte',icon:'◆',text:'L’énergie disponible est affichée sous votre commandant. Elle augmente de 1 à chaque début de tour, jusqu’à 10. Sélectionnez une carte jouable de votre main, puis une voie ou une cible surlignée.',hint:'Une unité par voie. Une unité fraîchement déployée attend généralement son prochain tour pour attaquer.'},
+      {title:'Choisir le bon combat',icon:'⚔',text:'Sélectionnez Attaquer sous une unité prête, puis une cible valide. Deux unités échangent leurs dégâts simultanément. Une voie libre permet une attaque directe contre le commandant : réduisez ses 8 000 PV à zéro.',hint:'Tab parcourt les actions, Entrée ou Espace les active. Échap annule une cible ; Maj + Entrée termine le tour.'},
+      {title:'Votre première opération',icon:'⬡',text:'Commencez par une exhibition en difficulté Recrue, puis avancez dans les 8 missions. Les victoires gagnent crédits et expérience. Les boosters et la fabrication développent votre collection, sans achat réel.',hint:'La progression est locale : exportez régulièrement votre sauvegarde dans ⚙. Un abandon ne donne aucune récompense.'}
+    ];
+    state.ui.tutorialStep=Math.max(0,Math.min(steps.length-1,step));Store.data.tutorial.lastStep=state.ui.tutorialStep;Store.save();
+    const item=steps[state.ui.tutorialStep];
+    modal('Guide de terrain',`<div class="tutorial-progress" aria-label="Étape ${state.ui.tutorialStep+1} sur ${steps.length}">${steps.map((_,i)=>`<span class="${i<=state.ui.tutorialStep?'active':''}"></span>`).join('')}</div><div class="tutorial-symbol" aria-hidden="true">${item.icon}</div><div class="eyebrow">ÉTAPE ${state.ui.tutorialStep+1} / ${steps.length}</div><h3 class="tutorial-title">${item.title}</h3><p class="tutorial-copy">${item.text}</p><p class="source-note">${item.hint}</p><div class="detail-actions tutorial-actions">${state.ui.tutorialStep?'<button class="btn ghost" data-action="tutorial-prev">Précédent</button>':''}${state.ui.tutorialStep<steps.length-1?'<button class="btn primary" data-action="tutorial-next" data-autofocus>Suivant</button>':'<button class="btn primary" data-action="tutorial-finish" data-autofocus>Prêt à jouer</button>'}</div>`,{small:true});
+  }
+
+  function showOnboarding(){
+    const highlights={XENO:['Couvée et invocation','Sang acide à la destruction','Reine comme finisher'],YAUTJA:['Camouflage et ciblage','Équipements modulaires','Trophées et pioche'],HUMAN:['Escouades équilibrées','Contrôle des voies','Arsenal colonial']};
+    modal('Choisissez votre premier deck',`<div style="text-align:center;margin-bottom:20px"><div class="eyebrow">DIRECTIVE DE DÉMARRAGE</div><h2 style="font-size:30px;margin:8px">Quelle faction dirigerez-vous ?</h2><p class="subtle">Vous recevez le deck complet de 30 cartes, une sélection de Communes et 6 500 crédits de boosters.</p></div><div class="starter-grid">${['XENO','YAUTJA','HUMAN'].map(id=>{const d=D.starterDecks[id],f=faction(id);return `<article class="panel starter" style="--sc:${f.accent}"><div class="starter-symbol">${f.symbol}</div><div class="eyebrow" style="color:${f.accent}">${f.name}</div><h3>${esc(d.name)}</h3><p>${esc(d.description)}</p><ul>${highlights[id].map(x=>`<li>✓ ${x}</li>`).join('')}</ul><button class="btn primary block" data-action="choose-starter" data-id="${id}">Choisir ce deck</button></article>`}).join('')}</div>`,{locked:true,className:'onboarding'});
+  }
+  function chooseStarter(id){const template=D.starterDecks[id];if(!template||Store.data.starterChosen)return;for(const c of D.cards.filter(c=>c.rarity==='C'))Store.add(c.id,1);for(const [cardId,count] of Object.entries(template.cards))Store.data.collection[cardId]=Math.max(Store.owned(cardId),count);const deck={id:U.uid('deck'),name:template.name,faction:id,cards:U.clone(template.cards),createdAt:new Date().toISOString()};Store.data.decks=[deck];Store.data.activeDeckId=deck.id;state.selectedDeckId=deck.id;Store.data.starterChosen=true;Store.save();closeModal();AudioSys.cue('rare');toast(`${template.name} ajouté à votre collection.`, 'good');render();showTutorial(0);}
+
+  function showCardDetail(id){const c=CARD.get(id);if(!c)return;const f=faction(c.faction),r=rarity(c.rarity),owned=Store.owned(id),reserved=cardReserved(id),craft=r.dust*2;modal(`${f.symbol} ${esc(c.name)}`,`<div class="card-detail"><div class="card-wrap">${cardHTML(c,{foil:RANK[c.rarity]>=3})}</div><div class="detail-copy"><div class="eyebrow" style="color:${f.accent}">${c.collectorNo} • ${r.name}</div><h2>${esc(c.name)}</h2><p>${esc(c.text)}</p>${c.keywords.length?`<div class="card-keywords">${c.keywords.map(k=>`<span class="kw" title="${esc(D.keywords[k]||'')}">${k}</span>`).join('')}</div>`:''}<p class="lore">${esc(c.flavor||'Aucune note de terrain.')}</p><div class="detail-stats"><div class="detail-stat"><b>${c.cost}</b><span>Énergie</span></div><div class="detail-stat"><b>${owned}</b><span>Possédées</span></div><div class="detail-stat"><b>${TYPE_NAMES[c.type]}</b><span>Type</span></div></div><div class="source-note"><b>Traçabilité :</b> ${esc(c.source.workbook)} → ${esc(c.source.sheet)} → « ${esc(c.source.entry)} »${c.source.prototype?'<br><b>Statut :</b> contenu coupé / prototype séparé du canon principal.':''}</div><div class="detail-actions"><button class="btn secondary" data-action="craft-card" data-card-id="${c.id}" ${Store.data.profile.dust<craft?'disabled':''}>Fabriquer • ${craft} ✧</button><button class="btn ghost" data-action="dust-card" data-card-id="${c.id}" ${owned<=reserved?'disabled':''}>Désassembler • +${r.dust} ✧</button></div><p class="subtle" style="font-size:10px">${reserved?`${reserved} exemplaire(s) réservé(s) par un deck.`:'Aucun exemplaire réservé.'}</p></div></div>`);}
+  function craftCard(id){const c=CARD.get(id),cost=rarity(c.rarity).dust*2;if(Store.data.profile.dust<cost)return;Store.data.profile.dust-=cost;Store.add(id,1);Store.save();AudioSys.cue('card');showCardDetail(id);render();toast(`${c.name} fabriquée.`, 'good');}
+  function dustCard(id){const c=CARD.get(id),owned=Store.owned(id);if(owned<=cardReserved(id))return;Store.data.collection[id]=owned-1;Store.data.profile.dust+=rarity(c.rarity).dust;Store.save();showCardDetail(id);render();toast(`${c.name} désassemblée.`);}
+
+  function awardAchievement(id){if(Store.data.achievements[id])return;const a=D.achievements.find(x=>x.id===id);if(!a)return;Store.data.achievements[id]=new Date().toISOString();Store.data.profile.credits+=a.reward;toast(`Succès : ${a.name} (+${a.reward} crédits)`, 'good');}
+  function checkAchievements(extra={}){const p=Store.data.profile;if(p.packsOpened>=1)awardAchievement('first_pack');if(p.wins>=1)awardAchievement('first_win');if(ownedUnique()>=50)awardAchievement('collector_50');if(p.totalTrophies>=10)awardAchievement('trophy_10');if(p.completedMissions>=8)awardAchievement('campaign_clear');if(extra.secret)awardAchievement('secret_pull');Store.save();}
+
+  function buyPack(id){const pack=D.boosters.find(p=>p.id===id),p=Store.data.profile;if(!pack||p.completedMissions<(pack.unlocksAt||0)||p.credits<pack.price)return;p.credits-=pack.price;const result=E.openBooster(id,{pity:p.pity,seed:Date.now()^p.packsOpened});p.packsOpened++;const had={};for(const pull of result.pulls){had[pull.cardId]=Store.owned(pull.cardId);Store.add(pull.cardId,1);Store.data.seenCards[pull.cardId]=true;}if(result.bestRank>=4)p.pity=0;else p.pity++;state.ui.opening={result,revealed:new Set(),had};Store.save();checkAchievements({secret:result.bestRank>=5});AudioSys.cue('pack');renderOpening();}
+  function renderOpening(){
+    const o=state.ui.opening;if(!o)return;const pulls=o.result.pulls,all=o.revealed.size===pulls.length;
+    modal('Ouverture de booster',`<div class="opening-stage"><div class="opening-title"><div class="eyebrow">${o.result.pack.set} // OUVERTURE</div><h2>${esc(o.result.pack.name)}</h2><p class="subtle">Sélectionnez chaque carte pour la révéler.</p></div><div class="pull-grid">${pulls.map((p,i)=>{const c=CARD.get(p.cardId),revealed=o.revealed.has(i);return `<div class="pull-card ${revealed?'revealed':''} ${RANK[c.rarity]===o.result.bestRank?'best':''}" ${revealed?'':`data-action="reveal-pull" data-index="${i}" role="button" tabindex="0"`} aria-label="${revealed?esc(c.name)+', '+rarity(c.rarity).name:'Révéler la carte '+(i+1)}"><div class="pull-inner"><div class="pull-face back" aria-hidden="true">${cardHTML(c,{back:true,mini:true})}</div><div class="pull-face front" aria-hidden="${!revealed}">${cardHTML(c,{mini:true,foil:p.foil})}${revealed&&o.had[c.id]===0?'<span class="owned-badge">NEW</span>':''}</div></div></div>`}).join('')}</div><div class="opening-actions">${all?`<button class="btn secondary" data-action="open-another" data-id="${o.result.pack.id}" ${Store.data.profile.credits<o.result.pack.price?'disabled':''}>Ouvrir encore</button><button class="btn primary" data-action="finish-opening">Continuer</button>`:'<button class="btn ghost" data-action="reveal-all">Tout révéler</button>'}</div><p class="opening-hint" role="status">${o.revealed.size} / ${pulls.length} cartes révélées</p></div>`,{locked:true,className:'booster-open'});
+  }
+  function revealPull(i){const o=state.ui.opening;if(!o||o.revealed.has(i))return;o.revealed.add(i);const c=CARD.get(o.result.pulls[i].cardId);AudioSys.cue(RANK[c.rarity]>=3?'rare':'card');renderOpening();}
+
+  function addDeckCard(id){const d=activeDeck(),card=CARD.get(id);if(!d||!card)return;if(!canAddByIdentity(card,d)){toast('Identité incompatible ou limite de six soutiens Hybrides atteinte.','bad');return;}const owned=Store.owned(id),current=d.cards[id]||0;if(deckTotal(d)>=30){toast('Le deck contient déjà 30 cartes.','bad');return;}if(current>=3||current>=owned){toast('Aucun exemplaire supplémentaire disponible.','bad');return;}d.cards[id]=current+1;Store.save();AudioSys.cue('click');render();}
+  function removeDeckCard(id){const d=activeDeck();if(!d||!d.cards[id])return;d.cards[id]--;if(d.cards[id]<=0)delete d.cards[id];Store.save();render();}
+  function newDeck(){
+    if(Store.data.decks.length>=8){toast('Limite de huit decks atteinte.','bad');return;}
+    modal('Identité du nouveau deck',`<p class="subtle">Une faction et ses alliés Neutres. Vous pourrez modifier cette identité dans le constructeur.</p><div class="enemy-select">${Object.entries(D.factions).filter(([id])=>id!=='NEUTRAL').map(([id,f])=>`<button class="btn secondary" data-action="create-deck" data-id="${id}">${f.symbol} ${esc(f.name)}</button>`).join('')}</div>`,{small:true});
+  }
+  function createDeck(factionId){
+    if(!Object.hasOwn(D.factions,factionId)||factionId==='NEUTRAL'||Store.data.decks.length>=8)return;
+    const d={id:U.uid('deck'),name:`Deck ${faction(factionId).short} ${Store.data.decks.length+1}`,faction:factionId,cards:{},createdAt:new Date().toISOString()};
+    Store.data.decks.push(d);state.selectedDeckId=d.id;Store.save();closeModal();render();
+  }
+  function changeDeckIdentity(id){
+    const d=activeDeck();if(!d||!Object.hasOwn(D.factions,id)||id==='NEUTRAL')return;
+    const proposed={};let supports=0;
+    for(const [cardId,n] of Object.entries(d.cards)){
+      const card=CARD.get(cardId);if(!E.allowedForIdentity(card,id))continue;
+      const support=id==='HYBRID'&&!['HYBRID','NEUTRAL'].includes(card.faction);
+      const kept=support?Math.min(n,6-supports):n;if(kept>0)proposed[cardId]=kept;if(support)supports+=kept;
+    }
+    const removed=deckTotal(d)-Object.values(proposed).reduce((a,b)=>a+b,0);
+    if(removed&&!confirm(`Changer d’identité retirera ${removed} carte(s) incompatible(s) ou soutien(s) excédentaire(s) du deck, sans toucher la collection. Continuer ?`)){render();return;}
+    d.cards=proposed;d.faction=id;state.deckFilters.faction='ALL';state.ui.deckLimit=40;Store.save();render();
+  }
+  function autoFillDeck(){
+    const d=activeDeck();if(!d)return;if(!D.factions[d.faction]||d.faction==='NEUTRAL'){toast('Choisissez d’abord une identité de faction.','bad');return;}
+    const candidates=D.cards.filter(c=>Store.owned(c.id)>0&&E.allowedForIdentity(c,d.faction)).sort((a,b)=>{const order={UNIT:0,TACTIC:1,EQUIPMENT:2,LOCATION:3};return order[a.type]-order[b.type]||a.cost-b.cost||RANK[b.rarity]-RANK[a.rarity]});
+    const map={...d.cards};let total=deckTotal(d);
+    for(const target of [2,3])for(const c of candidates){const cap=Math.min(c.type==='UNIT'?target:target-1,Store.owned(c.id),3);while((map[c.id]||0)<cap&&total<30&&canAddByIdentity(c,{...d,cards:map})){map[c.id]=(map[c.id]||0)+1;total++;}}
+    for(const c of candidates)while((map[c.id]||0)<Math.min(3,Store.owned(c.id))&&total<30&&canAddByIdentity(c,{...d,cards:map})){map[c.id]=(map[c.id]||0)+1;total++;}
+    d.cards=map;Store.save();render();toast(`${total}/30 cartes. ${total===30?'Deck complété.':'Fabriquez ou obtenez d’autres cartes de cette faction.'}`,total===30?'good':'bad');
+  }
+
+  function startBattle(mode,mission=null){if(state.battleContext?.battle.state.winner===null)return;if(mode==='campaign'){mission=D.campaign.find(m=>m.id===mission?.id);if(!mission||mission.id>Store.data.profile.completedMissions+1){toast('Cette mission est verrouillée.','bad');return;}}const deck=Store.deck();if(!deck)return;const valid=validatePlayableDeck(deck);if(!valid.valid){toast(valid.errors[0],'bad');return;}const diff=mission?mission.difficulty:(DIFFICULTIES.find(d=>d.id===state.ui.difficulty)?.value||1);const factions=mission?mission.factions:[state.ui.enemyFaction];const aiDeck=E.buildAiDeck(factions,diff,Date.now()^U.hash(mode+(mission?.id||0)));const ctx={mode,mission,difficulty:diff,aiBusy:false,rewarded:false,battle:null};const battle=new E.Battle({playerName:Store.data.profile.name,playerDeck:deck.cards,aiDeck,difficulty:diff,modifiers:mission?.modifiers||[],aiName:mission?mission.name:`IA ${faction(factions[0]).name}`,seed:Date.now(),onChange:()=>{if(state.battleContext===ctx&&state.screen==='battle')render();},onGameOver:r=>onBattleOver(ctx,r)});ctx.battle=battle;state.battleContext=ctx;state.ui.pending=null;state.screen='battle';state.lastQuickConfig={mode,missionId:mission?.id||null};closeModal();window.scrollTo({top:0,behavior:'auto'});AudioSys.cue('card');render();window.scrollTo({top:0,behavior:'auto'});}
+  function onBattleOver(ctx,result){
+    if(ctx.rewarded)return;ctx.rewarded=true;
+    const p=Store.data.profile,me=result.state.sides[0],abandoned=Boolean(ctx.abandoned);let reward=0,xp=0,title=abandoned?'Abandon':'Duel terminé',replay=false,packReward=null;
+    if(abandoned){p.losses++;}
+    else if(result.winner===0){
+      p.wins++;p.totalTrophies+=me.totalTrophies;reward=ctx.mode==='campaign'?ctx.mission.reward:Math.round(450*ctx.difficulty);xp=ctx.mode==='campaign'?500:260;title='Victoire';
+      if(ctx.mode==='campaign'){
+        replay=ctx.mission.id<=p.completedMissions;
+        if(replay){reward=Math.round(reward*.35);xp=180;}
+        else{
+          p.completedMissions=ctx.mission.id;
+          const resultPack=E.openBooster(ctx.mission.pack,{pity:p.pity,seed:Date.now()^ctx.mission.id});
+          for(const pull of resultPack.pulls){Store.add(pull.cardId);Store.data.seenCards[pull.cardId]=true;}
+          p.packsOpened++;p.pity=resultPack.bestRank>=4?0:p.pity+1;packReward=resultPack;
+        }
+      }
+    }else if(result.winner===1){p.losses++;p.totalTrophies+=me.totalTrophies;reward=120;xp=90;title='Défaite';}
+    else{p.draws++;p.totalTrophies+=me.totalTrophies;reward=180;xp=120;title='Destruction mutuelle';}
+    p.credits+=reward;if(xp)addXP(xp);ctx.packReward=packReward;
+    Store.data.history.unshift({date:new Date().toISOString(),mode:ctx.mode,mission:ctx.mission?.id||null,winner:result.winner,reward,xp,round:result.state.round,abandoned,replay});
+    Store.data.history=Store.data.history.slice(0,25);if(!abandoned)checkAchievements({secret:packReward?.bestRank>=5});Store.save();
+    if(!ctx.silentResult){AudioSys.cue(result.winner===0?'win':'lose');setTimeout(()=>{if(state.battleContext===ctx)showResultModal(ctx,result,title,reward,xp);},Store.data.settings.motion?350:0);}
+  }
+  function abandonBattle(showResult=true){
+    const ctx=state.battleContext;if(!ctx||ctx.battle.state.winner!==null)return;
+    ctx.abandoned=true;ctx.silentResult=!showResult;state.ui.pending=null;
+    ctx.battle.damageHero(0,99999,{kind:'SURRENDER'});ctx.battle.checkEnd();
+    if(!showResult)state.battleContext=null;render();
+  }
+  function showResultModal(ctx,result,title,reward,xp){const won=result.winner===0;modal(title,`<div style="text-align:center;padding:10px"><div style="font-size:76px;color:${won?'var(--good)':'var(--danger)'}">${won?'✦':'☣'}</div><h2 style="font-size:34px;margin:5px">${esc(title)}</h2><p class="subtle">${ctx.abandoned?'Duel abandonné : aucune récompense.':esc(result.reason)} • ${result.state.round} tours</p><div class="detail-stats" style="max-width:520px;margin:22px auto"><div class="detail-stat"><b>+${U.format(reward)}</b><span>Crédits</span></div><div class="detail-stat"><b>+${U.format(xp)}</b><span>XP</span></div><div class="detail-stat"><b>${result.state.sides[0].totalTrophies}</b><span>Trophées</span></div></div>${ctx.packReward?`<p class="source-note">Booster de première victoire : ${esc(ctx.packReward.pack.name)}. Les ${ctx.packReward.pulls.length} cartes ont été ajoutées à votre collection.</p>`:''}<div class="detail-actions" style="justify-content:center"><button class="btn ghost" data-action="result-home">Accueil</button>${ctx.mode==='quick'?'<button class="btn secondary" data-action="result-rematch">Revanche</button>':''}<button class="btn primary" data-action="result-continue">${ctx.mode==='campaign'?'Campagne':'Jouer'}</button></div></div>`,{locked:true,small:true});}
+  async function endPlayerTurn(){const ctx=state.battleContext;if(!ctx||ctx.aiBusy||ctx.battle.state.active!==0)return;state.ui.pending=null;ctx.battle.endTurn(0);ctx.aiBusy=true;render();const delay=()=>new Promise(r=>setTimeout(r,Store.data.settings.motion?280:25));await ctx.battle.takeAITurn(async()=>{render();await delay();});ctx.aiBusy=false;render();}
+
+  function showSettings(){
+    const settings=[['sound','Effets sonores','Synthèse locale.'],['motion','Animations','Transitions et délai de l’IA.'],['contrast','Contraste renforcé','Textes secondaires et contours accentués.'],['largeText','Texte agrandi','Règles et menus plus lisibles.']];
+    modal('Paramètres & sauvegarde',`<div class="settings-grid">${settings.map(([key,label,description])=>`<div class="setting-row"><div><b>${label}</b><span>${description}</span></div><button class="switch ${Store.data.settings[key]?'on':''}" role="switch" aria-label="${label}" aria-checked="${Store.data.settings[key]}" data-action="toggle-setting" data-key="${key}"></button></div>`).join('')}<div class="setting-row"><div><b>Guide de terrain</b><span>Revoir le tutoriel en quatre étapes.</span></div><button class="btn small" data-action="tutorial">Ouvrir</button></div><div class="setting-row"><div><b>Exporter la sauvegarde</b><span>Collection, decks et progression.</span></div><button class="btn small" data-action="export-save">Exporter</button></div><div class="setting-row"><div><b>Importer une sauvegarde</b><span>JSON de 1 Mo maximum. Remplacement confirmé après validation.</span></div><label class="btn small import-control">Importer<input class="file-input" type="file" aria-label="Importer une sauvegarde JSON" accept=".json,application/json" data-action="import-save"></label></div><div class="setting-row"><div><b>Réinitialiser le profil</b><span>Supprime la progression locale.</span></div><button class="btn danger small" data-action="reset-save">Réinitialiser</button></div></div><div class="source-note">Sauvegarde ${Store.persistent?'locale active':'temporaire : stockage indisponible'} : <span class="mono">${STORAGE_KEY}</span><br>Aucun compte, serveur ou achat réel n’est utilisé.</div>`,{small:true});
+  }
+  function parseSaveImport(text){
+    if(typeof text!=='string'||new TextEncoder().encode(text).byteLength>MAX_IMPORT_BYTES)throw new Error('Le fichier dépasse 1 Mo.');
+    return sanitizeSave(JSON.parse(text));
+  }
+  async function importSaveFile(file){
+    if(!file)return false;
+    if(!Number.isFinite(file.size)||file.size<1||file.size>MAX_IMPORT_BYTES)throw new Error('Choisissez un fichier JSON de 1 Mo maximum.');
+    const incoming=parseSaveImport(await file.text());
+    if(!confirm(`Remplacer la collection et la progression actuelles par le profil « ${incoming.profile.name} » (niveau ${incoming.profile.level}) ? Exportez d’abord vos données si nécessaire.`))return false;
+    Store.data=incoming;const persisted=Store.save();state.selectedDeckId=Store.data.activeDeckId;state.battleContext=null;state.screen='home';closeModal();render();
+    toast(persisted?'Sauvegarde importée.':'Importée pour cette session seulement : exportez-la avant de quitter.',persisted?'good':'bad');
+    if(!Store.data.starterChosen)showOnboarding();return true;
+  }
+  function downloadJSON(name,data){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+
+  function navigate(screen){if(state.screen==='battle'&&state.battleContext?.battle.state.winner===null&&screen!=='battle'){if(!confirm('Quitter et abandonner le duel ? Aucune récompense ne sera accordée.'))return;abandonBattle(false);}state.screen=screen;state.ui.pending=null;if(screen==='decks'&&!state.selectedDeckId)state.selectedDeckId=Store.data.activeDeckId;window.scrollTo({top:0,behavior:Store.data.settings.motion?'smooth':'auto'});render();}
+  function quickLaunch(){const deck=Store.deck();if(deck&&validatePlayableDeck(deck).valid)startBattle('quick');else navigate('decks');}
+
+  async function handleClick(ev){const el=ev.target.closest('[data-action]');if(!el||el.disabled||el.getAttribute('aria-disabled')==='true')return;const action=el.dataset.action;AudioSys.cue('click');
+    if(action==='nav')navigate(el.dataset.screen);
+    else if(action==='settings')showSettings();else if(action==='close-modal'&&!state.ui.modalLocked)closeModal();else if(action==='modal-backdrop'&&ev.target===el&&!state.ui.modalLocked)closeModal();
+    else if(action==='tutorial')showTutorial(0);else if(action==='tutorial-next')showTutorial(state.ui.tutorialStep+1);else if(action==='tutorial-prev')showTutorial(state.ui.tutorialStep-1);else if(action==='tutorial-finish'){Store.data.tutorial.completed=true;Store.save();closeModal();navigate('play');}
+    else if(action==='more-cards'){state.ui[el.dataset.scope==='deck'?'deckLimit':'collectionLimit']+=el.dataset.scope==='deck'?40:48;render();}
+    else if(action==='create-deck')createDeck(el.dataset.id);
+    else if(action==='choose-starter')chooseStarter(el.dataset.id);else if(action==='view-card')showCardDetail(el.dataset.cardId);else if(action==='craft-card')craftCard(el.dataset.cardId);else if(action==='dust-card')dustCard(el.dataset.cardId);
+    else if(action==='quick-launch')quickLaunch();else if(action==='difficulty'){state.ui.difficulty=el.dataset.id;render();}else if(action==='enemy-faction'){state.ui.enemyFaction=el.dataset.id;render();}else if(action==='start-quick')startBattle('quick');
+    else if(action==='buy-pack')buyPack(el.dataset.id);else if(action==='reveal-pull')revealPull(Number(el.dataset.index));else if(action==='reveal-all'){for(let i=0;i<state.ui.opening.result.pulls.length;i++)state.ui.opening.revealed.add(i);AudioSys.cue('rare');renderOpening();}else if(action==='open-another'){const id=el.dataset.id;closeModal();buyPack(id);}else if(action==='finish-opening'){closeModal();render();}
+    else if(action==='select-deck'){state.selectedDeckId=el.dataset.id;render();}else if(action==='deck-add')addDeckCard(el.dataset.cardId);else if(action==='deck-remove')removeDeckCard(el.dataset.cardId);else if(action==='new-deck')newDeck();else if(action==='auto-fill-deck')autoFillDeck();else if(action==='set-active-deck'){const d=activeDeck();if(d&&validatePlayableDeck(d).valid){Store.data.activeDeckId=d.id;Store.save();toast(`${d.name} est désormais actif.`,'good');render();}}else if(action==='rename-deck'){const d=activeDeck(),name=prompt('Nom du deck',d?.name||'');if(d&&name?.trim()){d.name=name.trim().slice(0,40);Store.save();render();}}
+    else if(action==='start-mission'){const m=D.campaign.find(x=>x.id===Number(el.dataset.id));if(m)startBattle('campaign',m);}
+    else if(action==='battle-inspect')showBattleUnitDetail(Number(el.dataset.side),Number(el.dataset.lane));
+    else if(action==='battle-hand'){const ctx=state.battleContext,b=ctx?.battle,index=Number(el.dataset.index);if(!b||ctx.aiBusy)return;const check=b.canPlay(0,index);if(!check.ok){toast(check.reason,'bad');return;}if(check.targets.length===1&&check.targets[0].kind==='NONE'){b.playCard(0,index,check.targets[0]);state.ui.pending=null;}else state.ui.pending={mode:'play',handIndex:index,cardId:b.side(0).hand[index],targets:check.targets};render();}
+    else if(action==='battle-target'){const p=state.ui.pending;if(!p)return;const target={kind:el.dataset.kind,lane:Number(el.dataset.lane)};if(p.mode==='play')state.battleContext.battle.playCard(0,p.handIndex,target);else state.battleContext.battle.attack(0,p.lane,{kind:'UNIT',lane:target.lane});state.ui.pending=null;render();}
+    else if(action==='battle-target-hero'){const p=state.ui.pending;if(p?.mode==='attack')state.battleContext.battle.attack(0,p.lane,{kind:'HERO'});state.ui.pending=null;render();}
+    else if(action==='battle-attack'){const lane=Number(el.dataset.lane),targets=state.battleContext.battle.legalAttacks(0,lane);state.ui.pending={mode:'attack',lane,targets};render();}
+    else if(action==='battle-cancel'){state.ui.pending=null;render();}else if(action==='battle-end')await endPlayerTurn();else if(action==='battle-surrender'){if(confirm('Abandonner ce duel sans récompense ?'))abandonBattle();}
+    else if(action==='result-home'){closeModal();state.battleContext=null;navigate('home');}else if(action==='result-continue'){closeModal();state.battleContext=null;navigate(state.lastQuickConfig?.mode==='campaign'?'campaign':'play');}else if(action==='result-rematch'){closeModal();state.battleContext=null;startBattle('quick');}
+    else if(action==='toggle-setting'){const k=el.dataset.key;if(!['sound','motion','contrast','largeText'].includes(k))return;Store.data.settings[k]=!Store.data.settings[k];Store.save();showSettings();render();}else if(action==='export-save')downloadJSON('AVP_HUNT_HIVE_SAVE.json',Store.data);else if(action==='reset-save'){if(confirm('Supprimer définitivement la sauvegarde locale ?')){Store.reset();state.battleContext=null;state.ui.pending=null;state.screen='home';state.selectedDeckId=null;closeModal();render();setTimeout(showOnboarding,50);}}
+    else if(action==='export-catalog')downloadJSON('AVP_HUNT_HIVE_CARD_CATALOG.json',D);
+  }
+
+  root.addEventListener('click',handleClick);modalRoot.addEventListener('click',handleClick);
+  function updateFilter(prefix,key,value){
+    const target=prefix==='deck'?state.deckFilters:state.filters;if(!Object.hasOwn(target,key)||target[key]===value)return;
+    target[key]=value;state.ui[prefix==='deck'?'deckLimit':'collectionLimit']=prefix==='deck'?40:48;render();
+  }
+  const filterInput=debounce(updateFilter,100);
+  root.addEventListener('input',ev=>{const el=ev.target.closest('[data-filter]');if(el)filterInput(el.dataset.filterPrefix,el.dataset.filter,el.value);});
+  root.addEventListener('change',ev=>{
+    const el=ev.target.closest('[data-filter]');if(el?.matches('select'))updateFilter(el.dataset.filterPrefix,el.dataset.filter,el.value);
+    if(ev.target.matches('[data-action="deck-identity"]'))changeDeckIdentity(ev.target.value);
+  });
+  modalRoot.addEventListener('change',async ev=>{
+    if(!ev.target.matches('input[type=file][data-action="import-save"]'))return;
+    const input=ev.target;try{await importSaveFile(input.files?.[0]);}catch(error){toast(`Import refusé : ${error.message||'fichier invalide.'}`,'bad');}finally{input.value='';}
+  });
+  document.addEventListener('keydown',ev=>{
+    const dialog=modalRoot.querySelector('[role="dialog"]');
+    if(dialog){
+      if(ev.key==='Escape'){ev.preventDefault();if(!state.ui.modalLocked)closeModal();return;}
+      if(ev.key==='Tab'){
+        const elements=Array.from(dialog.querySelectorAll(FOCUSABLE)).filter(el=>!el.hidden&&el.getAttribute('aria-hidden')!=='true'&&el.getAttribute('aria-disabled')!=='true');
+        const first=elements[0],last=elements[elements.length-1];
+        if(!first){ev.preventDefault();dialog.focus();return;}
+        if(ev.shiftKey&&(document.activeElement===first||!elements.includes(document.activeElement))){ev.preventDefault();last.focus();}
+        else if(!ev.shiftKey&&(document.activeElement===last||!elements.includes(document.activeElement))){ev.preventDefault();first.focus();}
+      }
+    }
+    const action=ev.target.closest?.('[role="button"][data-action]');
+    if(action&&(ev.key==='Enter'||ev.key===' ')&&!ev.shiftKey){ev.preventDefault();action.click();return;}
+    if(!dialog&&ev.key==='Escape'&&state.ui.pending){ev.preventDefault();state.ui.pending=null;render();}
+    if(!dialog&&state.screen==='battle'&&ev.shiftKey&&ev.key==='Enter'&&!ev.target.matches('input,textarea,select')){ev.preventDefault();endPlayerTurn();}
+  });
+
+  window.AVP_APP={Store,state,render,startBattle,buyPack,showCardDetail,showBattleUnitDetail,showTutorial,abandonBattle,save:{freshSave,sanitizeSave,parseSaveImport,importSaveFile,version:SAVE_VERSION,maxImportBytes:MAX_IMPORT_BYTES},reset:()=>{Store.reset();location.reload();}};
+  render();if(!Store.data.starterChosen)setTimeout(showOnboarding,80);
+  else if(!Store.data.tutorial.completed)setTimeout(()=>showTutorial(Store.data.tutorial.lastStep),80);
+  if('serviceWorker' in navigator&&(location.protocol==='https:'||['localhost','127.0.0.1','[::1]'].includes(location.hostname))){
+    navigator.serviceWorker.register('/sw.js',{scope:'/'}).catch(error=>{console.warn('Mode hors ligne indisponible :',error);toast('Mode hors ligne indisponible pour cette session.');});
+  }
+})();

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">HUNT // HIVE</title>
+  <desc id="desc">Original abstract tactical hive mark</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="70%">
+      <stop offset="0" stop-color="#14251f"/>
+      <stop offset="1" stop-color="#030605"/>
+    </radialGradient>
+    <linearGradient id="signal" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#6ad8ff"/>
+      <stop offset=".45" stop-color="#b8f34a"/>
+      <stop offset="1" stop-color="#ffb34e"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="9" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="108" fill="url(#bg)"/>
+  <path d="M256 66 414 157v198L256 446 98 355V157Z" fill="none" stroke="#b8f34a" stroke-opacity=".34" stroke-width="16"/>
+  <g fill="none" stroke="url(#signal)" stroke-linecap="round" stroke-width="34" filter="url(#glow)">
+    <path d="m151 151 105 112"/>
+    <path d="m361 151-105 112"/>
+    <path d="M256 264v121"/>
+  </g>
+  <path d="M169 252q87-72 174 0-87 80-174 0Z" fill="#07100e" stroke="#6ad8ff" stroke-width="10"/>
+  <circle cx="256" cy="252" r="19" fill="#b8f34a"/>
+</svg>
