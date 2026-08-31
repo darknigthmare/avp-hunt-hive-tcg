@@ -13,7 +13,7 @@ Base Git `81dc957db58263aee4a89429524afdf3d3180c09`. Archive standalone vérifi�
 
 ## Vérifications reproductibles
 
-- `npm test` : 93 tests, aucun échec. Les tests incluent de vrais serveurs HTTP sur ports libres ; le cycle du service worker est aussi testé en environnement simulé.
+- `npm test` : 94 tests, aucun échec. Les tests incluent de vrais serveurs HTTP sur ports libres ; le cycle du service worker est aussi testé en environnement simulé.
 - `npm run check` : syntaxe valide.
 - `npm run build` : archive vérifiée, 12 fichiers publics, cache lié au contenu.
 - `npm audit --omit=dev` : aucune vulnérabilité, aucune dépendance applicative externe.
@@ -29,6 +29,8 @@ Escouade passe de +100 à +250 ATK par autre Humain allié. Deux lots indépenda
 Ces résultats ne certifient pas un équilibre compétitif : les Humains restent en retrait avec les decks générés. Des parties humaines avec decks optimisés sont encore nécessaires avant une telle affirmation. Les contrôles automatisés de contraste signalent également des zones à examiner manuellement à cause des dégradés/effets visuels ; aucune conformité WCAG exhaustive n'est revendiquée.
 
 ## Persistance et exploitation
+
+Le contrôle de production a révélé un cas absent du serveur local : Vercel redirige `/index.html` vers `/`. Servir cette réponse redirigée depuis le cache empêchait les nouvelles navigations. Le worker corrigé précache et sert désormais la réponse canonique `/`, avec un test de régression dédié aux alias de navigation.
 
 La collection, les decks et la progression sont enregistrés localement et exportables. Le duel en cours n'est pas restauré après fermeture ou rechargement. Aucun compte, paiement, serveur de progression ni multijoueur distant n'est embarqué. Une mise à jour PWA attend la fermeture des anciennes pages afin de ne pas mélanger deux moteurs pendant un duel.
 

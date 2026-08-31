@@ -125,10 +125,12 @@ test('the web app manifest is installable and uses original local icons', async 
 
 test('the service worker precaches every critical modular asset', async () => {
   const worker = await workerHarness();
-  for (const asset of PUBLIC_FILES.filter((file) => !['sw.js', 'robots.txt'].includes(file))) {
+  for (const asset of PUBLIC_FILES.filter((file) => !['index.html', 'sw.js', 'robots.txt'].includes(file))) {
     assert.ok(worker.shell.includes(`/${asset}`), `Missing from app shell: ${asset}`);
   }
   await worker.dispatch('install').done;
+  assert.ok(worker.shell.includes('/'), 'Cache the canonical, non-redirected home');
+  assert.ok(!worker.shell.includes('/index.html'), 'Vercel redirects this alias');
   assert.equal(worker.stores.get(worker.cacheName).size, worker.shell.length);
   assert.ok(worker.calls.installs.every((req) => req.cache === 'reload'));
   assert.equal(worker.calls.skips, 0, 'A background update must not interrupt a duel');
@@ -158,7 +160,7 @@ test('worker activation removes only obsolete AVP caches', async () => {
 test('cached home and modular assets remain one coherent version offline', async () => {
   const worker = await workerHarness(async () => { throw new Error('offline'); });
   const cache = new Map([
-    ['/index.html', new Response('pinned home')],
+    ['/', new Response('pinned home')],
     ['/src/app.js', new Response('pinned script')],
   ]);
   worker.stores.set(worker.cacheName, cache);
@@ -173,6 +175,20 @@ test('cached home and modular assets remain one coherent version offline', async
   assert.equal(missing.status, 503);
   assert.match(await missing.text(), /Hors ligne/);
   assert.equal(cache.size, 2, 'Runtime requests must not overwrite or expand the cache');
+});
+
+test('navigation aliases use canonical home instead of the Vercel-redirected HTML alias', async () => {
+  const worker = await workerHarness(async () => { throw new Error('offline'); });
+  worker.stores.set(worker.cacheName, new Map([
+    ['/', new Response('canonical home')],
+    ['/index.html', new Response('redirected alias - not safe for navigation')],
+  ]));
+  for (const path of ['/', '/?offline-proof=1', '/index', '/index.html']) {
+    const response = await worker.request(path).response;
+    assert.equal(await response.text(), 'canonical home', path);
+    assert.equal(response.redirected, false);
+  }
+  assert.equal(worker.calls.fetches.length, 0);
 });
 
 test('worker never intercepts unknown, sensitive, cross-origin or write requests', async () => {

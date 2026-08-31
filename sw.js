@@ -3,7 +3,6 @@ const CACHE_PREFIX = 'avp-hunt-hive-';
 const CACHE_NAME = `${CACHE_PREFIX}v1.0.0-__BUILD_REVISION__`;
 const APP_SHELL = [
   '/',
-  '/index.html',
   '/manifest.webmanifest',
   '/assets/styles.css',
   '/assets/icon.svg',
@@ -37,7 +36,9 @@ self.addEventListener('fetch', (event) => {
   const isHome = ['/', '/index', '/index.html'].includes(url.pathname);
   // Unknown and sensitive routes never become successful offline pages.
   if (request.mode === 'navigate' && !isHome) return;
-  const cacheKey = isHome ? '/index.html' : url.pathname;
+  // Vercel clean URLs redirect /index.html to /. Navigation requests cannot
+  // receive that redirected cached response, even when its final status is 200.
+  const cacheKey = isHome ? '/' : url.pathname;
   if (!APP_SHELL.includes(cacheKey)) return;
 
   // Pin HTML, CSS and JS to one build. Runtime fetches cannot overwrite the
