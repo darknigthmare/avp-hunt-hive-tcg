@@ -7,7 +7,7 @@ AVP: HUNT // HIVE TCG est un projet fan non commercial, indépendant et non offi
 - Les illustrations des cartes sont créées à l'exécution par le code SVG original du projet.
 - Les icônes PWA sont créées par `scripts/generate-icons.mjs` à partir de formes géométriques originales.
 - Les effets sonores sont synthétisés localement avec Web Audio; aucun enregistrement externe n'est embarqué.
-- L'interface, les règles et les descriptions de gameplay sont propres au projet. Neuf citations ou formulations reconnaissables du catalogue initial ont été remplacées par des textes d'ambiance originaux dans `src/data.js`.
+- L'interface, les règles et les descriptions de gameplay sont propres au projet. Les citations reconnaissables, ainsi que les titres de tactique/succès reprenant une accroche officielle, ont été remplacés par des textes originaux dans `src/data.js`.
 
 L'archive HTML historique est conservée à l'identique pour vérifier la provenance. Elle n'est pas incluse dans le build ni servie par le serveur local durci. Elle ne constitue pas la version jouable corrigée.
 

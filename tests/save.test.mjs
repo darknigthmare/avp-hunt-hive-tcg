@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import vm from 'node:vm';
 
-const scripts = await Promise.all(['data','engine','app'].map(name=>readFile(new URL(`../src/${name}.js`,import.meta.url),'utf8')));
+const scripts = await Promise.all(['data','engine','duel-save','app'].map(name=>readFile(new URL(`../src/${name}.js`,import.meta.url),'utf8')));
 const key='avp-hunt-hive-tcg-save-v1';
 
 function boot({stored={},readFails=false,writeFails=false,confirm=true}={}){
@@ -33,7 +33,7 @@ function giveStarter(env,faction='HUMAN'){
 
 test('fresh save has explicit schema, version and safe settings',()=>{
   const {app}=boot(),save=app.save.freshSave();
-  assert.equal(save.schema,'avp-hunt-hive-tcg-save');assert.equal(save.version,2);
+  assert.equal(save.schema,'avp-hunt-hive-tcg-save');assert.equal(save.version,3);
   assert.equal(save.settings.contrast,false);assert.equal(save.settings.largeText,false);
   assert.equal(save.tutorial.completed,false);assert.equal(app.Store.persistent,true);
 });
@@ -41,7 +41,7 @@ test('fresh save has explicit schema, version and safe settings',()=>{
 test('legacy v1 save migrates without losing collection or faction identity',()=>{
   const env=boot(),legacy=giveStarter(env);delete legacy.schema;legacy.version=1;delete legacy.tutorial;
   const save=env.app.save.sanitizeSave(legacy);
-  assert.equal(save.version,2);assert.equal(save.decks[0].faction,'HUMAN');
+  assert.equal(save.version,3);assert.equal(save.decks[0].faction,'HUMAN');
   assert.deepEqual(JSON.parse(JSON.stringify(save.collection)),JSON.parse(JSON.stringify(legacy.collection)));
   assert.equal(save.tutorial.completed,true);
 });
@@ -49,7 +49,7 @@ test('legacy v1 save migrates without losing collection or faction identity',()=
 test('save import rejects foreign, incomplete and future documents',()=>{
   const {app}=boot(),valid=app.save.freshSave();
   for(const invalid of [null,[],{}, {profile:{},collection:{}}, {...valid,schema:'another-game'},
-    {...valid,version:3},{...valid,version:'2'},{...valid,version:0}]){
+    {...valid,version:4},{...valid,version:'2'},{...valid,version:0}]){
     assert.throws(()=>app.save.sanitizeSave(invalid));
   }
   assert.throws(()=>app.save.parseSaveImport('{no json'));
@@ -93,8 +93,8 @@ test('imported deck identifiers cannot inject HTML attributes',()=>{
 
 test('future wrapper version is not bypassed by a supported inner save',()=>{
   const {app}=boot(),valid=app.save.freshSave();
-  assert.throws(()=>app.save.sanitizeSave({schema:valid.schema,version:3,data:valid}),/Version/);
-  assert.equal(app.save.sanitizeSave({schema:valid.schema,version:2,data:valid}).version,2);
+  assert.throws(()=>app.save.sanitizeSave({schema:valid.schema,version:4,data:valid}),/Version/);
+  assert.equal(app.save.sanitizeSave({schema:valid.schema,version:2,data:valid}).version,3);
 });
 
 

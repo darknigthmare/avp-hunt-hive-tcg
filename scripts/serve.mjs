@@ -10,7 +10,7 @@ export const PUBLIC_FILES = Object.freeze([
   'index.html', 'manifest.webmanifest', 'sw.js', 'robots.txt',
   'assets/styles.css', 'assets/icon.svg', 'assets/icon-192.png',
   'assets/icon-512.png', 'assets/icon-maskable-512.png',
-  'src/data.js', 'src/engine.js', 'src/app.js',
+  'src/data.js', 'src/engine.js', 'src/duel-save.js', 'src/app.js',
 ]);
 const publicFiles = new Set(PUBLIC_FILES);
 const mime = {

@@ -4457,7 +4457,7 @@ window.AVP_DATA = {
     },
     {
       "id": "T_AVP_WHOEVER",
-      "name": "Whoever Wins… We Lose",
+      "name": "Convergence sans survivants",
       "type": "TACTIC",
       "faction": "HYBRID",
       "set": "AV04",
@@ -4479,13 +4479,13 @@ window.AVP_DATA = {
       "source": {
         "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
         "sheet": "03_Index_global",
-        "entry": "Whoever Wins… We Lose",
+        "entry": "Convergence sans survivants",
         "prototype": false
       },
       "collectorNo": "AV04-015",
       "index": 119,
       "artSeed": 1748097369,
-      "searchText": "whoever wins… we lose tactic hybrid av04 ur inflige 1200 dégâts à l’unité la plus puissante de chaque camp. la victoire appartient rarement aux témoins. avp event",
+      "searchText": "convergence sans survivants tactic hybrid av04 ur inflige 1200 dégâts à l’unité la plus puissante de chaque camp. la victoire appartient rarement aux témoins. avp event",
       "slug": "whoever-wins-we-lose"
     },
     {
@@ -6019,7 +6019,7 @@ window.AVP_DATA = {
     },
     {
       "id": "campaign_clear",
-      "name": "Whoever Wins…",
+      "name": "Cycle rompu",
       "description": "Terminer les huit missions.",
       "reward": 1800
     },

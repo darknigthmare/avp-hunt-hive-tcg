@@ -126,3 +126,83 @@ html{scroll-padding-top:calc(var(--top) + 16px);scroll-padding-bottom:92px}
   .archive-grid>section{margin-bottom:12px}
 }
 .battle-info h2{margin:0 0 10px;font-size:13px}
+
+/* Opaque reading surfaces keep contrast measurable; gradients remain in the artwork. */
+.panel,.modal{background:#0d1714}
+.card-inner{background:#09120f}
+.btn.primary{background:#b8f34a}
+.hero{background:#0c1513}
+.hero-copy{background:#0c1513}
+.hero:before{display:none}
+.modal-head{background:#0d1714}
+.booster-open{overflow:auto}
+.tcg-card:before,.tcg-card.r-PR:after{display:none}
+.tcg-card:is(.foil,.r-SR,.r-UR,.r-SCR,.r-PR,.r-GR) .card-art:before{content:"";position:absolute;inset:-60%;background:conic-gradient(from 45deg,transparent,rgba(255,255,255,.12),transparent 18%);animation:foil 8s linear infinite;opacity:.45;pointer-events:none;z-index:1}
+.pack-code{background:#09120f;padding:5px 7px;border-radius:5px;z-index:2}
+.pack.locked,.mission.locked{opacity:1;filter:none}
+.pack.locked .pack-art{filter:saturate(.35)}
+.owned-badge.zero{color:#b6c2ba}
+.slot-empty,.lane-center{color:var(--muted)}
+.lane{background:#0b1210}
+.mission-num{font-size:20px;opacity:1;color:var(--muted)}
+.mission .sub{padding-right:38px}
+.complete-stamp{position:static;display:inline-block;transform:none;margin-top:14px}
+.hand-card.unplayable{filter:saturate(.45)}
+.hand-card.unplayable .tcg-card{border-style:dashed}
+
+/* Semantic h2s retain the visual hierarchy of the original section headings. */
+.dash-card h2{margin:0 0 8px;font-size:18px}
+.pack h2{font-size:21px;margin:17px 0 3px}
+.mission h2{margin:12px 0 4px;font-size:20px}
+.source-card h2{margin:0 0 6px;font-size:18px}
+.source-card h2,.source-card h3,.source-note,.identity-note{overflow-wrap:anywhere}
+.source-card,.deck-row>div,.setting-row>div,.modal-head h2{min-width:0}
+.modal-head{gap:12px}
+.modal-head h2{overflow-wrap:anywhere}
+.close-btn{flex:none}
+.battle-unit .tcg-card{aspect-ratio:auto;min-height:0}
+.battle-unit .tcg-card .card-inner{height:auto;grid-template-rows:auto auto auto auto}
+.battle-unit .card-art{height:clamp(82px,12vw,140px)}
+.battle-unit .tcg-card .card-name{font-size:10px;line-height:1.2}
+.battle-unit .card-text,.battle-unit .collector{display:none}
+.battle-unit .card-stats{flex-wrap:wrap}
+.battle-unit .tcg-card .stat{flex:1 1 40px;min-width:0;font-size:9px;padding:4px 1px}
+.unit-card-surface .unit-health{position:static;display:block;margin-top:5px;text-align:center;border-radius:6px}
+.unit-card-surface .attack-btn{position:static;display:block;transform:none;width:100%;margin-top:6px;min-height:44px}
+.unit-detail-btn{margin-top:6px}
+.location-strip{height:auto;min-height:44px;flex-wrap:wrap}
+.location-chip{max-width:100%;overflow-wrap:anywhere}
+.player-hand{scrollbar-width:thin;scrollbar-color:var(--acid) #16221c;padding-top:18px;scroll-padding-inline:8px}
+.player-hand .hand-card{flex-basis:170px}
+.player-hand .tcg-card{height:300px;aspect-ratio:auto}
+.player-hand .card-inner{grid-template-rows:auto 88px auto 1fr auto}
+.player-hand .card-text{font-size:10px;line-height:1.4}
+.player-hand .card-name{font-size:12px;line-height:1.2}
+.player-hand .kw{font-size:8px;line-height:1.2}
+.player-hand .card-typebar,.player-hand .stat{font-size:9px}
+.hand-jump{display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;margin:0 0 8px;border:1px solid var(--line);border-radius:10px;color:var(--acid);background:#101d15;font-size:13px;font-weight:750;text-decoration:none}
+#battle-hand{scroll-margin-top:calc(var(--top) + 16px);scroll-margin-bottom:92px}
+.large-text .player-hand .hand-card{flex-basis:190px}
+.large-text .player-hand .tcg-card{height:350px}
+.large-text .card-name{font-size:14px;line-height:1.25}
+.large-text .card-grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.large-text .nav-btn,.large-text .btn,.large-text .setting-row b,.large-text .pending-text,.large-text .log-row{font-size:14px;line-height:1.5}
+.large-text .card-typebar,.large-text .kw{font-size:10px}
+.large-text .deck-sidebar,.large-text .deck-list-panel{scrollbar-width:thin}
+
+@media(max-width:760px){
+  .battle-controls{flex-wrap:wrap}
+  .pending-text{flex:1 0 100%;line-height:1.5}
+  .battle-controls .btn{min-height:44px}
+  .battle-controls [data-action="battle-end"]{margin-left:auto}
+  .attack-btn{min-height:44px;white-space:normal;width:100%;padding:7px 2px;bottom:-16px}
+  .rarity-table{table-layout:fixed}
+  .rarity-table th,.rarity-table td{padding:10px 5px;overflow-wrap:anywhere}
+  .large-text .card-grid{grid-template-columns:minmax(0,1fr)}
+  .large-text .deck-tabs{grid-template-columns:1fr}
+  .large-text .setting-row{flex-wrap:wrap;gap:10px}
+  .large-text .setting-row>div{flex:1 1 190px}
+  .large-text .setting-row>.btn,.large-text .setting-row>.switch{margin-left:auto}
+  .screen{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
+  .mobile-nav button{min-height:54px}
+}

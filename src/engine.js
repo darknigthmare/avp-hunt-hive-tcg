@@ -10,7 +10,7 @@
     clone: v => JSON.parse(JSON.stringify(v)),
     uid: (p='id') => `${p}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,8)}`,
     hash(str) { let h=2166136261>>>0; for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619);} return h>>>0; },
-    rng(seed) { let a=(seed>>>0)||1; return () => { a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; },
+    rng(seed) { let a=(seed>>>0)||1; const next=()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296;};next.getState=()=>a>>>0;next.setState=value=>{if(!Number.isSafeInteger(value)||value<0||value>4294967295)throw new Error('État aléatoire invalide');a=value>>>0;};return next; },
     shuffle(arr,rng=Math.random) { const out=arr.slice(); for(let i=out.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[out[i],out[j]]=[out[j],out[i]];} return out; },
     choice(arr,rng=Math.random){return arr[Math.floor(rng()*arr.length)] || arr[0];},
     weighted(items,rng=Math.random){const total=items.reduce((s,x)=>s+x.weight,0);let n=rng()*total;for(const x of items){n-=x.weight;if(n<=0)return x.value;}return items[items.length-1]?.value;},
@@ -100,8 +100,17 @@
     const rng=U.rng(seed);
     let pool=D.cards.filter(c=>allowedForIdentity(c,factions) && (c.set!=='PX00'||difficulty>=2.1));
     if(!pool.length) pool=D.cards.filter(c=>c.faction==='XENO');
+    // A Human assault deck needs a formation and equipment, not an unrelated
+    // mixture of crews, situational quarantine cards and slow locations.
+    // This is an AI archetype only; collection/deckbuilding identities stay intact.
+    const infantry=factions.length===1&&factions[0]==='HUMAN';
+    if(infantry)pool=pool.filter(c=>c.type==='UNIT'
+      ?c.tags.includes('uscm')||['H_COMBAT_SYNTH','H_WORKING_JOE','H_POWERLOADER_RIPLEY','H_BISHOP','H_RIPLEY'].includes(c.id)
+      :!['T_H_EVAC','T_H_QUARANTINE'].includes(c.id));
     // Keep early deployment and a midgame while preserving faction finishers.
-    const targets=[['UNIT',3,0,2],['UNIT',4,3,4],['UNIT',12,0,10],['TACTIC',6,0,10],['EQUIPMENT',3,0,10],['LOCATION',2,0,10]];
+    const targets=infantry
+      ?[['UNIT',3,0,2],['UNIT',4,3,4],['UNIT',12,0,10],['TACTIC',6,0,10],['EQUIPMENT',5,0,10]]
+      :[['UNIT',3,0,2],['UNIT',4,3,4],['UNIT',12,0,10],['TACTIC',6,0,10],['EQUIPMENT',3,0,10],['LOCATION',2,0,10]];
     const deck={};
     const score=c=>{
       let s=1;
@@ -148,8 +157,8 @@
       return {name,isAI,life,maxLife:life,shield:0,deck,hand:[],discard:[],board:[null,null,null],location:null,energy:0,maxEnergy:0,nextEnergy:0,trophies:0,totalTrophies:0,fatigue:0,flags:{},status:{},rebornUsed:{},cardsPlayed:0,unitsLost:0,turnsStarted:0};
     }
     // A complete action, including all death chains, has exactly one outcome.
-    resolve(action){this.resolutionDepth++;try{return action();}finally{this.resolutionDepth--;if(this.resolutionDepth===0){this.syncHealthAuras();this.flushDeaths();this.checkEnd();}}}
-    notify(){this.onChange(this.state);}
+    resolve(action){this.resolutionDepth++;try{return action();}finally{this.resolutionDepth--;if(this.resolutionDepth===0){this.syncHealthAuras();this.flushDeaths();this.checkEnd();if(this.notificationPending){this.notificationPending=false;this.notify();}}}}
+    notify(){if(this.resolutionDepth||this.resolvingDeaths){this.notificationPending=true;return;}this.onChange(this.state);}
     log(text,tone='INFO'){const row={id:U.uid('log'),text,tone,time:Date.now()};this.state.log.unshift(row);this.state.log=this.state.log.slice(0,60);this.onLog(row);}
     card(id){return CARD.get(id);}
     side(i){return this.state.sides[i];}
@@ -554,6 +563,24 @@
         score=(card.attack+card.health)/600+card.keywords.filter(k=>!this.has(unit,k)).length*.6;
         if(fx.onEquip?.kind==='DAMAGE_RANDOM_ENEMY')score+=enemies.length?1:fx.onEquip.amount/700;
         if(card.attack&&unit.ready&&canUseAttack(unit))score+=.8;
+        // Compare visible combat breakpoints using a detached equipment preview.
+        // Never mutate the unit/board, consume RNG, or inspect the opposing hand.
+        const preview={...unit,equipment:[...unit.equipment,card.id],currentHealth:unit.currentHealth+(card.health||0),armorUsed:card.keywords.includes('ARMOR')?false:unit.armorUsed};
+        const lane=s.board.indexOf(unit),opponent=e.board[lane];
+        if(opponent){
+          const dealtBefore=damage(1-sideIndex,opponent,this.unitAttack(sideIndex,unit,opponent),this.has(unit,'PATHOGEN'));
+          const dealtAfter=damage(1-sideIndex,opponent,this.unitAttack(sideIndex,preview,opponent),this.has(preview,'PATHOGEN'));
+          const killBefore=dealtBefore>=opponent.currentHealth||(dealtBefore>0&&this.has(unit,'DEATHTOUCH')&&!this.card(opponent.cardId).tags.includes('boss'));
+          const killAfter=dealtAfter>=opponent.currentHealth||(dealtAfter>0&&this.has(preview,'DEATHTOUCH')&&!this.card(opponent.cardId).tags.includes('boss'));
+          const receivedBefore=damage(sideIndex,unit,this.unitAttack(1-sideIndex,opponent,unit),this.has(opponent,'PATHOGEN'));
+          const receivedAfter=damage(sideIndex,preview,this.unitAttack(1-sideIndex,opponent,preview),this.has(opponent,'PATHOGEN'));
+          const lostBefore=receivedBefore>=unit.currentHealth||(receivedBefore>0&&this.has(opponent,'DEATHTOUCH')&&!this.card(unit.cardId).tags.includes('boss'));
+          const lostAfter=receivedAfter>=preview.currentHealth||(receivedAfter>0&&this.has(opponent,'DEATHTOUCH')&&!this.card(unit.cardId).tags.includes('boss'));
+          if(killAfter&&!killBefore)score+=2+value(1-sideIndex,opponent)*.3;
+          if(lostBefore&&!lostAfter)score+=2+value(sideIndex,unit)*.3;
+          if(lostAfter&&!killAfter)score*=.5;
+        }else if(unit.ready&&!unit.attacked&&!unit.stunned&&!unit.stunBlocked&&!enemies.some(u=>this.has(u,'GUARD'))&&this.unitAttack(sideIndex,preview)+(this.card(unit.cardId).effect?.directBonus||0)>=e.life+e.shield)score=10000;
+        if(fx.seeCloak&&enemies.some(u=>u.cloaked)&&!allies.some(u=>u.equipment.some(id=>this.card(id).effect?.seeCloak)))score+=2;
       }else if(card.type==='LOCATION'){
         if(s.location?.cardId===card.id)return 0;
         const available=[...s.hand,...s.deck].map(id=>this.card(id));

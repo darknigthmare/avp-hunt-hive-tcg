@@ -1,71 +1,130 @@
 import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 
-const context = vm.createContext({ window: {}, console, Intl, setTimeout, clearTimeout });
-vm.runInContext(await readFile(new URL('../src/data.js', import.meta.url), 'utf8'), context);
-vm.runInContext(await readFile(new URL('../src/engine.js', import.meta.url), 'utf8'), context);
+export const FACTIONS = Object.freeze(['XENO', 'YAUTJA', 'HUMAN', 'ENGINEER', 'HYBRID']);
 
-const D = context.window.AVP_DATA;
-const E = context.window.AVPEngine;
-const factions = ['XENO', 'YAUTJA', 'HUMAN', 'ENGINEER', 'HYBRID'];
-const gamesPerPair = process.argv.includes('--extended') ? 100 : 20;
-
-async function duel(left, right, seed) {
-  const battle = new E.Battle({
-    playerName: left,
-    aiName: right,
-    playerDeck: E.buildAiDeck([left], 1, seed ^ E.U.hash(left)),
-    aiDeck: E.buildAiDeck([right], 1, seed ^ E.U.hash(right)),
-    difficulty: 1,
-    seed,
-  });
-  let halfTurns = 0;
-  while (battle.state.winner === null && halfTurns++ < 180) await battle.takeAITurn(undefined, battle.state.active);
-  return {
-    winner: battle.state.winner,
-    rounds: battle.state.round,
-    capped: battle.state.winner === null,
-  };
+export function parseOptions(args = []) {
+  const options = { seeds: [1009], gamesPerPair: args.includes('--extended') ? 100 : 20, json: false };
+  for (let i = 0; i < args.length; i += 1) {
+    const arg = args[i];
+    if (arg === '--extended') continue;
+    if (arg === '--json') { options.json = true; continue; }
+    if (arg === '--seed' || arg === '--seeds') {
+      const raw = args[++i];
+      if (!raw || !/^\d+(,\d+)*$/.test(raw)) throw new Error('Provide one or more comma-separated integer seeds.');
+      options.seeds = raw.split(',').map(Number);
+      if (options.seeds.length > 8 || new Set(options.seeds).size !== options.seeds.length
+        || options.seeds.some(seed => !Number.isSafeInteger(seed) || seed < 0 || seed > 0xffffffff)) {
+        throw new Error('Use 1-8 distinct unsigned 32-bit seeds.');
+      }
+      continue;
+    }
+    if (arg === '--games-per-pair') {
+      options.gamesPerPair = Number(args[++i]);
+      if (!Number.isInteger(options.gamesPerPair) || options.gamesPerPair < 2
+        || options.gamesPerPair > 1000 || options.gamesPerPair % 2 !== 0) {
+        throw new Error('Games per pair must be an even integer from 2 to 1000, so starting seats are balanced.');
+      }
+      continue;
+    }
+    throw new Error(`Unknown balance option: ${arg}`);
+  }
+  return options;
 }
 
-const totals = Object.fromEntries(factions.map((faction) => [faction, { wins: 0, losses: 0, draws: 0, games: 0 }]));
-let rounds = 0;
-let games = 0;
-let capped = 0;
+export async function loadEngine() {
+  const context = vm.createContext({ window: {}, console, Intl, setTimeout, clearTimeout });
+  vm.runInContext(await readFile(new URL('../src/data.js', import.meta.url), 'utf8'), context);
+  vm.runInContext(await readFile(new URL('../src/engine.js', import.meta.url), 'utf8'), context);
+  return context.window.AVPEngine;
+}
 
-for (let a = 0; a < factions.length; a += 1) {
-  for (let b = a + 1; b < factions.length; b += 1) {
-    for (let game = 0; game < gamesPerPair; game += 1) {
-      const swapped = game % 2 === 1;
-      const left = swapped ? factions[b] : factions[a];
-      const right = swapped ? factions[a] : factions[b];
-      const result = await duel(left, right, 1009 + a * 10000 + b * 1000 + game);
-      games += 1;
-      rounds += result.rounds;
-      capped += Number(result.capped);
-      totals[left].games += 1;
-      totals[right].games += 1;
-      if (result.winner === 0) {
-        totals[left].wins += 1;
-        totals[right].losses += 1;
-      } else if (result.winner === 1) {
-        totals[right].wins += 1;
-        totals[left].losses += 1;
-      } else {
-        totals[left].draws += 1;
-        totals[right].draws += 1;
+const percentage = (wins, games) => games ? Math.round(wins / games * 10000) / 100 : 0;
+
+// Each seed batch uses the same schedule as the original launch benchmark.
+// Alternate first player, use difficulty 1 (no life bonus), and never inspect
+// opposing hands or substitute a benchmark-only player for production AI.
+export async function runSimulation(engine, options = parseOptions()) {
+  const { seeds, gamesPerPair } = options;
+  const totals = Object.fromEntries(FACTIONS.map(faction => [faction, { wins: 0, losses: 0, draws: 0, games: 0, first: 0, second: 0 }]));
+  const matchups = [];
+  let games = 0, rounds = 0, capped = 0, firstPlayerWins = 0;
+  for (const batchSeed of seeds) {
+    for (let a = 0; a < FACTIONS.length; a += 1) {
+      for (let b = a + 1; b < FACTIONS.length; b += 1) {
+        const pair = { seed: batchSeed, factions: [FACTIONS[a], FACTIONS[b]], wins: [0, 0], draws: 0, capped: 0, games: 0 };
+        for (let game = 0; game < gamesPerPair; game += 1) {
+          const swapped = game % 2 === 1;
+          const left = swapped ? FACTIONS[b] : FACTIONS[a];
+          const right = swapped ? FACTIONS[a] : FACTIONS[b];
+          const seed = batchSeed + a * 10000 + b * 1000 + game;
+          const playerDeck = engine.buildAiDeck([left], 1, seed ^ engine.U.hash(left));
+          const aiDeck = engine.buildAiDeck([right], 1, seed ^ engine.U.hash(right));
+          for (const [faction, deck] of [[left, playerDeck], [right, aiDeck]]) {
+            const checked = engine.validateDeck(deck, null, faction);
+            if (!checked.valid) throw new Error(`Generated ${faction} deck is invalid: ${checked.errors.join(' ')}`);
+          }
+          const battle = new engine.Battle({ playerName: left, aiName: right, playerDeck, aiDeck, difficulty: 1, seed });
+          let halfTurns = 0;
+          while (battle.state.winner === null && halfTurns++ < 180) {
+            await battle.takeAITurn(undefined, battle.state.active);
+          }
+          const winner = battle.state.winner;
+          if (![null, -1, 0, 1].includes(winner)) throw new Error('Simulation returned an invalid winner.');
+          games += 1; pair.games += 1; rounds += battle.state.round;
+          capped += Number(winner === null); pair.capped += Number(winner === null);
+          totals[left].games += 1; totals[right].games += 1;
+          totals[left].first += 1; totals[right].second += 1;
+          if (winner === 0 || winner === 1) {
+            const winningFaction = winner === 0 ? left : right;
+            const losingFaction = winner === 0 ? right : left;
+            totals[winningFaction].wins += 1; totals[losingFaction].losses += 1;
+            pair.wins[winningFaction === FACTIONS[a] ? 0 : 1] += 1;
+            firstPlayerWins += Number(winner === 0);
+          } else {
+            totals[left].draws += 1; totals[right].draws += 1; pair.draws += 1;
+          }
+        }
+        matchups.push(pair);
       }
     }
   }
+  for (const row of Object.values(totals)) row.winRate = percentage(row.wins, row.games);
+  const rates = Object.values(totals).map(row => row.winRate);
+  return {
+    mode: 'production-ai', difficulty: 1, seeds, gamesPerPair, games,
+    averageRounds: Math.round(rounds / games * 100) / 100, capped,
+    firstPlayerWinRate: percentage(firstPlayerWins, games),
+    spread: Math.round((Math.max(...rates) - Math.min(...rates)) * 100) / 100,
+    totals, matchups,
+    limitation: 'Seeded AI self-play on generated decks measures this matchup pool, not competitive human balance.',
+  };
 }
 
-console.log(`Production AI balance simulation: ${games} games, ${(rounds / games).toFixed(1)} average rounds, ${capped} turn caps.`);
-for (const faction of factions) {
-  const row = totals[faction];
-  console.log(`${faction.padEnd(8)} ${String(row.wins).padStart(3)}W ${String(row.losses).padStart(3)}L ${String(row.draws).padStart(3)}D | ${(row.wins / row.games * 100).toFixed(1)}% wins`);
+export function formatReport(report) {
+  const lines = [
+    `Production AI balance simulation: ${report.games} games, ${report.averageRounds.toFixed(2)} average rounds, ${report.capped} turn caps.`,
+    `Independent batches: ${report.seeds.join(', ')}; ${report.gamesPerPair} games per matchup per batch; difficulty 1; alternating starting seats.`,
+  ];
+  for (const faction of FACTIONS) {
+    const row = report.totals[faction];
+    lines.push(`${faction.padEnd(8)} ${String(row.wins).padStart(4)}W ${String(row.losses).padStart(4)}L ${String(row.draws).padStart(3)}D | ${row.winRate.toFixed(2)}% wins`);
+  }
+  lines.push(`Win-rate spread: ${report.spread.toFixed(2)} percentage points; first-player win rate: ${report.firstPlayerWinRate.toFixed(2)}%.`);
+  lines.push(report.limitation);
+  return lines.join('\n');
 }
 
-const rates = factions.map((faction) => totals[faction].wins / totals[faction].games);
-const spread = (Math.max(...rates) - Math.min(...rates)) * 100;
-console.log(`Win-rate spread: ${spread.toFixed(1)} percentage points.`);
-if (capped > games * 0.05) process.exitCode = 1;
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  try {
+    const options = parseOptions(process.argv.slice(2));
+    const report = await runSimulation(await loadEngine(), options);
+    console.log(options.json ? JSON.stringify(report, null, 2) : formatReport(report));
+    if (report.capped > report.games * 0.05) process.exitCode = 1;
+  } catch (error) {
+    console.error(error.message);
+    process.exitCode = 1;
+  }
+}

@@ -2,36 +2,51 @@
 
 ## Base et périmètre
 
-Base Git `81dc957db58263aee4a89429524afdf3d3180c09`. Archive standalone vérifiée par SHA-256 et inchangée. Le catalogue conserve 158 cartes, trois decks de départ et huit missions. Le build public ne contient que 12 fichiers explicitement autorisés ; archive historique, documentation interne, tests et secrets sont exclus.
+Base standalone Git `81dc957db58263aee4a89429524afdf3d3180c09`, puis édition modulaire `2403dab`. Archive exacte inchangée, SHA-256 `23a462d5fec16bf2feede14d1d69f1829e188db85df7860b3324127d2701d78f`. Le catalogue conserve 158 cartes, trois starters, sept raretés et huit missions. Treize fichiers publics sont autorisés ; archive, documentation, tests et secrets sont exclus.
 
-## Corrections livrées
+## P0/P1/P2 implémentés
 
-- P0 : imports bornés et validés, migration et secours, résistance à un stockage refusé, aucun gain d'abandon, résolution atomique du combat et des doubles KO, quantités de deck bornées.
-- P1 : immunités, mutation temporaire, PV des auras réels, Ruée sans attaque supplémentaire, Quarantaine complète, invocations Unique/exclusives, scénarios rituel/trophées, booster garanti au dixième paquet sans UR, récompense de campagne effective et non répétable.
-- P1 : IA déterministe utilisant uniquement les informations autorisées, victoires directes prioritaires, choix de cibles et échanges, refus de nombreuses actions inutiles ou suicidaires.
-- P2 : architecture séparée, constructeur par identité avec soutien biologique Hybride limité à six, tutoriel quatre étapes, pagination, clavier et focus, descriptions des unités en duel, contraste/texte agrandi, Web Audio local, installation et cache PWA versionné.
+- Résolution atomique des combats, décès en chaîne, doubles KO, immunités synthétiques, mutations temporaires, auras de santé, Ruée, Quarantaine et contraintes Unique.
+- Import JSON borné, validation des identités et quantités, sauvegarde de secours, migration v1/v2 vers v3 et fonctionnement temporaire explicite si le stockage est refusé.
+- Checkpoints de duel : cartes, plateau, effets, scénario et état aléatoire complets. Enregistrement après action résolue. Un tour IA interrompu repart de son checkpoint initial, sans changer les tirages.
+- Pause/reprise après fermeture, checkpoint inclus dans l'export/import, récompense unique et suppression du checkpoint dans le même profil. Protection contre un onglet ancien qui écraserait une victoire ; le duel vivant est conservé si sa capture échoue.
+- Campagne et replays : verrouillages, boosts de scénario, premier booster seulement une fois, récompenses réduites ensuite, succès et aucun gain lors d'un abandon.
+- IA à informations visibles, choix d'équipement par seuil de destruction/survie, archétype Humain d'infanterie/équipement au lieu d'un mélange de soutiens incompatibles.
+- Constructeur par identité, six soutiens biologiques maximum pour Hybride, pagination, tutoriel, clavier/focus, titres hiérarchisés, textes agrandis, contraste des surfaces de lecture, main accessible par lien direct.
+- Correction du débordement des archives mobile, du défilement des boosters sur écran court et des contrôles d'attaque recouvrant les statistiques.
+- Illustrations SVG, icônes et audio synthétique originaux. Remplacement supplémentaire des accroches officielles dans les titres de tactique et de succès.
 
 ## Vérifications reproductibles
 
-- `npm test` : 94 tests, aucun échec. Les tests incluent de vrais serveurs HTTP sur ports libres ; le cycle du service worker est aussi testé en environnement simulé.
-- `npm run check` : syntaxe valide.
-- `npm run build` : archive vérifiée, 12 fichiers publics, cache lié au contenu.
-- `npm audit --omit=dev` : aucune vulnérabilité, aucune dépendance applicative externe.
-- Chromium : tutoriel, déploiement/attaque/tour IA, raccourci clavier, absence de gain d'abandon, recherche avec focus conservé, constructeur mobile et plafond de soutien vérifiés. Rechargement hors ligne réussi après installation du worker.
-- Dimensions contrôlées : 1440×900 et 390×844. Pas de débordement horizontal observé à 390 px. Il s'agit d'une émulation Chromium, pas d'un essai sur appareil iOS/Android physique.
+- `npm test` : 152 tests réussis lors du dernier passage complet ; provenance, règles, IA, équilibrage, campagne, sauvegarde/reprise, contraste, PWA et HTTP.
+- `npm run check`, `npm run build` et `git diff --check` validés.
+- `npm audit --omit=dev` : zéro vulnérabilité, aucune dépendance applicative.
+- Campagne moteur : 72 duels sur huit missions et trois starters, puis parcours séquentiel intégral avec le starter Yautja inchangé, rechargement après chaque victoire, sans dégâts forcés.
+- Campagne navigateur : huit missions gagnées en 29 parties réelles, huit boosters et 116 cartes possédées, six succès dont « Cycle rompu », rechargement entre victoires, console sans erreur. Les commandes de lancement et de résultat passent par l'interface ; les choix tactiques sont automatisés par le moteur légal, sans modifier les dégâts ou les récompenses. Le tampon de victoire a été replacé sous les boutons de replay après ce parcours.
+- Navigateur Chromium : tutoriel, carte jouée réellement, enregistrement automatique, pause/rechargement/reprise identiques ; document rechargé 25 ms après la fin du tour joueur et résultat adverse identique après reprise.
+- Export téléchargé de 7 812 octets, import par le vrai champ fichier : checkpoint restauré à l'identique. Fermeture puis réouverture du profil Chromium : duel tour 2 conservé.
+- Desktop et mobile émulés, dont 1440×900, 390×844 et 320×568 ; navigation, lisibilité, défilement et focus inspectés. Axe 4.12.1 : aucune violation détectée sur les neuf vues contrôlées ; quelques vérifications de contraste des illustrations restent indéterminées. Pas de validation sur appareil physique iOS/Android revendiquée.
 
-## Équilibrage : mesure et limites
+## Équilibrage mesuré
 
-`npm run balance -- --extended` utilise la même IA pour les deux camps, des decks générés et des graines fixes. Dernier lot : 1 000 duels, 13,5 tours moyens, aucune partie plafonnée. Taux de victoire : Xéno 55,8 %, Yautja 61,8 %, Humains 37,0 %, Ingénieurs 47,3 %, Hybrides 48,3 %.
+Commande : `npm run balance -- --seeds 1009,991009 --games-per-pair 100 --json`.
 
-Escouade passe de +100 à +250 ATK par autre Humain allié. Deux lots indépendants de 1 000 parties par variante confirment l'amélioration des Humains (28,5–28,75 % vers 37–37,75 %). Les valeurs des descriptions sont synchronisées avec le moteur.
+Deux lots indépendants, 2 000 duels, dix confrontations, places de départ alternées, 0 plafonnement, 12,61 tours moyens. Résultats reproduits à l'identique :
 
-Ces résultats ne certifient pas un équilibre compétitif : les Humains restent en retrait avec les decks générés. Des parties humaines avec decks optimisés sont encore nécessaires avant une telle affirmation. Les contrôles automatisés de contraste signalent également des zones à examiner manuellement à cause des dégradés/effets visuels ; aucune conformité WCAG exhaustive n'est revendiquée.
+| Faction | Victoires |
+|---|---:|
+| Xénomorphes | 53,25 % |
+| Yautja | 57,00 % |
+| Humains | 51,38 % |
+| Ingénieurs | 42,75 % |
+| Hybrides | 45,63 % |
 
-## Persistance et exploitation
+Le précédent lot plaçait les Humains à 37 %. Leur progression vient ici de la construction cohérente du deck IA et des équipements ; aucun nouveau gonflement de statistiques ni d'Escouade.
 
-Le contrôle de production a révélé un cas absent du serveur local : Vercel redirige `/index.html` vers `/`. Servir cette réponse redirigée depuis le cache empêchait les nouvelles navigations. Le worker corrigé précache et sert désormais la réponse canonique `/`, avec un test de régression dédié aux alias de navigation.
+Les confrontations restent asymétriques : Humains contre Ingénieurs 84,5 %, premier joueur 59,8 %. Ces mesures ne certifient pas un équilibre de compétition, ni les performances de decks optimisés par des joueurs humains. Les missions 2 et 8 restent exigeantes ; elles ont été gagnées sans modifier le starter.
 
-La collection, les decks et la progression sont enregistrés localement et exportables. Le duel en cours n'est pas restauré après fermeture ou rechargement. Aucun compte, paiement, serveur de progression ni multijoueur distant n'est embarqué. Une mise à jour PWA attend la fermeture des anciennes pages afin de ne pas mélanger deux moteurs pendant un duel.
+## PWA et exploitation
 
-La confirmation du commit publié, du déploiement et des contrôles HTTP de production accompagne la livraison ; ils ne sont pas déduits des seuls tests locaux.
+Le worker conserve la correction Vercel des alias : seul `/` est précaché comme document canonique ; les redirections `/index.html` ne sont jamais réutilisées comme navigation. Le nouveau module de reprise fait partie du shell atomique. Une mise à jour attend la fermeture des anciens onglets afin de ne pas mélanger les versions en duel.
+
+Le jeu reste un TCG solo local : aucun compte, paiement, serveur de progression ou multijoueur distant. Les contrôles de contraste et de clavier ne constituent pas une certification WCAG exhaustive. Les preuves de commit, production, HTTP et du parcours navigateur final figurent dans le rapport de livraison associé.

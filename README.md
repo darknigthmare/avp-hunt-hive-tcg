@@ -13,7 +13,7 @@ Version 1.0.0 professionnelle du TCG tactique fan-made, jouable hors ligne dans 
 - Boosters de neuf cartes, fabrication, désassemblage et protection de malchance.
 - Campagne de huit missions avec règles de scénario, récompenses, progression, niveaux et succès.
 - Tutoriel/règles accessibles depuis le jeu, synthèse audio locale et préférences de mouvement.
-- Sauvegarde locale versionnée, export/import JSON validé et migration des anciennes sauvegardes.
+- Sauvegarde locale v3, reprise des duels, export/import JSON validé et migration des anciennes sauvegardes.
 - PWA installable avec cache hors ligne complet.
 
 ## Règles essentielles
@@ -37,12 +37,20 @@ npm run start
 - `npm run start` sert le build de production.
 - `npm run balance` exécute des duels déterministes entre les cinq identités principales.
 - `npm run balance -- --extended` exécute 1 000 parties avec l'IA de production des deux côtés. Ces decks générés et taux de victoire sont un outil de régression, pas une certification d'équilibre compétitif avec des decks optimisés par des joueurs.
+- `npm run balance -- --seeds 1009,991009 --games-per-pair 100 --json` vérifie deux lots indépendants (2 000 duels) et les dix confrontations dans un rapport JSON.
+
+## Reprendre et protéger une partie
+
+Chaque action complète est enregistrée. « Sauvegarder & quitter » met le duel en pause ; le bouton « Reprendre le duel » reste disponible à l'accueil après fermeture du navigateur. Le checkpoint contient les cartes, effets temporaires, tours, scénario et état aléatoire. Si la fermeture intervient pendant une animation adverse, son tour repart du début avec le même tirage.
+
+L'export JSON contient aussi le duel suspendu. Un checkpoint corrompu est écarté sans supprimer la collection ou la progression. Une capture impossible conserve le duel vivant ; un stockage refusé est annoncé, et l'export reste disponible. Les récompenses et la suppression du checkpoint sont enregistrées ensemble. Un onglet devenu ancien recharge la dernière sauvegarde au lieu d'écraser sa progression.
 
 ## Architecture
 
 - `AVP_HUNT_HIVE_TCG_STANDALONE.html` : livraison originale immuable, conservée avec son SHA-256.
 - `src/data.js` : catalogue, decks de départ, boosters, campagne et règles.
 - `src/engine.js` : validation des decks, boosters, IA et moteur de duel.
+- `src/duel-save.js` : checkpoints bornés, validation et restauration déterministe.
 - `src/app.js` : interface, collection, progression, tutoriel, accessibilité et sauvegardes.
 - `assets/styles.css` : design responsive desktop/mobile.
 - `manifest.webmanifest` et `sw.js` : installation et fonctionnement hors ligne.
