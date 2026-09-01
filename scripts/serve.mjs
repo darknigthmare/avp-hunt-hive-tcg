@@ -3,15 +3,21 @@ import { realpath, stat } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { extname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { ART_PUBLIC_FILES } from './art-public-files.mjs';
 
 // One explicit publication contract for the build and the local server.
 // Archives, configuration, tests, source maps and dotfiles are not web assets.
-export const PUBLIC_FILES = Object.freeze([
+const BASE_PUBLIC_FILES = Object.freeze([
   'index.html', 'manifest.webmanifest', 'sw.js', 'robots.txt',
   'assets/styles.css', 'assets/icon.svg', 'assets/icon-192.png',
   'assets/icon-512.png', 'assets/icon-maskable-512.png',
-  'src/data.js', 'src/engine.js', 'src/duel-save.js', 'src/app.js',
+  'src/data.js', 'src/art-manifest.js', 'src/engine.js', 'src/duel-save.js', 'src/app.js',
 ]);
+const ART_PATH = /^assets\/art\/(?:manifest\.json|(?:cards|scenes)\/[a-z0-9][a-z0-9_-]*-v[1-9][0-9]*\.webp)$/;
+if (!Array.isArray(ART_PUBLIC_FILES) || ART_PUBLIC_FILES.some((file) => !ART_PATH.test(file))) {
+  throw new Error('Invalid generated artwork publication list.');
+}
+export const PUBLIC_FILES = Object.freeze([...new Set([...BASE_PUBLIC_FILES, ...ART_PUBLIC_FILES])]);
 const publicFiles = new Set(PUBLIC_FILES);
 const mime = {
   '.css': 'text/css; charset=utf-8',
@@ -21,6 +27,7 @@ const mime = {
   '.png': 'image/png',
   '.svg': 'image/svg+xml',
   '.txt': 'text/plain; charset=utf-8',
+  '.webp': 'image/webp',
   '.webmanifest': 'application/manifest+json; charset=utf-8',
 };
 
@@ -82,6 +89,7 @@ export function createStaticServer(directory) {
       fail(400, 'Bad request');
       return;
     }
+    if (relative?.endsWith('.webp')) response.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
     const found = await fileFor(root, relative);
     if (!found) {
       fail(404, 'Not found');

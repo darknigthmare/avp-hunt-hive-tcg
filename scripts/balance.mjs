@@ -6,11 +6,12 @@ import vm from 'node:vm';
 export const FACTIONS = Object.freeze(['XENO', 'YAUTJA', 'HUMAN', 'ENGINEER', 'HYBRID']);
 
 export function parseOptions(args = []) {
-  const options = { seeds: [1009], gamesPerPair: args.includes('--extended') ? 100 : 20, json: false };
+  const options = { seeds: [1009], gamesPerPair: args.includes('--extended') ? 100 : 20, json: false, assertRelease: false };
   for (let i = 0; i < args.length; i += 1) {
     const arg = args[i];
     if (arg === '--extended') continue;
     if (arg === '--json') { options.json = true; continue; }
+    if (arg === '--assert-release') { options.assertRelease = true; continue; }
     if (arg === '--seed' || arg === '--seeds') {
       const raw = args[++i];
       if (!raw || !/^\d+(,\d+)*$/.test(raw)) throw new Error('Provide one or more comma-separated integer seeds.');
@@ -117,10 +118,25 @@ export function formatReport(report) {
   return lines.join('\n');
 }
 
+export function assertReleaseBalance(report) {
+  const failures = [];
+  if (report.capped !== 0) failures.push(`${report.capped} capped games`);
+  if (Math.abs(report.firstPlayerWinRate - 50) > 7) failures.push(`first-player rate ${report.firstPlayerWinRate}%`);
+  if (report.spread > 15) failures.push(`faction spread ${report.spread} points`);
+  const worstMatchup = Math.max(...report.matchups.map((pair) => {
+    const decided = pair.wins[0] + pair.wins[1];
+    return decided ? Math.max(pair.wins[0], pair.wins[1]) / decided * 100 : 50;
+  }));
+  if (worstMatchup > 75) failures.push(`single-batch matchup dominance ${worstMatchup.toFixed(2)}%`);
+  if (failures.length) throw new Error(`Release balance gate failed: ${failures.join('; ')}.`);
+  return report;
+}
+
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   try {
     const options = parseOptions(process.argv.slice(2));
     const report = await runSimulation(await loadEngine(), options);
+    if (options.assertRelease) assertReleaseBalance(report);
     console.log(options.json ? JSON.stringify(report, null, 2) : formatReport(report));
     if (report.capped > report.games * 0.05) process.exitCode = 1;
   } catch (error) {

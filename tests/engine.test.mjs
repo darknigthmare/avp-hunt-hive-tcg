@@ -39,6 +39,15 @@ test('all starter decks validate with their declared identity and exact owned qu
   }
 });
 
+test('the second player receives exactly one additional opening card', () => {
+  const { D, battle } = duel();
+  assert.equal(D.rules.secondPlayerBonusDraw, 1);
+  assert.equal(battle.side(0).hand.length, D.rules.startingHand);
+  assert.equal(battle.side(1).hand.length, D.rules.startingHand + D.rules.secondPlayerBonusDraw);
+  assert.equal(battle.side(0).deck.length, D.rules.deckSize - D.rules.startingHand);
+  assert.equal(battle.side(1).deck.length, D.rules.deckSize - D.rules.startingHand - D.rules.secondPlayerBonusDraw);
+});
+
 test('deck quantities are integers, bounded, and never coerced', () => {
   const { E, D } = runtime();
   const original = D.starterDecks.XENO.cards;

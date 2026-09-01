@@ -206,3 +206,31 @@ html{scroll-padding-top:calc(var(--top) + 16px);scroll-padding-bottom:92px}
   .screen{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
   .mobile-nav button{min-height:54px}
 }
+
+/* OpenAI ImageGen artwork: bitmap layers stay subordinate to readable game UI. */
+.card-art-image{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:center}
+.scene-art[hidden]{display:none}
+.hero-backdrop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.68;filter:saturate(.88) contrast(1.08)}
+.hero-copy{background:#0c1513}
+.hero-stage{z-index:1}
+.pack-art>.pack-art-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.9) contrast(1.05)}
+.pack-art:before{opacity:.28;z-index:1}
+.pack-glyph{font-size:62px;opacity:.78;z-index:2}
+.pack-code{z-index:3}
+.mission-art{display:block;width:calc(100% + 40px);height:150px;margin:-20px -20px 16px;object-fit:cover;object-position:center;border-bottom:1px solid var(--line2);filter:saturate(.88) contrast(1.04)}
+.mission-num{z-index:2;padding:3px 5px;border-radius:6px;background:rgba(5,9,8,.76)}
+.battle-board{position:relative;isolation:isolate;overflow:hidden;padding:8px;border-radius:16px;background:#08100e}
+.battle-board-backdrop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.38;filter:saturate(.75) contrast(1.08);z-index:0}
+.battle-board>.lane{z-index:1;background:linear-gradient(180deg,rgba(22,18,20,.82),rgba(9,16,14,.84) 50%,rgba(15,22,13,.82));backdrop-filter:blur(1px)}
+.high-contrast .hero-backdrop,.high-contrast .battle-board-backdrop{opacity:.24}
+.high-contrast .mission-art,.high-contrast .pack-art-image{filter:saturate(.45) brightness(.68) contrast(1.25)}
+@media(max-width:760px){
+  .hero-backdrop{opacity:.48;object-position:66% center}
+  .hero-copy{background:#0c1513}
+  .mission-art{height:132px}
+  .battle-board{padding:4px}
+}
+.fan-project-notice{max-width:1680px;margin:0 auto;padding:18px 20px calc(90px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:#07100e;color:#c8d3cf;text-align:center;font-size:12px;line-height:1.55}
+.fan-project-notice strong,.fan-project-notice span{display:block}
+.fan-project-notice strong{color:#f0f5f2;letter-spacing:.02em}
+@media(min-width:761px){.fan-project-notice{padding-bottom:22px}}

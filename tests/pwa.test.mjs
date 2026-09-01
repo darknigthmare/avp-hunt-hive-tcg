@@ -55,7 +55,7 @@ async function publicTree(directory, prefix = '') {
 // Execute the real worker with an in-memory Cache API and actual shell fetches.
 // This covers policy and lifecycle deterministically; browser installation is a
 // separate release gate, not something this harness pretends to emulate fully.
-async function workerHarness(network = (req) => fetch(req.url)) {
+async function workerHarness(network = (req) => fetch(req.url), cacheFailures = {}) {
   const listeners = new Map();
   const stores = new Map();
   const calls = { fetches: [], installs: [], skips: 0, claims: 0 };
@@ -76,10 +76,27 @@ async function workerHarness(network = (req) => fetch(req.url)) {
       keys: async () => [...stores.keys()],
       delete: async (name) => stores.delete(name),
       open: async (name) => {
+        if (cacheFailures.open) throw new Error('CacheStorage unavailable');
         if (!stores.has(name)) stores.set(name, new Map());
         const entries = stores.get(name);
+        const keyFor = (key) => new URL(typeof key === 'string' ? key : key.url, origin).pathname;
         return {
-          match: async (key) => entries.get(key)?.clone(),
+          match: async (key) => {
+            if (cacheFailures.match) throw new Error('Cache read failed');
+            return entries.get(keyFor(key))?.clone();
+          },
+          put: async (key, response) => {
+            if (cacheFailures.put) throw new Error('Cache write failed');
+            return entries.set(keyFor(key), response);
+          },
+          delete: async (key) => {
+            if (cacheFailures.entryDelete) throw new Error('Cache prune failed');
+            return entries.delete(keyFor(key));
+          },
+          keys: async () => {
+            if (cacheFailures.entryKeys) throw new Error('Cache enumeration failed');
+            return [...entries.keys()].map((path) => new Request(new URL(path, origin)));
+          },
           addAll: async (requests) => {
             calls.installs.push(...requests);
             const responses = await Promise.all(requests.map(async (req) => {
@@ -94,9 +111,9 @@ async function workerHarness(network = (req) => fetch(req.url)) {
     },
   };
   const worker = await readFile(new URL('sw.js', root), 'utf8');
-  const { cacheName, shell } = runInNewContext(`${worker}\n;({cacheName:CACHE_NAME, shell:APP_SHELL});`, context);
+  const snapshot = runInNewContext(`${worker}\n;({cacheName:CACHE_NAME,artCacheName:ART_CACHE_NAME,artCacheLimit:ART_CACHE_LIMIT,artPath:ART_PATH,shell:APP_SHELL});`, context);
   return {
-    cacheName, shell: Array.from(shell), stores, calls,
+    ...snapshot, shell: Array.from(snapshot.shell), stores, calls,
     dispatch(type, props = {}) {
       const pending = [];
       let response;
@@ -123,13 +140,25 @@ test('the web app manifest is installable and uses original local icons', async 
   }
 });
 
-test('the service worker precaches every critical modular asset', async () => {
+test('the public entry exposes the non-commercial unofficial fan notice', async () => {
+  const html = await readFile(new URL('index.html', root), 'utf8');
+  assert.match(html, /class="fan-project-notice"/);
+  assert.match(html, /Projet fan non commercial, indépendant et non officiel/);
+  assert.match(html, /Aucun lien avec les ayants droit/);
+});
+
+test('the service worker precaches a bounded critical shell, not the full art library', async () => {
   const worker = await workerHarness();
-  for (const asset of PUBLIC_FILES.filter((file) => !['index.html', 'sw.js', 'robots.txt'].includes(file))) {
-    assert.ok(worker.shell.includes(`/${asset}`), `Missing from app shell: ${asset}`);
-  }
+  const critical = [
+    '/', '/manifest.webmanifest', '/assets/styles.css', '/assets/icon.svg',
+    '/src/data.js', '/src/art-manifest.js', '/src/engine.js',
+    '/src/duel-save.js', '/src/app.js', '/assets/art/scenes/home-hero-v1.webp',
+  ];
+  for (const asset of critical) assert.ok(worker.shell.includes(asset), `Missing from app shell: ${asset}`);
+  assert.ok(PUBLIC_FILES.filter((file) => file.startsWith('assets/art/')).length >= 175);
+  assert.equal(worker.shell.some((file) => file.startsWith('/assets/art/cards/')), false);
+  assert.ok(worker.shell.length < 20, 'The install shell must stay small on mobile');
   await worker.dispatch('install').done;
-  assert.ok(worker.shell.includes('/'), 'Cache the canonical, non-redirected home');
   assert.ok(!worker.shell.includes('/index.html'), 'Vercel redirects this alias');
   assert.equal(worker.stores.get(worker.cacheName).size, worker.shell.length);
   assert.ok(worker.calls.installs.every((req) => req.cache === 'reload'));
@@ -148,8 +177,9 @@ test('worker activation removes only obsolete AVP caches', async () => {
   worker.stores.set('another-application-v1', new Map());
   worker.stores.set('avp-hunt-hive-v1.0.0-r2', new Map());
   worker.stores.set(worker.cacheName, new Map());
+  worker.stores.set(worker.artCacheName, new Map());
   await worker.dispatch('activate').done;
-  assert.deepEqual([...worker.stores.keys()].sort(), ['another-application-v1', worker.cacheName].sort());
+  assert.deepEqual([...worker.stores.keys()].sort(), ['another-application-v1', worker.cacheName, worker.artCacheName].sort());
   assert.equal(worker.calls.claims, 1);
   worker.dispatch('message', { data: 'unrelated' });
   assert.equal(worker.calls.skips, 0);
@@ -175,6 +205,68 @@ test('cached home and modular assets remain one coherent version offline', async
   assert.equal(missing.status, 503);
   assert.match(await missing.text(), /Hors ligne/);
   assert.equal(cache.size, 2, 'Runtime requests must not overwrite or expand the cache');
+});
+
+test('artwork requests use a strict cache-first policy with a bounded cache', async () => {
+  let online = true;
+  const worker = await workerHarness(async (req) => {
+    if (!online) throw new Error('offline');
+    return new Response(`art:${new URL(req.url).pathname}`, { status: 200, headers: { 'Content-Type': 'image/webp' } });
+  });
+  const firstPath = '/assets/art/cards/test-subject-v1.webp';
+  let event = worker.request(firstPath, 'cors');
+  assert.equal(event.intercepted, true);
+  assert.equal(await (await event.response).text(), `art:${firstPath}`);
+  assert.equal(worker.stores.get(worker.artCacheName).size, 1);
+  online = false;
+  event = worker.request(`${firstPath}?ignored=1`, 'cors');
+  assert.equal(await (await event.response).text(), `art:${firstPath}`);
+  assert.equal(worker.calls.fetches.length, 1);
+  const missing = await worker.request('/assets/art/cards/not-cached-v1.webp', 'cors').response;
+  assert.equal(missing.status, 503);
+  assert.equal(worker.request('/assets/art/cards/not-an-image.png', 'cors').intercepted, false);
+  online = true;
+  for (let index = 0; index < worker.artCacheLimit + 3; index += 1) {
+    await worker.request(`/assets/art/cards/probe-${index}-v1.webp`, 'cors').response;
+  }
+  const artCache = worker.stores.get(worker.artCacheName);
+  assert.equal(artCache.size, worker.artCacheLimit);
+  assert.equal(artCache.has(firstPath), false, 'Oldest art is pruned first');
+});
+
+test('artwork cache refuses a successful non-WebP response', async () => {
+  const path = '/assets/art/cards/rewritten-v1.webp';
+  const worker = await workerHarness(async () => new Response('<!doctype html>rewrite', {
+    status: 200,
+    headers: { 'Content-Type': 'text/html; charset=utf-8' },
+  }));
+  const response = await worker.request(path, 'cors').response;
+  assert.equal(response.status, 200);
+  assert.match(await response.text(), /rewrite/);
+  assert.equal(worker.stores.get(worker.artCacheName).has(path), false);
+});
+
+test('artwork still returns a revalidated network response when CacheStorage is unavailable or rejects writes', async () => {
+  const freshNetwork = async (req) => {
+    assert.equal(req.cache, 'no-cache');
+    return new Response('fresh network art', { status: 200, headers: { 'Content-Type': 'image/webp' } });
+  };
+  for (const cacheFailures of [{ open: true }, { match: true }, { put: true }, { entryKeys: true }]) {
+    const worker = await workerHarness(freshNetwork, cacheFailures);
+    const response = await worker.request('/assets/art/cards/cache-failure-v1.webp', 'cors').response;
+    assert.equal(response.status, 200);
+    assert.equal(await response.text(), 'fresh network art');
+    assert.equal(worker.calls.fetches.length, 1);
+  }
+  const worker = await workerHarness(freshNetwork, { entryDelete: true });
+  worker.stores.set(worker.artCacheName, new Map(Array.from(
+    { length: worker.artCacheLimit },
+    (_, index) => [`/assets/art/cards/cached-${index}-v1.webp`, new Response('cached')],
+  )));
+  const response = await worker.request('/assets/art/cards/cache-prune-failure-v1.webp', 'cors').response;
+  assert.equal(response.status, 200);
+  assert.equal(await response.text(), 'fresh network art');
+  assert.equal(worker.calls.fetches.length, 1);
 });
 
 test('navigation aliases use canonical home instead of the Vercel-redirected HTML alias', async () => {
@@ -209,6 +301,9 @@ test('HTTP serves each allowlisted asset, clean home aliases and correct HEAD re
     assert.deepEqual(result.body, await readFile(new URL(file, root)), file);
     assert.notEqual(result.headers['content-type'], 'application/octet-stream', file);
     assert.equal(result.headers['x-content-type-options'], 'nosniff');
+    if (file.startsWith('assets/art/') && file.endsWith('.webp')) {
+      assert.equal(result.headers['cache-control'], 'public, max-age=0, must-revalidate', file);
+    }
   }
   for (const path of ['/', '/index', '/?source=pwa']) assert.equal((await request(path)).status, 200, path);
   const head = await request('/', 'HEAD');
@@ -265,8 +360,10 @@ test('production build contains only public files and a content-derived worker r
 
 test('Vercel serves the verified dist build with defensive headers', async () => {
   const config = JSON.parse(await readFile(new URL('vercel.json', root), 'utf8'));
-  assert.equal(config.buildCommand, 'npm run build');
+  assert.equal(config.buildCommand, 'npm run vercel-build');
   assert.equal(config.outputDirectory, 'dist');
+  const artRoute = config.headers.find((route) => route.source === '/assets/art/(.*).webp');
+  assert.equal(artRoute?.headers.find((header) => header.key === 'Cache-Control')?.value, 'public, max-age=0, must-revalidate');
   const allHeaders = config.headers.flatMap((route) => route.headers);
   const byName = new Map(allHeaders.map((header) => [header.key.toLowerCase(), header.value]));
   assert.equal(byName.get('x-content-type-options'), 'nosniff');

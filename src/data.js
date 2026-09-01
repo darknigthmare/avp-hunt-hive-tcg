@@ -5983,7 +5983,7 @@ window.AVP_DATA = {
         "HYBRID",
         "ENGINEER"
       ],
-      "difficulty": 2.25,
+      "difficulty": 2,
       "reward": 3200,
       "pack": "pack_px00",
       "description": "Une continuité impossible rassemble Reines, Elders et prototypes.",
@@ -6035,6 +6035,7 @@ window.AVP_DATA = {
     "maxCopies": 3,
     "startingLife": 8000,
     "startingHand": 5,
+    "secondPlayerBonusDraw": 1,
     "lanes": 3,
     "maxEnergy": 10,
     "summary": "Déployez des unités sur trois voies, équipez-les, jouez des tactiques et réduisez les 8 000 PV adverses à zéro."

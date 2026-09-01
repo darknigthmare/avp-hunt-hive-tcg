@@ -1,16 +1,32 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { FACTIONS, parseOptions, loadEngine, runSimulation, formatReport } from '../scripts/balance.mjs';
+import { FACTIONS, parseOptions, loadEngine, runSimulation, formatReport, assertReleaseBalance } from '../scripts/balance.mjs';
 
 const E = await loadEngine();
 
 test('balance CLI accepts independent seeds and preserves the launch default schedule', () => {
-  assert.deepEqual(parseOptions(), { seeds: [1009], gamesPerPair: 20, json: false });
-  assert.deepEqual(parseOptions(['--extended', '--seeds', '1009,991009', '--json']), {
-    seeds: [1009, 991009], gamesPerPair: 100, json: true,
+  assert.deepEqual(parseOptions(), { seeds: [1009], gamesPerPair: 20, json: false, assertRelease: false });
+  assert.deepEqual(parseOptions(['--extended', '--seeds', '1009,991009', '--json', '--assert-release']), {
+    seeds: [1009, 991009], gamesPerPair: 100, json: true, assertRelease: true,
   });
   assert.equal(parseOptions(['--games-per-pair', '2']).gamesPerPair, 2);
   assert.deepEqual(parseOptions(['--seed', '0']).seeds, [0]);
+});
+
+test('release balance gate enforces seats, faction spread, caps and matchup extremes', () => {
+  const healthy = {
+    capped: 0,
+    firstPlayerWinRate: 55.2,
+    spread: 14.87,
+    matchups: [{ wins: [71, 29] }, { wins: [65, 35] }],
+  };
+  assert.equal(assertReleaseBalance(healthy), healthy);
+  for (const report of [
+    { ...healthy, capped: 1 },
+    { ...healthy, firstPlayerWinRate: 58 },
+    { ...healthy, spread: 15.01 },
+    { ...healthy, matchups: [{ wins: [76, 24] }] },
+  ]) assert.throws(() => assertReleaseBalance(report), /Release balance gate failed/);
 });
 
 test('balance CLI rejects invalid sizes, duplicate seeds and unknown arguments', () => {
@@ -75,12 +91,24 @@ test('Human assault generation is legal, reproducible and actually provides an e
     assert.equal(cards.filter(c => c.type === 'EQUIPMENT').length, 5);
     assert.equal(cards.filter(c => c.type === 'LOCATION').length, 0);
     assert.ok(cards.filter(c => c.type === 'UNIT').every(c => c.tags.includes('uscm') || allowedSupport.has(c.id)));
+    assert.ok(cards.filter(c => c.keywords.includes('SYNTHETIC')).length <= 1);
     assert.ok(!cards.some(c => ['T_H_EVAC', 'T_H_QUARANTINE'].includes(c.id)));
   }
   const mixed = E.buildAiDeck(['HUMAN', 'YAUTJA'], 1, 172);
   assert.equal(E.validateDeck(mixed, null, ['HUMAN', 'YAUTJA']).valid, true);
   assert.equal(E.expandDeck(mixed).filter(id => E.CARD.get(id).type === 'LOCATION').length, 2);
   assert.equal(E.allowedForIdentity('H_NEWT', 'HUMAN'), true, 'AI archetype must not restrict player collection/decks');
+});
+
+test('solo Hybrid AI always receives its deterministic cross-faction package', () => {
+  for (const difficulty of [0.5, 1, 2.1]) for (let seed = 1; seed <= 100; seed += 1) {
+    const deck = E.buildAiDeck(['HYBRID'], difficulty, seed);
+    assert.equal(E.validateDeck(deck, null, 'HYBRID').valid, true);
+    assert.equal(deck.L_AURIGA, 2);
+    assert.equal(deck.T_AVP_ALLIANCE, 3);
+    assert.equal(E.expandDeck(deck).length, 30);
+  }
+  assert.equal(E.allowedForIdentity('L_AURIGA', 'HYBRID'), true, 'AI package must not alter identity legality');
 });
 
 function equipmentBattle(seed = 10) {

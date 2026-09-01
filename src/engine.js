@@ -104,6 +104,7 @@
     // mixture of crews, situational quarantine cards and slow locations.
     // This is an AI archetype only; collection/deckbuilding identities stay intact.
     const infantry=factions.length===1&&factions[0]==='HUMAN';
+    const hybrid=factions.length===1&&factions[0]==='HYBRID';
     if(infantry)pool=pool.filter(c=>c.type==='UNIT'
       ?c.tags.includes('uscm')||['H_COMBAT_SYNTH','H_WORKING_JOE','H_POWERLOADER_RIPLEY','H_BISHOP','H_RIPLEY'].includes(c.id)
       :!['T_H_EVAC','T_H_QUARANTINE'].includes(c.id));
@@ -119,7 +120,10 @@
       if(c.rarity==='PR'||c.rarity==='GR')s+=difficulty>.95?1:-1;
       return Math.max(.1,s);
     };
-    const available=c=>(deck[c.id]||0)<3&&(!(factions.length===1&&factions[0]==='HYBRID'&&hybridSupport(c))||Object.entries(deck).reduce((n,[id,count])=>n+(hybridSupport(CARD.get(id))?count:0),0)<6);
+    const syntheticCount=()=>Object.entries(deck).reduce((n,[id,count])=>n+(CARD.get(id)?.keywords.includes('SYNTHETIC')?count:0),0);
+    const available=c=>(deck[c.id]||0)<3
+      &&(!infantry||!c.keywords.includes('SYNTHETIC')||syntheticCount()<1)
+      &&(!(hybrid&&hybridSupport(c))||Object.entries(deck).reduce((n,[id,count])=>n+(hybridSupport(CARD.get(id))?count:0),0)<6);
     for(const [type,count,min,max] of targets){
       const typed=pool.filter(c=>c.type===type);
       for(let i=0;i<count;i++){
@@ -134,6 +138,21 @@
       const candidates=pool.filter(c=>available(c) && c.type!=='LOCATION');
       const id=U.choice(candidates,rng)?.id; if(!id)break; deck[id]=(deck[id]||0)+1;
     }
+    // The solo Hybrid AI needs a deterministic cross-faction package. This
+    // normalizes only generated AI decks; player deckbuilding remains unchanged.
+    if(hybrid){
+      let locations=0;
+      for(const id of Object.keys(deck))if(CARD.get(id)?.type==='LOCATION'){locations+=deck[id];delete deck[id];}
+      if(locations!==2)throw new Error('Hybrid AI location package is incomplete.');
+      deck.L_AURIGA=2;
+      let needed=3-(deck.T_AVP_ALLIANCE||0);
+      for(const donor of ['T_AVP_WHOEVER','T_AVP_HYBRIDIZE','T_AVP_3WW']){
+        const take=Math.min(needed,deck[donor]||0);
+        if(take){deck[donor]-=take;if(!deck[donor])delete deck[donor];deck.T_AVP_ALLIANCE=(deck.T_AVP_ALLIANCE||0)+take;needed-=take;}
+        if(!needed)break;
+      }
+      if(needed)throw new Error('Hybrid AI tactic package is incomplete.');
+    }
     return deck;
   }
 
@@ -147,7 +166,7 @@
         sides:[this.makeSide(options.playerName||'Commandant',options.playerDeck,D.rules.startingLife,false),this.makeSide(options.aiName||'Directive adverse',options.aiDeck,aiLife,true)]};
       if(this.modifiers.includes('boss')){this.state.sides[1].maxLife+=1000;this.state.sides[1].life+=1000;this.state.sides[1].maxEnergy=1;}
       if(this.modifiers.includes('ritual'))for(const side of this.state.sides)side.location={cardId:'L_BOUVET'};
-      this.resolve(()=>{this.draw(0,D.rules.startingHand); this.draw(1,D.rules.startingHand);});
+      this.resolve(()=>{this.draw(0,D.rules.startingHand); this.draw(1,D.rules.startingHand+(D.rules.secondPlayerBonusDraw||0));});
       this.ensureOpeningPlayable(0); this.ensureOpeningPlayable(1);
       this.beginTurn(0,true);
       this.log(`Duel engagé — ${U.format(this.state.sides[0].life)} PV contre ${U.format(this.state.sides[1].life)} PV.`,'SYSTEM');

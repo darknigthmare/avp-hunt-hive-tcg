@@ -317,7 +317,9 @@ test('mission modifiers execute their documented asymmetric board rules', async 
   const ping = battleFor(7); ping.summonAt(0, 'X_DRONE', 0); ping.summonAt(1, 'X_DRONE', 0);
   const life = ping.side(0).life; ping.destroyUnit(0, 0); assert.equal(ping.side(0).life, life - 100);
   const enemyLife = ping.side(1).life; ping.destroyUnit(1, 0); assert.equal(ping.side(1).life, enemyLife - 100);
-  const boss = battleFor(8); assert.equal(boss.side(1).maxLife, 10200);
+  const finalMission = boot().D.campaign[7];
+  const expectedBossLife = Math.round(8000 * (1 + Math.max(0, finalMission.difficulty - 1) * .12)) + 1000;
+  const boss = battleFor(8); assert.equal(boss.side(1).maxLife, expectedBossLife);
   boss.endTurn(0); assert.equal(boss.side(1).energy, 2); assert.equal(boss.side(0).maxEnergy, 1);
 });
 

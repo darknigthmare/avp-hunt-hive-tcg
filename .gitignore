@@ -6,3 +6,11 @@ node_modules/
 dist/
 .qa-*.png
 .qa-*.jpg
+.tmp-*-ref.jpg
+.tmp-*-after.jpg
+assets/.art-staging-*/
+assets/.art-backup-*/
+src/art-manifest.js.tmp-*
+src/art-manifest.js.backup-*
+scripts/art-public-files.mjs.tmp-*
+scripts/art-public-files.mjs.backup-*
