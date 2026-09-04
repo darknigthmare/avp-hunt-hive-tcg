@@ -1,0 +1,229 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema": "avp-art-fidelity-contract-v1",
+  "version": "1.0.0",
+  "policyId": "hunt-hive-canonical-morphology-original-art-v1",
+  "title": "AVP: HUNT // HIVE canonical morphology and original-art release contract",
+  "intent": "Keep every represented subject immediately and consistently recognizable while requiring a new, fan-made composition and excluding protected source imagery and performer likenesses.",
+  "normativeLanguage": {
+    "must": "mandatory and release blocking",
+    "should": "expected unless the brief records a concrete visual reason",
+    "may": "optional"
+  },
+  "files": {
+    "profiles": "art-direction/avp-morphology-profiles.v1.json",
+    "briefsDefault": "../art-originals/fidelity-briefs.json",
+    "ledgerDefault": "../art-originals/fidelity-ledger.json"
+  },
+  "schemas": {
+    "profiles": "avp-morphology-profiles-v1",
+    "briefs": "avp-art-fidelity-briefs-v1",
+    "ledger": "avp-art-fidelity-ledger-v1"
+  },
+  "scoring": {
+    "minimumAcceptedScore": 95,
+    "minimumDimensionScore": 90,
+    "maximumScore": 100,
+    "rounding": "none",
+    "dimensions": [
+      {
+        "id": "silhouette",
+        "weight": 25,
+        "requirement": "The outer contour, posture, mass distribution and immediately readable family shape match the selected profile."
+      },
+      {
+        "id": "anatomy",
+        "weight": 25,
+        "requirement": "Limb count, joints, head construction, appendages and body proportions are internally coherent and match the selected profile."
+      },
+      {
+        "id": "signatureTraits",
+        "weight": 20,
+        "requirement": "Every required anchor is visible or unambiguously represented at the intended crop and scale."
+      },
+      {
+        "id": "surfaceLanguage",
+        "weight": 10,
+        "requirement": "Skin, shell, armor, fabric and mechanical surfaces follow the subject family rather than a generic fantasy or science-fiction substitute."
+      },
+      {
+        "id": "scaleAndProportion",
+        "weight": 10,
+        "requirement": "Relative scale and proportion are plausible for the subject and any nearby people, objects or architecture."
+      },
+      {
+        "id": "poseReadability",
+        "weight": 5,
+        "requirement": "The pose reveals the morphology without tangles, fused limbs, hidden mandatory anchors or misleading foreshortening."
+      },
+      {
+        "id": "variantContinuity",
+        "weight": 5,
+        "requirement": "Named variants preserve their distinguishing features without collapsing into the generic family profile."
+      }
+    ],
+    "calculation": "For each dimension, assign an integer rating from 0 through 100. Weighted score equals sum(rating * weight) / 100. No bonus or discretionary override may raise the result.",
+    "acceptance": [
+      "weighted score is at least 95",
+      "every scoring dimension is at least 90",
+      "every required anchor evaluates true",
+      "hardFails is empty",
+      "all compliance assertions pass",
+      "promptComplete is true",
+      "the accepted attempt is the final recorded attempt"
+    ],
+    "thresholdMayNotBeLowered": true
+  },
+  "hardFails": [
+    {
+      "id": "official-image-input",
+      "requirement": "No official still, poster, concept art, promotional image, game capture, card, scan, texture or protected franchise asset may be supplied to the image model as an input or edit target."
+    },
+    {
+      "id": "copied-official-composition",
+      "requirement": "The image may not recreate the camera, pose, lighting, staging or background arrangement of an identifiable official image."
+    },
+    {
+      "id": "actor-likeness",
+      "requirement": "No real performer, publicity portrait, face double or recognizable actor likeness may be requested or retained. Human faces must be original."
+    },
+    {
+      "id": "official-branding",
+      "requirement": "No official logo, wordmark, studio mark, legal line, card frame, packaging design, watermark or copied typography may appear."
+    },
+    {
+      "id": "missing-required-anchor",
+      "requirement": "Any false, absent, obscured or anatomically contradicted required anchor rejects the attempt regardless of score."
+    },
+    {
+      "id": "wrong-subject-family",
+      "requirement": "A generic monster, humanoid, weapon, vehicle or place that cannot be identified from morphology alone rejects the attempt."
+    },
+    {
+      "id": "anatomical-generation-error",
+      "requirement": "Fused, duplicated, severed without narrative cause, impossible or illegible anatomy rejects the attempt."
+    },
+    {
+      "id": "prompt-instruction-leak",
+      "requirement": "Visible prompt fragments, gibberish lettering, labels, signatures or generation watermarks reject the attempt."
+    },
+    {
+      "id": "unlicensed-external-asset",
+      "requirement": "Any third-party image, texture, logo or asset without recorded permission or compatible license rejects the attempt."
+    }
+  ],
+  "originalityAndSafety": {
+    "originalCompositionRequired": true,
+    "officialImageInputAllowed": false,
+    "actorLikenessAllowed": false,
+    "officialLogoTextOrWatermarkAllowed": false,
+    "textualReferenceMethod": "Use written morphology notes and independently authored prompt briefs. Do not attach official imagery to generation requests.",
+    "identityRule": "Fidelity applies to fictional morphology, equipment logic and environmental language; it never authorizes copying a protected image or a real person's likeness.",
+    "humanCharacterRule": "Named story roles are represented by original people with non-performer facial geometry, styling and pose.",
+    "compositionRule": "Camera, pose, grouping, light, weather and background must be newly designed for the card or scene."
+  },
+  "briefPolicy": {
+    "requiredAssetFields": [
+      "id",
+      "kind",
+      "profile",
+      "active",
+      "briefRevision",
+      "subject",
+      "requiredAnchors",
+      "prompt",
+      "negativePrompt",
+      "promptSha256",
+      "originalCompositionRequired",
+      "officialImageInputUsed",
+      "actorLikenessRequested"
+    ],
+    "requiredPromptSections": [
+      "subject",
+      "silhouette",
+      "anatomy",
+      "signatureTraits",
+      "surfaceLanguage",
+      "scaleAndPose",
+      "originalComposition",
+      "lightingAndPalette",
+      "negativeConstraints"
+    ],
+    "rules": [
+      "profile must resolve to exactly one morphology profile",
+      "requiredAnchors must contain every required anchor id from that profile exactly once",
+      "briefRevision starts at 1 and increases only when the brief is materially rewritten",
+      "the prompt must state every required prompt section",
+      "the negative prompt must explicitly reject official image copying, actor likeness, logos, text, watermarks and anatomical drift",
+      "no brief may define or override an acceptance score below 95"
+    ]
+  },
+  "retryPolicy": {
+    "retryRequiredAfterAnyRejection": true,
+    "maximumAttemptsPerBriefRevision": 6,
+    "attemptNumbers": "attempt is globally sequential per asset; cycleAttempt is sequential from 1 through 6 inside one briefRevision",
+    "afterSixRejectedAttempts": "The image remains rejected. Rewrite the brief, increment briefRevision, set cycleAttempt back to 1 and continue at the same 95 point threshold.",
+    "thresholdReductionAllowed": false,
+    "anchorWaiverAllowed": false,
+    "historyMayBeDeleted": false,
+    "acceptedAttemptRule": "acceptedAttempt points to the final attempt object; retryCount equals the number of preceding rejected attempts retained in attempts.",
+    "targetedIterationRule": "Each retry records the failed dimensions, failed anchors or hard fail and changes the prompt only where necessary while preserving already-correct morphology."
+  },
+  "ledgerPolicy": {
+    "requiredAssetFields": [
+      "id",
+      "kind",
+      "profile",
+      "active",
+      "sourceName",
+      "sourceSha256",
+      "promptSha256",
+      "decision",
+      "score",
+      "retryCount",
+      "acceptedAttempt",
+      "anchors",
+      "hardFails",
+      "promptComplete",
+      "attempts"
+    ],
+    "sourceSha256Pattern": "^[a-f0-9]{64}$",
+    "promptSha256Pattern": "^[a-f0-9]{64}$",
+    "allowedKinds": [
+      "card",
+      "scene"
+    ],
+    "allowedDecisions": [
+      "accepted",
+      "rejected",
+      "pending"
+    ],
+    "pendingMigrationState": {
+      "purpose": "Register an existing source asset before its first strict fidelity review without claiming acceptance.",
+      "required": ["id", "kind", "profile", "active", "sourceName", "sourceSha256"],
+      "fixedValues": {
+        "decision": "pending",
+        "score": null,
+        "retryCount": 0,
+        "acceptedAttempt": null,
+        "attempts": []
+      },
+      "releaseEligible": false
+    },
+    "historyRequired": true,
+    "activeAssetUniqueness": "Exactly one active ledger entry may exist for each kind/id pair."
+  },
+  "releaseGate": {
+    "expectedActiveAcceptedAssets": 174,
+    "expectedByKind": {
+      "card": 158,
+      "scene": 16
+    },
+    "allActiveMustBeAccepted": true,
+    "duplicateActiveIdsAllowed": false,
+    "orphanBriefsAllowed": false,
+    "orphanLedgerEntriesAllowed": false,
+    "requireSourceHash": true,
+    "requireCompleteAttemptHistory": true
+  }
+}

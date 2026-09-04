@@ -24,16 +24,33 @@ La victoire revient au premier commandant qui réduit les PV adverses à zéro. 
 
 ## Préparer, vérifier et publier
 
-Les PNG maîtres restent dans le dossier privé `../art-originals/` et ne sont jamais envoyés sur Vercel. Après toute modification visuelle, la séquence obligatoire est :
+Les PNG maîtres, les briefs et le registre de notation restent dans le dossier privé `../art-originals/` et ne sont jamais envoyés sur Vercel. La vague actuellement publiée est une vague v1 figée : sa provenance est valide, mais elle n'est pas certifiée par la grille morphologique v2 et ne doit jamais être présentée comme telle.
+
+Initialisation unique d'une vague de remédiation v2 :
 
 ```bash
+npm run generate:art-fidelity-map
+npm run validate:art-fidelity -- --contract-only
+npm run init:art-fidelity
+npm run queue:art-fidelity -- --json
+```
+
+`init:art-fidelity` crée 174 briefs et 174 entrées privées en état `pending`; il refuse d'écraser un registre existant. Chaque image est ensuite générée dans une composition originale, inspectée à sa résolution native et au format carte, puis notée sur les sept axes du contrat. Une proposition sous 95/100, un axe sous 90/100, une ancre absente ou un défaut bloquant est rejeté et doit être régénéré. Après six échecs, le brief doit être réécrit sans abaisser le seuil.
+
+Publication d'une vague v2 entièrement acceptée :
+
+```bash
+npm run validate:art-fidelity -- --release
 npm run review:art -- --approve --reviewer "Nom du relecteur"
 npm run prepare:art
 npm run verify:release
 npm run start
 ```
 
-- `npm run review:art -- --approve --reviewer "..."` exige une approbation explicite et attribuée, décode les 174 PNG, contrôle leurs compositions et enregistre le nom du relecteur, la checklist visuelle et chaque SHA-256 dans le fichier privé `../art-originals/review.json`.
+- `npm run generate:art-fidelity-map` vérifie la correspondance exacte des 158 cartes et 16 scènes avec les profils morphologiques versionnés.
+- `npm run validate:art-fidelity -- --release` exige 174 décisions `accepted`, un score global d'au moins 95/100, chaque axe à 90/100 minimum, toutes les ancres obligatoires et zéro défaut bloquant.
+- `npm run queue:art-fidelity` classe les images non acceptées par priorité P0/P1/P2 afin que chaque rejet soit réellement repris.
+- `npm run review:art -- --approve --reviewer "..."` exige une approbation explicite et attribuée, décode les 174 PNG, recoupe les briefs et le registre v2, puis enregistre les agrégats publiables et chaque SHA-256 dans le fichier privé `../art-originals/review.json`.
 - `npm run prepare:art` refuse tout master différent de la revue, produit les WebP dans un staging isolé, puis remplace atomiquement le manifeste, le registre et les dérivés; une erreur restaure la version publique précédente.
 - `npm run verify:release` enchaîne syntaxe, tests fonctionnels et de sécurité, simulation déterministe de 2 000 duels et build final. La release échoue en cas de partie plafonnée, biais de siège supérieur à 7 points, spread global supérieur à 15 points ou confrontation d'un lot au-delà de 75/25.
 - `npm run vercel-build` est la garde exécutée par Vercel : syntaxe, tests complets, puis build vérifié.
@@ -64,12 +81,14 @@ L'export JSON contient aussi le duel suspendu. Un checkpoint corrompu est écart
 - `AVP_HUNT_HIVE_TCG_STANDALONE.html` : livraison originale immuable, conservée avec son SHA-256.
 - `src/data.js` : catalogue, decks de départ, boosters, campagne et règles.
 - `src/art-manifest.js` et `assets/art/manifest.json` : registre client et preuve d'intégrité des 174 créations ImageGen.
+- `art-direction/` : contrat de fidélité, 58 profils morphologiques et correspondance versionnée des 174 assets.
 - `src/engine.js` : validation des decks, boosters, IA et moteur de duel.
 - `src/duel-save.js` : checkpoints bornés, validation et restauration déterministe.
 - `src/app.js` : interface, collection, progression, tutoriel, accessibilité et sauvegardes.
 - `assets/styles.css` : design responsive desktop/mobile.
 - `manifest.webmanifest` et `sw.js` : installation et fonctionnement hors ligne.
-- `scripts/review-art.mjs` : approbation attribuée, checklist visuelle et empreintes privées des 174 maîtres.
+- `scripts/init-art-fidelity-wave.mjs`, `validate-art-fidelity.mjs` et `art-retry-queue.mjs` : briefs privés, preuve de notation stricte et file de reprises.
+- `scripts/review-art.mjs` : approbation attribuée, contrôle croisé v2 et empreintes privées des 174 maîtres.
 - `scripts/prepare-art.mjs` : préparation atomique et réversible des WebP publics.
 - `scripts/` : build, serveur, génération d'icônes et simulation d'équilibrage.
 - `tests/` : provenance, données, règles, sauvegardes, couverture artistique, PWA et configuration de production.

@@ -1,0 +1,168 @@
+{
+  "schema": "avp-morphology-profile-extension-v1",
+  "version": "1.0.0",
+  "baseRegistry": "avp-morphology-profiles-v1@1.0.0",
+  "profiles": [
+    {
+      "id": "yautja.jungle-hunter",
+      "family": "yautja",
+      "label": "Jungle hunter archetype",
+      "baseProfile": "yautja.hunter",
+      "appliesTo": ["jungle hunter"],
+      "requiredAnchors": [
+        {"id": "jungle.lightAsymmetricArmor", "label": "Light asymmetric armor", "requirement": "Sparse plates protect shoulder, chest, groin and shins over mesh while retaining high mobility and an original arrangement.", "scoreDimension": "variantContinuity"},
+        {"id": "jungle.singleCaster", "label": "Single shoulder caster", "requirement": "One compact shoulder energy caster aligns with a back-mounted articulated aiming arm.", "scoreDimension": "anatomy"}
+      ],
+      "forbiddenDrift": ["exact prop replica", "two shoulder cannons", "heavy knight armor", "actor likeness"],
+      "promptDirectives": ["Invent mask engravings, trophy arrangement, pose and jungle camera while retaining a light hunter loadout."]
+    },
+    {
+      "id": "yautja.city-hunter",
+      "family": "yautja",
+      "label": "Urban city hunter archetype",
+      "baseProfile": "yautja.hunter",
+      "appliesTo": ["city hunter"],
+      "requiredAnchors": [
+        {"id": "city.angularUrbanMask", "label": "Angular urban biomask", "requirement": "A narrow angular mask and compact sensor layout suit close urban pursuit without copying an official prop.", "scoreDimension": "variantContinuity"},
+        {"id": "city.expandedToolSet", "label": "Expanded close-hunt tools", "requirement": "Disc, telescoping spear or net system mounts coherently beside gauntlets and a single caster.", "scoreDimension": "anatomy"}
+      ],
+      "forbiddenDrift": ["exact official costume", "medieval gladiator", "random cyberpunk police", "actor likeness"],
+      "promptDirectives": ["Use a new urban perch, mask pattern and functional tool arrangement."]
+    },
+    {
+      "id": "yautja.scar",
+      "family": "yautja",
+      "label": "Scar ritual hunter archetype",
+      "baseProfile": "yautja.hunter",
+      "appliesTo": ["Scar"],
+      "requiredAnchors": [
+        {"id": "scar.ritualMark", "label": "Visible ritual scar", "requirement": "A deliberate healed ritual mark on face or armor communicates earned status without reproducing a protected glyph exactly.", "scoreDimension": "signatureTraits"},
+        {"id": "scar.youngChampionBuild", "label": "Young champion build", "requirement": "Broad athletic mass, ceremonial armor and confident stance distinguish a capable initiate from elder and super-hunter forms.", "scoreDimension": "variantContinuity"}
+      ],
+      "forbiddenDrift": ["exact official scar glyph", "elder age", "super-predator skull", "actor likeness"],
+      "promptDirectives": ["Invent ritual mark geometry and armor engraving around the champion archetype."]
+    },
+    {
+      "id": "yautja.celtic",
+      "family": "yautja",
+      "label": "Celtic heavy initiate archetype",
+      "baseProfile": "yautja.hunter",
+      "appliesTo": ["Celtic"],
+      "requiredAnchors": [
+        {"id": "celtic.broadHelmetProfile", "label": "Broad heavy biomask", "requirement": "A wide heavy biomask, reinforced brow and large cheek planes create a battering silhouette without duplicating the screen prop.", "scoreDimension": "signatureTraits"},
+        {"id": "celtic.heavyInitiateArmor", "label": "Heavy initiate armor", "requirement": "Heavier chest, shoulder and forearm plates suit close combat while retaining asymmetric mobility and mesh underlayer.", "scoreDimension": "variantContinuity"}
+      ],
+      "forbiddenDrift": ["literal Celtic human warrior", "horned helmet", "exact official mask", "slender scout armor"],
+      "promptDirectives": ["Design original heavy mask geometry and plate edges around the close-combat role."]
+    },
+    {
+      "id": "yautja.chopper",
+      "family": "yautja",
+      "label": "Chopper blade specialist archetype",
+      "baseProfile": "yautja.hunter",
+      "appliesTo": ["Chopper"],
+      "requiredAnchors": [
+        {"id": "chopper.extendedWristBlades", "label": "Extended wrist-blade system", "requirement": "Exceptionally long parallel wrist blades extend from a credible gauntlet and clear hand and forearm through motion.", "scoreDimension": "signatureTraits"},
+        {"id": "chopper.trophyForwardSilhouette", "label": "Trophy-forward silhouette", "requirement": "Original trophies and tall mask accents identify a ritual blade specialist without blocking head movement.", "scoreDimension": "variantContinuity"}
+      ],
+      "forbiddenDrift": ["helicopter motif", "exact costume replica", "floating blades", "human samurai"],
+      "promptDirectives": ["Prove wrist-blade mechanics and invent every trophy and mask detail."]
+    },
+    {
+      "id": "yautja.wolf",
+      "family": "yautja",
+      "label": "Wolf veteran cleaner archetype",
+      "baseProfile": "yautja.hunter",
+      "appliesTo": ["Wolf"],
+      "requiredAnchors": [
+        {"id": "wolf.veteranDamage", "label": "Veteran facial and armor damage", "requirement": "Asymmetric healed facial damage and repaired armor show long service without reproducing a performer face.", "scoreDimension": "variantContinuity"},
+        {"id": "wolf.dualCasterRig", "label": "Dual shoulder-caster rig", "requirement": "Two compact shoulder weapons articulate independently from a balanced back harness without collision.", "scoreDimension": "anatomy"},
+        {"id": "wolf.cleanerTools", "label": "Containment and cleanup tools", "requirement": "Specialized tools and sealed vessels mount as a disciplined response kit rather than trophy clutter.", "scoreDimension": "signatureTraits"}
+      ],
+      "forbiddenDrift": ["young initiate styling", "single caster only", "exact official scars", "actor likeness", "werewolf"],
+      "promptDirectives": ["Create a new veteran face, repairs and containment kit while retaining dual-caster logic."]
+    },
+    {
+      "id": "yautja.berserker",
+      "family": "yautja",
+      "label": "Berserker super-hunter archetype",
+      "baseProfile": "yautja.hunter",
+      "appliesTo": ["Berserker", "super hunter leader"],
+      "requiredAnchors": [
+        {"id": "berserker.extremeUpperMass", "label": "Extreme upper-body mass", "requirement": "A taller denser subspecies silhouette carries enlarged neck, shoulders and forearms while remaining agile and anatomically yautja.", "scoreDimension": "scaleAndProportion"},
+        {"id": "berserker.longAggressiveMandibles", "label": "Elongated aggressive mandibles", "requirement": "Underlying head volume supports longer rougher four-part mandibles distinct from the standard hunter.", "scoreDimension": "variantContinuity"},
+        {"id": "berserker.brutalFunctionalMask", "label": "Brutal functional mask", "requirement": "A heavy original mask communicates dominance through form without copying an identifiable jaw-shaped prop.", "scoreDimension": "signatureTraits"}
+      ],
+      "forbiddenDrift": ["ordinary masked human", "orc", "exact official mask", "actor likeness", "fantasy barbarian"],
+      "promptDirectives": ["Preserve four-mandible head logic beneath an original brutal mask and massive frame."]
+    },
+    {
+      "id": "yautja.falconer",
+      "family": "yautja",
+      "label": "Falconer reconnaissance hunter",
+      "baseProfile": "yautja.hunter",
+      "appliesTo": ["Falconer"],
+      "requiredAnchors": [
+        {"id": "falconer.leanReconFrame", "label": "Lean reconnaissance frame", "requirement": "Lighter armor and a lean long-limbed build distinguish a mobile observer from the berserker leader.", "scoreDimension": "variantContinuity"},
+        {"id": "falconer.aerialDroneInterface", "label": "Aerial drone interface", "requirement": "An original compact aerial scout and its controller or docking system share visible design and communication logic.", "scoreDimension": "signatureTraits"}
+      ],
+      "forbiddenDrift": ["bird wings on hunter", "medieval falconer", "exact official drone", "berserker mass"],
+      "promptDirectives": ["Design a new scout-drone silhouette and believable control link."]
+    },
+    {
+      "id": "yautja.tracker",
+      "family": "yautja",
+      "label": "Tracker beast-master hunter",
+      "baseProfile": "yautja.hunter",
+      "appliesTo": ["Tracker"],
+      "requiredAnchors": [
+        {"id": "tracker.beastMasterLoadout", "label": "Beast-master loadout", "requirement": "Tracking controls, release hardware and scent or telemetry tools mount coherently to armor.", "scoreDimension": "signatureTraits"},
+        {"id": "tracker.houndRelationship", "label": "Controlled hunting-hound relationship", "requirement": "When shown, gesture, spacing or attention establishes command without merging hunter and hound silhouettes.", "scoreDimension": "poseReadability"}
+      ],
+      "forbiddenDrift": ["Earth dog handler", "exact official mask", "pet accessories", "merged hunter and hound anatomy"],
+      "promptDirectives": ["Pair with yautja.hound as a secondary profile whenever the beast is visible."]
+    },
+    {
+      "id": "yautja.feral",
+      "family": "yautja",
+      "label": "Feral frontier hunter archetype",
+      "baseProfile": "yautja.hunter",
+      "appliesTo": ["Feral"],
+      "requiredAnchors": [
+        {"id": "feral.leanPrimitiveFrame", "label": "Lean primitive-adapted frame", "requirement": "A leaner long-limbed build and narrower head volume remain distinctly yautja rather than human.", "scoreDimension": "variantContinuity"},
+        {"id": "feral.openBoneLikeMask", "label": "Open bone-like hunting mask", "requirement": "An original pale skeletal mask protects the upper face while accommodating mandibles and avoiding an exact prop silhouette.", "scoreDimension": "signatureTraits"},
+        {"id": "feral.compactHuntTechnology", "label": "Compact frontier technology", "requirement": "Bolt, shield or gauntlet systems combine advanced mechanisms with rugged hand-finished materials.", "scoreDimension": "surfaceLanguage"}
+      ],
+      "forbiddenDrift": ["human tribal warrior", "exact official skull mask", "ordinary bow", "actor likeness"],
+      "promptDirectives": ["Invent mask apertures and compact weapons around lean frontier-hunter anatomy."]
+    },
+    {
+      "id": "yautja.ahab",
+      "family": "yautja",
+      "label": "Ahab elder trophy-hunter archetype",
+      "baseProfile": "yautja.hunter",
+      "appliesTo": ["Ahab"],
+      "requiredAnchors": [
+        {"id": "ahab.elderAgeAndLoss", "label": "Elder age and asymmetric loss", "requirement": "Pale aged skin, quill wear, scars and a damaged or missing eye establish an old survivor without matching a published panel or face.", "scoreDimension": "variantContinuity"},
+        {"id": "ahab.archivalTrophyKit", "label": "Archival trophy kit", "requirement": "Ancient repaired armor, specimen tools and a few meaningful trophies read as a lifetime record rather than clutter.", "scoreDimension": "signatureTraits"}
+      ],
+      "forbiddenDrift": ["exact comic panel", "actor likeness", "young clean hunter", "pirate costume"],
+      "promptDirectives": ["Author a new elder face, scars, trophies and pose from written traits only."]
+    },
+    {
+      "id": "yautja.yaquita",
+      "family": "yautja",
+      "label": "Yaquita legless veteran hunter",
+      "baseProfile": "yautja.hunter",
+      "appliesTo": ["Yaquita", "legless yautja veteran"],
+      "requiredAnchors": [
+        {"id": "yaquita.trueLeglessSilhouette", "label": "Unambiguously legless silhouette", "requirement": "Both legs are anatomically absent below a coherent scarred and armored pelvic termination; framing must prove the absence rather than hide ordinary legs outside the crop.", "scoreDimension": "variantContinuity"},
+        {"id": "yaquita.upperBodyCompensation", "label": "Upper-body compensation", "requirement": "Powerful shoulders, long arms, reinforced hands and balanced torso mass plausibly support a veteran who continues to hunt without lower limbs.", "scoreDimension": "scaleAndProportion"},
+        {"id": "yaquita.adaptiveMobility", "label": "Adaptive hunt mobility", "requirement": "The scene shows one coherent original mobility solution—arm-driven climbing, low support harness or braced firing position—without inventing normal legs or a generic wheelchair.", "scoreDimension": "poseReadability"},
+        {"id": "yaquita.veteranRepairs", "label": "Veteran repairs and healed loss", "requirement": "Healed tissue, repaired armor and redistributed equipment make the old loss functional and deliberate rather than a fresh gore effect.", "scoreDimension": "signatureTraits"}
+      ],
+      "forbiddenDrift": ["ordinary legs hidden by crop", "robot replacement legs", "wheelchair caricature", "fresh graphic amputation", "helpless seated pose", "exact comic panel"],
+      "promptDirectives": ["Show the complete legless body boundary and a plausible original hunting posture while retaining full yautja species anatomy."]
+    }
+  ]
+}

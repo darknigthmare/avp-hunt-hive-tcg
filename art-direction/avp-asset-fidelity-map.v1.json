@@ -1,0 +1,3199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema": "avp-asset-fidelity-map-v1",
+  "version": "1.0.0",
+  "generatedFrom": {
+    "catalogue": "src/data.js",
+    "catalogueVersion": "1.0.0",
+    "profiles": "art-direction/avp-morphology-profiles.v1.json",
+    "profilesVersion": "1.0.0",
+    "profileExtensions": [
+      {
+        "file": "art-direction/avp-morphology-xenomorph-variants.v1.json",
+        "version": "1.0.0"
+      },
+      {
+        "file": "art-direction/avp-morphology-yautja-variants.v1.json",
+        "version": "1.0.0"
+      },
+      {
+        "file": "art-direction/avp-morphology-royal-hybrid-variants.v1.json",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "expected": {
+    "cards": 158,
+    "scenes": 16,
+    "total": 174
+  },
+  "priorityDefinitions": {
+    "P0": "Release-defining creature or multi-subject scene; review and retry first.",
+    "P1": "Supporting character, object, action or place; required before release.",
+    "P2": "Separated prototype, cut or alternate continuity; required before its archive wave is enabled."
+  },
+  "assets": [
+    {
+      "id": "X_OVOMORPH",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_ovomorph-v1.png",
+      "profile": "xenomorph.ovomorph",
+      "subject": "Ovomorphe",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Ovomorphe",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_FACEHUGGER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_facehugger-v1.png",
+      "profile": "xenomorph.facehugger",
+      "subject": "Facehugger",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Facehugger",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_CHESTBURSTER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_chestburster-v1.png",
+      "profile": "xenomorph.chestburster",
+      "subject": "Chestburster",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Chestburster",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_DRONE",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_drone-v1.png",
+      "profile": "xenomorph.drone",
+      "subject": "Drone Xénomorphe",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Drone Xénomorphe",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_WARRIOR",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_warrior-v1.png",
+      "profile": "xenomorph.warrior",
+      "subject": "Warrior Xénomorphe",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Warrior Xénomorphe",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_RUNNER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_runner-v1.png",
+      "profile": "xenomorph.runner",
+      "subject": "Runner",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Runner",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_SPITTER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_spitter-v1.png",
+      "profile": "xenomorph.spitter",
+      "subject": "Spitter",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Spitter",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_STALKER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_stalker-v1.png",
+      "profile": "xenomorph.stalker",
+      "subject": "Stalker",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Stalker",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_PRAETORIAN",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_praetorian-v1.png",
+      "profile": "xenomorph.praetorian",
+      "subject": "Praetorian",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Praetorian",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_QUEEN",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_queen-v1.png",
+      "profile": "xenomorph.queen",
+      "subject": "Reine Xénomorphe",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Reine Xénomorphe",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_QUEEN_MOTHER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_queen_mother-v1.png",
+      "profile": "xenomorph.queen-mother",
+      "subject": "Queen Mother",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Queen Mother",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_BIG_CHAP",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_big_chap-v1.png",
+      "profile": "xenomorph.big-chap",
+      "subject": "Big Chap — Organisme parfait",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Big Chap — Organisme parfait",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_SCORCHED",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_scorched-v1.png",
+      "profile": "xenomorph.scorched",
+      "subject": "Scorched Xenomorph",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Scorched Xenomorph",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_GRID",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HYBRID",
+      "sourceName": "x_grid-v1.png",
+      "profile": "xenomorph.grid",
+      "subject": "Grid",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Grid",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_RED",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_red-v1.png",
+      "profile": "xenomorph.red",
+      "subject": "Red Xenomorph",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Red Xenomorph",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_GORILLA",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_gorilla-v1.png",
+      "profile": "xenomorph.gorilla",
+      "subject": "Gorilla Alien",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Gorilla Alien",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_BULL",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_bull-v1.png",
+      "profile": "xenomorph.bull",
+      "subject": "Bull Alien",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Bull Alien",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_MANTIS",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_mantis-v1.png",
+      "profile": "xenomorph.mantis",
+      "subject": "Mantis Alien",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Mantis Alien",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_SNAKE",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_snake-v1.png",
+      "profile": "xenomorph.snake",
+      "subject": "Snake Alien",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Snake Alien",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_FLYING_QUEEN",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_flying_queen-v1.png",
+      "profile": "xenomorph.flying-queen",
+      "subject": "Flying Queen",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Flying Queen",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_POPPER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "ENGINEER",
+      "sourceName": "x_popper-v1.png",
+      "profile": "xenomorph.popper",
+      "subject": "Pathogen Popper",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Pathogen Popper",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_PATH_STALKER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "ENGINEER",
+      "sourceName": "x_path_stalker-v1.png",
+      "profile": "hybrid.black-goo-mutant",
+      "subject": "Pathogen Stalker",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Pathogen Stalker",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_PATH_BRUTE",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "ENGINEER",
+      "sourceName": "x_path_brute-v1.png",
+      "profile": "hybrid.black-goo-mutant",
+      "subject": "Pathogen Brute",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Pathogen Brute",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_PATH_QUEEN",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "ENGINEER",
+      "sourceName": "x_path_queen-v1.png",
+      "profile": "xenomorph.queen",
+      "subject": "Pathogen Queen",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Pathogen Queen",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_WARDEN",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_warden-v1.png",
+      "profile": "xenomorph.warden",
+      "subject": "Warden",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Warden",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_SIREN",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "XENO",
+      "sourceName": "x_siren-v1.png",
+      "profile": "xenomorph.siren",
+      "subject": "Siren",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Siren",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_NEOMORPH",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "ENGINEER",
+      "sourceName": "x_neomorph-v1.png",
+      "profile": "hybrid.neomorph",
+      "subject": "Neomorph",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Neomorph",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "X_DEACON",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "ENGINEER",
+      "sourceName": "x_deacon-v1.png",
+      "profile": "hybrid.deacon",
+      "subject": "Deacon",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Deacon",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_UNBLOODED",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_unblooded-v1.png",
+      "profile": "yautja.hunter",
+      "subject": "Unblooded Yautja",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Unblooded Yautja",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_YOUNG_BLOOD",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_young_blood-v1.png",
+      "profile": "yautja.hunter",
+      "subject": "Young Blood",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Young Blood",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_ELITE",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_elite-v1.png",
+      "profile": "yautja.hunter",
+      "subject": "Elite Predator",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Elite Predator",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_ELDER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_elder-v1.png",
+      "profile": "yautja.hunter",
+      "subject": "Elder Predator",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Elder Predator",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_CLAN_LEADER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_clan_leader-v1.png",
+      "profile": "yautja.hunter",
+      "subject": "Clan Leader",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Clan Leader",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_ANCIENT",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_ancient-v1.png",
+      "profile": "yautja.hunter",
+      "subject": "Ancient Predator",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Ancient Predator",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_ENFORCER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_enforcer-v1.png",
+      "profile": "yautja.hunter",
+      "subject": "Enforcer",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Enforcer",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_BAD_BLOOD",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_bad_blood-v1.png",
+      "profile": "yautja.hunter",
+      "subject": "Bad Blood",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Bad Blood",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_JUNGLE_HUNTER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_jungle_hunter-v1.png",
+      "profile": "yautja.jungle-hunter",
+      "subject": "Jungle Hunter",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Jungle Hunter",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_CITY_HUNTER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_city_hunter-v1.png",
+      "profile": "yautja.city-hunter",
+      "subject": "City Hunter",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "City Hunter",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_SCAR",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_scar-v1.png",
+      "profile": "yautja.scar",
+      "subject": "Scar",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Scar",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_CELTIC",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_celtic-v1.png",
+      "profile": "yautja.celtic",
+      "subject": "Celtic",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Celtic",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_CHOPPER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_chopper-v1.png",
+      "profile": "yautja.chopper",
+      "subject": "Chopper",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Chopper",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_WOLF",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_wolf-v1.png",
+      "profile": "yautja.wolf",
+      "subject": "Wolf Predator",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Wolf Predator",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_BERSERKER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_berserker-v1.png",
+      "profile": "yautja.berserker",
+      "subject": "Berserker Predator",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Berserker Predator",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_FALCONER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_falconer-v1.png",
+      "profile": "yautja.falconer",
+      "subject": "Falconer Predator",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Falconer Predator",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_TRACKER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_tracker-v1.png",
+      "profile": "yautja.tracker",
+      "subject": "Tracker Predator",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Tracker Predator",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_HOUND",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_hound-v1.png",
+      "profile": "yautja.hound",
+      "subject": "Predator Hound",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Predator Hound",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_FERAL",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_feral-v1.png",
+      "profile": "yautja.feral",
+      "subject": "Feral Predator",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Feral Predator",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_SAMURAI",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_samurai-v1.png",
+      "profile": "yautja.hunter",
+      "subject": "Samurai Predator",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Samurai Predator",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_GLADIATOR",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_gladiator-v1.png",
+      "profile": "yautja.hunter",
+      "subject": "Gladiator Predator",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Gladiator Predator",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_TEMPLE_GUARD",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_temple_guard-v1.png",
+      "profile": "yautja.hunter",
+      "subject": "Temple Guard",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Temple Guard",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_AHAB",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_ahab-v1.png",
+      "profile": "yautja.ahab",
+      "subject": "Ahab",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Ahab",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_SHESH_KUK",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_shesh_kuk-v1.png",
+      "profile": "yautja.hunter",
+      "subject": "Shesh-Kuk",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Shesh-Kuk",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_YAQUITA",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_yaquita-v1.png",
+      "profile": "yautja.yaquita",
+      "subject": "Yaquita — Chasseur sans jambes",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Yaquita — Chasseur sans jambes",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "Y_EMISSARY_A",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_emissary_a-v1.png",
+      "profile": "yautja.hunter",
+      "subject": "Emissary Predator A",
+      "continuity": {
+        "set": "PX00",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Cut - annulé - proto",
+        "entry": "Emissary Predator A",
+        "prototype": true
+      },
+      "priority": "P2"
+    },
+    {
+      "id": "Y_EMISSARY_B",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_emissary_b-v1.png",
+      "profile": "yautja.hunter",
+      "subject": "Emissary Predator B",
+      "continuity": {
+        "set": "PX00",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Cut - annulé - proto",
+        "entry": "Emissary Predator B",
+        "prototype": true
+      },
+      "priority": "P2"
+    },
+    {
+      "id": "Y_SCIENTIST",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "YAUTJA",
+      "sourceName": "y_scientist-v1.png",
+      "profile": "yautja.hunter",
+      "subject": "Scientifique Yautja — Intelligentsia",
+      "continuity": {
+        "set": "PX00",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Cut - annulé - proto",
+        "entry": "Scientifique Yautja — Intelligentsia",
+        "prototype": true
+      },
+      "priority": "P2"
+    },
+    {
+      "id": "H_COLONIAL_MARINE",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_colonial_marine-v1.png",
+      "profile": "human.original-character",
+      "subject": "Colonial Marine",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Colonial Marine",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_SMARTGUNNER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_smartgunner-v1.png",
+      "profile": "human.original-character",
+      "subject": "Smartgunner USCM",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Smartgunner USCM",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "object.smartgun-system"
+      ]
+    },
+    {
+      "id": "H_RIPLEY",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_ripley-v1.png",
+      "profile": "human.original-character",
+      "subject": "Ellen Ripley",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Ellen Ripley",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_DALLAS",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_dallas-v1.png",
+      "profile": "human.original-character",
+      "subject": "Arthur Dallas",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Arthur Dallas",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_PARKER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_parker-v1.png",
+      "profile": "human.original-character",
+      "subject": "Dennis Parker",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Dennis Parker",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_LAMBERT",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_lambert-v1.png",
+      "profile": "human.original-character",
+      "subject": "Joan Lambert",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Joan Lambert",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_ASH",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_ash-v1.png",
+      "profile": "human.original-character",
+      "subject": "Ash — Officier scientifique",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Ash — Officier scientifique",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_HICKS",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_hicks-v1.png",
+      "profile": "human.original-character",
+      "subject": "Dwayne Hicks",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Dwayne Hicks",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_HUDSON",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_hudson-v1.png",
+      "profile": "human.original-character",
+      "subject": "William Hudson",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "William Hudson",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_VASQUEZ",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_vasquez-v1.png",
+      "profile": "human.original-character",
+      "subject": "Jenette Vasquez",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Jenette Vasquez",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_APONE",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_apone-v1.png",
+      "profile": "human.original-character",
+      "subject": "Al Apone",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Al Apone",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_BISHOP",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_bishop-v1.png",
+      "profile": "human.original-character",
+      "subject": "Bishop",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Bishop",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_NEWT",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_newt-v1.png",
+      "profile": "human.original-character",
+      "subject": "Rebecca “Newt” Jorden",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Rebecca “Newt” Jorden",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_DUTCH",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_dutch-v1.png",
+      "profile": "human.original-character",
+      "subject": "Dutch Schaefer",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Dutch Schaefer",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_HARRIGAN",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_harrigan-v1.png",
+      "profile": "human.original-character",
+      "subject": "Mike Harrigan",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Mike Harrigan",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_NARU",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_naru-v1.png",
+      "profile": "human.original-character",
+      "subject": "Naru",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Naru",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_ROYCE",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_royce-v1.png",
+      "profile": "human.original-character",
+      "subject": "Royce",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Royce",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_ALEXA",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_alexa-v1.png",
+      "profile": "human.original-character",
+      "subject": "Alexa Woods",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Alexa Woods",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_MACHIKO",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_machiko-v1.png",
+      "profile": "human.original-character",
+      "subject": "Machiko Noguchi",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Machiko Noguchi",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_COMBAT_SYNTH",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_combat_synth-v1.png",
+      "profile": "human.original-character",
+      "subject": "Synthétique de combat",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Synthétique de combat",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_WORKING_JOE",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_working_joe-v1.png",
+      "profile": "human.original-character",
+      "subject": "Working Joe",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Working Joe",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_WEYLAND_OP",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_weyland_op-v1.png",
+      "profile": "human.original-character",
+      "subject": "Agent Weyland-Yutani",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Agent Weyland-Yutani",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_POWERLOADER_RIPLEY",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "h_powerloader_ripley-v1.png",
+      "profile": "human.original-character",
+      "subject": "Ripley — Power Loader",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Ripley — Power Loader",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "object.power-loader-frame"
+      ]
+    },
+    {
+      "id": "E_ENGINEER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "ENGINEER",
+      "sourceName": "e_engineer-v1.png",
+      "profile": "engineer.humanoid",
+      "subject": "Engineer — Dernier pilote",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "08_Races",
+        "entry": "Engineer — Dernier pilote",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "E_SPACE_JOCKEY",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "ENGINEER",
+      "sourceName": "e_space_jockey-v1.png",
+      "profile": "engineer.space-jockey-fossil",
+      "subject": "Space Jockey",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "08_Races",
+        "entry": "Space Jockey",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "E_DAVID",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "ENGINEER",
+      "sourceName": "e_david-v1.png",
+      "profile": "human.original-character",
+      "subject": "David 8 — Créateur",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "David 8 — Créateur",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "E_WALTER",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HUMAN",
+      "sourceName": "e_walter-v1.png",
+      "profile": "human.original-character",
+      "subject": "Walter",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Walter",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "E_TRILOBITE",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "ENGINEER",
+      "sourceName": "e_trilobite-v1.png",
+      "profile": "hybrid.trilobite",
+      "subject": "Trilobite",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Trilobite",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "E_HAMMERPEDE",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "ENGINEER",
+      "sourceName": "e_hammerpede-v1.png",
+      "profile": "hybrid.hammerpede",
+      "subject": "Hammerpede",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "15_Faune",
+        "entry": "Hammerpede",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "E_BLACK_GOO_MUTANT",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "ENGINEER",
+      "sourceName": "e_black_goo_mutant-v1.png",
+      "profile": "hybrid.black-goo-mutant",
+      "subject": "Mutant au Pathogène",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Mutant au Pathogène",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "H_PREDALIEN",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HYBRID",
+      "sourceName": "h_predalien-v1.png",
+      "profile": "hybrid.predalien",
+      "subject": "Predalien",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Predalien",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "H_NEWBORN",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HYBRID",
+      "sourceName": "h_newborn-v1.png",
+      "profile": "hybrid.newborn",
+      "subject": "Newborn",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "Newborn",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "H_RIPLEY8",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HYBRID",
+      "sourceName": "h_ripley8-v1.png",
+      "profile": "human.original-character",
+      "subject": "Ripley 8",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "10_Humains_detail",
+        "entry": "Ripley 8",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "H_WHITE_HYBRID",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HYBRID",
+      "sourceName": "h_white_hybrid-v1.png",
+      "profile": "hybrid.white-hybrid",
+      "subject": "White Hybrid",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "White Hybrid",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "H_ALIEN_KING",
+      "kind": "card",
+      "type": "UNIT",
+      "faction": "HYBRID",
+      "sourceName": "h_alien_king-v1.png",
+      "profile": "hybrid.alien-king",
+      "subject": "King Alien",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "07_Castes",
+        "entry": "King Alien",
+        "prototype": false
+      },
+      "priority": "P0"
+    },
+    {
+      "id": "T_X_ACID_BLOOD",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "XENO",
+      "sourceName": "t_x_acid_blood-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Sang acide",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Sang acide",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "xenomorph.standard"
+      ]
+    },
+    {
+      "id": "T_X_VENT_AMBUSH",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "XENO",
+      "sourceName": "t_x_vent_ambush-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Embuscade dans les conduits",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Embuscade dans les conduits",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "xenomorph.stalker"
+      ]
+    },
+    {
+      "id": "T_X_RESIN",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "XENO",
+      "sourceName": "t_x_resin-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Résine de Ruche",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Résine de Ruche",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "xenomorph.drone",
+        "place.biomechanical"
+      ]
+    },
+    {
+      "id": "T_X_SWARM",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "XENO",
+      "sourceName": "t_x_swarm-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Déferlement de la Couvée",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Déferlement de la Couvée",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "xenomorph.facehugger"
+      ]
+    },
+    {
+      "id": "T_X_EGGMORPH",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "XENO",
+      "sourceName": "t_x_eggmorph-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Eggmorphing",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "Scènes supprimées / alternatives",
+        "entry": "Eggmorphing",
+        "prototype": false
+      },
+      "priority": "P2",
+      "secondaryProfiles": [
+        "xenomorph.ovomorph",
+        "human.original-character"
+      ]
+    },
+    {
+      "id": "T_X_ROYAL_JELLY",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "XENO",
+      "sourceName": "t_x_royal_jelly-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Gelée royale",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Gelée royale",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "xenomorph.praetorian"
+      ]
+    },
+    {
+      "id": "T_X_CUT_POWER",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "XENO",
+      "sourceName": "t_x_cut_power-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Couper l’alimentation",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Couper l’alimentation",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "xenomorph.stalker",
+        "place.human-industrial"
+      ]
+    },
+    {
+      "id": "T_X_PERFECT",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "XENO",
+      "sourceName": "t_x_perfect-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Organisme parfait",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Organisme parfait",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "xenomorph.big-chap"
+      ]
+    },
+    {
+      "id": "T_Y_HUNT_CODE",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "YAUTJA",
+      "sourceName": "t_y_hunt_code-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Code de la chasse",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Code de la chasse",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "yautja.hunter"
+      ]
+    },
+    {
+      "id": "T_Y_CLAIM_TROPHY",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "YAUTJA",
+      "sourceName": "t_y_claim_trophy-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Réclamer le trophée",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Réclamer le trophée",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "yautja.hunter"
+      ]
+    },
+    {
+      "id": "T_Y_THERMAL",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "YAUTJA",
+      "sourceName": "t_y_thermal-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Vision thermique",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Vision thermique",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "yautja.hunter",
+        "human.original-character"
+      ]
+    },
+    {
+      "id": "T_Y_CLOAK",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "YAUTJA",
+      "sourceName": "t_y_cloak-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Cycle de camouflage",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Cycle de camouflage",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "yautja.hunter"
+      ]
+    },
+    {
+      "id": "T_Y_SELF_DESTRUCT",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "YAUTJA",
+      "sourceName": "t_y_self_destruct-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Autodestruction du poignet",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Autodestruction du poignet",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "yautja.hunter",
+        "object.faction-equipment"
+      ]
+    },
+    {
+      "id": "T_Y_BLOODING",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "YAUTJA",
+      "sourceName": "t_y_blooding-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Rituel du Blooding",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Rituel du Blooding",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "yautja.hunter",
+        "xenomorph.drone"
+      ]
+    },
+    {
+      "id": "T_Y_NET_TRAP",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "YAUTJA",
+      "sourceName": "t_y_net_trap-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Piège au filet",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Piège au filet",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "yautja.hunter",
+        "object.faction-equipment"
+      ]
+    },
+    {
+      "id": "T_Y_CHALLENGE",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "YAUTJA",
+      "sourceName": "t_y_challenge-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Rugissement de défi",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Rugissement de défi",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "yautja.hunter",
+        "yautja.unmasked"
+      ]
+    },
+    {
+      "id": "T_H_MOTION",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "HUMAN",
+      "sourceName": "t_h_motion-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Ping du détecteur de mouvement",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Ping du détecteur de mouvement",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "human.original-character",
+        "object.faction-equipment",
+        "xenomorph.stalker"
+      ]
+    },
+    {
+      "id": "T_H_SEAL_DOOR",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "HUMAN",
+      "sourceName": "t_h_seal_door-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Souder la porte",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Souder la porte",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "human.original-character",
+        "place.human-industrial"
+      ]
+    },
+    {
+      "id": "T_H_FIRETEAM",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "HUMAN",
+      "sourceName": "t_h_fireteam-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Formation Fireteam",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Formation Fireteam",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "human.original-character"
+      ]
+    },
+    {
+      "id": "T_H_FLAMER",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "HUMAN",
+      "sourceName": "t_h_flamer-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Rafale de lance-flammes",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Rafale de lance-flammes",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "human.original-character",
+        "object.faction-equipment",
+        "xenomorph.ovomorph"
+      ]
+    },
+    {
+      "id": "T_H_NUKE",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "HUMAN",
+      "sourceName": "t_h_nuke-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Détruire le site depuis l’orbite",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Détruire le site depuis l’orbite",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "place.human-industrial"
+      ]
+    },
+    {
+      "id": "T_H_FROSTY",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "HUMAN",
+      "sourceName": "t_h_frosty-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Restez sur vos gardes",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Restez sur vos gardes",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "human.original-character"
+      ]
+    },
+    {
+      "id": "T_H_EVAC",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "HUMAN",
+      "sourceName": "t_h_evac-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Évacuation d’urgence",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Évacuation d’urgence",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "human.original-character",
+        "place.human-industrial"
+      ]
+    },
+    {
+      "id": "T_H_QUARANTINE",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "HUMAN",
+      "sourceName": "t_h_quarantine-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Protocole de quarantaine",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Protocole de quarantaine",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "human.original-character",
+        "xenomorph.facehugger",
+        "place.human-industrial"
+      ]
+    },
+    {
+      "id": "T_E_BLACK_GOO",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "ENGINEER",
+      "sourceName": "t_e_black_goo-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Libération du liquide noir",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Libération du liquide noir",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "engineer.humanoid",
+        "hybrid.black-goo-mutant"
+      ]
+    },
+    {
+      "id": "T_E_CREATION",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "ENGINEER",
+      "sourceName": "t_e_creation-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Cycle de création",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Cycle de création",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "engineer.humanoid",
+        "xenomorph.drone"
+      ]
+    },
+    {
+      "id": "T_E_ORRERY",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "ENGINEER",
+      "sourceName": "t_e_orrery-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Cartographie de l’orrery",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Cartographie de l’orrery",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "engineer.humanoid",
+        "place.biomechanical"
+      ]
+    },
+    {
+      "id": "T_E_SACRIFICE",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "ENGINEER",
+      "sourceName": "t_e_sacrifice-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Sacrifice de l’Ingénieur",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Sacrifice de l’Ingénieur",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "engineer.humanoid",
+        "hybrid.deacon"
+      ]
+    },
+    {
+      "id": "T_AVP_WHOEVER",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "HYBRID",
+      "sourceName": "t_avp_whoever-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Convergence sans survivants",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Convergence sans survivants",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "xenomorph.warrior",
+        "yautja.hunter"
+      ]
+    },
+    {
+      "id": "T_AVP_ALLIANCE",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "HYBRID",
+      "sourceName": "t_avp_alliance-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Alliance Blooded",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Alliance Blooded",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "human.original-character",
+        "yautja.hunter"
+      ]
+    },
+    {
+      "id": "T_AVP_3WW",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "HYBRID",
+      "sourceName": "t_avp_3ww-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Three World War",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Three World War",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "human.original-character",
+        "yautja.hunter",
+        "xenomorph.drone"
+      ]
+    },
+    {
+      "id": "T_AVP_HYBRIDIZE",
+      "kind": "card",
+      "type": "TACTIC",
+      "faction": "HYBRID",
+      "sourceName": "t_avp_hybridize-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Hybridation forcée",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "03_Index_global",
+        "entry": "Hybridation forcée",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "hybrid.predalien"
+      ]
+    },
+    {
+      "id": "EQ_PULSE_RIFLE",
+      "kind": "card",
+      "type": "EQUIPMENT",
+      "faction": "HUMAN",
+      "sourceName": "eq_pulse_rifle-v1.png",
+      "profile": "object.faction-equipment",
+      "subject": "M41A Pulse Rifle",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "05_Equipement",
+        "entry": "M41A Pulse Rifle",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "EQ_SMARTGUN",
+      "kind": "card",
+      "type": "EQUIPMENT",
+      "faction": "HUMAN",
+      "sourceName": "eq_smartgun-v1.png",
+      "profile": "object.smartgun-system",
+      "subject": "M56 Smartgun",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "05_Equipement",
+        "entry": "M56 Smartgun",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "EQ_FLAMER",
+      "kind": "card",
+      "type": "EQUIPMENT",
+      "faction": "HUMAN",
+      "sourceName": "eq_flamer-v1.png",
+      "profile": "object.faction-equipment",
+      "subject": "Lance-flammes M240",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "05_Equipement",
+        "entry": "Lance-flammes M240",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "EQ_MARINE_ARMOR",
+      "kind": "card",
+      "type": "EQUIPMENT",
+      "faction": "HUMAN",
+      "sourceName": "eq_marine_armor-v1.png",
+      "profile": "object.faction-equipment",
+      "subject": "Armure de Marine colonial",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "05_Equipement",
+        "entry": "Armure de Marine colonial",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "EQ_POWER_LOADER",
+      "kind": "card",
+      "type": "EQUIPMENT",
+      "faction": "HUMAN",
+      "sourceName": "eq_power_loader-v1.png",
+      "profile": "object.power-loader-frame",
+      "subject": "Power Loader",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "05_Equipement",
+        "entry": "Power Loader",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "EQ_MOTION_TRACKER",
+      "kind": "card",
+      "type": "EQUIPMENT",
+      "faction": "HUMAN",
+      "sourceName": "eq_motion_tracker-v1.png",
+      "profile": "object.faction-equipment",
+      "subject": "Détecteur de mouvement",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "05_Equipement",
+        "entry": "Détecteur de mouvement",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "EQ_WRISTBLADES",
+      "kind": "card",
+      "type": "EQUIPMENT",
+      "faction": "YAUTJA",
+      "sourceName": "eq_wristblades-v1.png",
+      "profile": "object.faction-equipment",
+      "subject": "Lames de poignet",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Lames de poignet",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "EQ_PLASMACASTER",
+      "kind": "card",
+      "type": "EQUIPMENT",
+      "faction": "YAUTJA",
+      "sourceName": "eq_plasmacaster-v1.png",
+      "profile": "object.faction-equipment",
+      "subject": "Plasmacaster d’épaule",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Plasmacaster d’épaule",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "EQ_COMBISTICK",
+      "kind": "card",
+      "type": "EQUIPMENT",
+      "faction": "YAUTJA",
+      "sourceName": "eq_combistick-v1.png",
+      "profile": "object.faction-equipment",
+      "subject": "Combi-stick",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Combi-stick",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "EQ_SMART_DISC",
+      "kind": "card",
+      "type": "EQUIPMENT",
+      "faction": "YAUTJA",
+      "sourceName": "eq_smart_disc-v1.png",
+      "profile": "object.faction-equipment",
+      "subject": "Smart Disc",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Smart Disc",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "EQ_NET_GUN",
+      "kind": "card",
+      "type": "EQUIPMENT",
+      "faction": "YAUTJA",
+      "sourceName": "eq_net_gun-v1.png",
+      "profile": "object.faction-equipment",
+      "subject": "Net Gun",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Net Gun",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "EQ_BIOMASK",
+      "kind": "card",
+      "type": "EQUIPMENT",
+      "faction": "YAUTJA",
+      "sourceName": "eq_biomask-v1.png",
+      "profile": "object.faction-equipment",
+      "subject": "Bio-masque Yautja",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Bio-masque Yautja",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "EQ_MEDICOMP",
+      "kind": "card",
+      "type": "EQUIPMENT",
+      "faction": "YAUTJA",
+      "sourceName": "eq_medicomp-v1.png",
+      "profile": "object.faction-equipment",
+      "subject": "Medicomp",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Medicomp",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "EQ_RAZOR_WHIP",
+      "kind": "card",
+      "type": "EQUIPMENT",
+      "faction": "YAUTJA",
+      "sourceName": "eq_razor_whip-v1.png",
+      "profile": "object.faction-equipment",
+      "subject": "Razor Whip",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Razor Whip",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "EQ_FALCON_DRONE",
+      "kind": "card",
+      "type": "EQUIPMENT",
+      "faction": "YAUTJA",
+      "sourceName": "eq_falcon_drone-v1.png",
+      "profile": "object.faction-equipment",
+      "subject": "Module Falcon Drone",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Module Falcon Drone",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "EQ_ENGINEER_SUIT",
+      "kind": "card",
+      "type": "EQUIPMENT",
+      "faction": "ENGINEER",
+      "sourceName": "eq_engineer_suit-v1.png",
+      "profile": "object.faction-equipment",
+      "subject": "Combinaison biomécanique Engineer",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "05_Equipement",
+        "entry": "Combinaison biomécanique Engineer",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "EQ_AMPule",
+      "kind": "card",
+      "type": "EQUIPMENT",
+      "faction": "ENGINEER",
+      "sourceName": "eq_ampule-v1.png",
+      "profile": "object.faction-equipment",
+      "subject": "Ampoule de Pathogène",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "05_Equipement",
+        "entry": "Ampoule de Pathogène",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "EQ_ACID_CARAPACE",
+      "kind": "card",
+      "type": "EQUIPMENT",
+      "faction": "XENO",
+      "sourceName": "eq_acid_carapace-v1.png",
+      "profile": "object.faction-equipment",
+      "subject": "Carapace acide",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "05_Equipement",
+        "entry": "Carapace acide",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "L_NOSTROMO",
+      "kind": "card",
+      "type": "LOCATION",
+      "faction": "HUMAN",
+      "sourceName": "l_nostromo-v1.png",
+      "profile": "place.human-industrial",
+      "subject": "USCSS Nostromo",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "14_Lieux",
+        "entry": "USCSS Nostromo",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "L_DERELICT",
+      "kind": "card",
+      "type": "LOCATION",
+      "faction": "ENGINEER",
+      "sourceName": "l_derelict-v1.png",
+      "profile": "place.biomechanical",
+      "subject": "Vaisseau Derelict de LV-426",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "14_Lieux",
+        "entry": "Vaisseau Derelict de LV-426",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "L_HADLEYS_HOPE",
+      "kind": "card",
+      "type": "LOCATION",
+      "faction": "HUMAN",
+      "sourceName": "l_hadleys_hope-v1.png",
+      "profile": "place.human-industrial",
+      "subject": "Hadley’s Hope",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "14_Lieux",
+        "entry": "Hadley’s Hope",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "L_PROCESSOR",
+      "kind": "card",
+      "type": "LOCATION",
+      "faction": "NEUTRAL",
+      "sourceName": "l_processor-v1.png",
+      "profile": "place.human-industrial",
+      "subject": "Processeur atmosphérique",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "14_Lieux",
+        "entry": "Processeur atmosphérique",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "L_SULACO",
+      "kind": "card",
+      "type": "LOCATION",
+      "faction": "HUMAN",
+      "sourceName": "l_sulaco-v1.png",
+      "profile": "place.human-industrial",
+      "subject": "USS Sulaco — Hangar",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "14_Lieux",
+        "entry": "USS Sulaco — Hangar",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "L_SEVASTOPOL",
+      "kind": "card",
+      "type": "LOCATION",
+      "faction": "HUMAN",
+      "sourceName": "l_sevastopol-v1.png",
+      "profile": "place.human-industrial",
+      "subject": "Station Sevastopol",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "14_Lieux",
+        "entry": "Station Sevastopol",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "L_VAL_VERDE",
+      "kind": "card",
+      "type": "LOCATION",
+      "faction": "YAUTJA",
+      "sourceName": "l_val_verde-v1.png",
+      "profile": "original.unclassified",
+      "subject": "Jungle de Val Verde",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Jungle de Val Verde",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "L_LA1997",
+      "kind": "card",
+      "type": "LOCATION",
+      "faction": "YAUTJA",
+      "sourceName": "l_la1997-v1.png",
+      "profile": "place.human-industrial",
+      "subject": "Los Angeles, 1997",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Los Angeles, 1997",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "L_PRESERVE",
+      "kind": "card",
+      "type": "LOCATION",
+      "faction": "YAUTJA",
+      "sourceName": "l_preserve-v1.png",
+      "profile": "original.unclassified",
+      "subject": "Planète-réserve",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Planète-réserve",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "L_BOUVET",
+      "kind": "card",
+      "type": "LOCATION",
+      "faction": "HYBRID",
+      "sourceName": "l_bouvet-v1.png",
+      "profile": "place.biomechanical",
+      "subject": "Pyramide de Bouvetøya",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "14_Lieux",
+        "entry": "Pyramide de Bouvetøya",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "L_YAUTJA_SHIP",
+      "kind": "card",
+      "type": "LOCATION",
+      "faction": "YAUTJA",
+      "sourceName": "l_yautja_ship-v1.png",
+      "profile": "object.faction-equipment",
+      "subject": "Vaisseau mère Yautja",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Catalogue maître",
+        "entry": "Vaisseau mère Yautja",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "L_JUGGERNAUT",
+      "kind": "card",
+      "type": "LOCATION",
+      "faction": "ENGINEER",
+      "sourceName": "l_juggernaut-v1.png",
+      "profile": "place.biomechanical",
+      "subject": "Juggernaut Engineer",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "14_Lieux",
+        "entry": "Juggernaut Engineer",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "L_XENO_HIVE",
+      "kind": "card",
+      "type": "LOCATION",
+      "faction": "XENO",
+      "sourceName": "l_xeno_hive-v1.png",
+      "profile": "place.biomechanical",
+      "subject": "Ruche de Hadley’s Hope",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "14_Lieux",
+        "entry": "Ruche de Hadley’s Hope",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "L_AURIGA",
+      "kind": "card",
+      "type": "LOCATION",
+      "faction": "HYBRID",
+      "sourceName": "l_auriga-v1.png",
+      "profile": "place.human-industrial",
+      "subject": "Laboratoires de l’USM Auriga",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "14_Lieux",
+        "entry": "Laboratoires de l’USM Auriga",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "L_FIORINA",
+      "kind": "card",
+      "type": "LOCATION",
+      "faction": "HUMAN",
+      "sourceName": "l_fiorina-v1.png",
+      "profile": "place.human-industrial",
+      "subject": "Fiorina 161",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "14_Lieux",
+        "entry": "Fiorina 161",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "L_GUNNISON",
+      "kind": "card",
+      "type": "LOCATION",
+      "faction": "HYBRID",
+      "sourceName": "l_gunnison-v1.png",
+      "profile": "place.human-industrial",
+      "subject": "Gunnison contaminée",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "Alien_Franchise_Encyclopedie_Exhaustive_Passe_11_Scenes_Supprimees.xlsx",
+        "sheet": "14_Lieux",
+        "entry": "Gunnison contaminée",
+        "prototype": false
+      },
+      "priority": "P1"
+    },
+    {
+      "id": "L_PROTO_LAB",
+      "kind": "card",
+      "type": "LOCATION",
+      "faction": "YAUTJA",
+      "sourceName": "l_proto_lab-v1.png",
+      "profile": "place.human-industrial",
+      "subject": "Laboratoire Stargazer — version coupée",
+      "continuity": {
+        "set": "PX00",
+        "workbook": "Encyclopedie_Predator_v10_cut_annules_prototypes.xlsx",
+        "sheet": "Cut - annulé - proto",
+        "entry": "Laboratoire Stargazer — version coupée",
+        "prototype": true
+      },
+      "priority": "P2"
+    },
+    {
+      "id": "home-hero",
+      "kind": "scene",
+      "type": "SCENE",
+      "faction": "MULTI",
+      "sourceName": "home-hero-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "AVP: HUNT // HIVE TCG — confrontation principale",
+      "continuity": {
+        "set": "CORE",
+        "workbook": "src/data.js",
+        "sheet": "title",
+        "entry": "AVP: HUNT // HIVE TCG",
+        "prototype": false
+      },
+      "priority": "P0",
+      "secondaryProfiles": [
+        "human.original-character",
+        "yautja.hunter",
+        "xenomorph.big-chap"
+      ]
+    },
+    {
+      "id": "battle-board",
+      "kind": "scene",
+      "type": "SCENE",
+      "faction": "MULTI",
+      "sourceName": "battle-board-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Plateau de bataille en trois voies",
+      "continuity": {
+        "set": "CORE",
+        "workbook": "src/data.js",
+        "sheet": "rules",
+        "entry": "Déployez des unités sur trois voies, équipez-les, jouez des tactiques et réduisez les 8 000 PV adverses à zéro.",
+        "prototype": false
+      },
+      "priority": "P0",
+      "secondaryProfiles": [
+        "human.original-character",
+        "yautja.hunter",
+        "xenomorph.warrior",
+        "place.human-industrial"
+      ]
+    },
+    {
+      "id": "campaign-1",
+      "kind": "scene",
+      "type": "SCENE",
+      "faction": "XENO+ENGINEER",
+      "sourceName": "campaign-mission-01-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Signal sur LV-426 — Nostromo",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "src/data.js",
+        "sheet": "campaign",
+        "entry": "Signal sur LV-426",
+        "prototype": false
+      },
+      "priority": "P0",
+      "secondaryProfiles": [
+        "human.original-character",
+        "xenomorph.big-chap",
+        "engineer.space-jockey-fossil"
+      ]
+    },
+    {
+      "id": "campaign-2",
+      "kind": "scene",
+      "type": "SCENE",
+      "faction": "XENO",
+      "sourceName": "campaign-mission-02-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Dernière ligne à Hadley’s Hope — Guerre Coloniale",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "src/data.js",
+        "sheet": "campaign",
+        "entry": "Dernière ligne à Hadley’s Hope",
+        "prototype": false
+      },
+      "priority": "P0",
+      "secondaryProfiles": [
+        "human.original-character",
+        "xenomorph.queen",
+        "place.human-industrial"
+      ]
+    },
+    {
+      "id": "campaign-3",
+      "kind": "scene",
+      "type": "SCENE",
+      "faction": "YAUTJA",
+      "sourceName": "campaign-mission-03-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Chaleur de Val Verde — Première chasse",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "src/data.js",
+        "sheet": "campaign",
+        "entry": "Chaleur de Val Verde",
+        "prototype": false
+      },
+      "priority": "P0",
+      "secondaryProfiles": [
+        "human.original-character",
+        "yautja.jungle-hunter"
+      ]
+    },
+    {
+      "id": "campaign-4",
+      "kind": "scene",
+      "type": "SCENE",
+      "faction": "YAUTJA+XENO",
+      "sourceName": "campaign-mission-04-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Blooding sous la glace — Rituel AVP",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "src/data.js",
+        "sheet": "campaign",
+        "entry": "Blooding sous la glace",
+        "prototype": false
+      },
+      "priority": "P0",
+      "secondaryProfiles": [
+        "yautja.scar",
+        "xenomorph.drone",
+        "place.biomechanical"
+      ]
+    },
+    {
+      "id": "campaign-5",
+      "kind": "scene",
+      "type": "SCENE",
+      "faction": "ENGINEER+XENO",
+      "sourceName": "campaign-mission-05-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Le créateur et la création — Pathogène",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "src/data.js",
+        "sheet": "campaign",
+        "entry": "Le créateur et la création",
+        "prototype": false
+      },
+      "priority": "P0",
+      "secondaryProfiles": [
+        "engineer.humanoid",
+        "hybrid.black-goo-mutant"
+      ]
+    },
+    {
+      "id": "campaign-6",
+      "kind": "scene",
+      "type": "SCENE",
+      "faction": "YAUTJA+HYBRID",
+      "sourceName": "campaign-mission-06-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Planète-réserve — Super Predators",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "src/data.js",
+        "sheet": "campaign",
+        "entry": "Planète-réserve",
+        "prototype": false
+      },
+      "priority": "P0",
+      "secondaryProfiles": [
+        "yautja.berserker",
+        "yautja.hound"
+      ]
+    },
+    {
+      "id": "campaign-7",
+      "kind": "scene",
+      "type": "SCENE",
+      "faction": "HYBRID+XENO",
+      "sourceName": "campaign-mission-07-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Gunnison : containment failure — Predalien",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "src/data.js",
+        "sheet": "campaign",
+        "entry": "Gunnison : containment failure",
+        "prototype": false
+      },
+      "priority": "P0",
+      "secondaryProfiles": [
+        "hybrid.predalien",
+        "human.original-character",
+        "place.human-industrial"
+      ]
+    },
+    {
+      "id": "campaign-8",
+      "kind": "scene",
+      "type": "SCENE",
+      "faction": "XENO+YAUTJA+HYBRID+ENGINEER",
+      "sourceName": "campaign-mission-08-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Chasse parfaite — Final AVP",
+      "continuity": {
+        "set": "PX00",
+        "workbook": "src/data.js",
+        "sheet": "campaign",
+        "entry": "Chasse parfaite",
+        "prototype": false
+      },
+      "priority": "P0",
+      "secondaryProfiles": [
+        "xenomorph.queen",
+        "yautja.hunter",
+        "hybrid.predalien",
+        "engineer.humanoid"
+      ]
+    },
+    {
+      "id": "booster-nx01",
+      "kind": "scene",
+      "type": "SCENE",
+      "faction": "MULTI",
+      "sourceName": "booster-nx01-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Origines Hostiles — Nostromo / LV-426",
+      "continuity": {
+        "set": "NX01",
+        "workbook": "src/data.js",
+        "sheet": "boosters",
+        "entry": "Origines Hostiles",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "human.original-character",
+        "xenomorph.big-chap",
+        "engineer.space-jockey-fossil"
+      ]
+    },
+    {
+      "id": "booster-cw02",
+      "kind": "scene",
+      "type": "SCENE",
+      "faction": "MULTI",
+      "sourceName": "booster-cw02-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Guerre Coloniale — Hadley’s Hope",
+      "continuity": {
+        "set": "CW02",
+        "workbook": "src/data.js",
+        "sheet": "boosters",
+        "entry": "Guerre Coloniale",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "human.original-character",
+        "xenomorph.queen",
+        "object.smartgun-system"
+      ]
+    },
+    {
+      "id": "booster-hg03",
+      "kind": "scene",
+      "type": "SCENE",
+      "faction": "MULTI",
+      "sourceName": "booster-hg03-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Terrains de Chasse — Code Yautja",
+      "continuity": {
+        "set": "HG03",
+        "workbook": "src/data.js",
+        "sheet": "boosters",
+        "entry": "Terrains de Chasse",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "yautja.jungle-hunter",
+        "yautja.hound"
+      ]
+    },
+    {
+      "id": "booster-av04",
+      "kind": "scene",
+      "type": "SCENE",
+      "faction": "MULTI",
+      "sourceName": "booster-av04-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Rite de Sang — Alien vs. Predator",
+      "continuity": {
+        "set": "AV04",
+        "workbook": "src/data.js",
+        "sheet": "boosters",
+        "entry": "Rite de Sang",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "yautja.scar",
+        "xenomorph.drone",
+        "hybrid.predalien"
+      ]
+    },
+    {
+      "id": "booster-ev05",
+      "kind": "scene",
+      "type": "SCENE",
+      "faction": "MULTI",
+      "sourceName": "booster-ev05-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Évolution Parfaite — Pathogène / Hybrides",
+      "continuity": {
+        "set": "EV05",
+        "workbook": "src/data.js",
+        "sheet": "boosters",
+        "entry": "Évolution Parfaite",
+        "prototype": false
+      },
+      "priority": "P1",
+      "secondaryProfiles": [
+        "engineer.humanoid",
+        "hybrid.black-goo-mutant",
+        "xenomorph.gorilla"
+      ]
+    },
+    {
+      "id": "booster-px00",
+      "kind": "scene",
+      "type": "SCENE",
+      "faction": "MULTI",
+      "sourceName": "booster-px00-v1.png",
+      "profile": "scene.multi-subject-original",
+      "subject": "Continuités Perdues — Archives coupées",
+      "continuity": {
+        "set": "PX00",
+        "workbook": "src/data.js",
+        "sheet": "boosters",
+        "entry": "Continuités Perdues",
+        "prototype": true
+      },
+      "priority": "P2",
+      "secondaryProfiles": [
+        "yautja.hunter",
+        "human.original-character",
+        "place.human-industrial"
+      ]
+    }
+  ]
+}

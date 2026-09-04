@@ -1,0 +1,251 @@
+{
+  "schema": "avp-morphology-profile-extension-v1",
+  "version": "1.0.0",
+  "baseRegistry": "avp-morphology-profiles-v1@1.0.0",
+  "profiles": [
+    {
+      "id": "xenomorph.ovomorph",
+      "family": "xenomorph",
+      "label": "Ovomorph egg",
+      "appliesTo": ["ovomorph", "xenomorph egg"],
+      "requiredAnchors": [
+        {"id": "ovomorph.tallAsymmetricOvoid", "label": "Tall asymmetrical ovoid", "requirement": "A tall leathery ovoid broadens near its rooted base and narrows toward the crown rather than resembling a bird egg.", "scoreDimension": "silhouette"},
+        {"id": "ovomorph.fourCrownLobes", "label": "Four crown lobes", "requirement": "Four thick fleshy lobes meet at a cross-shaped crown seam and can open without reading as flower petals.", "scoreDimension": "signatureTraits"},
+        {"id": "ovomorph.leatheryVeinedWall", "label": "Leathery veined wall", "requirement": "Tough folded walls carry subtle vascular life and damp organic translucency without reptile scales.", "scoreDimension": "surfaceLanguage"},
+        {"id": "ovomorph.parasiteScale", "label": "Parasite-sized cavity", "requirement": "The opening and body volume plausibly contain a folded facehugger and stand roughly torso-high beside a person.", "scoreDimension": "scaleAndProportion"}
+      ],
+      "forbiddenDrift": ["bird or dinosaur egg", "six crown petals", "decorative flower", "stone pod", "mechanical capsule"],
+      "promptDirectives": ["Show all four crown lobes and the living wall in a newly composed nest view."]
+    },
+    {
+      "id": "xenomorph.big-chap",
+      "family": "xenomorph",
+      "label": "Big Chap adult phenotype",
+      "baseProfile": "xenomorph.standard",
+      "appliesTo": ["Big Chap phenotype", "first-generation smooth-dome adult"],
+      "requiredAnchors": [
+        {"id": "bigchap.smoothTranslucentCarapace", "label": "Smooth translucent cranial shell", "requirement": "One long smooth semi-translucent cranial shell reveals restrained underlying structure and never becomes a ridged warrior crown.", "scoreDimension": "variantContinuity"},
+        {"id": "bigchap.extremeLeanHeight", "label": "Extremely tall lean frame", "requirement": "Narrow waist, long arms and legs, high shoulders and restrained mass create an unnaturally tall stalking outline.", "scoreDimension": "scaleAndProportion"},
+        {"id": "bigchap.fourTubesAndSpine", "label": "Four dorsal tubes and central spine", "requirement": "Four long dorsal tubes frame a central rear spine with clean, anatomically rooted spacing.", "scoreDimension": "anatomy"}
+      ],
+      "forbiddenDrift": ["ridged warrior dome", "bulky brute proportions", "queen crown", "exact recreation of an official still"],
+      "promptDirectives": ["Preserve smooth translucent dome, extreme leanness and dorsal array in an original pose."]
+    },
+    {
+      "id": "xenomorph.drone",
+      "family": "xenomorph",
+      "label": "Hive drone phenotype",
+      "baseProfile": "xenomorph.standard",
+      "appliesTo": ["drone", "worker adult"],
+      "requiredAnchors": [
+        {"id": "drone.smoothDome", "label": "Smooth continuous dome", "requirement": "The adult head retains a clean smooth dome without warrior ridges, queen crown or visible eyes.", "scoreDimension": "variantContinuity"},
+        {"id": "drone.litheClimbingFrame", "label": "Lithe climbing frame", "requirement": "Long grasping digits, flexible hips and shoulders and moderate mass support wall and ceiling locomotion.", "scoreDimension": "poseReadability"}
+      ],
+      "forbiddenDrift": ["warrior ridges", "royal crown", "quadruped-only anatomy", "stocky gorilla proportions"],
+      "promptDirectives": ["Keep dome, hands, feet and tail legible in a stealth-capable pose."]
+    },
+    {
+      "id": "xenomorph.warrior",
+      "family": "xenomorph",
+      "label": "Ridged hive warrior",
+      "baseProfile": "xenomorph.standard",
+      "appliesTo": ["warrior", "combat adult"],
+      "requiredAnchors": [
+        {"id": "warrior.exposedCranialRidges", "label": "Exposed cranial ridges", "requirement": "Strong longitudinal and cross-linked ridges replace the drone's smooth shell while retaining the elongated eyeless skull.", "scoreDimension": "variantContinuity"},
+        {"id": "warrior.reinforcedCombatFrame", "label": "Reinforced combat frame", "requirement": "Thicker neck, shoulders, forearms and lower legs add combat mass without turning the creature into a horned fantasy brute.", "scoreDimension": "scaleAndProportion"}
+      ],
+      "forbiddenDrift": ["smooth drone dome", "queen crown", "helmet armor", "horned demon", "human military gear"],
+      "promptDirectives": ["Expose ridged cranium and reinforced adult anatomy in silhouette."]
+    },
+    {
+      "id": "xenomorph.grid",
+      "family": "xenomorph",
+      "label": "Grid-scarred warrior",
+      "baseProfile": "xenomorph.warrior",
+      "appliesTo": ["Grid", "net-scarred warrior"],
+      "requiredAnchors": [
+        {"id": "grid.acidEtchedLattice", "label": "Acid-etched head lattice", "requirement": "A permanent intersecting burn lattice deforms the front and crown as healed damage with depth and asymmetry, not painted decoration.", "scoreDimension": "signatureTraits"},
+        {"id": "grid.scarContinuity", "label": "Scar follows anatomy", "requirement": "The lattice bends over cranial curvature while leaving the underlying ridged warrior construction intact.", "scoreDimension": "surfaceLanguage"}
+      ],
+      "forbiddenDrift": ["clean unscarred head", "glowing cyber grid", "fabric net still attached", "symmetrical face paint"],
+      "promptDirectives": ["Treat the lattice as old acid damage integrated into a ridged warrior."]
+    },
+    {
+      "id": "xenomorph.red",
+      "family": "xenomorph",
+      "label": "Red hive warrior",
+      "baseProfile": "xenomorph.warrior",
+      "appliesTo": ["red xenomorph", "red hive warrior"],
+      "requiredAnchors": [
+        {"id": "red.deepCrimsonCarapace", "label": "Deep crimson carapace", "requirement": "Dark crimson, rust and near-black pigmentation belongs to shell and tissue while preserving wet biomechanical response.", "scoreDimension": "variantContinuity"},
+        {"id": "red.notColorWash", "label": "Physical red pigmentation", "requirement": "Neutral secondary light proves the body is red-pigmented rather than a normal warrior under red lighting.", "scoreDimension": "surfaceLanguage"}
+      ],
+      "forbiddenDrift": ["flat red color wash", "red demon", "human armor", "loss of ridged anatomy"],
+      "promptDirectives": ["Use neutral secondary light so the deep red material is verifiable."]
+    },
+    {
+      "id": "xenomorph.queen-mother",
+      "family": "xenomorph",
+      "label": "Queen mother",
+      "baseProfile": "xenomorph.queen",
+      "appliesTo": ["queen mother", "supreme hive matriarch"],
+      "requiredAnchors": [
+        {"id": "queenmother.monumentalLayeredCrown", "label": "Monumental layered crown", "requirement": "The queen crown expands into coherent armored layers and rear points without becoming antlers.", "scoreDimension": "variantContinuity"},
+        {"id": "queenmother.supremeScale", "label": "Supreme matriarch scale", "requirement": "Architecture, queens or adult drones establish exceptional scale above a standard queen.", "scoreDimension": "scaleAndProportion"},
+        {"id": "queenmother.broodAuthority", "label": "Brood-command anatomy", "requirement": "Heavy royal torso, secondary arms and crown remain fully functional and readable as one organism.", "scoreDimension": "anatomy"}
+      ],
+      "forbiddenDrift": ["ordinary queen scale", "decorative antler crown", "dragon", "missing secondary arms"],
+      "promptDirectives": ["Prove exceptional scale with original architecture and subordinate hive forms."]
+    },
+    {
+      "id": "xenomorph.flying-queen",
+      "family": "xenomorph",
+      "label": "Flying queen",
+      "baseProfile": "xenomorph.queen",
+      "appliesTo": ["flying queen", "winged queen"],
+      "requiredAnchors": [
+        {"id": "flyingqueen.functionalWingPair", "label": "Functional wing pair", "requirement": "A large bilateral wing pair roots into reinforced thoracic anatomy with believable joints, membrane tension and flight musculature.", "scoreDimension": "anatomy"},
+        {"id": "flyingqueen.queenIdentityInFlight", "label": "Queen identity in flight", "requirement": "Crown, secondary arms, main arms, hind legs and weapon tail remain separable despite the airborne pose.", "scoreDimension": "poseReadability"}
+      ],
+      "forbiddenDrift": ["dragon wings pasted to shoulders", "feathers", "missing queen arm pair", "tail hidden or absent"],
+      "promptDirectives": ["Design wing roots before membrane detail and keep every queen limb count readable."]
+    },
+    {
+      "id": "xenomorph.gorilla",
+      "family": "xenomorph",
+      "label": "Gorilla-derived xenomorph",
+      "appliesTo": ["gorilla alien", "ape-host xenomorph"],
+      "requiredAnchors": [
+        {"id": "gorilla.xenoCranium", "label": "Eyeless xenomorph cranium", "requirement": "An elongated eyeless dome and inner-jaw mouth remain dominant; no ape muzzle or visible primate eyes.", "scoreDimension": "signatureTraits"},
+        {"id": "gorilla.massiveForequarters", "label": "Massive forequarters", "requirement": "Extremely long powerful arms, high shoulders and a deep chest support knuckle-assisted movement with coherent hind limbs.", "scoreDimension": "silhouette"},
+        {"id": "gorilla.biomechanicalHostBlend", "label": "Biomechanical host adaptation", "requirement": "Host-derived mass modifies ribbed exoskeleton rather than adding fur or ordinary gorilla skin.", "scoreDimension": "surfaceLanguage"},
+        {"id": "gorilla.weaponTail", "label": "Heavy weapon tail", "requirement": "A long segmented weapon tail counterbalances the forequarters and connects correctly to the pelvis.", "scoreDimension": "anatomy"}
+      ],
+      "forbiddenDrift": ["armored Earth gorilla", "fur", "primate face", "visible eyes", "missing tail"],
+      "promptDirectives": ["Combine ape-host load distribution with unmistakable xenomorph head, shell and tail."]
+    },
+    {
+      "id": "xenomorph.bull",
+      "family": "xenomorph",
+      "label": "Bull-derived xenomorph",
+      "baseProfile": "xenomorph.runner",
+      "appliesTo": ["bull alien", "bovine-host xenomorph"],
+      "requiredAnchors": [
+        {"id": "bull.armoredShoulderMass", "label": "Bovine shoulder mass", "requirement": "A deep neck and elevated reinforced shoulders drive a low charging line while remaining organically xenomorph.", "scoreDimension": "scaleAndProportion"},
+        {"id": "bull.integratedCranialHorns", "label": "Integrated cranial horn structures", "requirement": "Paired host-derived horn structures grow from the carapace without exposing eyes or replacing the elongated dome.", "scoreDimension": "signatureTraits"}
+      ],
+      "forbiddenDrift": ["ordinary bull head", "fur or hooves pasted onto a runner", "demon horns", "short mammal tail"],
+      "promptDirectives": ["Keep the charging quadruped xenomorph-first and integrate horns into the dome."]
+    },
+    {
+      "id": "xenomorph.mantis",
+      "family": "xenomorph",
+      "label": "Mantis-derived xenomorph",
+      "appliesTo": ["mantis alien", "raptorial insect-host xenomorph"],
+      "requiredAnchors": [
+        {"id": "mantis.xenoHeadAndJaw", "label": "Xenomorph head and jaws", "requirement": "The eyeless elongated head and inner-jaw system remain recognizable and do not become an insect face.", "scoreDimension": "signatureTraits"},
+        {"id": "mantis.raptorialForelimbs", "label": "Raptorial forelimbs", "requirement": "A coherent forelimb pair folds into long scythe-like grasping segments with countable joints and no duplicated arms.", "scoreDimension": "anatomy"},
+        {"id": "mantis.angularInsectileLine", "label": "Angular insectile line", "requirement": "Narrow elevated thorax, long limbs and stalking posture express host influence while retaining a segmented weapon tail.", "scoreDimension": "silhouette"},
+        {"id": "mantis.biomechanicalSurface", "label": "Biomechanical surface", "requirement": "Ribbing and tendon channels unify insectile plates instead of depicting an ordinary giant mantis.", "scoreDimension": "surfaceLanguage"}
+      ],
+      "forbiddenDrift": ["ordinary giant mantis", "compound eyes", "random six-arm humanoid", "missing xenomorph tail"],
+      "promptDirectives": ["Count every limb and preserve xenomorph cranial and tail identity."]
+    },
+    {
+      "id": "xenomorph.snake",
+      "family": "xenomorph",
+      "label": "Snake-derived xenomorph",
+      "appliesTo": ["snake alien", "serpentine xenomorph"],
+      "requiredAnchors": [
+        {"id": "snake.continuousSerpentineBody", "label": "Continuous serpentine body", "requirement": "An elongated limbless or strongly limb-reduced body transitions continuously into a weaponized terminal tail without a humanoid pelvis.", "scoreDimension": "silhouette"},
+        {"id": "snake.eyelessXenoHead", "label": "Eyeless xenomorph head", "requirement": "A compact elongated dome and inner-jaw construction retain xenomorph identity without snake eyes or reptile muzzle.", "scoreDimension": "signatureTraits"},
+        {"id": "snake.biomechanicalVentralStructure", "label": "Biomechanical locomotor underside", "requirement": "Ventral segmentation, ribs and musculature plausibly support slithering without ordinary scales.", "scoreDimension": "anatomy"},
+        {"id": "snake.dorsalTendonContinuity", "label": "Continuous dorsal tendon line", "requirement": "A continuous biomechanical dorsal tendon and rib system links the cranial dome to the terminal tail without a disconnected human torso or ordinary reptile spine.", "scoreDimension": "surfaceLanguage"}
+      ],
+      "forbiddenDrift": ["ordinary snake", "cobra hood", "visible reptile eyes", "human torso on snake body"],
+      "promptDirectives": ["Show continuous locomotor anatomy and the xenomorph jaw from an original angle."]
+    },
+    {
+      "id": "xenomorph.popper",
+      "family": "xenomorph",
+      "label": "Popper volatile xenoid",
+      "baseProfile": "xenomorph.runner",
+      "appliesTo": ["popper", "volatile hive runner"],
+      "requiredAnchors": [
+        {"id": "popper.swollenVolatileSacs", "label": "Swollen volatile sacs", "requirement": "Distended translucent sacs grow from a coherent torso or dorsal system and visibly contain pressurized corrosive fluid.", "scoreDimension": "signatureTraits"},
+        {"id": "popper.smallRushProfile", "label": "Small rushing profile", "requirement": "Compact scale, low limbs and forward mass create a disposable rushing threat distinct from a full adult runner.", "scoreDimension": "scaleAndProportion"}
+      ],
+      "forbiddenDrift": ["generic exploding zombie", "floating balloons", "full-size warrior", "bomb hardware"],
+      "promptDirectives": ["Connect every volatile sac to plausible anatomy and prove compact scale."]
+    },
+    {
+      "id": "xenomorph.warden",
+      "family": "xenomorph",
+      "label": "Warden hive guardian",
+      "baseProfile": "xenomorph.praetorian",
+      "appliesTo": ["warden", "heavy hive guardian"],
+      "requiredAnchors": [
+        {"id": "warden.forwardShieldCarapace", "label": "Forward shield carapace", "requirement": "Head, neck and shoulders interlock into a forward defensive wedge while jaws and sensory orientation remain functional.", "scoreDimension": "silhouette"},
+        {"id": "warden.guardianArmorContinuity", "label": "Guardian armor continuity", "requirement": "Dense layered plates follow load paths across chest and forelimbs without becoming manufactured armor.", "scoreDimension": "surfaceLanguage"}
+      ],
+      "forbiddenDrift": ["medieval shield", "queen crown", "stone golem", "manufactured shoulder pads"],
+      "promptDirectives": ["Build a biological defensive wedge around intact xenomorph attack anatomy."]
+    },
+    {
+      "id": "xenomorph.siren",
+      "family": "xenomorph",
+      "label": "Siren sensory xenoid",
+      "baseProfile": "xenomorph.standard",
+      "appliesTo": ["siren", "hive signal organism"],
+      "requiredAnchors": [
+        {"id": "siren.resonantCranialStructures", "label": "Resonant cranial structures", "requirement": "Sensory-resonance structures extend from rear cranium and throat with visible biological roots, never decorative antennae.", "scoreDimension": "signatureTraits"},
+        {"id": "siren.expandedThroatSystem", "label": "Expanded throat system", "requirement": "Neck, jaw base and thoracic channels form a coherent system for powerful hive calls while preserving the inner jaw.", "scoreDimension": "anatomy"},
+        {"id": "siren.leanSignalPosture", "label": "Lean signal posture", "requirement": "An elevated neck and braced body make signaling readable without hiding tail or dorsal anatomy.", "scoreDimension": "poseReadability"}
+      ],
+      "forbiddenDrift": ["mermaid or human singer", "audio speakers", "insect antennae", "random head horns"],
+      "promptDirectives": ["Show biological signal anatomy in an original call posture."]
+    },
+    {
+      "id": "xenomorph.spitter",
+      "family": "xenomorph",
+      "label": "Spitter ranged-acid caste",
+      "baseProfile": "xenomorph.standard",
+      "appliesTo": ["Spitter", "ranged acid caste"],
+      "requiredAnchors": [
+        {"id": "spitter.pressurizedAcidReservoirs", "label": "Integrated acid reservoirs", "requirement": "Paired swollen corrosive reservoirs integrate into the rear jaw, neck and upper torso with visible biological feed channels; they are never floating sacs or external tanks.", "scoreDimension": "signatureTraits"},
+        {"id": "spitter.reinforcedSprayThroat", "label": "Reinforced spray throat", "requirement": "An expanded muscular throat and widened outer jaw support a directed corrosive spray while preserving the recognizable telescoping inner-jaw system.", "scoreDimension": "anatomy"},
+        {"id": "spitter.bracedRangedPosture", "label": "Braced ranged posture", "requirement": "Low hips, planted limbs, elevated neck and a counterbalancing segmented tail create a stable firing line distinct from a charging warrior.", "scoreDimension": "poseReadability"}
+      ],
+      "forbiddenDrift": ["generic warrior with green saliva", "dragon fire breath", "external gun or chemical tank", "floating acid balloons", "missing inner jaw", "upright human firing pose"],
+      "promptDirectives": ["Make the acid reservoirs, throat and braced silhouette readable together without replacing baseline xenomorph anatomy."]
+    },
+    {
+      "id": "xenomorph.stalker",
+      "family": "xenomorph",
+      "label": "Stalker stealth caste",
+      "baseProfile": "xenomorph.standard",
+      "appliesTo": ["Stalker", "stealth xenomorph"],
+      "requiredAnchors": [
+        {"id": "stalker.lowStealthSilhouette", "label": "Low stealth silhouette", "requirement": "Head, shoulders and hips align into a narrow low contour suited to concealment, without losing the elongated eyeless dome or adult limb plan.", "scoreDimension": "variantContinuity"},
+        {"id": "stalker.shadowBrokenCarapace", "label": "Shadow-breaking carapace", "requirement": "Subdued dark plates, restrained highlights and fine ribbing break up the outline while remaining physical biomechanical tissue rather than magical invisibility.", "scoreDimension": "surfaceLanguage"},
+        {"id": "stalker.wallReadyDigits", "label": "Wall-ready grasping anatomy", "requirement": "Long countable digits, flexed shoulders and coherent feet support silent wall or ceiling locomotion; no fused claws or spider-like extra limbs.", "scoreDimension": "poseReadability"}
+      ],
+      "forbiddenDrift": ["generic standing drone", "literal transparent ghost", "insect with extra legs", "panther anatomy", "missing dorsal structures", "hidden unreadable body"],
+      "promptDirectives": ["Reveal the complete stalking anatomy through controlled rim light while preserving a low concealment silhouette."]
+    },
+    {
+      "id": "xenomorph.scorched",
+      "family": "xenomorph",
+      "label": "Scorched station-born adult",
+      "baseProfile": "xenomorph.standard",
+      "appliesTo": ["Scorched Xenomorph", "station-born scorched adult"],
+      "requiredAnchors": [
+        {"id": "scorched.localizedCranialScar", "label": "Localized scorched cranial scar", "requirement": "One unmistakable asymmetric cauterized injury interrupts the long cranial carapace with cracked, heat-discolored tissue; damage is localized and structurally healed rather than generic flames over the whole body.", "scoreDimension": "variantContinuity"},
+        {"id": "scorched.longPracticalCranium", "label": "Long practical-effect cranium", "requirement": "A long eyeless adult dome retains restrained underlying biomechanical structure and a credible jaw axis, never collapsing into a short monster skull.", "scoreDimension": "silhouette"},
+        {"id": "scorched.tallLeanStationFrame", "label": "Tall lean station-hunter frame", "requirement": "A tall narrow waist, long load-bearing limbs and grounded wall-crawling articulation preserve the imposing adult scale without exaggerated superhero mass.", "scoreDimension": "scaleAndProportion"}
+      ],
+      "forbiddenDrift": ["entire body on fire", "generic burned warrior", "short reptile skull", "molten lava monster", "missing localized cranial wound", "copied film still"],
+      "promptDirectives": ["Keep the localized cranial damage readable from an original angle while preserving the complete adult body plan."]
+    }
+  ]
+}

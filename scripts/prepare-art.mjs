@@ -7,6 +7,11 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const sourceRoot = resolve(root, '..', 'art-originals');
+const contractPath = resolve(root, 'art-direction', 'avp-art-fidelity-contract.v1.json');
+const profilesPath = resolve(root, 'art-direction', 'avp-morphology-profiles.v1.json');
+const mapPath = resolve(root, 'art-direction', 'avp-asset-fidelity-map.v1.json');
+const briefsPath = resolve(sourceRoot, 'fidelity-briefs.json');
+const ledgerPath = resolve(sourceRoot, 'fidelity-ledger.json');
 const outputRoot = resolve(root, 'assets', 'art');
 const stagingRoot = resolve(root, 'assets', `.art-staging-${process.pid}`);
 const backupRoot = resolve(root, 'assets', `.art-backup-${process.pid}`);
@@ -18,6 +23,12 @@ const publicListTemporary = `${publicListPath}.tmp-${process.pid}`;
 const publicListBackup = `${publicListPath}.backup-${process.pid}`;
 const allowPartial = process.argv.includes('--allow-partial');
 const expectedCardCount = 158;
+const REVIEW_SCHEMA = 'avp-art-review-v2';
+const REVIEW_VERSION = '1.0.0-art.3';
+const MAP_SCHEMA = 'avp-asset-fidelity-map-v1';
+const FIDELITY_VERSION = '1.0.0';
+const FIDELITY_THRESHOLD = 95;
+const MINIMUM_DIMENSION_SCORE = 90;
 const REQUIRED_REVIEW_CHECKS = Object.freeze([
   'decodedPng',
   'compositionApproved',
@@ -25,6 +36,9 @@ const REQUIRED_REVIEW_CHECKS = Object.freeze([
   'noTextLogoOrWatermark',
   'originalFanMadeDirection',
   'noOfficialAssetOrActorLikeness',
+  'canonicalMorphologyFidelityPassed',
+  'provenancePromptComplete',
+  'retryPolicySatisfied',
 ]);
 
 if ([outputRoot, stagingRoot, backupRoot].some((directory) => dirname(directory) !== resolve(root, 'assets'))) {
@@ -43,11 +57,125 @@ function sha256(bytes) {
   return createHash('sha256').update(bytes).digest('hex');
 }
 
+function stableJson(value) {
+  if (Array.isArray(value)) return `[${value.map(stableJson).join(',')}]`;
+  if (value && typeof value === 'object') {
+    return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${stableJson(value[key])}`).join(',')}}`;
+  }
+  return JSON.stringify(value);
+}
+
+function safeText(value, maxLength = 4_000) {
+  return typeof value === 'string' && value.trim().length > 0 && value.length <= maxLength && !/[\u0000-\u001f\u007f]/.test(value);
+}
+
+async function readTrustedBytes(path, allowedRoot, label) {
+  const info = await lstat(path).catch((error) => error.code === 'ENOENT' ? null : Promise.reject(error));
+  if (!info || !info.isFile() || info.isSymbolicLink()) throw new Error(`${label} is missing or unsafe.`);
+  const canonical = await realpath(path);
+  const canonicalRoot = await realpath(allowedRoot);
+  if (canonical !== canonicalRoot && !canonical.startsWith(`${canonicalRoot}${sep}`)) throw new Error(`${label} escapes its trusted root.`);
+  return readFile(canonical);
+}
+
+async function loadProfileBundle() {
+  const baseBytes = await readTrustedBytes(profilesPath, root, 'Morphology profile registry');
+  let base;
+  try {
+    base = JSON.parse(baseBytes.toString('utf8'));
+  } catch {
+    throw new Error('Morphology profile registry is not valid JSON.');
+  }
+  const extensions = base.extensions ?? [];
+  if (!Array.isArray(extensions) || extensions.some((name) => !/^[a-z0-9][a-z0-9.-]*\.json$/.test(name) || basename(name) !== name)) {
+    throw new Error('Morphology profile extension list is unsafe.');
+  }
+  const files = [{ name: basename(profilesPath), bytes: baseBytes }];
+  for (const name of extensions) {
+    if (files.some((file) => file.name === name)) throw new Error(`Duplicate morphology profile extension: ${name}`);
+    files.push({
+      name,
+      bytes: await readTrustedBytes(resolve(dirname(profilesPath), name), root, `Morphology profile extension ${name}`),
+    });
+  }
+  return {
+    files: files.length,
+    sha256: sha256(Buffer.from(files.map((file) => `${file.name}:${sha256(file.bytes)}`).sort().join('\n'))),
+  };
+}
+
 function safeName(name) {
   if (!/^[a-z0-9][a-z0-9_-]*-v[1-9][0-9]*\.(?:png|webp)$/.test(name) || basename(name) !== name) {
     throw new Error(`Unsafe artwork filename: ${name}`);
   }
   return name;
+}
+
+function normalizeSecondaryProfiles(values, label) {
+  const normalized = values ?? [];
+  if (
+    !Array.isArray(normalized) ||
+    normalized.some((profile) => !safeText(profile, 120)) ||
+    new Set(normalized).size !== normalized.length
+  ) {
+    throw new Error(`${label} must be a unique list of profile ids.`);
+  }
+  return [...normalized];
+}
+
+function sameProfiles(left, right) {
+  const sortedLeft = [...left].sort();
+  const sortedRight = [...right].sort();
+  return sortedLeft.length === sortedRight.length &&
+    sortedLeft.every((profile, index) => profile === sortedRight[index]);
+}
+
+async function loadAssetMap() {
+  const bytes = await readTrustedBytes(mapPath, root, 'Canonical asset fidelity map');
+  let parsed;
+  try {
+    parsed = JSON.parse(bytes.toString('utf8'));
+  } catch {
+    throw new Error('Canonical asset fidelity map is not valid JSON.');
+  }
+  if (
+    parsed.schema !== MAP_SCHEMA ||
+    parsed.version !== FIDELITY_VERSION ||
+    parsed.expected?.cards !== expectedCardCount ||
+    parsed.expected?.scenes !== 16 ||
+    parsed.expected?.total !== expectedCardCount + 16 ||
+    !Array.isArray(parsed.assets) ||
+    parsed.assets.length !== expectedCardCount + 16
+  ) {
+    throw new Error('Canonical asset fidelity map is incomplete or incompatible.');
+  }
+  const byKey = new Map();
+  const sourceNames = new Set();
+  for (const asset of parsed.assets) {
+    const key = `${asset?.kind}:${asset?.id}`;
+    const secondaryProfiles = normalizeSecondaryProfiles(asset?.secondaryProfiles, `Mapped asset ${asset?.id || 'unknown'} secondaryProfiles`);
+    if (
+      byKey.has(key) ||
+      !['card', 'scene'].includes(asset?.kind) ||
+      !safeText(asset?.id, 120) ||
+      !safeText(asset?.profile, 120) ||
+      secondaryProfiles.includes(asset.profile) ||
+      !safeName(asset?.sourceName).endsWith('.png') ||
+      sourceNames.has(asset.sourceName)
+    ) {
+      throw new Error(`Invalid canonical asset mapping: ${asset?.id || 'unknown'}`);
+    }
+    sourceNames.add(asset.sourceName);
+    byKey.set(key, { ...asset, secondaryProfiles });
+  }
+  if (
+    byKey.size !== expectedCardCount + 16 ||
+    [...byKey.values()].filter(({ kind }) => kind === 'card').length !== expectedCardCount ||
+    [...byKey.values()].filter(({ kind }) => kind === 'scene').length !== 16
+  ) {
+    throw new Error('Canonical asset fidelity map identities do not match the release contract.');
+  }
+  return { parsed, bytes, byKey };
 }
 
 async function loadCatalogue() {
@@ -98,6 +226,7 @@ const required = [
       rarity: card.rarity,
       collectorNo: card.collectorNo,
     },
+    promptProfile: 'card-v2-canon-morphology-original-composition',
   })),
   ...SCENES.map(([id, sourceName, width, height, alt]) => ({
     id,
@@ -107,18 +236,28 @@ const required = [
     width,
     height,
     alt,
+    promptProfile: 'scene-v2-canon-morphology-original-composition',
   })),
 ];
+const assetMapInfo = await loadAssetMap();
+const requiredIdentityKeys = new Set(required.map((item) => `${item.kind}:${item.id}`));
+if (
+  assetMapInfo.byKey.size !== requiredIdentityKeys.size ||
+  [...assetMapInfo.byKey.keys()].some((key) => !requiredIdentityKeys.has(key)) ||
+  required.some((item) => assetMapInfo.byKey.get(`${item.kind}:${item.id}`)?.sourceName !== item.sourceName)
+) {
+  throw new Error('Canonical asset map identities or source names do not match the game catalogue.');
+}
 
 let review;
 try {
   review = JSON.parse(await readFile(resolve(sourceRoot, 'review.json'), 'utf8'));
 } catch {
-  throw new Error('Explicit artwork review is missing or invalid. Run npm run review:art -- --approve --reviewer "Name" after visual QA.');
+  throw new Error('Strict artwork review is missing or invalid. Validate the private fidelity briefs and ledger before release.');
 }
 if (
-  review.schema !== 'avp-art-review-v1' ||
-  review.version !== '1.0.0-art.2' ||
+  review.schema !== REVIEW_SCHEMA ||
+  review.version !== REVIEW_VERSION ||
   review.expected?.cards !== expectedCardCount ||
   review.expected?.scenes !== SCENES.length ||
   review.expected?.total !== required.length ||
@@ -127,49 +266,145 @@ if (
   Number.isNaN(Date.parse(review.approvedAt)) ||
   typeof review.reviewer !== 'string' ||
   !review.reviewer.trim() ||
+  review.contract?.schema !== 'avp-art-fidelity-contract-v1' ||
+  review.contract?.version !== '1.0.0' ||
+  !/^[a-f0-9]{64}$/.test(review.contract?.sha256) ||
+  review.profiles?.schema !== 'avp-morphology-profiles-v1' ||
+  review.profiles?.version !== '1.0.0' ||
+  !/^[a-f0-9]{64}$/.test(review.profiles?.sha256) ||
+  review.map?.schema !== MAP_SCHEMA ||
+  review.map?.version !== FIDELITY_VERSION ||
+  !/^[a-f0-9]{64}$/.test(review.map?.sha256) ||
+  review.map?.activeAssets !== required.length ||
+  review.briefs?.schema !== 'avp-art-fidelity-briefs-v1' ||
+  review.briefs?.version !== '1.0.0' ||
+  !/^[a-f0-9]{64}$/.test(review.briefs?.sha256) ||
+  review.briefs?.activeAssets !== required.length ||
+  review.ledger?.schema !== 'avp-art-fidelity-ledger-v1' ||
+  review.ledger?.version !== '1.0.0' ||
+  !/^[a-f0-9]{64}$/.test(review.ledger?.sha256) ||
+  review.ledger?.activeAssets !== required.length ||
+  review.fidelity?.threshold !== FIDELITY_THRESHOLD ||
+  review.fidelity?.minimumDimensionScore !== MINIMUM_DIMENSION_SCORE ||
+  review.fidelity?.accepted !== required.length ||
+  review.fidelity?.promptComplete !== required.length ||
+  review.fidelity?.hardFailures !== 0 ||
   REQUIRED_REVIEW_CHECKS.some((check) => review.checklist?.[check] !== true) ||
   !Array.isArray(review.items) ||
   review.items.length !== required.length
 ) {
-  throw new Error('Explicit artwork review is incomplete or incompatible.');
+  throw new Error('Strict artwork review v2 is incomplete or incompatible.');
+}
+const profileBundle = await loadProfileBundle();
+if (profileBundle.sha256 !== review.profiles.sha256 || profileBundle.files !== review.profiles.files) {
+  throw new Error('Strict artwork review no longer matches the morphology profile bundle. Run the attributed review again.');
+}
+for (const [path, rootPath, expectedHash, label] of [
+  [contractPath, root, review.contract.sha256, 'fidelity contract'],
+  [mapPath, root, review.map.sha256, 'canonical asset fidelity map'],
+  [briefsPath, sourceRoot, review.briefs.sha256, 'private fidelity briefs'],
+  [ledgerPath, sourceRoot, review.ledger.sha256, 'private fidelity ledger'],
+]) {
+  const bytes = await readTrustedBytes(path, rootPath, label).catch(() => null);
+  if (!bytes || sha256(bytes) !== expectedHash) {
+    throw new Error(`Strict artwork review no longer matches the ${label}. Run the attributed review again.`);
+  }
 }
 const reviewed = new Map();
 for (const item of review.items) {
   const key = `${item.kind}:${item.id}`;
+  const mapped = assetMapInfo.byKey.get(key);
+  const secondaryProfiles = normalizeSecondaryProfiles(item?.secondaryProfiles, `Reviewed item ${item?.id || 'unknown'} secondaryProfiles`);
+  const acceptedAttempt = Array.isArray(item.attempts) ? item.attempts.at(-1) : null;
   if (
     reviewed.has(key) ||
+    !mapped ||
     !['card', 'scene'].includes(item.kind) ||
     typeof item.sourceName !== 'string' ||
+    item.sourceName !== mapped.sourceName ||
     !/^[a-f0-9]{64}$/.test(item.sourceSha256) ||
     !Number.isInteger(item.bytes) ||
     !Number.isInteger(item.width) ||
     !Number.isInteger(item.height) ||
     item.provider !== 'openai-imagegen' ||
+    item.active !== true ||
+    item.decision !== 'accepted' ||
     item.approved !== true ||
+    !Number.isFinite(item.score) ||
+    item.score < FIDELITY_THRESHOLD ||
+    item.score > 100 ||
+    !safeText(item.profile, 120) ||
+    item.profile !== mapped.profile ||
+    !sameProfiles(secondaryProfiles, mapped.secondaryProfiles) ||
+    !Number.isInteger(item.retryCount) ||
+    item.retryCount < 0 ||
+    !Number.isInteger(item.acceptedAttempt) ||
+    !/^[a-f0-9]{64}$/.test(item.promptSha256) ||
+    item.promptComplete !== true ||
+    !safeText(item.continuity, 240) ||
+    !safeText(item.canonTarget, 500) ||
+    !safeText(item.referenceBasis) ||
+    !item.anchors ||
+    typeof item.anchors !== 'object' ||
+    Array.isArray(item.anchors) ||
+    Object.keys(item.anchors).length === 0 ||
+    Object.values(item.anchors).some((passed) => passed !== true) ||
+    !Array.isArray(item.hardFails) ||
+    item.hardFails.length !== 0 ||
+    !item.dimensionScores ||
+    typeof item.dimensionScores !== 'object' ||
+    Array.isArray(item.dimensionScores) ||
+    Object.keys(item.dimensionScores).length === 0 ||
+    Object.values(item.dimensionScores).some((value) => !Number.isInteger(value) || value < MINIMUM_DIMENSION_SCORE || value > 100) ||
+    !Array.isArray(item.attempts) ||
+    item.attempts.length === 0 ||
+    item.retryCount !== item.attempts.filter((attempt) => attempt?.decision === 'rejected').length ||
+    !acceptedAttempt ||
+    acceptedAttempt.decision !== 'accepted' ||
+    acceptedAttempt.attempt !== item.acceptedAttempt ||
+    acceptedAttempt.sourceName !== item.sourceName ||
+    acceptedAttempt.sourceSha256 !== item.sourceSha256 ||
+    acceptedAttempt.promptSha256 !== item.promptSha256 ||
+    acceptedAttempt.score !== item.score ||
+    acceptedAttempt.promptComplete !== true ||
+    !Array.isArray(acceptedAttempt.hardFails) ||
+    acceptedAttempt.hardFails.length !== 0 ||
+    stableJson(acceptedAttempt.anchors) !== stableJson(item.anchors) ||
+    stableJson(acceptedAttempt.dimensionScores) !== stableJson(item.dimensionScores) ||
     REQUIRED_REVIEW_CHECKS.some((check) => item.checks?.[check] !== true) ||
-    !['card-v1-original-biopunk', 'scene-v1-original-biopunk'].includes(item.promptProfile)
+    !['card-v2-canon-morphology-original-composition', 'scene-v2-canon-morphology-original-composition'].includes(item.promptProfile)
   ) {
-    throw new Error(`Invalid explicit artwork approval: ${item?.id || 'unknown'}`);
+    throw new Error(`Invalid strict artwork approval: ${item?.id || 'unknown'}`);
   }
-  reviewed.set(key, item);
+  reviewed.set(key, { ...item, secondaryProfiles });
 }
 const requiredReviewKeys = new Set(required.map((item) => `${item.kind}:${item.id}`));
 if (reviewed.size !== requiredReviewKeys.size || [...reviewed.keys()].some((key) => !requiredReviewKeys.has(key))) {
-  throw new Error('Explicit artwork review IDs do not match the release contract.');
+  throw new Error('Strict artwork review IDs do not match the release contract.');
 }
-const computedReviewRevision = sha256(Buffer.from(
-  [
-    `schema:${review.schema}`,
-    `version:${review.version}`,
-    `approvedAt:${review.approvedAt}`,
-    `reviewer:${review.reviewer}`,
-    ...REQUIRED_REVIEW_CHECKS.map((check) => `check:${check}:${review.checklist[check]}`),
-    ...[...reviewed.values()]
-      .sort((a, b) => a.kind.localeCompare(b.kind) || a.id.localeCompare(b.id))
-      .map((item) => `${item.kind}:${item.id}:${item.sourceName}:${item.sourceSha256}:${item.bytes}:${item.width}x${item.height}:${item.provider}:${item.promptProfile}:approved=${item.approved}`),
-  ].join('\n'),
-));
-if (computedReviewRevision !== review.revision) throw new Error('Explicit artwork review revision mismatch.');
+const reviewScores = [...reviewed.values()].map((item) => item.score);
+const reviewProfiles = Object.fromEntries([...new Set([...reviewed.values()].map((item) => item.profile))]
+  .sort()
+  .map((profile) => [profile, [...reviewed.values()].filter((item) => item.profile === profile).length]));
+const retryCounts = [...reviewed.values()].map((item) => item.retryCount);
+const dimensionIds = [...new Set([...reviewed.values()].flatMap((item) => Object.keys(item.dimensionScores)))].sort();
+const minimumDimensionScores = Object.fromEntries(dimensionIds.map((id) => [
+  id,
+  Math.min(...[...reviewed.values()].map((item) => item.dimensionScores[id])),
+]));
+if (
+  review.fidelity.minimumScore !== Math.min(...reviewScores) ||
+  review.fidelity.averageScore !== Number((reviewScores.reduce((total, value) => total + value, 0) / reviewScores.length).toFixed(2)) ||
+  review.fidelity.retryCount !== retryCounts.reduce((total, value) => total + value, 0) ||
+  review.fidelity.maximumRetryCount !== Math.max(...retryCounts) ||
+  stableJson(review.fidelity.profiles) !== stableJson(reviewProfiles) ||
+  stableJson(review.fidelity.minimumDimensionScores) !== stableJson(minimumDimensionScores)
+) {
+  throw new Error('Strict artwork review aggregates do not match its accepted items.');
+}
+const { revision: recordedReviewRevision, ...unsignedReview } = review;
+const computedReviewRevision = sha256(Buffer.from(stableJson(unsignedReview)));
+if (computedReviewRevision !== recordedReviewRevision) throw new Error('Strict artwork review revision mismatch.');
 
 const available = [];
 const missing = [];
@@ -242,7 +477,7 @@ try {
       sourceSha256: sourceDigest,
       provider: approval.provider,
       reviewed: approval.approved,
-      promptProfile: approval.promptProfile,
+      promptProfile: item.promptProfile,
       alt: item.alt,
       ...(item.card ? { card: item.card } : {}),
     });
@@ -252,7 +487,7 @@ try {
   revision = sha256(Buffer.from(items.map((item) => `${item.id}:${item.sha256}`).join('\n'))).slice(0, 16);
   manifest = {
     schema: 'avp-openai-art-v1',
-    version: '1.0.0-art.2',
+    version: REVIEW_VERSION,
     revision,
     complete: missing.length === 0,
     expected: { cards: expectedCardCount, scenes: SCENES.length, total: required.length },
@@ -269,6 +504,36 @@ try {
       reviewedAt: review.approvedAt,
       reviewer: review.reviewer,
       checklist: review.checklist,
+      contract: {
+        schema: review.contract.schema,
+        version: review.contract.version,
+        sha256: review.contract.sha256,
+      },
+      profiles: {
+        schema: review.profiles.schema,
+        version: review.profiles.version,
+        sha256: review.profiles.sha256,
+        files: review.profiles.files,
+      },
+      map: {
+        schema: review.map.schema,
+        version: review.map.version,
+        sha256: review.map.sha256,
+        activeAssets: review.map.activeAssets,
+      },
+      fidelity: {
+        threshold: review.fidelity.threshold,
+        minimumDimensionScore: review.fidelity.minimumDimensionScore,
+        accepted: review.fidelity.accepted,
+        promptComplete: review.fidelity.promptComplete,
+        hardFailures: review.fidelity.hardFailures,
+        minimumScore: review.fidelity.minimumScore,
+        averageScore: review.fidelity.averageScore,
+        minimumDimensionScores: review.fidelity.minimumDimensionScores,
+        retryCount: review.fidelity.retryCount,
+        maximumRetryCount: review.fidelity.maximumRetryCount,
+        profiles: review.fidelity.profiles,
+      },
     },
     rights: 'Original fan-made project artwork generated with OpenAI ImageGen; no official visual assets included.',
     items,

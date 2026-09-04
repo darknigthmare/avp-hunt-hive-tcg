@@ -1,0 +1,373 @@
+{
+  "schema": "avp-morphology-profiles-v1",
+  "version": "1.0.0",
+  "contract": "avp-art-fidelity-contract-v1@1.0.0",
+  "extensions": [
+    "avp-morphology-xenomorph-variants.v1.json",
+    "avp-morphology-yautja-variants.v1.json",
+    "avp-morphology-royal-hybrid-variants.v1.json"
+  ],
+  "purpose": "Text-only morphology anchors for near-canonical subject recognition in newly composed, fan-made artwork. These descriptions are not permission to copy an official image or performer likeness.",
+  "profileSelection": {
+    "rule": "Choose the narrowest profile that describes the principal subject. Add secondaryProfiles in the brief when another clearly visible subject has independent mandatory anchors.",
+    "fallback": "A fallback profile is allowed only for genuinely original subjects, never to avoid the anchors of a known creature, faction, object or place.",
+    "multiSubject": "Every foreground or story-critical subject must have its own profile and complete anchor evaluation."
+  },
+  "profiles": [
+    {
+      "id": "xenomorph.standard",
+      "family": "xenomorph",
+      "label": "Standard adult xenomorph",
+      "appliesTo": ["adult drone", "adult warrior", "baseline hive hunter"],
+      "requiredAnchors": [
+        {"id": "xeno.elongatedEyelessDome", "label": "Elongated eyeless cranial dome", "requirement": "A long rear-projecting cranial dome dominates the head; no ordinary visible eyes or human facial planes.", "scoreDimension": "silhouette"},
+        {"id": "xeno.innerJaw", "label": "Secondary inner jaw", "requirement": "The mouth construction can plausibly house the characteristic telescoping inner jaw; show it directly when the crop permits.", "scoreDimension": "signatureTraits"},
+        {"id": "xeno.biomechanicalRibbing", "label": "Biomechanical ribbing", "requirement": "The torso and limbs combine organic exoskeleton, tendon-like channels and ribbed mechanical-looking structures rather than smooth fantasy armor.", "scoreDimension": "surfaceLanguage"},
+        {"id": "xeno.dorsalStructures", "label": "Back structures", "requirement": "Adult dorsal tubes or equivalent profile-correct back structures read clearly and connect anatomically to the upper torso.", "scoreDimension": "anatomy"},
+        {"id": "xeno.segmentedWeaponTail", "label": "Segmented weapon tail", "requirement": "A long articulated tail continues from the pelvis and ends in a credible blade or piercing structure, never a mammalian or reptile tail.", "scoreDimension": "silhouette"},
+        {"id": "xeno.longLimbProportions", "label": "Predatory limb proportions", "requirement": "The tall, lean body has extended limbs, clawed hands and a coherent predatory stance without human costume proportions.", "scoreDimension": "scaleAndProportion"}
+      ],
+      "forbiddenDrift": ["visible mammalian eyes", "short round skull", "horned demon silhouette", "ordinary dinosaur skin", "human in rubber suit proportions", "tail detached from pelvis", "random extra limbs"],
+      "promptDirectives": ["Make the eyeless elongated dome and tail readable in silhouette.", "Preserve coherent biomechanical anatomy at every joint.", "Use a new pose, camera and environment unrelated to any identifiable film still."]
+    },
+    {
+      "id": "xenomorph.queen",
+      "family": "xenomorph",
+      "label": "Xenomorph queen",
+      "appliesTo": ["queen", "hive matriarch"],
+      "requiredAnchors": [
+        {"id": "queen.transverseCrown", "label": "Wide transverse cranial crown", "requirement": "A broad, flattened crown extends laterally and rearward, creating a silhouette clearly distinct from a standard adult.", "scoreDimension": "silhouette"},
+        {"id": "queen.elongatedHeadUnderCrown", "label": "Elongated head beneath crown", "requirement": "The eyeless elongated primary head remains structurally readable beneath the crown, with jaws aligned to the neck.", "scoreDimension": "anatomy"},
+        {"id": "queen.secondaryArms", "label": "Small secondary arm pair", "requirement": "A smaller secondary pair of arms is visibly and coherently attached to the upper torso in addition to the main arms.", "scoreDimension": "signatureTraits"},
+        {"id": "queen.toweringHindLegs", "label": "Towering hind-leg stance", "requirement": "Massive load-bearing legs, elevated torso and long reach establish a matriarch much larger than a standard adult.", "scoreDimension": "scaleAndProportion"},
+        {"id": "queen.massiveBladedTail", "label": "Massive bladed tail", "requirement": "A long heavy segmented tail with a substantial weaponized terminal blade counterbalances the body.", "scoreDimension": "silhouette"},
+        {"id": "queen.biomechanicalCarapace", "label": "Layered biomechanical carapace", "requirement": "Crown, torso and limbs share coherent ribbed exoskeletal surface language rather than ornamental fantasy plating.", "scoreDimension": "surfaceLanguage"}
+      ],
+      "forbiddenDrift": ["standard adult head without crown", "only one arm pair", "dragon wings", "mammalian face", "small human scale", "insect abdomen replacing the established torso"],
+      "promptDirectives": ["Show the full crown width and both arm pairs.", "Use scale cues that establish queen stature.", "Keep the scene and pose entirely original."]
+    },
+    {
+      "id": "xenomorph.facehugger",
+      "family": "xenomorph",
+      "label": "Facehugger",
+      "appliesTo": ["facehugger", "egg parasite"],
+      "requiredAnchors": [
+        {"id": "facehugger.centralPalmBody", "label": "Central palm-like body", "requirement": "A compact flattened central body houses the organism; it must not read as a spider thorax or humanoid torso.", "scoreDimension": "silhouette"},
+        {"id": "facehugger.eightDigits", "label": "Eight grasping digits", "requirement": "Four long articulated digits per side are countable or unambiguously arranged around the central body.", "scoreDimension": "anatomy"},
+        {"id": "facehugger.longCoilingTail", "label": "Long coiling tail", "requirement": "A single long muscular prehensile tail extends from the rear and remains distinct from the eight digits.", "scoreDimension": "signatureTraits"},
+        {"id": "facehugger.paleTendonSurface", "label": "Pale tendon-like surface", "requirement": "Surface anatomy reads as pale, fibrous and organic with joints and tendons, not furry, armored or metallic.", "scoreDimension": "surfaceLanguage"}
+      ],
+      "forbiddenDrift": ["six or ten legs", "spider abdomen", "scorpion claws", "multiple tails", "visible mammalian face", "mechanical drone"],
+      "promptDirectives": ["Keep all eight digits anatomically separable.", "Make the long tail visible without confusing it with a ninth leg."]
+    },
+    {
+      "id": "xenomorph.chestburster",
+      "family": "xenomorph",
+      "label": "Chestburster",
+      "appliesTo": ["chestburster", "serpentine hatchling"],
+      "requiredAnchors": [
+        {"id": "chestburster.serpentineBody", "label": "Serpentine hatchling body", "requirement": "A small elongated flexible body reads as an immature organism, not a miniature adult standing upright.", "scoreDimension": "silhouette"},
+        {"id": "chestburster.elongatedHead", "label": "Immature elongated head", "requirement": "The head already carries the family elongation and prominent jaw construction without ordinary eyes.", "scoreDimension": "signatureTraits"},
+        {"id": "chestburster.smallForelimbs", "label": "Small coherent forelimbs", "requirement": "Small forelimbs attach coherently near the upper body and are neither full adult arms nor random tentacles.", "scoreDimension": "anatomy"},
+        {"id": "chestburster.wetOrganicSurface", "label": "Wet immature tissue", "requirement": "The surface reads as newly emerged organic tissue with early ribbing rather than mature plated armor.", "scoreDimension": "surfaceLanguage"}
+      ],
+      "forbiddenDrift": ["miniature adult body", "human baby anatomy", "snake head", "ordinary visible eyes", "full dorsal tube array", "oversized queen crown"],
+      "promptDirectives": ["Prioritize immature scale and serpentine movement.", "Avoid explicit gore unless the card brief requires it; morphology must remain readable."]
+    },
+    {
+      "id": "xenomorph.runner",
+      "family": "xenomorph",
+      "label": "Quadrupedal runner variant",
+      "appliesTo": ["runner", "dog-derived adult", "fast quadrupedal xenomorph"],
+      "requiredAnchors": [
+        {"id": "runner.quadrupedalLine", "label": "Low quadrupedal line", "requirement": "Spine, shoulder and pelvis form a low fast quadrupedal silhouette designed for sustained four-limb locomotion.", "scoreDimension": "silhouette"},
+        {"id": "runner.xenoHead", "label": "Xenomorph cranial identity", "requirement": "The eyeless elongated dome and jaw construction remain unmistakably xenomorph despite host-derived proportions.", "scoreDimension": "signatureTraits"},
+        {"id": "runner.hostAdaptedLimbs", "label": "Host-adapted running limbs", "requirement": "Fore and hind limbs have coherent load-bearing joints and digit structure; no arbitrary canine head or paws.", "scoreDimension": "anatomy"},
+        {"id": "runner.whipTail", "label": "Long balancing tail", "requirement": "The segmented weaponized tail balances the forward-driving runner posture.", "scoreDimension": "silhouette"}
+      ],
+      "forbiddenDrift": ["ordinary dog with armor", "biped-only stance", "canine muzzle", "visible eyes", "short tail", "extra leg pairs"],
+      "promptDirectives": ["Read as a xenomorph optimized for quadrupedal speed, not a fantasy hound."]
+    },
+    {
+      "id": "xenomorph.praetorian",
+      "family": "xenomorph",
+      "label": "Praetorian or heavy hive guard",
+      "appliesTo": ["praetorian", "royal guard", "crusher-like hive elite"],
+      "requiredAnchors": [
+        {"id": "praetorian.heavyCranialShield", "label": "Heavy cranial shield", "requirement": "A reinforced head shield expands the baseline dome but remains narrower and less laterally dominant than a queen crown.", "scoreDimension": "variantContinuity"},
+        {"id": "praetorian.armoredMass", "label": "Reinforced body mass", "requirement": "Torso, shoulders and load-bearing limbs are substantially heavier than a drone while preserving xenomorph biomechanical structure.", "scoreDimension": "scaleAndProportion"},
+        {"id": "praetorian.eyelessJaw", "label": "Eyeless xenomorph face and jaw", "requirement": "No visible eyes or vertebrate muzzle; the family jaw system remains intact.", "scoreDimension": "signatureTraits"},
+        {"id": "praetorian.weaponTail", "label": "Armored weapon tail", "requirement": "A long segmented tail with a powerful terminal weapon is fully integrated into the pelvis.", "scoreDimension": "silhouette"}
+      ],
+      "forbiddenDrift": ["queen-sized transverse crown", "generic horned brute", "visible eyes", "stone golem surface", "missing tail"],
+      "promptDirectives": ["Balance royal-guard mass with unmistakable xenomorph anatomy."]
+    },
+    {
+      "id": "yautja.hunter",
+      "family": "yautja",
+      "label": "Armored yautja hunter",
+      "appliesTo": ["masked hunter", "elder", "young blood", "clan warrior"],
+      "requiredAnchors": [
+        {"id": "yautja.tallBroadFrame", "label": "Tall broad humanoid frame", "requirement": "A very tall, broad-shouldered, powerful humanoid has long reach and non-human mass distribution without becoming a generic bodybuilder.", "scoreDimension": "silhouette"},
+        {"id": "yautja.mandibularHeadLogic", "label": "Mandibular head logic", "requirement": "Even under a mask, jaw width, neck and head volume plausibly accommodate four-part mandibles rather than a human face.", "scoreDimension": "anatomy"},
+        {"id": "yautja.quillDreadlocks", "label": "Thick quill-like locks", "requirement": "Numerous thick dark quill-like locks emerge anatomically from the rear and sides of the head, with beads optional by role.", "scoreDimension": "signatureTraits"},
+        {"id": "yautja.asymmetricHuntArmor", "label": "Asymmetric layered hunting armor", "requirement": "Armor combines practical plates, mesh or flexible underlayer, trophies and exposed mobility zones; it is not a symmetrical knight suit.", "scoreDimension": "surfaceLanguage"},
+        {"id": "yautja.biometricMask", "label": "Profile-specific biomask", "requirement": "When masked, the helmet has a purposeful non-human faceplate, integrated vision system and role-specific geometry without copying an exact official prop.", "scoreDimension": "variantContinuity"},
+        {"id": "yautja.functionalLoadout", "label": "Functional hunting loadout", "requirement": "Weapons and tools mount coherently to gauntlets, shoulder, belt or back and respect range of motion.", "scoreDimension": "poseReadability"}
+      ],
+      "forbiddenDrift": ["human face under a decorative helmet", "thin ordinary human proportions", "braided human hair", "medieval plate knight", "generic samurai costume", "random neon cyberpunk armor", "identical official costume recreation"],
+      "promptDirectives": ["Design an original clan-specific armor arrangement while preserving species anatomy.", "Do not request or reproduce any performer likeness.", "Make mask, locks, armor and weapon mounts coherent from one camera angle."]
+    },
+    {
+      "id": "yautja.unmasked",
+      "family": "yautja",
+      "label": "Unmasked yautja",
+      "appliesTo": ["unmasked hunter", "unmasked elder", "yautja portrait"],
+      "requiredAnchors": [
+        {"id": "yautja.fourMandibles", "label": "Four articulated mandibles", "requirement": "Two upper and two lower lateral mandibles form a coherent four-part jaw around the central mouth; their hinges and closure path are plausible.", "scoreDimension": "signatureTraits"},
+        {"id": "yautja.centralMouth", "label": "Central inner mouth", "requirement": "A central mouth sits inside the opened mandibles with non-human dental structure and no ordinary human lips.", "scoreDimension": "anatomy"},
+        {"id": "yautja.deepSetEyes", "label": "Deep-set non-performer eyes", "requirement": "Small deep-set eyes sit above the mandibles in an original non-human face that resembles no real performer.", "scoreDimension": "anatomy"},
+        {"id": "yautja.quillCrown", "label": "Quill-lock crown", "requirement": "Thick quill-like locks originate across the rear and sides of the skull and retain believable weight and attachment.", "scoreDimension": "silhouette"},
+        {"id": "yautja.mottledSkin", "label": "Mottled leathery skin", "requirement": "Skin reads as thick, leathery and variably mottled, not mammalian fur, smooth human skin or reptile scales pasted onto a human face.", "scoreDimension": "surfaceLanguage"}
+      ],
+      "forbiddenDrift": ["two mandibles", "insect pincers detached from jaw", "human lips", "actor likeness", "ordinary dreadlocked human", "orc tusks", "reptile muzzle"],
+      "promptDirectives": ["Explicitly count and articulate four mandibles.", "Build a wholly original non-performer face."]
+    },
+    {
+      "id": "yautja.hound",
+      "family": "yautja",
+      "label": "Yautja hunting hound",
+      "appliesTo": ["predator hound", "hunting beast", "tracker beast"],
+      "requiredAnchors": [
+        {"id": "hound.powerfulQuadruped", "label": "Powerful quadrupedal hunter", "requirement": "A coherent muscular quadruped has a low pursuit posture, load-bearing limbs and a non-domestic silhouette.", "scoreDimension": "silhouette"},
+        {"id": "hound.cranialSpines", "label": "Distinctive cranial and dorsal spines", "requirement": "Profile-defining spines or quills emerge from anatomically credible plates rather than floating or decorative placement.", "scoreDimension": "signatureTraits"},
+        {"id": "hound.alienJaw", "label": "Alien predatory jaw", "requirement": "The head and jaw remain alien and functional, not a recognizable Earth dog breed with added armor.", "scoreDimension": "anatomy"},
+        {"id": "hound.hideAndPlate", "label": "Leathery hide and natural plate", "requirement": "Surface transitions between tough hide and natural armor with no synthetic pet gear unless specified by the brief.", "scoreDimension": "surfaceLanguage"}
+      ],
+      "forbiddenDrift": ["Earth dog breed", "xenomorph dome", "human teeth", "decorative antlers", "six limbs", "robot animal"],
+      "promptDirectives": ["Keep the creature distinct from both an Earth canine and a xenomorph."]
+    },
+    {
+      "id": "engineer.humanoid",
+      "family": "engineer",
+      "label": "Engineer humanoid",
+      "appliesTo": ["engineer", "creator humanoid", "pressure-suited engineer"],
+      "requiredAnchors": [
+        {"id": "engineer.monumentalHumanlikeScale", "label": "Monumental humanlike scale", "requirement": "A tall, powerfully proportioned humanoid reads as related to humanity but physically monumental and unnervingly idealized.", "scoreDimension": "scaleAndProportion"},
+        {"id": "engineer.hairlessPaleHead", "label": "Hairless pale head", "requirement": "The head is hairless, pale and sculptural with an elongated cranial volume; it must not reproduce a specific performer's face.", "scoreDimension": "signatureTraits"},
+        {"id": "engineer.deepDarkEyes", "label": "Deep dark eyes", "requirement": "Deep-set dark eyes and restrained non-human facial proportions create the correct species read without actor likeness.", "scoreDimension": "anatomy"},
+        {"id": "engineer.sculpturalMusculature", "label": "Sculptural musculature", "requirement": "Body structure is dense and anatomical, with smooth monumental forms rather than a grey alien or ordinary bodybuilder.", "scoreDimension": "silhouette"},
+        {"id": "engineer.biomechanicalSuitOption", "label": "Integrated biomechanical suit", "requirement": "When suited, ribbed pressure architecture integrates with neck, torso and limbs as engineered life-support, not generic armor.", "scoreDimension": "surfaceLanguage"}
+      ],
+      "forbiddenDrift": ["specific actor likeness", "small grey alien", "pointed elf ears", "ordinary human astronaut", "xenomorph dome", "fantasy giant", "generic power armor"],
+      "promptDirectives": ["Use an original face built from species-level written traits only.", "Keep the figure monumental through proportion and environmental scale cues."]
+    },
+    {
+      "id": "hybrid.predalien",
+      "family": "hybrid",
+      "label": "Xenomorph-yautja hybrid",
+      "appliesTo": ["predalien", "yautja-derived xenomorph"],
+      "requiredAnchors": [
+        {"id": "predalien.xenoBodyPlan", "label": "Dominant xenomorph body plan", "requirement": "The creature remains fundamentally xenomorph in torso, limbs, eyeless head and tail, not a yautja wearing organic armor.", "scoreDimension": "silhouette"},
+        {"id": "predalien.mandibularJaw", "label": "Integrated yautja-derived mandibles", "requirement": "Four-part mandible influence is integrated into the outer jaw while preserving the xenomorph inner-jaw system.", "scoreDimension": "anatomy"},
+        {"id": "predalien.quillStructures", "label": "Host-derived cranial quills", "requirement": "Thick quill-like appendages emerge organically behind the elongated cranium without becoming human hair.", "scoreDimension": "signatureTraits"},
+        {"id": "predalien.heavyHybridMass", "label": "Heavy hybrid mass", "requirement": "Shoulders, neck and limbs carry greater host-derived mass while retaining biomechanical ribbing and predatory articulation.", "scoreDimension": "scaleAndProportion"},
+        {"id": "predalien.weaponTail", "label": "Xenomorph weapon tail", "requirement": "A long segmented bladed tail remains fully present and anatomically connected.", "scoreDimension": "signatureTraits"}
+      ],
+      "forbiddenDrift": ["masked yautja", "ordinary yautja torso", "human dreadlocks", "visible eyes", "missing inner jaw", "missing tail", "generic horned demon"],
+      "promptDirectives": ["Blend host-derived mandibles and quills into a dominant xenomorph anatomy; do not split the design into costume parts."]
+    },
+    {
+      "id": "hybrid.neomorph",
+      "family": "hybrid",
+      "label": "Pale neomorphic organism",
+      "appliesTo": ["neomorph", "pale spore-born hunter"],
+      "requiredAnchors": [
+        {"id": "neomorph.paleTranslucentBody", "label": "Pale translucent tissue", "requirement": "A pale, wet, faintly translucent body has taut organic tissue rather than black biomechanical plating.", "scoreDimension": "surfaceLanguage"},
+        {"id": "neomorph.smoothPointedCranium", "label": "Smooth pointed cranium", "requirement": "The eyeless head is smooth and slopes into a pointed rear profile distinct from the long tubular standard xenomorph dome.", "scoreDimension": "silhouette"},
+        {"id": "neomorph.splitPredatoryMouth", "label": "Wide predatory mouth", "requirement": "A wide mouth opens through the lower face with needle-like teeth and coherent jaw tissue, without yautja mandibles.", "scoreDimension": "anatomy"},
+        {"id": "neomorph.leanDigitigradeLimbs", "label": "Lean digitigrade limbs", "requirement": "Long lean limbs support explosive quadrupedal or bipedal motion with coherent elongated digits.", "scoreDimension": "scaleAndProportion"},
+        {"id": "neomorph.longTaperingTail", "label": "Long tapering tail", "requirement": "A long organic tapering tail balances the body and remains visually distinct from the heavier segmented xenomorph tail.", "scoreDimension": "variantContinuity"}
+      ],
+      "forbiddenDrift": ["black adult xenomorph", "dorsal tube array", "queen crown", "visible eyes", "yautja mandibles", "ordinary goblin", "armored dinosaur"],
+      "promptDirectives": ["Keep the pale organic variant visually distinct from the black biomechanical xenomorph family."]
+    },
+    {
+      "id": "hybrid.deacon",
+      "family": "hybrid",
+      "label": "Deacon-like engineer-derived organism",
+      "appliesTo": ["deacon", "engineer-derived xenoid"],
+      "requiredAnchors": [
+        {"id": "deacon.blueGreyTissue", "label": "Blue-grey organic tissue", "requirement": "Dense blue-grey organic skin distinguishes the organism from black plated xenomorph and pale neomorph surfaces.", "scoreDimension": "surfaceLanguage"},
+        {"id": "deacon.tallPointedCranium", "label": "Tall pointed cranium", "requirement": "The cranium rises and tapers rearward into a tall pointed profile rather than a long horizontal dome.", "scoreDimension": "silhouette"},
+        {"id": "deacon.protrusibleJaw", "label": "Protrusible toothed jaw", "requirement": "The mouth and jaw can thrust forward with a coherent ring of predatory teeth, while remaining distinct from a standard inner jaw.", "scoreDimension": "signatureTraits"},
+        {"id": "deacon.newbornHumanoidPlan", "label": "Newborn humanoid-xenoid plan", "requirement": "The body is a tall emerging biped with elongated limbs and coherent immature proportions, not a standard adult xenomorph recolor.", "scoreDimension": "anatomy"}
+      ],
+      "forbiddenDrift": ["standard horizontal xenomorph dome", "queen crown", "yautja mandibles", "visible human eyes", "generic blue demon", "full armor"],
+      "promptDirectives": ["Preserve the vertical pointed cranium and engineer-derived body read."]
+    },
+    {
+      "id": "hybrid.black-goo-mutant",
+      "family": "hybrid",
+      "label": "Black pathogen mutant",
+      "appliesTo": ["black goo mutant", "pathogen-altered human", "pathogen-altered fauna"],
+      "requiredAnchors": [
+        {"id": "mutant.recognizableHostPlan", "label": "Recognizable host body plan", "requirement": "The original host species remains readable in skeletal plan and scale beneath the mutation.", "scoreDimension": "variantContinuity"},
+        {"id": "mutant.directionalMutation", "label": "Directional anatomical mutation", "requirement": "Elongation, tissue tension, pigmentation and joint change follow a coherent biological progression rather than random extra parts.", "scoreDimension": "anatomy"},
+        {"id": "mutant.darkVascularContamination", "label": "Dark vascular contamination", "requirement": "Dark vascular or fluid-like contamination travels through tissue with plausible origin and flow; it is not decorative paint.", "scoreDimension": "surfaceLanguage"},
+        {"id": "mutant.predatoryTransition", "label": "Predatory transition", "requirement": "Posture, hands, jaw or limbs visibly transition toward a dangerous organism while retaining host-derived evidence.", "scoreDimension": "silhouette"}
+      ],
+      "forbiddenDrift": ["generic zombie", "random tentacle mass", "standard xenomorph copy", "superhero transformation", "unmotivated extra limbs", "actor likeness"],
+      "promptDirectives": ["Make the mutation biologically directional and rooted in an original host face/body."]
+    },
+    {
+      "id": "hybrid.trilobite",
+      "family": "hybrid",
+      "label": "Large pale trilobite organism",
+      "appliesTo": ["trilobite", "large tentacled proto-parasite"],
+      "requiredAnchors": [
+        {"id": "trilobite.centralDiscBody", "label": "Large central disc body", "requirement": "A broad pale central body anchors all appendages and reads as a single organism rather than a pile of tentacles.", "scoreDimension": "silhouette"},
+        {"id": "trilobite.multipleMuscularArms", "label": "Multiple muscular grasping arms", "requirement": "Long thick arms radiate with distinct roots and coherent joints or flex zones, suited to restraining a much larger host.", "scoreDimension": "anatomy"},
+        {"id": "trilobite.centralOrifice", "label": "Central parasitic orifice", "requirement": "The underside or center contains a coherent feeding or implantation opening tied to the body structure.", "scoreDimension": "signatureTraits"},
+        {"id": "trilobite.paleWetMembrane", "label": "Pale wet membrane", "requirement": "Surface is pale, wet and muscular with translucent membrane, not cephalopod camouflage or armored shell.", "scoreDimension": "surfaceLanguage"}
+      ],
+      "forbiddenDrift": ["ordinary octopus", "facehugger at hand scale", "flower petals", "mechanical tentacles", "detached floating limbs", "xenomorph dome"],
+      "promptDirectives": ["Use human or architecture scale cues to show that this is much larger than a facehugger."]
+    },
+    {
+      "id": "hybrid.hammerpede",
+      "family": "hybrid",
+      "label": "Hammerpede",
+      "appliesTo": ["hammerpede", "cobra-like pathogen organism"],
+      "requiredAnchors": [
+        {"id": "hammerpede.serpentineBody", "label": "Pale serpentine body", "requirement": "A limbless flexible pale body coils and rears with coherent musculature and scale.", "scoreDimension": "silhouette"},
+        {"id": "hammerpede.flaredHammerHead", "label": "Flared hammer-shaped head", "requirement": "The head broadens laterally into a distinctive hammer or hood profile with a central mouth construction.", "scoreDimension": "signatureTraits"},
+        {"id": "hammerpede.noOrdinaryEyes", "label": "No ordinary snake eyes", "requirement": "The cranial surface avoids ordinary snake eyes and establishes alien sensory anatomy.", "scoreDimension": "anatomy"},
+        {"id": "hammerpede.slickOrganicSkin", "label": "Slick organic skin", "requirement": "Wet pale skin has subtle vascular and tendon detail rather than scales, fur or biomechanical armor.", "scoreDimension": "surfaceLanguage"}
+      ],
+      "forbiddenDrift": ["ordinary cobra", "visible reptile eyes", "arms or legs", "xenomorph head", "dragon horns", "mechanical body"],
+      "promptDirectives": ["Make the laterally flared head readable from the chosen angle."]
+    },
+    {
+      "id": "human.original-character",
+      "family": "human",
+      "label": "Original human character",
+      "appliesTo": ["marine", "colonist", "scientist", "corporate operative", "synthetic with human appearance"],
+      "requiredAnchors": [
+        {"id": "human.originalFace", "label": "Original non-performer face", "requirement": "Facial geometry, hair, age cues and expression form a new person who does not resemble a franchise performer or public figure.", "scoreDimension": "signatureTraits"},
+        {"id": "human.correctAnatomy", "label": "Correct human anatomy", "requirement": "Hands, face, limbs and joints are natural, countable and free of generation artifacts.", "scoreDimension": "anatomy"},
+        {"id": "human.roleSilhouette", "label": "Role-readable silhouette", "requirement": "Clothing, posture and carried tools communicate the role before fine detail, without recreating an identifiable costume exactly.", "scoreDimension": "silhouette"},
+        {"id": "human.functionalWardrobe", "label": "Functional original wardrobe", "requirement": "Clothing and gear share a practical industrial language, fit the body and permit movement; insignia and branding are original.", "scoreDimension": "surfaceLanguage"},
+        {"id": "human.scaleContext", "label": "Believable scale context", "requirement": "Body, equipment and environment use consistent real-world scale and perspective.", "scoreDimension": "scaleAndProportion"}
+      ],
+      "forbiddenDrift": ["actor likeness", "public figure likeness", "copied costume", "official insignia", "extra fingers", "fused equipment", "generic superhero suit", "pin-up framing unrelated to role"],
+      "promptDirectives": ["State explicitly that the person and face are original and not based on an actor.", "Design role-specific clothing rather than reproducing a screen costume."]
+    },
+    {
+      "id": "object.faction-equipment",
+      "family": "object",
+      "label": "Faction equipment, weapon or vehicle",
+      "appliesTo": ["weapon", "tool", "armor", "mask", "vehicle", "container", "medical or scientific equipment"],
+      "requiredAnchors": [
+        {"id": "object.recognizableFunction", "label": "Recognizable function", "requirement": "Grip, trigger, controls, optics, hinges, apertures, joints or access points explain how the object is used.", "scoreDimension": "anatomy"},
+        {"id": "object.profileSilhouette", "label": "Profile-correct silhouette", "requirement": "The outer shape and mass distribution match the named object class and faction logic without becoming a generic prop.", "scoreDimension": "silhouette"},
+        {"id": "object.coherentConstruction", "label": "Coherent construction", "requirement": "Parts connect, articulate and bear loads plausibly; repeated details remain consistent and no component melts into another.", "scoreDimension": "signatureTraits"},
+        {"id": "object.factionMaterialLanguage", "label": "Faction material language", "requirement": "Materials, wear, manufacturing and energy cues consistently express human industrial, yautja hunting or engineer biomechanical origin.", "scoreDimension": "surfaceLanguage"},
+        {"id": "object.originalDesign", "label": "Original detailed design", "requirement": "The design preserves recognizable fictional function through written traits but does not duplicate an official prop, blueprint, logo or product shot.", "scoreDimension": "variantContinuity"},
+        {"id": "object.scaleReference", "label": "Correct operational scale", "requirement": "Hands, mounts, body, room or known interfaces establish plausible size and use.", "scoreDimension": "scaleAndProportion"}
+      ],
+      "forbiddenDrift": ["nonfunctional greeble collage", "copied official prop", "official logo", "impossible grip", "floating components", "melted symmetry", "wrong faction materials", "unreadable scale"],
+      "promptDirectives": ["Describe operating logic and attachment points, not only appearance.", "Create an original product silhouette and camera angle."]
+    },
+    {
+      "id": "object.smartgun-system",
+      "family": "object",
+      "label": "Harness-supported colonial smartgun system",
+      "baseProfile": "object.faction-equipment",
+      "appliesTo": ["smartgun", "smartgunner harness", "stabilized heavy infantry weapon"],
+      "requiredAnchors": [
+        {"id": "smartgun.articulatedSupportArm", "label": "Articulated support arm", "requirement": "The long weapon connects to a body-worn load harness through a multi-jointed stabilizing arm whose pivots clear the operator and carry its weight.", "scoreDimension": "anatomy"},
+        {"id": "smartgun.twoHandControl", "label": "Two-hand control geometry", "requirement": "Two distinct hand controls, trigger logic and forearm clearance create a credible firing grip without fused fingers or a shoulder-rifle stock.", "scoreDimension": "poseReadability"},
+        {"id": "smartgun.trackingAssembly", "label": "Integrated tracking assembly", "requirement": "A compact sensor and aiming assembly aligns with barrel, receiver and harness cabling instead of floating as decorative optics.", "scoreDimension": "signatureTraits"},
+        {"id": "smartgun.heavyBarrelSilhouette", "label": "Harnessed heavy-barrel silhouette", "requirement": "A long vented barrel and substantial receiver read as a stabilized squad support weapon, not an assault rifle, rotary minigun or shoulder cannon.", "scoreDimension": "silhouette"}
+      ],
+      "forbiddenDrift": ["ordinary rifle", "rotary minigun", "yautja shoulder caster", "floating weapon", "missing harness", "copied official prop geometry", "fused operator hands"],
+      "promptDirectives": ["Show the complete load path from barrel through articulated arm to the original body harness."]
+    },
+    {
+      "id": "object.power-loader-frame",
+      "family": "object",
+      "label": "Open industrial power-loader frame",
+      "baseProfile": "object.faction-equipment",
+      "appliesTo": ["power loader", "cargo exoskeleton", "human-operated loading frame"],
+      "requiredAnchors": [
+        {"id": "loader.openOperatorCage", "label": "Open operator cage", "requirement": "A visible human operator stands inside an open protective frame with limbs aligned to controls; the machine must not become a sealed robot or powered armor suit.", "scoreDimension": "silhouette"},
+        {"id": "loader.bilateralHydraulicArms", "label": "Bilateral hydraulic lifting arms", "requirement": "Two large articulated arms use visible pivots, cylinders and paired clamp manipulators with coherent reach and no duplicated joints.", "scoreDimension": "anatomy"},
+        {"id": "loader.loadBearingLegFrame", "label": "Load-bearing leg frame", "requirement": "Wide mechanical legs, braced ankles and stable industrial feet transfer lifting forces to the floor around—not through—the operator's body.", "scoreDimension": "scaleAndProportion"},
+        {"id": "loader.visibleHydraulicLogic", "label": "Visible hydraulic logic", "requirement": "Hoses, cylinders, guards and counterweights connect to the joints they actuate and remain readable under the chosen pose.", "scoreDimension": "signatureTraits"}
+      ],
+      "forbiddenDrift": ["sealed humanoid robot", "superhero power armor", "forklift cabin", "extra mechanical arms", "floating operator", "copied official prop geometry", "nonfunctional pistons"],
+      "promptDirectives": ["Keep the operator, open cage, two clamp arms and load-bearing leg frame visible together in an original industrial configuration."]
+    },
+    {
+      "id": "place.biomechanical",
+      "family": "place",
+      "label": "Biomechanical hive or ancient interior",
+      "appliesTo": ["hive", "nest", "engineer chamber", "biomechanical ruin", "organic corridor"],
+      "requiredAnchors": [
+        {"id": "place.bioStructuralContinuity", "label": "Biological-structural continuity", "requirement": "Ribs, conduits, vaults, membranes and load-bearing forms grow into one another with a consistent structural grammar.", "scoreDimension": "surfaceLanguage"},
+        {"id": "place.navigableScale", "label": "Navigable architectural scale", "requirement": "Floor, thresholds, chambers, passages and scale cues make the space usable rather than an abstract texture field.", "scoreDimension": "scaleAndProportion"},
+        {"id": "place.readableDepth", "label": "Readable depth and route", "requirement": "Foreground, middle ground and destination establish depth, navigation and a clear gameplay focal path.", "scoreDimension": "silhouette"},
+        {"id": "place.originalLayout", "label": "Original layout", "requirement": "Architecture, camera and lighting are independently composed and do not reconstruct an identifiable official set or still.", "scoreDimension": "variantContinuity"},
+        {"id": "place.noDecorativeNoise", "label": "Coherent detail hierarchy", "requirement": "Large structure leads medium ribbing and fine surface detail; random pipes and spikes do not erase the place's function.", "scoreDimension": "poseReadability"}
+      ],
+      "forbiddenDrift": ["copied film set", "flat ornamental wallpaper", "random tentacle cave", "Gothic cathedral with alien decals", "impossible doors", "official signage or logo", "no traversable floor"],
+      "promptDirectives": ["Invent a new floor plan and camera position.", "Use structural hierarchy and scale cues before surface ornament."]
+    },
+    {
+      "id": "place.human-industrial",
+      "family": "place",
+      "label": "Human industrial frontier environment",
+      "appliesTo": ["colony", "ship", "laboratory", "hangar", "refinery", "military outpost"],
+      "requiredAnchors": [
+        {"id": "industrial.functionalArchitecture", "label": "Functional industrial architecture", "requirement": "Doors, decks, ladders, rails, work zones and machinery support a clear human purpose and traffic flow.", "scoreDimension": "anatomy"},
+        {"id": "industrial.modularLanguage", "label": "Modular frontier language", "requirement": "Robust modular construction, exposed services and repairable panels create a practical frontier-future identity.", "scoreDimension": "surfaceLanguage"},
+        {"id": "industrial.humanScale", "label": "Human scale", "requirement": "Ceilings, controls, seats, doors and tools are dimensionally consistent with people and vehicles.", "scoreDimension": "scaleAndProportion"},
+        {"id": "industrial.originalLayout", "label": "Original layout and camera", "requirement": "The floor plan, prop arrangement, weather, light and view are original rather than a recreation of an official set or frame.", "scoreDimension": "variantContinuity"},
+        {"id": "industrial.gameplayRead", "label": "Gameplay-readable route", "requirement": "The image has a clear focal zone, route, threat line or defensible geometry suitable for the represented game state.", "scoreDimension": "poseReadability"}
+      ],
+      "forbiddenDrift": ["copied official set", "generic glossy space hotel", "cyberpunk city clutter", "nonfunctional machinery", "impossible scale", "official company logo", "random unreadable text"],
+      "promptDirectives": ["Describe the site's job, circulation and wear history.", "Use original signage symbols or no signage; never reproduce official branding."]
+    },
+    {
+      "id": "scene.multi-subject-original",
+      "family": "scene",
+      "label": "Original multi-subject key art or battle scene",
+      "appliesTo": ["home hero", "campaign scene", "battle board", "booster scene", "multi-faction encounter"],
+      "requiredAnchors": [
+        {"id": "scene.subjectProfileCoverage", "label": "All key subjects profiled", "requirement": "Every foreground or story-critical creature, person, object and location names a secondary profile and passes all of its anchors.", "scoreDimension": "signatureTraits"},
+        {"id": "scene.originalComposition", "label": "Original composition", "requirement": "Camera, poses, grouping, action beat, environment and lighting form a new composition unrelated to any identifiable official image.", "scoreDimension": "variantContinuity"},
+        {"id": "scene.clearVisualHierarchy", "label": "Clear visual hierarchy", "requirement": "A primary subject, secondary action and environment remain readable at target display size without a collage effect.", "scoreDimension": "poseReadability"},
+        {"id": "scene.consistentScale", "label": "Consistent inter-subject scale", "requirement": "People, creatures, equipment and architecture share coherent perspective, contact shadows and relative size.", "scoreDimension": "scaleAndProportion"},
+        {"id": "scene.noIdentityMerge", "label": "No identity merge", "requirement": "Silhouettes and anatomy remain separable; limbs, weapons, tails and armor do not merge between subjects.", "scoreDimension": "anatomy"}
+      ],
+      "forbiddenDrift": ["official poster recreation", "film-still camera match", "actor likeness", "logo or title treatment", "collage layout", "merged anatomy", "unprofiled key creature", "scale contradiction"],
+      "promptDirectives": ["List every key subject profile before generation.", "Design a new action beat and camera blocking from scratch."]
+    },
+    {
+      "id": "original.unclassified",
+      "family": "original",
+      "label": "Genuinely original unclassified subject",
+      "appliesTo": ["new fan-made creature", "new neutral object", "abstract non-canonical backdrop"],
+      "requiredAnchors": [
+        {"id": "original.briefDefinedSilhouette", "label": "Brief-defined silhouette", "requirement": "The brief specifies a unique outer shape and the result follows it consistently.", "scoreDimension": "silhouette"},
+        {"id": "original.coherentAnatomy", "label": "Coherent anatomy or construction", "requirement": "Every visible part has a plausible attachment, function and repeated design logic.", "scoreDimension": "anatomy"},
+        {"id": "original.distinctSignature", "label": "Distinct signature traits", "requirement": "At least three independently authored identifying traits are visible and verified.", "scoreDimension": "signatureTraits"},
+        {"id": "original.nonSubstitution", "label": "Not a fallback for known canon", "requirement": "The subject is genuinely new and is not using this profile to evade a more specific known-family profile.", "scoreDimension": "variantContinuity"},
+        {"id": "original.rightsSafe", "label": "Rights-safe original design", "requirement": "No official image input, protected asset, actor likeness, logo or copied composition contributes to the design.", "scoreDimension": "surfaceLanguage"}
+      ],
+      "forbiddenDrift": ["known creature assigned as unclassified", "third-party character resemblance", "copied concept art", "actor likeness", "logo", "random incoherent detail"],
+      "promptDirectives": ["Record why no narrower profile applies.", "Define at least three novel signature traits before generation."]
+    }
+  ]
+}

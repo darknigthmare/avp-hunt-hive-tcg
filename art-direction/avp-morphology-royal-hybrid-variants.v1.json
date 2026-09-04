@@ -1,0 +1,65 @@
+{
+  "schema": "avp-morphology-profile-extension-v1",
+  "version": "1.0.0",
+  "baseRegistry": "avp-morphology-profiles-v1@1.0.0",
+  "profiles": [
+    {
+      "id": "engineer.space-jockey-fossil",
+      "family": "engineer",
+      "label": "Fossilized space-jockey pilot",
+      "appliesTo": ["space jockey fossil", "ancient engineer pilot remains"],
+      "requiredAnchors": [
+        {"id": "jockey.monumentalSeatedPilot", "label": "Monumental seated pilot", "requirement": "Huge humanoid remains sit permanently aligned to a pilot station, with scale proved by architecture or explorers.", "scoreDimension": "scaleAndProportion"},
+        {"id": "jockey.ribbedPressureSuitSkeleton", "label": "Fossilized ribbed pressure suit", "requirement": "Skeletal remains and ribbed biomechanical pressure suit have fused through age while retaining distinct torso, arms and head.", "scoreDimension": "surfaceLanguage"},
+        {"id": "jockey.trunkRespirator", "label": "Trunk-like respirator", "requirement": "A long curved breathing conduit joins facial apparatus to chest or pilot system; it reads as equipment, not an elephant face.", "scoreDimension": "signatureTraits"},
+        {"id": "jockey.integratedPilotChair", "label": "Integrated pilot chair", "requirement": "Spine, arms, controls and support cradle align functionally in a newly designed cockpit layout.", "scoreDimension": "anatomy"},
+        {"id": "jockey.originalExcavationView", "label": "Original archaeological view", "requirement": "Camera, chair orientation, chamber plan and lighting do not reconstruct the famous official reveal.", "scoreDimension": "variantContinuity"}
+      ],
+      "forbiddenDrift": ["exact film composition", "literal elephant skull", "small human skeleton", "generic throne", "living actor face"],
+      "promptDirectives": ["Invent a new pilot station and archaeological viewpoint while preserving suit-respirator-chair logic."]
+    },
+    {
+      "id": "hybrid.newborn",
+      "family": "hybrid",
+      "label": "Pale human-xenomorph newborn",
+      "appliesTo": ["Newborn", "pale human-xenomorph hybrid"],
+      "requiredAnchors": [
+        {"id": "newborn.paleFleshyGiant", "label": "Pale fleshy giant", "requirement": "A towering pale fleshy body has long heavy limbs, smooth vulnerable tissue and no standard black exoskeletal plates.", "scoreDimension": "silhouette"},
+        {"id": "newborn.skullHumanFace", "label": "Skull-like near-human face", "requirement": "Deep eye sockets, small original eyes and a skull-like nose area suggest human relation without actor likeness or yautja mandibles.", "scoreDimension": "signatureTraits"},
+        {"id": "newborn.hybridJaw", "label": "Hybrid predatory jaw", "requirement": "A broad organic jaw and predatory teeth integrate with the near-human skull instead of a standard xenomorph dome and inner jaw.", "scoreDimension": "anatomy"},
+        {"id": "newborn.noStandardTailArmor", "label": "Distinct newborn body plan", "requirement": "The pale newborn does not acquire an adult's long armored dome, dorsal tubes and bladed tail by default.", "scoreDimension": "variantContinuity"}
+      ],
+      "forbiddenDrift": ["standard xenomorph recolored white", "actor likeness", "yautja mandibles", "queen crown", "cute human infant"],
+      "promptDirectives": ["Build an original near-human skull face and pale giant body without performer reference."]
+    },
+    {
+      "id": "hybrid.white-hybrid",
+      "family": "hybrid",
+      "label": "White hybrid xenoid",
+      "appliesTo": ["white hybrid", "pale engineered xenoid"],
+      "requiredAnchors": [
+        {"id": "whitehybrid.paleArmoredXenoid", "label": "Pale armored xenoid", "requirement": "Ivory and grey semi-organic armor follows an elongated xenoid skeleton; physical pigmentation remains visible under neutral light.", "scoreDimension": "surfaceLanguage"},
+        {"id": "whitehybrid.hybridCranialFace", "label": "Hybrid cranial face", "requirement": "A shortened pale dome and restrained sensory pits distinguish this form from standard adult, Newborn and neomorph heads.", "scoreDimension": "variantContinuity"},
+        {"id": "whitehybrid.coherentLongLimbs", "label": "Coherent elongated limbs", "requirement": "Long humanoid-xenoid limbs and digits remain countable, load-bearing and free of fused anatomy.", "scoreDimension": "anatomy"},
+        {"id": "whitehybrid.taperedTail", "label": "Tapered hybrid tail", "requirement": "A pale segmented tail continues naturally from the pelvis and balances the stance.", "scoreDimension": "silhouette"}
+      ],
+      "forbiddenDrift": ["white color wash", "standard adult recolor", "Newborn face", "angel or demon", "actor likeness"],
+      "promptDirectives": ["Prove pale material under neutral light and keep this form distinct from Newborn and neomorph."]
+    },
+    {
+      "id": "hybrid.alien-king",
+      "family": "hybrid",
+      "label": "Alien king royal xenoid",
+      "appliesTo": ["alien king", "male royal xenoid"],
+      "requiredAnchors": [
+        {"id": "alienking.massiveRoyalBiped", "label": "Massive royal biped", "requirement": "A towering broad biped has heavy limbs and royal scale above warriors but remains more compact than a queen.", "scoreDimension": "scaleAndProportion"},
+        {"id": "alienking.longCrownedCranium", "label": "Long crowned cranium", "requirement": "An elongated eyeless head carries a narrow rear-swept royal crest distinct from the queen's broad transverse crown.", "scoreDimension": "signatureTraits"},
+        {"id": "alienking.primaryArmPair", "label": "Primary arm-pair anatomy", "requirement": "One dominant arm pair and two legs define the main plan unless the brief explicitly adds secondary royal limbs; no accidental duplicates.", "scoreDimension": "anatomy"},
+        {"id": "alienking.heavyWeaponTail", "label": "Heavy royal weapon tail", "requirement": "A long reinforced segmented tail with a large terminal blade counterbalances the royal torso.", "scoreDimension": "silhouette"},
+        {"id": "alienking.noQueenReproductivePlan", "label": "Distinct from queen anatomy", "requirement": "No broad queen crown, egg sac or matriarchal secondary-arm arrangement substitutes for the king profile.", "scoreDimension": "variantContinuity"}
+      ],
+      "forbiddenDrift": ["ordinary queen", "human king armor or crown", "dragon", "horned demon", "missing weapon tail"],
+      "promptDirectives": ["Use scale, narrow royal crest and body plan to distinguish king from queen and praetorian."]
+    }
+  ]
+}

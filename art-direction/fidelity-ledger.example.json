@@ -1,0 +1,75 @@
+{
+  "schema": "avp-art-fidelity-ledger-v1",
+  "version": "1.0.0",
+  "assets": [
+    {
+      "id": "EXAMPLE_DRONE",
+      "kind": "card",
+      "profile": "xenomorph.drone",
+      "active": true,
+      "sourceName": "example-drone-v1.png",
+      "sourceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "promptSha256": "a0b484ff8a0178d930cf79c24e5ec7ba7afa48776cb18dd0110f479de5afa506",
+      "decision": "accepted",
+      "score": 96,
+      "retryCount": 0,
+      "acceptedAttempt": 1,
+      "anchors": {
+        "xeno.elongatedEyelessDome": true,
+        "xeno.innerJaw": true,
+        "xeno.biomechanicalRibbing": true,
+        "xeno.dorsalStructures": true,
+        "xeno.segmentedWeaponTail": true,
+        "xeno.longLimbProportions": true,
+        "drone.smoothDome": true,
+        "drone.litheClimbingFrame": true
+      },
+      "hardFails": [],
+      "promptComplete": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "briefRevision": 1,
+          "cycleAttempt": 1,
+          "createdAt": "2026-09-04T12:00:00.000Z",
+          "provider": "openai-imagegen",
+          "sourceName": "example-drone-v1.png",
+          "sourceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "promptSha256": "a0b484ff8a0178d930cf79c24e5ec7ba7afa48776cb18dd0110f479de5afa506",
+          "dimensionScores": {
+            "silhouette": 96,
+            "anatomy": 96,
+            "signatureTraits": 96,
+            "surfaceLanguage": 96,
+            "scaleAndProportion": 96,
+            "poseReadability": 96,
+            "variantContinuity": 96
+          },
+          "score": 96,
+          "anchors": {
+            "xeno.elongatedEyelessDome": true,
+            "xeno.innerJaw": true,
+            "xeno.biomechanicalRibbing": true,
+            "xeno.dorsalStructures": true,
+            "xeno.segmentedWeaponTail": true,
+            "xeno.longLimbProportions": true,
+            "drone.smoothDome": true,
+            "drone.litheClimbingFrame": true
+          },
+          "hardFails": [],
+          "compliance": {
+            "originalComposition": true,
+            "officialImageInputUsed": false,
+            "actorLikeness": false,
+            "officialLogoTextOrWatermark": false
+          },
+          "promptComplete": true,
+          "decision": "accepted",
+          "rejectionReasons": [],
+          "reviewer": "Example visual QA reviewer",
+          "reviewedAt": "2026-09-04T12:10:00.000Z"
+        }
+      ]
+    }
+  ]
+}

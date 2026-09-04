@@ -30,7 +30,7 @@ const expectedDistribution = Object.freeze({
   total: cardIds.length + sceneIds.length,
 });
 const sorted = (values) => [...values].sort();
-const requiredReviewChecks = [
+const baseReviewChecks = [
   'decodedPng',
   'compositionApproved',
   'visualInspectionPassed',
@@ -38,6 +38,17 @@ const requiredReviewChecks = [
   'originalFanMadeDirection',
   'noOfficialAssetOrActorLikeness',
 ];
+const strictReviewChecks = [
+  ...baseReviewChecks,
+  'canonicalMorphologyFidelityPassed',
+  'provenancePromptComplete',
+  'retryPolicySatisfied',
+];
+const legacyArtRelease = Object.freeze({
+  version: '1.0.0-art.2',
+  revision: '1bbbbf9c83f92c66',
+  reviewRevision: '5950cd5dad1d2fe921b30a850e2512e410ed2c02c08929f173738a1a9553112c',
+});
 
 function assertExactCounts(actual, expected) {
   assert.deepEqual(Object.keys(actual).sort(), ['cards', 'scenes', 'total']);
@@ -65,15 +76,30 @@ test('art manifest has exact complete card and scene coverage', () => {
   const computedCoverage = { cards: cards.length, scenes: scenes.length, total: cards.length + scenes.length };
   assertExactCounts(manifest.coverage, computedCoverage);
   assertExactCounts(computedCoverage, expectedDistribution);
-  assert.equal(manifest.review.schema, 'avp-art-review-v1');
+  const isLegacy = manifest.version === legacyArtRelease.version &&
+    manifest.revision === legacyArtRelease.revision &&
+    manifest.review.schema === 'avp-art-review-v1' &&
+    manifest.review.revision === legacyArtRelease.reviewRevision;
+  const isStrictV2 = manifest.version === '1.0.0-art.3' && manifest.review.schema === 'avp-art-review-v2';
+  assert.equal(isLegacy || isStrictV2, true, 'only the frozen v1 artwork or a fidelity-certified v2 wave may ship');
   assert.match(manifest.review.revision, /^[a-f0-9]{64}$/);
   assert.equal(manifest.review.count, expectedDistribution.total);
   assert.equal(typeof manifest.review.reviewer, 'string');
   assert.ok(manifest.review.reviewer.trim());
   assert.equal(typeof manifest.review.reviewedAt, 'string');
   assert.ok(manifest.review.reviewedAt.trim());
-  assert.deepEqual(Object.keys(manifest.review.checklist).sort(), [...requiredReviewChecks].sort());
-  for (const check of requiredReviewChecks) assert.equal(manifest.review.checklist[check], true);
+  const expectedChecks = isStrictV2 ? strictReviewChecks : baseReviewChecks;
+  assert.deepEqual(Object.keys(manifest.review.checklist).sort(), [...expectedChecks].sort());
+  for (const check of expectedChecks) assert.equal(manifest.review.checklist[check], true);
+  if (isStrictV2) {
+    assert.equal(manifest.review.fidelity.threshold, 95);
+    assert.equal(manifest.review.fidelity.minimumDimensionScore, 90);
+    assert.equal(manifest.review.fidelity.accepted, expectedDistribution.total);
+    assert.equal(manifest.review.fidelity.promptComplete, expectedDistribution.total);
+    assert.equal(manifest.review.fidelity.hardFailures, 0);
+    assert.ok(manifest.review.fidelity.minimumScore >= 95);
+    assert.ok(Object.values(manifest.review.fidelity.minimumDimensionScores).every((score) => score >= 90));
+  }
 });
 
 test('every published artwork is a safe immutable WebP with matching SHA-256', async () => {
