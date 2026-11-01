@@ -1440,7 +1440,11 @@ window.AVP_ALIEN_BASE = {
       "summary": "",
       "relatedEntityIds": [],
       "crossgameReferences": [],
-      "legacyMainV1Link": null,
+      "legacyMainV1Link": {
+        "catalogueId": "faction.weyland_yutani",
+        "relation": "affiliation_only",
+        "note": "Rapprochement nominal / matériel à valider sur les sources primaires ; ne modifie pas la carte ni son équilibrage."
+      },
       "sourceWorkbookVerified": false
     },
     "H_POWERLOADER_RIPLEY": {
@@ -1479,7 +1483,11 @@ window.AVP_ALIEN_BASE = {
       "summary": "",
       "relatedEntityIds": [],
       "crossgameReferences": [],
-      "legacyMainV1Link": null,
+      "legacyMainV1Link": {
+        "catalogueId": "species.engineer",
+        "relation": "species_reference",
+        "note": "Rapprochement nominal / matériel à valider sur les sources primaires ; ne modifie pas la carte ni son équilibrage."
+      },
       "sourceWorkbookVerified": false
     },
     "E_SPACE_JOCKEY": {
@@ -2210,7 +2218,11 @@ window.AVP_ALIEN_BASE = {
           "relationship": "unverified_candidate"
         }
       ],
-      "legacyMainV1Link": null,
+      "legacyMainV1Link": {
+        "catalogueId": "weapon.m41a",
+        "relation": "equipment_model_reference",
+        "note": "Rapprochement nominal / matériel à valider sur les sources primaires ; ne modifie pas la carte ni son équilibrage."
+      },
       "sourceWorkbookVerified": false
     },
     "EQ_SMARTGUN": {
@@ -2233,7 +2245,11 @@ window.AVP_ALIEN_BASE = {
           "relationship": "unverified_candidate"
         }
       ],
-      "legacyMainV1Link": null,
+      "legacyMainV1Link": {
+        "catalogueId": "weapon.m56",
+        "relation": "equipment_model_reference",
+        "note": "Rapprochement nominal / matériel à valider sur les sources primaires ; ne modifie pas la carte ni son équilibrage."
+      },
       "sourceWorkbookVerified": false
     },
     "EQ_FLAMER": {
@@ -2249,7 +2265,11 @@ window.AVP_ALIEN_BASE = {
       "summary": "",
       "relatedEntityIds": [],
       "crossgameReferences": [],
-      "legacyMainV1Link": null,
+      "legacyMainV1Link": {
+        "catalogueId": "weapon.m240",
+        "relation": "equipment_model_reference",
+        "note": "Rapprochement nominal / matériel à valider sur les sources primaires ; ne modifie pas la carte ni son équilibrage."
+      },
       "sourceWorkbookVerified": false
     },
     "EQ_MARINE_ARMOR": {
@@ -2281,7 +2301,11 @@ window.AVP_ALIEN_BASE = {
       "summary": "Exosquelette industriel piloté; bonus TCG distinct de ses caractéristiques techniques.",
       "relatedEntityIds": [],
       "crossgameReferences": [],
-      "legacyMainV1Link": null,
+      "legacyMainV1Link": {
+        "catalogueId": "equipment.power_loader",
+        "relation": "equipment_model_reference",
+        "note": "Rapprochement nominal / matériel à valider sur les sources primaires ; ne modifie pas la carte ni son équilibrage."
+      },
       "sourceWorkbookVerified": false
     },
     "EQ_MOTION_TRACKER": {
@@ -2297,7 +2321,11 @@ window.AVP_ALIEN_BASE = {
       "summary": "",
       "relatedEntityIds": [],
       "crossgameReferences": [],
-      "legacyMainV1Link": null,
+      "legacyMainV1Link": {
+        "catalogueId": "equipment.motion_tracker",
+        "relation": "equipment_model_reference",
+        "note": "Rapprochement nominal / matériel à valider sur les sources primaires ; ne modifie pas la carte ni son équilibrage."
+      },
       "sourceWorkbookVerified": false
     },
     "EQ_WRISTBLADES": {
@@ -2320,7 +2348,11 @@ window.AVP_ALIEN_BASE = {
           "relationship": "unverified_candidate"
         }
       ],
-      "legacyMainV1Link": null,
+      "legacyMainV1Link": {
+        "catalogueId": "weapon.predator_wristblade",
+        "relation": "family_reference",
+        "note": "Rapprochement nominal / matériel à valider sur les sources primaires ; ne modifie pas la carte ni son équilibrage."
+      },
       "sourceWorkbookVerified": false
     },
     "EQ_PLASMACASTER": {
@@ -2343,7 +2375,11 @@ window.AVP_ALIEN_BASE = {
           "relationship": "unverified_candidate"
         }
       ],
-      "legacyMainV1Link": null,
+      "legacyMainV1Link": {
+        "catalogueId": "weapon.predator_plasma",
+        "relation": "family_reference",
+        "note": "Rapprochement nominal / matériel à valider sur les sources primaires ; ne modifie pas la carte ni son équilibrage."
+      },
       "sourceWorkbookVerified": false
     },
     "EQ_COMBISTICK": {
@@ -2372,7 +2408,11 @@ window.AVP_ALIEN_BASE = {
           "relationship": "unverified_candidate"
         }
       ],
-      "legacyMainV1Link": null,
+      "legacyMainV1Link": {
+        "catalogueId": "weapon.predator_spear",
+        "relation": "family_reference",
+        "note": "Rapprochement nominal / matériel à valider sur les sources primaires ; ne modifie pas la carte ni son équilibrage."
+      },
       "sourceWorkbookVerified": false
     },
     "EQ_SMART_DISC": {
@@ -2447,7 +2487,11 @@ window.AVP_ALIEN_BASE = {
           "relationship": "unverified_candidate"
         }
       ],
-      "legacyMainV1Link": null,
+      "legacyMainV1Link": {
+        "catalogueId": "equipment.bio_mask",
+        "relation": "family_reference",
+        "note": "Rapprochement nominal / matériel à valider sur les sources primaires ; ne modifie pas la carte ni son équilibrage."
+      },
       "sourceWorkbookVerified": false
     },
     "EQ_MEDICOMP": {
@@ -2573,7 +2617,11 @@ window.AVP_ALIEN_BASE = {
       "summary": "",
       "relatedEntityIds": [],
       "crossgameReferences": [],
-      "legacyMainV1Link": null,
+      "legacyMainV1Link": {
+        "catalogueId": "ship.nostromo",
+        "relation": "vessel_reference",
+        "note": "Rapprochement nominal / matériel à valider sur les sources primaires ; ne modifie pas la carte ni son équilibrage."
+      },
       "sourceWorkbookVerified": false
     },
     "L_DERELICT": {
@@ -2605,7 +2653,11 @@ window.AVP_ALIEN_BASE = {
       "summary": "Colonie humaine sur LV-426; lieu parent du nid et du processeur atmosphérique.",
       "relatedEntityIds": [],
       "crossgameReferences": [],
-      "legacyMainV1Link": null,
+      "legacyMainV1Link": {
+        "catalogueId": "location.hadleys_hope",
+        "relation": "location_reference",
+        "note": "Rapprochement nominal / matériel à valider sur les sources primaires ; ne modifie pas la carte ni son équilibrage."
+      },
       "sourceWorkbookVerified": false
     },
     "L_PROCESSOR": {
@@ -2639,7 +2691,11 @@ window.AVP_ALIEN_BASE = {
       "summary": "",
       "relatedEntityIds": [],
       "crossgameReferences": [],
-      "legacyMainV1Link": null,
+      "legacyMainV1Link": {
+        "catalogueId": "ship.sulaco",
+        "relation": "site_within_vessel",
+        "note": "Rapprochement nominal / matériel à valider sur les sources primaires ; ne modifie pas la carte ni son équilibrage."
+      },
       "sourceWorkbookVerified": false
     },
     "L_SEVASTOPOL": {
@@ -2655,7 +2711,11 @@ window.AVP_ALIEN_BASE = {
       "summary": "Station commerciale à démanteler, théâtre d'Alien: Isolation.",
       "relatedEntityIds": [],
       "crossgameReferences": [],
-      "legacyMainV1Link": null,
+      "legacyMainV1Link": {
+        "catalogueId": "location.sevastopol",
+        "relation": "location_reference",
+        "note": "Rapprochement nominal / matériel à valider sur les sources primaires ; ne modifie pas la carte ni son équilibrage."
+      },
       "sourceWorkbookVerified": false
     },
     "L_VAL_VERDE": {
@@ -2801,7 +2861,11 @@ window.AVP_ALIEN_BASE = {
       "summary": "",
       "relatedEntityIds": [],
       "crossgameReferences": [],
-      "legacyMainV1Link": null,
+      "legacyMainV1Link": {
+        "catalogueId": "location.fiorina161",
+        "relation": "location_reference",
+        "note": "Rapprochement nominal / matériel à valider sur les sources primaires ; ne modifie pas la carte ni son équilibrage."
+      },
       "sourceWorkbookVerified": false
     },
     "L_GUNNISON": {
@@ -2972,7 +3036,9 @@ window.AVP_ALIEN_BASE = {
         ],
         "scope": "film",
         "review": "media_appearance_to_verify_per_variant",
-        "linkedCardIds": []
+        "linkedCardIds": [
+          "E_ENGINEER"
+        ]
       },
       {
         "id": "species.neomorph",
@@ -3240,7 +3306,9 @@ window.AVP_ALIEN_BASE = {
         ],
         "scope": "film",
         "review": "media_appearance_to_verify_per_variant",
-        "linkedCardIds": []
+        "linkedCardIds": [
+          "H_WEYLAND_OP"
+        ]
       },
       {
         "id": "faction.seegson",
@@ -3474,7 +3542,9 @@ window.AVP_ALIEN_BASE = {
         ],
         "scope": "film",
         "review": "media_appearance_to_verify_per_variant",
-        "linkedCardIds": []
+        "linkedCardIds": [
+          "EQ_PULSE_RIFLE"
+        ]
       },
       {
         "id": "weapon.m56",
@@ -3486,7 +3556,9 @@ window.AVP_ALIEN_BASE = {
         ],
         "scope": "film",
         "review": "media_appearance_to_verify_per_variant",
-        "linkedCardIds": []
+        "linkedCardIds": [
+          "EQ_SMARTGUN"
+        ]
       },
       {
         "id": "weapon.m240",
@@ -3498,7 +3570,9 @@ window.AVP_ALIEN_BASE = {
         ],
         "scope": "film",
         "review": "media_appearance_to_verify_per_variant",
-        "linkedCardIds": []
+        "linkedCardIds": [
+          "EQ_FLAMER"
+        ]
       },
       {
         "id": "weapon.ua571",
@@ -3546,7 +3620,9 @@ window.AVP_ALIEN_BASE = {
         ],
         "scope": "predator",
         "review": "media_appearance_to_verify_per_variant",
-        "linkedCardIds": []
+        "linkedCardIds": [
+          "EQ_WRISTBLADES"
+        ]
       },
       {
         "id": "weapon.predator_plasma",
@@ -3558,7 +3634,9 @@ window.AVP_ALIEN_BASE = {
         ],
         "scope": "predator",
         "review": "media_appearance_to_verify_per_variant",
-        "linkedCardIds": []
+        "linkedCardIds": [
+          "EQ_PLASMACASTER"
+        ]
       },
       {
         "id": "weapon.predator_spear",
@@ -3570,7 +3648,9 @@ window.AVP_ALIEN_BASE = {
         ],
         "scope": "predator",
         "review": "media_appearance_to_verify_per_variant",
-        "linkedCardIds": []
+        "linkedCardIds": [
+          "EQ_COMBISTICK"
+        ]
       },
       {
         "id": "equipment.motion_tracker",
@@ -3582,7 +3662,9 @@ window.AVP_ALIEN_BASE = {
         ],
         "scope": "film",
         "review": "media_appearance_to_verify_per_variant",
-        "linkedCardIds": []
+        "linkedCardIds": [
+          "EQ_MOTION_TRACKER"
+        ]
       },
       {
         "id": "equipment.power_loader",
@@ -3595,7 +3677,8 @@ window.AVP_ALIEN_BASE = {
         "scope": "film",
         "review": "media_appearance_to_verify_per_variant",
         "linkedCardIds": [
-          "H_POWERLOADER_RIPLEY"
+          "H_POWERLOADER_RIPLEY",
+          "EQ_POWER_LOADER"
         ]
       },
       {
@@ -3620,7 +3703,9 @@ window.AVP_ALIEN_BASE = {
         ],
         "scope": "predator",
         "review": "media_appearance_to_verify_per_variant",
-        "linkedCardIds": []
+        "linkedCardIds": [
+          "EQ_BIOMASK"
+        ]
       },
       {
         "id": "equipment.cloak",
@@ -3668,7 +3753,9 @@ window.AVP_ALIEN_BASE = {
         ],
         "scope": "film",
         "review": "media_appearance_to_verify_per_variant",
-        "linkedCardIds": []
+        "linkedCardIds": [
+          "L_NOSTROMO"
+        ]
       },
       {
         "id": "ship.narcissus",
@@ -3692,7 +3779,9 @@ window.AVP_ALIEN_BASE = {
         ],
         "scope": "film",
         "review": "media_appearance_to_verify_per_variant",
-        "linkedCardIds": []
+        "linkedCardIds": [
+          "L_SULACO"
+        ]
       },
       {
         "id": "ship.prometheus",
@@ -3740,7 +3829,9 @@ window.AVP_ALIEN_BASE = {
         ],
         "scope": "film",
         "review": "media_appearance_to_verify_per_variant",
-        "linkedCardIds": []
+        "linkedCardIds": [
+          "L_HADLEYS_HOPE"
+        ]
       },
       {
         "id": "location.fiorina161",
@@ -3752,7 +3843,9 @@ window.AVP_ALIEN_BASE = {
         ],
         "scope": "film",
         "review": "media_appearance_to_verify_per_variant",
-        "linkedCardIds": []
+        "linkedCardIds": [
+          "L_FIORINA"
+        ]
       },
       {
         "id": "location.lv223",
@@ -3776,7 +3869,9 @@ window.AVP_ALIEN_BASE = {
         ],
         "scope": "expanded",
         "review": "media_appearance_to_verify_per_variant",
-        "linkedCardIds": []
+        "linkedCardIds": [
+          "L_SEVASTOPOL"
+        ]
       },
       {
         "id": "location.renaissance",

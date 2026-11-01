@@ -35,3 +35,7 @@ node scripts/check-alien-base-roundtrip.mjs --base ../alien_base --propose docs/
 ```
 
 Les divergences génèrent une **proposition de PR**, et ne sont jamais injectées automatiquement comme vérités canoniques dans Alien_base. La comparaison actuelle avec le catalogue importé confirme 158 identités et 14 champs sans divergence (audit GitHub du 1er novembre 2026).
+
+## Raccords documentaires supplémentaires (Chrome QA)
+
+Le test navigateur a montré qu'une recherche M41A ouvrait correctement sa notice, sans lien vers `EQ_PULSE_RIFLE`. Le registre intègre maintenant 16 références entre armes, matériel, vaisseaux et lieux du catalogue v1 et cartes du jeu : **40 liens historiques au total**. Les associations restent des références explicites à confirmer, jamais des identités biologiques ou des valeurs de gameplay imposées. Les tests couvrent aussi `H_WEYLAND_OP` comme simple affiliation à Weyland-Yutani.

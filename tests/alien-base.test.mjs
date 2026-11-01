@@ -36,7 +36,7 @@ test('the newer 632 entities are indexed without publishing extra playable cards
  assert.equal(base.registry.gameContentAdditions,0);
  assert.equal(base.codex.entries.length,68);
  assert.equal(new Set(base.codex.entries.map(x=>x.id)).size,68);
- assert.equal(base.codex.entries.reduce((count,e)=>count+e.linkedCardIds.length,0),24);
+ assert.equal(base.codex.entries.reduce((count,e)=>count+e.linkedCardIds.length,0),40);
  const ids=new Set(cards.map(c=>c.id));
  for(const entry of base.codex.entries){
   assert.ok(entry.name&&entry.type&&entry.scope&&entry.review);
@@ -55,6 +55,9 @@ test('the biological classification is distinct from card faction and v1 associa
  assert.equal(base.byCardId.X_FACEHUGGER.canonicalEntityId,'bio.xenomorph.facehugger');
  assert.equal(base.byCardId.H_WORKING_JOE.legacyMainV1Link.catalogueId,'faction.seegson');
  assert.equal(base.byCardId.H_WORKING_JOE.canonicalEntityId,null);
+ assert.ok(base.codex.entries.find(x=>x.id==='weapon.m41a').linkedCardIds.includes('EQ_PULSE_RIFLE'));
+ assert.equal(base.byCardId.EQ_PULSE_RIFLE.legacyMainV1Link.catalogueId,'weapon.m41a');
+ assert.equal(base.byCardId.H_WEYLAND_OP.legacyMainV1Link.relation,'affiliation_only');
 });
 
 test('28 crossgame leads remain non-certified and contain no private source paths',()=>{
