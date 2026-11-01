@@ -1,0 +1,45 @@
+name: AVP TCG real browser QA
+
+on:
+  pull_request:
+  push:
+    branches: [feat/alien-base-encyclopedia-20261101]
+
+permissions:
+  contents: read
+
+jobs:
+  desktop-mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install and build
+        run: |
+          npm ci
+          npm run build
+      - name: Start local production server
+        run: |
+          node scripts/serve.mjs dist > /tmp/avp-tcg-qa-server.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:4173/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/avp-tcg-qa-server.log
+          exit 1
+      - name: Real headless Chrome desktop/mobile Codex QA
+        run: node scripts/qa-browser.mjs http://127.0.0.1:4173
+      - name: Upload screenshots and server logs for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: avp-codex-qa-captures
+          path: |
+            .qa-*.png
+            /tmp/avp-tcg-qa-server.log
+          if-no-files-found: ignore
+          retention-days: 7
