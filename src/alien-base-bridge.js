@@ -9,7 +9,13 @@ export function getSharedRecord(category,id){return typeof id==='string'&&Object
 const masterCardsByLegacyId=new Map(shared.records.tcgCards.map(record=>[record.legacyId,record]));
 export function getSharedCardId(card){if(!card||typeof card.id!=='string'||!/^[A-Za-z][A-Za-z0-9_]{1,60}$/.test(card.id))return null;return masterCardsByLegacyId.get(card.id)?.id??null}
 export function validateSharedGameCards(cards){if(!Array.isArray(cards)||cards.length!==158)return{valid:false,reason:'TCG card count drift'};const ids=cards.map(getSharedCardId);if(ids.some(x=>!x)||new Set(ids).size!==ids.length)return{valid:false,reason:'Invalid card ids'};if(shared.records.weapons.some(x=>x.legacyId.startsWith('proposed-')&&x.admission!=='research-only'))return{valid:false,reason:'Research-only admission'};return{valid:true,count:ids.length}}
-if(typeof window!=='undefined'&&validateSharedGameCards(window.AVP_DATA?.cards).valid){
+function registerBrowserBridge(){
+ if(window.AVP_ALIEN_BASE||!validateSharedGameCards(window.AVP_DATA?.cards).valid)return;
  const links=Object.freeze(Object.fromEntries(window.AVP_DATA.cards.map(card=>[card.id,getSharedCardId(card)])));
  window.AVP_ALIEN_BASE=Object.freeze({version:ALIEN_BASE_VERSION,counts:ALIEN_BASE_COUNTS,find:getSharedRecord,cardLinks:links});
+}
+if(typeof window!=='undefined'){
+ // Wait for all classic deferred scripts before attaching the read-only bridge.
+ if(typeof document!=='undefined'&&document.readyState==='loading')document.addEventListener('DOMContentLoaded',registerBrowserBridge,{once:true});
+ else registerBrowserBridge();
 }

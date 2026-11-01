@@ -8,3 +8,19 @@ test('read-only files are explicitly deployed and offline cached',()=>{const fil
 test('legacy mixed-case card IDs retain exact identity',()=>{assert.equal(getSharedCardId({id:'EQ_AMPule'}),'avptcg:card:EQ_AMPule');assert.equal(validateSharedGameCards(cards).valid,true)});
 
 test('every official TCG game card resolves by exact legacy ID to the imported master record',()=>{assert.equal(ALIEN_BASE_COUNTS.tcgCards,158);assert.equal(ALIEN_BASE_COUNTS.enemyFamilies,52);assert.equal(ALIEN_BASE_COUNTS.mediaCoverage,29);for(const card of cards){const id=getSharedCardId(card);assert.ok(id,'no master record for '+card.id);assert.equal(getSharedRecord('tcgCards',id)?.name,card.name)}assert.equal(getSharedCardId({id:'NOT_IMPORTED_CARD'}),null)});
+
+test('browser bridge registration waits for the existing deferred TCG catalog',async()=>{
+ const previousWindow=globalThis.window,previousDocument=globalThis.document;
+ const events=new Map();
+ try{
+  globalThis.window={AVP_DATA:undefined};
+  globalThis.document={readyState:'loading',addEventListener(name,listener,options){events.set(name,{listener,options})}};
+  await import('../src/alien-base-bridge.js?browser-boot-test');
+  assert.equal(globalThis.window.AVP_ALIEN_BASE,undefined);
+  assert.equal(events.get('DOMContentLoaded')?.options?.once,true);
+  globalThis.window.AVP_DATA={cards};
+  events.get('DOMContentLoaded').listener();
+  assert.equal(Object.keys(globalThis.window.AVP_ALIEN_BASE.cardLinks).length,158);
+  assert.equal(globalThis.window.AVP_ALIEN_BASE.cardLinks.EQ_AMPule,'avptcg:card:EQ_AMPule');
+ }finally{if(previousWindow===undefined)delete globalThis.window;else globalThis.window=previousWindow;if(previousDocument===undefined)delete globalThis.document;else globalThis.document=previousDocument}
+});
