@@ -39,3 +39,7 @@ Les divergences génèrent une **proposition de PR**, et ne sont jamais injecté
 ## Raccords documentaires supplémentaires (Chrome QA)
 
 Le test navigateur a montré qu'une recherche M41A ouvrait correctement sa notice, sans lien vers `EQ_PULSE_RIFLE`. Le registre intègre maintenant 16 références entre armes, matériel, vaisseaux et lieux du catalogue v1 et cartes du jeu : **40 liens historiques au total**. Les associations restent des références explicites à confirmer, jamais des identités biologiques ou des valeurs de gameplay imposées. Les tests couvrent aussi `H_WEYLAND_OP` comme simple affiliation à Weyland-Yutani.
+
+## Arsenal de recherche et compléments (non jouables)
+
+La troisième passe d'Alien_base fournit maintenant aussi **200 fiches d'armes issues du catalogue Tantalus** et **16 sujets à documenter** dans deux onglets distincts du Codex historique (68 fiches). Les 216 dossiers complémentaires exposent uniquement leurs noms, œuvres, familles et statuts documentaires. Aucun n'est certifié fidèle à 1:1 ni ajouté automatiquement comme carte, équipement débloqué ou contenu de booster. Recherche, pagination et détails sont disponibles hors ligne. Les PV, dégâts, prix et valeurs propres à Tantalus ne sont pas importés.

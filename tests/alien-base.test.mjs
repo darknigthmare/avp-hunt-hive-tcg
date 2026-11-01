@@ -94,3 +94,27 @@ test('Codex is usable from Collection and Archive without changing deck or duel'
  assert.ok(server.includes('src/alien-base.js'));
  assert.ok(build.includes('alien-base/tcg-public-v3'));
 });
+
+test('research index is read-only: 200 arsenal dossiers and 16 pending subjects',()=>{
+ assert.equal(base.codex.researchWeapons.length,200);
+ assert.equal(base.codex.researchLeads.length,16);
+ for(const weapon of base.codex.researchWeapons){
+  assert.equal(weapon.admittedInTcg,false);
+  assert.equal(weapon.visualCertified,false);
+  for(const field of ['attack','cost','health','damage'])assert.equal(Object.hasOwn(weapon,field),false);
+ }
+ for(const lead of base.codex.researchLeads){
+  assert.equal(lead.admittedInTcg,false);
+  assert.equal(lead.researchStatus,'source_pending');
+ }
+});
+test('the Codex offers mutually exclusive history/arsenal/leads UI modes',async()=>{
+ const js=await readFile(new URL('src/app.js',root),'utf8');
+ const css=await readFile(new URL('assets/styles.css',root),'utf8');
+ assert.ok(js.includes('function renderAlienResearch'));
+ assert.ok(js.includes('function renderAlienBaseModeTabs'));
+ assert.ok(js.includes('function showAlienResearchDetail'));
+ assert.ok(js.includes('data-action="codex-research-detail"'));
+ assert.ok(js.includes('data-action="codex-mode"'));
+ assert.ok(css.includes('.alien-codex-tabs'));
+});

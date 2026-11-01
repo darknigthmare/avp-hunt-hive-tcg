@@ -137,7 +137,7 @@
   };
   Store.load();
 
-  const state={screen:'home',codexFilters:{query:'',type:'ALL',scope:'ALL'},filters:{query:'',faction:'ALL',type:'ALL',rarity:'ALL',set:'ALL',owned:'ALL'},deckFilters:{query:'',faction:'ALL',type:'ALL'},selectedDeckId:null,
+  const state={screen:'home',codexFilters:{mode:'reference',query:'',type:'ALL',scope:'ALL'},filters:{query:'',faction:'ALL',type:'ALL',rarity:'ALL',set:'ALL',owned:'ALL'},deckFilters:{query:'',faction:'ALL',type:'ALL'},selectedDeckId:null,
     ui:{difficulty:'normal',enemyFaction:'XENO',pending:null,opening:null,tutorialStep:0,modalLocked:false,collectionLimit:48,deckLimit:40,codexLimit:18,focusAfterRender:null},battleContext:null,lastQuickConfig:null};
 
   const AudioSys={ctx:null,
@@ -253,7 +253,52 @@
 
   function renderCampaign(){const p=Store.data.profile,deck=Store.deck(),valid=deck&&validatePlayableDeck(deck).valid;return shell(`${screenHead('DOSSIER AVP','Campagne : Directive Chimère','Huit opérations parcourent Alien, Predator et AVP. Les victoires débloquent des boosters et la série de prototypes séparée du canon.',`<button class="btn ghost" data-action="nav" data-screen="archive">◎ Contexte des sources</button>`)}<div class="mission-grid">${D.campaign.map(m=>{const locked=m.id>p.completedMissions+1,done=m.id<=p.completedMissions;return `<article class="panel mission ${locked?'locked':''}">${sceneArt('campaign-'+m.id,'mission-art')}<span class="mission-num">0${m.id}</span><div class="sub">${esc(m.subtitle)}</div><h2>${esc(m.name)}</h2><div class="faction-pips">${m.factions.map(id=>{const f=faction(id);return `<span class="faction-pip" style="--pip:${f.accent}" title="${f.name}">${f.symbol}</span>`}).join('')}</div><p>${esc(m.description)}</p><div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span class="mission-reward">◈ ${U.format(done?Math.round(m.reward*.35):m.reward)} • ${done?'Récompense de replay':`Booster ${D.boosters.find(b=>b.id===m.pack)?.set}`}</span><button class="btn ${done?'ghost':'primary'} small" data-action="start-mission" data-id="${m.id}" ${locked||!valid?'disabled':''}>${locked?'Verrouillée':done?'Rejouer':'Déployer'}</button></div>${done?'<span class="complete-stamp">OPÉRATION VALIDÉE</span>':''}</article>`}).join('')}</div>${!valid?'<div class="panel pad" style="margin-top:16px;border-color:rgba(255,101,125,.25)"><b style="color:var(--danger)">Deck actif invalide.</b> <span class="subtle">Corrigez-le dans le constructeur avant de lancer une mission.</span></div>':''}`,true);}
 
+  function renderAlienBaseModeTabs(){
+ const modes=[['reference','Sources historiques','68'],['weapons','Armes à examiner','200'],['leads','Sujets à approfondir','16']];
+ return `<div class="alien-codex-tabs" aria-label="Type de dossier">${modes.map(([id,label,count])=>`<button class="btn ${state.codexFilters.mode===id?'secondary':'ghost'} small" data-action="codex-mode" data-codex-mode="${id}" aria-pressed="${state.codexFilters.mode===id}">${label} · ${count}</button>`).join('')}</div>`;
+}
+
+  function renderAlienResearch(mode){
+ const codex=window.AVP_ALIEN_BASE?.codex;
+ const all=mode==='weapons'?(codex?.researchWeapons||[]):(codex?.researchLeads||[]);
+ const isWeapon=mode==='weapons';
+ const q=(state.codexFilters.query||'').trim().toLocaleLowerCase('fr');
+ const filtered=all.filter(x=>[x.name,x.id,x.work,isWeapon?x.family:x.category,isWeapon?x.projectStatus:x.note].join(' ').toLocaleLowerCase('fr').includes(q));
+ const shown=filtered.slice(0,state.ui.codexLimit);
+ return `<section class="panel source-card span-12 alien-codex" aria-label="${isWeapon?'Recherche armes':'Recherche complémentaire'}">
+  <div class="eyebrow">ALIEN_BASE • REGISTRE DE RECHERCHE</div>
+  <h2>${isWeapon?'Dossiers d’armurerie':'Sujets à approfondir'} — ${all.length} entrées</h2>
+  ${renderAlienBaseModeTabs()}
+  <p class="subtle">Ces contenus sont des pistes de recherche : aucun modèle n'est certifié visuellement 1:1 et aucune fiche n'est jouable ou achetable dans le TCG. Les propriétés de combat des autres jeux ne sont pas importées.</p>
+  <div class="alien-codex-controls"><label class="field">⌕ <input data-codex-filter="query" value="${esc(state.codexFilters.query)}" placeholder="${isWeapon?'Rechercher une arme ou une œuvre…':'Rechercher un personnage, une société…'}" aria-label="Rechercher dans les recherches Alien_base"></label></div>
+  <p class="subtle alien-codex-count" role="status">${filtered.length} / ${all.length} entrées • Vérification documentaire requise</p>
+  <div class="alien-codex-list">
+   ${shown.map(x=>`<article class="alien-codex-record"><div class="eyebrow">${esc(isWeapon?x.family:x.category)} • NON JOUABLE</div><h3>${esc(x.name)}</h3><p>${esc(x.work)}</p><p class="subtle">${esc(isWeapon?x.projectStatus:x.note)}</p><div class="alien-codex-actions"><button class="btn secondary small" data-action="codex-research-detail" data-codex-id="${esc(x.id)}" data-codex-kind="${mode}">Examiner la référence</button></div></article>`).join('')||'<p class="subtle">Aucune référence ne correspond à cette recherche.</p>'}
+  </div>
+  ${filtered.length>shown.length?`<div class="load-more"><button class="btn secondary" data-action="codex-more">Afficher ${Math.min(18,filtered.length-shown.length)} références supplémentaires (${shown.length}/${filtered.length})</button></div>`:''}
+  <p class="subtle alien-codex-disclaimer">Statut : inventaire documentaire uniquement. Les fiches canoniques du film ou d'un jeu doivent être vérifiées modèle par modèle avant toute intégration dans une extension jouable.</p>
+ </section>`;
+}
+
+  function showAlienResearchDetail(mode,id){
+ const codex=window.AVP_ALIEN_BASE?.codex;
+ const isWeapon=mode==='weapons';
+ const entry=(isWeapon?codex?.researchWeapons:codex?.researchLeads)?.find(x=>x.id===id);
+ if(!entry)return;
+ const status=isWeapon?entry.projectStatus:entry.researchStatus;
+ const details=isWeapon
+  ?`<p><b>Famille :</b> ${esc(entry.family)}</p><p><b>Support :</b> ${esc(entry.medium)}</p><p><b>Confiance interne :</b> ${esc(entry.researchConfidence)}</p>`
+  :`<p><b>Catégorie :</b> ${esc(entry.category)}</p><p>${esc(entry.note)}</p>`;
+ modal(`Dossier non certifié : ${esc(entry.name)}`,`<div class="alien-codex-detail">
+   <div class="eyebrow">RECHERCHE • NON JOUABLE</div>
+   <h2>${esc(entry.name)}</h2><p><b>Œuvre ou dossier :</b> ${esc(entry.work)}</p>
+   ${details}<p class="source-note"><b>ID :</b> ${esc(entry.id)}<br><b>État :</b> ${esc(status)}<br><b>Admis dans le TCG :</b> Non</p>
+   <p class="subtle">Une mention dans le catalogue ne prouve ni les dimensions, ni une apparence 1:1, ni l'admission d'une arme ou d'un organisme. La fiche doit être contrôlée avec sa source primaire.</p>
+ </div>`);
+}
+
   function renderAlienBaseCodex(){
+ if(state.codexFilters.mode!=='reference')return renderAlienResearch(state.codexFilters.mode);
  const codex=window.AVP_ALIEN_BASE?.codex;
  const all=codex?.entries||[];
  if(!all.length)return '<section class="panel source-card span-12"><h2>Codex Alien_base indisponible</h2><p>Aucune fiche documentaire locale ne figure dans ce build.</p></section>';
@@ -270,6 +315,7 @@
  return `<section class="panel source-card span-12 alien-codex" aria-label="Codex documenté Alien_base">
   <div class="eyebrow">ARCHIVE CENTRALE • ALIEN_BASE</div>
   <h2>Codex de référence — ${all.length} dossiers</h2>
+  ${renderAlienBaseModeTabs()}
   <p class="subtle">Catalogue historique v1 consultable hors ligne. Le registre partagé v2 indexe ${window.AVP_ALIEN_BASE.registry.v2} entités, dont ${window.AVP_ALIEN_BASE.registry.gameCards} cartes TCG. Une fiche de référence n'est pas une carte débloquée ni une image certifiée fidèle.</p>
   <div class="alien-codex-controls">
    <label class="field">⌕ <input data-codex-filter="query" value="${esc(filter.query)}" placeholder="Chercher un organisme, une arme, un lieu…" aria-label="Rechercher dans le codex"></label>
@@ -565,6 +611,13 @@
     else if(action==='tutorial')showTutorial(0);else if(action==='tutorial-next')showTutorial(state.ui.tutorialStep+1);else if(action==='tutorial-prev')showTutorial(state.ui.tutorialStep-1);else if(action==='tutorial-finish'){Store.data.tutorial.completed=true;Store.save();closeModal();navigate('play');}
     else if(action==='more-cards'){state.ui[el.dataset.scope==='deck'?'deckLimit':'collectionLimit']+=el.dataset.scope==='deck'?40:48;render();}
     else if(action==='codex-detail')showAlienBaseCodex(el.dataset.codexId);
+    else if(action==='codex-research-detail')showAlienResearchDetail(el.dataset.codexKind,el.dataset.codexId);
+    else if(action==='codex-mode'){
+      const next=el.dataset.codexMode;
+      if(['reference','weapons','leads'].includes(next)){
+        state.codexFilters.mode=next;state.codexFilters.query='';state.codexFilters.type='ALL';state.codexFilters.scope='ALL';state.ui.codexLimit=18;render();
+      }
+    }
     else if(action==='codex-more'){state.ui.codexLimit+=18;render();}
     else if(action==='create-deck')createDeck(el.dataset.id);
     else if(action==='choose-starter')chooseStarter(el.dataset.id);else if(action==='view-card')showCardDetail(el.dataset.cardId);else if(action==='craft-card')craftCard(el.dataset.cardId);else if(action==='dust-card')dustCard(el.dataset.cardId);

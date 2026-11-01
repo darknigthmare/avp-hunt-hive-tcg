@@ -143,6 +143,8 @@ if (
   alienBase.registry?.v1 !== 68 ||
   alienBase.registry?.v2 !== 632 ||
   alienBase.codex?.entries?.length !== 68 ||
+  alienBase.codex?.researchWeapons?.length !== 200 ||
+  alienBase.codex?.researchLeads?.length !== 16 ||
   Object.keys(alienBase.byCardId).length !== expectedCardCount ||
   cards.some(card => typeof alienBase.byCardId[card.id]?.id !== 'string')
 ) {

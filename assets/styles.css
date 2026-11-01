@@ -253,3 +253,7 @@ html{scroll-padding-top:calc(var(--top) + 16px);scroll-padding-bottom:92px}
 .alien-codex-detail ul{padding-left:22px}
 .alien-codex-card-links{display:flex;flex-wrap:wrap;gap:8px}
 @media(max-width:600px){.alien-codex-record{padding:13px}.alien-codex .alien-codex-controls>.field{flex-basis:100%}}
+
+.alien-codex-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}
+.alien-codex-tabs .btn{white-space:normal;text-align:center}
+@media(max-width:600px){.alien-codex-tabs{display:grid;grid-template-columns:1fr;gap:7px}.alien-codex-tabs .btn{width:100%}}
