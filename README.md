@@ -99,20 +99,19 @@ Le détail de récupération vérifiable figure dans [SOURCE_PROVENANCE.md](SOUR
 
 Alien, Predator et Alien vs. Predator appartiennent à leurs ayants droit respectifs. Leur mention sert uniquement à identifier l'univers auquel ce projet fan rend hommage.
 
-## Référentiel transversal Alien_base (intégration encyclopédique)
+## Encyclopédie Alien_base — fédération v3
 
-Les 158 cartes conservent **exactement** leurs points de vie, dégâts, coûts, raretés, mécaniques et identifiants. Chacune possède en complément une fiche partagée issue du dépôt privé [Alien_base](https://github.com/darknigthmare/alien_base) : identité stable, catégorie biologique/technique indépendante de la faction jouable, statut de canon et traçabilité. La consultation de la collection affiche désormais ces données dans le détail des cartes.
+Le jeu conserve **ses 158 cartes**, ses règles, ses boosters, sa campagne, ses illustrations et ses sauvegardes. La [PR #19 Alien_base](https://github.com/darknigthmare/alien_base/pull/19), empilée sur la [PR #18](https://github.com/darknigthmare/alien_base/pull/18), fournit un export public sûr du registre **v1 (68 dossiers)** et des **158 correspondances avec le registre v2 (632 entités)**.
 
-Le snapshot public hors ligne `src/alien-base.js` est une copie **contrôlée** générée depuis le dépôt privé, sans jeton ni requête réseau. Pour l'actualiser, disposer des deux dépôts frères puis exécuter `node ../alien_base/scripts/sync-tcg.mjs --game . --check` et, après modification de la base, `--publish-game`. Pour exporter les modifications des **cartes du jeu** dans l'adaptateur de la base : `--pull-game`, puis revoir le diff.
+Dans le jeu, **Collection → Codex Alien_base** (ou l'onglet Archive sur ordinateur) permet de rechercher par catégorie et continuité, consulter les œuvres et les notes de référence. Les cartes associées restent des rapprochements à examiner, pas des identités biologiques automatiquement validées. Le détail des cartes présente aussi le statut des anciennes sources, neuf liens biologiques explicites, les archives v1 possibles et 28 rapprochements inter-jeux non certifiés.
 
-Les quatre cartes explicitement issues d'archives coupées/prototypes restent signalées. La présence d'un nom de classeur n'établit pas la vérification de son contenu; la fidélité morphologique 1:1 et les sources primaires restent des chantiers de contrôle distincts. Les 16 compléments documentaires (Romulus, Isolation, véhicules et organisations) sont référencés dans Alien_base, **sans ajout de cartes jouables** susceptible de casser les 158 illustrations et l'équilibrage existants.
+Un consommateur public embarque le snapshot autonome `src/alien-base.js` ; aucun jeton ni appel réseau au dépôt privé n'est nécessaire. Pour comparer une nouvelle version de la base, cloner les deux dépôts frères, se placer sur la branche fédérée Alien_base, puis exécuter :
 
-Les **28 rapprochements candidats** entre les 158 cartes et les jeux Tantalus Frontier, World Hive Wars, Xeno Trace et Yautja Hive Warriors sont désormais également consultables depuis les fiches des cartes (**25 fiches concernées**). Ils apparaissent comme des correspondances à contrôler, avec le nom du projet et l'identifiant local. Il ne s'agit pas de fusionner des castes de différentes continuités, et leurs statistiques restent propres à chaque jeu.
+```bash
+node scripts/sync-alien-base-unified.mjs --base ../alien_base
+# Pour générer une version explicitement revue :
+node scripts/sync-alien-base-unified.mjs --base ../alien_base --publish
+npm run verify:release
+```
 
-Le workflow GitHub Actions `.github/workflows/tcg-ci.yml` est proposé dans cette PR pour lancer la validation du code, les tests et le build sur chaque modification ; sa réussite effective doit être contrôlée dans l'onglet Actions avant fusion.
-
-### Registre unifié : résolution des PR concurrentes
-
-Le référentiel principal est maintenant **Alien_base [PR #4](https://github.com/darknigthmare/alien_base/pull/4)** et ses compléments documentaires **[PR #8](https://github.com/darknigthmare/alien_base/pull/8)**, puis le **[pont TCG PR #11](https://github.com/darknigthmare/alien_base/pull/11)**. Le snapshot de ce jeu est généré à partir des identifiants `card.avp.*` existants (et des 9 identités `bio.xenomorph.*` prudemment rattachées), plutôt que de créer un second système de numérotation. La catégorie `category` du snapshot reste une étiquette de recherche dérivée du TCG ; `registryCategory` et `canonicalEntityId` indiquent les informations du registre.
-
-Après récupération des deux dépôts sur disque et intégration des trois PR d'Alien_base, exécuter `node scripts/sync-alien-base-unified.mjs --base ../alien_base --check` ; pour publier une modification documentaire vérifiée : `node scripts/sync-alien-base-unified.mjs --base ../alien_base --publish` et revoir le diff. Le jeu reste jouable hors ligne et n'expose aucun accès au dépôt privé. Les scripts historiques de l'ancienne PR #1 Alien_base ne sont pas la cible de synchronisation : il s'agissait d'une proposition parallèle abandonnée au profit du registre unifié.
+Les fiches ne confèrent pas de cartes supplémentaires ni de droits de réutiliser des images sous licence. **Les 68 dossiers publics ne signifient pas que les 632 entités privées sont certifiées 1:1.** Les anciennes références Excel doivent encore être vérifiées individuellement.

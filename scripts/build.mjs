@@ -138,8 +138,11 @@ new Script(await readFile(resolve(root, 'src', 'alien-base.js'), 'utf8'), { file
   .runInContext(dataContext, { timeout: 2_000 });
 const alienBase = dataContext.window.AVP_ALIEN_BASE;
 if (
-  alienBase?.schema !== 'alien-base/tcg-public-v1' ||
+  alienBase?.schema !== 'alien-base/tcg-public-v3' ||
   !alienBase.byCardId ||
+  alienBase.registry?.v1 !== 68 ||
+  alienBase.registry?.v2 !== 632 ||
+  alienBase.codex?.entries?.length !== 68 ||
   Object.keys(alienBase.byCardId).length !== expectedCardCount ||
   cards.some(card => typeof alienBase.byCardId[card.id]?.id !== 'string')
 ) {
