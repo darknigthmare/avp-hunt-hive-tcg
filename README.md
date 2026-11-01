@@ -98,3 +98,11 @@ L'export JSON contient aussi le duel suspendu. Un checkpoint corrompu est écart
 Le détail de récupération vérifiable figure dans [SOURCE_PROVENANCE.md](SOURCE_PROVENANCE.md). Le cadre du projet fan et l'origine des actifs sont précisés dans [FAN_PROJECT_NOTICE.md](FAN_PROJECT_NOTICE.md). La provenance, le contrat créatif et les contrôles des illustrations sont documentés dans [ARTWORK_PROVENANCE.md](ARTWORK_PROVENANCE.md).
 
 Alien, Predator et Alien vs. Predator appartiennent à leurs ayants droit respectifs. Leur mention sert uniquement à identifier l'univers auquel ce projet fan rend hommage.
+
+## Référentiel transversal Alien_base (intégration encyclopédique)
+
+Les 158 cartes conservent **exactement** leurs points de vie, dégâts, coûts, raretés, mécaniques et identifiants. Chacune possède en complément une fiche partagée issue du dépôt privé [Alien_base](https://github.com/darknigthmare/alien_base) : identité stable, catégorie biologique/technique indépendante de la faction jouable, statut de canon et traçabilité. La consultation de la collection affiche désormais ces données dans le détail des cartes.
+
+Le snapshot public hors ligne `src/alien-base.js` est une copie **contrôlée** générée depuis le dépôt privé, sans jeton ni requête réseau. Pour l'actualiser, disposer des deux dépôts frères puis exécuter `node ../alien_base/scripts/sync-tcg.mjs --game . --check` et, après modification de la base, `--publish-game`. Pour exporter les modifications des **cartes du jeu** dans l'adaptateur de la base : `--pull-game`, puis revoir le diff.
+
+Les quatre cartes explicitement issues d'archives coupées/prototypes restent signalées. La présence d'un nom de classeur n'établit pas la vérification de son contenu; la fidélité morphologique 1:1 et les sources primaires restent des chantiers de contrôle distincts. Les 16 compléments documentaires (Romulus, Isolation, véhicules et organisations) sont référencés dans Alien_base, **sans ajout de cartes jouables** susceptible de casser les 158 illustrations et l'équilibrage existants.

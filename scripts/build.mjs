@@ -122,7 +122,7 @@ const expected = '23a462d5fec16bf2feede14d1d69f1829e188db85df7860b3324127d2701d7
 if (hash !== expected) throw new Error('Standalone provenance hash mismatch.');
 
 const index = await readFile(resolve(root, 'index.html'), 'utf8');
-for (const asset of ['/assets/styles.css', '/src/data.js', '/src/art-manifest.js', '/src/engine.js', '/src/app.js', '/manifest.webmanifest']) {
+for (const asset of ['/assets/styles.css', '/src/data.js', '/src/alien-base.js', '/src/art-manifest.js', '/src/engine.js', '/src/app.js', '/manifest.webmanifest']) {
   if (!index.includes(asset)) throw new Error(`index.html is missing ${asset}`);
 }
 
@@ -132,6 +132,18 @@ new Script(await readFile(resolve(root, 'src', 'data.js'), 'utf8'), { filename: 
 const cards = dataContext.window.AVP_DATA?.cards;
 if (!Array.isArray(cards) || cards.length !== expectedCardCount) {
   throw new Error(`Expected ${expectedCardCount} cards in src/data.js.`);
+}
+// The public offline snapshot must have a link for every shipped card.
+new Script(await readFile(resolve(root, 'src', 'alien-base.js'), 'utf8'), { filename: 'src/alien-base.js' })
+  .runInContext(dataContext, { timeout: 2_000 });
+const alienBase = dataContext.window.AVP_ALIEN_BASE;
+if (
+  alienBase?.schema !== 'alien-base/tcg-public-v1' ||
+  !alienBase.byCardId ||
+  Object.keys(alienBase.byCardId).length !== expectedCardCount ||
+  cards.some(card => typeof alienBase.byCardId[card.id]?.id !== 'string')
+) {
+  throw new Error('The shared Alien_base snapshot is missing card links.');
 }
 const cardIds = cards.map((card) => card?.id);
 if (cardIds.some((id) => typeof id !== 'string' || !id.trim()) || new Set(cardIds).size !== expectedCardCount) {
