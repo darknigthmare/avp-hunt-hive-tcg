@@ -1,0 +1,27 @@
+name: AVP TCG shared Alien_base
+on:
+  push:
+    paths:
+      - 'src/alien-base-*.js'
+      - 'tests/alien-base-reference.test.mjs'
+      - 'index.html'
+      - 'scripts/serve.mjs'
+      - 'sw.js'
+      - '.github/workflows/alien-base-bridge.yml'
+  pull_request:
+    paths:
+      - 'src/alien-base-*.js'
+      - 'tests/alien-base-reference.test.mjs'
+      - 'index.html'
+      - 'scripts/serve.mjs'
+      - 'sw.js'
+      - '.github/workflows/alien-base-bridge.yml'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/alien-base-reference.test.mjs

@@ -1,0 +1,26 @@
+import assert from 'node:assert/strict';import test from 'node:test';import{readFileSync}from'node:fs';
+import{ALIEN_BASE_VERSION,ALIEN_BASE_COUNTS,getSharedRecord,getSharedCardId,validateSharedGameCards}from'../src/alien-base-bridge.js';
+const s=readFileSync(new URL('../src/data.js',import.meta.url),'utf8');const cards=JSON.parse(s.slice(s.indexOf('{'),s.lastIndexOf('}')+1)).cards;
+test('all TCG cards keep their own mechanics and have stable master IDs',()=>{assert.equal(ALIEN_BASE_VERSION.schema,'alien-base-public-v1');assert.equal(ALIEN_BASE_COUNTS.profiles,115);assert.equal(ALIEN_BASE_COUNTS.weapons,200);assert.equal(validateSharedGameCards(cards).valid,true);assert.equal(new Set(cards.map(getSharedCardId)).size,158);assert.equal(getSharedCardId(cards[0]),'avptcg:card:'+cards[0].id);assert.equal(cards[0].cost,1)});
+test('no automated combat admission or unsafe aliases',()=>{assert.equal(getSharedRecord('__proto__','x'),null);assert.equal(getSharedRecord('invalid','x'),null);assert.equal(getSharedCardId({id:'../../evil'}),null);assert.equal(getSharedRecord('weapons','tantalus:proposed-m41a3-burst-rifle')?.admission,'research-only');assert.equal(getSharedRecord('profiles','yhw:XEN-002')?.visual1to1,false)});
+test('read-only files are explicitly deployed and offline cached',()=>{const files=['index.html','scripts/serve.mjs','sw.js'].map(p=>readFileSync(new URL('../'+p,import.meta.url),'utf8'));assert.match(files[0],/src\/alien-base-bridge\.js/);for(const file of ['alien-base-public-v1.js','alien-base-bridge.js']){assert.ok(files[1].includes(file));assert.ok(files[2].includes(file))}});
+
+test('legacy mixed-case card IDs retain exact identity',()=>{assert.equal(getSharedCardId({id:'EQ_AMPule'}),'avptcg:card:EQ_AMPule');assert.equal(validateSharedGameCards(cards).valid,true)});
+
+test('every official TCG game card resolves by exact legacy ID to the imported master record',()=>{assert.equal(ALIEN_BASE_COUNTS.tcgCards,158);assert.equal(ALIEN_BASE_COUNTS.enemyFamilies,52);assert.equal(ALIEN_BASE_COUNTS.mediaCoverage,29);for(const card of cards){const id=getSharedCardId(card);assert.ok(id,'no master record for '+card.id);assert.equal(getSharedRecord('tcgCards',id)?.name,card.name)}assert.equal(getSharedCardId({id:'NOT_IMPORTED_CARD'}),null)});
+
+test('browser bridge registration waits for the existing deferred TCG catalog',async()=>{
+ const previousWindow=globalThis.window,previousDocument=globalThis.document;
+ const events=new Map();
+ try{
+  globalThis.window={AVP_DATA:undefined};
+  globalThis.document={readyState:'loading',addEventListener(name,listener,options){events.set(name,{listener,options})}};
+  await import('../src/alien-base-bridge.js?browser-boot-test');
+  assert.equal(globalThis.window.AVP_ALIEN_BASE,undefined);
+  assert.equal(events.get('DOMContentLoaded')?.options?.once,true);
+  globalThis.window.AVP_DATA={cards};
+  events.get('DOMContentLoaded').listener();
+  assert.equal(Object.keys(globalThis.window.AVP_ALIEN_BASE.cardLinks).length,158);
+  assert.equal(globalThis.window.AVP_ALIEN_BASE.cardLinks.EQ_AMPule,'avptcg:card:EQ_AMPule');
+ }finally{if(previousWindow===undefined)delete globalThis.window;else globalThis.window=previousWindow;if(previousDocument===undefined)delete globalThis.document;else globalThis.document=previousDocument}
+});
