@@ -6,3 +6,5 @@ test('no automated combat admission or unsafe aliases',()=>{assert.equal(getShar
 test('read-only files are explicitly deployed and offline cached',()=>{const files=['index.html','scripts/serve.mjs','sw.js'].map(p=>readFileSync(new URL('../'+p,import.meta.url),'utf8'));assert.match(files[0],/src\/alien-base-bridge\.js/);for(const file of ['alien-base-public-v1.js','alien-base-bridge.js']){assert.ok(files[1].includes(file));assert.ok(files[2].includes(file))}});
 
 test('legacy mixed-case card IDs retain exact identity',()=>{assert.equal(getSharedCardId({id:'EQ_AMPule'}),'avptcg:card:EQ_AMPule');assert.equal(validateSharedGameCards(cards).valid,true)});
+
+test('every official TCG game card resolves by exact legacy ID to the imported master record',()=>{assert.equal(ALIEN_BASE_COUNTS.tcgCards,158);assert.equal(ALIEN_BASE_COUNTS.enemyFamilies,52);assert.equal(ALIEN_BASE_COUNTS.mediaCoverage,29);for(const card of cards){const id=getSharedCardId(card);assert.ok(id,'no master record for '+card.id);assert.equal(getSharedRecord('tcgCards',id)?.name,card.name)}assert.equal(getSharedCardId({id:'NOT_IMPORTED_CARD'}),null)});
