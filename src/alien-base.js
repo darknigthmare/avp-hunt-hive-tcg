@@ -1,7 +1,7 @@
 /* Snapshot public, sans appel au dépôt privé : généré depuis alien_base. */
 window.AVP_ALIEN_BASE = {
   "schema": "alien-base/tcg-public-v1",
-  "revision": "avp-tcg-foundation-2026-11-01",
+  "revision": "alien-base-crossgame-linked-2026-11-01",
   "byCardId": {
     "X_OVOMORPH": {
       "id": "life_stage.ovomorph",
@@ -11,7 +11,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "Œuf biologique du cycle xénomorphe, pas un rang de combattant.",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/xeno-trace",
+          "sourceId": "ovomorph",
+          "sourceName": "Ovomorphe",
+          "sourcePath": "js/species.mjs",
+          "sourceRevision": "6f8678a725eda5e0725721779f0beceb24b65ff0",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "X_FACEHUGGER": {
       "id": "life_stage.facehugger",
@@ -21,7 +31,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "Phase parasitoïde du cycle de reproduction xénomorphe.",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/xeno-trace",
+          "sourceId": "facehugger",
+          "sourceName": "Facehugger",
+          "sourcePath": "js/species.mjs",
+          "sourceRevision": "6f8678a725eda5e0725721779f0beceb24b65ff0",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "X_CHESTBURSTER": {
       "id": "life_stage.chestburster",
@@ -31,7 +51,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "Phase juvénile précédant la forme mature xénomorphe.",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/xeno-trace",
+          "sourceId": "chestburster",
+          "sourceName": "Chestburster",
+          "sourcePath": "js/species.mjs",
+          "sourceRevision": "6f8678a725eda5e0725721779f0beceb24b65ff0",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "X_DRONE": {
       "id": "xenomorph_variant.x-drone",
@@ -41,7 +71,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/xeno-trace",
+          "sourceId": "drone",
+          "sourceName": "Drone",
+          "sourcePath": "js/species.mjs",
+          "sourceRevision": "6f8678a725eda5e0725721779f0beceb24b65ff0",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "X_WARRIOR": {
       "id": "xenomorph_variant.x-warrior",
@@ -51,7 +91,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/xeno-trace",
+          "sourceId": "warrior",
+          "sourceName": "Warrior",
+          "sourcePath": "js/species.mjs",
+          "sourceRevision": "6f8678a725eda5e0725721779f0beceb24b65ff0",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "X_RUNNER": {
       "id": "xenomorph_variant.x-runner",
@@ -61,7 +111,25 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/world-hive-wars",
+          "sourceId": "runner",
+          "sourceName": "Runner — Alien 3",
+          "sourcePath": "src/game/xenomorph-catalog.js",
+          "sourceRevision": "80ce99282b12001aff136e0fe8ffbde032365208",
+          "relationship": "candidate_alias_pending_review"
+        },
+        {
+          "project": "darknigthmare/xeno-trace",
+          "sourceId": "runner",
+          "sourceName": "Runner",
+          "sourcePath": "js/species.mjs",
+          "sourceRevision": "6f8678a725eda5e0725721779f0beceb24b65ff0",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "X_SPITTER": {
       "id": "xenomorph_variant.x-spitter",
@@ -71,7 +139,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/xeno-trace",
+          "sourceId": "spitter",
+          "sourceName": "Spitter",
+          "sourcePath": "js/species.mjs",
+          "sourceRevision": "6f8678a725eda5e0725721779f0beceb24b65ff0",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "X_STALKER": {
       "id": "xenomorph_variant.x-stalker",
@@ -81,7 +159,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "X_PRAETORIAN": {
       "id": "xenomorph_variant.x-praetorian",
@@ -91,7 +170,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/xeno-trace",
+          "sourceId": "praetorian",
+          "sourceName": "Prétorien",
+          "sourcePath": "js/species.mjs",
+          "sourceRevision": "6f8678a725eda5e0725721779f0beceb24b65ff0",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "X_QUEEN": {
       "id": "xenomorph.queen",
@@ -101,7 +190,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "Forme reproductrice majeure de la ruche; stats du TCG non physiques.",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/xeno-trace",
+          "sourceId": "queen",
+          "sourceName": "Reine Xénomorphe",
+          "sourcePath": "js/species.mjs",
+          "sourceRevision": "6f8678a725eda5e0725721779f0beceb24b65ff0",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "X_QUEEN_MOTHER": {
       "id": "xenomorph_variant.x-queen-mother",
@@ -111,7 +210,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "X_BIG_CHAP": {
       "id": "xenomorph_individual.x-big-chap",
@@ -121,7 +221,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "X_SCORCHED": {
       "id": "xenomorph_individual.x-scorched",
@@ -131,7 +232,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "X_GRID": {
       "id": "xenomorph.grid",
@@ -141,7 +243,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "Xénomorphe individuel de l'univers AVP; la faction HYBRID est un choix de règles TCG, non une taxonomie.",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "X_RED": {
       "id": "xenomorph_variant.x-red",
@@ -151,7 +254,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "X_GORILLA": {
       "id": "xenomorph_variant.x-gorilla",
@@ -161,7 +265,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "X_BULL": {
       "id": "xenomorph_variant.x-bull",
@@ -171,7 +276,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "X_MANTIS": {
       "id": "xenomorph_variant.x-mantis",
@@ -181,7 +287,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "X_SNAKE": {
       "id": "xenomorph_variant.x-snake",
@@ -191,7 +298,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/world-hive-wars",
+          "sourceId": "kenner-snake",
+          "sourceName": "Snake Alien — Kenner / NECA",
+          "sourcePath": "src/game/xenomorph-catalog.js",
+          "sourceRevision": "80ce99282b12001aff136e0fe8ffbde032365208",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "X_FLYING_QUEEN": {
       "id": "xenomorph_variant.x-flying-queen",
@@ -201,7 +318,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "X_POPPER": {
       "id": "xenomorph_variant.x-popper",
@@ -211,7 +329,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "X_PATH_STALKER": {
       "id": "xenomorph_variant.x-path-stalker",
@@ -221,7 +340,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "X_PATH_BRUTE": {
       "id": "xenomorph_variant.x-path-brute",
@@ -231,7 +351,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "X_PATH_QUEEN": {
       "id": "xenomorph_variant.x-path-queen",
@@ -241,7 +362,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "X_WARDEN": {
       "id": "xenomorph_variant.x-warden",
@@ -251,7 +373,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "X_SIREN": {
       "id": "xenomorph_variant.x-siren",
@@ -261,7 +384,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "X_NEOMORPH": {
       "id": "xenomorph_variant.x-neomorph",
@@ -271,7 +395,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "X_DEACON": {
       "id": "xenomorph_variant.x-deacon",
@@ -281,7 +406,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_UNBLOODED": {
       "id": "role.y-unblooded",
@@ -291,7 +417,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_YOUNG_BLOOD": {
       "id": "role.y-young-blood",
@@ -301,7 +428,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_ELITE": {
       "id": "role.y-elite",
@@ -311,7 +439,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_ELDER": {
       "id": "role.y-elder",
@@ -321,7 +450,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_CLAN_LEADER": {
       "id": "role.y-clan-leader",
@@ -331,7 +461,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_ANCIENT": {
       "id": "role.y-ancient",
@@ -341,7 +472,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_ENFORCER": {
       "id": "role.y-enforcer",
@@ -351,7 +483,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_BAD_BLOOD": {
       "id": "yautja_character.y-bad-blood",
@@ -361,7 +494,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_JUNGLE_HUNTER": {
       "id": "yautja_character.y-jungle-hunter",
@@ -371,7 +505,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/Yautja-hive-warriors",
+          "sourceId": "jungle_hunter",
+          "sourceName": "JUNGLE HUNTER (1987)",
+          "sourcePath": "js/data/charactersData.js",
+          "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "Y_CITY_HUNTER": {
       "id": "yautja_character.y-city-hunter",
@@ -381,7 +525,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/Yautja-hive-warriors",
+          "sourceId": "city_hunter",
+          "sourceName": "CITY HUNTER (1990)",
+          "sourcePath": "js/data/charactersData.js",
+          "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "Y_SCAR": {
       "id": "yautja_character.y-scar",
@@ -391,7 +545,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_CELTIC": {
       "id": "yautja_character.y-celtic",
@@ -401,7 +556,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_CHOPPER": {
       "id": "yautja_character.y-chopper",
@@ -411,7 +567,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_WOLF": {
       "id": "yautja_character.y-wolf",
@@ -421,7 +578,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/Yautja-hive-warriors",
+          "sourceId": "wolf_predator",
+          "sourceName": "WOLF PREDATOR (AVP REQUIEM)",
+          "sourcePath": "js/data/charactersData.js",
+          "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "Y_BERSERKER": {
       "id": "yautja_character.y-berserker",
@@ -431,7 +598,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_FALCONER": {
       "id": "yautja_character.y-falconer",
@@ -441,7 +609,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_TRACKER": {
       "id": "yautja_character.y-tracker",
@@ -451,7 +620,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_HOUND": {
       "id": "fauna.y-hound",
@@ -461,7 +631,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_FERAL": {
       "id": "yautja_character.y-feral",
@@ -471,7 +642,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/Yautja-hive-warriors",
+          "sourceId": "feral_predator",
+          "sourceName": "FERAL PREDATOR (PREY 2022)",
+          "sourcePath": "js/data/charactersData.js",
+          "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "Y_SAMURAI": {
       "id": "yautja_character.y-samurai",
@@ -481,7 +662,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/Yautja-hive-warriors",
+          "sourceId": "samurai_predator",
+          "sourceName": "SAMURAI PREDATOR (PHG DLC)",
+          "sourcePath": "js/data/charactersData.js",
+          "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "Y_GLADIATOR": {
       "id": "yautja_character.y-gladiator",
@@ -491,7 +682,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_TEMPLE_GUARD": {
       "id": "role.y-temple-guard",
@@ -501,7 +693,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_AHAB": {
       "id": "yautja_character.y-ahab",
@@ -511,7 +704,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_SHESH_KUK": {
       "id": "yautja_character.y-shesh-kuk",
@@ -521,7 +715,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_YAQUITA": {
       "id": "yautja_character.y-yaquita",
@@ -531,7 +726,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_EMISSARY_A": {
       "id": "yautja_character.y-emissary-a",
@@ -541,7 +737,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_EMISSARY_B": {
       "id": "yautja_character.y-emissary-b",
@@ -551,7 +748,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "Y_SCIENTIST": {
       "id": "role.y-scientist",
@@ -561,7 +759,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_COLONIAL_MARINE": {
       "id": "character.h-colonial-marine",
@@ -571,7 +770,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_SMARTGUNNER": {
       "id": "character.h-smartgunner",
@@ -581,7 +781,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_RIPLEY": {
       "id": "character.ellen-ripley",
@@ -593,7 +794,8 @@ window.AVP_ALIEN_BASE = {
       "sourceRefs": [
         "https://www.20thcenturystudios.com/movies/aliens"
       ],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_DALLAS": {
       "id": "character.h-dallas",
@@ -603,7 +805,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_PARKER": {
       "id": "character.h-parker",
@@ -613,7 +816,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_LAMBERT": {
       "id": "character.h-lambert",
@@ -623,7 +827,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_ASH": {
       "id": "synthetic.ash",
@@ -633,7 +838,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "Officier scientifique synthétique du Nostromo.",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_HICKS": {
       "id": "character.h-hicks",
@@ -643,7 +849,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_HUDSON": {
       "id": "character.h-hudson",
@@ -653,7 +860,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_VASQUEZ": {
       "id": "character.h-vasquez",
@@ -663,7 +871,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_APONE": {
       "id": "character.h-apone",
@@ -673,7 +882,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_BISHOP": {
       "id": "synthetic.bishop",
@@ -683,7 +893,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "Synthétique accompagnant l'équipe de la mission d'Aliens.",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_NEWT": {
       "id": "character.h-newt",
@@ -693,7 +904,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_DUTCH": {
       "id": "character.h-dutch",
@@ -703,7 +915,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_HARRIGAN": {
       "id": "character.h-harrigan",
@@ -713,7 +926,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_NARU": {
       "id": "character.h-naru",
@@ -723,7 +937,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_ROYCE": {
       "id": "character.h-royce",
@@ -733,7 +948,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_ALEXA": {
       "id": "character.h-alexa",
@@ -743,7 +959,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_MACHIKO": {
       "id": "character.h-machiko",
@@ -753,7 +970,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_COMBAT_SYNTH": {
       "id": "synthetic.h-combat-synth",
@@ -763,7 +981,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_WORKING_JOE": {
       "id": "synthetic.working-joe",
@@ -773,7 +992,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "Type d'androïde lié aux installations Seegson de Sevastopol.",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_WEYLAND_OP": {
       "id": "character.h-weyland-op",
@@ -783,7 +1003,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_POWERLOADER_RIPLEY": {
       "id": "variant.ellen-ripley-power-loader",
@@ -796,7 +1017,8 @@ window.AVP_ALIEN_BASE = {
       "relatedEntityIds": [
         "character.ellen-ripley",
         "vehicle.power-loader"
-      ]
+      ],
+      "crossgameReferences": []
     },
     "E_ENGINEER": {
       "id": "organism.e-engineer",
@@ -806,7 +1028,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "E_SPACE_JOCKEY": {
       "id": "organism.e-space-jockey",
@@ -816,7 +1039,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "E_DAVID": {
       "id": "synthetic.david-8",
@@ -826,7 +1050,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "Synthétique David; ENGINEER désigne son identité de faction dans le TCG et non son espèce.",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "E_WALTER": {
       "id": "synthetic.walter",
@@ -836,7 +1061,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "Synthétique Walter, distinct de David.",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "E_TRILOBITE": {
       "id": "organism.e-trilobite",
@@ -846,7 +1072,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "E_HAMMERPEDE": {
       "id": "organism.e-hammerpede",
@@ -856,7 +1083,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "E_BLACK_GOO_MUTANT": {
       "id": "organism.e-black-goo-mutant",
@@ -866,7 +1094,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_PREDALIEN": {
       "id": "organism.predalien",
@@ -876,7 +1105,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "Hybridation xénomorphe liée à un hôte Yautja, distincte des castes Xénomorphes ordinaires.",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_NEWBORN": {
       "id": "xenomorph_hybrid.h-newborn",
@@ -886,7 +1116,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_RIPLEY8": {
       "id": "character.ripley-8",
@@ -896,7 +1127,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "Clone/hybride de Ripley issu de la continuité Alien: Resurrection; à distinguer d'Ellen Ripley.",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_WHITE_HYBRID": {
       "id": "xenomorph_hybrid.h-white-hybrid",
@@ -906,7 +1138,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "H_ALIEN_KING": {
       "id": "xenomorph_variant.h-alien-king",
@@ -916,7 +1149,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_X_ACID_BLOOD": {
       "id": "gameplay_concept.t-x-acid-blood",
@@ -926,7 +1160,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_X_VENT_AMBUSH": {
       "id": "gameplay_concept.t-x-vent-ambush",
@@ -936,7 +1171,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_X_RESIN": {
       "id": "gameplay_concept.t-x-resin",
@@ -946,7 +1182,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_X_SWARM": {
       "id": "gameplay_concept.t-x-swarm",
@@ -956,7 +1193,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_X_EGGMORPH": {
       "id": "gameplay_concept.t-x-eggmorph",
@@ -966,7 +1204,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "Concept de scène alternative/supprimée; ne pas le présenter comme biologie universellement établie.",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_X_ROYAL_JELLY": {
       "id": "gameplay_concept.t-x-royal-jelly",
@@ -976,7 +1215,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_X_CUT_POWER": {
       "id": "gameplay_concept.t-x-cut-power",
@@ -986,7 +1226,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_X_PERFECT": {
       "id": "gameplay_concept.t-x-perfect",
@@ -996,7 +1237,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_Y_HUNT_CODE": {
       "id": "gameplay_concept.t-y-hunt-code",
@@ -1006,7 +1248,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_Y_CLAIM_TROPHY": {
       "id": "gameplay_concept.t-y-claim-trophy",
@@ -1016,7 +1259,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_Y_THERMAL": {
       "id": "gameplay_concept.t-y-thermal",
@@ -1026,7 +1270,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_Y_CLOAK": {
       "id": "gameplay_concept.t-y-cloak",
@@ -1036,7 +1281,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_Y_SELF_DESTRUCT": {
       "id": "gameplay_concept.t-y-self-destruct",
@@ -1046,7 +1292,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_Y_BLOODING": {
       "id": "gameplay_concept.t-y-blooding",
@@ -1056,7 +1303,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_Y_NET_TRAP": {
       "id": "gameplay_concept.t-y-net-trap",
@@ -1066,7 +1314,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_Y_CHALLENGE": {
       "id": "gameplay_concept.t-y-challenge",
@@ -1076,7 +1325,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_H_MOTION": {
       "id": "gameplay_concept.t-h-motion",
@@ -1086,7 +1336,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_H_SEAL_DOOR": {
       "id": "gameplay_concept.t-h-seal-door",
@@ -1096,7 +1347,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_H_FIRETEAM": {
       "id": "gameplay_concept.t-h-fireteam",
@@ -1106,7 +1358,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_H_FLAMER": {
       "id": "gameplay_concept.t-h-flamer",
@@ -1116,7 +1369,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_H_NUKE": {
       "id": "gameplay_concept.t-h-nuke",
@@ -1126,7 +1380,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_H_FROSTY": {
       "id": "gameplay_concept.t-h-frosty",
@@ -1136,7 +1391,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_H_EVAC": {
       "id": "gameplay_concept.t-h-evac",
@@ -1146,7 +1402,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_H_QUARANTINE": {
       "id": "gameplay_concept.t-h-quarantine",
@@ -1156,7 +1413,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_E_BLACK_GOO": {
       "id": "gameplay_concept.t-e-black-goo",
@@ -1166,7 +1424,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_E_CREATION": {
       "id": "gameplay_concept.t-e-creation",
@@ -1176,7 +1435,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_E_ORRERY": {
       "id": "gameplay_concept.t-e-orrery",
@@ -1186,7 +1446,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_E_SACRIFICE": {
       "id": "gameplay_concept.t-e-sacrifice",
@@ -1196,7 +1457,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_AVP_WHOEVER": {
       "id": "gameplay_concept.t-avp-whoever",
@@ -1206,7 +1468,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_AVP_ALLIANCE": {
       "id": "gameplay_concept.t-avp-alliance",
@@ -1216,7 +1479,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_AVP_3WW": {
       "id": "gameplay_concept.t-avp-3ww",
@@ -1226,7 +1490,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "T_AVP_HYBRIDIZE": {
       "id": "gameplay_concept.t-avp-hybridize",
@@ -1236,7 +1501,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "EQ_PULSE_RIFLE": {
       "id": "weapon.m41a-pulse-rifle",
@@ -1246,7 +1512,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "Fusil à impulsion des Marines coloniaux, et non toute la famille des fusils de l'univers.",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/aliens-tantalus-frontier",
+          "sourceId": "weapon-001-m41a-pulse-rifle",
+          "sourceName": "M41A Pulse Rifle",
+          "sourcePath": "docs/arsenal/data/tantalus_arsenal_master_v1.csv",
+          "sourceRevision": "d41b5fc120da2e7a5938308f9d3c852d20e53cc5",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "EQ_SMARTGUN": {
       "id": "weapon.m56-smartgun",
@@ -1256,7 +1532,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "Arme lourde de soutien des Marines coloniaux.",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/aliens-tantalus-frontier",
+          "sourceId": "weapon-005-m56-smartgun",
+          "sourceName": "M56 Smartgun",
+          "sourcePath": "docs/arsenal/data/tantalus_arsenal_master_v1.csv",
+          "sourceRevision": "d41b5fc120da2e7a5938308f9d3c852d20e53cc5",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "EQ_FLAMER": {
       "id": "weapon.eq-flamer",
@@ -1266,7 +1552,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "EQ_MARINE_ARMOR": {
       "id": "equipment.eq-marine-armor",
@@ -1276,7 +1563,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "EQ_POWER_LOADER": {
       "id": "vehicle.power-loader",
@@ -1286,7 +1574,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "Exosquelette industriel piloté; bonus TCG distinct de ses caractéristiques techniques.",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "EQ_MOTION_TRACKER": {
       "id": "equipment.eq-motion-tracker",
@@ -1296,7 +1585,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "EQ_WRISTBLADES": {
       "id": "weapon.eq-wristblades",
@@ -1306,7 +1596,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/Yautja-hive-warriors",
+          "sourceId": "wristblades",
+          "sourceName": "Dual Retractable Wristblades",
+          "sourcePath": "js/data/charactersData.js",
+          "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "EQ_PLASMACASTER": {
       "id": "weapon.eq-plasmacaster",
@@ -1316,7 +1616,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/Yautja-hive-warriors",
+          "sourceId": "plasma_caster",
+          "sourceName": "Shoulder Plasma Caster (Single)",
+          "sourcePath": "js/data/charactersData.js",
+          "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "EQ_COMBISTICK": {
       "id": "weapon.eq-combistick",
@@ -1326,7 +1636,25 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/aliens-tantalus-frontier",
+          "sourceId": "weapon-026-combi-stick",
+          "sourceName": "Combi-Stick",
+          "sourcePath": "docs/arsenal/data/tantalus_arsenal_master_v1.csv",
+          "sourceRevision": "d41b5fc120da2e7a5938308f9d3c852d20e53cc5",
+          "relationship": "candidate_alias_pending_review"
+        },
+        {
+          "project": "darknigthmare/Yautja-hive-warriors",
+          "sourceId": "combistick",
+          "sourceName": "Telescopic Combistick Spear",
+          "sourcePath": "js/data/charactersData.js",
+          "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "EQ_SMART_DISC": {
       "id": "weapon.eq-smart-disc",
@@ -1336,7 +1664,25 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/aliens-tantalus-frontier",
+          "sourceId": "weapon-027-smart-disc",
+          "sourceName": "Smart Disc",
+          "sourcePath": "docs/arsenal/data/tantalus_arsenal_master_v1.csv",
+          "sourceRevision": "d41b5fc120da2e7a5938308f9d3c852d20e53cc5",
+          "relationship": "candidate_alias_pending_review"
+        },
+        {
+          "project": "darknigthmare/Yautja-hive-warriors",
+          "sourceId": "smart_disc",
+          "sourceName": "Smart-Disc Laser Rotor",
+          "sourcePath": "js/data/charactersData.js",
+          "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "EQ_NET_GUN": {
       "id": "weapon.eq-net-gun",
@@ -1346,7 +1692,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/Yautja-hive-warriors",
+          "sourceId": "netgun",
+          "sourceName": "Razor-Wire Netgun",
+          "sourcePath": "js/data/charactersData.js",
+          "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "EQ_BIOMASK": {
       "id": "equipment.eq-biomask",
@@ -1356,7 +1712,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/Yautja-hive-warriors",
+          "sourceId": "thermal_mask",
+          "sourceName": "Thermal Multi-Vision Bio-Mask",
+          "sourcePath": "js/data/charactersData.js",
+          "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "EQ_MEDICOMP": {
       "id": "equipment.eq-medicomp",
@@ -1366,7 +1732,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/Yautja-hive-warriors",
+          "sourceId": "medicomp",
+          "sourceName": "Medicomp Bio-Gel Injection Kit",
+          "sourcePath": "js/data/charactersData.js",
+          "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "EQ_RAZOR_WHIP": {
       "id": "weapon.eq-razor-whip",
@@ -1376,7 +1752,17 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": [
+        {
+          "project": "darknigthmare/Yautja-hive-warriors",
+          "sourceId": "plasma_whip",
+          "sourceName": "Vertebrae Plasma Whip",
+          "sourcePath": "js/data/charactersData.js",
+          "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "relationship": "candidate_alias_pending_review"
+        }
+      ]
     },
     "EQ_FALCON_DRONE": {
       "id": "equipment.eq-falcon-drone",
@@ -1386,7 +1772,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "EQ_ENGINEER_SUIT": {
       "id": "equipment.eq-engineer-suit",
@@ -1396,7 +1783,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "EQ_AMPule": {
       "id": "equipment.eq-ampule",
@@ -1406,7 +1794,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "EQ_ACID_CARAPACE": {
       "id": "equipment.eq-acid-carapace",
@@ -1416,7 +1805,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "L_NOSTROMO": {
       "id": "vessel.l-nostromo",
@@ -1426,7 +1816,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "L_DERELICT": {
       "id": "location.l-derelict",
@@ -1436,7 +1827,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "L_HADLEYS_HOPE": {
       "id": "location.hadleys-hope",
@@ -1446,7 +1838,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "Colonie humaine sur LV-426; lieu parent du nid et du processeur atmosphérique.",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "L_PROCESSOR": {
       "id": "facility.lv426-atmosphere-processor",
@@ -1458,7 +1851,8 @@ window.AVP_ALIEN_BASE = {
       "sourceRefs": [],
       "relatedEntityIds": [
         "location.hadleys-hope"
-      ]
+      ],
+      "crossgameReferences": []
     },
     "L_SULACO": {
       "id": "location.l-sulaco",
@@ -1468,7 +1862,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "L_SEVASTOPOL": {
       "id": "location.sevastopol",
@@ -1480,7 +1875,8 @@ window.AVP_ALIEN_BASE = {
       "sourceRefs": [
         "https://store.steampowered.com/app/214490/alien-isolation/"
       ],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "L_VAL_VERDE": {
       "id": "location.l-val-verde",
@@ -1490,7 +1886,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "L_LA1997": {
       "id": "location.l-la1997",
@@ -1500,7 +1897,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "L_PRESERVE": {
       "id": "location.l-preserve",
@@ -1510,7 +1908,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "L_BOUVET": {
       "id": "location.l-bouvet",
@@ -1520,7 +1919,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "L_YAUTJA_SHIP": {
       "id": "vessel.l-yautja-ship",
@@ -1530,7 +1930,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "L_JUGGERNAUT": {
       "id": "vessel.l-juggernaut",
@@ -1540,7 +1941,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "L_XENO_HIVE": {
       "id": "location.hadleys-hope-hive",
@@ -1552,7 +1954,8 @@ window.AVP_ALIEN_BASE = {
       "sourceRefs": [],
       "relatedEntityIds": [
         "location.hadleys-hope"
-      ]
+      ],
+      "crossgameReferences": []
     },
     "L_AURIGA": {
       "id": "location.l-auriga",
@@ -1562,7 +1965,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "L_FIORINA": {
       "id": "location.l-fiorina",
@@ -1572,7 +1976,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "L_GUNNISON": {
       "id": "location.l-gunnison",
@@ -1582,7 +1987,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     },
     "L_PROTO_LAB": {
       "id": "location.l-proto-lab",
@@ -1592,7 +1998,8 @@ window.AVP_ALIEN_BASE = {
       "researchStatus": "legacy_index_unverified",
       "summary": "",
       "sourceRefs": [],
-      "relatedEntityIds": []
+      "relatedEntityIds": [],
+      "crossgameReferences": []
     }
   }
 };

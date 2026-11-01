@@ -43,3 +43,20 @@ test('the card detail UI exposes source status and retains the local canonical t
  assert.ok(sw.includes('/src/alien-base.js'));
  assert.ok(server.includes('src/alien-base.js'));
 });
+
+test('candidate source links from other projects are traceable and never become TCG stats',()=>{
+  const groups=new Set(['darknigthmare/xeno-trace','darknigthmare/aliens-tantalus-frontier',
+    'darknigthmare/Yautja-hive-warriors','darknigthmare/world-hive-wars']);
+  const references=Object.values(base.byCardId).flatMap(x=>x.crossgameReferences||[]);
+  assert.equal(references.length,28);
+  assert.equal(Object.values(base.byCardId).filter(x=>x.crossgameReferences?.length).length,25);
+  for(const ref of references){
+    assert.ok(groups.has(ref.project));
+    assert.ok(ref.sourceId && ref.sourcePath && /^[a-f0-9]{40}$/.test(ref.sourceRevision));
+    assert.equal(ref.relationship,'candidate_alias_pending_review');
+  }
+  assert.ok(base.byCardId.X_FACEHUGGER.crossgameReferences.some(x=>x.project==='darknigthmare/xeno-trace'));
+  assert.ok(base.byCardId.EQ_PULSE_RIFLE.crossgameReferences.some(x=>x.project==='darknigthmare/aliens-tantalus-frontier'));
+  assert.ok(base.byCardId.Y_WOLF.crossgameReferences.some(x=>x.project==='darknigthmare/Yautja-hive-warriors'));
+  assert.ok(base.byCardId.X_RUNNER.crossgameReferences.some(x=>x.project==='darknigthmare/world-hive-wars'));
+});
