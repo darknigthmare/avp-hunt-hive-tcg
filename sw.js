@@ -15,6 +15,8 @@ const APP_SHELL = [
   '/assets/icon-512.png',
   '/assets/icon-maskable-512.png',
   '/src/data.js',
+  '/src/alien-base-public-v1.js',
+  '/src/alien-base-bridge.js',
   '/src/art-manifest.js',
   '/src/engine.js',
   '/src/duel-save.js',
