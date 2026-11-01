@@ -10,7 +10,6 @@ const snapshot=JSON.parse(await readFile(join(base,'exports/avp-hunt-hive-tcg.v3
 assert.equal(snapshot.schema,'alien-base/tcg-public-v3');
 assert.equal(snapshot.registry.v1,68);
 assert.equal(snapshot.registry.v2,632);
-const cards=new Script(await readFile(join(root,'src/data.js'),'utf8')).runInNewContext({window:{}});
 // Read catalog independently, never rewrite cards or saves.
 const ctx=createContext({window:{}});
 new Script(await readFile(join(root,'src/data.js'),'utf8')).runInContext(ctx,{timeout:2000});
