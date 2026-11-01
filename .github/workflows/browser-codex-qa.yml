@@ -42,4 +42,5 @@ jobs:
             .qa-*.png
             /tmp/avp-tcg-qa-server.log
           if-no-files-found: ignore
+          include-hidden-files: true
           retention-days: 7
