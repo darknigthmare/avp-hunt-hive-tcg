@@ -1,16 +1,25 @@
 /* Snapshot public, sans appel au dépôt privé : généré depuis alien_base. */
 window.AVP_ALIEN_BASE = {
   "schema": "alien-base/tcg-public-v1",
-  "revision": "alien-base-crossgame-linked-2026-11-01",
+  "revision": "tcg-unified-2026-11-01",
   "byCardId": {
     "X_OVOMORPH": {
-      "id": "life_stage.ovomorph",
+      "id": "card.avp.x_ovomorph",
       "name": "Ovomorphe",
       "category": "life_stage",
+      "registryCategory": "game-card",
+      "canonicalEntityId": "bio.xenomorph.ovomorph",
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Œuf biologique du cycle xénomorphe, pas un rang de combattant.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_OVOMORPH"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -19,18 +28,28 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Ovomorphe",
           "sourcePath": "js/species.mjs",
           "sourceRevision": "6f8678a725eda5e0725721779f0beceb24b65ff0",
+          "candidateRegistryEntityId": "bio.xenomorph.ovomorph",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "X_FACEHUGGER": {
-      "id": "life_stage.facehugger",
+      "id": "card.avp.x_facehugger",
       "name": "Facehugger",
       "category": "life_stage",
+      "registryCategory": "game-card",
+      "canonicalEntityId": "bio.xenomorph.facehugger",
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Phase parasitoïde du cycle de reproduction xénomorphe.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_FACEHUGGER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -39,18 +58,28 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Facehugger",
           "sourcePath": "js/species.mjs",
           "sourceRevision": "6f8678a725eda5e0725721779f0beceb24b65ff0",
+          "candidateRegistryEntityId": "bio.xenomorph.facehugger",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "X_CHESTBURSTER": {
-      "id": "life_stage.chestburster",
+      "id": "card.avp.x_chestburster",
       "name": "Chestburster",
       "category": "life_stage",
+      "registryCategory": "game-card",
+      "canonicalEntityId": "bio.xenomorph.chestburster",
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Phase juvénile précédant la forme mature xénomorphe.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_CHESTBURSTER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -59,18 +88,28 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Chestburster",
           "sourcePath": "js/species.mjs",
           "sourceRevision": "6f8678a725eda5e0725721779f0beceb24b65ff0",
+          "candidateRegistryEntityId": "bio.xenomorph.chestburster",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "X_DRONE": {
-      "id": "xenomorph_variant.x-drone",
+      "id": "card.avp.x_drone",
       "name": "Drone Xénomorphe",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": "bio.xenomorph.drone",
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_DRONE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -79,18 +118,28 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Drone",
           "sourcePath": "js/species.mjs",
           "sourceRevision": "6f8678a725eda5e0725721779f0beceb24b65ff0",
+          "candidateRegistryEntityId": "bio.xenomorph.drone",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "X_WARRIOR": {
-      "id": "xenomorph_variant.x-warrior",
+      "id": "card.avp.x_warrior",
       "name": "Warrior Xénomorphe",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": "bio.xenomorph.warrior",
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_WARRIOR"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -99,18 +148,28 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Warrior",
           "sourcePath": "js/species.mjs",
           "sourceRevision": "6f8678a725eda5e0725721779f0beceb24b65ff0",
+          "candidateRegistryEntityId": "bio.xenomorph.warrior",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "X_RUNNER": {
-      "id": "xenomorph_variant.x-runner",
+      "id": "card.avp.x_runner",
       "name": "Runner",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": "bio.xenomorph.runner",
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_RUNNER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -119,6 +178,7 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Runner — Alien 3",
           "sourcePath": "src/game/xenomorph-catalog.js",
           "sourceRevision": "80ce99282b12001aff136e0fe8ffbde032365208",
+          "candidateRegistryEntityId": null,
           "relationship": "candidate_alias_pending_review"
         },
         {
@@ -127,18 +187,28 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Runner",
           "sourcePath": "js/species.mjs",
           "sourceRevision": "6f8678a725eda5e0725721779f0beceb24b65ff0",
+          "candidateRegistryEntityId": "bio.xenomorph.runner",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "X_SPITTER": {
-      "id": "xenomorph_variant.x-spitter",
+      "id": "card.avp.x_spitter",
       "name": "Spitter",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": "bio.xenomorph.spitter",
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_SPITTER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -147,29 +217,48 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Spitter",
           "sourcePath": "js/species.mjs",
           "sourceRevision": "6f8678a725eda5e0725721779f0beceb24b65ff0",
+          "candidateRegistryEntityId": "bio.xenomorph.spitter",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "X_STALKER": {
-      "id": "xenomorph_variant.x-stalker",
+      "id": "card.avp.x_stalker",
       "name": "Stalker",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_STALKER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "X_PRAETORIAN": {
-      "id": "xenomorph_variant.x-praetorian",
+      "id": "card.avp.x_praetorian",
       "name": "Praetorian",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": "bio.xenomorph.praetorian",
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_PRAETORIAN"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -178,18 +267,28 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Prétorien",
           "sourcePath": "js/species.mjs",
           "sourceRevision": "6f8678a725eda5e0725721779f0beceb24b65ff0",
+          "candidateRegistryEntityId": "bio.xenomorph.praetorian",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "X_QUEEN": {
-      "id": "xenomorph.queen",
+      "id": "card.avp.x_queen",
       "name": "Reine Xénomorphe",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": "bio.xenomorph.queen",
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Forme reproductrice majeure de la ruche; stats du TCG non physiques.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_QUEEN"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -198,106 +297,188 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Reine Xénomorphe",
           "sourcePath": "js/species.mjs",
           "sourceRevision": "6f8678a725eda5e0725721779f0beceb24b65ff0",
+          "candidateRegistryEntityId": "bio.xenomorph.queen",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "X_QUEEN_MOTHER": {
-      "id": "xenomorph_variant.x-queen-mother",
+      "id": "card.avp.x_queen_mother",
       "name": "Queen Mother",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_QUEEN_MOTHER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "X_BIG_CHAP": {
-      "id": "xenomorph_individual.x-big-chap",
+      "id": "card.avp.x_big_chap",
       "name": "Big Chap — Organisme parfait",
       "category": "xenomorph_individual",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_BIG_CHAP"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "X_SCORCHED": {
-      "id": "xenomorph_individual.x-scorched",
+      "id": "card.avp.x_scorched",
       "name": "Scorched Xenomorph",
       "category": "xenomorph_individual",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_SCORCHED"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "X_GRID": {
-      "id": "xenomorph.grid",
+      "id": "card.avp.x_grid",
       "name": "Grid",
       "category": "xenomorph_individual",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Xénomorphe individuel de l'univers AVP; la faction HYBRID est un choix de règles TCG, non une taxonomie.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_GRID"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "X_RED": {
-      "id": "xenomorph_variant.x-red",
+      "id": "card.avp.x_red",
       "name": "Red Xenomorph",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_RED"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "X_GORILLA": {
-      "id": "xenomorph_variant.x-gorilla",
+      "id": "card.avp.x_gorilla",
       "name": "Gorilla Alien",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_GORILLA"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "X_BULL": {
-      "id": "xenomorph_variant.x-bull",
+      "id": "card.avp.x_bull",
       "name": "Bull Alien",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_BULL"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "X_MANTIS": {
-      "id": "xenomorph_variant.x-mantis",
+      "id": "card.avp.x_mantis",
       "name": "Mantis Alien",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_MANTIS"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "X_SNAKE": {
-      "id": "xenomorph_variant.x-snake",
+      "id": "card.avp.x_snake",
       "name": "Snake Alien",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_SNAKE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -306,205 +487,368 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Snake Alien — Kenner / NECA",
           "sourcePath": "src/game/xenomorph-catalog.js",
           "sourceRevision": "80ce99282b12001aff136e0fe8ffbde032365208",
+          "candidateRegistryEntityId": null,
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "X_FLYING_QUEEN": {
-      "id": "xenomorph_variant.x-flying-queen",
+      "id": "card.avp.x_flying_queen",
       "name": "Flying Queen",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_FLYING_QUEEN"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "X_POPPER": {
-      "id": "xenomorph_variant.x-popper",
+      "id": "card.avp.x_popper",
       "name": "Pathogen Popper",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_POPPER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "X_PATH_STALKER": {
-      "id": "xenomorph_variant.x-path-stalker",
+      "id": "card.avp.x_path_stalker",
       "name": "Pathogen Stalker",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_PATH_STALKER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "X_PATH_BRUTE": {
-      "id": "xenomorph_variant.x-path-brute",
+      "id": "card.avp.x_path_brute",
       "name": "Pathogen Brute",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_PATH_BRUTE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "X_PATH_QUEEN": {
-      "id": "xenomorph_variant.x-path-queen",
+      "id": "card.avp.x_path_queen",
       "name": "Pathogen Queen",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_PATH_QUEEN"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "X_WARDEN": {
-      "id": "xenomorph_variant.x-warden",
+      "id": "card.avp.x_warden",
       "name": "Warden",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_WARDEN"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "X_SIREN": {
-      "id": "xenomorph_variant.x-siren",
+      "id": "card.avp.x_siren",
       "name": "Siren",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_SIREN"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "X_NEOMORPH": {
-      "id": "xenomorph_variant.x-neomorph",
+      "id": "card.avp.x_neomorph",
       "name": "Neomorph",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_NEOMORPH"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "X_DEACON": {
-      "id": "xenomorph_variant.x-deacon",
+      "id": "card.avp.x_deacon",
       "name": "Deacon",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "X_DEACON"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_UNBLOODED": {
-      "id": "role.y-unblooded",
+      "id": "card.avp.y_unblooded",
       "name": "Unblooded Yautja",
       "category": "role",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_UNBLOODED"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_YOUNG_BLOOD": {
-      "id": "role.y-young-blood",
+      "id": "card.avp.y_young_blood",
       "name": "Young Blood",
       "category": "role",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_YOUNG_BLOOD"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_ELITE": {
-      "id": "role.y-elite",
+      "id": "card.avp.y_elite",
       "name": "Elite Predator",
       "category": "role",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_ELITE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_ELDER": {
-      "id": "role.y-elder",
+      "id": "card.avp.y_elder",
       "name": "Elder Predator",
       "category": "role",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_ELDER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_CLAN_LEADER": {
-      "id": "role.y-clan-leader",
+      "id": "card.avp.y_clan_leader",
       "name": "Clan Leader",
       "category": "role",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_CLAN_LEADER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_ANCIENT": {
-      "id": "role.y-ancient",
+      "id": "card.avp.y_ancient",
       "name": "Ancient Predator",
       "category": "role",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_ANCIENT"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_ENFORCER": {
-      "id": "role.y-enforcer",
+      "id": "card.avp.y_enforcer",
       "name": "Enforcer",
       "category": "role",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_ENFORCER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_BAD_BLOOD": {
-      "id": "yautja_character.y-bad-blood",
+      "id": "card.avp.y_bad_blood",
       "name": "Bad Blood",
       "category": "yautja_character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_BAD_BLOOD"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_JUNGLE_HUNTER": {
-      "id": "yautja_character.y-jungle-hunter",
+      "id": "card.avp.y_jungle_hunter",
       "name": "Jungle Hunter",
       "category": "yautja_character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_JUNGLE_HUNTER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -513,18 +857,28 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "JUNGLE HUNTER (1987)",
           "sourcePath": "js/data/charactersData.js",
           "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "candidateRegistryEntityId": "character.yautja.jungle_hunter",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "Y_CITY_HUNTER": {
-      "id": "yautja_character.y-city-hunter",
+      "id": "card.avp.y_city_hunter",
       "name": "City Hunter",
       "category": "yautja_character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_CITY_HUNTER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -533,51 +887,88 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "CITY HUNTER (1990)",
           "sourcePath": "js/data/charactersData.js",
           "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "candidateRegistryEntityId": "character.yautja.city_hunter",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "Y_SCAR": {
-      "id": "yautja_character.y-scar",
+      "id": "card.avp.y_scar",
       "name": "Scar",
       "category": "yautja_character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_SCAR"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_CELTIC": {
-      "id": "yautja_character.y-celtic",
+      "id": "card.avp.y_celtic",
       "name": "Celtic",
       "category": "yautja_character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_CELTIC"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_CHOPPER": {
-      "id": "yautja_character.y-chopper",
+      "id": "card.avp.y_chopper",
       "name": "Chopper",
       "category": "yautja_character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_CHOPPER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_WOLF": {
-      "id": "yautja_character.y-wolf",
+      "id": "card.avp.y_wolf",
       "name": "Wolf Predator",
       "category": "yautja_character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_WOLF"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -586,62 +977,108 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "WOLF PREDATOR (AVP REQUIEM)",
           "sourcePath": "js/data/charactersData.js",
           "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "candidateRegistryEntityId": "character.yautja.wolf_predator",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "Y_BERSERKER": {
-      "id": "yautja_character.y-berserker",
+      "id": "card.avp.y_berserker",
       "name": "Berserker Predator",
       "category": "yautja_character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_BERSERKER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_FALCONER": {
-      "id": "yautja_character.y-falconer",
+      "id": "card.avp.y_falconer",
       "name": "Falconer Predator",
       "category": "yautja_character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_FALCONER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_TRACKER": {
-      "id": "yautja_character.y-tracker",
+      "id": "card.avp.y_tracker",
       "name": "Tracker Predator",
       "category": "yautja_character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_TRACKER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_HOUND": {
-      "id": "fauna.y-hound",
+      "id": "card.avp.y_hound",
       "name": "Predator Hound",
       "category": "fauna",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_HOUND"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_FERAL": {
-      "id": "yautja_character.y-feral",
+      "id": "card.avp.y_feral",
       "name": "Feral Predator",
       "category": "yautja_character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_FERAL"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -650,18 +1087,28 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "FERAL PREDATOR (PREY 2022)",
           "sourcePath": "js/data/charactersData.js",
           "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "candidateRegistryEntityId": "character.yautja.feral_predator",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "Y_SAMURAI": {
-      "id": "yautja_character.y-samurai",
+      "id": "card.avp.y_samurai",
       "name": "Samurai Predator",
       "category": "yautja_character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_SAMURAI"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -670,848 +1117,1531 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "SAMURAI PREDATOR (PHG DLC)",
           "sourcePath": "js/data/charactersData.js",
           "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "candidateRegistryEntityId": "character.yautja.samurai_predator",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "Y_GLADIATOR": {
-      "id": "yautja_character.y-gladiator",
+      "id": "card.avp.y_gladiator",
       "name": "Gladiator Predator",
       "category": "yautja_character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_GLADIATOR"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_TEMPLE_GUARD": {
-      "id": "role.y-temple-guard",
+      "id": "card.avp.y_temple_guard",
       "name": "Temple Guard",
       "category": "role",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_TEMPLE_GUARD"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_AHAB": {
-      "id": "yautja_character.y-ahab",
+      "id": "card.avp.y_ahab",
       "name": "Ahab",
       "category": "yautja_character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_AHAB"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_SHESH_KUK": {
-      "id": "yautja_character.y-shesh-kuk",
+      "id": "card.avp.y_shesh_kuk",
       "name": "Shesh-Kuk",
       "category": "yautja_character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_SHESH_KUK"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_YAQUITA": {
-      "id": "yautja_character.y-yaquita",
+      "id": "card.avp.y_yaquita",
       "name": "Yaquita — Chasseur sans jambes",
       "category": "yautja_character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_YAQUITA"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_EMISSARY_A": {
-      "id": "yautja_character.y-emissary-a",
+      "id": "card.avp.y_emissary_a",
       "name": "Emissary Predator A",
       "category": "yautja_character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "cut_or_prototype",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_EMISSARY_A"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_EMISSARY_B": {
-      "id": "yautja_character.y-emissary-b",
+      "id": "card.avp.y_emissary_b",
       "name": "Emissary Predator B",
       "category": "yautja_character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "cut_or_prototype",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_EMISSARY_B"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "Y_SCIENTIST": {
-      "id": "role.y-scientist",
+      "id": "card.avp.y_scientist",
       "name": "Scientifique Yautja — Intelligentsia",
       "category": "role",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "cut_or_prototype",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "Y_SCIENTIST"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_COLONIAL_MARINE": {
-      "id": "character.h-colonial-marine",
+      "id": "card.avp.h_colonial_marine",
       "name": "Colonial Marine",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_COLONIAL_MARINE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_SMARTGUNNER": {
-      "id": "character.h-smartgunner",
+      "id": "card.avp.h_smartgunner",
       "name": "Smartgunner USCM",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_SMARTGUNNER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_RIPLEY": {
-      "id": "character.ellen-ripley",
+      "id": "card.avp.h_ripley",
       "name": "Ellen Ripley",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "publisher_source_reviewed",
       "summary": "Survivante du Nostromo et protagoniste de la mission de retour sur LV-426.",
       "sourceRefs": [
-        "https://www.20thcenturystudios.com/movies/aliens"
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_RIPLEY"
+        }
       ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_DALLAS": {
-      "id": "character.h-dallas",
+      "id": "card.avp.h_dallas",
       "name": "Arthur Dallas",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_DALLAS"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_PARKER": {
-      "id": "character.h-parker",
+      "id": "card.avp.h_parker",
       "name": "Dennis Parker",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_PARKER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_LAMBERT": {
-      "id": "character.h-lambert",
+      "id": "card.avp.h_lambert",
       "name": "Joan Lambert",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_LAMBERT"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_ASH": {
-      "id": "synthetic.ash",
+      "id": "card.avp.h_ash",
       "name": "Ash — Officier scientifique",
       "category": "synthetic",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Officier scientifique synthétique du Nostromo.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_ASH"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_HICKS": {
-      "id": "character.h-hicks",
+      "id": "card.avp.h_hicks",
       "name": "Dwayne Hicks",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_HICKS"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_HUDSON": {
-      "id": "character.h-hudson",
+      "id": "card.avp.h_hudson",
       "name": "William Hudson",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_HUDSON"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_VASQUEZ": {
-      "id": "character.h-vasquez",
+      "id": "card.avp.h_vasquez",
       "name": "Jenette Vasquez",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_VASQUEZ"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_APONE": {
-      "id": "character.h-apone",
+      "id": "card.avp.h_apone",
       "name": "Al Apone",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_APONE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_BISHOP": {
-      "id": "synthetic.bishop",
+      "id": "card.avp.h_bishop",
       "name": "Bishop",
       "category": "synthetic",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Synthétique accompagnant l'équipe de la mission d'Aliens.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_BISHOP"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_NEWT": {
-      "id": "character.h-newt",
+      "id": "card.avp.h_newt",
       "name": "Rebecca “Newt” Jorden",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_NEWT"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_DUTCH": {
-      "id": "character.h-dutch",
+      "id": "card.avp.h_dutch",
       "name": "Dutch Schaefer",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_DUTCH"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_HARRIGAN": {
-      "id": "character.h-harrigan",
+      "id": "card.avp.h_harrigan",
       "name": "Mike Harrigan",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_HARRIGAN"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_NARU": {
-      "id": "character.h-naru",
+      "id": "card.avp.h_naru",
       "name": "Naru",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_NARU"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_ROYCE": {
-      "id": "character.h-royce",
+      "id": "card.avp.h_royce",
       "name": "Royce",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_ROYCE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_ALEXA": {
-      "id": "character.h-alexa",
+      "id": "card.avp.h_alexa",
       "name": "Alexa Woods",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_ALEXA"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_MACHIKO": {
-      "id": "character.h-machiko",
+      "id": "card.avp.h_machiko",
       "name": "Machiko Noguchi",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_MACHIKO"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_COMBAT_SYNTH": {
-      "id": "synthetic.h-combat-synth",
+      "id": "card.avp.h_combat_synth",
       "name": "Synthétique de combat",
       "category": "synthetic",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_COMBAT_SYNTH"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_WORKING_JOE": {
-      "id": "synthetic.working-joe",
+      "id": "card.avp.h_working_joe",
       "name": "Working Joe",
       "category": "synthetic",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Type d'androïde lié aux installations Seegson de Sevastopol.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_WORKING_JOE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_WEYLAND_OP": {
-      "id": "character.h-weyland-op",
+      "id": "card.avp.h_weyland_op",
       "name": "Agent Weyland-Yutani",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_WEYLAND_OP"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_POWERLOADER_RIPLEY": {
-      "id": "variant.ellen-ripley-power-loader",
+      "id": "card.avp.h_powerloader_ripley",
       "name": "Ripley — Power Loader",
       "category": "character_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Variante de gameplay associant Ripley au chargeur motorisé; ne désigne pas un personnage distinct.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_POWERLOADER_RIPLEY"
+        }
+      ],
       "relatedEntityIds": [
-        "character.ellen-ripley",
-        "vehicle.power-loader"
+        "card.avp.h_ripley",
+        "card.avp.eq_power_loader"
       ],
       "crossgameReferences": []
     },
     "E_ENGINEER": {
-      "id": "organism.e-engineer",
+      "id": "card.avp.e_engineer",
       "name": "Engineer — Dernier pilote",
       "category": "organism",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "E_ENGINEER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "E_SPACE_JOCKEY": {
-      "id": "organism.e-space-jockey",
+      "id": "card.avp.e_space_jockey",
       "name": "Space Jockey",
       "category": "organism",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "E_SPACE_JOCKEY"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "E_DAVID": {
-      "id": "synthetic.david-8",
+      "id": "card.avp.e_david",
       "name": "David 8 — Créateur",
       "category": "synthetic",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Synthétique David; ENGINEER désigne son identité de faction dans le TCG et non son espèce.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "E_DAVID"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "E_WALTER": {
-      "id": "synthetic.walter",
+      "id": "card.avp.e_walter",
       "name": "Walter",
       "category": "synthetic",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Synthétique Walter, distinct de David.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "E_WALTER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "E_TRILOBITE": {
-      "id": "organism.e-trilobite",
+      "id": "card.avp.e_trilobite",
       "name": "Trilobite",
       "category": "organism",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "E_TRILOBITE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "E_HAMMERPEDE": {
-      "id": "organism.e-hammerpede",
+      "id": "card.avp.e_hammerpede",
       "name": "Hammerpede",
       "category": "organism",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "E_HAMMERPEDE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "E_BLACK_GOO_MUTANT": {
-      "id": "organism.e-black-goo-mutant",
+      "id": "card.avp.e_black_goo_mutant",
       "name": "Mutant au Pathogène",
       "category": "organism",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "E_BLACK_GOO_MUTANT"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_PREDALIEN": {
-      "id": "organism.predalien",
+      "id": "card.avp.h_predalien",
       "name": "Predalien",
       "category": "xenomorph_hybrid",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Hybridation xénomorphe liée à un hôte Yautja, distincte des castes Xénomorphes ordinaires.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_PREDALIEN"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_NEWBORN": {
-      "id": "xenomorph_hybrid.h-newborn",
+      "id": "card.avp.h_newborn",
       "name": "Newborn",
       "category": "xenomorph_hybrid",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_NEWBORN"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_RIPLEY8": {
-      "id": "character.ripley-8",
+      "id": "card.avp.h_ripley8",
       "name": "Ripley 8",
       "category": "character",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Clone/hybride de Ripley issu de la continuité Alien: Resurrection; à distinguer d'Ellen Ripley.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_RIPLEY8"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_WHITE_HYBRID": {
-      "id": "xenomorph_hybrid.h-white-hybrid",
+      "id": "card.avp.h_white_hybrid",
       "name": "White Hybrid",
       "category": "xenomorph_hybrid",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_WHITE_HYBRID"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "H_ALIEN_KING": {
-      "id": "xenomorph_variant.h-alien-king",
+      "id": "card.avp.h_alien_king",
       "name": "King Alien",
       "category": "xenomorph_variant",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "H_ALIEN_KING"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_X_ACID_BLOOD": {
-      "id": "gameplay_concept.t-x-acid-blood",
+      "id": "card.avp.t_x_acid_blood",
       "name": "Sang acide",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_X_ACID_BLOOD"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_X_VENT_AMBUSH": {
-      "id": "gameplay_concept.t-x-vent-ambush",
+      "id": "card.avp.t_x_vent_ambush",
       "name": "Embuscade dans les conduits",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_X_VENT_AMBUSH"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_X_RESIN": {
-      "id": "gameplay_concept.t-x-resin",
+      "id": "card.avp.t_x_resin",
       "name": "Résine de Ruche",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_X_RESIN"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_X_SWARM": {
-      "id": "gameplay_concept.t-x-swarm",
+      "id": "card.avp.t_x_swarm",
       "name": "Déferlement de la Couvée",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_X_SWARM"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_X_EGGMORPH": {
-      "id": "gameplay_concept.t-x-eggmorph",
+      "id": "card.avp.t_x_eggmorph",
       "name": "Eggmorphing",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "deleted_or_alternate_scene",
       "researchStatus": "legacy_index_unverified",
       "summary": "Concept de scène alternative/supprimée; ne pas le présenter comme biologie universellement établie.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_X_EGGMORPH"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_X_ROYAL_JELLY": {
-      "id": "gameplay_concept.t-x-royal-jelly",
+      "id": "card.avp.t_x_royal_jelly",
       "name": "Gelée royale",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_X_ROYAL_JELLY"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_X_CUT_POWER": {
-      "id": "gameplay_concept.t-x-cut-power",
+      "id": "card.avp.t_x_cut_power",
       "name": "Couper l’alimentation",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_X_CUT_POWER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_X_PERFECT": {
-      "id": "gameplay_concept.t-x-perfect",
+      "id": "card.avp.t_x_perfect",
       "name": "Organisme parfait",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_X_PERFECT"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_Y_HUNT_CODE": {
-      "id": "gameplay_concept.t-y-hunt-code",
+      "id": "card.avp.t_y_hunt_code",
       "name": "Code de la chasse",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_Y_HUNT_CODE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_Y_CLAIM_TROPHY": {
-      "id": "gameplay_concept.t-y-claim-trophy",
+      "id": "card.avp.t_y_claim_trophy",
       "name": "Réclamer le trophée",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_Y_CLAIM_TROPHY"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_Y_THERMAL": {
-      "id": "gameplay_concept.t-y-thermal",
+      "id": "card.avp.t_y_thermal",
       "name": "Vision thermique",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_Y_THERMAL"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_Y_CLOAK": {
-      "id": "gameplay_concept.t-y-cloak",
+      "id": "card.avp.t_y_cloak",
       "name": "Cycle de camouflage",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_Y_CLOAK"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_Y_SELF_DESTRUCT": {
-      "id": "gameplay_concept.t-y-self-destruct",
+      "id": "card.avp.t_y_self_destruct",
       "name": "Autodestruction du poignet",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_Y_SELF_DESTRUCT"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_Y_BLOODING": {
-      "id": "gameplay_concept.t-y-blooding",
+      "id": "card.avp.t_y_blooding",
       "name": "Rituel du Blooding",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_Y_BLOODING"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_Y_NET_TRAP": {
-      "id": "gameplay_concept.t-y-net-trap",
+      "id": "card.avp.t_y_net_trap",
       "name": "Piège au filet",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_Y_NET_TRAP"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_Y_CHALLENGE": {
-      "id": "gameplay_concept.t-y-challenge",
+      "id": "card.avp.t_y_challenge",
       "name": "Rugissement de défi",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_Y_CHALLENGE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_H_MOTION": {
-      "id": "gameplay_concept.t-h-motion",
+      "id": "card.avp.t_h_motion",
       "name": "Ping du détecteur de mouvement",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_H_MOTION"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_H_SEAL_DOOR": {
-      "id": "gameplay_concept.t-h-seal-door",
+      "id": "card.avp.t_h_seal_door",
       "name": "Souder la porte",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_H_SEAL_DOOR"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_H_FIRETEAM": {
-      "id": "gameplay_concept.t-h-fireteam",
+      "id": "card.avp.t_h_fireteam",
       "name": "Formation Fireteam",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_H_FIRETEAM"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_H_FLAMER": {
-      "id": "gameplay_concept.t-h-flamer",
+      "id": "card.avp.t_h_flamer",
       "name": "Rafale de lance-flammes",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_H_FLAMER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_H_NUKE": {
-      "id": "gameplay_concept.t-h-nuke",
+      "id": "card.avp.t_h_nuke",
       "name": "Détruire le site depuis l’orbite",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_H_NUKE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_H_FROSTY": {
-      "id": "gameplay_concept.t-h-frosty",
+      "id": "card.avp.t_h_frosty",
       "name": "Restez sur vos gardes",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_H_FROSTY"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_H_EVAC": {
-      "id": "gameplay_concept.t-h-evac",
+      "id": "card.avp.t_h_evac",
       "name": "Évacuation d’urgence",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_H_EVAC"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_H_QUARANTINE": {
-      "id": "gameplay_concept.t-h-quarantine",
+      "id": "card.avp.t_h_quarantine",
       "name": "Protocole de quarantaine",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_H_QUARANTINE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_E_BLACK_GOO": {
-      "id": "gameplay_concept.t-e-black-goo",
+      "id": "card.avp.t_e_black_goo",
       "name": "Libération du liquide noir",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_E_BLACK_GOO"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_E_CREATION": {
-      "id": "gameplay_concept.t-e-creation",
+      "id": "card.avp.t_e_creation",
       "name": "Cycle de création",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_E_CREATION"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_E_ORRERY": {
-      "id": "gameplay_concept.t-e-orrery",
+      "id": "card.avp.t_e_orrery",
       "name": "Cartographie de l’orrery",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_E_ORRERY"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_E_SACRIFICE": {
-      "id": "gameplay_concept.t-e-sacrifice",
+      "id": "card.avp.t_e_sacrifice",
       "name": "Sacrifice de l’Ingénieur",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_E_SACRIFICE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_AVP_WHOEVER": {
-      "id": "gameplay_concept.t-avp-whoever",
+      "id": "card.avp.t_avp_whoever",
       "name": "Convergence sans survivants",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_AVP_WHOEVER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_AVP_ALLIANCE": {
-      "id": "gameplay_concept.t-avp-alliance",
+      "id": "card.avp.t_avp_alliance",
       "name": "Alliance Blooded",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_AVP_ALLIANCE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_AVP_3WW": {
-      "id": "gameplay_concept.t-avp-3ww",
+      "id": "card.avp.t_avp_3ww",
       "name": "Three World War",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_AVP_3WW"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "T_AVP_HYBRIDIZE": {
-      "id": "gameplay_concept.t-avp-hybridize",
+      "id": "card.avp.t_avp_hybridize",
       "name": "Hybridation forcée",
       "category": "gameplay_concept",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "gameplay_abstraction",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "T_AVP_HYBRIDIZE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "EQ_PULSE_RIFLE": {
-      "id": "weapon.m41a-pulse-rifle",
+      "id": "card.avp.eq_pulse_rifle",
       "name": "M41A Pulse Rifle",
       "category": "weapon",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Fusil à impulsion des Marines coloniaux, et non toute la famille des fusils de l'univers.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "EQ_PULSE_RIFLE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -1520,18 +2650,28 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "M41A Pulse Rifle",
           "sourcePath": "docs/arsenal/data/tantalus_arsenal_master_v1.csv",
           "sourceRevision": "d41b5fc120da2e7a5938308f9d3c852d20e53cc5",
+          "candidateRegistryEntityId": "item.m41a-pulse-rifle",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "EQ_SMARTGUN": {
-      "id": "weapon.m56-smartgun",
+      "id": "card.avp.eq_smartgun",
       "name": "M56 Smartgun",
       "category": "weapon",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Arme lourde de soutien des Marines coloniaux.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "EQ_SMARTGUN"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -1540,62 +2680,108 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "M56 Smartgun",
           "sourcePath": "docs/arsenal/data/tantalus_arsenal_master_v1.csv",
           "sourceRevision": "d41b5fc120da2e7a5938308f9d3c852d20e53cc5",
+          "candidateRegistryEntityId": "item.m56-smartgun",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "EQ_FLAMER": {
-      "id": "weapon.eq-flamer",
+      "id": "card.avp.eq_flamer",
       "name": "Lance-flammes M240",
       "category": "weapon",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "EQ_FLAMER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "EQ_MARINE_ARMOR": {
-      "id": "equipment.eq-marine-armor",
+      "id": "card.avp.eq_marine_armor",
       "name": "Armure de Marine colonial",
       "category": "equipment",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "EQ_MARINE_ARMOR"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "EQ_POWER_LOADER": {
-      "id": "vehicle.power-loader",
+      "id": "card.avp.eq_power_loader",
       "name": "Power Loader",
       "category": "vehicle",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Exosquelette industriel piloté; bonus TCG distinct de ses caractéristiques techniques.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "EQ_POWER_LOADER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "EQ_MOTION_TRACKER": {
-      "id": "equipment.eq-motion-tracker",
+      "id": "card.avp.eq_motion_tracker",
       "name": "Détecteur de mouvement",
       "category": "equipment",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "EQ_MOTION_TRACKER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "EQ_WRISTBLADES": {
-      "id": "weapon.eq-wristblades",
+      "id": "card.avp.eq_wristblades",
       "name": "Lames de poignet",
       "category": "weapon",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "EQ_WRISTBLADES"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -1604,18 +2790,28 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Dual Retractable Wristblades",
           "sourcePath": "js/data/charactersData.js",
           "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "candidateRegistryEntityId": "item.yautja.wristblades",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "EQ_PLASMACASTER": {
-      "id": "weapon.eq-plasmacaster",
+      "id": "card.avp.eq_plasmacaster",
       "name": "Plasmacaster d’épaule",
       "category": "weapon",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "EQ_PLASMACASTER"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -1624,18 +2820,28 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Shoulder Plasma Caster (Single)",
           "sourcePath": "js/data/charactersData.js",
           "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "candidateRegistryEntityId": "item.yautja.plasma_caster",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "EQ_COMBISTICK": {
-      "id": "weapon.eq-combistick",
+      "id": "card.avp.eq_combistick",
       "name": "Combi-stick",
       "category": "weapon",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "EQ_COMBISTICK"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -1644,6 +2850,7 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Combi-Stick",
           "sourcePath": "docs/arsenal/data/tantalus_arsenal_master_v1.csv",
           "sourceRevision": "d41b5fc120da2e7a5938308f9d3c852d20e53cc5",
+          "candidateRegistryEntityId": "item.yautja.combistick",
           "relationship": "candidate_alias_pending_review"
         },
         {
@@ -1652,18 +2859,28 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Telescopic Combistick Spear",
           "sourcePath": "js/data/charactersData.js",
           "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "candidateRegistryEntityId": "item.yautja.combistick",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "EQ_SMART_DISC": {
-      "id": "weapon.eq-smart-disc",
+      "id": "card.avp.eq_smart_disc",
       "name": "Smart Disc",
       "category": "weapon",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "EQ_SMART_DISC"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -1672,6 +2889,7 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Smart Disc",
           "sourcePath": "docs/arsenal/data/tantalus_arsenal_master_v1.csv",
           "sourceRevision": "d41b5fc120da2e7a5938308f9d3c852d20e53cc5",
+          "candidateRegistryEntityId": "item.yautja.smart_disc",
           "relationship": "candidate_alias_pending_review"
         },
         {
@@ -1680,18 +2898,28 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Smart-Disc Laser Rotor",
           "sourcePath": "js/data/charactersData.js",
           "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "candidateRegistryEntityId": "item.yautja.smart_disc",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "EQ_NET_GUN": {
-      "id": "weapon.eq-net-gun",
+      "id": "card.avp.eq_net_gun",
       "name": "Net Gun",
       "category": "weapon",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "EQ_NET_GUN"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -1700,18 +2928,28 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Razor-Wire Netgun",
           "sourcePath": "js/data/charactersData.js",
           "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "candidateRegistryEntityId": "item.yautja.netgun",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "EQ_BIOMASK": {
-      "id": "equipment.eq-biomask",
+      "id": "card.avp.eq_biomask",
       "name": "Bio-masque Yautja",
       "category": "equipment",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "EQ_BIOMASK"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -1720,18 +2958,28 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Thermal Multi-Vision Bio-Mask",
           "sourcePath": "js/data/charactersData.js",
           "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "candidateRegistryEntityId": "item.yautja.thermal_mask",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "EQ_MEDICOMP": {
-      "id": "equipment.eq-medicomp",
+      "id": "card.avp.eq_medicomp",
       "name": "Medicomp",
       "category": "equipment",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "EQ_MEDICOMP"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -1740,18 +2988,28 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Medicomp Bio-Gel Injection Kit",
           "sourcePath": "js/data/charactersData.js",
           "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "candidateRegistryEntityId": "item.yautja.medicomp",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "EQ_RAZOR_WHIP": {
-      "id": "weapon.eq-razor-whip",
+      "id": "card.avp.eq_razor_whip",
       "name": "Razor Whip",
       "category": "weapon",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "EQ_RAZOR_WHIP"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": [
         {
@@ -1760,244 +3018,432 @@ window.AVP_ALIEN_BASE = {
           "sourceName": "Vertebrae Plasma Whip",
           "sourcePath": "js/data/charactersData.js",
           "sourceRevision": "f91562b86ef61c9ef7e65087b4beb109036f8dd8",
+          "candidateRegistryEntityId": "item.yautja.plasma_whip",
           "relationship": "candidate_alias_pending_review"
         }
       ]
     },
     "EQ_FALCON_DRONE": {
-      "id": "equipment.eq-falcon-drone",
+      "id": "card.avp.eq_falcon_drone",
       "name": "Module Falcon Drone",
       "category": "equipment",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "EQ_FALCON_DRONE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "EQ_ENGINEER_SUIT": {
-      "id": "equipment.eq-engineer-suit",
+      "id": "card.avp.eq_engineer_suit",
       "name": "Combinaison biomécanique Engineer",
       "category": "equipment",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "EQ_ENGINEER_SUIT"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "EQ_AMPule": {
-      "id": "equipment.eq-ampule",
+      "id": "card.avp.eq_ampule",
       "name": "Ampoule de Pathogène",
       "category": "equipment",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "EQ_AMPule"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "EQ_ACID_CARAPACE": {
-      "id": "equipment.eq-acid-carapace",
+      "id": "card.avp.eq_acid_carapace",
       "name": "Carapace acide",
       "category": "equipment",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "EQ_ACID_CARAPACE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "L_NOSTROMO": {
-      "id": "vessel.l-nostromo",
+      "id": "card.avp.l_nostromo",
       "name": "USCSS Nostromo",
       "category": "vessel",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "L_NOSTROMO"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "L_DERELICT": {
-      "id": "location.l-derelict",
+      "id": "card.avp.l_derelict",
       "name": "Vaisseau Derelict de LV-426",
       "category": "location",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "L_DERELICT"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "L_HADLEYS_HOPE": {
-      "id": "location.hadleys-hope",
+      "id": "card.avp.l_hadleys_hope",
       "name": "Hadley’s Hope",
       "category": "location",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Colonie humaine sur LV-426; lieu parent du nid et du processeur atmosphérique.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "L_HADLEYS_HOPE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "L_PROCESSOR": {
-      "id": "facility.lv426-atmosphere-processor",
+      "id": "card.avp.l_processor",
       "name": "Processeur atmosphérique",
       "category": "location",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Installation de terraformation de la colonie de LV-426.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "L_PROCESSOR"
+        }
+      ],
       "relatedEntityIds": [
-        "location.hadleys-hope"
+        "card.avp.l_hadleys_hope"
       ],
       "crossgameReferences": []
     },
     "L_SULACO": {
-      "id": "location.l-sulaco",
+      "id": "card.avp.l_sulaco",
       "name": "USS Sulaco — Hangar",
       "category": "location",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "L_SULACO"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "L_SEVASTOPOL": {
-      "id": "location.sevastopol",
+      "id": "card.avp.l_sevastopol",
       "name": "Station Sevastopol",
       "category": "location",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "publisher_source_reviewed",
       "summary": "Station commerciale à démanteler, théâtre d'Alien: Isolation.",
       "sourceRefs": [
-        "https://store.steampowered.com/app/214490/alien-isolation/"
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "L_SEVASTOPOL"
+        }
       ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "L_VAL_VERDE": {
-      "id": "location.l-val-verde",
+      "id": "card.avp.l_val_verde",
       "name": "Jungle de Val Verde",
       "category": "location",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "L_VAL_VERDE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "L_LA1997": {
-      "id": "location.l-la1997",
+      "id": "card.avp.l_la1997",
       "name": "Los Angeles, 1997",
       "category": "location",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "L_LA1997"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "L_PRESERVE": {
-      "id": "location.l-preserve",
+      "id": "card.avp.l_preserve",
       "name": "Planète-réserve",
       "category": "location",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "L_PRESERVE"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "L_BOUVET": {
-      "id": "location.l-bouvet",
+      "id": "card.avp.l_bouvet",
       "name": "Pyramide de Bouvetøya",
       "category": "location",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "L_BOUVET"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "L_YAUTJA_SHIP": {
-      "id": "vessel.l-yautja-ship",
+      "id": "card.avp.l_yautja_ship",
       "name": "Vaisseau mère Yautja",
       "category": "vessel",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "L_YAUTJA_SHIP"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "L_JUGGERNAUT": {
-      "id": "vessel.l-juggernaut",
+      "id": "card.avp.l_juggernaut",
       "name": "Juggernaut Engineer",
       "category": "vessel",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "L_JUGGERNAUT"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "L_XENO_HIVE": {
-      "id": "location.hadleys-hope-hive",
+      "id": "card.avp.l_xeno_hive",
       "name": "Ruche de Hadley’s Hope",
       "category": "location",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "Nid xénomorphe établi dans la colonie, pas une nouvelle planète.",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "L_XENO_HIVE"
+        }
+      ],
       "relatedEntityIds": [
-        "location.hadleys-hope"
+        "card.avp.l_hadleys_hope"
       ],
       "crossgameReferences": []
     },
     "L_AURIGA": {
-      "id": "location.l-auriga",
+      "id": "card.avp.l_auriga",
       "name": "Laboratoires de l’USM Auriga",
       "category": "location",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "L_AURIGA"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "L_FIORINA": {
-      "id": "location.l-fiorina",
+      "id": "card.avp.l_fiorina",
       "name": "Fiorina 161",
       "category": "location",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "L_FIORINA"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "L_GUNNISON": {
-      "id": "location.l-gunnison",
+      "id": "card.avp.l_gunnison",
       "name": "Gunnison contaminée",
       "category": "location",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "source_pending",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "L_GUNNISON"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     },
     "L_PROTO_LAB": {
-      "id": "location.l-proto-lab",
+      "id": "card.avp.l_proto_lab",
       "name": "Laboratoire Stargazer — version coupée",
       "category": "location",
+      "registryCategory": "game-card",
+      "canonicalEntityId": null,
       "continuityStatus": "cut_or_prototype",
       "researchStatus": "legacy_index_unverified",
       "summary": "",
-      "sourceRefs": [],
+      "sourceRefs": [
+        {
+          "repository": "darknigthmare/avp-hunt-hive-tcg",
+          "path": "src/data.js",
+          "blobSha": "bf30d6387f98c61c46d3508fe87e72043ba1dbc9",
+          "localId": "L_PROTO_LAB"
+        }
+      ],
       "relatedEntityIds": [],
       "crossgameReferences": []
     }

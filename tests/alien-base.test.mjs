@@ -16,7 +16,8 @@ test('all 158 TCG cards have a stable Alien_base reference without changing thei
   for(const c of cards){
     const link=base.byCardId[c.id];
     assert.ok(link?.id && link.name && link.category,c.id+' missing');
-    assert.ok(/^[a-z][a-z0-9_]*[.][a-z0-9-]+$/.test(link.id),c.id+' invalid entity ID');
+    assert.equal(link.registryCategory,'game-card');
+    assert.ok(/^card[.]avp[.][a-z0-9_]+$/.test(link.id),c.id+' invalid unified ID');
     assert.ok(!('attack' in link)&&!('health' in link)&&!('cost' in link),c.id+' pollutes lore with balance stats');
     if(c.source.prototype)assert.equal(link.continuityStatus,'cut_or_prototype');
   }
@@ -49,14 +50,23 @@ test('candidate source links from other projects are traceable and never become 
     'darknigthmare/Yautja-hive-warriors','darknigthmare/world-hive-wars']);
   const references=Object.values(base.byCardId).flatMap(x=>x.crossgameReferences||[]);
   assert.equal(references.length,28);
+  assert.equal(Object.values(base.byCardId).filter(c=>c.canonicalEntityId).length,9);
   assert.equal(Object.values(base.byCardId).filter(x=>x.crossgameReferences?.length).length,25);
   for(const ref of references){
     assert.ok(groups.has(ref.project));
     assert.ok(ref.sourceId && ref.sourcePath && /^[a-f0-9]{40}$/.test(ref.sourceRevision));
     assert.equal(ref.relationship,'candidate_alias_pending_review');
+    if(ref.candidateRegistryEntityId)assert.ok(typeof ref.candidateRegistryEntityId==='string');
   }
   assert.ok(base.byCardId.X_FACEHUGGER.crossgameReferences.some(x=>x.project==='darknigthmare/xeno-trace'));
   assert.ok(base.byCardId.EQ_PULSE_RIFLE.crossgameReferences.some(x=>x.project==='darknigthmare/aliens-tantalus-frontier'));
   assert.ok(base.byCardId.Y_WOLF.crossgameReferences.some(x=>x.project==='darknigthmare/Yautja-hive-warriors'));
   assert.ok(base.byCardId.X_RUNNER.crossgameReferences.some(x=>x.project==='darknigthmare/world-hive-wars'));
+});
+
+test('canonical aliases are from unified registry, not a competing local namespace',()=>{
+ assert.equal(base.byCardId.X_FACEHUGGER.id,'card.avp.x_facehugger');
+ assert.equal(base.byCardId.X_FACEHUGGER.canonicalEntityId,'bio.xenomorph.facehugger');
+ assert.equal(base.byCardId.EQ_PULSE_RIFLE.id,'card.avp.eq_pulse_rifle');
+ assert.equal(base.byCardId.Y_WOLF.canonicalEntityId,null);
 });
