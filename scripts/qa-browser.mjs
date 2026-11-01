@@ -326,7 +326,7 @@ const PAGE_INSPECTION = `(() => {
 
 function inspectCodexByCdp(cdp){
  return evaluateByValue(cdp, `(async()=>{
-  const result={registry:false,catalogue:false,initialRows:0,filterWorked:false,detailOpened:false,linksPresent:false,noHorizontalOverflow:false};
+  const result={registry:false,catalogue:false,initialRows:0,filterWorked:false,detailOpened:false,linksPresent:false,weaponsMode:false,weaponsDetailOpen:false,leadsMode:false,leadsDetailOpen:false,noHorizontalOverflow:false};
   try{
    const data=window.AVP_ALIEN_BASE;
    result.registry=data?.registry?.v2===632&&Object.keys(data.byCardId||{}).length===158;
@@ -349,6 +349,26 @@ function inspectCodexByCdp(cdp){
    const modal=document.querySelector('#modal-root [role="dialog"]');
    result.detailOpened=Boolean(modal?.textContent.includes('M41A')&&modal?.textContent.includes('Œuvres de référence'));
    result.linksPresent=Boolean(modal?.querySelector('[data-action="view-card"][data-card-id="EQ_PULSE_RIFLE"]'));
+   modal?.querySelector('[data-action="close-modal"]')?.click();
+   document.querySelector('#app [data-action="codex-mode"][data-codex-mode="weapons"]')?.click();
+   result.weaponsMode=data.codex.researchWeapons.length===200 &&
+     app.state.codexFilters.mode==='weapons' &&
+     document.querySelectorAll('#app .alien-codex-record').length===18 &&
+     document.querySelector('#app .alien-codex')?.textContent.includes('200 entrées');
+   document.querySelector('#app [data-action="codex-research-detail"]')?.click();
+   const weaponModal=document.querySelector('#modal-root [role="dialog"]');
+   result.weaponsDetailOpen=Boolean(weaponModal?.textContent.includes('RECHERCHE') &&
+     weaponModal?.textContent.includes('Admis dans le TCG') &&
+     weaponModal?.textContent.includes('Non'));
+   weaponModal?.querySelector('[data-action="close-modal"]')?.click();
+   document.querySelector('#app [data-action="codex-mode"][data-codex-mode="leads"]')?.click();
+   result.leadsMode=data.codex.researchLeads.length===16 &&
+     app.state.codexFilters.mode==='leads' &&
+     document.querySelectorAll('#app .alien-codex-record').length===16;
+   document.querySelector('#app [data-action="codex-research-detail"]')?.click();
+   const leadModal=document.querySelector('#modal-root [role="dialog"]');
+   result.leadsDetailOpen=Boolean(leadModal?.textContent.includes('Dossier non certifié') &&
+     leadModal?.textContent.includes('Admis dans le TCG'));
    result.noHorizontalOverflow=document.documentElement.scrollWidth<=window.innerWidth+1;
   }catch(error){result.error=String(error?.message||error)}
   return result;
@@ -402,6 +422,8 @@ async function inspectProfile(cdp, url, profile, outputPath, diagnostics) {
   checks.codexNavigation = inspection.codex.registry && inspection.codex.catalogue && inspection.codex.initialRows === 18;
   checks.codexFiltering = inspection.codex.filterWorked;
   checks.codexCardLinks = inspection.codex.detailOpened && inspection.codex.linksPresent;
+  checks.codexResearchWeapons = inspection.codex.weaponsMode && inspection.codex.weaponsDetailOpen;
+  checks.codexResearchLeads = inspection.codex.leadsMode && inspection.codex.leadsDetailOpen;
   checks.codexResponsive = inspection.codex.noHorizontalOverflow;
   checks.codexNoRuntimeErrors = diagnostics.exceptions.length === 0 && diagnostics.consoleErrors.length === 0 && diagnostics.severeLogs.length === 0;
   const codexImage = resolve(`.qa-${profile.id}-codex.png`);
