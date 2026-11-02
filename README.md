@@ -6,11 +6,11 @@ Version 1.0.0 professionnelle du TCG tactique fan-made, jouable hors ligne dans 
 
 ## Contenu jouable
 
-- 158 cartes, cinq identités jouables plus les cartes Neutres, et sept raretés.
-- Trois decks de départ, constructeur de decks de 30 cartes et collection persistante.
+- **314 cartes jouables** : 158 cartes de la version historique et 156 cartes supplémentaires, en sept classes explicites (Personnages, Créatures, Armes, Équipements, Véhicules, Actions, Lieux). Les sept raretés historiques sont conservées ; quatorze finitions sont documentées pour les futures vagues.
+- Trois decks de départ historiques intacts + **20 nouveaux préconstruits de 45 cartes** (30 principales + 15 cartes alternatives offertes dans la collection), génération/remélange déterministe de compositions variées, constructeur de 30 cartes, jusqu'à **32 decks sauvegardés**.
 - Duels tactiques sur trois voies contre une IA déterministe à quatre difficultés.
 - Factions asymétriques : Couvée et Sang acide, Chasse et Trophées, Escouades et technologie, Pathogène et mutation, Hybrides et synergies croisées.
-- Boosters de neuf cartes, fabrication, désassemblage et protection de malchance.
+- **Huit boosters jouables de neuf cartes**, dont Tantalus (TF28) et MNEMOSYNE (HA29), fabrication, désassemblage et protection de malchance. Les tailles variables de boosters inscrites dans `content-plan/` restent une proposition non activée.
 - Campagne de huit missions avec règles de scénario, récompenses, progression, niveaux et succès.
 - Tutoriel/règles accessibles depuis le jeu, synthèse audio locale et préférences de mouvement.
 - Sauvegarde locale v3, reprise des duels, export/import JSON validé et migration des anciennes sauvegardes.
@@ -98,3 +98,19 @@ L'export JSON contient aussi le duel suspendu. Un checkpoint corrompu est écart
 Le détail de récupération vérifiable figure dans [SOURCE_PROVENANCE.md](SOURCE_PROVENANCE.md). Le cadre du projet fan et l'origine des actifs sont précisés dans [FAN_PROJECT_NOTICE.md](FAN_PROJECT_NOTICE.md). La provenance, le contrat créatif et les contrôles des illustrations sont documentés dans [ARTWORK_PROVENANCE.md](ARTWORK_PROVENANCE.md).
 
 Alien, Predator et Alien vs. Predator appartiennent à leurs ayants droit respectifs. Leur mention sert uniquement à identifier l'univers auquel ce projet fan rend hommage.
+
+## Extension de gameplay 1.1.0-wave1 — depuis Alien_base
+
+La couche `src/expansion.js` se charge après `src/data.js`, avant le moteur. Elle ajoute **156 cartes nouvelles** liées à des identifiants documentaires de `darknigthmare/alien_base` (`main@e65b75a6bfd1284dbac746102fdbae4fc5a3786b`). Le fichier historique reste intact et les 158 illustrations originelles sont toujours vérifiées par le contrat d’art. Les nouvelles cartes ont pour le moment des **substituts SVG procéduraux**, pas des illustrations morphologiques 1:1 validées.
+
+Les `cardClass` ajoutées ne remplacent pas les quatre types historiques du moteur (`UNIT / EQUIPMENT / TACTIC / LOCATION`). Cela préserve les sauvegardes, la détermination des cibles et les effets existants. Les innovations actives :
+- **Personnage :** unité pouvant servir de pilote ; **Créature :** combattant biologique avec effets de faction.
+- **Véhicule :** unité blindée nécessitant un Personnage de sa faction sur le plateau pour être déployée et pouvoir attaquer. Avec équipage : +200 ATK et +200 PV (règle du TCG).
+- **Arme :** carte attachée donnant des bonus ATK et disposant d’un emplacement exclusif (une arme *nouvelle* par unité). Les équipements historiques ne sont pas restreints rétroactivement.
+- **Équipement :** protection, détection ou support, pouvant être combinés avec une arme.
+- **Action :** effet immédiat de pioche, attaque ciblée, contrôle, énergie ou renforcement ; **Lieu :** bonus de terrain et entretien de votre commandant.
+- **Decks :** 20 recettes de structure/thème pour les cinq factions ; import sans retrait de cartes ni écrasement d’ancien deck et bouton « Remélanger » pour générer une autre composition. Le tirage des cartes dans le duel était déjà aléatoire et le reste.
+
+La présence d'une entité dans `Alien_base` n'atteste **pas** son statut canon ni la fidélité 1:1 de l'effet proposé. Les entrées originales Tantalus / Hive Ascension sont marquées comme créations du projet. Les modèles physiques de 45 cartes ne modifient **pas** le format de duel de 30 cartes.
+
+Contrôles dédiés : `node --test tests/expansion-gameplay.test.mjs`. Les cartes nouvellement jouables ne couvrent pas encore les **2 602 identités** de conception planifiées dans `content-plan/`. Elles constituent une première vague vérifiable, à équilibrer et illustrer avant mise en production.
