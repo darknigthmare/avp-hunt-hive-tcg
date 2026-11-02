@@ -82,15 +82,49 @@
   }
 
   function openBooster(packId, opts={}){
-    const pack=D.boosters.find(p=>p.id===packId); if(!pack) throw new Error('Booster inconnu');
-    const seed=opts.seed ?? (Date.now()^U.hash(packId)); const rng=U.rng(seed);
-    const pity=opts.pity||0; const used=new Set(); const pulls=[];
-    for(let i=0;i<9;i++){
-      const minRank=i<6?1:2;
-      let rarity=rarityRoll(minRank,rng,i===8?pity:0);
-      if(i===8 && pity>=9 && RANK[rarity]<4) rarity='UR';
-      const card=pickCardFromSet(pack.set,rarity,rng,used,i===8&&pity>=9?4:minRank); used.add(card.id);
-      pulls.push({cardId:card.id,foil:i===8 || (i>5&&rng()<.22),slot:i,rolledRarity:rarity});
+    const pack=D.boosters.find(p=>p.id===packId);if(!pack)throw new Error('Booster inconnu');
+    const seed=opts.seed ?? (Date.now()^U.hash(packId)),rng=U.rng(seed);
+    const pity=opts.pity||0,used=new Set(),pulls=[];
+    // Preserve the original 9-card release algorithm byte-for-byte in behavior.
+    // The new 5/7/9-card set previews use local rarity slots only.
+    if(!pack.preview){
+      for(let i=0;i<9;i++){
+        const minRank=i<6?1:2;
+        let rarity=rarityRoll(minRank,rng,i===8?pity:0);
+        if(i===8&&pity>=9&&RANK[rarity]<4)rarity='UR';
+        const card=pickCardFromSet(pack.set,rarity,rng,used,i===8&&pity>=9?4:minRank);
+        used.add(card.id);pulls.push({cardId:card.id,foil:i===8||(i>5&&rng()<.22),slot:i,rolledRarity:rarity});
+      }
+    }else{
+      const length=pack.cardsPerBooster;
+      if(![5,7,9].includes(length))throw new Error('Format de booster non pris en charge');
+      const pool=D.cards.filter(c=>c.set===pack.set);
+      if(pool.length<length)throw new Error('Pool de booster insuffisant : '+pack.set);
+      const rank=c=>RANK[c.rarity]||0;
+      const choose=(lower,upper=99)=>{
+        let candidates=pool.filter(c=>!used.has(c.id)&&rank(c)>=lower&&rank(c)<=upper);
+        if(!candidates.length)candidates=pool.filter(c=>!used.has(c.id)&&rank(c)>=lower);
+        if(!candidates.length)candidates=pool.filter(c=>!used.has(c.id));
+        if(!candidates.length)candidates=pool.filter(c=>rank(c)>=lower);
+        if(!candidates.length)throw new Error('Pool sans carte sélectionnable');
+        const card=U.choice(candidates,rng);used.add(card.id);
+        pulls.push({cardId:card.id,foil:rank(card)>=3,slot:pulls.length,rolledRarity:card.rarity});
+      };
+      const premium=pack.profile==='collector'||pack.profile==='construction';
+      for(let i=0;i<length;i++){
+        const last=i===length-1;
+        const penultimate=i===length-2;
+        const minRank=last?(pity>=9?4:3):premium?(pack.profile==='collector'?3:2):penultimate?2:1;
+        choose(minRank,last?99:premium?99:Math.max(minRank,1));
+      }
+      // Guarantee the pity slot in the same set, even after using a unique UR in a prior slot.
+      if(pity>=9&&Math.max(...pulls.map(p=>RANK[CARD.get(p.cardId).rarity]))<4){
+        const high=pool.filter(c=>rank(c)>=4).sort((a,b)=>rank(a)-rank(b));
+        if(!high.length)throw new Error('Aucune UR locale pour la protection de malchance');
+        const replacement=U.choice(high,rng);
+        const last=pulls[pulls.length-1];
+        last.cardId=replacement.id;last.rolledRarity=replacement.rarity;last.foil=true;
+      }
     }
     pulls.sort((a,b)=>RANK[CARD.get(a.cardId).rarity]-RANK[CARD.get(b.cardId).rarity]);
     return {pack,seed,pulls,bestRank:Math.max(...pulls.map(p=>RANK[CARD.get(p.cardId).rarity]))};
@@ -194,7 +228,7 @@
     side(i){return this.state.sides[i];}
     enemy(i){return this.state.sides[1-i];}
     locationLocked(sideIndex){return this.side(sideIndex).board.some(u=>u&&this.card(u.cardId).effect?.aura?.kind==='LOCK_LOCATION');}
-    isOffensiveTactic(card){if(card?.type!=='TACTIC')return false;const k=card.effect?.kind;return card.effect?.target==='ENEMY_UNIT'||['DAMAGE_TARGET','TRANSFORM_DAMAGED','EXECUTE','STUN_TARGET','DAMAGE_LANE','STUN_ALL_DAMAGED','SILENCE_FACTION','DEBUFF_ALL','DAMAGE_ALL','DAMAGE_ALL_HEROES','DAMAGE_STRONGEST','DAMAGE_FACTION','DAMAGE_DEBUFFED'].includes(k);}
+    isOffensiveTactic(card){if(card?.type!=='TACTIC')return false;const k=card.effect?.kind;return card.effect?.target==='ENEMY_UNIT'||['DAMAGE_TARGET','TRANSFORM_DAMAGED','EXECUTE','STUN_TARGET','DAMAGE_LANE','STUN_ALL_DAMAGED','SILENCE_FACTION','DEBUFF_ALL','DAMAGE_ALL','DAMAGE_ALL_HEROES','DAMAGE_STRONGEST','DAMAGE_FACTION','DAMAGE_DEBUFFED','DAMAGE_ALL_ENEMY_UNITS','ARMOR_BREAK'].includes(k);}
 
     ensureOpeningPlayable(sideIndex){
       const s=this.side(sideIndex);
@@ -221,11 +255,15 @@
       return {uid:U.uid('unit'),cardId,owner:sideIndex,currentHealth:c.health,attackBonus:0,healthBonus:0,tempAttack:0,granted:this.modifiers.includes('trophyRush')&&sideIndex===1?['TROPHY']:[],tempGranted:[],equipment:[],ready:kws.has('RUSH'),attacked:false,cloaked:kws.has('CLOAK'),armorUsed:false,stunned:0,debuffed:false,kills:0,mutated:false,mutations:[],rebornUsed:false,forced:false,tacticShieldUsed:false};
     }
     hasCrew(sideIndex,vehicleCard,vehicleUnit=null){
-      // A vehicle stays on the board without a pilot but cannot attack.
-      // Existing 1.0.0 units are unaffected: only new crewRequired cards use this.
-      return this.side(sideIndex).board.some(u=>u&&u!==vehicleUnit
-        &&this.card(u.cardId).cardClass==='PERSONNAGE'
+      // A single living Personnage is assigned to at most one vehicle.
+      // The order of occupied lanes gives a stable assignment for old checkpoints.
+      const board=this.side(sideIndex).board;
+      const pilots=board.filter(u=>u&&this.card(u.cardId).cardClass==='PERSONNAGE'
         &&this.isFaction(u,vehicleCard.faction));
+      const vehicles=board.filter(u=>u&&this.card(u.cardId).crewRequired
+        &&this.isFaction(u,vehicleCard.faction));
+      if(vehicleUnit)return vehicles.indexOf(vehicleUnit)>=0&&vehicles.indexOf(vehicleUnit)<pilots.length;
+      return vehicles.length<pilots.length;
     }
     allKeywords(u){const set=new Set(this.card(u.cardId).keywords||[]);for(const k of u.granted||[])set.add(k);for(const k of u.tempGranted||[])set.add(k);for(const eqId of u.equipment||[])for(const k of this.card(eqId).keywords||[])set.add(k);return set;}
     has(u,k){return !!u&&this.allKeywords(u).has(k);}
@@ -331,7 +369,11 @@
       }
       const target=c.effect?.target;
       if(!target)return [{kind:'NONE'}];
-      if(target==='FRIENDLY_UNIT')for(let lane=0;lane<3;lane++)if(s.board[lane])out.push({kind:'FRIENDLY_UNIT',lane});
+      if(target==='FRIENDLY_UNIT')for(let lane=0;lane<3;lane++)if(s.board[lane]){
+        if(c.effect?.kind==='REPOSITION'&&s.board.every(Boolean))continue;
+        if(c.effect?.kind==='REPAIR_UNIT'&&s.board[lane].currentHealth>=this.unitMaxHealth(sideIndex,s.board[lane]))continue;
+        out.push({kind:'FRIENDLY_UNIT',lane});
+      }
       if(target==='ENEMY_UNIT')for(let lane=0;lane<3;lane++)if(e.board[lane]&&(!e.board[lane].cloaked||c.effect.kind==='REVEAL_AND_BUFF'||this.canSeeCloak(sideIndex,e.board[lane]))){
         if(c.effect.kind==='EXECUTE'&&e.board[lane].currentHealth>c.effect.threshold)continue;
         if(c.effect.kind==='TRANSFORM_DAMAGED'&&(this.has(e.board[lane],'SYNTHETIC')||e.board[lane].currentHealth>=this.unitMaxHealth(1-sideIndex,e.board[lane])))continue;
@@ -447,6 +489,50 @@
         case 'HYBRIDIZE': if(friendly()){this.buffUnit(sideIndex,lane,effect.attack||0,effect.health||0,[]);u.extraFactions=[...(u.extraFactions||[]),'HYBRID'];}break;
         case 'DAMAGE_RANDOM_ENEMY': {const lanes=enemy.board.map((x,i)=>x?i:null).filter(x=>x!==null);if(lanes.length)this.damageUnit(1-sideIndex,U.choice(lanes,this.rng),effect.amount,ctx);else this.damageHero(1-sideIndex,effect.amount,ctx);break;}
         case 'NEXT_ENERGY': s.nextEnergy+=(effect.amount||1);break;
+        case 'REPAIR_SELF': {
+          if(ctx.unit&&s.board.includes(ctx.unit)){
+            ctx.unit.currentHealth=Math.min(this.unitMaxHealth(sideIndex,ctx.unit),ctx.unit.currentHealth+(effect.amount||0));
+          }
+          break;
+        }
+        case 'REPAIR_UNIT': {
+          if(friendly())u.currentHealth=Math.min(this.unitMaxHealth(sideIndex,u),u.currentHealth+(effect.amount||0));
+          break;
+        }
+        case 'REPOSITION': {
+          if(friendly()){
+            const free=s.board.findIndex(x=>!x);
+            if(free>=0&&free!==lane){
+              s.board[free]=u;s.board[lane]=null;
+              this.log(this.card(u.cardId).name+' change de voie.','EFFECT');
+            }
+          }
+          break;
+        }
+        case 'SCAN_REVEAL': {
+          for(const x of enemy.board.filter(Boolean))x.cloaked=false;
+          if(effect.draw)this.draw(sideIndex,effect.draw);
+          break;
+        }
+        case 'SUPPLY_SEARCH': {
+          this.searchDeck(sideIndex,c=>c.type==='EQUIPMENT'&&c.cost<=(effect.maxCost||10));
+          break;
+        }
+        case 'FORTIFY': {
+          s.shield=Math.min(1200,s.shield+(effect.amount||0));
+          break;
+        }
+        case 'ARMOR_BREAK': {
+          if(hostile()){
+            u.armorUsed=true;
+            this.damageUnit(1-sideIndex,lane,effect.amount||0,{...ctx,noMutation:true});
+          }
+          break;
+        }
+        case 'DAMAGE_ALL_ENEMY_UNITS': {
+          for(let i=0;i<3;i++)if(enemy.board[i])this.damageUnit(1-sideIndex,i,effect.amount||0,ctx);
+          break;
+        }
       }
       this.checkEnd();
     }
@@ -472,7 +558,8 @@
       this.syncHealthAuras();
       const s=this.side(sideIndex),u=s.board[lane];if(!u)return 0;let dmg=Math.max(0,Math.round(amount));
       const pathogen=this.isPathogen(ctx);if(pathogen&&this.has(u,'SYNTHETIC'))return 0;
-      if(dmg>0&&this.has(u,'ARMOR')&&!u.armorUsed){dmg=Math.max(0,dmg-400);u.armorUsed=true;}
+      if(dmg>0&&this.has(u,'ARMOR')&&!u.armorUsed
+         &&!(ctx.unit&&this.has(ctx.unit,'PIERCING'))){dmg=Math.max(0,dmg-400);u.armorUsed=true;}
       u.currentHealth-=dmg;if(dmg>0){u.cloaked=false;if(pathogen&&!ctx.noMutation)this.applyMutation(sideIndex,u);}
       const c=this.card(u.cardId);if(dmg>0&&c.effect?.onDamaged?.kind==='DEBUFF_SELF')u.attackBonus-=c.effect.onDamaged.attack||0;
       if(u.currentHealth<=0)this.destroyUnit(sideIndex,lane,{sourceSide:ctx.sourceSide,sourceUnit:ctx.unit});
@@ -728,6 +815,13 @@
           // healing effects from becoming free positive scores at full health.
           case 'HEAL_HERO': score=Math.min(fx.amount||0,s.maxLife-s.life)/300;break;
           case 'HEAL_TARGET': score=unit?Math.min(fx.amount||0,this.unitMaxHealth(sideIndex,unit)-unit.currentHealth)/300:0;break;
+          case 'REPAIR_UNIT': score=unit?Math.min(fx.amount||0,this.unitMaxHealth(sideIndex,unit)-unit.currentHealth)/300:0;break;
+          case 'REPOSITION': score=unit&&openSlots?(!unit.ready?1.5:0.8):0;break;
+          case 'SCAN_REVEAL': score=enemies.filter(u=>u.cloaked).length*1.3+drawScore(fx.draw||0);break;
+          case 'SUPPLY_SEARCH': score=s.deck.some(id=>this.card(id)?.type==='EQUIPMENT')?2.4:0;break;
+          case 'FORTIFY': score=Math.min(fx.amount||0,1200-s.shield)/450*(s.life<s.maxLife*.7?1.6:0.7);break;
+          case 'ARMOR_BREAK': score=unit?impact(1-sideIndex,unit,fx.amount||0)+(this.has(unit,'ARMOR')&&!unit.armorUsed?1.3:0):0;break;
+          case 'DAMAGE_ALL_ENEMY_UNITS': score=enemies.reduce((n,u)=>n+impact(1-sideIndex,u,fx.amount||0),0);break;
           default: score=0;
         }
         if(this.isOffensiveTactic(card)&&enemies.some(u=>this.card(u.cardId).effect?.shieldTactic&&!u.tacticShieldUsed))score=Math.min(score,1);
