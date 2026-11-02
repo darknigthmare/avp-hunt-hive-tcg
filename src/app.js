@@ -280,7 +280,7 @@
     const identities=Object.entries(D.factions).filter(([id])=>id!=='NEUTRAL');
     return shell(`${screenHead('LABORATOIRE TACTIQUE','Constructeur de decks','30 cartes, trois exemplaires maximum. Votre faction et les cartes Neutres définissent l’identité du deck.',`<button class="btn" data-action="new-deck">＋ Nouveau deck</button><button class="btn secondary" data-action="set-active-deck" ${check.valid?'':'disabled'}>Activer</button>`)}
       <section class="panel pad" aria-label="Decks de structure et remélange" style="margin-bottom:16px">
-        <div class="eyebrow">${D.expansionDecks.length} DECKS DE STRUCTURE ET VARIANTES • 30 JOUABLES + 15 ALTERNATIVES</div>
+        <div class="eyebrow">${(D.expansionDecks||[]).length} DECKS DE STRUCTURE ET VARIANTES • 30 JOUABLES + 15 ALTERNATIVES</div>
         <div class="row" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px">
           <label class="field" style="flex:2;min-width:190px">
             <select id="expansion-deck-preset" aria-label="Choisir un deck préconstruit">
