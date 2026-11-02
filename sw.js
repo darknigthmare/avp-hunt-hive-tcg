@@ -16,6 +16,7 @@ const APP_SHELL = [
   '/assets/icon-maskable-512.png',
   '/src/data.js',
   '/src/expansion.js',
+  '/src/expansion-wave2.js',
   '/src/art-manifest.js',
   '/src/engine.js',
   '/src/duel-save.js',

@@ -122,7 +122,7 @@ const expected = '23a462d5fec16bf2feede14d1d69f1829e188db85df7860b3324127d2701d7
 if (hash !== expected) throw new Error('Standalone provenance hash mismatch.');
 
 const index = await readFile(resolve(root, 'index.html'), 'utf8');
-for (const asset of ['/assets/styles.css', '/src/data.js', '/src/expansion.js', '/src/art-manifest.js', '/src/engine.js', '/src/app.js', '/manifest.webmanifest']) {
+for (const asset of ['/assets/styles.css', '/src/data.js', '/src/expansion.js', '/src/expansion-wave2.js', '/src/art-manifest.js', '/src/engine.js', '/src/app.js', '/manifest.webmanifest']) {
   if (!index.includes(asset)) throw new Error(`index.html is missing ${asset}`);
 }
 
@@ -144,12 +144,15 @@ new Script(await readFile(resolve(root,'src','data.js'),'utf8'),{filename:'src/d
   .runInContext(expansionContext,{timeout:2000});
 new Script(await readFile(resolve(root,'src','expansion.js'),'utf8'),{filename:'src/expansion.js'})
   .runInContext(expansionContext,{timeout:2500});
+new Script(await readFile(resolve(root,'src','expansion-wave2.js'),'utf8'),
+  {filename:'src/expansion-wave2.js'}).runInContext(expansionContext,{timeout:3000});
 const live=expansionContext.window.AVP_DATA;
-if(live.cards.length!==314||live.expansion?.addedCount!==156||live.expansionDecks?.length!==20
-  ||new Set(live.cards.map(c=>c.id)).size!==314
+if(live.cards.length!==656||live.expansion?.addedCount!==156||live.expansionWave2?.addedCount!==342
+  ||live.expansionDecks?.length!==70||new Set(live.cards.map(c=>c.id)).size!==656
+  ||new Set(live.cards.slice(158).map(c=>c.sourceEntityId)).size!==494
   ||live.expansionDecks.some(p=>Object.values(p.cards).reduce((a,b)=>a+b,0)!==30
     ||Object.values(p.reserve).reduce((a,b)=>a+b,0)!==15)){
-  throw new Error('Playable card-class expansion has an invalid inventory, template or duplicate ID.');
+  throw new Error('Playable two-wave catalogue has an invalid inventory or 30+15 deck template.');
 }
 const expectedDistribution = Object.freeze({
   cards: cardIds.length,
@@ -385,6 +388,7 @@ const required = [
   'assets/icon-512.png',
   'src/data.js',
   'src/expansion.js',
+  'src/expansion-wave2.js',
   'src/art-manifest.js',
   'assets/art/manifest.json',
   'assets/art/scenes/home-hero-v1.webp',

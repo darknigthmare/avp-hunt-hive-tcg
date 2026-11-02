@@ -20,6 +20,7 @@
     year:'Corpus source',accent:accents[set.primary]||'#aabac4',preview:true,plannedSize:set.planned
   };
   D.rules.summary+=' Vague 2 : ravitaillement, réparations, scanners, manœuvres, opérations blindées et terrain.';
+  D.keywords.PIERCING='Les attaques et armes perforantes ignorent la première réduction Armure de 400 points.';
   const occupied=new Set(D.cards.map(c=>c.id)),sequence=new Map();
   const bySet={};const byClass={};const byFaction={};const added=[];
   function attributes(sourceId,name,fac,category,index){
@@ -148,7 +149,8 @@
     if(D.boosters.some(p=>p.set===set.id))continue;
     const cards=D.cards.filter(c=>c.set===set.id);
     if(cards.length<Math.max(5,set.packSize)||!cards.some(c=>(rarityByRank[c.rarity]||0)>=4))continue;
-    const profile=set.packSize===5?'collector':set.packSize===7?'tactique':'principal';
+    const profile=['MC12','CM19','FE20'].includes(set.id)?'construction':
+      set.packSize===5?'collector':set.packSize===7?'tactique':'principal';
     const id='pack_'+set.id.toLowerCase();
     D.boosters.push({id,set:set.id,name:set.name,subtitle:set.media,price:500+set.packSize*26,
       art:set.primary==='YAUTJA'?'HUNTER':set.primary==='XENO'?'SIGNAL':set.primary==='ENGINEER'?'EVOLUTION':'COLONY',
