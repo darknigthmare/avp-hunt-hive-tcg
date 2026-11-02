@@ -1,0 +1,28 @@
+{
+  "schema": "avp-tcg/collection-plan-v1",
+  "date": "2026-11-02",
+  "repo": "darknigthmare/avp-hunt-hive-tcg",
+  "alienBaseRepository": "darknigthmare/alien_base",
+  "alienBaseMain": "e65b75a6bfd1284dbac746102fdbae4fc5a3786b",
+  "alienBaseEntitiesSha": "393e88526dd16cd67c730761f23f68c4d8b97145",
+  "tcgMain": "e7a9c8ee6017c25afceacccf580eeb8661257e97",
+  "totals": {
+    "sets": 30,
+    "existingCards": 158,
+    "sourceEntities": 652,
+    "newGameplayCardConcepts": 2850,
+    "newPrintings": 3000,
+    "alternativePrintings": 150,
+    "rarities": 14,
+    "decks": 210,
+    "decklistRows": 6300,
+    "productSkus": 180
+  },
+  "protection": "REFERENCE_ONLY / NO GAMEPLAY MUTATION",
+  "caveats": [
+    "Proposition documentaire; 2850 cartes et 210 decks non implementes dans le moteur",
+    "Fidelite 1:1 non revendiquee sans source primaire pour chaque sujet",
+    "Finitions CSS/WebGL à développer séparément",
+    "Raretés premium ne changent ni statistiques ni ID de carte"
+  ]
+}

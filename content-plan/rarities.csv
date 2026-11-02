@@ -1,0 +1,15 @@
+Code,NomEN,NomFR,NomEffet,IllustrationEffet,Cadre,Texture,Gamme,AliasLegacy,Distribution,CollectionSeulement
+C,Common,Commune,Aucun,Aucun,Standard,Non,Base,C,7 places / 9 garanties,0
+R,Rare,Rare,Argent / noir,Aucun,Standard,Non,Base,R,1 place / 9 garantie,0
+SR,Super Rare,Super Rare,Mat,Holographique,Standard,Non,Base,SR,Slot foil possible,0
+UR,Ultra Rare,Ultra Rare,Or,Holographique,Standard,Non,Base,UR,Slot foil possible,0
+SE,Secret Rare,Secret Rare,Argent brillant,Croisé oblique,Standard,Non,Base,SCR,Slot foil possible,0
+UTR,Ultimate Rare,Ultimate Rare,Or,Holo embossé,Relief attribut + art,Oui,Collection,aucun,Chase,1
+GHR,Ghost Rare,Ghost Rare,Arc-en-ciel / argent,3D pâle fantomatique,Ghost relief,Oui,Collection,GR,Chase,1
+STL,Starlight Rare,Starlight Rare,Arc-en-ciel,Horizontal intégral,Full holo premium,Oui,Collection,aucun,Chase,1
+QCS,Quarter Century Secret Rare,Secret du quart de siècle,Or,Motif 25 commémoratif,Filigrane fan-made 25,Oui,Anniversaire,aucun,Chase; utiliser sans logo officiel,1
+CLR,Collector's Rare,Collector's Rare,Texturé,Holo sculpté,Cadre embossé,Oui,Collection,aucun,Chase,1
+PSR,Prismatic Secret Rare,Prismatic Secret Rare,Prismatique,Trame géométrique,Prisme marqué,Oui,Collection,PR (style proche à vérifier),Chase,1
+PLS,Platinum Secret Rare,Platinum Secret Rare,Platine,Holo métallisé,Bordure platinum,Oui,Collection,aucun,Chase,1
+PLR,Platinum Rare,Platinum Rare,Platine,Métal uniforme,Cadre platine,Oui,Collection,aucun,Chase,1
+PAR,Parallel Rare,Parallel Rare,Variable,Surcouche intégrale,Vernis parallèle,Oui,Collection,aucun,Chase,1
