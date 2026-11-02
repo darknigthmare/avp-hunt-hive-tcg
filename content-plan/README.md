@@ -29,6 +29,24 @@ Chaque extension dispose de 95 identités de cartes nouvelles : 44 C, 24 R, 14 S
 
 Un booster standard contient 9 impressions. Slot 9 foil pondéré : R 45%, SR 30%, UR 15%, SE 6,5%, divers premium 3,5% au global. **Cela ne garantit pas ces pourcentages par set individuel** ; seuls les traitements publiés dans un set peuvent être tirés. Les tableaux sont des objectifs à intégrer, pas une assertion que ces rates tournent aujourd'hui.
 
+## Reconstitution du classeur Excel et validation automatique
+
+Dans un environnement disposant de Python et d'`artifact_tool` :
+
+```sh
+python content-plan/build_xlsx.py
+```
+
+Le script reconstruit **le classeur Excel exhaustif** `content-plan/AVP_HUNT_HIVE_TCG_30_Collections.xlsx` **à partir des CSV publiés dans cette PR**. Le binaire .xlsx lui-même n'est pas ajouté à GitHub dans cette PR ; ses données sources versionnées le sont.
+
+Depuis la racine du dépôt, avec Node 20+ :
+
+```sh
+node content-plan/validate.mjs
+```
+
+Le validateur vérifie les quantités, IDs, unicité, mono-faction et 30 lignes par deck. Il **ne remplace pas des tests du moteur de jeu**.
+
 ## Suite prévue
 Audit éditorial carte par carte / sources primaires → règles et tags validés → illustrations originales et contrat 1:1 → QA ratios / sauvegardes / boosters → intégration progressive par extension. Les références de romans et comics listées dans le backlog demandent une ingestion primaire dans Alien_base avant canonisation.
 
