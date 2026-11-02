@@ -135,14 +135,29 @@
     D.cards.push(card);occupied.add(cardId);added.push(card);
     bySet[set]=(bySet[set]||0)+1;byClass[cardClass]=(byClass[cardClass]||0)+1;byFaction[faction]=(byFaction[faction]||0)+1;
   }
-  // Tous les sets jouables qui ouvrent un booster doivent avoir une UR+ locale.
-  // Rareté de collection indépendante du coût, jamais de bonus de stats.
+  // Chaque aperçu publié doit disposer de vraies places R, SR et UR dans
+  // le MÊME set. Une gamme collector de cinq cartes est 100 % foil.
+  // On ne change jamais le niveau de rareté d'une carte historique.
   for(const set of roadmap){
     const pool=D.cards.filter(c=>c.set===set.id);
     if(pool.length<Math.max(5,set.packSize))continue;
-    if(pool.some(c=>(rarityByRank[c.rarity]||0)>=4))continue;
-    const choice=added.find(c=>c.set===set.id);
-    if(choice)choice.rarity='UR';
+    const mine=added.filter(c=>c.set===set.id);
+    const rank=c=>rarityByRank[c.rarity]||0;
+    const ensure=(rarity,predicate)=>{
+      if(pool.some(predicate))return;
+      const spare=mine.find(c=>c.rarity==='C')||mine.find(c=>c.rarity==='R');
+      if(spare)spare.rarity=rarity;
+    };
+    if(set.packSize===5&&['PH24','CB25','KN26'].includes(set.id)){
+      // Collector : toutes les cartes du pool imprimées en SR ou plus,
+      // sans dupliquer leurs identités ni modifier les statistiques.
+      for(const card of mine)if(rank(card)<3)card.rarity='SR';
+      ensure('UR',c=>rank(c)>=4);
+    }else{
+      ensure('R',c=>rank(c)>=2);
+      ensure('SR',c=>rank(c)>=3);
+      ensure('UR',c=>rank(c)>=4);
+    }
   }
   const livePackSets=[];
   for(const set of roadmap){
