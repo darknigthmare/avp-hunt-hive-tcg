@@ -60,6 +60,36 @@
     return {valid:errors.length===0,errors,total};
   }
 
+  function analyzeDeck(deckMap, identity=null){
+    // Non-destructive recommendations: existing decks and saves remain intact.
+    const validation=validateDeck(deckMap,null,identity),classes={},costs={low:0,mid:0,high:0};
+    let units=0,pilots=0,vehicles=0,weapons=0,equipment=0,actions=0,locations=0;
+    for(const [id,count] of Object.entries(deckMap||{})){
+      const c=CARD.get(id);if(!c||!Number.isSafeInteger(count)||count<=0)continue;
+      const kind=c.cardClass||({UNIT:'PERSONNAGE',TACTIC:'ACTION',EQUIPMENT:'EQUIPEMENT',LOCATION:'LIEU'}[c.type])||c.type;
+      classes[kind]=(classes[kind]||0)+count;
+      if(c.type==='UNIT')units+=count;
+      if(kind==='PERSONNAGE')pilots+=count;
+      if(c.crewRequired)vehicles+=count;
+      if(kind==='ARME')weapons+=count;
+      if(c.type==='EQUIPMENT')equipment+=count;
+      if(c.type==='TACTIC')actions+=count;
+      if(c.type==='LOCATION')locations+=count;
+      costs[c.cost<=2?'low':c.cost<=4?'mid':'high']+=count;
+    }
+    const warnings=[];
+    if(vehicles>pilots)warnings.push('Prévoir au moins 1 Personnage pilote par Véhicule ('+pilots+'/'+vehicles+').');
+    if(costs.low<5)warnings.push('Courbe de départ fragile : moins de 5 cartes coûtant 2 énergie ou moins.');
+    if(units<10)warnings.push('Moins de 10 unités : risque de voies vides.');
+    if(equipment>units)warnings.push('Davantage d’Armes/Équipements que de porteurs potentiels.');
+    if(actions<3)warnings.push('Très peu d’Actions pour répondre aux menaces.');
+    if(locations>4)warnings.push('Beaucoup de Lieux : un seul est actif à la fois.');
+    if(costs.high>11)warnings.push('Nombreuses cartes à 5 énergie et plus : démarrage lent.');
+    return {valid:validation.valid,total:validation.total,classes,curve:costs,
+      pilots,vehicles,weapons,equipment,actions,locations,warnings,
+      advice:warnings.length?warnings[0]:'Composition équilibrée : adaptez-la à votre tactique.'};
+  }
+
   function rarityRoll(minRank, rng, pity=0){
     let weights;
     if(minRank<=1) weights=[['C',67],['R',26],['SR',5.4],['UR',1.3],['SCR',.25],['PR',.045],['GR',.005]];
@@ -667,9 +697,9 @@
       const allies=s.board.filter(Boolean),enemies=e.board.filter(Boolean);
       const unit=target?.kind==='FRIENDLY_UNIT'?s.board[target.lane]:e.board[target?.lane];
       const value=(si,u)=>u?1+this.card(u.cardId).cost+(this.unitAttack(si,u)+Math.max(0,u.currentHealth))/1800+u.equipment.length*.6:0;
-      const damage=(si,u,amount,pathogen=this.isPathogen({card}))=>{
+      const damage=(si,u,amount,pathogen=this.isPathogen({card}),piercing=false)=>{
         if(!u||(pathogen&&this.has(u,'SYNTHETIC')))return 0;
-        return Math.max(0,amount-(this.has(u,'ARMOR')&&!u.armorUsed?400:0));
+        return Math.max(0,amount-(this.has(u,'ARMOR')&&!u.armorUsed&&!piercing?400:0));
       };
       const impact=(si,u,amount)=>{
         const dealt=damage(si,u,amount);if(!dealt)return 0;
@@ -711,8 +741,8 @@
         const preview={...unit,equipment:[...unit.equipment,card.id],currentHealth:unit.currentHealth+(card.health||0),armorUsed:card.keywords.includes('ARMOR')?false:unit.armorUsed};
         const lane=s.board.indexOf(unit),opponent=e.board[lane];
         if(opponent){
-          const dealtBefore=damage(1-sideIndex,opponent,this.unitAttack(sideIndex,unit,opponent),this.has(unit,'PATHOGEN'));
-          const dealtAfter=damage(1-sideIndex,opponent,this.unitAttack(sideIndex,preview,opponent),this.has(preview,'PATHOGEN'));
+          const dealtBefore=damage(1-sideIndex,opponent,this.unitAttack(sideIndex,unit,opponent),this.has(unit,'PATHOGEN'),this.has(unit,'PIERCING'));
+          const dealtAfter=damage(1-sideIndex,opponent,this.unitAttack(sideIndex,preview,opponent),this.has(preview,'PATHOGEN'),this.has(preview,'PIERCING'));
           const killBefore=dealtBefore>=opponent.currentHealth||(dealtBefore>0&&this.has(unit,'DEATHTOUCH')&&!this.card(opponent.cardId).tags.includes('boss'));
           const killAfter=dealtAfter>=opponent.currentHealth||(dealtAfter>0&&this.has(preview,'DEATHTOUCH')&&!this.card(opponent.cardId).tags.includes('boss'));
           const receivedBefore=damage(sideIndex,unit,this.unitAttack(1-sideIndex,opponent,unit),this.has(opponent,'PATHOGEN'));
@@ -839,7 +869,8 @@
       if(!att)return null;
       const ac=this.card(att.cardId);
       const value=(si,u)=>1+this.card(u.cardId).cost+(this.unitAttack(si,u)+Math.max(0,u.currentHealth))/1800+u.equipment.length*.6;
-      const damage=(source,target,amount)=>this.has(source,'PATHOGEN')&&this.has(target,'SYNTHETIC')?0:Math.max(0,amount-(this.has(target,'ARMOR')&&!target.armorUsed?400:0));
+      const damage=(source,target,amount)=>this.has(source,'PATHOGEN')&&this.has(target,'SYNTHETIC')?0:
+        Math.max(0,amount-(this.has(target,'ARMOR')&&!target.armorUsed&&!this.has(source,'PIERCING')?400:0));
       let best=null,bestScore=0;
       for(const target of this.legalAttacks(sideIndex,lane)){
         let score=0;
@@ -903,5 +934,5 @@
     serialize(){return U.clone(this.state);}
   }
 
-  window.AVPEngine={U,CARD,RANK,expandDeck,allowedForIdentity,validateDeck,openBooster,buildAiDeck,Battle};
+  window.AVPEngine={U,CARD,RANK,expandDeck,allowedForIdentity,validateDeck,analyzeDeck,openBooster,buildAiDeck,Battle};
 })();
