@@ -138,33 +138,50 @@
   function makeRemix(faction,seed=1,style=0){
     if(!Object.hasOwn(D.factions,faction)||faction==='NEUTRAL')return null;
     const random=rng(hash(faction+'|'+seed+'|'+style));
-    const available=D.cards.filter(c=>c.faction===faction||c.faction==='NEUTRAL');
-    const selected=new Map();
-    const total=()=>[...selected.values()].reduce((a,b)=>a+b,0);
-    const cap=c=>(selected.get(c.id)||0)<D.rules.maxCopies;
-    const take=(filter,count)=>{
-      let found=0;
-      const group=shuffle(available.filter(c=>filter(c)&&cap(c)),random).sort((a,b)=>{
-        const sa=(a.id.startsWith('AX_')?0.5:0)+(a.cost<=2?.45:0)+random()*.1;
-        const sb=(b.id.startsWith('AX_')?0.5:0)+(b.cost<=2?.45:0)+random()*.1;
-        return sb-sa;
-      });
-      for(const c of group){if(found>=count)break;const current=selected.get(c.id)||0;const copies=Math.min(count-found,style===1?2:1+(random()>.75?1:0),D.rules.maxCopies-current);if(copies>0){selected.set(c.id,current+copies);found+=copies;}}
-      return found;
+    const cards=D.cards.filter(c=>c.faction===faction||c.faction==='NEUTRAL');
+    const quotas={
+      HUMAN:{PERSONNAGE:12,VEHICULE:2,ARME:4,EQUIPEMENT:3,ACTION:7,LIEU:2},
+      YAUTJA:{PERSONNAGE:12,VEHICULE:1,ARME:5,EQUIPEMENT:3,ACTION:7,LIEU:2},
+      XENO:{CREATURE:17,ARME:3,EQUIPEMENT:2,ACTION:6,LIEU:2},
+      ENGINEER:{CREATURE:17,ARME:2,EQUIPEMENT:2,ACTION:7,LIEU:2},
+      HYBRID:{CREATURE:17,ARME:2,EQUIPEMENT:2,ACTION:7,LIEU:2}
     };
-    take(c=>c.type==='UNIT'&&c.cardClass!=='VEHICULE'&&c.cost<=2,5);
-    const vehCount=['HUMAN','YAUTJA'].includes(faction)?2+(style%2):0;
-    take(c=>c.cardClass==='VEHICULE',vehCount);
-    take(c=>c.cardClass==='ARME',4+(style===1?1:0));
-    take(c=>c.cardClass==='EQUIPEMENT',3);
-    take(c=>c.cardClass==='ACTION',5+(style===2?1:0));
-    take(c=>c.cardClass==='LIEU',2);
-    take(c=>c.type==='UNIT'&&c.cardClass!=='VEHICULE',Math.max(0,19-total()));
-    // Chaque mélange est recréé depuis un pool stable et ne modifie jamais un deck sauvegardé.
-    take(c=>c.cardClass!=='LIEU',D.rules.deckSize-total());
-    if(total()!==D.rules.deckSize)throw new Error('Impossible de constituer le deck '+faction);
-    const cards=Object.fromEntries([...selected.entries()].sort(([a],[b])=>a.localeCompare(b)));
-    return cards;
+    const model=quotas[faction],selected=new Map(),cap=c=>(selected.get(c.id)||0)<D.rules.maxCopies;
+    if(!model)throw new Error('Aucune structure connue pour la faction '+faction);
+    function takeClass(kind,count,cheapOnly=false){
+      // Deterministic Fisher-Yates once, then stable curve sorting.
+      const ideal=cheapOnly?1.5:(kind==='PERSONNAGE'||kind==='CREATURE'?(style%2===0?3:4):2.1);
+      const pool=shuffle(cards.filter(c=>c.cardClass===kind&&(!cheapOnly||c.cost<=2)),random)
+        .sort((a,b)=>Math.abs(a.cost-ideal)-Math.abs(b.cost-ideal));
+      let found=0;
+      for(let pass=0;pass<D.rules.maxCopies&&found<count;pass++)for(const c of pool){
+        if(found>=count)break;
+        if(!cap(c))continue;
+        selected.set(c.id,(selected.get(c.id)||0)+1);found++;
+      }
+      return found;
+    }
+    const unitKind=faction==='HUMAN'||faction==='YAUTJA'?'PERSONNAGE':'CREATURE';
+    const low=takeClass(unitKind,5,true);
+    if(low<5)throw new Error('Pas assez de combattants à faible coût pour '+faction);
+    takeClass(unitKind,model[unitKind]-5);
+    for(const [kind,count]of Object.entries(model)){
+      if(kind===unitKind)continue;
+      takeClass(kind,count);
+    }
+    let filled=[...selected.values()].reduce((n,v)=>n+v,0);
+    if(filled<30){
+      const general=shuffle(cards.filter(c=>c.type==='UNIT'&&!c.crewRequired),random)
+        .sort((a,b)=>Math.abs(a.cost-3)-Math.abs(b.cost-3));
+      for(const c of general){
+        while(cap(c)&&filled<30){selected.set(c.id,(selected.get(c.id)||0)+1);filled++;}
+        if(filled===30)break;
+      }
+    }
+    if(filled!==30)throw new Error('Deck incomplet après répartition des classes : '+faction);
+    const map=Object.fromEntries([...selected.entries()].sort(([a],[b])=>a.localeCompare(b)));
+    // Keep the player-deck restriction: no mixed factions outside the HYBRID 6-support rule.
+    return map;
   }
   D.createRemixedDeck=makeRemix;
   const themes={
