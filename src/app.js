@@ -9,6 +9,7 @@
   const SAVE_SCHEMA='avp-hunt-hive-tcg-save';
   const SAVE_VERSION=3;
   const MAX_IMPORT_BYTES=1024*1024;
+  const MAX_SAVED_DECKS=32;
   const NAV=[['home','⌂','Accueil'],['play','⚔','Jouer'],['collection','▦','Collection'],['boosters','◇','Boosters'],['decks','▤','Decks'],['campaign','⬡','Campagne'],['archive','◎','Archive']];
   const TYPE_NAMES={UNIT:'Unité',TACTIC:'Tactique',EQUIPMENT:'Équipement',LOCATION:'Lieu',...D.cardClasses};
   const displayType=card=>TYPE_NAMES[card?.cardClass]||TYPE_NAMES[card?.type]||'Carte';
@@ -69,7 +70,7 @@
     out.collection={};
     if(isRecord(raw.collection))for(const [id,value] of Object.entries(raw.collection)){if(!CARD.has(id))continue;const count=cleanInt(value,0,999,0);if(count)out.collection[id]=count;}
     const usedDeckIds=new Set();
-    out.decks=(Array.isArray(raw.decks)?raw.decks:[]).slice(0,8).map((candidate,index)=>{
+    out.decks=(Array.isArray(raw.decks)?raw.decks:[]).slice(0,MAX_SAVED_DECKS).map((candidate,index)=>{
       const source=isRecord(candidate)?candidate:{},cards={};let id=cleanText(source.id,`deck-import-${index+1}`,64).replace(/[^a-zA-Z0-9_-]/g,'');
       if(!id||usedDeckIds.has(id))id=`deck-import-${index+1}-${U.hash(`${id}-${index}`)}`;usedDeckIds.add(id);
       if(isRecord(source.cards))for(const [cardId,value] of Object.entries(source.cards)){
@@ -256,7 +257,7 @@
           <button class="btn secondary" data-action="import-expansion-deck">Ajouter le deck + réserve</button>
           <button class="btn" data-action="remix-expansion-deck">Remélanger dans un nouveau deck</button>
         </div>
-        <p class="subtle" style="font-size:12px;margin-top:8px">L'importation donne les exemplaires nécessaires au deck de démonstration et ses 15 cartes alternatives, sans supprimer vos collections ni vos decks existants. Limite habituelle : 8 decks sauvegardés.</p>
+        <p class="subtle" style="font-size:12px;margin-top:8px">L'importation donne les exemplaires nécessaires au deck de démonstration et ses 15 cartes alternatives, sans supprimer vos collections ni vos decks existants. Limite habituelle : ${MAX_SAVED_DECKS} decks sauvegardés.</p>
       </section>
       <div class="deck-layout"><aside class="panel pad deck-sidebar" aria-label="Sélection des decks"><div class="eyebrow">MES DECKS</div><div class="deck-tabs" style="margin-top:12px">${Store.data.decks.map(d=>`<button class="deck-tab ${d.id===deck?.id?'active':''}" data-action="select-deck" data-id="${d.id}"><b>${d.id===Store.data.activeDeckId?'● ':''}${esc(d.name)}</b><span>${deckIdentity(d).symbol} ${esc(deckIdentity(d).name)} • ${deckTotal(d)}/30</span></button>`).join('')||'<p class="subtle">Aucun deck.</p>'}</div>
       ${deck?`<label class="field identity-select">Identité<select data-action="deck-identity" aria-label="Identité du deck">${identity.id==='MIXED'?'<option value="MIXED">Ancienne coalition — à convertir</option>':''}${identities.map(([id,f])=>`<option value="${id}" ${deck.faction===id?'selected':''}>${esc(f.name)}</option>`).join('')}</select></label><button class="btn small block" style="margin-top:12px" data-action="rename-deck">Renommer</button><button class="btn small block" style="margin-top:7px" data-action="auto-fill-deck">Compléter automatiquement</button>`:''}</aside>
@@ -383,16 +384,16 @@
   function addDeckCard(id){const d=activeDeck(),card=CARD.get(id);if(!d||!card)return;if(!canAddByIdentity(card,d)){toast('Identité incompatible ou limite de six soutiens Hybrides atteinte.','bad');return;}const owned=Store.owned(id),current=d.cards[id]||0;if(deckTotal(d)>=30){toast('Le deck contient déjà 30 cartes.','bad');return;}if(current>=3||current>=owned){toast('Aucun exemplaire supplémentaire disponible.','bad');return;}d.cards[id]=current+1;Store.save();AudioSys.cue('click');render();}
   function removeDeckCard(id){const d=activeDeck();if(!d||!d.cards[id])return;d.cards[id]--;if(d.cards[id]<=0)delete d.cards[id];Store.save();render();}
   function newDeck(){
-    if(Store.data.decks.length>=8){toast('Limite de huit decks atteinte.','bad');return;}
+    if(Store.data.decks.length>=MAX_SAVED_DECKS){toast(`Limite de ${MAX_SAVED_DECKS} decks atteinte.','bad');return;}
     modal('Identité du nouveau deck',`<p class="subtle">Une faction et ses alliés Neutres. Vous pourrez modifier cette identité dans le constructeur.</p><div class="enemy-select">${Object.entries(D.factions).filter(([id])=>id!=='NEUTRAL').map(([id,f])=>`<button class="btn secondary" data-action="create-deck" data-id="${id}">${f.symbol} ${esc(f.name)}</button>`).join('')}</div>`,{small:true});
   }
   function createDeck(factionId){
-    if(!Object.hasOwn(D.factions,factionId)||factionId==='NEUTRAL'||Store.data.decks.length>=8)return;
+    if(!Object.hasOwn(D.factions,factionId)||factionId==='NEUTRAL'||Store.data.decks.length>=MAX_SAVED_DECKS)return;
     const d={id:U.uid('deck'),name:`Deck ${faction(factionId).short} ${Store.data.decks.length+1}`,faction:factionId,cards:{},createdAt:new Date().toISOString()};
     Store.data.decks.push(d);state.selectedDeckId=d.id;Store.save();closeModal();render();
   }
   function importExpansionDeck(remix=false){
-    if(Store.data.decks.length>=8){toast('Limite de huit decks atteinte : aucun deck n’a été remplacé.','bad');return;}
+    if(Store.data.decks.length>=MAX_SAVED_DECKS){toast(`Limite de ${MAX_SAVED_DECKS} decks atteinte : aucun deck n’a été remplacé.`,'bad');return;}
     const id=document.getElementById('expansion-deck-preset')?.value;
     const preset=(D.expansionDecks||[]).find(p=>p.id===id);
     if(!preset){toast('Choisissez un modèle de deck.','bad');return;}
