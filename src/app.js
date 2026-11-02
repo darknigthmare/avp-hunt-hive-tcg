@@ -384,7 +384,7 @@
   function addDeckCard(id){const d=activeDeck(),card=CARD.get(id);if(!d||!card)return;if(!canAddByIdentity(card,d)){toast('Identité incompatible ou limite de six soutiens Hybrides atteinte.','bad');return;}const owned=Store.owned(id),current=d.cards[id]||0;if(deckTotal(d)>=30){toast('Le deck contient déjà 30 cartes.','bad');return;}if(current>=3||current>=owned){toast('Aucun exemplaire supplémentaire disponible.','bad');return;}d.cards[id]=current+1;Store.save();AudioSys.cue('click');render();}
   function removeDeckCard(id){const d=activeDeck();if(!d||!d.cards[id])return;d.cards[id]--;if(d.cards[id]<=0)delete d.cards[id];Store.save();render();}
   function newDeck(){
-    if(Store.data.decks.length>=MAX_SAVED_DECKS){toast(`Limite de ${MAX_SAVED_DECKS} decks atteinte.','bad');return;}
+    if(Store.data.decks.length>=MAX_SAVED_DECKS){toast(`Limite de ${MAX_SAVED_DECKS} decks atteinte.`,'bad');return;}
     modal('Identité du nouveau deck',`<p class="subtle">Une faction et ses alliés Neutres. Vous pourrez modifier cette identité dans le constructeur.</p><div class="enemy-select">${Object.entries(D.factions).filter(([id])=>id!=='NEUTRAL').map(([id,f])=>`<button class="btn secondary" data-action="create-deck" data-id="${id}">${f.symbol} ${esc(f.name)}</button>`).join('')}</div>`,{small:true});
   }
   function createDeck(factionId){
