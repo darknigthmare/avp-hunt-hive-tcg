@@ -154,6 +154,14 @@
   D.expansionDecks=[];
   for(const [f,styles]of Object.entries(themes))for(let k=0;k<styles.length;k++){
     const cards=makeRemix(f,100+k*23,k);
-    D.expansionDecks.push({id:'preset_'+f.toLowerCase()+'_'+(k+1),name:styles[k],faction:f,cards,count:30,description:'Préconstruction mélangée incluant les nouvelles catégories. Offre 30 cartes jouables.'});
+    const extraPool=shuffle(D.cards.filter(c=>(c.faction===f||c.faction==='NEUTRAL')&&(cards[c.id]||0)<3),rng(hash(f+'|reserve|'+k)));
+    const reserve={};
+    for(const c of extraPool){
+      if(Object.keys(reserve).length>=15)break;
+      reserve[c.id]=1;
+    }
+    if(Object.values(reserve).reduce((a,b)=>a+b,0)!==15)throw new Error('Réserve préconstruite incomplète : '+f);
+    D.expansionDecks.push({id:'preset_'+f.toLowerCase()+'_'+(k+1),name:styles[k],faction:f,cards,reserve,count:30,boxCount:45,
+      description:'Deck de 30 cartes + 15 alternatives, avec Armes, Équipements, Actions, Lieux et Véhicules selon la faction.'});
   }
 })();
