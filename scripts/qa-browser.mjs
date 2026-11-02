@@ -326,7 +326,7 @@ const PAGE_INSPECTION = `(() => {
 
 function inspectCodexByCdp(cdp){
  return evaluateByValue(cdp, `(async()=>{
-  const result={registry:false,catalogue:false,initialRows:0,filterWorked:false,detailOpened:false,linksPresent:false,weaponsMode:false,weaponsDetailOpen:false,leadsMode:false,leadsDetailOpen:false,noHorizontalOverflow:false};
+  const result={registry:false,catalogue:false,initialRows:0,filterWorked:false,detailOpened:false,linksPresent:false,weaponsMode:false,weaponsDetailOpen:false,leadsMode:false,leadsDetailOpen:false,apexMode:false,apexDetail:false,apexCardLink:false,apexCautions:false,mediaMode:false,mediaDetail:false,noHorizontalOverflow:false};
   try{
    const data=window.AVP_ALIEN_BASE;
    result.registry=data?.registry?.v2===632&&Object.keys(data.byCardId||{}).length===158;
@@ -369,6 +369,38 @@ function inspectCodexByCdp(cdp){
    const leadModal=document.querySelector('#modal-root [role="dialog"]');
    result.leadsDetailOpen=Boolean(leadModal?.textContent.includes('Dossier non certifié') &&
      leadModal?.textContent.includes('Admis dans le TCG'));
+   leadModal?.querySelector('[data-action="close-modal"]')?.click();
+   document.querySelector('#app [data-action="codex-mode"][data-codex-mode="apex"]')?.click();
+   result.apexMode=app.state.codexFilters.mode==='apex' &&
+     data.codex.registryUpdates.newEntities.length===20 &&
+     data.codex.registryUpdates.candidateRegistryCount===652 &&
+     document.querySelectorAll('#app .alien-codex-record').length===18 &&
+     document.querySelector('#app .alien-codex')?.textContent.includes('20 dossiers');
+   result.apexCautions=Boolean(document.querySelector('#app .alien-codex-cautions')?.textContent.includes('Royal Facehugger') &&
+     document.querySelector('#app .alien-codex-cautions')?.textContent.includes('Crusher') &&
+     document.querySelector('#app .alien-codex-cautions')?.textContent.includes('Offspring'));
+   const apexSearch=document.querySelector('#app [data-codex-filter="query"]');
+   if(apexSearch){
+     apexSearch.value='Scar';
+     apexSearch.dispatchEvent(new Event('input',{bubbles:true}));
+     await new Promise(resolve=>setTimeout(resolve,310));
+   }
+   const apexNames=[...document.querySelectorAll('#app .alien-codex-record h3')].map(x=>x.textContent.trim());
+   document.querySelector('#app [data-action="codex-update-detail"]')?.click();
+   const apexModal=document.querySelector('#modal-root [role="dialog"]');
+   result.apexDetail=apexNames.includes('Scar Predator') && Boolean(apexModal?.textContent.includes('Scar Predator') &&
+     apexModal?.textContent.includes('NON JOUABLE'));
+   result.apexCardLink=Boolean(apexModal?.querySelector('[data-action="view-card"][data-card-id="Y_SCAR"]'));
+   apexModal?.querySelector('[data-action="close-modal"]')?.click();
+   document.querySelector('#app [data-action="codex-mode"][data-codex-mode="media"]')?.click();
+   result.mediaMode=app.state.codexFilters.mode==='media' &&
+     data.codex.registryUpdates.works.length===29 &&
+     document.querySelectorAll('#app .alien-codex-record').length===18 &&
+     document.querySelector('#app .alien-codex')?.textContent.includes('29 dossiers');
+   document.querySelector('#app [data-action="codex-update-detail"]')?.click();
+   const mediaModal=document.querySelector('#modal-root [role="dialog"]');
+   result.mediaDetail=Boolean(mediaModal?.textContent.includes('NON JOUABLE') &&
+     mediaModal?.textContent.includes('Fidélité visuelle 1:1'));
    result.noHorizontalOverflow=document.documentElement.scrollWidth<=window.innerWidth+1;
   }catch(error){result.error=String(error?.message||error)}
   return result;
@@ -424,6 +456,8 @@ async function inspectProfile(cdp, url, profile, outputPath, diagnostics) {
   checks.codexCardLinks = inspection.codex.detailOpened && inspection.codex.linksPresent;
   checks.codexResearchWeapons = inspection.codex.weaponsMode && inspection.codex.weaponsDetailOpen;
   checks.codexResearchLeads = inspection.codex.leadsMode && inspection.codex.leadsDetailOpen;
+  checks.codexApexPreview = inspection.codex.apexMode && inspection.codex.apexDetail && inspection.codex.apexCardLink && inspection.codex.apexCautions;
+  checks.codexWorksPreview = inspection.codex.mediaMode && inspection.codex.mediaDetail;
   checks.codexResponsive = inspection.codex.noHorizontalOverflow;
   checks.codexNoRuntimeErrors = diagnostics.exceptions.length === 0 && diagnostics.consoleErrors.length === 0 && diagnostics.severeLogs.length === 0;
   const codexImage = resolve(`.qa-${profile.id}-codex.png`);
