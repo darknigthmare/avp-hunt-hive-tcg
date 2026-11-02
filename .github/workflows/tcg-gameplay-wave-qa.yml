@@ -37,6 +37,8 @@ jobs:
         run: npm test
       - name: Content-plan integrity
         run: npm run validate:content-plan
+      - name: Stress-test AI across five factions and 70 decks
+        run: npm run qa:balance-wave2
       - name: Immutable historical art and production build
         run: npm run build
 

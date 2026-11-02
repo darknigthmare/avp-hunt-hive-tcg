@@ -22,7 +22,8 @@
     "dev": "node scripts/serve.mjs .",
     "test:expansion": "node --test tests/expansion-gameplay.test.mjs",
     "validate:content-plan": "node content-plan/validate.mjs",
-    "test:wave2": "node --test tests/expansion-wave2.test.mjs"
+    "test:wave2": "node --test tests/expansion-wave2.test.mjs",
+    "qa:balance-wave2": "node scripts/balance-wave2.mjs --games-per-pair=2"
   },
   "devDependencies": {
     "sharp": "0.35.4"
