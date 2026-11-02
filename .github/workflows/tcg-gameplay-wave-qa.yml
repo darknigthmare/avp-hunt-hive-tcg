@@ -1,0 +1,76 @@
+name: AVP TCG – gameplay wave 1 QA
+
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'scripts/**'
+      - 'index.html'
+      - 'sw.js'
+      - 'package*.json'
+      - 'content-plan/**'
+      - '.github/workflows/tcg-gameplay-wave-qa.yml'
+  push:
+    branches:
+      - 'codex/tcg-30-collections-alienbase-20261102'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gameplay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Syntax validation including expansion
+        run: npm run check
+      - name: Unit/integration regression suite
+        run: npm test
+      - name: Content-plan integrity
+        run: npm run validate:content-plan
+      - name: Immutable historical art and production build
+        run: npm run build
+
+  browser:
+    needs: gameplay
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies, build and start local production
+        run: |
+          npm ci
+          npm run build
+          node scripts/serve.mjs dist > /tmp/avp-gameplay-server.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:4173/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/avp-gameplay-server.log
+          exit 1
+      - name: Browser desktop/mobile smoke
+        run: node scripts/qa-browser.mjs http://127.0.0.1:4173
+      - name: Upload QA screenshots/logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: avp-tcg-gameplay-qa
+          path: |
+            .qa-*.png
+            /tmp/avp-gameplay-server.log
+          include-hidden-files: true
+          if-no-files-found: ignore
+          retention-days: 7
