@@ -1,5 +1,5 @@
 {
-  "schema": "avp-tcg/collection-plan-v1",
+  "schema": "avp-tcg/collection-plan-v2",
   "date": "2026-11-02",
   "repo": "darknigthmare/avp-hunt-hive-tcg",
   "alienBaseRepository": "darknigthmare/alien_base",
@@ -10,19 +10,112 @@
     "sets": 30,
     "existingCards": 158,
     "sourceEntities": 652,
-    "newGameplayCardConcepts": 2850,
-    "newPrintings": 3000,
-    "alternativePrintings": 150,
+    "newGameplayCardConcepts": 2602,
+    "newPrintings": 2853,
+    "alternativePrintings": 251,
     "rarities": 14,
     "decks": 210,
-    "decklistRows": 6300,
-    "productSkus": 180
+    "decklistRows": 12300,
+    "productSkus": 180,
+    "starterDecks": 5,
+    "structureDecks": 25
   },
   "protection": "REFERENCE_ONLY / NO GAMEPLAY MUTATION",
   "caveats": [
+    "Différencier cartes uniques / catalogue / paquet / contenu de boîte",
+    "Les decks de jeu restent à 30 cartes, le reste des produits est une réserve de construction hors duel",
     "Proposition documentaire; 2850 cartes et 210 decks non implementes dans le moteur",
     "Fidelite 1:1 non revendiquee sans source primaire pour chaque sujet",
     "Finitions CSS/WebGL à développer séparément",
     "Raretés premium ne changent ni statistiques ni ID de carte"
+  ],
+  "setSizes": {
+    "NX01": 120,
+    "CW02": 120,
+    "HG03": 100,
+    "AV04": 100,
+    "EV05": 120,
+    "F306": 56,
+    "R407": 80,
+    "IS08": 80,
+    "RO09": 100,
+    "EA10": 120,
+    "WY11": 90,
+    "MC12": 60,
+    "P213": 56,
+    "PR14": 80,
+    "PY15": 56,
+    "ST16": 70,
+    "BD17": 100,
+    "KK18": 80,
+    "CM19": 60,
+    "FE20": 60,
+    "DD21": 80,
+    "RI22": 70,
+    "EX23": 100,
+    "PH24": 132,
+    "CB25": 146,
+    "KN26": 177,
+    "YA27": 120,
+    "TF28": 100,
+    "HA29": 100,
+    "WW30": 120
+  },
+  "packProfiles": {
+    "core": 9,
+    "theme": 7,
+    "legendary": 5,
+    "deckBuild": 7,
+    "collector": 5
+  },
+  "deckPackaging": {
+    "playableCards": 30,
+    "starterBox": 45,
+    "structureBox": 45,
+    "specialBox": 50,
+    "constructionBox": 75,
+    "leagueBox": 45
+  },
+  "comparisonSources": [
+    {
+      "name": "Power of the Elements",
+      "url": "https://www.yugioh-card.com/en/products/pote/"
+    },
+    {
+      "name": "Tactical Masters",
+      "url": "https://www.yugioh-card.com/en/products/tama/"
+    },
+    {
+      "name": "Synchro Storm",
+      "url": "https://www.yugioh-card.com/en/products/led8/"
+    },
+    {
+      "name": "Ghosts From the Past",
+      "url": "https://www.yugioh-card.com/en/products/ghosts-from-the-past/"
+    },
+    {
+      "name": "Battles of Legend: Glorious Gallery",
+      "url": "https://www.yugioh-card.com/en/products/blgg/"
+    },
+    {
+      "name": "Battles of Legend: Monster Mayhem",
+      "url": "https://www.yugioh-card.com/en/products/blmm/"
+    },
+    {
+      "name": "Codebreaker",
+      "url": "https://www.yugioh-card.com/en/products/ys18/"
+    },
+    {
+      "name": "Yugi Muto & Seto Kaiba",
+      "url": "https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/"
+    },
+    {
+      "name": "Realm of Light",
+      "url": "https://www.yugioh-card.com/eu/fr/product/structure-deck-realm-of-light/"
+    },
+    {
+      "name": "Spirit Charmers (All-Foil)",
+      "url": "https://www.yugioh-card.com/en/products/ch02/"
+    }
   ]
 }

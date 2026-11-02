@@ -1,181 +1,181 @@
-SKU,Set,Produit,QuantiteCartes,NbBoosters,Composition,Statut
-NX01-B,NX01,Origines Hostiles — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-NX01-D,NX01,Origines Hostiles — Display,216,24,24 boosters de 9 cartes,PROPOSE
-NX01-C,NX01,Origines Hostiles — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-NX01-S,NX01,Origines Hostiles — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-NX01-K,NX01,Origines Hostiles — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-NX01-X,NX01,Origines Hostiles — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-CW02-B,CW02,Guerre Coloniale — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-CW02-D,CW02,Guerre Coloniale — Display,216,24,24 boosters de 9 cartes,PROPOSE
-CW02-C,CW02,Guerre Coloniale — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-CW02-S,CW02,Guerre Coloniale — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-CW02-K,CW02,Guerre Coloniale — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-CW02-X,CW02,Guerre Coloniale — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-HG03-B,HG03,Terrains de Chasse — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-HG03-D,HG03,Terrains de Chasse — Display,216,24,24 boosters de 9 cartes,PROPOSE
-HG03-C,HG03,Terrains de Chasse — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-HG03-S,HG03,Terrains de Chasse — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-HG03-K,HG03,Terrains de Chasse — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-HG03-X,HG03,Terrains de Chasse — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-AV04-B,AV04,Rite de Sang — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-AV04-D,AV04,Rite de Sang — Display,216,24,24 boosters de 9 cartes,PROPOSE
-AV04-C,AV04,Rite de Sang — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-AV04-S,AV04,Rite de Sang — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-AV04-K,AV04,Rite de Sang — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-AV04-X,AV04,Rite de Sang — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-EV05-B,EV05,Évolution Parfaite — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-EV05-D,EV05,Évolution Parfaite — Display,216,24,24 boosters de 9 cartes,PROPOSE
-EV05-C,EV05,Évolution Parfaite — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-EV05-S,EV05,Évolution Parfaite — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-EV05-K,EV05,Évolution Parfaite — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-EV05-X,EV05,Évolution Parfaite — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-F306-B,F306,Cendres de Fiorina — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-F306-D,F306,Cendres de Fiorina — Display,216,24,24 boosters de 9 cartes,PROPOSE
-F306-C,F306,Cendres de Fiorina — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-F306-S,F306,Cendres de Fiorina — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-F306-K,F306,Cendres de Fiorina — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-F306-X,F306,Cendres de Fiorina — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-R407-B,R407,Les Héritiers de l'Auriga — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-R407-D,R407,Les Héritiers de l'Auriga — Display,216,24,24 boosters de 9 cartes,PROPOSE
-R407-C,R407,Les Héritiers de l'Auriga — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-R407-S,R407,Les Héritiers de l'Auriga — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-R407-K,R407,Les Héritiers de l'Auriga — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-R407-X,R407,Les Héritiers de l'Auriga — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-IS08-B,IS08,Terreur à Sevastopol — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-IS08-D,IS08,Terreur à Sevastopol — Display,216,24,24 boosters de 9 cartes,PROPOSE
-IS08-C,IS08,Terreur à Sevastopol — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-IS08-S,IS08,Terreur à Sevastopol — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-IS08-K,IS08,Terreur à Sevastopol — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-IS08-X,IS08,Terreur à Sevastopol — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-RO09-B,RO09,Renaissance Noire — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-RO09-D,RO09,Renaissance Noire — Display,216,24,24 boosters de 9 cartes,PROPOSE
-RO09-C,RO09,Renaissance Noire — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-RO09-S,RO09,Renaissance Noire — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-RO09-K,RO09,Renaissance Noire — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-RO09-X,RO09,Renaissance Noire — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-EA10-B,EA10,La Menace sur Terre — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-EA10-D,EA10,La Menace sur Terre — Display,216,24,24 boosters de 9 cartes,PROPOSE
-EA10-C,EA10,La Menace sur Terre — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-EA10-S,EA10,La Menace sur Terre — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-EA10-K,EA10,La Menace sur Terre — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-EA10-X,EA10,La Menace sur Terre — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-WY11-B,WY11,Directives Weyland-Yutani — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-WY11-D,WY11,Directives Weyland-Yutani — Display,216,24,24 boosters de 9 cartes,PROPOSE
-WY11-C,WY11,Directives Weyland-Yutani — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-WY11-S,WY11,Directives Weyland-Yutani — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-WY11-K,WY11,Directives Weyland-Yutani — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-WY11-X,WY11,Directives Weyland-Yutani — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-MC12-B,MC12,Arsenal Colonial — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-MC12-D,MC12,Arsenal Colonial — Display,216,24,24 boosters de 9 cartes,PROPOSE
-MC12-C,MC12,Arsenal Colonial — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-MC12-S,MC12,Arsenal Colonial — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-MC12-K,MC12,Arsenal Colonial — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-MC12-X,MC12,Arsenal Colonial — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-P213-B,P213,Chasseurs de Los Angeles — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-P213-D,P213,Chasseurs de Los Angeles — Display,216,24,24 boosters de 9 cartes,PROPOSE
-P213-C,P213,Chasseurs de Los Angeles — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-P213-S,P213,Chasseurs de Los Angeles — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-P213-K,P213,Chasseurs de Los Angeles — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-P213-X,P213,Chasseurs de Los Angeles — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-PR14-B,PR14,Planète Réserve — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-PR14-D,PR14,Planète Réserve — Display,216,24,24 boosters de 9 cartes,PROPOSE
-PR14-C,PR14,Planète Réserve — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-PR14-S,PR14,Planète Réserve — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-PR14-K,PR14,Planète Réserve — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-PR14-X,PR14,Planète Réserve — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-PY15-B,PY15,La Proie des Grandes Plaines — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-PY15-D,PY15,La Proie des Grandes Plaines — Display,216,24,24 boosters de 9 cartes,PROPOSE
-PY15-C,PY15,La Proie des Grandes Plaines — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-PY15-S,PY15,La Proie des Grandes Plaines — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-PY15-K,PY15,La Proie des Grandes Plaines — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-PY15-X,PY15,La Proie des Grandes Plaines — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-ST16-B,ST16,Expériences Stargazer — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-ST16-D,ST16,Expériences Stargazer — Display,216,24,24 boosters de 9 cartes,PROPOSE
-ST16-C,ST16,Expériences Stargazer — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-ST16-S,ST16,Expériences Stargazer — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-ST16-K,ST16,Expériences Stargazer — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-ST16-X,ST16,Expériences Stargazer — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-BD17-B,BD17,Exil dans les Badlands — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-BD17-D,BD17,Exil dans les Badlands — Display,216,24,24 boosters de 9 cartes,PROPOSE
-BD17-C,BD17,Exil dans les Badlands — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-BD17-S,BD17,Exil dans les Badlands — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-BD17-K,BD17,Exil dans les Badlands — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-BD17-X,BD17,Exil dans les Badlands — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-KK18-B,KK18,Chasse à Travers les Siècles — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-KK18-D,KK18,Chasse à Travers les Siècles — Display,216,24,24 boosters de 9 cartes,PROPOSE
-KK18-C,KK18,Chasse à Travers les Siècles — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-KK18-S,KK18,Chasse à Travers les Siècles — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-KK18-K,KK18,Chasse à Travers les Siècles — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-KK18-X,KK18,Chasse à Travers les Siècles — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-CM19-B,CM19,Ruines de Hadley's Hope — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-CM19-D,CM19,Ruines de Hadley's Hope — Display,216,24,24 boosters de 9 cartes,PROPOSE
-CM19-C,CM19,Ruines de Hadley's Hope — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-CM19-S,CM19,Ruines de Hadley's Hope — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-CM19-K,CM19,Ruines de Hadley's Hope — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-CM19-X,CM19,Ruines de Hadley's Hope — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-FE20-B,FE20,Équipes de Feu — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-FE20-D,FE20,Équipes de Feu — Display,216,24,24 boosters de 9 cartes,PROPOSE
-FE20-C,FE20,Équipes de Feu — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-FE20-S,FE20,Équipes de Feu — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-FE20-K,FE20,Équipes de Feu — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-FE20-X,FE20,Équipes de Feu — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-DD21-B,DD21,Descente Tactique — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-DD21-D,DD21,Descente Tactique — Display,216,24,24 boosters de 9 cartes,PROPOSE
-DD21-C,DD21,Descente Tactique — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-DD21-S,DD21,Descente Tactique — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-DD21-K,DD21,Descente Tactique — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-DD21-X,DD21,Descente Tactique — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-RI22-B,RI22,Incursion de l'Inconnu — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-RI22-D,RI22,Incursion de l'Inconnu — Display,216,24,24 boosters de 9 cartes,PROPOSE
-RI22-C,RI22,Incursion de l'Inconnu — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-RI22-S,RI22,Incursion de l'Inconnu — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-RI22-K,RI22,Incursion de l'Inconnu — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-RI22-X,RI22,Incursion de l'Inconnu — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-EX23-B,EX23,Guerre d'Extinction — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-EX23-D,EX23,Guerre d'Extinction — Display,216,24,24 boosters de 9 cartes,PROPOSE
-EX23-C,EX23,Guerre d'Extinction — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-EX23-S,EX23,Guerre d'Extinction — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-EX23-K,EX23,Guerre d'Extinction — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-EX23-X,EX23,Guerre d'Extinction — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-PH24-B,PH24,Légendes des Chasseurs — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-PH24-D,PH24,Légendes des Chasseurs — Display,216,24,24 boosters de 9 cartes,PROPOSE
-PH24-C,PH24,Légendes des Chasseurs — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-PH24-S,PH24,Légendes des Chasseurs — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-PH24-K,PH24,Légendes des Chasseurs — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-PH24-X,PH24,Légendes des Chasseurs — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-CB25-B,CB25,Chroniques Dessinées — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-CB25-D,CB25,Chroniques Dessinées — Display,216,24,24 boosters de 9 cartes,PROPOSE
-CB25-C,CB25,Chroniques Dessinées — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-CB25-S,CB25,Chroniques Dessinées — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-CB25-K,CB25,Chroniques Dessinées — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-CB25-X,CB25,Chroniques Dessinées — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-KN26-B,KN26,Bestiaire de Collection — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-KN26-D,KN26,Bestiaire de Collection — Display,216,24,24 boosters de 9 cartes,PROPOSE
-KN26-C,KN26,Bestiaire de Collection — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-KN26-S,KN26,Bestiaire de Collection — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-KN26-K,KN26,Bestiaire de Collection — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-KN26-X,KN26,Bestiaire de Collection — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-YA27-B,YA27,Les Royaumes Yautja — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-YA27-D,YA27,Les Royaumes Yautja — Display,216,24,24 boosters de 9 cartes,PROPOSE
-YA27-C,YA27,Les Royaumes Yautja — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-YA27-S,YA27,Les Royaumes Yautja — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-YA27-K,YA27,Les Royaumes Yautja — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-YA27-X,YA27,Les Royaumes Yautja — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-TF28-B,TF28,Frontière Tantalus — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-TF28-D,TF28,Frontière Tantalus — Display,216,24,24 boosters de 9 cartes,PROPOSE
-TF28-C,TF28,Frontière Tantalus — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-TF28-S,TF28,Frontière Tantalus — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-TF28-K,TF28,Frontière Tantalus — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-TF28-X,TF28,Frontière Tantalus — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-HA29-B,HA29,Éclosion MNEMOSYNE — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-HA29-D,HA29,Éclosion MNEMOSYNE — Display,216,24,24 boosters de 9 cartes,PROPOSE
-HA29-C,HA29,Éclosion MNEMOSYNE — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-HA29-S,HA29,Éclosion MNEMOSYNE — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-HA29-K,HA29,Éclosion MNEMOSYNE — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-HA29-X,HA29,Éclosion MNEMOSYNE — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
-WW30-B,WW30,Guerres des Ruches — Booster standard,9,1,7 C + 1 R + 1 foil aléatoire,PROPOSE
-WW30-D,WW30,Guerres des Ruches — Display,216,24,24 boosters de 9 cartes,PROPOSE
-WW30-C,WW30,Guerres des Ruches — Coffret Collector,45,5,5 boosters; finitions de prestige possibles,PROPOSE
-WW30-S,WW30,Guerres des Ruches — Structure Deck,30,0,30 cartes fixe mono-faction,PROPOSE
-WW30-K,WW30,Guerres des Ruches — Pack Deck Construction,60,0,Réservoir de construction 60 références; non garanti en jeu,PROPOSE
-WW30-X,WW30,Guerres des Ruches — Deck spécial,30,0,30 cartes scénario fixe,PROPOSE
+SKU,Set,Produit,QuantiteCartes,NbBoosters,Composition,Statut,Gamme,DeckPrincipal,Reserve,CartesParBooster,SourceOfficielle
+NX01-B,NX01,Origines Hostiles — Booster,9,1,7 C + 1 R + 1 foil,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+NX01-D,NX01,Origines Hostiles — Display 24 boosters,216,24,24 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+NX01-C,NX01,Origines Hostiles — Coffret collector 5 boosters,45,5,5 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+NX01-T,NX01,Origines Hostiles — Starter Deck,45,0,30 principales + 15 alternatives,PROPOSE,Starter Deck,30,15,0,https://www.yugioh-card.com/en/products/ys18/
+NX01-K,NX01,Origines Hostiles — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/pote/
+NX01-X,NX01,Origines Hostiles — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+CW02-B,CW02,Guerre Coloniale — Booster,9,1,7 C + 1 R + 1 foil,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+CW02-D,CW02,Guerre Coloniale — Display 24 boosters,216,24,24 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+CW02-C,CW02,Guerre Coloniale — Coffret collector 5 boosters,45,5,5 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+CW02-T,CW02,Guerre Coloniale — Starter Deck,45,0,30 principales + 15 alternatives,PROPOSE,Starter Deck,30,15,0,https://www.yugioh-card.com/en/products/ys18/
+CW02-K,CW02,Guerre Coloniale — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/pote/
+CW02-X,CW02,Guerre Coloniale — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+HG03-B,HG03,Terrains de Chasse — Booster,9,1,7 C + 1 R + 1 foil,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+HG03-D,HG03,Terrains de Chasse — Display 24 boosters,216,24,24 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+HG03-C,HG03,Terrains de Chasse — Coffret collector 5 boosters,45,5,5 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+HG03-T,HG03,Terrains de Chasse — Starter Deck,45,0,30 principales + 15 alternatives,PROPOSE,Starter Deck,30,15,0,https://www.yugioh-card.com/en/products/ys18/
+HG03-K,HG03,Terrains de Chasse — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/pote/
+HG03-X,HG03,Terrains de Chasse — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+AV04-B,AV04,Rite de Sang — Booster,9,1,7 C + 1 R + 1 foil,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+AV04-D,AV04,Rite de Sang — Display 24 boosters,216,24,24 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+AV04-C,AV04,Rite de Sang — Coffret collector 5 boosters,45,5,5 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+AV04-T,AV04,Rite de Sang — Starter Deck,45,0,30 principales + 15 alternatives,PROPOSE,Starter Deck,30,15,0,https://www.yugioh-card.com/en/products/ys18/
+AV04-K,AV04,Rite de Sang — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/pote/
+AV04-X,AV04,Rite de Sang — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+EV05-B,EV05,Évolution Parfaite — Booster,9,1,7 C + 1 R + 1 foil,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+EV05-D,EV05,Évolution Parfaite — Display 24 boosters,216,24,24 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+EV05-C,EV05,Évolution Parfaite — Coffret collector 5 boosters,45,5,5 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+EV05-T,EV05,Évolution Parfaite — Starter Deck,45,0,30 principales + 15 alternatives,PROPOSE,Starter Deck,30,15,0,https://www.yugioh-card.com/en/products/ys18/
+EV05-K,EV05,Évolution Parfaite — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/pote/
+EV05-X,EV05,Évolution Parfaite — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+F306-B,F306,Cendres de Fiorina — Booster,5,1,3 C + 1 R + 1 foil,PROPOSE,Booster légendaire,0,0,5,https://www.yugioh-card.com/en/products/led8/
+F306-D,F306,Cendres de Fiorina — Display 24 boosters,120,24,24 × 5 cartes,PROPOSE,Booster légendaire,0,0,5,https://www.yugioh-card.com/en/products/led8/
+F306-C,F306,Cendres de Fiorina — Coffret collector 5 boosters,25,5,5 × 5 cartes,PROPOSE,Booster légendaire,0,0,5,https://www.yugioh-card.com/en/products/led8/
+F306-S,F306,Cendres de Fiorina — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+F306-K,F306,Cendres de Fiorina — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/led8/
+F306-X,F306,Cendres de Fiorina — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+R407-B,R407,Les Héritiers de l'Auriga — Booster,7,1,5 C + 1 R + 1 foil,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+R407-D,R407,Les Héritiers de l'Auriga — Display 24 boosters,168,24,24 × 7 cartes,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+R407-C,R407,Les Héritiers de l'Auriga — Coffret collector 5 boosters,35,5,5 × 7 cartes,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+R407-S,R407,Les Héritiers de l'Auriga — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+R407-K,R407,Les Héritiers de l'Auriga — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/amde/
+R407-X,R407,Les Héritiers de l'Auriga — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+IS08-B,IS08,Terreur à Sevastopol — Booster,7,1,5 C + 1 R + 1 foil,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+IS08-D,IS08,Terreur à Sevastopol — Display 24 boosters,168,24,24 × 7 cartes,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+IS08-C,IS08,Terreur à Sevastopol — Coffret collector 5 boosters,35,5,5 × 7 cartes,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+IS08-S,IS08,Terreur à Sevastopol — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+IS08-K,IS08,Terreur à Sevastopol — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/amde/
+IS08-X,IS08,Terreur à Sevastopol — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+RO09-B,RO09,Renaissance Noire — Booster,9,1,7 C + 1 R + 1 foil,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+RO09-D,RO09,Renaissance Noire — Display 24 boosters,216,24,24 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+RO09-C,RO09,Renaissance Noire — Coffret collector 5 boosters,45,5,5 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+RO09-S,RO09,Renaissance Noire — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+RO09-K,RO09,Renaissance Noire — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/pote/
+RO09-X,RO09,Renaissance Noire — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+EA10-B,EA10,La Menace sur Terre — Booster,9,1,7 C + 1 R + 1 foil,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+EA10-D,EA10,La Menace sur Terre — Display 24 boosters,216,24,24 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+EA10-C,EA10,La Menace sur Terre — Coffret collector 5 boosters,45,5,5 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+EA10-S,EA10,La Menace sur Terre — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+EA10-K,EA10,La Menace sur Terre — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/pote/
+EA10-X,EA10,La Menace sur Terre — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+WY11-B,WY11,Directives Weyland-Yutani — Booster,7,1,5 C + 1 R + 1 foil,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+WY11-D,WY11,Directives Weyland-Yutani — Display 24 boosters,168,24,24 × 7 cartes,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+WY11-C,WY11,Directives Weyland-Yutani — Coffret collector 5 boosters,35,5,5 × 7 cartes,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+WY11-S,WY11,Directives Weyland-Yutani — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+WY11-K,WY11,Directives Weyland-Yutani — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/amde/
+WY11-X,WY11,Directives Weyland-Yutani — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+MC12-B,MC12,Arsenal Colonial — Booster,7,1,6 R + 1 foil,PROPOSE,Booster de construction,0,0,7,https://www.yugioh-card.com/en/products/tama/
+MC12-D,MC12,Arsenal Colonial — Display 24 boosters,168,24,24 × 7 cartes,PROPOSE,Booster de construction,0,0,7,https://www.yugioh-card.com/en/products/tama/
+MC12-C,MC12,Arsenal Colonial — Coffret collector 5 boosters,35,5,5 × 7 cartes,PROPOSE,Booster de construction,0,0,7,https://www.yugioh-card.com/en/products/tama/
+MC12-S,MC12,Arsenal Colonial — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+MC12-K,MC12,Arsenal Colonial — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/tama/
+MC12-X,MC12,Arsenal Colonial — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+P213-B,P213,Chasseurs de Los Angeles — Booster,5,1,3 C + 1 R + 1 foil,PROPOSE,Booster légendaire,0,0,5,https://www.yugioh-card.com/en/products/led8/
+P213-D,P213,Chasseurs de Los Angeles — Display 24 boosters,120,24,24 × 5 cartes,PROPOSE,Booster légendaire,0,0,5,https://www.yugioh-card.com/en/products/led8/
+P213-C,P213,Chasseurs de Los Angeles — Coffret collector 5 boosters,25,5,5 × 5 cartes,PROPOSE,Booster légendaire,0,0,5,https://www.yugioh-card.com/en/products/led8/
+P213-S,P213,Chasseurs de Los Angeles — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+P213-K,P213,Chasseurs de Los Angeles — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/led8/
+P213-X,P213,Chasseurs de Los Angeles — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+PR14-B,PR14,Planète Réserve — Booster,7,1,5 C + 1 R + 1 foil,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+PR14-D,PR14,Planète Réserve — Display 24 boosters,168,24,24 × 7 cartes,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+PR14-C,PR14,Planète Réserve — Coffret collector 5 boosters,35,5,5 × 7 cartes,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+PR14-S,PR14,Planète Réserve — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+PR14-K,PR14,Planète Réserve — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/amde/
+PR14-X,PR14,Planète Réserve — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+PY15-B,PY15,La Proie des Grandes Plaines — Booster,5,1,3 C + 1 R + 1 foil,PROPOSE,Booster légendaire,0,0,5,https://www.yugioh-card.com/en/products/led8/
+PY15-D,PY15,La Proie des Grandes Plaines — Display 24 boosters,120,24,24 × 5 cartes,PROPOSE,Booster légendaire,0,0,5,https://www.yugioh-card.com/en/products/led8/
+PY15-C,PY15,La Proie des Grandes Plaines — Coffret collector 5 boosters,25,5,5 × 5 cartes,PROPOSE,Booster légendaire,0,0,5,https://www.yugioh-card.com/en/products/led8/
+PY15-S,PY15,La Proie des Grandes Plaines — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+PY15-K,PY15,La Proie des Grandes Plaines — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/led8/
+PY15-X,PY15,La Proie des Grandes Plaines — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+ST16-B,ST16,Expériences Stargazer — Booster,7,1,5 C + 1 R + 1 foil,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+ST16-D,ST16,Expériences Stargazer — Display 24 boosters,168,24,24 × 7 cartes,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+ST16-C,ST16,Expériences Stargazer — Coffret collector 5 boosters,35,5,5 × 7 cartes,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+ST16-S,ST16,Expériences Stargazer — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+ST16-K,ST16,Expériences Stargazer — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/amde/
+ST16-X,ST16,Expériences Stargazer — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+BD17-B,BD17,Exil dans les Badlands — Booster,9,1,7 C + 1 R + 1 foil,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+BD17-D,BD17,Exil dans les Badlands — Display 24 boosters,216,24,24 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+BD17-C,BD17,Exil dans les Badlands — Coffret collector 5 boosters,45,5,5 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+BD17-S,BD17,Exil dans les Badlands — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+BD17-K,BD17,Exil dans les Badlands — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/pote/
+BD17-X,BD17,Exil dans les Badlands — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+KK18-B,KK18,Chasse à Travers les Siècles — Booster,7,1,5 C + 1 R + 1 foil,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+KK18-D,KK18,Chasse à Travers les Siècles — Display 24 boosters,168,24,24 × 7 cartes,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+KK18-C,KK18,Chasse à Travers les Siècles — Coffret collector 5 boosters,35,5,5 × 7 cartes,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+KK18-S,KK18,Chasse à Travers les Siècles — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+KK18-K,KK18,Chasse à Travers les Siècles — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/amde/
+KK18-X,KK18,Chasse à Travers les Siècles — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+CM19-B,CM19,Ruines de Hadley's Hope — Booster,7,1,6 R + 1 foil,PROPOSE,Booster de construction,0,0,7,https://www.yugioh-card.com/en/products/tama/
+CM19-D,CM19,Ruines de Hadley's Hope — Display 24 boosters,168,24,24 × 7 cartes,PROPOSE,Booster de construction,0,0,7,https://www.yugioh-card.com/en/products/tama/
+CM19-C,CM19,Ruines de Hadley's Hope — Coffret collector 5 boosters,35,5,5 × 7 cartes,PROPOSE,Booster de construction,0,0,7,https://www.yugioh-card.com/en/products/tama/
+CM19-S,CM19,Ruines de Hadley's Hope — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+CM19-K,CM19,Ruines de Hadley's Hope — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/tama/
+CM19-X,CM19,Ruines de Hadley's Hope — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+FE20-B,FE20,Équipes de Feu — Booster,7,1,6 R + 1 foil,PROPOSE,Booster de construction,0,0,7,https://www.yugioh-card.com/en/products/tama/
+FE20-D,FE20,Équipes de Feu — Display 24 boosters,168,24,24 × 7 cartes,PROPOSE,Booster de construction,0,0,7,https://www.yugioh-card.com/en/products/tama/
+FE20-C,FE20,Équipes de Feu — Coffret collector 5 boosters,35,5,5 × 7 cartes,PROPOSE,Booster de construction,0,0,7,https://www.yugioh-card.com/en/products/tama/
+FE20-S,FE20,Équipes de Feu — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+FE20-K,FE20,Équipes de Feu — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/tama/
+FE20-X,FE20,Équipes de Feu — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+DD21-B,DD21,Descente Tactique — Booster,7,1,5 C + 1 R + 1 foil,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+DD21-D,DD21,Descente Tactique — Display 24 boosters,168,24,24 × 7 cartes,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+DD21-C,DD21,Descente Tactique — Coffret collector 5 boosters,35,5,5 × 7 cartes,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+DD21-S,DD21,Descente Tactique — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+DD21-K,DD21,Descente Tactique — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/amde/
+DD21-X,DD21,Descente Tactique — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+RI22-B,RI22,Incursion de l'Inconnu — Booster,7,1,5 C + 1 R + 1 foil,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+RI22-D,RI22,Incursion de l'Inconnu — Display 24 boosters,168,24,24 × 7 cartes,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+RI22-C,RI22,Incursion de l'Inconnu — Coffret collector 5 boosters,35,5,5 × 7 cartes,PROPOSE,Booster thématique,0,0,7,https://www.yugioh-card.com/en/products/amde/
+RI22-S,RI22,Incursion de l'Inconnu — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+RI22-K,RI22,Incursion de l'Inconnu — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/amde/
+RI22-X,RI22,Incursion de l'Inconnu — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+EX23-B,EX23,Guerre d'Extinction — Booster,9,1,7 C + 1 R + 1 foil,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+EX23-D,EX23,Guerre d'Extinction — Display 24 boosters,216,24,24 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+EX23-C,EX23,Guerre d'Extinction — Coffret collector 5 boosters,45,5,5 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+EX23-S,EX23,Guerre d'Extinction — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+EX23-K,EX23,Guerre d'Extinction — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/pote/
+EX23-X,EX23,Guerre d'Extinction — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+PH24-B,PH24,Légendes des Chasseurs — Booster,5,1,4 SR+ + 1 UR+ premium,PROPOSE,Booster collector,0,0,5,https://www.yugioh-card.com/en/products/ghosts-from-the-past/
+PH24-D,PH24,Légendes des Chasseurs — Display 24 boosters,120,24,24 × 5 cartes,PROPOSE,Booster collector,0,0,5,https://www.yugioh-card.com/en/products/ghosts-from-the-past/
+PH24-C,PH24,Légendes des Chasseurs — Coffret collector 3 boosters,15,3,3 × 5 cartes,PROPOSE,Booster collector,0,0,5,https://www.yugioh-card.com/en/products/ghosts-from-the-past/
+PH24-S,PH24,Légendes des Chasseurs — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+PH24-K,PH24,Légendes des Chasseurs — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/ghosts-from-the-past/
+PH24-X,PH24,Légendes des Chasseurs — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+CB25-B,CB25,Chroniques Dessinées — Booster,5,1,4 SR+ + 1 UR+ premium,PROPOSE,Booster collector,0,0,5,https://www.yugioh-card.com/en/products/ghosts-from-the-past/
+CB25-D,CB25,Chroniques Dessinées — Display 24 boosters,120,24,24 × 5 cartes,PROPOSE,Booster collector,0,0,5,https://www.yugioh-card.com/en/products/ghosts-from-the-past/
+CB25-C,CB25,Chroniques Dessinées — Coffret collector 3 boosters,15,3,3 × 5 cartes,PROPOSE,Booster collector,0,0,5,https://www.yugioh-card.com/en/products/ghosts-from-the-past/
+CB25-S,CB25,Chroniques Dessinées — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+CB25-K,CB25,Chroniques Dessinées — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/ghosts-from-the-past/
+CB25-X,CB25,Chroniques Dessinées — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+KN26-B,KN26,Bestiaire de Collection — Booster,5,1,4 SR+ + 1 UR+ premium,PROPOSE,Booster collector,0,0,5,https://www.yugioh-card.com/en/products/ghosts-from-the-past/
+KN26-D,KN26,Bestiaire de Collection — Display 24 boosters,120,24,24 × 5 cartes,PROPOSE,Booster collector,0,0,5,https://www.yugioh-card.com/en/products/ghosts-from-the-past/
+KN26-C,KN26,Bestiaire de Collection — Coffret collector 3 boosters,15,3,3 × 5 cartes,PROPOSE,Booster collector,0,0,5,https://www.yugioh-card.com/en/products/ghosts-from-the-past/
+KN26-S,KN26,Bestiaire de Collection — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+KN26-K,KN26,Bestiaire de Collection — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/ghosts-from-the-past/
+KN26-X,KN26,Bestiaire de Collection — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+YA27-B,YA27,Les Royaumes Yautja — Booster,9,1,7 C + 1 R + 1 foil,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+YA27-D,YA27,Les Royaumes Yautja — Display 24 boosters,216,24,24 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+YA27-C,YA27,Les Royaumes Yautja — Coffret collector 5 boosters,45,5,5 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+YA27-S,YA27,Les Royaumes Yautja — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+YA27-K,YA27,Les Royaumes Yautja — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/pote/
+YA27-X,YA27,Les Royaumes Yautja — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+TF28-B,TF28,Frontière Tantalus — Booster,9,1,7 C + 1 R + 1 foil,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+TF28-D,TF28,Frontière Tantalus — Display 24 boosters,216,24,24 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+TF28-C,TF28,Frontière Tantalus — Coffret collector 5 boosters,45,5,5 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+TF28-S,TF28,Frontière Tantalus — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+TF28-K,TF28,Frontière Tantalus — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/pote/
+TF28-X,TF28,Frontière Tantalus — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+HA29-B,HA29,Éclosion MNEMOSYNE — Booster,9,1,7 C + 1 R + 1 foil,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+HA29-D,HA29,Éclosion MNEMOSYNE — Display 24 boosters,216,24,24 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+HA29-C,HA29,Éclosion MNEMOSYNE — Coffret collector 5 boosters,45,5,5 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+HA29-S,HA29,Éclosion MNEMOSYNE — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+HA29-K,HA29,Éclosion MNEMOSYNE — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/pote/
+HA29-X,HA29,Éclosion MNEMOSYNE — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
+WW30-B,WW30,Guerres des Ruches — Booster,9,1,7 C + 1 R + 1 foil,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+WW30-D,WW30,Guerres des Ruches — Display 24 boosters,216,24,24 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+WW30-C,WW30,Guerres des Ruches — Coffret collector 5 boosters,45,5,5 × 9 cartes,PROPOSE,Booster principal,0,0,9,https://www.yugioh-card.com/en/products/pote/
+WW30-S,WW30,Guerres des Ruches — Structure Deck,45,0,30 principales + 15 alternatives,PROPOSE,Structure Deck,30,15,0,https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/
+WW30-K,WW30,Guerres des Ruches — Kit de construction,75,0,30 principales + 45 alternatives,PROPOSE,Construction,30,45,0,https://www.yugioh-card.com/en/products/pote/
+WW30-X,WW30,Guerres des Ruches — Deck spécial,50,0,30 principales + 20 alternatives,PROPOSE,Deck spécial,30,20,0,https://www.yugioh-card.com/en/products/ch02/
