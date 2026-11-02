@@ -122,7 +122,7 @@ const expected = '23a462d5fec16bf2feede14d1d69f1829e188db85df7860b3324127d2701d7
 if (hash !== expected) throw new Error('Standalone provenance hash mismatch.');
 
 const index = await readFile(resolve(root, 'index.html'), 'utf8');
-for (const asset of ['/assets/styles.css', '/src/data.js', '/src/art-manifest.js', '/src/engine.js', '/src/app.js', '/manifest.webmanifest']) {
+for (const asset of ['/assets/styles.css', '/src/data.js', '/src/expansion.js', '/src/art-manifest.js', '/src/engine.js', '/src/app.js', '/manifest.webmanifest']) {
   if (!index.includes(asset)) throw new Error(`index.html is missing ${asset}`);
 }
 
@@ -136,6 +136,20 @@ if (!Array.isArray(cards) || cards.length !== expectedCardCount) {
 const cardIds = cards.map((card) => card?.id);
 if (cardIds.some((id) => typeof id !== 'string' || !id.trim()) || new Set(cardIds).size !== expectedCardCount) {
   throw new Error('Card IDs in src/data.js are missing or duplicated.');
+}
+// Run the optional playable wave in a SEPARATE VM; the original 158-card
+// artwork provenance contract must continue validating its immutable baseline.
+const expansionContext=createContext({window:{},Intl,Date,Math});
+new Script(await readFile(resolve(root,'src','data.js'),'utf8'),{filename:'src/data.js'})
+  .runInContext(expansionContext,{timeout:2000});
+new Script(await readFile(resolve(root,'src','expansion.js'),'utf8'),{filename:'src/expansion.js'})
+  .runInContext(expansionContext,{timeout:2500});
+const live=expansionContext.window.AVP_DATA;
+if(live.cards.length!==314||live.expansion?.addedCount!==156||live.expansionDecks?.length!==20
+  ||new Set(live.cards.map(c=>c.id)).size!==314
+  ||live.expansionDecks.some(p=>Object.values(p.cards).reduce((a,b)=>a+b,0)!==30
+    ||Object.values(p.reserve).reduce((a,b)=>a+b,0)!==15)){
+  throw new Error('Playable card-class expansion has an invalid inventory, template or duplicate ID.');
 }
 const expectedDistribution = Object.freeze({
   cards: cardIds.length,
@@ -370,6 +384,7 @@ const required = [
   'assets/icon-192.png',
   'assets/icon-512.png',
   'src/data.js',
+  'src/expansion.js',
   'src/art-manifest.js',
   'assets/art/manifest.json',
   'assets/art/scenes/home-hero-v1.webp',
