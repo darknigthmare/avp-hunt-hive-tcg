@@ -32,7 +32,7 @@ def main():
  expected={"sets.csv":31,"printings.csv":t["newPrintings"]+1,"rarities.csv":15,
            "decks.csv":211,"decklists.csv":t["decklistRows"]+1,
            "products.csv":t["productSkus"]+1,"alien-base-sources.csv":653,"legacy-cards.csv":159,
-           "gameplay-live.csv":meta["implementation"]["totalPlayableCards"]+1,"live-set-progress.csv":32}
+           "gameplay-live.csv":manifest["implementation"]["totalPlayableCards"]+1,"live-set-progress.csv":32}
  for filename,n in expected.items():
   if len(load(filename))!=n: raise ValueError(f"{filename} : attendu {n} lignes")
  wb=Workbook.create();d=wb.worksheets.add("00_PILOTAGE")
