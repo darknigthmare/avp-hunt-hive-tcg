@@ -1,53 +1,57 @@
-# AVP HUNT // HIVE — COLLECTIONS 30 EXTENSIONS (PR de conception)
+# AVP HUNT // HIVE TCG — Collections à tailles variables (v2)
 
-**Snapshot vérifié** : `darknigthmare/alien_base@e65b75a6bfd1284dbac746102fdbae4fc5a3786b`, `data/entities.v1.json` SHA blob `393e88526dd16cd67c730761f23f68c4d8b97145` ; TCG `main@e7a9c8ee6017c25afceacccf580eeb8661257e97`.
+**Mise à jour de la PR #4 :** le catalogue de 30 extensions n'impose plus 100 cartes à chaque set. Les données de production restent **proposées / non jouables** : les 158 cartes actuellement jouables, leurs 7 raretés implémentées, leurs sauvegardes et leur deckbuilder de 30 cartes sont préservés.
 
-Cette PR apporte **un référentiel de conception Excel/CSV**, pas 2850 cartes jouables ni un moteur modifié. Les 158 cartes historiques sont archivées séparément, inchangées ; les 652 entités Alien_base sont citées en sources. **Aucune entité de fan game n'est promue en canon officiel.**
+## Formats et tailles
 
-## Livrables
-- `sets.csv` : 30 extensions et leurs médias, factions, mécaniques.
-- `printings.csv` : 3000 impressions **proposées** (2850 identités de cartes à créer + 150 traitements alternatifs qui partagent le même GameplayCardID).
-- `legacy-cards.csv` : les 158 cartes existantes, sans changement.
-- `rarities.csv` : 14 finitions, dont les 9 supplémentaires demandées, et alias historiques sans remappage silencieux.
-- `decks.csv` + `decklists.csv` : 210 recettes nommées mono-faction de 30 cartes ; **non testées en jeu**.
-- `booster-slots.csv` : booster 9 cartes (7 C, 1 R, 1 foil), tirages indicatifs, renormalisation obligatoire selon la présence des éditions premium dans chaque extension, anti-malchance existante à conserver.
-- `products.csv` : 180 fiches de produits proposées.
-- `alien-base-sources.csv` : 652 entrées exactes du registre source, sans attribuer de canon officiel.
-- `research-backlog.csv` : sujets livres/comics/films/série/figurines non complets à vérifier à partir de sources primaires.
-- `manifest.json` : compte exact et épingles des sources.
+| Gamme | Taille des extensions AVP | Cartes par paquet | Composition envisagée | Modèle officiel documenté |
+|---|---|---:|---|---|
+| Booster principal | 100 ou 120 impressions | 9 | 7 C + 1 R + 1 foil | [Power of the Elements (100/9)](https://www.yugioh-card.com/en/products/pote/) |
+| Booster thématique | 70, 80 ou 90 | 7 | 5 C + 1 R + 1 foil | [Amazing Defenders (60/7)](https://www.yugioh-card.com/en/products/amde/) |
+| Booster légendaire | 56 | 5 | 3 C + 1 R + 1 foil | [Synchro Storm (56/5)](https://www.yugioh-card.com/en/products/led8/) |
+| Booster de construction | 60 | 7 | 6 R + 1 foil | [Tactical Masters (60/7)](https://www.yugioh-card.com/en/products/tama/) |
+| Collection premium | 132, 146 ou 177 | 5 | 5 foils / prestige | [Ghosts From the Past (132)](https://www.yugioh-card.com/en/products/ghosts-from-the-past/), [Glorious Gallery (146)](https://www.yugioh-card.com/en/products/blgg/), [Monster Mayhem (177)](https://www.yugioh-card.com/en/products/blmm/) |
 
-## Règles impératives de livraison
-1. **Même identité de carte, différentes raretés d'impression.** Ne pas créer d'avantage statistique pour la version Ghost, Starlight, QCS, etc.
-2. **Lier au registre privé par snapshot statique versionné.** Pas de fetch GitHub privé depuis le navigateur.
-3. **Préserver `SCR`, `PR`, `GR` des 158 anciennes cartes**. `SE`, `PSR`, `GHR` sont de nouveaux codes proposés ; migration uniquement après audit de compatibilité et tests de sauvegarde.
-4. **Les scripts de gameplay, boosters, sauvegardes et deckbuilder existants restent inchangés.** La PR n'active pas les nouvelles cartes.
-5. **Canon** : distinguer film, jeu sous licence, print, figurine, fan. Chaque carte de cette proposition est un design gameplay dérivé, pas une scène 1:1 prouvée ; la colonne compatibilité indique thème direct ou adaptation transversale.
-6. **Le format 30 cartes** et le maximum de trois copies subsistent. Les recettes ici sont toutes à 30 identités distinctes, mono-faction. Le moteur doit valider avant activation.
+Les tailles AVP 70/80/90/120 sont **nos décisions éditoriales**, pas des nombres attribués à ces produits officiels.
 
-## Répartition et drop rates (proposition)
-Chaque extension dispose de 95 identités de cartes nouvelles : 44 C, 24 R, 14 SR, 8 UR, 5 SE, puis 5 impressions alternatives. Les cinq extensions déjà dans le jeu utilisent les numéros 101–200 pour éviter de remplacer les numéros historiques. Les rares alternées tournent sur UTR, GHR, STL, QCS, CLR, PSR, PLS, PLR, PAR. Les 4 cartes historiques PX00 demeurent hors des 30 boosters ordinaires.
+## Starter et decks de structure
 
-Un booster standard contient 9 impressions. Slot 9 foil pondéré : R 45%, SR 30%, UR 15%, SE 6,5%, divers premium 3,5% au global. **Cela ne garantit pas ces pourcentages par set individuel** ; seuls les traitements publiés dans un set peuvent être tirés. Les tableaux sont des objectifs à intégrer, pas une assertion que ces rates tournent aujourd'hui.
+Le jeu conserve **30 cartes pour un deck utilisable en duel**. Les cartes supplémentaires d'une boîte préconstruite sont des choix de construction à sélectionner avant le duel, **pas un Extra Deck Yu-Gi-Oh!**.
 
-## Reconstitution du classeur Excel et validation automatique
+| Produit | Deck principal AVP | Cartes de réserve | Total boîte |
+|---|---:|---:|---:|
+| Starter Deck (5 factions) | 30 | 15 | **45** |
+| Structure Deck (25 thèmes) | 30 | 15 | **45** |
+| Deck de ligue | 30 | 15 | **45** |
+| Deck spécial | 30 | 20 | **50** |
+| Kit de construction | 30 | 45 | **75** |
 
-Dans un environnement disposant de Python et d'`artifact_tool` :
+Exemples officiels de tailles variables : [Starter Codebreaker (45)](https://www.yugioh-card.com/en/products/ys18/), [Structure Yugi/Kaiba (45)](https://www.yugioh-card.com/en/products/past_products/sdmy-sdks/), [Realm of Light (41)](https://www.yugioh-card.com/eu/fr/product/structure-deck-realm-of-light/), [Spirit Charmers (51)](https://www.yugioh-card.com/en/products/ch02/).
 
-```sh
+## Fichiers et décomptes
+
+- **30 sets**, **2 853 impressions**, **2 602 identités de nouvelles cartes** et **251 variantes foil** sans changement de statistiques.
+- **210 recettes**, dont 5 starters, 25 structures, 90 constructions, 30 decks spéciaux et 60 decks de ligue ; **12 300 lignes** contenant zones PRINCIPAL et RÉSERVE.
+- **180 produits**, dont boosters, displays, coffrets et decks, avec des quantités cohérentes selon leur gamme.
+- **14 raretés** prévues ; **652 références Alien_base** et **158 cartes historiques** conservées sans changement.
+- `sets.csv`, `printings.csv`, `decks.csv`, `decklists.csv`, `products.csv`, `booster-slots.csv`, `rarity-odds.csv`, `pack-formats.csv`, `formats-reference.csv`, `manifest.json` : contenus synchronisés.
+
+## Génération du classeur Excel et validation
+
+Depuis la racine du repo avec Python + `artifact_tool` :
+
+```bash
 python content-plan/build_xlsx.py
 ```
 
-Le script reconstruit **le classeur Excel exhaustif** `content-plan/AVP_HUNT_HIVE_TCG_30_Collections.xlsx` **à partir des CSV publiés dans cette PR**. Le binaire .xlsx lui-même n'est pas ajouté à GitHub dans cette PR ; ses données sources versionnées le sont.
+Recrée le classeur **exhaustif** `content-plan/AVP_HUNT_HIVE_TCG_30_Collections.xlsx` à partir des CSV versionnés. Le binaire Excel n'est **pas commité**, mais ses données et son générateur le sont.
 
-Depuis la racine du dépôt, avec Node 20+ :
+Avec Node 20+ :
 
-```sh
+```bash
 node content-plan/validate.mjs
 ```
 
-Le validateur vérifie les quantités, IDs, unicité, mono-faction et 30 lignes par deck. Il **ne remplace pas des tests du moteur de jeu**.
+Vérifie tous les décomptes, l'unicité, les IDs de cartes et de références, les 30 cartes PRINCIPAL, les réserves, les factions et les quantités vendues par produit. Les taux foil sont **indicatifs et non activés** : ils doivent être renormalisés pour les finitions réellement présentes dans chaque set et simulés avant intégration.
 
-## Suite prévue
-Audit éditorial carte par carte / sources primaires → règles et tags validés → illustrations originales et contrat 1:1 → QA ratios / sauvegardes / boosters → intégration progressive par extension. Les références de romans et comics listées dans le backlog demandent une ingestion primaire dans Alien_base avant canonisation.
-
-Ce projet est un fan game non officiel non commercial ; œuvres, marques et personnages appartiennent à leurs ayants droit.
+Les références écran, jeux sous licence, comics/romans, figurines et fan lore sont distinguées. Les 2 602 cartes proposées **ne sont pas attestées fidèles 1:1** scène par scène avant validation éditoriale. Aucun fetch vers le dépôt privé Alien_base n'est effectué depuis le navigateur.

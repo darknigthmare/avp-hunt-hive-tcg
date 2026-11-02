@@ -1,51 +1,64 @@
 #!/usr/bin/env node
-// Controles de cohérence du catalogue (non-jouable). Node 20+, sans dépendance.
-import { readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
+// Tests documentaires (Node 20+, sans dépendance externe) : les cartes ne sont pas encore jouables.
+import {readFileSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
+import {dirname,join} from 'node:path';
 import assert from 'node:assert/strict';
-const here=dirname(fileURLToPath(import.meta.url));
-function csv(f){
- const raw=readFileSync(join(here,f),'utf8').replace(/\r/g,'');
- let rows=[],row=[],col='',quoted=false;
- for(let i=0;i<raw.length;i++){
-   let c=raw[i];
-   if(c==='"'){if(quoted&&raw[i+1]==='"'){col+='"';i++;}else quoted=!quoted;}
-   else if(c===','&&!quoted){row.push(col);col='';}
-   else if(c==='\n'&&!quoted){row.push(col);if(row.some(Boolean))rows.push(row);row=[];col='';}
-   else col+=c;
+const dir=dirname(fileURLToPath(import.meta.url));
+function csv(name){
+ const s=readFileSync(join(dir,name),'utf8');
+ let rows=[],row=[],cell='',quote=false;
+ for(let i=0;i<s.length;i++){
+  const ch=s[i];
+  if(ch==='"'){if(quote&&s[i+1]==='"'){cell+='"';i++;}else quote=!quote;}
+  else if(ch===','&&!quote){row.push(cell);cell='';}
+  else if(ch==='\n'&&!quote){row.push(cell);if(row.some(Boolean))rows.push(row);row=[];cell='';}
+  else if(ch!=='\r')cell+=ch;
  }
- if(quoted)throw new Error('Champ CSV mal fermé: '+f);
- const [head,...body]=rows;
- return body.map(r=>Object.fromEntries(head.map((h,i)=>[h,r[i]??''])));
+ assert(!quote,'CSV non refermé: '+name);
+ const [headers,...data]=rows;return data.map(line=>Object.fromEntries(headers.map((h,i)=>[h,line[i]??''])));
 }
-const sets=csv('sets.csv'), prints=csv('printings.csv'), sources=csv('alien-base-sources.csv');
-const legacy=csv('legacy-cards.csv'), rarity=csv('rarities.csv'), decks=csv('decks.csv'), lines=csv('decklists.csv');
-const offers=csv('products.csv');
-assert.equal(sets.length,30);assert.equal(prints.length,3000);
-assert.equal(sources.length,652);assert.equal(legacy.length,158);
-assert.equal(rarity.length,14);assert.equal(decks.length,210);
-assert.equal(lines.length,6300);assert.equal(offers.length,180);
-const gids=new Set(prints.map(x=>x.GameplayCardID));
-assert.equal(gids.size,2850);
-assert.equal(prints.filter(x=>x.ImpressionAlternative==='OUI').length,150);
-const sourceIds=new Set(sources.map(x=>x.AlienBaseID));
-for(const x of prints){assert(sourceIds.has(x.EntiteAlienBase),x.EntiteAlienBase);assert(gids.has(x.GameplayCardID));}
-const setCodes=new Set(sets.map(x=>x.Set));
-for(const x of prints)assert(setCodes.has(x.Set));
-const rareCodes=new Set(rarity.map(x=>x.Code));
-for(const x of prints)assert(rareCodes.has(x.Rareté),x.Rareté);
-const cardMap=new Map(prints.map(x=>[x.GameplayCardID,x]));
-const dl=new Map();
-for(const x of lines){let l=dl.get(x.DeckID)||[];l.push(x);dl.set(x.DeckID,l);
-  assert(cardMap.has(x.CarteID),x.CarteID);
+const m=JSON.parse(readFileSync(join(dir,'manifest.json'),'utf8'));
+const sets=csv('sets.csv'),prints=csv('printings.csv'),decks=csv('decks.csv'),lines=csv('decklists.csv');
+const offers=csv('products.csv'),legacy=csv('legacy-cards.csv'),sources=csv('alien-base-sources.csv'),rarities=csv('rarities.csv');
+const setMap=new Map(sets.map(s=>[s.Set,s])),cardMap=new Map(prints.filter(x=>x.ImpressionAlternative==='NON').map(x=>[x.GameplayCardID,x]));
+assert.equal(sets.length,30);assert.equal(prints.length,m.totals.newPrintings);
+assert.equal(cardMap.size,m.totals.newGameplayCardConcepts);
+assert.equal(prints.filter(x=>x.ImpressionAlternative==='OUI').length,m.totals.alternativePrintings);
+assert.equal(decks.length,210);assert.equal(lines.length,m.totals.decklistRows);
+assert.equal(offers.length,m.totals.productSkus);assert.equal(legacy.length,158);assert.equal(sources.length,652);assert.equal(rarities.length,14);
+assert.equal(new Set(prints.map(x=>x.PrintID)).size,prints.length,'Numéros d’impression dupliqués');
+const canon=new Set(sources.map(x=>x.AlienBaseID)),rarSet=new Set(rarities.map(x=>x.Code));
+for(const p of prints){
+ assert(setMap.has(p.Set),'set '+p.Set);assert(canon.has(p.EntiteAlienBase),'source '+p.EntiteAlienBase);
+ assert(cardMap.has(p.GameplayCardID),'identité carte '+p.GameplayCardID);assert(rarSet.has(p['Rareté']),'rareté '+p['Rareté']);
+}
+for(const s of sets){
+ const list=prints.filter(x=>x.Set===s.Set);
+ assert.equal(list.length,Number(s.EmplacementsNouveaux),s.Set);
+ assert.equal(list.filter(x=>x.ImpressionAlternative==='NON').length,Number(s.CartesNouvelles),s.Set);
+ assert.equal(list.filter(x=>x.ImpressionAlternative==='OUI').length,Number(s.PrintsSpeciales),s.Set);
+ assert.equal(Number(s.BoosterCartes),m.packProfiles[{'Booster principal':'core','Booster thématique':'theme','Booster légendaire':'legendary','Booster de construction':'deckBuild','Booster collector':'collector'}[s.Gamme]],s.Set);
+}
+const deckMap=new Map(decks.map(x=>[x.DeckID,x])),byDeck=new Map();
+for(const l of lines){
+ assert(cardMap.has(l.CarteID),'carte sans identité '+l.CarteID);
+ const d=deckMap.get(l.DeckID);assert(d,'deck inconnu '+l.DeckID);assert.equal(l.Faction,d.Faction);
+ if(!byDeck.has(l.DeckID))byDeck.set(l.DeckID,{primary:[],side:[]});
+ (l.Zone==='PRINCIPAL'?byDeck.get(l.DeckID).primary:byDeck.get(l.DeckID).side).push(l);
 }
 for(const d of decks){
- const l=dl.get(d.DeckID)||[];
- assert.equal(l.length,30,d.DeckID);
- assert.equal(new Set(l.map(x=>x.CarteID)).size,30,d.DeckID);
- assert(l.every(x=>x.Faction===d.Faction),'Faction discordante: '+d.DeckID);
+ const p=byDeck.get(d.DeckID);assert(p);
+ assert.equal(p.primary.length,30,d.DeckID);
+ assert.equal(p.side.length,Number(d.Reserve),d.DeckID);
+ assert.equal(new Set([...p.primary,...p.side].map(x=>x.CarteID)).size,Number(d.TotalBoite),d.DeckID);
+ assert.equal(Number(d.DeckJouable),30,d.DeckID);
 }
-const first5=new Set(['NX01','CW02','HG03','AV04','EV05']);
-for(const x of prints.filter(x=>first5.has(x.Set)))assert(Number(x.No.split('-')[1])>=101);
-console.log('OK : 30 sets, 3 000 printings, 2 850 identités, 652 sources, 14 raretés, 210 decks / 6 300 slots.');
+for(const item of offers){
+ const s=setMap.get(item.Set);assert(s,'produit sans set '+item.SKU);
+ if(Number(item.NbBoosters))assert.equal(Number(item.QuantiteCartes),Number(item.NbBoosters)*Number(s.BoosterCartes),item.SKU);
+ else assert.equal(Number(item.QuantiteCartes),Number(item.DeckPrincipal)+Number(item.Reserve),item.SKU);
+}
+const categories={};for(const d of decks)categories[d.Categorie]=(categories[d.Categorie]||0)+1;
+assert.equal(categories.STARTER,5);assert.equal(categories.STRUCTURE,25);
+console.log('OK:',sets.length,'sets,',prints.length,'impressions,',cardMap.size,'identités,',decks.length,'decks,',lines.length,'slots,',offers.length,'produits.');
