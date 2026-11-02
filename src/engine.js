@@ -151,7 +151,18 @@
         if(take){deck[donor]-=take;if(!deck[donor])delete deck[donor];deck.T_AVP_ALLIANCE=(deck.T_AVP_ALLIANCE||0)+take;needed-=take;}
         if(!needed)break;
       }
-      if(needed)throw new Error('Hybrid AI tactic package is incomplete.');
+      // New hybrid cards enlarge the pool; maintain the original 3 Alliance
+      // guarantee without requiring all three old donor tactics to be drawn.
+      if(needed){
+        const replaceable=Object.keys(deck).filter(id=>id!=='T_AVP_ALLIANCE'&&id!=='L_AURIGA');
+        for(const id of replaceable){
+          if(!needed)break;
+          const count=Math.min(needed,deck[id]);
+          deck[id]-=count;if(!deck[id])delete deck[id];
+          deck.T_AVP_ALLIANCE=(deck.T_AVP_ALLIANCE||0)+count;needed-=count;
+        }
+      }
+      if(needed)throw new Error('Hybrid AI cannot be normalized.');
     }
     return deck;
   }
@@ -209,6 +220,13 @@
       const c=this.card(cardId); const kws=new Set(c.keywords||[]);
       return {uid:U.uid('unit'),cardId,owner:sideIndex,currentHealth:c.health,attackBonus:0,healthBonus:0,tempAttack:0,granted:this.modifiers.includes('trophyRush')&&sideIndex===1?['TROPHY']:[],tempGranted:[],equipment:[],ready:kws.has('RUSH'),attacked:false,cloaked:kws.has('CLOAK'),armorUsed:false,stunned:0,debuffed:false,kills:0,mutated:false,mutations:[],rebornUsed:false,forced:false,tacticShieldUsed:false};
     }
+    hasCrew(sideIndex,vehicleCard,vehicleUnit=null){
+      // A vehicle stays on the board without a pilot but cannot attack.
+      // Existing 1.0.0 units are unaffected: only new crewRequired cards use this.
+      return this.side(sideIndex).board.some(u=>u&&u!==vehicleUnit
+        &&this.card(u.cardId).cardClass==='PERSONNAGE'
+        &&this.isFaction(u,vehicleCard.faction));
+    }
     allKeywords(u){const set=new Set(this.card(u.cardId).keywords||[]);for(const k of u.granted||[])set.add(k);for(const k of u.tempGranted||[])set.add(k);for(const eqId of u.equipment||[])for(const k of this.card(eqId).keywords||[])set.add(k);return set;}
     has(u,k){return !!u&&this.allKeywords(u).has(k);}
     factionsOf(u){const c=this.card(u.cardId);return new Set([c.faction,...(c.effect?.dualFaction||[]),...(u.extraFactions||[])]);}
@@ -224,6 +242,9 @@
       if(side.location?.cardId==='L_HADLEYS_HOPE'&&this.card(u.cardId).tags.includes('uscm'))val+=200;
       if(side.location?.cardId==='L_PROTO_LAB'&&(this.isFaction(u,'HUMAN')||this.isFaction(u,'YAUTJA')))val+=200;
       if(side.location?.cardId==='L_XENO_HIVE'&&this.has(u,'HIVE'))val+=100;
+      const location=side.location&&this.card(side.location.cardId)?.effect?.locationBuff;
+      if(location&&this.isFaction(u,location.faction))val+=location.health||0;
+      if(this.card(u.cardId).crewRequired&&this.hasCrew(sideIndex,this.card(u.cardId),u))val+=200;
       return Math.max(1,val);
     }
     syncHealthAuras(){
@@ -249,6 +270,9 @@
       const c=this.card(u.cardId);let val=c.attack+(u.attackBonus||0)+(u.tempAttack||0);
       for(const e of u.equipment)val+=this.card(e).attack||0;
       const side=this.side(sideIndex);
+      const field=side.location&&this.card(side.location.cardId)?.effect?.locationBuff;
+      if(field&&this.isFaction(u,field.faction))val+=field.attack||0;
+      if(c.crewRequired&&this.hasCrew(sideIndex,c,u))val+=200;
       if(this.has(u,'SQUAD')) val+=side.board.filter(x=>x&&x.uid!==u.uid&&this.isFaction(x,'HUMAN')).length*250;
       for(const ally of side.board.filter(Boolean)){
         const aura=this.card(ally.cardId).effect?.aura;
@@ -285,6 +309,7 @@
     deploymentError(sideIndex,card){
       if(!card||card.type!=='UNIT')return 'Seules les unités peuvent être invoquées.';
       const allies=this.side(sideIndex).board.filter(Boolean);
+      if(card.crewRequired&&!this.hasCrew(sideIndex,card))return 'Véhicule : déployez d’abord un Personnage pilote de cette faction.';
       if(card.keywords.includes('UNIQUE')&&allies.some(u=>u.cardId===card.id))return 'Cette unité Unique est déjà en jeu.';
       if(allies.some(u=>{const other=this.card(u.cardId);return (card.effect?.exclusiveTag&&other.tags.includes(card.effect.exclusiveTag))||(other.effect?.exclusiveTag&&card.tags.includes(other.effect.exclusiveTag));}))return 'Une royauté incompatible est déjà en jeu.';
       return null;
@@ -294,7 +319,16 @@
       if(!c)return out;
       if(c.type==='UNIT'){if(this.deploymentError(sideIndex,c))return out;for(let lane=0;lane<3;lane++)if(!s.board[lane])out.push({kind:'FRIENDLY_LANE',lane});return out;}
       if(c.type==='LOCATION')return [{kind:'NONE'}];
-      if(c.type==='EQUIPMENT'){for(let lane=0;lane<3;lane++)if(s.board[lane]&&(!c.effect?.requiresFaction||this.isFaction(s.board[lane],c.effect.requiresFaction)))out.push({kind:'FRIENDLY_UNIT',lane});return out;}
+      if(c.type==='EQUIPMENT'){
+        for(let lane=0;lane<3;lane++){
+          const wearer=s.board[lane];if(!wearer)continue;
+          if(c.effect?.requiresFaction&&!this.isFaction(wearer,c.effect.requiresFaction))continue;
+          // The new dedicated weapon slot is separate from 1.0.0 equipment.
+          if(c.slot==='WEAPON'&&wearer.equipment.some(id=>this.card(id)?.slot==='WEAPON'))continue;
+          out.push({kind:'FRIENDLY_UNIT',lane});
+        }
+        return out;
+      }
       const target=c.effect?.target;
       if(!target)return [{kind:'NONE'}];
       if(target==='FRIENDLY_UNIT')for(let lane=0;lane<3;lane++)if(s.board[lane])out.push({kind:'FRIENDLY_UNIT',lane});
@@ -474,6 +508,7 @@
     gainTrophy(sideIndex){const s=this.side(sideIndex);s.trophies++;s.totalTrophies++;this.log(`${s.name} gagne un Trophée (${s.trophies}).`,'TROPHY');for(let lane=0;lane<3;lane++){const u=s.board[lane],fx=u&&this.card(u.cardId).effect?.onTrophy;if(fx?.kind==='BUFF_SELF')this.buffUnit(sideIndex,lane,fx.attack||0,fx.health||0,fx.grant||[]);}if(s.trophies%2===0)this.draw(sideIndex,1);if(s.location?.cardId==='L_PRESERVE')this.healHero(sideIndex,200);}
     legalAttacks(sideIndex,lane){
       const s=this.side(sideIndex),e=this.enemy(sideIndex),u=s.board[lane];if(!u||!u.ready||u.attacked||u.stunned>0||u.stunBlocked||this.state.active!==sideIndex||this.state.winner!==null)return [];
+      if(this.card(u.cardId).crewRequired&&!this.hasCrew(sideIndex,this.card(u.cardId),u))return [];
       const targets=[];const flying=this.has(u,'FLYING');
       for(let i=0;i<3;i++){if(!e.board[i])continue;if(!flying&&i!==lane)continue;if(e.board[i].cloaked&&!this.canSeeCloak(sideIndex,e.board[i]))continue;targets.push({kind:'UNIT',lane:i});}
       const guards=e.board.map((x,i)=>x&&this.has(x,'GUARD')?i:null).filter(i=>i!==null);
@@ -515,6 +550,8 @@
       if(!first)this.draw(sideIndex,1);
       if(s.location?.cardId==='L_DERELICT'&&s.hand.length<6)s.hand.push('X_OVOMORPH');
       if(s.location?.cardId==='L_YAUTJA_SHIP')this.healHero(sideIndex,s.board.filter(u=>u&&this.isFaction(u,'YAUTJA')).length*150);
+      const upkeep=s.location&&this.card(s.location.cardId)?.effect?.locationUpkeep;
+      if(upkeep?.heal)this.healHero(sideIndex,upkeep.heal);
       for(let lane=0;lane<3;lane++){const u=s.board[lane];if(u)this.applyEffect(sideIndex,this.card(u.cardId).effect?.turnStart,{lane,unit:u,card:this.card(u.cardId)});}
       if(this.modifiers.includes('pathogen'))for(let i=0;i<3;i++){const u=s.board[i];if(u&&!this.has(u,'SYNTHETIC')){u.attackBonus-=100;u.debuffed=true;u.permanentDebuffed=true;}}
       if(this.modifiers.includes('enemyBrood')&&sideIndex===1&&this.state.round%2===0)this.summonFirstFree(1,'X_FACEHUGGER');
@@ -622,7 +659,13 @@
           case 'L_VAL_VERDE': score=hasFuture(c=>c.type==='UNIT'&&c.faction==='YAUTJA')?2.4:0;break;
           case 'L_LA1997': score=e.life<5000?factionCount('YAUTJA')*.9:0;break;
           case 'L_SEVASTOPOL': score=allies.filter(u=>this.has(u,'SYNTHETIC')).length*.9;break;
-          default: score=0;
+          default: {
+            const field=card.effect?.locationBuff;
+            score=field?allies.filter(u=>this.isFaction(u,field.faction)).length*((field.attack||0)+(field.health||0))/400
+              +Number(available.some(c=>c?.type==='UNIT'&&c.faction===field.faction))*1.8
+              +Math.min(card.effect?.locationUpkeep?.heal||0,s.maxLife-s.life)/220:0;
+            break;
+          }
         }
         if(s.location)score-=1.5;
       }else if(card.type==='TACTIC'){
