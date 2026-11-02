@@ -145,7 +145,7 @@
     const rank=c=>rarityByRank[c.rarity]||0;
     const ensure=(rarity,predicate)=>{
       if(pool.some(predicate))return;
-      const spare=mine.find(c=>c.rarity==='C')||mine.find(c=>c.rarity==='R');
+      const spare=mine.find(c=>c.rarity==='C')||mine.find(c=>c.rarity==='R')||mine.find(c=>c.rarity==='SR');
       if(spare)spare.rarity=rarity;
     };
     if(set.packSize===5&&['PH24','CB25','KN26'].includes(set.id)){
