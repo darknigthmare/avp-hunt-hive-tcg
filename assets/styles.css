@@ -257,3 +257,6 @@ html{scroll-padding-top:calc(var(--top) + 16px);scroll-padding-bottom:92px}
 .alien-codex-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}
 .alien-codex-tabs .btn{white-space:normal;text-align:center}
 @media(max-width:600px){.alien-codex-tabs{display:grid;grid-template-columns:1fr;gap:7px}.alien-codex-tabs .btn{width:100%}}
+
+.alien-codex-cautions{margin-top:16px;padding:12px;border:1px solid var(--line2);border-radius:var(--radius-sm);font-size:13px;color:var(--muted);line-height:1.6}
+.alien-codex-cautions b{color:var(--text)}

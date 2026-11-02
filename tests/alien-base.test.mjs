@@ -118,3 +118,44 @@ test('the Codex offers mutually exclusive history/arsenal/leads UI modes',async(
  assert.ok(js.includes('data-action="codex-mode"'));
  assert.ok(css.includes('.alien-codex-tabs'));
 });
+
+test('latest unmerged Alien_base updates are visible without adding any playable card',()=>{
+ const update=base.codex.registryUpdates;
+ assert.equal(base.registry.v2,632);
+ assert.equal(update.status,'UNMERGED_RESEARCH_DELTA');
+ assert.equal(update.baselineCount,632);
+ assert.equal(update.candidateRegistryCount,652);
+ assert.equal(update.newEntities.length,20);
+ assert.equal(update.works.length,29);
+ assert.equal(update.aliases.length,3);
+ assert.equal(update.biologyNotes.length,3);
+ assert.equal(new Set(update.newEntities.map(e=>e.id)).size,20);
+ for(const e of update.newEntities){
+  assert.equal(e.verified,false);
+  assert.equal(e.gameplayAdmission,false);
+  assert.ok(!('cost' in e)&&!('attack' in e)&&!('health' in e));
+  for(const id of e.linkedCardIds)assert.ok(cards.some(c=>c.id===id));
+ }
+ for(const e of update.works){
+  assert.equal(e.fidelityVerified,false);
+  assert.equal(e.gameplayAdmission,false);
+ }
+ for(const e of update.aliases){
+  assert.equal(e.verified,false);
+  assert.equal(e.gameplayAdmission,false);
+  for(const id of e.linkedCardIds)assert.ok(cards.some(c=>c.id===id));
+ }
+ assert.equal(update.newEntities.filter(e=>e.linkedCardIds.length).length,6);
+ assert.ok(update.newEntities.some(e=>e.name==='Scar Predator'&&e.linkedCardIds.includes('Y_SCAR')));
+ assert.ok(update.aliases.some(e=>e.localId==='samurai_yautja'&&e.linkedCardIds.includes('Y_SAMURAI')));
+ assert.ok(!update.aliases.some(e=>e.localId==='alpha_yautja'&&e.linkedCardIds.length));
+ assert.ok(!update.aliases.some(e=>e.localId==='viking_yautja'&&e.linkedCardIds.length));
+});
+test('newest reference views and card annotations are implemented as research-only UI',async()=>{
+ const code=await readFile(new URL('src/app.js',root),'utf8');
+ assert.ok(code.includes('function renderAlienBaseUpdates'));
+ assert.ok(code.includes('function showAlienBaseUpdateDetail'));
+ assert.ok(code.includes('function pendingAlienBaseLinks'));
+ assert.ok(code.includes('data-action="codex-update-detail"'));
+ assert.ok(code.includes("['reference','weapons','leads','apex','media']"));
+});

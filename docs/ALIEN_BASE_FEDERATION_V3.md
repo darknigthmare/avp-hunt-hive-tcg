@@ -43,3 +43,7 @@ Le test navigateur a montré qu'une recherche M41A ouvrait correctement sa notic
 ## Arsenal de recherche et compléments (non jouables)
 
 La troisième passe d'Alien_base fournit maintenant aussi **200 fiches d'armes issues du catalogue Tantalus** et **16 sujets à documenter** dans deux onglets distincts du Codex historique (68 fiches). Les 216 dossiers complémentaires exposent uniquement leurs noms, œuvres, familles et statuts documentaires. Aucun n'est certifié fidèle à 1:1 ni ajouté automatiquement comme carte, équipement débloqué ou contenu de booster. Recherche, pagination et détails sont disponibles hors ligne. Les PV, dégâts, prix et valeurs propres à Tantalus ne sont pas importés.
+
+## Comparaison du 2 novembre 2026 — nouvelles branches Apex et Hive
+
+Source : [Alien_base PR #21](https://github.com/darknigthmare/alien_base/pull/21), [#22](https://github.com/darknigthmare/alien_base/pull/22), [#23](https://github.com/darknigthmare/alien_base/pull/23) et [#24](https://github.com/darknigthmare/alien_base/pull/24). La branche source `main` ne contenait pas encore ces modifications à la vérification. La PR de fédération du TCG suit toujours **632 entités autoritaires** ; une branche parallèle en propose **652**. Le Codex embarque une **prévisualisation non fusionnée** de 20 nouvelles identités Yautja/Apex, 29 œuvres, 3 alias Alpha/Samurai/Viking et 3 notes de prudence biologiques. Ces données ne changent ni les 158 cartes, ni les sauvegardes, ni les conditions de déblocage ; aucun visuel 1:1 n'est certifié.

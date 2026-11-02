@@ -115,3 +115,7 @@ npm run verify:release
 ```
 
 Les fiches ne confèrent pas de cartes supplémentaires ni de droits de réutiliser des images sous licence. **Les 68 dossiers publics ne signifient pas que les 632 entités privées sont certifiées 1:1.** Les anciennes références Excel doivent encore être vérifiées individuellement.
+
+### Mise à jour Alien_base du 2 novembre 2026
+
+Les nouvelles PR du registre privé (#21–24) proposent 652 identités contre 632 dans notre branche fédérée. **Aucune carte n'est ajoutée automatiquement.** Le Codex comporte maintenant deux nouvelles sections de recherche hors ligne : 20 identités Yautja/Apex et 29 œuvres ou continuités Predator, avec trois alias historiques Alpha, Samurai et Viking et trois réserves biologiques (Royal Facehugger, Crusher, Offspring). Les six rapprochements nominaux entre personnages Apex et cartes TCG restent des propositions, y compris `Y_SCAR` ; l'alias Samurai vers `Y_SAMURAI` n'est pas une preuve d'identité universelle. Les 632 IDs de référence et 158 cartes jouables restent inchangés avant fusion des PR nouvelles.

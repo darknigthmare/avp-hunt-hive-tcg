@@ -10,6 +10,11 @@ const snapshot=JSON.parse(await readFile(join(base,'exports/avp-hunt-hive-tcg.v3
 assert.equal(snapshot.schema,'alien-base/tcg-public-v3');
 assert.equal(snapshot.registry.v1,68);
 assert.equal(snapshot.registry.v2,632);
+assert.equal(snapshot.codex?.registryUpdates?.status,'UNMERGED_RESEARCH_DELTA');
+assert.equal(snapshot.codex.registryUpdates.candidateRegistryCount,652);
+assert.equal(snapshot.codex.registryUpdates.newEntities.length,20);
+assert.equal(snapshot.codex.registryUpdates.works.length,29);
+assert.equal(snapshot.codex.registryUpdates.aliases.length,3);
 // Read catalog independently, never rewrite cards or saves.
 const ctx=createContext({window:{}});
 new Script(await readFile(join(root,'src/data.js'),'utf8')).runInContext(ctx,{timeout:2000});
@@ -23,5 +28,5 @@ if(process.argv.includes('--publish')){
  await writeFile(output,generated);console.log('Published AVP TCG federation v3');
 }else{
  assert.equal(await readFile(output,'utf8'),generated,'Outdated v3 snapshot; run with --publish and review the diff');
- console.log('AVP TCG v3 aligned with Alien_base: 158 cards, 68 codex entries, 632 registry subjects');
+ console.log('AVP TCG v3 aligned: 158 cards, 632 baseline records, 20 Apex candidates, 29 media works, no gameplay changes');
 }

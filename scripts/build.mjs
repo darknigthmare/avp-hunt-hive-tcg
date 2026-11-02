@@ -145,6 +145,11 @@ if (
   alienBase.codex?.entries?.length !== 68 ||
   alienBase.codex?.researchWeapons?.length !== 200 ||
   alienBase.codex?.researchLeads?.length !== 16 ||
+  alienBase.codex?.registryUpdates?.status !== 'UNMERGED_RESEARCH_DELTA' ||
+  alienBase.codex?.registryUpdates?.candidateRegistryCount !== 652 ||
+  alienBase.codex?.registryUpdates?.newEntities?.length !== 20 ||
+  alienBase.codex?.registryUpdates?.works?.length !== 29 ||
+  alienBase.codex?.registryUpdates?.aliases?.length !== 3 ||
   Object.keys(alienBase.byCardId).length !== expectedCardCount ||
   cards.some(card => typeof alienBase.byCardId[card.id]?.id !== 'string')
 ) {

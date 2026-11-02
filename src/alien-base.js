@@ -6233,6 +6233,620 @@ window.AVP_ALIEN_BASE = {
         "researchStatus": "source_pending",
         "admittedInTcg": false
       }
-    ]
+    ],
+    "registryUpdates": {
+      "status": "UNMERGED_RESEARCH_DELTA",
+      "baselineCount": 632,
+      "candidateRegistryCount": 652,
+      "newEntities": [
+        {
+          "id": "character.yautja.elder_lost_tribe_1990",
+          "name": "Ancien du Lost Tribe",
+          "category": "character",
+          "sourceWork": "Predator 2 (1990)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": []
+        },
+        {
+          "id": "character.yautja.scar_avp_2004",
+          "name": "Scar Predator",
+          "category": "character",
+          "sourceWork": "Alien vs. Predator (2004)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": [
+            "Y_SCAR"
+          ]
+        },
+        {
+          "id": "character.yautja.celtic_avp_2004",
+          "name": "Celtic Predator",
+          "category": "character",
+          "sourceWork": "Alien vs. Predator (2004)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": [
+            "Y_CELTIC"
+          ]
+        },
+        {
+          "id": "character.yautja.chopper_avp_2004",
+          "name": "Chopper Predator",
+          "category": "character",
+          "sourceWork": "Alien vs. Predator (2004)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": [
+            "Y_CHOPPER"
+          ]
+        },
+        {
+          "id": "character.yautja.berserker_2010",
+          "name": "Berserker Predator",
+          "category": "character",
+          "sourceWork": "Predators (2010)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": [
+            "Y_BERSERKER"
+          ]
+        },
+        {
+          "id": "character.yautja.falconer_2010",
+          "name": "Falconer Predator",
+          "category": "character",
+          "sourceWork": "Predators (2010)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": [
+            "Y_FALCONER"
+          ]
+        },
+        {
+          "id": "character.yautja.tracker_2010",
+          "name": "Tracker Predator",
+          "category": "character",
+          "sourceWork": "Predators (2010)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": [
+            "Y_TRACKER"
+          ]
+        },
+        {
+          "id": "character.yautja.fugitive_2018",
+          "name": "Fugitive Predator",
+          "category": "character",
+          "sourceWork": "The Predator (2018)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": []
+        },
+        {
+          "id": "character.yautja.kok_viking_hunter_2025",
+          "name": "Chasseur de l’ère viking",
+          "category": "character",
+          "sourceWork": "Predator: Killer of Killers (2025)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": []
+        },
+        {
+          "id": "character.yautja.kok_feudal_hunter_2025",
+          "name": "Chasseur du Japon féodal",
+          "category": "character",
+          "sourceWork": "Predator: Killer of Killers (2025)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": []
+        },
+        {
+          "id": "character.yautja.kok_wartime_hunter_2025",
+          "name": "Chasseur de l’ère aérienne",
+          "category": "character",
+          "sourceWork": "Predator: Killer of Killers (2025)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": []
+        },
+        {
+          "id": "character.yautja.dek_badlands_2025",
+          "name": "Dek",
+          "category": "character",
+          "sourceWork": "Predator: Badlands (2025)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": []
+        },
+        {
+          "id": "character.yautja.kwei_badlands_2025",
+          "name": "Kwei",
+          "category": "character",
+          "sourceWork": "Predator: Badlands (2025)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": []
+        },
+        {
+          "id": "item.yautja.wrist_computer",
+          "name": "Ordinateur de poignet",
+          "category": "equipment",
+          "sourceWork": "Predator (1987)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": []
+        },
+        {
+          "id": "item.yautja.self_destruct",
+          "name": "Autodestruction du brassard",
+          "category": "equipment",
+          "sourceWork": "Predator (1987)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": []
+        },
+        {
+          "id": "item.yautja.tri_laser_targeting",
+          "name": "Viseur à trois points",
+          "category": "equipment",
+          "sourceWork": "Predator (1987)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": []
+        },
+        {
+          "id": "item.yautja.feral_bolt_launcher_2022",
+          "name": "Lance-traits du Feral",
+          "category": "equipment",
+          "sourceWork": "Prey (2022)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": []
+        },
+        {
+          "id": "item.yautja.wolf_dual_plasma_2007",
+          "name": "Double canon à plasma de Wolf",
+          "category": "equipment",
+          "sourceWork": "Aliens vs. Predator: Requiem (2007)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": []
+        },
+        {
+          "id": "vehicle.yautja.jungle_dropcraft_1987",
+          "name": "Appareil d’insertion de la jungle",
+          "category": "vehicle",
+          "sourceWork": "Predator (1987)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": []
+        },
+        {
+          "id": "vehicle.yautja.city_clan_vessel_1990",
+          "name": "Vaisseau du clan de Los Angeles",
+          "category": "vehicle",
+          "sourceWork": "Predator 2 (1990)",
+          "reviewStatus": "project_declaration_unverified",
+          "continuityStatus": "medium_specific_not_universal",
+          "verified": false,
+          "gameplayAdmission": false,
+          "linkedCardIds": []
+        }
+      ],
+      "works": [
+        {
+          "id": "work.film_predator_1987",
+          "title": "Predator",
+          "year": 1987,
+          "medium": "Film live action",
+          "continuity": "Écran principal",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.film_predator_2",
+          "title": "Predator 2",
+          "year": 1990,
+          "medium": "Film live action",
+          "continuity": "Écran principal",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.film_avp_2004",
+          "title": "Alien vs. Predator",
+          "year": 2004,
+          "medium": "Film live action",
+          "continuity": "Écran AVP",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.film_avpr_2007",
+          "title": "Aliens vs. Predator: Requiem",
+          "year": 2007,
+          "medium": "Film live action",
+          "continuity": "Écran AVP",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.film_predators_2010",
+          "title": "Predators",
+          "year": 2010,
+          "medium": "Film live action",
+          "continuity": "Écran principal",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.film_the_predator_2018",
+          "title": "The Predator",
+          "year": 2018,
+          "medium": "Film live action",
+          "continuity": "Écran principal",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.film_prey_2022",
+          "title": "Prey",
+          "year": 2022,
+          "medium": "Film live action",
+          "continuity": "Écran principal",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.film_kok_2025",
+          "title": "Predator: Killer of Killers",
+          "year": 2025,
+          "medium": "Film d’animation",
+          "continuity": "Écran principal",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.film_badlands_2025",
+          "title": "Predator: Badlands",
+          "year": 2025,
+          "medium": "Film live action",
+          "continuity": "Écran principal",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.bonus_the_chosen",
+          "title": "The Chosen",
+          "year": 2010,
+          "medium": "Court métrage officiel",
+          "continuity": "Bonus Predators",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.bonus_moments_extraction",
+          "title": "Moments of Extraction",
+          "year": 2010,
+          "medium": "Court métrage officiel",
+          "continuity": "Bonus Predators",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.bonus_crucified",
+          "title": "Crucified",
+          "year": 2010,
+          "medium": "Court métrage officiel",
+          "continuity": "Bonus Predators",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.promo_holiday_2018",
+          "title": "The Predator Holiday Special",
+          "year": 2018,
+          "medium": "Court promotionnel",
+          "continuity": "Promotion",
+          "publicationStatus": "PROMO",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.production_emissaries",
+          "title": "Emissary Predators — scènes supprimées",
+          "year": 2018,
+          "medium": "Archive de production",
+          "continuity": "The Predator — production",
+          "publicationStatus": "CUT",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.production_avp_annihilation",
+          "title": "Alien vs. Predator: Annihilation",
+          "year": 2016,
+          "medium": "Série CG non publiée",
+          "continuity": "Production AVP",
+          "publicationStatus": "UNRELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.dh_avp_ryushi",
+          "title": "Aliens vs. Predator — saga de Ryushi",
+          "year": 1989,
+          "medium": "Comics",
+          "continuity": "Dark Horse AVP",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.dh_bad_blood",
+          "title": "Predator: Bad Blood",
+          "year": 1993,
+          "medium": "Comics",
+          "continuity": "Dark Horse Predator",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.dh_fire_life_death",
+          "title": "Fire and Stone / Life and Death",
+          "year": 2014,
+          "medium": "Cycle de comics",
+          "continuity": "Dark Horse AVP",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.marvel_theta",
+          "title": "Predator — saga de Theta Berwick",
+          "year": 2022,
+          "medium": "Comics",
+          "continuity": "Marvel Predator",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.marvel_last_hunt",
+          "title": "Predator: The Last Hunt",
+          "year": 2024,
+          "medium": "Comics",
+          "continuity": "Marvel Predator",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.marvel_bwb",
+          "title": "Predator: Black, White & Blood",
+          "year": 2025,
+          "medium": "Anthologie comics",
+          "continuity": "Marvel Predator",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.marvel_badlands_prequel",
+          "title": "Predator: Badlands #1",
+          "year": 2025,
+          "medium": "Comics préquel",
+          "continuity": "Marvel / Badlands",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.marvel_bloodshed",
+          "title": "Predator: Bloodshed",
+          "year": 2026,
+          "medium": "Comics",
+          "continuity": "Marvel Predator",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.novel_rift_war",
+          "title": "Aliens vs. Predators: Rift War",
+          "year": 2022,
+          "medium": "Roman",
+          "continuity": "Titan AVP",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.novel_rage_war",
+          "title": "Predator: Incursion / Rage War",
+          "year": 2015,
+          "medium": "Trilogie de romans",
+          "continuity": "Titan Rage War",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.novel_predator_omnibus",
+          "title": "Concrete Jungle, Cold War et Dark River",
+          "year": 1989,
+          "medium": "Comics et romans",
+          "continuity": "Univers étendu historique",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.game_concrete_jungle",
+          "title": "Predator: Concrete Jungle",
+          "year": 2005,
+          "medium": "Jeu vidéo",
+          "continuity": "Jeu autonome",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.game_avp_extinction",
+          "title": "Aliens versus Predator: Extinction",
+          "year": 2003,
+          "medium": "Jeu vidéo",
+          "continuity": "Jeu AVP",
+          "publicationStatus": "RELEASED",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "id": "work.alt_marvel_crossovers",
+          "title": "Predator vs. Marvel Universe",
+          "year": 2023,
+          "medium": "Crossovers comics",
+          "continuity": "Marvel crossover",
+          "publicationStatus": "ALT_CROSSOVER",
+          "reviewStatus": "project-declared-not-primary-verified",
+          "fidelityVerified": false,
+          "gameplayAdmission": false
+        }
+      ],
+      "aliases": [
+        {
+          "localId": "alpha_yautja",
+          "entityId": "character.yautja.alpha_predator",
+          "relation": "same_game_character_subject_not_visual_1to1",
+          "reviewStatus": "requires_licence_and_continuity_check",
+          "linkedCardIds": [],
+          "verified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "localId": "samurai_yautja",
+          "entityId": "character.yautja.samurai_predator",
+          "relation": "same_game_character_subject_not_visual_1to1",
+          "reviewStatus": "requires_licence_and_continuity_check",
+          "linkedCardIds": [
+            "Y_SAMURAI"
+          ],
+          "verified": false,
+          "gameplayAdmission": false
+        },
+        {
+          "localId": "viking_yautja",
+          "entityId": "character.yautja.viking_predator",
+          "relation": "same_game_character_subject_not_visual_1to1",
+          "reviewStatus": "requires_licence_and_continuity_check",
+          "linkedCardIds": [],
+          "verified": false,
+          "gameplayAdmission": false
+        }
+      ],
+      "biologyNotes": [
+        {
+          "id": "royal_facehugger",
+          "subject": "Royal Facehugger",
+          "issue": "Armure, implantation double et infusion sont des capacités de variantes de jeu, pas des faits universels de la franchise.",
+          "reviewStatus": "unmerged_experimental_lore_review",
+          "automaticFactPromotion": false
+        },
+        {
+          "id": "crusher",
+          "subject": "Crusher",
+          "issue": "Un exosquelette ne doit pas être traité comme un hôte génétique ; mue et spécialisation sont des règles propres au jeu.",
+          "reviewStatus": "unmerged_experimental_lore_review",
+          "automaticFactPromotion": false
+        },
+        {
+          "id": "offspring",
+          "subject": "Offspring",
+          "issue": "Z-01, reproduction et statistiques sont propres à la campagne, à distinguer du sujet filmique.",
+          "reviewStatus": "unmerged_experimental_lore_review",
+          "automaticFactPromotion": false
+        }
+      ]
+    }
   }
 };
