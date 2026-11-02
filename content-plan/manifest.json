@@ -20,14 +20,15 @@
     "starterDecks": 5,
     "structureDecks": 25
   },
-  "protection": "REFERENCE_ONLY / NO GAMEPLAY MUTATION",
+  "protection": "LEGACY_158_PRESERVED / GAMEPLAY_WAVES_1_2_ADDITIVE",
   "caveats": [
     "Différencier cartes uniques / catalogue / paquet / contenu de boîte",
     "Les decks de jeu restent à 30 cartes, le reste des produits est une réserve de construction hors duel",
-    "Proposition documentaire; 2850 cartes et 210 decks non implementes dans le moteur",
+    "Proposition documentaire; 2602 concepts et 210 decks restent un plan éditorial distinct des 498 nouvelles cartes effectivement intégrées",
     "Fidelite 1:1 non revendiquee sans source primaire pour chaque sujet",
     "Finitions CSS/WebGL à développer séparément",
-    "Raretés premium ne changent ni statistiques ni ID de carte"
+    "Raretés premium ne changent ni statistiques ni ID de carte",
+    "Les 2 602 concepts d'extensions sont un plan indépendant; les cartes AX_/BX_ jouables attendent un rapprochement éditorial avec les identités planifiées."
   ],
   "setSizes": {
     "NX01": 120,
@@ -117,5 +118,21 @@
       "name": "Spirit Charmers (All-Foil)",
       "url": "https://www.yugioh-card.com/en/products/ch02/"
     }
-  ]
+  ],
+  "implementation": {
+    "version": "1.2.0-wave2",
+    "status": "DRAFT_REQUIRES_QA",
+    "legacyPreserved": 158,
+    "wave1Cards": 156,
+    "wave2Cards": 342,
+    "totalPlayableCards": 656,
+    "documentarySourceIdsCovered": 652,
+    "uniqueNonCardEntityIdsCovered": 494,
+    "structureDecks": 70,
+    "playableBoosters": 16,
+    "playableRarities": 7,
+    "newArtCount": 0,
+    "artRequirement": "Do not generate or edit illustrations for this wave",
+    "date": "2026-11-02"
+  }
 }

@@ -20,6 +20,8 @@ SHEETS=[
  ("11_SOURCE_ALIENBASE","alien-base-sources.csv"),
  ("12_CARTES_HISTORIQUES","legacy-cards.csv"),
  ("13_BACKLOG_MEDIAS","research-backlog.csv"),
+ ("14_GAMEPLAY_JOUABLE","gameplay-live.csv"),
+ ("15_SUIVI_DES_SETS","live-set-progress.csv"),
 ]
 def load(filename):
  with (ROOT/filename).open(encoding="utf-8-sig",newline="") as f:
@@ -29,7 +31,8 @@ def main():
  t=manifest["totals"]
  expected={"sets.csv":31,"printings.csv":t["newPrintings"]+1,"rarities.csv":15,
            "decks.csv":211,"decklists.csv":t["decklistRows"]+1,
-           "products.csv":t["productSkus"]+1,"alien-base-sources.csv":653,"legacy-cards.csv":159}
+           "products.csv":t["productSkus"]+1,"alien-base-sources.csv":653,"legacy-cards.csv":159,
+           "gameplay-live.csv":meta["implementation"]["totalPlayableCards"]+1,"live-set-progress.csv":32}
  for filename,n in expected.items():
   if len(load(filename))!=n: raise ValueError(f"{filename} : attendu {n} lignes")
  wb=Workbook.create();d=wb.worksheets.add("00_PILOTAGE")

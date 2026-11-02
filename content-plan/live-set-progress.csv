@@ -1,0 +1,32 @@
+Set,Nom,CibleImpressionsPlan,CibleConceptsPlan,Historique158,JouableWave1,JouableWave2,TotalJouable,ConceptsNouveauxJouables,ÉcartConceptsPlanMoinsJouables,BoosterActif,CartesParBoosterActif,ÉtatEditorial,Media
+NX01,Origines Hostiles,120,110,25,4,9,38,13,97,OUI,9,APERÇU_PARTIEL,Alien (1979)
+CW02,Guerre Coloniale,120,110,32,60,23,115,83,27,OUI,9,APERÇU_PARTIEL,Aliens (1986)
+HG03,Terrains de Chasse,100,95,38,25,0,63,25,70,OUI,9,APERÇU_PARTIEL,"Predator (1987), Predator 2, Predators"
+AV04,Rite de Sang,100,95,21,9,4,34,13,82,OUI,9,APERÇU_PARTIEL,"Alien vs Predator (2004), AVP Requiem (2007)"
+EV05,Évolution Parfaite,120,110,38,17,7,62,24,86,OUI,9,APERÇU_PARTIEL,"Prometheus (2012), Alien Covenant (2017)"
+F306,Cendres de Fiorina,56,55,0,0,4,4,4,51,NON,,APERÇU_PARTIEL,Alien 3 (1992)
+R407,Les Héritiers de l'Auriga,80,75,0,0,4,4,4,71,NON,,APERÇU_PARTIEL,Alien Resurrection (1997)
+IS08,Terreur à Sevastopol,80,75,0,0,24,24,24,51,OUI,7,APERÇU_PARTIEL,Alien Isolation (2014)
+RO09,Renaissance Noire,100,95,0,0,13,13,13,82,OUI,9,APERÇU_PARTIEL,Alien Romulus (2024)
+EA10,La Menace sur Terre,120,110,0,0,1,1,1,109,NON,,APERÇU_PARTIEL,Alien Earth (2025)
+WY11,Directives Weyland-Yutani,90,84,0,0,6,6,6,78,NON,,APERÇU_PARTIEL,"Weyland-Yutani, synthétiques, colonies"
+MC12,Arsenal Colonial,60,48,0,0,8,8,8,40,OUI,7,APERÇU_PARTIEL,"USCM, Sulaco, M41A, véhicules"
+P213,Chasseurs de Los Angeles,56,55,0,0,1,1,1,54,NON,,APERÇU_PARTIEL,Predator 2 (1990)
+PR14,Planète Réserve,80,75,0,0,3,3,3,72,NON,,APERÇU_PARTIEL,Predators (2010)
+PY15,La Proie des Grandes Plaines,56,55,0,0,1,1,1,54,NON,,APERÇU_PARTIEL,Prey (2022)
+ST16,Expériences Stargazer,70,66,0,0,1,1,1,65,NON,,APERÇU_PARTIEL,The Predator (2018)
+BD17,Exil dans les Badlands,100,95,0,0,1,1,1,94,NON,,APERÇU_PARTIEL,Predator Badlands (2025)
+KK18,Chasse à Travers les Siècles,80,75,0,0,3,3,3,72,NON,,APERÇU_PARTIEL,Predator Killer of Killers (2025)
+CM19,Ruines de Hadley's Hope,60,48,0,0,6,6,6,42,NON,,APERÇU_PARTIEL,Aliens Colonial Marines (2013)
+FE20,Équipes de Feu,60,48,0,0,13,13,13,35,OUI,7,APERÇU_PARTIEL,Aliens Fireteam Elite (2021)
+DD21,Descente Tactique,80,75,0,0,9,9,9,66,OUI,7,APERÇU_PARTIEL,Aliens Dark Descent (2023)
+RI22,Incursion de l'Inconnu,70,66,0,0,1,1,1,65,NON,,APERÇU_PARTIEL,Alien Rogue Incursion
+EX23,Guerre d'Extinction,100,95,0,0,0,0,0,95,NON,,APERÇU_PARTIEL,Aliens versus Predator Extinction (2003)
+PH24,Légendes des Chasseurs,132,110,0,0,5,5,5,105,OUI,5,APERÇU_PARTIEL,Predator Hunting Grounds (jeu et DLC)
+CB25,Chroniques Dessinées,146,120,0,0,14,14,14,106,OUI,5,APERÇU_PARTIEL,"Comics et romans Alien, Predator, AVP"
+KN26,Bestiaire de Collection,177,147,0,0,2,2,2,145,NON,,APERÇU_PARTIEL,"Figurines Kenner, NECA, variantes"
+YA27,Les Royaumes Yautja,120,110,0,0,19,19,19,91,OUI,9,APERÇU_PARTIEL,"Homeworld, clans, sociétés et rites"
+TF28,Frontière Tantalus,100,95,0,16,133,149,149,-54,OUI,9,CIBLE_PLAN_A_RECALIBRER,Aliens Tantalus Frontier (original du projet)
+HA29,Éclosion MNEMOSYNE,100,95,0,25,27,52,52,43,OUI,9,APERÇU_PARTIEL,Alien Hive Ascension (projet original)
+WW30,Guerres des Ruches,120,110,0,0,0,0,0,110,NON,,APERÇU_PARTIEL,World Hive Wars (projet original)
+PX00,Continuités Perdues,Archive distincte,Archive,4,0,0,4,0,,OUI,9,CONTENU_COUPE_DISTINCT,Production legacy/prototypes

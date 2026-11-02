@@ -55,3 +55,15 @@ node content-plan/validate.mjs
 Vérifie tous les décomptes, l'unicité, les IDs de cartes et de références, les 30 cartes PRINCIPAL, les réserves, les factions et les quantités vendues par produit. Les taux foil sont **indicatifs et non activés** : ils doivent être renormalisés pour les finitions réellement présentes dans chaque set et simulés avant intégration.
 
 Les références écran, jeux sous licence, comics/romans, figurines et fan lore sont distinguées. Les 2 602 cartes proposées **ne sont pas attestées fidèles 1:1** scène par scène avant validation éditoriale. Aucun fetch vers le dépôt privé Alien_base n'est effectué depuis le navigateur.
+
+## État d'implémentation — vague 2 (pas d'illustrations)
+
+La PR #4 conserve les **158 cartes historiques** et ajoute **156 cartes AX_** puis **342 cartes BX_** : **656 cartes jouables**. Les 498 cartes ajoutées recouvrent **494 identités documentaires distinctes**, tandis que les 158 fiches de cartes historiques correspondent aux 158 autres IDs `card.avp.*` de la source. Au total, les **652 identifiants** de `Alien_base` sont représentés, **sans validation automatique canon 1:1**.
+
+Les **70 nouveaux modèles/variantes de decks** contiennent chacun 30 cartes de duel + 15 alternatives de construction, et **16 boosters jouables** utilisent 9 cartes (historiques), puis 9/7/5 cartes pour les nouveaux pools en aperçu. Les **14 finitions** décrites dans le plan restent à implémenter ultérieurement (le jeu continue d'utiliser ses sept raretés historiques).
+
+- `gameplay-live.csv` : correspondance *exhaustive de 656 cartes* : ID, classe, faction, set, type, coûts, stats, référence documentaire, statut de jouabilité et statut d'illustration.
+- `live-set-progress.csv` : **30 sets planifiés + PX00 archivage** avec nombre de concepts actifs, boosters ouverts et écart avec la feuille de route.
+- Important : **impressions** et **identités de gameplay** ne sont pas comparables 1:1. Certains sets (notamment Tantalus) peuvent demander une révision du nombre de concepts prévu ; ce suivi signale ces dépassements.
+- La modification des packs n'altère pas les sauvegardes ni les cartes historiques. Les nouveaux boosters sont verrouillés tant que leur pool est trop limité et sont clairement étiquetés comme **aperçus**.
+- **Aucune illustration générée ou retouchée** pendant cette phase ; les nouveaux visuels ne sont que des placeholders procéduraux existants.
