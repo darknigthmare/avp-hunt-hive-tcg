@@ -240,3 +240,27 @@ html{scroll-padding-top:calc(var(--top) + 16px);scroll-padding-bottom:92px}
 .card-mechanics h3{margin:0 0 12px}
 .card-mechanics .glossary{grid-template-columns:1fr}
 @media(min-width:761px){.fan-project-notice{padding-bottom:22px}}
+
+/* Référentiel documentaire Alien_base : distinct des cartes jouables. */
+.alien-codex .alien-codex-controls{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.alien-codex .alien-codex-controls>.field{flex:1 1 230px;min-width:180px}
+.alien-codex-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:12px}
+.alien-codex-record{min-width:0;display:flex;flex-direction:column;gap:9px;padding:16px;border:1px solid var(--line2);border-radius:var(--radius-sm);background:var(--panel2)}
+.alien-codex-record h3{font-size:17px;margin:0;line-height:1.3}
+.alien-codex-record p{margin:0;line-height:1.5;overflow-wrap:anywhere}
+.alien-codex-record .eyebrow{overflow-wrap:anywhere}
+.alien-codex-actions{margin-top:auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.alien-codex-actions span{color:var(--muted);font-size:12px}
+.alien-codex-count{margin:0 0 14px}
+.alien-codex-disclaimer{margin-top:15px}
+.alien-codex-detail h3{font-size:16px;margin-top:18px}
+.alien-codex-detail ul{padding-left:22px}
+.alien-codex-card-links{display:flex;flex-wrap:wrap;gap:8px}
+@media(max-width:600px){.alien-codex-record{padding:13px}.alien-codex .alien-codex-controls>.field{flex-basis:100%}}
+
+.alien-codex-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}
+.alien-codex-tabs .btn{white-space:normal;text-align:center}
+@media(max-width:600px){.alien-codex-tabs{display:grid;grid-template-columns:1fr;gap:7px}.alien-codex-tabs .btn{width:100%}}
+
+.alien-codex-cautions{margin-top:16px;padding:12px;border:1px solid var(--line2);border-radius:var(--radius-sm);font-size:13px;color:var(--muted);line-height:1.6}
+.alien-codex-cautions b{color:var(--text)}

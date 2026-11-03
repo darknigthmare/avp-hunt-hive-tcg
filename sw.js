@@ -15,6 +15,7 @@ const APP_SHELL = [
   '/assets/icon-512.png',
   '/assets/icon-maskable-512.png',
   '/src/data.js',
+  '/src/alien-base.js',
   '/src/expansion.js',
   '/src/expansion-wave2.js',
   '/src/deck-productions.js',

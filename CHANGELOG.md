@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-03 — Réconciliation du Codex et du gameplay pour la PR #4
+
+- Réunion du Codex Alien_base intégré dans `main` et du catalogue asymétrique : **891 cartes, 318 recettes et 19 boosters**, avec les 158 liens documentaires historiques conservés.
+- Archive et fiches de cartes réunissant les règles asymétriques et les recherches du Codex ; correction de l’affichage du compteur dans la Collection.
+- Publication et cache hors ligne réunis : **20 routes critiques**, **196 fichiers publics**, contrôles de confidentialité conservés.
+- Suites navigateur ordinateur/mobile réunissant gameplay, sauvegarde/reprise et navigation du Codex.
+- Validation locale : **244 tests réussis**, 177 duels terminés, 4 256 restaurations et 1 130 continuations déterministes ; classeur inchangé validé sur 402 489 cellules et 31 empreintes. Détails dans `reports/qa/merge-validation-2026-11-03.json` ; contrôles distants rattachés au commit dans la PR.
+
 ## 2026-11-03 — Consolidation du catalogue asymétrique
 
 Catalogue conservé : **891 cartes** dont **235 MX**, **318 recettes**, **17 160 positions** de cartes et **19 boosters**. Les **7 raretés actives** sont distinctes des **14 finitions** du programme éditorial de **30 sets / 2 602 concepts / 2 853 impressions**. Aucune illustration nouvelle dans ce lot.
@@ -26,7 +34,7 @@ Catalogue conservé : **891 cartes** dont **235 MX**, **318 recettes**, **17 160
 
 ### État de validation du lot
 
-Validation locale du moteur et des sauvegardes : **PASS**, avec **177 duels terminés, 4 256 captures/restaurations et 1 130 continuations déterministes**. Rapports dans `reports/qa/`. La QA navigateur, GitHub Actions et l’aperçu Vercel du nouveau commit restent **en attente** ; les résultats d’une révision antérieure ne sont pas attribués à cette consolidation.
+Validation locale du moteur et des sauvegardes : **PASS**, avec **177 duels terminés, 4 256 captures/restaurations et 1 130 continuations déterministes**. Rapports dans `reports/qa/`. La consolidation `15b2e1e` a ensuite passé les tests et la QA navigateur dans le [workflow 41615223534](https://github.com/darknigthmare/avp-hunt-hive-tcg/actions/runs/41615223534). La réconciliation ultérieure avec le Codex est décrite ci-dessus et dispose de ses propres contrôles.
 
 ## 1.0.0 - Edition professionnelle
 

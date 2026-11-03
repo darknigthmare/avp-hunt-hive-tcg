@@ -15,6 +15,7 @@ TCG tactique fan-made, jouable hors ligne dans un navigateur moderne. L’éditi
 - Tutoriel/règles accessibles depuis le jeu, synthèse audio locale et préférences de mouvement.
 - Sauvegarde locale v3, reprise des duels, export/import JSON validé et migration des anciennes sauvegardes.
 - PWA installable avec shell hors ligne complet, illustration d'accueil précachée et cache visuel à la demande borné à 80 images.
+- Codex Alien_base hors ligne, consultable depuis la Collection et l’Archive, avec recherches par catégorie et continuité et références associées aux cartes historiques.
 
 Le classeur versionné [Catalogue des 318 decks](content-plan/AVP_HUNT_HIVE_TCG_Catalogue_318_Decks.xlsx) contient **27 onglets**, **17 160 positions de cartes** dans les decks et leurs réserves, et **46 règles détaillées**. Ses **399 relations** se décomposent en **286 compatibilités d’armement** et **113 entrées de chaînes de la Ruche**. Il conserve les 652 références documentaires Alien_base et distingue le catalogue actif du programme éditorial : **30 sets, 2 602 concepts, 2 853 impressions et 14 finitions prévues**, pour **7 raretés actuellement implémentées**. Les concepts planifiés ne sont pas tous des cartes jouables.
 
@@ -25,10 +26,10 @@ Le classeur versionné [Catalogue des 318 decks](content-plan/AVP_HUNT_HIVE_TCG_
 | Moteur et sauvegardes, exécution locale | **PASS** : 177 duels terminés, 4 256 captures/restaurations et 1 130 continuations déterministes |
 | Préservation du contenu | 891 identifiants de cartes, 318 recettes et 19 boosters conservés ; cartes historiques, starters, raretés et campagne inchangés |
 | Catalogue Excel | 27 onglets ; cartes et positions recoupées avec le moteur, formules et empreintes des sources contrôlées |
-| Navigateur ordinateur/mobile sur ce lot | **En attente du nouveau commit** : aucun exécutable Chromium local disponible ; scénarios pris en charge par GitHub Actions |
-| GitHub Actions et aperçu Vercel de ce lot | **En attente de publication et de validation du nouveau commit** |
+| Navigateur ordinateur/mobile | Les scénarios de gameplay, pause/reprise et Codex sont réunis dans `scripts/qa-browser.mjs` et exécutés par GitHub Actions sur chaque révision de PR |
+| GitHub Actions et aperçu Vercel | Consulter les contrôles du commit de la [PR #4](https://github.com/darknigthmare/avp-hunt-hive-tcg/pull/4) ; le statut de déploiement est distinct des tests du jeu |
 
-Les preuves locales figurent dans [le rapport de continuation](reports/qa/continuation-2026-11-03.json), [les duels asymétriques](reports/qa/asymmetric-2026-11-03.json) et [la validation du classeur](reports/qa/workbook-validation-2026-11-03.json). Le résultat vert d’une révision précédente ne valide pas les modifications locales de cette consolidation. Les tests de régression vérifient le fonctionnement ; l’équilibrage compétitif et le rapprochement éditorial des 30 sets restent des travaux distincts.
+Les preuves locales figurent dans [le rapport de continuation](reports/qa/continuation-2026-11-03.json), [les duels asymétriques](reports/qa/asymmetric-2026-11-03.json) et [la validation du classeur](reports/qa/workbook-validation-2026-11-03.json). La consolidation initiale a aussi passé les tests et le navigateur dans le [workflow 41615223534](https://github.com/darknigthmare/avp-hunt-hive-tcg/actions/runs/41615223534), sur `15b2e1e`, avant la réconciliation avec le Codex de `main`. Le [rapport de réconciliation](reports/qa/merge-validation-2026-11-03.json) documente les **244 tests réussis**, les 196 fichiers publics et les contrôles du moteur et du classeur sur la version réunie. Les tests de régression vérifient le fonctionnement ; l’équilibrage compétitif et le rapprochement éditorial des 30 sets restent des travaux distincts.
 
 ## Règles essentielles
 
@@ -46,6 +47,7 @@ npm test
 npm run validate:content-plan
 npm run check:playable-decks
 npm run check:asymmetric-content
+python3 scripts/verify-catalogue-xlsx.py
 npm run qa:asymmetric
 npm run build
 npm run start
@@ -100,7 +102,7 @@ npm run start
 
 ### Procédure de publication en production
 
-La consolidation actuelle reste dans la PR de développement. Pour une publication de `main` après validation :
+Après fusion d’une PR validée, l’intégration GitHub/Vercel déclenche la publication de `main`. Pour une publication manuelle autorisée :
 
 ```bash
 git push origin main
@@ -121,6 +123,7 @@ L'export JSON contient aussi le duel suspendu. Un checkpoint corrompu est écart
 - `src/data.js` : catalogue, decks de départ, boosters, campagne et règles.
 - `src/expansion.js`, `src/expansion-wave2.js` et `src/asymmetric-cards.js` : ajouts des vagues AX, BX et MX.
 - `src/deck-productions.js` et `src/asymmetric-decks.js` : recettes préconstruites et remélange avec leurs dépendances.
+- `src/alien-base.js` : snapshot documentaire public du Codex, sans accès au dépôt privé pendant le jeu.
 - `src/art-manifest.js` et `assets/art/manifest.json` : registre client et preuve d'intégrité des 174 créations ImageGen.
 - `art-direction/` : contrat de fidélité, 58 profils morphologiques et correspondance versionnée des 174 assets.
 - `src/engine.js` : validation des decks, boosters, IA et moteur de duel.
@@ -211,3 +214,24 @@ python3 content-plan/build_xlsx.py
 ```
 
 Le point d’entrée Python lance `content-plan/build_xlsx.mjs` avec `@oai/artifact-tool` dans un répertoire temporaire. L’export refuse les différences entre les CSV et le moteur, recalcule les formules et produit un aperçu des 27 onglets. Le fichier Excel est versionné avec ses sources reproductibles ; les commandes et rapports sont décrits dans [XLSX_GENERATION.md](content-plan/XLSX_GENERATION.md).
+
+## Encyclopédie Alien_base — fédération v3
+
+L’intégration du Codex préserve **les 158 cartes historiques** au sein du catalogue de **891 cartes**, ainsi que les nouveaux decks et les règles asymétriques. Son snapshot documentaire, introduit dans la PR #1, provient de la [PR #19 Alien_base](https://github.com/darknigthmare/alien_base/pull/19), empilée sur la [PR #18](https://github.com/darknigthmare/alien_base/pull/18) : un export public du registre **v1 (68 dossiers)** et les **158 correspondances avec le registre v2 (632 entités)**.
+
+Dans le jeu, **Collection → Codex Alien_base** (ou l'onglet Archive sur ordinateur) permet de rechercher par catégorie et continuité, consulter les œuvres et les notes de référence. Les cartes associées restent des rapprochements à examiner, pas des identités biologiques automatiquement validées. Le détail des cartes présente aussi le statut des anciennes sources, neuf liens biologiques explicites, les archives v1 possibles et 28 rapprochements inter-jeux non certifiés.
+
+Un consommateur public embarque le snapshot autonome `src/alien-base.js` ; aucun jeton ni appel réseau au dépôt privé n'est nécessaire. Pour comparer une nouvelle version de la base, cloner les deux dépôts frères, se placer sur la branche fédérée Alien_base, puis exécuter :
+
+```bash
+node scripts/sync-alien-base-unified.mjs --base ../alien_base
+# Pour générer une version explicitement revue :
+node scripts/sync-alien-base-unified.mjs --base ../alien_base --publish
+npm run verify:release
+```
+
+Les fiches ne confèrent pas de cartes supplémentaires ni de droits de réutiliser des images sous licence. **Les 68 dossiers publics ne signifient pas que les 632 entités privées sont certifiées 1:1.** Les anciennes références Excel doivent encore être vérifiées individuellement.
+
+### Mise à jour Alien_base du 2 novembre 2026
+
+La mise à jour du snapshot préparée le 2 novembre comparait les PR du registre privé (#21–24), qui proposaient 652 identités, aux 632 de la branche fédérée. **La consultation du Codex n'ajoute pas de carte automatiquement.** Le Codex conserve deux sections de recherche hors ligne : 20 identités Yautja/Apex et 29 œuvres ou continuités Predator, avec trois alias historiques Alpha, Samurai et Viking et trois réserves biologiques (Royal Facehugger, Crusher, Offspring). Les six rapprochements nominaux entre personnages Apex et cartes TCG restent des propositions, y compris `Y_SCAR` ; l'alias Samurai vers `Y_SAMURAI` n'est pas une preuve d'identité universelle. Les 632 IDs du snapshot fédéré et les 158 liens historiques coexistent avec les 652 références documentaires du catalogue d’extensions ; ces périmètres ne constituent pas une certification canon commune.

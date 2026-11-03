@@ -139,8 +139,8 @@
   };
   Store.load();
 
-  const state={screen:'home',filters:{query:'',faction:'ALL',type:'ALL',rarity:'ALL',set:'ALL',owned:'ALL'},deckFilters:{query:'',faction:'ALL',type:'ALL'},selectedDeckId:null,
-    ui:{difficulty:'normal',enemyFaction:'XENO',pending:null,opening:null,tutorialStep:0,modalLocked:false,collectionLimit:48,deckLimit:40,packFilter:'ALL',focusAfterRender:null},battleContext:null,lastQuickConfig:null};
+  const state={screen:'home',codexFilters:{mode:'reference',query:'',type:'ALL',scope:'ALL'},filters:{query:'',faction:'ALL',type:'ALL',rarity:'ALL',set:'ALL',owned:'ALL'},deckFilters:{query:'',faction:'ALL',type:'ALL'},selectedDeckId:null,
+    ui:{difficulty:'normal',enemyFaction:'XENO',pending:null,opening:null,tutorialStep:0,modalLocked:false,collectionLimit:48,deckLimit:40,packFilter:'ALL',codexLimit:18,focusAfterRender:null},battleContext:null,lastQuickConfig:null};
 
   const AudioSys={ctx:null,
     cue(kind='click'){
@@ -256,7 +256,7 @@
     }).sort((a,b)=>RANK[b.rarity]-RANK[a.rarity]||a.name.localeCompare(b.name,'fr'));
   }
   function filtersHTML(filters,prefix='collection',full=true){return `<div class="panel filters"><label class="field">⌕ <input data-filter-prefix="${prefix}" data-filter="query" value="${esc(filters.query||'')}" placeholder="Rechercher une carte…"></label><label class="field"><select data-filter-prefix="${prefix}" data-filter="faction"><option value="ALL">Toutes factions</option>${Object.entries(D.factions).map(([id,f])=>`<option value="${id}" ${filters.faction===id?'selected':''}>${f.name}</option>`).join('')}</select></label><label class="field"><select data-filter-prefix="${prefix}" data-filter="type"><option value="ALL">Tous types</option>${Object.entries(D.cardClasses||TYPE_NAMES).map(([id,n])=>`<option value="${id}" ${filters.type===id?'selected':''}>${n}</option>`).join('')}</select></label>${full?`<label class="field"><select data-filter-prefix="${prefix}" data-filter="rarity"><option value="ALL">Toutes raretés</option>${Object.entries(D.rarities).map(([id,r])=>`<option value="${id}" ${filters.rarity===id?'selected':''}>${r.name}</option>`).join('')}</select></label><label class="field"><select data-filter-prefix="${prefix}" data-filter="set"><option value="ALL">Toutes extensions</option>${Object.entries(D.sets).map(([id,s])=>`<option value="${id}" ${filters.set===id?'selected':''}>${id} — ${s.name}</option>`).join('')}</select></label><label class="field"><select data-filter-prefix="${prefix}" data-filter="owned"><option value="ALL" ${filters.owned==='ALL'?'selected':''}>Tout le catalogue</option><option value="OWNED" ${filters.owned==='OWNED'?'selected':''}>Possédées</option><option value="MISSING" ${filters.owned==='MISSING'?'selected':''}>Manquantes</option></select></label>`:''}<span class="filter-count" data-filter-count></span></div>`;}
-  function renderCollection(){const list=filteredCards(),visible=list.slice(0,state.ui.collectionLimit);return shell(`${screenHead('CATALOGUE MAÎTRE','Collection','Filtrez les ${D.cards.length} cartes, consultez leur origine et fabriquez les exemplaires manquants avec la poussière de synthèse.',`<button class="btn secondary" data-action="nav" data-screen="boosters">◇ Boosters</button>`)}${filtersHTML(state.filters)}<div class="card-grid">${visible.map(c=>cardWrap(c,{action:'view-card'})).join('')||'<div class="panel pad subtle">Aucune carte ne correspond aux filtres.</div>'}</div>${list.length>visible.length?`<div class="load-more"><button class="btn secondary" data-action="more-cards" data-scope="collection">Afficher 48 cartes de plus (${visible.length}/${list.length})</button></div>`:''}`,true);}
+  function renderCollection(){const list=filteredCards(),visible=list.slice(0,state.ui.collectionLimit);return shell(`${screenHead('CATALOGUE MAÎTRE','Collection',`Filtrez les ${D.cards.length} cartes, consultez leur origine et fabriquez les exemplaires manquants avec la poussière de synthèse.`,`<button class="btn secondary" data-action="nav" data-screen="boosters">◇ Boosters</button><button class="btn ghost" data-action="nav" data-screen="archive">◎ Codex Alien_base</button>`)}${filtersHTML(state.filters)}<div class="card-grid">${visible.map(c=>cardWrap(c,{action:'view-card'})).join('')||'<div class="panel pad subtle">Aucune carte ne correspond aux filtres.</div>'}</div>${list.length>visible.length?`<div class="load-more"><button class="btn secondary" data-action="more-cards" data-scope="collection">Afficher 48 cartes de plus (${visible.length}/${list.length})</button></div>`:''}`,true);}
 
   function renderBoosters(){
     const p=Store.data.profile,filter=state.ui.packFilter;
@@ -341,10 +341,166 @@
     ];
     return '<section class="panel source-card span-12" aria-label="Règles des trois doctrines"><div class="eyebrow">DOCTRINES DE FACTION</div><div class="glossary">'+entries.map(([faction,title,text])=>'<div class="glossary-row"><b>'+faction+' — '+title+'</b><span>'+text+'</span></div>').join('')+'</div></section>';
   }
+  function renderAlienBaseUpdates(mode){
+ const updates=window.AVP_ALIEN_BASE?.codex?.registryUpdates;
+ if(!updates)return '<section class="panel source-card span-12"><p>Aucune nouvelle référence dans cette version.</p></section>';
+ const subjects=mode==='apex',all=subjects?updates.newEntities:updates.works;
+ const term=(state.codexFilters.query||'').trim().toLocaleLowerCase('fr');
+ const matches=all.filter(x=>(subjects?[x.id,x.name,x.sourceWork,x.category]:[x.id,x.title,x.medium,x.continuity,x.publicationStatus]).join(' ').toLocaleLowerCase('fr').includes(term))
+   .sort((a,b)=>(subjects?a.name:a.title).localeCompare(subjects?b.name:b.title,'fr'));
+ const list=matches.slice(0,state.ui.codexLimit);
+ const notes=subjects?`<div class="alien-codex-cautions"><b>Réserves biologiques :</b> ${updates.biologyNotes.map(x=>`<span title="${esc(x.issue)}">${esc(x.subject)}</span>`).join(' • ')}</div>`:'';
+ return `<section class="panel source-card span-12 alien-codex alien-codex-updates" aria-label="${subjects?'Nouvelles identités Apex':'Œuvres documentaires Predator'}">
+  <div class="eyebrow">ALIEN_BASE • APERÇU DE BRANCHES NON FUSIONNÉES</div>
+  <h2>${subjects?'Nouvelles identités Yautja / Apex':'Œuvres et continuités à vérifier'} — ${all.length} dossiers</h2>
+  ${renderAlienBaseModeTabs()}
+  <p class="subtle">Le registre de référence de cette version contient ${updates.baselineCount} entités. Une branche distincte en propose ${updates.candidateRegistryCount}, mais ces ajouts ne sont pas encore intégrés au registre principal ni certifiés fidèles à 1:1.</p>
+  <div class="alien-codex-controls"><label class="field">⌕ <input data-codex-filter="query" aria-label="Rechercher une nouveauté documentaire" value="${esc(state.codexFilters.query)}" placeholder="${subjects?'Yautja, vaisseau, équipement…':'Film, comic, jeu, continuité…'}"></label></div>
+  <p class="subtle alien-codex-count" role="status">${matches.length} / ${all.length} dossiers de recherche • Aucun nouveau déblocage dans le TCG</p>
+  <div class="alien-codex-list">
+   ${list.map(x=>`<article class="alien-codex-record"><div class="eyebrow">${esc(subjects?x.category:x.medium)} • À CONFIRMER</div>
+    <h3>${esc(subjects?x.name:x.title)}</h3>
+    <p>${esc(subjects?x.sourceWork:(x.continuity+' • '+x.year))}</p>
+    <p class="subtle">${esc(subjects?x.reviewStatus:x.publicationStatus)}</p>
+    <div class="alien-codex-actions"><button class="btn secondary small" data-action="codex-update-detail" data-update-mode="${mode}" data-update-id="${esc(x.id)}">Voir la référence</button>
+     ${subjects&&x.linkedCardIds.length?`<span>${x.linkedCardIds.length} rapprochement(s) TCG non certifié(s)</span>`:''}
+    </div></article>`).join('')||'<p class="subtle">Aucune référence correspondante.</p>'}
+  </div>
+  ${matches.length>list.length?`<div class="load-more"><button class="btn secondary" data-action="codex-more">Afficher ${Math.min(18,matches.length-list.length)} dossiers supplémentaires (${list.length}/${matches.length})</button></div>`:''}
+  ${notes}
+  <p class="subtle alien-codex-disclaimer">Archives non fusionnées : ni nouveau personnage jouable, ni équipement débloqué, ni image ou mesure canonique automatiquement approuvée.</p>
+ </section>`;
+}
+
+  function showAlienBaseUpdateDetail(mode,id){
+ const u=window.AVP_ALIEN_BASE?.codex?.registryUpdates;
+ if(!u||!['apex','media'].includes(mode))return;
+ const subject=mode==='apex',entry=(subject?u.newEntities:u.works).find(x=>x.id===id);
+ if(!entry)return;
+ const links=subject?entry.linkedCardIds.filter(cardId=>CARD.has(cardId)):[];
+ modal(`Archive non fusionnée : ${esc(subject?entry.name:entry.title)}`,`<div class="alien-codex-detail">
+  <div class="eyebrow">DOCUMENT DE RECHERCHE • NON JOUABLE • EN ATTENTE DE VALIDATION</div>
+  <h2>${esc(subject?entry.name:entry.title)}</h2>
+  <p><b>Identifiant :</b> ${esc(entry.id)}</p>
+  <p><b>${subject?'Œuvre de rattachement':'Continuïté'} :</b> ${esc(subject?entry.sourceWork:entry.continuity)}</p>
+  <p><b>${subject?'Catégorie':'Support'} :</b> ${esc(subject?entry.category:entry.medium)}</p>
+  <p class="source-note"><b>Statut :</b> ${esc(entry.reviewStatus)}<br><b>Fidélité visuelle 1:1 :</b> non certifiée<br><b>Jouable dans ce TCG :</b> non</p>
+  ${links.length?`<h3>Cartes rapprochées à titre indicatif</h3><div class="alien-codex-card-links">${links.map(cardId=>`<button class="btn ghost small" data-action="view-card" data-card-id="${esc(cardId)}">${esc(CARD.get(cardId).name)}</button>`).join('')}</div>`:''}
+  <p class="subtle">Ce rapprochement est issu d'une branche de travail d'Alien_base et reste à vérifier avant toute utilisation comme référence canonique ou nouveau contenu jouable.</p>
+ </div>`);
+}
+
+  function pendingAlienBaseLinks(cardId){
+ const updates=window.AVP_ALIEN_BASE?.codex?.registryUpdates;
+ if(!updates)return '';
+ const candidates=updates.newEntities.filter(x=>x.linkedCardIds.includes(cardId));
+ const aliases=updates.aliases.filter(x=>x.linkedCardIds.includes(cardId));
+ if(!candidates.length&&!aliases.length)return '';
+ const entries=[
+  ...candidates.map(x=>`${esc(x.name)} (${esc(x.sourceWork)})`),
+  ...aliases.map(x=>`${esc(x.localId)} — ${esc(x.entityId)}`)
+ ];
+ return `<div class="source-note"><b>Nouvelles références Alien_base non fusionnées :</b> ${entries.join(' • ')}<br><small>Liens documentaires provisoires : aucune modification de la carte, de ses statistiques ou de sa continuité n'est autorisée par cet aperçu.</small></div>`;
+}
+
+  function renderAlienBaseModeTabs(){
+ const modes=[['reference','Sources historiques','68'],['weapons','Armes à examiner','200'],['leads','Sujets à approfondir','16'],['apex','Yautja / Apex','20'],['media','Œuvres Predator','29']];
+ return `<div class="alien-codex-tabs" aria-label="Type de dossier">${modes.map(([id,label,count])=>`<button class="btn ${state.codexFilters.mode===id?'secondary':'ghost'} small" data-action="codex-mode" data-codex-mode="${id}" aria-pressed="${state.codexFilters.mode===id}">${label} · ${count}</button>`).join('')}</div>`;
+}
+
+  function renderAlienResearch(mode){
+ const codex=window.AVP_ALIEN_BASE?.codex;
+ const all=mode==='weapons'?(codex?.researchWeapons||[]):(codex?.researchLeads||[]);
+ const isWeapon=mode==='weapons';
+ const q=(state.codexFilters.query||'').trim().toLocaleLowerCase('fr');
+ const filtered=all.filter(x=>[x.name,x.id,x.work,isWeapon?x.family:x.category,isWeapon?x.projectStatus:x.note].join(' ').toLocaleLowerCase('fr').includes(q));
+ const shown=filtered.slice(0,state.ui.codexLimit);
+ return `<section class="panel source-card span-12 alien-codex" aria-label="${isWeapon?'Recherche armes':'Recherche complémentaire'}">
+  <div class="eyebrow">ALIEN_BASE • REGISTRE DE RECHERCHE</div>
+  <h2>${isWeapon?'Dossiers d’armurerie':'Sujets à approfondir'} — ${all.length} entrées</h2>
+  ${renderAlienBaseModeTabs()}
+  <p class="subtle">Ces contenus sont des pistes de recherche : aucun modèle n'est certifié visuellement 1:1 et aucune fiche n'est jouable ou achetable dans le TCG. Les propriétés de combat des autres jeux ne sont pas importées.</p>
+  <div class="alien-codex-controls"><label class="field">⌕ <input data-codex-filter="query" value="${esc(state.codexFilters.query)}" placeholder="${isWeapon?'Rechercher une arme ou une œuvre…':'Rechercher un personnage, une société…'}" aria-label="Rechercher dans les recherches Alien_base"></label></div>
+  <p class="subtle alien-codex-count" role="status">${filtered.length} / ${all.length} entrées • Vérification documentaire requise</p>
+  <div class="alien-codex-list">
+   ${shown.map(x=>`<article class="alien-codex-record"><div class="eyebrow">${esc(isWeapon?x.family:x.category)} • NON JOUABLE</div><h3>${esc(x.name)}</h3><p>${esc(x.work)}</p><p class="subtle">${esc(isWeapon?x.projectStatus:x.note)}</p><div class="alien-codex-actions"><button class="btn secondary small" data-action="codex-research-detail" data-codex-id="${esc(x.id)}" data-codex-kind="${mode}">Examiner la référence</button></div></article>`).join('')||'<p class="subtle">Aucune référence ne correspond à cette recherche.</p>'}
+  </div>
+  ${filtered.length>shown.length?`<div class="load-more"><button class="btn secondary" data-action="codex-more">Afficher ${Math.min(18,filtered.length-shown.length)} références supplémentaires (${shown.length}/${filtered.length})</button></div>`:''}
+  <p class="subtle alien-codex-disclaimer">Statut : inventaire documentaire uniquement. Les fiches canoniques du film ou d'un jeu doivent être vérifiées modèle par modèle avant toute intégration dans une extension jouable.</p>
+ </section>`;
+}
+
+  function showAlienResearchDetail(mode,id){
+ const codex=window.AVP_ALIEN_BASE?.codex;
+ const isWeapon=mode==='weapons';
+ const entry=(isWeapon?codex?.researchWeapons:codex?.researchLeads)?.find(x=>x.id===id);
+ if(!entry)return;
+ const status=isWeapon?entry.projectStatus:entry.researchStatus;
+ const details=isWeapon
+  ?`<p><b>Famille :</b> ${esc(entry.family)}</p><p><b>Support :</b> ${esc(entry.medium)}</p><p><b>Confiance interne :</b> ${esc(entry.researchConfidence)}</p>`
+  :`<p><b>Catégorie :</b> ${esc(entry.category)}</p><p>${esc(entry.note)}</p>`;
+ modal(`Dossier non certifié : ${esc(entry.name)}`,`<div class="alien-codex-detail">
+   <div class="eyebrow">RECHERCHE • NON JOUABLE</div>
+   <h2>${esc(entry.name)}</h2><p><b>Œuvre ou dossier :</b> ${esc(entry.work)}</p>
+   ${details}<p class="source-note"><b>ID :</b> ${esc(entry.id)}<br><b>État :</b> ${esc(status)}<br><b>Admis dans le TCG :</b> Non</p>
+   <p class="subtle">Une mention dans le catalogue ne prouve ni les dimensions, ni une apparence 1:1, ni l'admission d'une arme ou d'un organisme. La fiche doit être contrôlée avec sa source primaire.</p>
+ </div>`);
+}
+
+  function renderAlienBaseCodex(){
+ if(['apex','media'].includes(state.codexFilters.mode))return renderAlienBaseUpdates(state.codexFilters.mode);
+ if(state.codexFilters.mode!=='reference')return renderAlienResearch(state.codexFilters.mode);
+ const codex=window.AVP_ALIEN_BASE?.codex;
+ const all=codex?.entries||[];
+ if(!all.length)return '<section class="panel source-card span-12"><h2>Codex Alien_base indisponible</h2><p>Aucune fiche documentaire locale ne figure dans ce build.</p></section>';
+ const filter=state.codexFilters;
+ const types=[...new Set(all.map(x=>x.type))].sort();
+ const q=filter.query.trim().toLocaleLowerCase('fr');
+ const rows=all.filter(x=>
+  (!q||[x.name,x.id,x.description,...x.sourceWorks].join(' ').toLocaleLowerCase('fr').includes(q)) &&
+  (filter.type==='ALL'||x.type===filter.type) &&
+  (filter.scope==='ALL'||x.scope===filter.scope)
+ ).sort((a,b)=>a.name.localeCompare(b.name,'fr'));
+ const display=rows.slice(0,state.ui.codexLimit);
+ const scopeNames={film:'Films',predator:'Predator',crossover:'Crossovers',expanded:'Jeux et univers étendus'};
+ return `<section class="panel source-card span-12 alien-codex" aria-label="Codex documenté Alien_base">
+  <div class="eyebrow">ARCHIVE CENTRALE • ALIEN_BASE</div>
+  <h2>Codex de référence — ${all.length} dossiers</h2>
+  ${renderAlienBaseModeTabs()}
+  <p class="subtle">Catalogue historique v1 consultable hors ligne. Le registre partagé v2 indexe ${window.AVP_ALIEN_BASE.registry.v2} entités, dont ${window.AVP_ALIEN_BASE.registry.gameCards} cartes TCG. Une fiche de référence n'est pas une carte débloquée ni une image certifiée fidèle.</p>
+  <div class="alien-codex-controls">
+   <label class="field">⌕ <input data-codex-filter="query" value="${esc(filter.query)}" placeholder="Chercher un organisme, une arme, un lieu…" aria-label="Rechercher dans le codex"></label>
+   <label class="field"><select data-codex-filter="type" aria-label="Filtrer par catégorie"><option value="ALL">Toutes les catégories</option>${types.map(type=>`<option value="${esc(type)}" ${filter.type===type?'selected':''}>${esc(type)}</option>`).join('')}</select></label>
+   <label class="field"><select data-codex-filter="scope" aria-label="Filtrer par continuité"><option value="ALL">Toutes les continuités</option>${Object.entries(scopeNames).map(([id,name])=>`<option value="${id}" ${filter.scope===id?'selected':''}>${name}</option>`).join('')}</select></label>
+  </div>
+  <p class="subtle alien-codex-count" role="status">${rows.length} / ${all.length} dossiers • Source déclarée, vérification individuelle requise</p>
+  <div class="alien-codex-list">
+   ${display.map(x=>`<article class="alien-codex-record"><div class="eyebrow">${esc(x.type)} • ${esc(scopeNames[x.scope]||x.scope)}</div><h3>${esc(x.name)}</h3><p>${esc(x.description)}</p><p class="subtle">${esc(x.sourceWorks.join(' • '))}</p><div class="alien-codex-actions"><button class="btn secondary small" data-action="codex-detail" data-codex-id="${esc(x.id)}">Consulter le dossier</button>${x.linkedCardIds.length?`<span>${x.linkedCardIds.length} carte(s) associée(s)</span>`:''}</div></article>`).join('')||'<p class="subtle">Aucun dossier ne correspond à ces critères.</p>'}
+  </div>
+  ${rows.length>display.length?`<div class="load-more"><button class="btn secondary" data-action="codex-more">Afficher ${Math.min(18,rows.length-display.length)} dossiers supplémentaires (${display.length}/${rows.length})</button></div>`:''}
+  <p class="subtle alien-codex-disclaimer">Les 632 identités v2 comprennent aussi des adaptations et contenus de projets. Seul ce sous-ensemble documentaire v1 est publié ici. Les mesures de combat restent propres au TCG.</p>
+ </section>`;
+}
+
+  function showAlienBaseCodex(id){
+ const entry=window.AVP_ALIEN_BASE?.codex?.entries?.find(x=>x.id===id);
+ if(!entry)return;
+ const safe=entry.linkedCardIds.filter(cardId=>CARD.has(cardId));
+ const sources=entry.sourceWorks.map(x=>`<li>${esc(x)}</li>`).join('');
+ modal(`Codex : ${esc(entry.name)}`,`<div class="alien-codex-detail">
+ <div class="eyebrow">${esc(entry.type)} • ${esc(entry.scope)}</div>
+ <h2>${esc(entry.name)}</h2><p>${esc(entry.description)}</p>
+ <p class="source-note"><b>Identifiant historique :</b> ${esc(entry.id)}<br><b>Revue :</b> ${esc(entry.review)}</p>
+ <h3>Œuvres de référence</h3><ul>${sources}</ul>
+ ${safe.length?`<h3>Cartes associées (relation de recherche)</h3><div class="alien-codex-card-links">${safe.map(cardId=>`<button class="btn ghost small" data-action="view-card" data-card-id="${esc(cardId)}">${esc(CARD.get(cardId).name)}</button>`).join('')}</div>`:''}
+ <p class="subtle">Cette notice de recherche ne garantit pas des caractéristiques physiques ou une silhouette 1:1. Les associations sont indicatives et les statistiques ne proviennent pas du référentiel.</p>
+ </div>`);
+}
+
 
   function renderArchive(){const sm=D.sourceManifest,counts=sm.alien.notableCounts;return shell(`${screenHead('ENCYCLOPÉDIE JOUABLE','Archive & règles','Chaque carte conserve un lien de provenance interne vers le classeur et l’onglet ayant inspiré sa traduction de gameplay.',`<button class="btn secondary" data-action="export-catalog">⇩ Exporter le catalogue JSON</button>`)}<div class="archive-grid"><section class="panel source-card span-7"><div class="eyebrow">SOURCE ALIEN / AVP</div><h2>${esc(sm.alien.file)}</h2><p>${esc(sm.alien.role)}</p><div class="source-counts">${[['Véhicules',counts.vehicles],['Humains',counts.detailedHumans],['Lieux',counts.locations],['Rituels',counts.rituals],['Visions',counts.visions],['Faune',counts.fauna],['Flore',counts.flora],['Cartes du jeu',D.cards.length]].map(([n,v])=>`<div class="source-count"><b>${v}</b><span>${n}</span></div>`).join('')}</div></section><section class="panel source-card span-5"><div class="eyebrow">SOURCE PREDATOR</div><h2>${esc(sm.predator.file)}</h2><p>${esc(sm.predator.role)}</p><p class="source-note">Les cartes PX00 sont visuellement et mécaniquement séparées du pool principal afin de ne pas présenter un élément coupé ou annulé comme canon écran.</p></section>
     <section class="panel source-card span-6"><div class="eyebrow">RÈGLES ESSENTIELLES</div><h2>${D.rules.deckSize} cartes • ${D.rules.startingLife} PV • ${D.rules.lanes} voies</h2><div class="quick-list"><div class="quick-row"><div class="quick-icon">1</div><div><b>Début</b><span>5 cartes pour le premier joueur, 6 pour le second; l’énergie maximale augmente de 1 par tour.</span></div></div><div class="quick-row"><div class="quick-icon">2</div><div><b>Unités</b><span>Une unité par voie; combat simultané lorsque deux unités s’affrontent.</span></div></div><div class="quick-row"><div class="quick-icon">3</div><div><b>Cartes de soutien</b><span>Actions instantanées, Armes (1 nouvelle par unité), Équipements, Véhicules pilotés et un Lieu par joueur.</span></div></div><div class="quick-row"><div class="quick-icon">4</div><div><b>Victoire</b><span>Attaque directe dans une voie libre et réduisez les PV adverses à zéro.</span></div></div></div></section><section class="panel source-card span-6"><div class="eyebrow">RARETÉS DE COLLECTION</div><table class="rarity-table"><thead><tr><th>Rareté</th><th>Code</th><th>Valeur</th><th>Booster</th></tr></thead><tbody>${Object.entries(D.rarities).map(([id,r])=>`<tr><td><i class="rarity-dot" style="--rc:${RARITY_COLORS[id]}"></i>${r.name}</td><td>${id}</td><td>${r.dust} poussières</td><td>${r.odds}</td></tr>`).join('')}</tbody></table></section>
-    ${asymmetricRulesHTML()}<section class="panel source-card span-12"><div class="eyebrow">MOTS-CLÉS</div><div class="glossary" style="margin-top:14px">${Object.entries(D.keywords).map(([k,v])=>`<div class="glossary-row"><b>${k}</b><span>${esc(v)}</span></div>`).join('')}</div></section><section class="panel source-card span-12"><div class="eyebrow">EXTENSIONS</div><div class="pack-grid" style="margin-top:14px">${Object.entries(D.sets).map(([id,s])=>`<div class="panel pad" style="border-color:color-mix(in srgb,${s.accent} 24%,transparent)"><b style="color:${s.accent}">${id} — ${esc(s.name)}</b><p>${esc(s.description)}</p><span class="subtle" style="font-size:10px">${D.cards.filter(c=>c.set===id).length} cartes</span></div>`).join('')}</div></section></div>`,true);}
+    ${asymmetricRulesHTML()}<section class="panel source-card span-12"><div class="eyebrow">MOTS-CLÉS</div><div class="glossary" style="margin-top:14px">${Object.entries(D.keywords).map(([k,v])=>`<div class="glossary-row"><b>${k}</b><span>${esc(v)}</span></div>`).join('')}</div></section><section class="panel source-card span-12"><div class="eyebrow">EXTENSIONS</div><div class="pack-grid" style="margin-top:14px">${Object.entries(D.sets).map(([id,s])=>`<div class="panel pad" style="border-color:color-mix(in srgb,${s.accent} 24%,transparent)"><b style="color:${s.accent}">${id} — ${esc(s.name)}</b><p>${esc(s.description)}</p><span class="subtle" style="font-size:10px">${D.cards.filter(c=>c.set===id).length} cartes</span></div>`).join('')}</div></section>${renderAlienBaseCodex()}</div>`,true);}
 
   function unitFlags(battle,u){const out=[];if(u.cloaked)out.push(['◌','Camouflage']);if(u.stunned>0)out.push(['⌁','Étourdi']);if(battle.has(u,'ARMOR')&&!u.armorUsed)out.push(['⬡','Armure']);if(u.equipment.length)out.push([`⚙${u.equipment.length}`,'Équipement']);
     const card=battle.card(u.cardId);
@@ -470,7 +626,7 @@
   }
   function chooseStarter(id){const template=D.starterDecks[id];if(!template||Store.data.starterChosen)return;for(const c of D.cards.filter(c=>c.index<158&&c.rarity==='C'))Store.add(c.id,1);for(const [cardId,count] of Object.entries(template.cards))Store.data.collection[cardId]=Math.max(Store.owned(cardId),count);const deck={id:U.uid('deck'),name:template.name,faction:id,cards:U.clone(template.cards),createdAt:new Date().toISOString()};Store.data.decks=[deck];Store.data.activeDeckId=deck.id;state.selectedDeckId=deck.id;Store.data.starterChosen=true;Store.save();closeModal();AudioSys.cue('rare');toast(`${template.name} ajouté à votre collection.`, 'good');render();showTutorial(0);}
 
-  function showCardDetail(id){const c=CARD.get(id);if(!c)return;const f=faction(c.faction),r=rarity(c.rarity),owned=Store.owned(id),reserved=cardReserved(id),craft=r.dust*2;modal(`${f.symbol} ${esc(c.name)}`,`<div class="card-detail"><div class="card-wrap">${cardHTML(c,{foil:RANK[c.rarity]>=3})}</div><div class="detail-copy"><div class="eyebrow" style="color:${f.accent}">${c.collectorNo} • ${r.name}</div><h2>${esc(c.name)}</h2><p>${esc(c.text)}</p>${cardMechanicsHTML(c)}${c.keywords.length?`<div class="card-keywords">${c.keywords.map(k=>`<span class="kw" title="${esc(D.keywords[k]||'')}">${k}</span>`).join('')}</div>`:''}<p class="lore">${esc(c.flavor||'Aucune note de terrain.')}</p><div class="detail-stats"><div class="detail-stat"><b>${c.cost}</b><span>Énergie</span></div><div class="detail-stat"><b>${owned}</b><span>Possédées</span></div><div class="detail-stat"><b>${displayType(c)}</b><span>Type</span></div></div><div class="source-note"><b>Traçabilité :</b> ${esc(c.source.workbook)} → ${esc(c.source.sheet)} → « ${esc(c.source.entry)} »${c.source.prototype?'<br><b>Statut :</b> contenu coupé / prototype séparé du canon principal.':''}${c.sourcePolicy?'<br><b>Nature :</b> effet TCG original basé sur une référence documentaire ; validation lore 1:1 à faire.':''}</div><div class="detail-actions"><button class="btn secondary" data-action="craft-card" data-card-id="${c.id}" ${Store.data.profile.dust<craft?'disabled':''}>Fabriquer • ${craft} ✧</button><button class="btn ghost" data-action="dust-card" data-card-id="${c.id}" ${owned<=reserved?'disabled':''}>Désassembler • +${r.dust} ✧</button></div><p class="subtle" style="font-size:10px">${reserved?`${reserved} exemplaire(s) réservé(s) par un deck.`:'Aucun exemplaire réservé.'}</p></div></div>`);}
+  function showCardDetail(id){const c=CARD.get(id);if(!c)return;const f=faction(c.faction),r=rarity(c.rarity),owned=Store.owned(id),reserved=cardReserved(id),craft=r.dust*2;const baseRecord=window.AVP_ALIEN_BASE?.byCardId?.[c.id];const baseContinuity={cut_or_prototype:'Archive coupée ou prototype',deleted_or_alternate_scene:'Scène alternative ou supprimée',gameplay_abstraction:'Mécanique de jeu, non preuve de canon',source_pending:'Référence documentaire à confirmer',source_review_required:'Source à confirmer'};const basePanel=baseRecord?`<div class="source-note"><b>Alien_base — fiche mutualisée</b><br><b>ID registre :</b> ${esc(baseRecord.id)}${baseRecord.canonicalEntityId?`<br><b>Entité centrale associée :</b> ${esc(baseRecord.canonicalEntityId)}`:''}<br><b>Catégorie :</b> ${esc(baseRecord.category)}<br><b>Statut :</b> ${esc(baseContinuity[baseRecord.continuityStatus]||baseRecord.continuityStatus)}<br><b>Vérification :</b> ${baseRecord.researchStatus==='legacy_index_unverified'?'Référence du classeur non encore revérifiée':'Référence documentaire partiellement contrôlée'}${baseRecord.summary?`<br><b>Contexte :</b> ${esc(baseRecord.summary)}`:''}${baseRecord.canonicalName?`<br><b>Sujet documentaire :</b> ${esc(baseRecord.canonicalName)} <small>(${esc(baseRecord.canonicalClassification||'classification à revoir')})</small>`:''}${baseRecord.legacyMainV1Link?`<br><b>Archive v1 liée :</b> ${esc(baseRecord.legacyMainV1Link.catalogueId)} (correspondance indicative)`:''}${baseRecord.crossgameReferences?.length?`<br><b>Également référencé :</b> ${baseRecord.crossgameReferences.map(x=>`${esc(x.project.split('/').pop())} (${esc(x.sourceId)})`).join(' • ')}<br><small>Correspondances proposées : équivalences à confirmer, sans transfert de statistiques.</small>`:''}</div>`:'';modal(`${f.symbol} ${esc(c.name)}`,`<div class="card-detail"><div class="card-wrap">${cardHTML(c,{foil:RANK[c.rarity]>=3})}</div><div class="detail-copy"><div class="eyebrow" style="color:${f.accent}">${c.collectorNo} • ${r.name}</div><h2>${esc(c.name)}</h2><p>${esc(c.text)}</p>${cardMechanicsHTML(c)}${c.keywords.length?`<div class="card-keywords">${c.keywords.map(k=>`<span class="kw" title="${esc(D.keywords[k]||'')}">${k}</span>`).join('')}</div>`:''}<p class="lore">${esc(c.flavor||'Aucune note de terrain.')}</p><div class="detail-stats"><div class="detail-stat"><b>${c.cost}</b><span>Énergie</span></div><div class="detail-stat"><b>${owned}</b><span>Possédées</span></div><div class="detail-stat"><b>${displayType(c)}</b><span>Type</span></div></div>${basePanel}${pendingAlienBaseLinks(c.id)}<div class="source-note"><b>Traçabilité :</b> ${esc(c.source.workbook)} → ${esc(c.source.sheet)} → « ${esc(c.source.entry)} »${c.source.prototype?'<br><b>Statut :</b> contenu coupé / prototype séparé du canon principal.':''}${c.sourcePolicy?'<br><b>Nature :</b> effet TCG original basé sur une référence documentaire ; validation lore 1:1 à faire.':''}</div><div class="detail-actions"><button class="btn secondary" data-action="craft-card" data-card-id="${c.id}" ${Store.data.profile.dust<craft?'disabled':''}>Fabriquer • ${craft} ✧</button><button class="btn ghost" data-action="dust-card" data-card-id="${c.id}" ${owned<=reserved?'disabled':''}>Désassembler • +${r.dust} ✧</button></div><p class="subtle" style="font-size:10px">${reserved?`${reserved} exemplaire(s) réservé(s) par un deck.`:'Aucun exemplaire réservé.'}</p></div></div>`);}
   function craftCard(id){const c=CARD.get(id),cost=rarity(c.rarity).dust*2;if(Store.data.profile.dust<cost)return;Store.data.profile.dust-=cost;Store.add(id,1);Store.save();AudioSys.cue('card');showCardDetail(id);render();toast(`${c.name} fabriquée.`, 'good');}
   function dustCard(id){const c=CARD.get(id),owned=Store.owned(id);if(owned<=cardReserved(id))return;Store.data.collection[id]=owned-1;Store.data.profile.dust+=rarity(c.rarity).dust;Store.save();showCardDetail(id);render();toast(`${c.name} désassemblée.`);}
 
@@ -665,6 +821,16 @@
     else if(action==='settings')showSettings();else if(action==='close-modal'&&!state.ui.modalLocked)closeModal();else if(action==='modal-backdrop'&&ev.target===el&&!state.ui.modalLocked)closeModal();
     else if(action==='tutorial')showTutorial(0);else if(action==='tutorial-next')showTutorial(state.ui.tutorialStep+1);else if(action==='tutorial-prev')showTutorial(state.ui.tutorialStep-1);else if(action==='tutorial-finish'){Store.data.tutorial.completed=true;Store.save();closeModal();navigate('play');}
     else if(action==='more-cards'){state.ui[el.dataset.scope==='deck'?'deckLimit':'collectionLimit']+=el.dataset.scope==='deck'?40:48;render();}
+    else if(action==='codex-detail')showAlienBaseCodex(el.dataset.codexId);
+    else if(action==='codex-research-detail')showAlienResearchDetail(el.dataset.codexKind,el.dataset.codexId);
+    else if(action==='codex-update-detail')showAlienBaseUpdateDetail(el.dataset.updateMode,el.dataset.updateId);
+    else if(action==='codex-mode'){
+      const next=el.dataset.codexMode;
+      if(['reference','weapons','leads','apex','media'].includes(next)){
+        state.codexFilters.mode=next;state.codexFilters.query='';state.codexFilters.type='ALL';state.codexFilters.scope='ALL';state.ui.codexLimit=18;render();
+      }
+    }
+    else if(action==='codex-more'){state.ui.codexLimit+=18;render();}
     else if(action==='create-deck')createDeck(el.dataset.id);
     else if(action==='choose-starter')chooseStarter(el.dataset.id);else if(action==='view-card')showCardDetail(el.dataset.cardId);else if(action==='craft-card')craftCard(el.dataset.cardId);else if(action==='dust-card')dustCard(el.dataset.cardId);
     else if(action==='resume-battle')await resumeBattle();else if(action==='pause-battle')pauseBattle();else if(action==='quick-launch')quickLaunch();else if(action==='difficulty'){state.ui.difficulty=el.dataset.id;render();}else if(action==='enemy-faction'){state.ui.enemyFaction=el.dataset.id;render();}else if(action==='start-quick')startBattle('quick');
@@ -691,14 +857,23 @@
     }
   },true);
   root.addEventListener('click',handleClick);modalRoot.addEventListener('click',handleClick);
+  function updateAlienCodexFilter(key,value){
+ if(!Object.hasOwn(state.codexFilters,key)||state.codexFilters[key]===value)return;
+ state.codexFilters[key]=value;
+ state.ui.codexLimit=18;
+ render();
+}
+  const alienCodexFilterInput=debounce(updateAlienCodexFilter,110);
+
   function updateFilter(prefix,key,value){
     const target=prefix==='deck'?state.deckFilters:state.filters;if(!Object.hasOwn(target,key)||target[key]===value)return;
     target[key]=value;state.ui[prefix==='deck'?'deckLimit':'collectionLimit']=prefix==='deck'?40:48;render();
   }
   const filterInput=debounce(updateFilter,100);
-  root.addEventListener('input',ev=>{const el=ev.target.closest('[data-filter]');if(el)filterInput(el.dataset.filterPrefix,el.dataset.filter,el.value);});
+  root.addEventListener('input',ev=>{const el=ev.target.closest('[data-filter]');if(el)filterInput(el.dataset.filterPrefix,el.dataset.filter,el.value);const c=ev.target.closest('[data-codex-filter]');if(c)alienCodexFilterInput(c.dataset.codexFilter,c.value);});
   root.addEventListener('change',ev=>{
     const el=ev.target.closest('[data-filter]');if(el?.matches('select'))updateFilter(el.dataset.filterPrefix,el.dataset.filter,el.value);
+    const codex=ev.target.closest('select[data-codex-filter]');if(codex)updateAlienCodexFilter(codex.dataset.codexFilter,codex.value);
     if(ev.target.matches('[data-action="deck-identity"]'))changeDeckIdentity(ev.target.value);
     if(ev.target.matches('[data-action="pack-filter"]')){
       const value=ev.target.value;

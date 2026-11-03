@@ -46,7 +46,7 @@ Après une modification des cartes, des decks ou des règles, les CSV, le classe
 
 Le [rapport de validation du classeur](../reports/qa/workbook-validation-2026-11-03.json) fournit les effectifs par onglet, les empreintes des sources et du classeur, les contrôles de recalcul et le nombre d’onglets rendus. `renderedSheets: 27` correspond à une génération complète ; `--no-render` produit seulement l’aperçu de synthèse et sert au diagnostic.
 
-La consolidation dispose d’une validation locale du moteur : **177 duels terminés, 4 256 captures/restaurations et 1 130 continuations déterministes**. La QA navigateur ordinateur/mobile, GitHub Actions et l’aperçu Vercel restent **en attente sur le nouveau commit**. Le contrôle du fichier Excel et la validation du jeu ont chacun leurs preuves.
+La consolidation dispose d’une validation locale du moteur : **177 duels terminés, 4 256 captures/restaurations et 1 130 continuations déterministes**, puis d’une QA navigateur ordinateur/mobile réussie sur `15b2e1e` dans le [workflow 41615223534](https://github.com/darknigthmare/avp-hunt-hive-tcg/actions/runs/41615223534). La réconciliation du Codex conserve le même classeur et ses 31 sources vérifiées ; ses contrôles figurent dans le [rapport de fusion](../reports/qa/merge-validation-2026-11-03.json) et dans les contrôles du commit courant de la [PR #4](https://github.com/darknigthmare/avp-hunt-hive-tcg/pull/4). Le contrôle du fichier Excel, la validation du jeu et le statut de déploiement ont chacun leurs preuves.
 
 ## Portée
 
