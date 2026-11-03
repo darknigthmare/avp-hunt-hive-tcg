@@ -61,9 +61,9 @@ for(const hostType of ['HUMAN','QUAD','YAUTJA'])for(let v=1;v<=4;v++){
  const stages=new Set([...fusions.map(c=>c.effect.resultCardId),...evolutions.map(c=>c.effect.resultCardId)]);
  put('xeno_'+hostType.toLowerCase()+'_'+v,'Cycle '+hostType+' — '+['Incubation','Parasitage','Mue','Rituel'][v-1],
   'XENO','FUSION',hostType,[
-   [c=>c.evolutionStage==='EGG'||c.id==='X_OVOMORPH',5],
-   [c=>c.evolutionStage==='FACEHUGGER'||c.id==='X_FACEHUGGER',4],
-   [c=>c.cardClass==='HOTE'&&c.hostType===hostType,4],
+   [c=>c.evolutionStage==='EGG'||c.id==='X_OVOMORPH',4],
+   [c=>c.evolutionStage==='FACEHUGGER'||c.id==='X_FACEHUGGER',3],
+   [c=>c.cardClass==='HOTE'&&c.hostType===hostType,3],
    [c=>c.effect?.kind==='HIVE_FUSION'&&c.effect.hostType===hostType,3],
    [c=>stages.has(c.id),4],
    [c=>c.effect?.kind==='HIVE_EVOLVE'&&c.effect.fromStage==='CHESTBURSTER'&&c.effect.hostType===hostType,2],

@@ -156,7 +156,7 @@ for(const [name,source,effect,text] of humanSupport)create('HUMAN','ACTION',name
 const eggNames=['Ovomorphe dormant','Ovomorphe d’incubation','Œuf de colonie','Œuf d’urgence','Œuf de la galerie royale',
  'Œuf des tunnels','Ovomorphe du transport','Ovomorphe du nid profond'];
 const eggs=eggNames.map((name,i)=>create('XENO','OEUF',name,{
- source:'bio.xenomorph.ovomorph',set:i%3===0?'NX01':'CW02',cost:i%3,attack:0,health:300+i%3*100,
+ source:'bio.xenomorph.ovomorph',set:i%3===0?'NX01':'CW02',cost:i%3,attack:0,health:760+i%3*150,keywords:['GUARD'],effect:{onPlay:{kind:'DRAW',count:1}},
  evolutionStage:'EGG',eggLine:i===4?'ROYAL':'COMMON',tags:['egg','hive','incubation'],
  text:'Œuf inerte. Ne peut pas attaquer. Sacrifiez-le pour faire éclore un Facehugger compatible. Génère de la biomasse lors de l’éclosion.'}));
 const facehuggers=[];
@@ -164,8 +164,8 @@ for(let i=0;i<8;i++){
  facehuggers.push(create('XENO','CREATURE',['Facehugger éclaireur','Facehugger des parois','Facehugger royal','Facehugger de colonie',
   'Facehugger de tunnel','Facehugger nocturne','Facehugger transporté','Facehugger de la mère'][i],
  {source:i===2?'ha.bio.royal-facehugger':'bio.xenomorph.facehugger',set:i%2===0?'NX01':'CW02',cost:1,
-  attack:100+i*15,health:390+i*35,requiresEgg:true,evolutionStage:'FACEHUGGER',
-  eggLine:i===2?'ROYAL':'COMMON',keywords:i%3===0?['AMBUSH']:[],
+  attack:245+i*38,health:650+i*55,requiresEgg:true,evolutionStage:'FACEHUGGER',
+  eggLine:i===2?'ROYAL':'COMMON',keywords:i%3===0?['AMBUSH','RUSH']:i%2===0?['RUSH']:[],
   text:'Éclosion : remplace un Œuf allié par ce Facehugger. L’œuf est sacrifié, et votre Ruche gagne 1 biomasse.'}));
 }
 const hostDef=[
@@ -180,7 +180,7 @@ const hostDef=[
  ['Ancien Chasseur capturé','YAUTJA','character.yautja.elder_lost_tribe_1990','AV04']
 ];
 const hosts=hostDef.map(([name,hostType,source,set],i)=>create('XENO','HOTE','Hôte — '+name,{
- source,set,cost:1+i%3,health:300+(i%3)*170,attack:0,hostType,evolutionStage:'HOST',tags:['host','biological'],
+ source,set,cost:1+i%3,health:790+(i%3)*170,attack:0,keywords:['GUARD'],effect:{onPlay:{kind:'DRAW',count:1}},hostType,evolutionStage:'HOST',tags:['host','biological'],
  text:'Hôte biologique immobilisé : ne peut pas attaquer. À combiner avec un Facehugger pour la fusion parasitaire.'}));
 const chestByHost={HUMAN:[],QUAD:[],YAUTJA:[]};
 for(const [type,names] of Object.entries({
@@ -190,7 +190,7 @@ for(const [type,names] of Object.entries({
 })){
  for(let i=0;i<names.length;i++){
   chestByHost[type].push(create('XENO','CREATURE',names[i],{source:type==='YAUTJA'?'bio.xenomorph.predalien':'bio.xenomorph.chestburster',
-   set:type==='YAUTJA'?'AV04':'CW02',cost:2,attack:340+i*55,health:680+i*100,
+   set:type==='YAUTJA'?'AV04':'CW02',cost:2,attack:900+i*85,health:1470+i*150,keywords:['RUSH','ACID'],
    hostType:type,summonByFusion:true,evolutionStage:'CHESTBURSTER',tags:['hive','larva','fusion'],
    text:'Résultat de fusion : Facehugger + hôte '+type+'. Ne peut pas être joué directement ; invoqué depuis le deck ou la main par Fusion parasitaire.'}));
  }
@@ -201,15 +201,15 @@ for(const [t,name,source,set] of [
  ['QUAD','Runner de la couvée','bio.xenomorph.runner','F306'],
  ['YAUTJA','Predalien en croissance','bio.xenomorph.predalien','AV04']
 ]){
- adultByType[t]=create('XENO','CREATURE',name,{source,set,cost:3,attack:t==='YAUTJA'?870:650,
-  health:t==='YAUTJA'?1250:1070,evolutionStage:'DRONE',hostType:t,summonByFusion:true,keywords:['ACID','HIVE'],
+ adultByType[t]=create('XENO','CREATURE',name,{source,set,cost:3,attack:t==='YAUTJA'?1550:1200,
+  health:t==='YAUTJA'?2250:1900,evolutionStage:'DRONE',hostType:t,summonByFusion:true,keywords:['ACID','HIVE','REGEN'],
   text:'Résultat d’évolution : Chestburster '+t+' + mue accélérée. Coût en biomasse et extraction depuis le deck ou la main.'});
 }
 const praetorian=create('XENO','CREATURE','Prétorien de la gelée royale',{
- source:'bio.xenomorph.praetorian',set:'CW02',cost:5,attack:1350,health:1900,evolutionStage:'PRAETORIAN',
+ source:'bio.xenomorph.praetorian',set:'CW02',cost:5,attack:1750,health:2750,evolutionStage:'PRAETORIAN',
  summonByFusion:true,keywords:['ACID','HIVE','GUARD'],text:'Évolution royale d’un Drone ; nécessite la Gelée royale et des points de biomasse.'});
 const queen=create('XENO','CREATURE','Reine de la lignée incubée',{
- source:'bio.xenomorph.queen',set:'CW02',cost:8,attack:1950,health:2800,evolutionStage:'QUEEN',
+ source:'bio.xenomorph.queen',set:'CW02',cost:8,attack:2350,health:3500,evolutionStage:'QUEEN',
  summonByFusion:true,keywords:['ACID','HIVE','UNIQUE'],text:'Évolution suprême à partir du Prétorien ; résultat de la Couronne de résine.'});
 for(const type of Object.keys(chestByHost))for(let i=0;i<3;i++){
  create('XENO','EVOLUTION','Fusion parasitaire — '+type+' '+(i+1),{
