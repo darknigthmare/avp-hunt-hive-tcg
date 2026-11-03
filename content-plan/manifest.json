@@ -120,8 +120,8 @@
     }
   ],
   "implementation": {
-    "version": "1.2.0-wave2",
-    "status": "DRAFT_REQUIRES_QA",
+    "version": "1.2.1-decks",
+    "status": "DRAFT_CI_VALIDATED_EDITO_PENDING",
     "legacyPreserved": 158,
     "wave1Cards": 156,
     "wave2Cards": 342,
@@ -133,6 +133,14 @@
     "playableRarities": 7,
     "newArtCount": 0,
     "artRequirement": "Do not generate or edit illustrations for this wave",
-    "date": "2026-11-02"
+    "date": "2026-11-02",
+    "legacyTemplates": 70,
+    "productionDecks": 210,
+    "totalDeckPresetsPlayable": 280,
+    "playableDeckCardPositions": 15450,
+    "deckImportLimit": 32,
+    "liveDecksSource": "content-plan/decks-playable.csv",
+    "liveDecklistsSource": "content-plan/decklists-playable.csv",
+    "lastContentSync": "2026-11-03"
   }
 }

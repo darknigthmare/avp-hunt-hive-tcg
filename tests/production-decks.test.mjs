@@ -39,6 +39,8 @@ test('formats de boîtes : starter 45, structure 45, construction 75, spécial 5
     assert(E.validateDeck(p.cards,null,p.faction).valid,p.id);
     const analysis=E.analyzeDeck(p.cards,p.faction);
     assert.equal(analysis.total,30,p.id);
+    const early=Object.entries(p.cards).reduce((n,[id,q])=>{const c=E.CARD.get(id);return n+(c.type==='UNIT'&&!c.crewRequired&&c.cost<=2?q:0);},0);
+    assert(early>=5,p.id+' : courbe d’ouverture trop lente ('+early+')');
   }
   assert.equal(categories.STARTER,5);
   assert.equal(categories.STRUCTURE,25);

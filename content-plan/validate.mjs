@@ -19,6 +19,10 @@ function csv(name){
  const [headers,...data]=rows;return data.map(line=>Object.fromEntries(headers.map((h,i)=>[h,line[i]??''])));
 }
 const m=JSON.parse(readFileSync(join(dir,'manifest.json'),'utf8'));
+const liveDecks=csv('decks-playable.csv'),liveSlots=csv('decklists-playable.csv');
+assert.equal(liveDecks.length,m.implementation.totalDeckPresetsPlayable);
+assert.equal(liveSlots.length,m.implementation.playableDeckCardPositions);
+assert.equal(new Set(liveDecks.map(d=>d.DeckID)).size,liveDecks.length);
 const sets=csv('sets.csv'),prints=csv('printings.csv'),decks=csv('decks.csv'),lines=csv('decklists.csv');
 const offers=csv('products.csv'),legacy=csv('legacy-cards.csv'),sources=csv('alien-base-sources.csv'),rarities=csv('rarities.csv');
 const setMap=new Map(sets.map(s=>[s.Set,s])),cardMap=new Map(prints.filter(x=>x.ImpressionAlternative==='NON').map(x=>[x.GameplayCardID,x]));
