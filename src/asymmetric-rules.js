@@ -112,7 +112,7 @@ P.unitAttack=function(si,u,target=null){
 };
 P.deploymentError=function(si,c){
  if(c?.summonByFusion&&!this._asymmetricSummoning)return 'Cette caste doit être créée par fusion ou évolution.';
- if(c?.requiresEgg&&!this._asymmetricHatching){
+ if(c?.requiresEgg&&(this._asymmetricHatching===undefined||this._asymmetricHatching===null)){
    if(!this.side(si).board.some(u=>u&&isEgg(this.card(u.cardId))&&(c.eggLine!=='ROYAL'||this.card(u.cardId).eggLine==='ROYAL')))
      return 'Placez puis sacrifiez un Œuf compatible pour faire éclore le Facehugger.';
  }
