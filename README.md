@@ -98,3 +98,24 @@ L'export JSON contient aussi le duel suspendu. Un checkpoint corrompu est écart
 Le détail de récupération vérifiable figure dans [SOURCE_PROVENANCE.md](SOURCE_PROVENANCE.md). Le cadre du projet fan et l'origine des actifs sont précisés dans [FAN_PROJECT_NOTICE.md](FAN_PROJECT_NOTICE.md). La provenance, le contrat créatif et les contrôles des illustrations sont documentés dans [ARTWORK_PROVENANCE.md](ARTWORK_PROVENANCE.md).
 
 Alien, Predator et Alien vs. Predator appartiennent à leurs ayants droit respectifs. Leur mention sert uniquement à identifier l'univers auquel ce projet fan rend hommage.
+
+## Encyclopédie Alien_base — fédération v3
+
+Le jeu conserve **ses 158 cartes**, ses règles, ses boosters, sa campagne, ses illustrations et ses sauvegardes. La [PR #19 Alien_base](https://github.com/darknigthmare/alien_base/pull/19), empilée sur la [PR #18](https://github.com/darknigthmare/alien_base/pull/18), fournit un export public sûr du registre **v1 (68 dossiers)** et des **158 correspondances avec le registre v2 (632 entités)**.
+
+Dans le jeu, **Collection → Codex Alien_base** (ou l'onglet Archive sur ordinateur) permet de rechercher par catégorie et continuité, consulter les œuvres et les notes de référence. Les cartes associées restent des rapprochements à examiner, pas des identités biologiques automatiquement validées. Le détail des cartes présente aussi le statut des anciennes sources, neuf liens biologiques explicites, les archives v1 possibles et 28 rapprochements inter-jeux non certifiés.
+
+Un consommateur public embarque le snapshot autonome `src/alien-base.js` ; aucun jeton ni appel réseau au dépôt privé n'est nécessaire. Pour comparer une nouvelle version de la base, cloner les deux dépôts frères, se placer sur la branche fédérée Alien_base, puis exécuter :
+
+```bash
+node scripts/sync-alien-base-unified.mjs --base ../alien_base
+# Pour générer une version explicitement revue :
+node scripts/sync-alien-base-unified.mjs --base ../alien_base --publish
+npm run verify:release
+```
+
+Les fiches ne confèrent pas de cartes supplémentaires ni de droits de réutiliser des images sous licence. **Les 68 dossiers publics ne signifient pas que les 632 entités privées sont certifiées 1:1.** Les anciennes références Excel doivent encore être vérifiées individuellement.
+
+### Mise à jour Alien_base du 2 novembre 2026
+
+Les nouvelles PR du registre privé (#21–24) proposent 652 identités contre 632 dans notre branche fédérée. **Aucune carte n'est ajoutée automatiquement.** Le Codex comporte maintenant deux nouvelles sections de recherche hors ligne : 20 identités Yautja/Apex et 29 œuvres ou continuités Predator, avec trois alias historiques Alpha, Samurai et Viking et trois réserves biologiques (Royal Facehugger, Crusher, Offspring). Les six rapprochements nominaux entre personnages Apex et cartes TCG restent des propositions, y compris `Y_SCAR` ; l'alias Samurai vers `Y_SAMURAI` n'est pas une preuve d'identité universelle. Les 632 IDs de référence et 158 cartes jouables restent inchangés avant fusion des PR nouvelles.

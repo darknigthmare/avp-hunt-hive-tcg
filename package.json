@@ -13,13 +13,14 @@
     "prepare:art": "node scripts/prepare-art.mjs",
     "qa:browser": "node scripts/qa-browser.mjs",
     "test": "node --test tests/*.test.mjs",
-    "check": "node --check src/data.js && node --check src/art-manifest.js && node --check src/engine.js && node --check src/duel-save.js && node --check src/app.js && node --check sw.js && node --check scripts/generate-art-fidelity-map.mjs && node --check scripts/init-art-fidelity-wave.mjs && node --check scripts/validate-art-fidelity.mjs && node --check scripts/art-retry-queue.mjs && node --check scripts/review-art.mjs && node --check scripts/prepare-art.mjs && node --check scripts/art-public-files.mjs && node --check scripts/qa-browser.mjs",
+    "check": "node --check src/data.js && node --check src/alien-base.js && node --check src/art-manifest.js && node --check src/engine.js && node --check src/duel-save.js && node --check src/app.js && node --check sw.js && node --check scripts/generate-art-fidelity-map.mjs && node --check scripts/init-art-fidelity-wave.mjs && node --check scripts/validate-art-fidelity.mjs && node --check scripts/art-retry-queue.mjs && node --check scripts/review-art.mjs && node --check scripts/prepare-art.mjs && node --check scripts/art-public-files.mjs && node --check scripts/qa-browser.mjs && node --check scripts/sync-alien-base-unified.mjs && node --check scripts/check-alien-base-roundtrip.mjs",
     "balance": "node scripts/balance.mjs",
     "build": "node scripts/build.mjs",
     "verify:release": "npm run check && npm run validate:art-fidelity -- --contract-only && npm run generate:art-fidelity-map && npm test && npm run balance -- --seeds 1009,991009 --games-per-pair 100 --json --assert-release && npm run build",
     "vercel-build": "npm run check && npm run validate:art-fidelity -- --contract-only && npm run generate:art-fidelity-map && npm test && npm run build",
     "start": "node scripts/serve.mjs dist",
-    "dev": "node scripts/serve.mjs ."
+    "dev": "node scripts/serve.mjs .",
+    "check:alien-base": "node --test tests/alien-base.test.mjs"
   },
   "devDependencies": {
     "sharp": "0.35.4"

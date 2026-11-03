@@ -324,6 +324,89 @@ const PAGE_INSPECTION = `(() => {
   };
 })()`;
 
+function inspectCodexByCdp(cdp){
+ return evaluateByValue(cdp, `(async()=>{
+  const result={registry:false,catalogue:false,initialRows:0,filterWorked:false,detailOpened:false,linksPresent:false,weaponsMode:false,weaponsDetailOpen:false,leadsMode:false,leadsDetailOpen:false,apexMode:false,apexDetail:false,apexCardLink:false,apexCautions:false,mediaMode:false,mediaDetail:false,noHorizontalOverflow:false};
+  try{
+   const data=window.AVP_ALIEN_BASE;
+   result.registry=data?.registry?.v2===632&&Object.keys(data.byCardId||{}).length===158;
+   result.catalogue=data?.codex?.entries?.length===68;
+   const app=window.AVP_APP;
+   if(!app)return {...result,error:'AVP_APP missing'};
+   app.state.screen='archive';app.render();
+   result.initialRows=document.querySelectorAll('#app .alien-codex-record').length;
+   const select=document.querySelector('#app select[data-codex-filter="type"]');
+   if(!select)return {...result,error:'codex type select missing'};
+   select.value='weapon';select.dispatchEvent(new Event('change',{bubbles:true}));
+   const search=document.querySelector('#app input[data-codex-filter="query"]');
+   if(!search)return {...result,error:'codex search missing'};
+   search.value='M41A';search.dispatchEvent(new Event('input',{bubbles:true}));
+   await new Promise(resolve=>setTimeout(resolve,300));
+   const visible=[...document.querySelectorAll('#app .alien-codex-record h3')].map(el=>el.textContent.trim());
+   result.filterWorked=visible.length>0&&visible.every(name=>name.toLowerCase().includes('m41a'));
+   const open=document.querySelector('#app [data-action="codex-detail"]');
+   open?.click();
+   const modal=document.querySelector('#modal-root [role="dialog"]');
+   result.detailOpened=Boolean(modal?.textContent.includes('M41A')&&modal?.textContent.includes('Œuvres de référence'));
+   result.linksPresent=Boolean(modal?.querySelector('[data-action="view-card"][data-card-id="EQ_PULSE_RIFLE"]'));
+   modal?.querySelector('[data-action="close-modal"]')?.click();
+   document.querySelector('#app [data-action="codex-mode"][data-codex-mode="weapons"]')?.click();
+   result.weaponsMode=data.codex.researchWeapons.length===200 &&
+     app.state.codexFilters.mode==='weapons' &&
+     document.querySelectorAll('#app .alien-codex-record').length===18 &&
+     document.querySelector('#app .alien-codex')?.textContent.includes('200 entrées');
+   document.querySelector('#app [data-action="codex-research-detail"]')?.click();
+   const weaponModal=document.querySelector('#modal-root [role="dialog"]');
+   result.weaponsDetailOpen=Boolean(weaponModal?.textContent.includes('RECHERCHE') &&
+     weaponModal?.textContent.includes('Admis dans le TCG') &&
+     weaponModal?.textContent.includes('Non'));
+   weaponModal?.querySelector('[data-action="close-modal"]')?.click();
+   document.querySelector('#app [data-action="codex-mode"][data-codex-mode="leads"]')?.click();
+   result.leadsMode=data.codex.researchLeads.length===16 &&
+     app.state.codexFilters.mode==='leads' &&
+     document.querySelectorAll('#app .alien-codex-record').length===16;
+   document.querySelector('#app [data-action="codex-research-detail"]')?.click();
+   const leadModal=document.querySelector('#modal-root [role="dialog"]');
+   result.leadsDetailOpen=Boolean(leadModal?.textContent.includes('Dossier non certifié') &&
+     leadModal?.textContent.includes('Admis dans le TCG'));
+   leadModal?.querySelector('[data-action="close-modal"]')?.click();
+   document.querySelector('#app [data-action="codex-mode"][data-codex-mode="apex"]')?.click();
+   result.apexMode=app.state.codexFilters.mode==='apex' &&
+     data.codex.registryUpdates.newEntities.length===20 &&
+     data.codex.registryUpdates.candidateRegistryCount===652 &&
+     document.querySelectorAll('#app .alien-codex-record').length===18 &&
+     document.querySelector('#app .alien-codex')?.textContent.includes('20 dossiers');
+   result.apexCautions=Boolean(document.querySelector('#app .alien-codex-cautions')?.textContent.includes('Royal Facehugger') &&
+     document.querySelector('#app .alien-codex-cautions')?.textContent.includes('Crusher') &&
+     document.querySelector('#app .alien-codex-cautions')?.textContent.includes('Offspring'));
+   const apexSearch=document.querySelector('#app [data-codex-filter="query"]');
+   if(apexSearch){
+     apexSearch.value='Scar';
+     apexSearch.dispatchEvent(new Event('input',{bubbles:true}));
+     await new Promise(resolve=>setTimeout(resolve,310));
+   }
+   const apexNames=[...document.querySelectorAll('#app .alien-codex-record h3')].map(x=>x.textContent.trim());
+   document.querySelector('#app [data-action="codex-update-detail"]')?.click();
+   const apexModal=document.querySelector('#modal-root [role="dialog"]');
+   result.apexDetail=apexNames.includes('Scar Predator') && Boolean(apexModal?.textContent.includes('Scar Predator') &&
+     apexModal?.textContent.includes('NON JOUABLE'));
+   result.apexCardLink=Boolean(apexModal?.querySelector('[data-action="view-card"][data-card-id="Y_SCAR"]'));
+   apexModal?.querySelector('[data-action="close-modal"]')?.click();
+   document.querySelector('#app [data-action="codex-mode"][data-codex-mode="media"]')?.click();
+   result.mediaMode=app.state.codexFilters.mode==='media' &&
+     data.codex.registryUpdates.works.length===29 &&
+     document.querySelectorAll('#app .alien-codex-record').length===18 &&
+     document.querySelector('#app .alien-codex')?.textContent.includes('29 dossiers');
+   document.querySelector('#app [data-action="codex-update-detail"]')?.click();
+   const mediaModal=document.querySelector('#modal-root [role="dialog"]');
+   result.mediaDetail=Boolean(mediaModal?.textContent.includes('NON JOUABLE') &&
+     mediaModal?.textContent.includes('Fidélité visuelle 1:1'));
+   result.noHorizontalOverflow=document.documentElement.scrollWidth<=window.innerWidth+1;
+  }catch(error){result.error=String(error?.message||error)}
+  return result;
+ })()`);
+}
+
 function checksFor(inspection, diagnostics) {
   return {
     documentReady: inspection.readyState === 'complete',
@@ -367,6 +450,21 @@ async function inspectProfile(cdp, url, profile, outputPath, diagnostics) {
   });
   await writeFile(outputPath, Buffer.from(screenshot.data, 'base64'));
   const checks = checksFor(inspection, diagnostics);
+  inspection.codex = await inspectCodexByCdp(cdp);
+  checks.codexNavigation = inspection.codex.registry && inspection.codex.catalogue && inspection.codex.initialRows === 18;
+  checks.codexFiltering = inspection.codex.filterWorked;
+  checks.codexCardLinks = inspection.codex.detailOpened && inspection.codex.linksPresent;
+  checks.codexResearchWeapons = inspection.codex.weaponsMode && inspection.codex.weaponsDetailOpen;
+  checks.codexResearchLeads = inspection.codex.leadsMode && inspection.codex.leadsDetailOpen;
+  checks.codexApexPreview = inspection.codex.apexMode && inspection.codex.apexDetail && inspection.codex.apexCardLink && inspection.codex.apexCautions;
+  checks.codexWorksPreview = inspection.codex.mediaMode && inspection.codex.mediaDetail;
+  checks.codexResponsive = inspection.codex.noHorizontalOverflow;
+  checks.codexNoRuntimeErrors = diagnostics.exceptions.length === 0 && diagnostics.consoleErrors.length === 0 && diagnostics.severeLogs.length === 0;
+  const codexImage = resolve(`.qa-${profile.id}-codex.png`);
+  const codexScreenshot = await cdp.send('Page.captureScreenshot', {
+    format: 'png', fromSurface: true, captureBeyondViewport: false,
+  });
+  await writeFile(codexImage, Buffer.from(codexScreenshot.data,'base64'));
   return {
     id: profile.id,
     viewport: { width: profile.width, height: profile.height, mobile: profile.mobile },
@@ -375,6 +473,7 @@ async function inspectProfile(cdp, url, profile, outputPath, diagnostics) {
     inspection,
     diagnostics,
     screenshot: outputPath,
+    codexScreenshot: codexImage,
   };
 }
 
