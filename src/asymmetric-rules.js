@@ -299,5 +299,32 @@ P.applyEffectResolved=function(si,effect,ctx={}){
  }
  this.checkEnd();
 };
+// Contrôle des incompatibilités de munitions, fusions et ressources de chasse.
+const formerAnalyze=E.analyzeDeck;
+E.analyzeDeck=function(deck,identity){
+ const report=formerAnalyze(deck,identity);
+ const entries=Object.entries(deck||{}).flatMap(([id,n])=>Array.from({length:Number(n)||0},()=>D.cards.find(c=>c.id===id))).filter(Boolean);
+ const count=pred=>entries.filter(pred).length,notes=[];
+ const guns=entries.filter(c=>c.cardClass==='ARME'&&c.ammoType);
+ for(const calibre of new Set(guns.map(c=>c.ammoType))){
+  const required=guns.filter(c=>c.ammoType===calibre).length*2;
+  const available=entries.filter(c=>c.cardClass==='MUNITION'&&c.ammoType===calibre).reduce((n,c)=>n+c.rounds,0);
+  if(available<required)notes.push('Munitions '+calibre+' : '+available+'/'+required+' charges recommandées.');
+ }
+ if(count(c=>c.cardClass==='MODIFICATION')&&!guns.length)notes.push('Modules sans arme compatible.');
+ if(count(c=>c.effect?.kind==='HIVE_FUSION')){
+  if(!count(c=>c.cardClass==='OEUF'||c.id==='X_OVOMORPH'))notes.push('Il manque des Œufs.');
+  if(!count(c=>c.cardClass==='HOTE'))notes.push('Il manque des Hôtes.');
+  if(!count(c=>c.requiresEgg||c.id==='X_FACEHUGGER'))notes.push('Il manque des Facehuggers.');
+ }
+ if(count(c=>c.effect?.kind==='HIVE_EVOLVE')&&!count(c=>c.cardClass==='BIOMASSE'))
+  notes.push('Évolutions sans réserve de biomasse.');
+ if(count(c=>c.plasmaPerAttack)&&!count(c=>c.cardClass==='RESERVE_PLASMA'||c.effect?.kind==='CHARGE_PLASMA'))
+  notes.push('Armes plasma sans réserve énergétique.');
+ if(count(c=>c.cardClass==='HONNEUR')&&!count(c=>c.cardClass==='TROPHEE'||c.keywords?.includes('TROPHY')))
+  notes.push('Honneur sans chasseurs à trophées.');
+ report.asymmetric=notes;
+ return report;
+};
 D.asymmetricEdition.engineLoaded=true;
 })();
