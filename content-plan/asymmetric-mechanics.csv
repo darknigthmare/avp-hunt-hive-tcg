@@ -1,0 +1,17 @@
+FAMILLE,Sous-système,Type carte,Règle et contrôle,Coût,Statut
+HUMAN,Arme à feu,ARME,Le bonus ATK de l'arme n'est actif que si le Personnage détient des charges de son calibre.,1-2 charges/tir,JOUIABLE
+HUMAN,Énergie munitions,MUNITION,"Chargeur attaché au Personnage, consommé à chaque attaque ou attaque spéciale.",2-5 charges/carte,JOUIABLE
+HUMAN,Compatibilité,MUNITION,"Calibre 10MM, 12, Fuel, 9MM, Precision, Grenade, Cell ; vérifié contre l'arme.",Calibre exact,JOUIABLE
+HUMAN,Modules,MODIFICATION,"Une douille par socket (viseur, crosse, canon, chargeur), trois mods max, arme de famille compatible.",Énergie + module,JOUIABLE
+HUMAN,Attaques à munitions,ATTAQUE,Une arme équipée et des charges du calibre sont requises pour jouer l'attaque.,1-2 charges,JOUIABLE
+XENO,Incubation,OEUF,"Œuf inerte, non attaquant, peut être sacrifié pour faire éclore un Facehugger.",1 œuf sacrifié,JOUIABLE
+XENO,Fusion parasitaire,EVOLUTION,"Sacrifice Facehugger + Hôte biologique compatible, résultat Chestburster extrait du deck ou de la main.",Un Hôte et Facehugger,JOUIABLE
+XENO,Lignée d'hôte,HOTE,"Trois types : Humain, quadrupède, Yautja ; résultat propre à la lignée.",HostType exact,JOUIABLE
+XENO,Biomasse,BIOMASSE,"Ressource 0-12 générée par éclosion, fusion et cartes de ressources.",Points 1-3,JOUIABLE
+XENO,Mues,EVOLUTION,"Chestburster -> adulte -> Prétorien -> Reine selon carte, du deck/main et avec biomasse.",1-3 biomasses,JOUIABLE
+YAUTJA,Plasma,RESERVE_PLASMA,"Réserve 0-12, armes plasma ne font pas leurs dégâts bonus si insuffisante.",1-3 plasma/tir,JOUIABLE
+YAUTJA,Trophée,TROPHEE,Gagné lors de chasses ; un trophée en réserve autorise les cartes de rituel.,Trophées gagnés,JOUIABLE
+YAUTJA,Honneur,HONNEUR,"Ressource 0-12 gagnée par combats et rituels de clan, dépensée pour effets.",1-3 points,JOUIABLE
+YAUTJA,Honneur / combat,HONNEUR,"Rituels buffs, révélation camouflage, pioche ; aucun bonus de rareté.",Honneur suffisant,JOUIABLE
+TOUTES,Compatibilité v1,UNIT/TAC/EQUIP,"Les 158 cartes historiques, leurs IDs, statistiques et illustrations restent conservés.",Aucun changement,JOUIABLE
+TOUTES,Decks,ASYMMETRIC,"38 decks de 30 cartes et 15 alternatives, remélange avec synergies de ressources.",30+15,JOUIABLE
