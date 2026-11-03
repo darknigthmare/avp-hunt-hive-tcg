@@ -5,6 +5,7 @@ import { spawn } from 'node:child_process';
 import { basename, dirname, join, resolve } from 'node:path';
 import { tmpdir } from 'node:os';
 import { setTimeout as delay } from 'node:timers/promises';
+import { asymmetricBrowserScenarios } from './browser-asymmetric-scenarios.mjs';
 
 const DEFAULT_URL = 'http://127.0.0.1:4173';
 const EXPECTED_TITLE = 'AVP: HUNT // HIVE TCG';
@@ -367,6 +368,15 @@ async function inspectProfile(cdp, url, profile, outputPath, diagnostics) {
   });
   await writeFile(outputPath, Buffer.from(screenshot.data, 'base64'));
   const checks = checksFor(inspection, diagnostics);
+  const gameplay=await evaluateByValue(cdp,`(${asymmetricBrowserScenarios.toString()})()`);
+  checks.asymmetricGameplay=gameplay.passed;
+  const gameplayScreenshot=outputPath.replace(/\.png$/, '-gameplay.png');
+  const battleScreenshot=await cdp.send('Page.captureScreenshot',{format:'png',fromSurface:true,captureBeyondViewport:false});
+  await writeFile(gameplayScreenshot,Buffer.from(battleScreenshot.data,'base64'));
+  checks.noGameplayRuntimeExceptions=diagnostics.exceptions.length===0&&diagnostics.consoleErrors.length===0;
+  checks.noSevereLogs=diagnostics.severeLogs.length===0;
+  // The next viewport starts with onboarding rather than reusing this test profile.
+  await evaluateByValue(cdp,'localStorage.clear()');
   return {
     id: profile.id,
     viewport: { width: profile.width, height: profile.height, mobile: profile.mobile },
@@ -375,6 +385,8 @@ async function inspectProfile(cdp, url, profile, outputPath, diagnostics) {
     inspection,
     diagnostics,
     screenshot: outputPath,
+    gameplay,
+    gameplayScreenshot,
   };
 }
 

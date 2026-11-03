@@ -136,7 +136,7 @@ for(const [family,f] of Object.entries(families))for(let i=0;i<2;i++){
  const damage=i===0?450:650;
  create('HUMAN','ATTAQUE',technique+' — '+family.toUpperCase(),{
    source:f.source,set:family==='laser'?'RO09':family==='flame'?'IS08':'CW02',cost:1+i,
-   effect:{kind:'WEAPON_TECHNIQUE',target:'ENEMY_UNIT',ammoType:f.ammunition,ammoCost:1+i,damage},
+   effect:{kind:'WEAPON_TECHNIQUE',target:'ENEMY_UNIT',weaponFamily:family,ammoType:f.ammunition,ammoCost:1+i,damage},
    text:'Attaque spéciale : nécessite une arme '+family.toUpperCase()+' et '+(1+i)+' charge(s) de '+f.display+
     '. Dépense les charges et inflige '+damage+' dégâts à une unité ennemie.'});
 }
@@ -257,7 +257,7 @@ for(let i=0;i<hunterNames.length;i++){const [name,source,set]=hunterNames[i],cos
  create('YAUTJA','PERSONNAGE',name,{source,set,cost,attack:200+cost*190,health:550+cost*260,
  keywords:i%2===0?['HUNTER','TROPHY']:['CLOAK'],tags:['hunter','crew'],
  effect:{onPlay:i%3===0?{kind:'CHARGE_PLASMA',amount:1}:{kind:'GAIN_HONOR',amount:1}},
- text:'À l’arrivée, gagne '+(i%3===0?'1 charge de plasma':'1 point d’honneur')+'. Éliminer un adversaire au corps à corps rapporte de l’honneur.'});
+ text:'À l’arrivée, gagne '+(i%3===0?'1 charge de plasma':'1 point d’honneur')+'. Une élimination attribuée à ce chasseur rapporte 1 point d’honneur.'});
 }
 const plasmaWeapons=[
  ['Plasmacaster de campagne','item.yautja.plasma_caster',1,440,'HG03'],
@@ -303,7 +303,7 @@ for(let i=0;i<10;i++)create('YAUTJA','HONNEUR',[
  effect:i%3===0?{kind:'HONOR_BUFF',target:'FRIENDLY_UNIT',honorCost:1+i%2,attack:350+i*20,health:100}:
    i%3===1?{kind:'HONOR_DRAW',honorCost:2,count:2}:
    {kind:'HONOR_REVEAL',honorCost:1,amount:250},
- text:'Rituel d’honneur : dépense '+(i%3===1?2:1+i%2)+' honneur(s) pour '+(i%3===0?'fortifier un chasseur.':i%3===1?'piocher deux cartes.':'révéler le camouflage et gagner un bouclier.')});
+ text:'Rituel d’honneur : dépense '+(i%3===0?1+i%2:i%3===1?2:1)+' honneur(s) pour '+(i%3===0?'fortifier un chasseur.':i%3===1?'piocher deux cartes.':'révéler le camouflage et gagner un bouclier.')});
 for(let i=0;i<8;i++)create('YAUTJA','EQUIPEMENT',[
  'Bio-masque multi-spectre','Capteur de trophées','Blindage du Blooded','Lame d’honneur',
  'Module de traque','Récupérateur thermique','Bague des anciens','Écran énergétique'

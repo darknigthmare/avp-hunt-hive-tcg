@@ -20,13 +20,40 @@
   const fnv=s=>{let h=2166136261>>>0;for(const c of s){h^=c.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0;};
   function rng(seed){let state=seed>>>0||1;return()=>{state^=state<<13;state^=state>>>17;state^=state<<5;return(state>>>0)/4294967296;};}
   function shuffle(a,r){const arr=a.slice();for(let i=arr.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}
-  const registry=new Map(D.cards.map(c=>[c.id,c]));
+  // Une recette historique garde son catalogue de construction, même si une
+  // extension chargée ensuite ajoute des cartes nécessitant une autre doctrine.
+  const catalogueCards=D.cards.slice();
+  const registry=new Map(catalogueCards.map(c=>[c.id,c]));
   const total=map=>Object.values(map).reduce((a,n)=>a+n,0);
   const supports=c=>c.faction==='HYBRID'||c.faction==='NEUTRAL';
   function canUse(c,faction){return c.faction===faction||c.faction==='NEUTRAL';}
+  function legacyRemix(faction,seed,style){
+    const main={...D.createRemixedDeck(faction,seed,style)};
+    const added=Object.entries(main).filter(([id])=>!registry.has(id));
+    if(!added.length)return main;
+    const current=new Map(D.cards.map(c=>[c.id,c]));
+    const random=rng(fnv(faction+'|legacy-pool|'+seed+'|'+style));
+    for(const [id]of added)delete main[id];
+    for(const [id,quantity]of added){
+      const source=current.get(id);
+      const early=source?.type==='UNIT'&&!source.crewRequired&&source.cost<=2;
+      const pool=shuffle(catalogueCards.filter(c=>canUse(c,faction)&&c.type===source?.type
+        &&(!early||(c.cost<=2&&!c.crewRequired))),random).sort((a,b)=>
+          Number(b.cardClass===source.cardClass)-Number(a.cardClass===source.cardClass)
+          ||Math.abs(a.cost-source.cost)-Math.abs(b.cost-source.cost));
+      let remaining=quantity;
+      for(const c of pool){
+        const n=Math.min(remaining,D.rules.maxCopies-(main[c.id]||0));
+        if(n>0){main[c.id]=(main[c.id]||0)+n;remaining-=n;}
+        if(!remaining)break;
+      }
+      if(remaining)throw Error('Remplacement historique impossible '+faction+' / '+id);
+    }
+    return main;
+  }
   function blueprint(faction,setCode,style,seed){
-    const main={...D.createRemixedDeck(faction,seed,style%4)};
-    const focusCandidates=D.cards.filter(c=>c.set===setCode&&canUse(c,faction)&&c.cardClass!=='VEHICULE');
+    const main=legacyRemix(faction,seed,style%4);
+    const focusCandidates=catalogueCards.filter(c=>c.set===setCode&&canUse(c,faction)&&c.cardClass!=='VEHICULE');
     // Échanges par catégorie : préserver le nombre d'unités et de pilotes.
     const shuffled=shuffle(focusCandidates,rng(fnv(setCode+'|focus|'+seed)));
     let actualFocus=Object.entries(main).reduce((sum,[id,n])=>sum+(registry.get(id)?.set===setCode?n:0),0);
@@ -48,7 +75,7 @@
   }
   function reserveFor(faction,main,count,seed){
     const reserve={};
-    const list=shuffle(D.cards.filter(c=>canUse(c,faction)),rng(fnv(faction+'|side|'+seed)));
+    const list=shuffle(catalogueCards.filter(c=>canUse(c,faction)),rng(fnv(faction+'|side|'+seed)));
     const used=c=>(main[c.id]||0)+(reserve[c.id]||0);
     let current=0;
     // Un exemplaire par carte d'abord, plus de diversité avant les doublons.
@@ -96,7 +123,7 @@
       const shuffled=compose(set,group,fnv(preset.id+'|'+seed));
       return {cards:shuffled.cards,reserve:shuffled.reserve,focusCards:shuffled.focusCards};
     }
-    const cards=D.createRemixedDeck(preset.faction,seed,seed%4);
+    const cards=legacyRemix(preset.faction,seed,seed%4);
     const reserve=reserveFor(preset.faction,cards,15,seed+11);
     return {cards,reserve,focusCards:0};
   };

@@ -164,7 +164,9 @@
 
   function buildAiDeck(factions=['XENO'], difficulty=1, seed=1){
     const rng=U.rng(seed);
-    let pool=D.cards.filter(c=>allowedForIdentity(c,factions) && (c.set!=='PX00'||difficulty>=2.1));
+    // Dependency-bearing cards are assembled by the asymmetric doctrine builder.
+    // Generic mixed-faction/campaign decks must not pick an isolated fusion or ammo.
+    let pool=D.cards.filter(c=>allowedForIdentity(c,factions) && !c.tags?.includes('asymmetric') && (c.set!=='PX00'||difficulty>=2.1));
     if(!pool.length) pool=D.cards.filter(c=>c.faction==='XENO');
     // A Human assault deck needs a formation and equipment, not an unrelated
     // mixture of crews, situational quarantine cards and slow locations.

@@ -22,9 +22,45 @@ const clamp=(v,cap)=>Math.max(0,Math.min(cap,Number(v)||0));
 const rem=(s,id)=>{let idx=s.hand.indexOf(id);if(idx>=0){s.hand.splice(idx,1);return true;}idx=s.deck.indexOf(id);if(idx>=0){s.deck.splice(idx,1);return true;}return false;};
 const hasResult=(s,id)=>s.hand.includes(id)||s.deck.includes(id);
 const isAvailableAmmo=(u,type,amount)=>((u?.ammoPacks)||[]).reduce((n,p)=>n+(p.ammoType===type?p.remaining:0),0)>=amount;
-function findWeapon(b,u,type){
+const activeAmmoPacks=u=>(u?.ammoPacks||[]).filter(p=>p.remaining>0);
+function findWeapon(b,u,type,family=null){
  if(!u)return null;
- return (u.equipment||[]).map(id=>b.card(id)).find(c=>c?.slot==='WEAPON'&&c.ammoType===type);
+ return (u.equipment||[]).map(id=>b.card(id)).find(c=>c?.slot==='WEAPON'&&c.ammoType===type
+   &&(!family||c.weaponFamily===family));
+}
+function techniqueSource(b,si,effect){
+ return b.side(si).board.find(u=>u&&findWeapon(b,u,effect.ammoType,effect.weaponFamily)
+   &&isAvailableAmmo(u,effect.ammoType,effect.ammoCost));
+}
+function retireEmptyPacks(b,si,u){
+ if(!u)return;
+ const live=b.side(si).board.includes(u);
+ for(const pack of u.ammoPacks||[]){
+   if(pack.remaining>0)continue;
+   const idx=u.equipment.indexOf(pack.cardId);
+   if(idx>=0){
+     u.equipment.splice(idx,1);
+     // A destroyed carrier's equipment was already placed in the discard pile.
+     if(live)b.side(si).discard.push(pack.cardId);
+   }
+ }
+ u.ammoPacks=activeAmmoPacks(u);
+}
+function resultDeploymentError(b,si,effect,materialLanes){
+ const result=b.card(effect.resultCardId);
+ if(!result||result.type!=='UNIT'||!hasResult(b.side(si),result.id))return 'Résultat de fusion absent.';
+ // Evaluate the ordinary deployment restrictions after removing the materials,
+ // without mutating a live board during targeting or AI inspection.
+ const preview=Object.create(b),removed=new Set(materialLanes);
+ preview.side=index=>index===si
+   ?{...b.side(index),board:b.side(index).board.map((u,lane)=>removed.has(lane)?null:u)}
+   :b.side(index);
+ return older.deploymentError.call(preview,si,result);
+}
+function fusionHostLane(b,si,effect,faceLane){
+ return b.side(si).board.findIndex((u,lane)=>lane!==faceLane&&u
+   &&b.card(u.cardId).cardClass==='HOTE'&&b.card(u.cardId).hostType===effect.hostType
+   &&!b.has(u,'SYNTHETIC'));
 }
 function loadableWeapon(b,u,sideIndex){
  const s=b.side(sideIndex);
@@ -58,6 +94,7 @@ function spendShot(b,si,u,shot){
  const s=b.side(si);
  if(shot.kind==='AMMO')spendAmmo(u,shot.weapon.ammoType,shot.count);
  if(shot.kind==='PLASMA')s.plasma=clamp((s.plasma||0)-shot.count,12);
+ if(shot.kind==='AMMO')retireEmptyPacks(b,si,u);
  if(shot.kind==='AMMO'||shot.kind==='PLASMA')b.log(b.card(u.cardId).name+' consomme '+shot.count+' '+(shot.kind==='PLASMA'?'plasma':'munition(s)')+'.','EFFECT');
 }
 function stageTarget(b,sideIndex,effect){
@@ -65,15 +102,19 @@ function stageTarget(b,sideIndex,effect){
  if(effect.biomassCost>(s.biomass||0))return [];
  return s.board.map((u,i)=>{
    const c=u&&b.card(u.cardId);
-   return c&&stage(c)===effect.fromStage&&(!effect.hostType||c.hostType===effect.hostType)?{kind:'FRIENDLY_UNIT',lane:i}:null;
+   return c&&stage(c)===effect.fromStage&&(!effect.hostType||c.hostType===effect.hostType)
+     &&!resultDeploymentError(b,sideIndex,effect,[i])?{kind:'FRIENDLY_UNIT',lane:i}:null;
  }).filter(Boolean);
 }
 function fusionTarget(b,sideIndex,effect){
  const s=b.side(sideIndex);
  if(!hasResult(s,effect.resultCardId))return [];
- const hosts=s.board.some(u=>u&&b.card(u.cardId).cardClass==='HOTE'&&b.card(u.cardId).hostType===effect.hostType);
- if(!hosts)return [];
- return s.board.map((u,i)=>u&&stage(b.card(u.cardId))==='FACEHUGGER'?{kind:'FRIENDLY_UNIT',lane:i}:null).filter(Boolean);
+ return s.board.map((u,i)=>{
+   if(!u||stage(b.card(u.cardId))!=='FACEHUGGER')return null;
+   const hostLane=fusionHostLane(b,sideIndex,effect,i);
+   return hostLane>=0&&!resultDeploymentError(b,sideIndex,effect,[i,hostLane])
+     ?{kind:'FRIENDLY_UNIT',lane:i}:null;
+ }).filter(Boolean);
 }
 P.makeSide=function(...args){
  const s=older.makeSide.call(this,...args);
@@ -86,16 +127,15 @@ P.makeUnit=function(...args){
  return u;
 };
 P.allKeywords=function(u){
- const result=new Set(older.allKeywords.call(this,u));
  const side=u?.owner??0;
- for(const id of u?.equipment||[]){
-   const c=this.card(id);if(!c)continue;
-   if(c.slot==='WEAPON'&&c.ammoType&&!isAvailableAmmo(u,c.ammoType,c.ammoPerAttack||1))
-     for(const k of c.keywords||[])result.delete(k);
-   if(c.slot==='WEAPON'&&c.plasmaPerAttack&&(this.side(side)?.plasma||0)<c.plasmaPerAttack)
-     for(const k of c.keywords||[])result.delete(k);
- }
- return result;
+ const equipment=(u?.equipment||[]).filter(id=>{
+   const c=this.card(id);if(c?.slot!=='WEAPON')return true;
+   return (!c.ammoType||isAvailableAmmo(u,c.ammoType,c.ammoPerAttack||1))
+     &&(!c.plasmaPerAttack||(this.side(side)?.plasma||0)>=c.plasmaPerAttack);
+ });
+ // Ignore only the depleted weapon's contribution. An innate or independently
+ // granted copy of the same keyword must remain active.
+ return older.allKeywords.call(this,{...u,equipment});
 };
 P.unitAttack=function(si,u,target=null){
  let val=older.unitAttack.call(this,si,u,target);
@@ -133,7 +173,7 @@ P.validTargets=function(cardOrId,si){
  if(c.cardClass==='MUNITION')return s.board.map((u,lane)=>{
    const holder=u&&this.card(u.cardId);
    return holder&&holder.faction==='HUMAN'&&['PERSONNAGE','VEHICULE'].includes(holder.cardClass)
-      &&(u.ammoPacks||[]).length<6?{kind:'FRIENDLY_UNIT',lane}:null;
+      &&activeAmmoPacks(u).length<6?{kind:'FRIENDLY_UNIT',lane}:null;
  }).filter(Boolean);
  if(c.cardClass==='MODIFICATION')return s.board.map((u,lane)=>{
    if(!u)return null;
@@ -147,7 +187,7 @@ P.validTargets=function(cardOrId,si){
  if(c.effect?.kind==='HIVE_EVOLVE')return stageTarget(this,si,c.effect);
  if(c.effect?.kind==='WEAPON_TECHNIQUE'){
    const e=c.effect;
-   if(!s.board.some(u=>u&&findWeapon(this,u,e.ammoType)&&isAvailableAmmo(u,e.ammoType,e.ammoCost)))return [];
+   if(!techniqueSource(this,si,e))return [];
  }
  return older.validTargets.call(this,c,si);
 };
@@ -159,7 +199,7 @@ P.canPlay=function(si,handIndex){
    return {ok:false,reason:'Biomasse insuffisante ('+c.effect.biomassCost+' requise).'};
  if(c?.effect?.kind==='YAUTJA_TROPHY'&&s.trophies<(c.effect.minTrophies||1))
    return {ok:false,reason:'Obtenez un trophée en combattant pour activer ce rite.'};
- if(c?.effect?.kind==='WEAPON_TECHNIQUE'&&!s.board.some(u=>u&&findWeapon(this,u,c.effect.ammoType)&&isAvailableAmmo(u,c.effect.ammoType,c.effect.ammoCost)))
+ if(c?.effect?.kind==='WEAPON_TECHNIQUE'&&!techniqueSource(this,si,c.effect))
    return {ok:false,reason:'Arme équipée et munitions compatibles nécessaires.'};
  return older.canPlay.call(this,si,handIndex);
 };
@@ -172,6 +212,7 @@ P.playCardResolved=function(si,handIndex,target={kind:'NONE'}){
      return {ok:false,reason:'Œuf à sacrifier : cible invalide.'};
    const egg=this.side(si).board[target.lane];
    if(!egg||!isEgg(this.card(egg.cardId)))return {ok:false,reason:'Œuf absent.'};
+   this.side(si).discard.push(egg.cardId);
    this.destroyUnit(si,target.lane,{sacrifice:true,noDeath:true});
    this._asymmetricHatching=target.lane;
    try{
@@ -183,7 +224,7 @@ P.playCardResolved=function(si,handIndex,target={kind:'NONE'}){
  const result=older.playCardResolved.call(this,si,handIndex,target);
  if(result.ok&&c?.cardClass==='MUNITION'){
    const u=this.side(si).board[target.lane];
-   if(u){u.ammoPacks??=[];u.ammoPacks.push({cardId:c.id,ammoType:c.ammoType,remaining:c.rounds,ammoBonus:c.ammoBonus||0});this.notify();}
+   if(u){retireEmptyPacks(this,si,u);u.ammoPacks.push({cardId:c.id,ammoType:c.ammoType,remaining:c.rounds,ammoBonus:c.ammoBonus||0});this.notify();}
  }
  return result;
 };
@@ -244,7 +285,7 @@ P.aiScore=function(card,target={kind:'NONE'},si=1){
  return older.aiScore.call(this,card,target,si);
 };
 P.applyEffectResolved=function(si,effect,ctx={}){
- if(!effect)return older.applyEffectResolved.call(this,si,effect,ctx);
+ if(!effect||this.state.winner!==null)return older.applyEffectResolved.call(this,si,effect,ctx);
  const s=this.side(si),enemy=this.enemy(si),target=ctx.target;
  switch(effect.kind){
  case 'CHARGE_PLASMA':s.plasma=clamp((s.plasma||0)+(effect.amount||1),12);this.log(s.name+' charge son plasma : '+s.plasma+'/12.','EFFECT');break;
@@ -263,21 +304,23 @@ P.applyEffectResolved=function(si,effect,ctx={}){
    if(s.honor>=effect.honorCost){s.honor-=effect.honorCost;for(const u of enemy.board.filter(Boolean))u.cloaked=false;
      s.shield=Math.min(1200,s.shield+(effect.amount||0));}break;
  case 'WEAPON_TECHNIQUE':{
-   const eligible=s.board.find(u=>u&&findWeapon(this,u,effect.ammoType)&&isAvailableAmmo(u,effect.ammoType,effect.ammoCost));
-   if(eligible&&spendAmmo(eligible,effect.ammoType,effect.ammoCost)&&enemy.board[target?.lane]){
+   const eligible=techniqueSource(this,si,effect);
+   if(target?.kind==='ENEMY_UNIT'&&enemy.board[target.lane]&&eligible
+       &&spendAmmo(eligible,effect.ammoType,effect.ammoCost)){
+     retireEmptyPacks(this,si,eligible);
      this.damageUnit(1-si,target.lane,effect.damage||0,{kind:'TECHNIQUE',unit:eligible,sourceSide:si});
    }break;
  }
  case 'HIVE_FUSION':{
    const u=s.board[target?.lane],c=u&&this.card(u.cardId);
-   const hostLane=s.board.findIndex((x,i)=>i!==target?.lane&&x&&this.card(x.cardId).cardClass==='HOTE'&&this.card(x.cardId).hostType===effect.hostType);
-   if(!u||stage(c)!=='FACEHUGGER'||hostLane<0||!hasResult(s,effect.resultCardId))break;
+   if(!fusionTarget(this,si,effect).some(t=>t.lane===target?.lane&&t.kind===target?.kind))break;
+   const hostLane=fusionHostLane(this,si,effect,target.lane);
    const host=s.board[hostLane];
    const lane=target.lane;
+   if(!rem(s,effect.resultCardId))break;
    s.discard.push(c.id,this.card(host.cardId).id);
    this.destroyUnit(si,hostLane,{sacrifice:true,noDeath:true});
    this.destroyUnit(si,lane,{sacrifice:true,noDeath:true});
-   if(!rem(s,effect.resultCardId))break;
    this.summonAt(si,effect.resultCardId,lane,{fromFusion:true});
    s.biomass=clamp((s.biomass||0)+(effect.biomassGain||1),12);
    this.log('Fusion : un hôte '+effect.hostType+' donne naissance à '+this.card(effect.resultCardId).name+'.','EFFECT');
@@ -285,12 +328,11 @@ P.applyEffectResolved=function(si,effect,ctx={}){
  }
  case 'HIVE_EVOLVE':{
    const u=s.board[target?.lane],c=u&&this.card(u.cardId);
-   if(!u||stage(c)!==effect.fromStage||(s.biomass||0)<effect.biomassCost
-       ||effect.hostType&&c.hostType!==effect.hostType||!hasResult(s,effect.resultCardId))break;
+   if(!stageTarget(this,si,effect).some(t=>t.lane===target?.lane&&t.kind===target?.kind))break;
    const lane=target.lane;
+   if(!rem(s,effect.resultCardId))break;
    s.biomass-=effect.biomassCost;s.discard.push(c.id);
    this.destroyUnit(si,lane,{sacrifice:true,noDeath:true});
-   if(!rem(s,effect.resultCardId))break;
    this.summonAt(si,effect.resultCardId,lane,{fromFusion:true});
    this.log('Évolution : '+c.name+' devient '+this.card(effect.resultCardId).name+'.','EFFECT');
    break;
@@ -303,21 +345,40 @@ P.applyEffectResolved=function(si,effect,ctx={}){
 const formerAnalyze=E.analyzeDeck;
 E.analyzeDeck=function(deck,identity){
  const report=formerAnalyze(deck,identity);
- const entries=Object.entries(deck||{}).flatMap(([id,n])=>Array.from({length:Number(n)||0},()=>D.cards.find(c=>c.id===id))).filter(Boolean);
+ const entries=Object.entries(deck||{}).flatMap(([id,n])=>Array.from({length:Number.isSafeInteger(n)&&n>0?Math.min(n,3):0},()=>E.CARD.get(id))).filter(Boolean);
  const count=pred=>entries.filter(pred).length,notes=[];
+ const ids=new Set(entries.map(c=>c.id)),unique=[...new Map(entries.map(c=>[c.id,c])).values()];
+ const weapons=entries.filter(c=>c.cardClass==='ARME');
  const guns=entries.filter(c=>c.cardClass==='ARME'&&c.ammoType);
  for(const calibre of new Set(guns.map(c=>c.ammoType))){
   const required=guns.filter(c=>c.ammoType===calibre).length*2;
   const available=entries.filter(c=>c.cardClass==='MUNITION'&&c.ammoType===calibre).reduce((n,c)=>n+c.rounds,0);
   if(available<required)notes.push('Munitions '+calibre+' : '+available+'/'+required+' charges recommandées.');
  }
- if(count(c=>c.cardClass==='MODIFICATION')&&!guns.length)notes.push('Modules sans arme compatible.');
+ for(const mod of unique.filter(c=>c.cardClass==='MODIFICATION'))
+   if(!weapons.some(w=>mod.compatibleFamilies.includes(w.weaponFamily)))
+     notes.push(mod.name+' : module sans arme de famille compatible.');
+ for(const technique of unique.filter(c=>c.effect?.kind==='WEAPON_TECHNIQUE')){
+   const e=technique.effect;
+   if(!guns.some(w=>w.ammoType===e.ammoType&&(!e.weaponFamily||w.weaponFamily===e.weaponFamily)))
+     notes.push(technique.name+' : arme compatible manquante'+(e.weaponFamily?' ('+e.weaponFamily.toUpperCase()+')':'')+'.');
+ }
  if(count(c=>c.effect?.kind==='HIVE_FUSION')){
   if(!count(c=>c.cardClass==='OEUF'||c.id==='X_OVOMORPH'))notes.push('Il manque des Œufs.');
   if(!count(c=>c.cardClass==='HOTE'))notes.push('Il manque des Hôtes.');
   if(!count(c=>c.requiresEgg||c.id==='X_FACEHUGGER'))notes.push('Il manque des Facehuggers.');
  }
- if(count(c=>c.effect?.kind==='HIVE_EVOLVE')&&!count(c=>c.cardClass==='BIOMASSE'))
+ for(const c of unique.filter(c=>['HIVE_FUSION','HIVE_EVOLVE'].includes(c.effect?.kind))){
+   const e=c.effect;
+   if(!ids.has(e.resultCardId))notes.push(c.name+' : résultat absent du deck ('+(E.CARD.get(e.resultCardId)?.name||e.resultCardId)+').');
+   if(e.kind==='HIVE_FUSION'&&!count(h=>h.cardClass==='HOTE'&&h.hostType===e.hostType))
+     notes.push(c.name+' : hôte '+e.hostType+' manquant.');
+   if(e.kind==='HIVE_EVOLVE'&&!count(h=>stage(h)===e.fromStage&&(!e.hostType||h.hostType===e.hostType)))
+     notes.push(c.name+' : stade '+e.fromStage+(e.hostType?' / '+e.hostType:'')+' manquant.');
+ }
+ if(count(c=>c.requiresEgg&&c.eggLine==='ROYAL')&&!count(c=>isEgg(c)&&c.eggLine==='ROYAL'))
+   notes.push('Facehugger royal : Œuf royal manquant.');
+ if(count(c=>c.effect?.kind==='HIVE_EVOLVE')&&!count(c=>c.cardClass==='BIOMASSE'||c.requiresEgg||c.effect?.kind==='HIVE_FUSION'))
   notes.push('Évolutions sans réserve de biomasse.');
  if(count(c=>c.plasmaPerAttack)&&!count(c=>c.cardClass==='RESERVE_PLASMA'||c.effect?.kind==='CHARGE_PLASMA'))
   notes.push('Armes plasma sans réserve énergétique.');
@@ -325,6 +386,20 @@ E.analyzeDeck=function(deck,identity){
   notes.push('Honneur sans chasseurs à trophées.');
  report.asymmetric=notes;
  return report;
+};
+// Build complete, deterministic doctrines rather than independently sampling
+// resources, recipes and unplayable fusion results for the three major factions.
+const formerBuildAiDeck=E.buildAiDeck;
+E.buildAiDeck=function(factions=['XENO'],difficulty=1,seed=1){
+ const faction=Array.isArray(factions)&&factions.length===1?factions[0]:null;
+ const pool=['HUMAN','XENO','YAUTJA'].includes(faction)
+   ?(D.asymmetricDecks||[]).filter(p=>p.faction===faction):[];
+ if(pool.length&&typeof D.remixPresetDeck==='function'){
+   const random=E.U.rng(seed),preset=pool[Math.floor(random()*pool.length)];
+   const recipe=D.remixPresetDeck(preset,(Number(seed)||1)^E.U.hash(faction));
+   if(recipe&&E.validateDeck(recipe.cards,null,faction).valid)return {...recipe.cards};
+ }
+ return formerBuildAiDeck(factions,difficulty,seed);
 };
 D.asymmetricEdition.engineLoaded=true;
 })();

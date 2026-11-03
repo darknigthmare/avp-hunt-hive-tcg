@@ -12,8 +12,8 @@
     "review:art": "node scripts/review-art.mjs",
     "prepare:art": "node scripts/prepare-art.mjs",
     "qa:browser": "node scripts/qa-browser.mjs",
-    "test": "node --test tests/*.test.mjs",
-    "check": "node --check src/data.js && node --check src/expansion.js && node --check src/expansion-wave2.js && node --check src/deck-productions.js && node --check src/asymmetric-cards.js && node --check src/asymmetric-decks.js && node --check src/art-manifest.js && node --check src/engine.js && node --check src/asymmetric-rules.js && node --check src/duel-save.js && node --check src/app.js && node --check sw.js && node --check scripts/generate-art-fidelity-map.mjs && node --check scripts/init-art-fidelity-wave.mjs && node --check scripts/validate-art-fidelity.mjs && node --check scripts/art-retry-queue.mjs && node --check scripts/review-art.mjs && node --check scripts/prepare-art.mjs && node --check scripts/art-public-files.mjs && node --check scripts/qa-browser.mjs && node --check scripts/sync-production-decks.mjs",
+    "test": "node --test --test-concurrency=2 tests/*.test.mjs",
+    "check": "node --check src/data.js && node --check src/expansion.js && node --check src/expansion-wave2.js && node --check src/deck-productions.js && node --check src/asymmetric-cards.js && node --check src/asymmetric-decks.js && node --check src/art-manifest.js && node --check src/engine.js && node --check src/asymmetric-rules.js && node --check src/duel-save.js && node --check src/app.js && node --check sw.js && node --check scripts/generate-art-fidelity-map.mjs && node --check scripts/init-art-fidelity-wave.mjs && node --check scripts/validate-art-fidelity.mjs && node --check scripts/art-retry-queue.mjs && node --check scripts/review-art.mjs && node --check scripts/prepare-art.mjs && node --check scripts/art-public-files.mjs && node --check scripts/qa-browser.mjs && node --check scripts/sync-production-decks.mjs && node --check scripts/qa-asymmetric.mjs && node --check scripts/browser-asymmetric-scenarios.mjs && node --check scripts/sync-asymmetric-content.mjs",
     "balance": "node scripts/balance.mjs",
     "build": "node scripts/build.mjs",
     "verify:release": "npm run check && npm run validate:art-fidelity -- --contract-only && npm run generate:art-fidelity-map && npm test && npm run balance -- --seeds 1009,991009 --games-per-pair 100 --json --assert-release && npm run build",
@@ -26,7 +26,9 @@
     "qa:balance-wave2": "node scripts/balance-wave2.mjs --games-per-pair=2",
     "test:production-decks": "node --test tests/production-decks.test.mjs",
     "check:playable-decks": "node scripts/sync-production-decks.mjs --check",
-    "test:asymmetric": "node --test tests/asymmetric-gameplay.test.mjs"
+    "test:asymmetric": "node --test tests/asymmetric*.test.mjs",
+    "check:asymmetric-content": "node scripts/sync-asymmetric-content.mjs --check",
+    "qa:asymmetric": "node scripts/qa-asymmetric.mjs"
   },
   "devDependencies": {
     "sharp": "0.35.4"

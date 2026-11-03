@@ -1,4 +1,4 @@
-name: AVP TCG – gameplay wave 1 QA
+name: AVP TCG – catalogue et gameplay asymétrique
 
 on:
   pull_request:
@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
           cache: npm
       - name: Install locked dependencies
         run: npm ci
@@ -39,10 +39,21 @@ jobs:
         run: npm run validate:content-plan
       - name: Live production-deck export matches runtime
         run: npm run check:playable-decks
+      - name: Asymmetric card and deck exports match runtime
+        run: npm run check:asymmetric-content
       - name: Stress-test AI across five factions and 70 decks
         run: npm run qa:balance-wave2
+      - name: Full doctrine duels and deterministic checkpoint continuations
+        run: node scripts/qa-asymmetric.mjs --out=asymmetric-qa.json
       - name: Immutable historical art and production build
         run: npm run build
+      - name: Preserve asymmetric QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: avp-asymmetric-qa
+          path: asymmetric-qa.json
+          if-no-files-found: ignore
 
   browser:
     needs: gameplay
@@ -52,7 +63,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
           cache: npm
       - name: Install dependencies, build and start local production
         run: |
@@ -65,7 +76,7 @@ jobs:
           done
           cat /tmp/avp-gameplay-server.log
           exit 1
-      - name: Browser desktop/mobile smoke
+      - name: Browser desktop/mobile gameplay and pause/resume
         run: node scripts/qa-browser.mjs http://127.0.0.1:4173
       - name: Upload QA screenshots/logs
         if: always()
