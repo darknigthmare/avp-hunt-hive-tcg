@@ -280,17 +280,17 @@
     const identities=Object.entries(D.factions).filter(([id])=>id!=='NEUTRAL');
     return shell(`${screenHead('LABORATOIRE TACTIQUE','Constructeur de decks','30 cartes, trois exemplaires maximum. Votre faction et les cartes Neutres définissent l’identité du deck.',`<button class="btn" data-action="new-deck">＋ Nouveau deck</button><button class="btn secondary" data-action="set-active-deck" ${check.valid?'':'disabled'}>Activer</button>`)}
       <section class="panel pad" aria-label="Decks de structure et remélange" style="margin-bottom:16px">
-        <div class="eyebrow">${(D.expansionDecks||[]).length} DECKS DE STRUCTURE ET VARIANTES • 30 JOUABLES + 15 ALTERNATIVES</div>
+        <div class="eyebrow">${(D.expansionDecks||[]).length} DECKS PRÉCONSTRUITS • 30 JOUABLES + RÉSERVE 15 / 20 / 45</div>
         <div class="row" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px">
           <label class="field" style="flex:2;min-width:190px">
             <select id="expansion-deck-preset" aria-label="Choisir un deck préconstruit">
-              ${Object.entries(D.factions).filter(([id])=>id!=='NEUTRAL').map(([id,f])=>`<optgroup label="${esc(f.name)}">${(D.expansionDecks||[]).filter(p=>p.faction===id).map(p=>`<option value="${esc(p.id)}">${esc(p.name)}${p.focus?' • '+p.focus:''}</option>`).join('')}</optgroup>`).join('')}
+              ${Object.entries(D.factions).filter(([id])=>id!=='NEUTRAL').map(([id,f])=>`<optgroup label="${esc(f.name)}">${(D.expansionDecks||[]).filter(p=>p.faction===id).map(p=>`<option value="${esc(p.id)}">${p.category?'['+p.category+'] ':''}${esc(p.name)}${p.focus?' • '+p.focus:''} (${p.boxCount||45} cartes)</option>`).join('')}</optgroup>`).join('')}
             </select>
           </label>
           <button class="btn secondary" data-action="import-expansion-deck">Ajouter le deck + réserve</button>
           <button class="btn" data-action="remix-expansion-deck">Remélanger dans un nouveau deck</button>
         </div>
-        <p class="subtle" style="font-size:12px;margin-top:8px">L'importation donne les exemplaires nécessaires au deck de démonstration et ses 15 cartes alternatives, sans supprimer vos collections ni vos decks existants. Limite : ${MAX_SAVED_DECKS} decks sauvegardés. Les listes ne sont jamais remplacées par un remélange.</p>
+        <p class="subtle" style="font-size:12px;margin-top:8px">Les Starter, Structure et Ligue incluent 15 alternatives, les decks spéciaux 20 et les kits de construction 45. Les anciennes listes ne sont jamais supprimées. Limite : ${MAX_SAVED_DECKS} decks sauvegardés. Les listes ne sont jamais remplacées par un remélange.</p>
       </section>
       <div class="deck-layout"><aside class="panel pad deck-sidebar" aria-label="Sélection des decks"><div class="eyebrow">MES DECKS</div><div class="deck-tabs" style="margin-top:12px">${Store.data.decks.map(d=>`<button class="deck-tab ${d.id===deck?.id?'active':''}" data-action="select-deck" data-id="${d.id}"><b>${d.id===Store.data.activeDeckId?'● ':''}${esc(d.name)}</b><span>${deckIdentity(d).symbol} ${esc(deckIdentity(d).name)} • ${deckTotal(d)}/30</span></button>`).join('')||'<p class="subtle">Aucun deck.</p>'}</div>
       ${deck?`<label class="field identity-select">Identité<select data-action="deck-identity" aria-label="Identité du deck">${identity.id==='MIXED'?'<option value="MIXED">Ancienne coalition — à convertir</option>':''}${identities.map(([id,f])=>`<option value="${id}" ${deck.faction===id?'selected':''}>${esc(f.name)}</option>`).join('')}</select></label><button class="btn small block" style="margin-top:12px" data-action="rename-deck">Renommer</button><button class="btn small block" style="margin-top:7px" data-action="auto-fill-deck">Compléter automatiquement</button>`:''}</aside>
@@ -442,12 +442,15 @@
     const id=document.getElementById('expansion-deck-preset')?.value;
     const preset=(D.expansionDecks||[]).find(p=>p.id===id);
     if(!preset){toast('Choisissez un modèle de deck.','bad');return;}
-    const chosen=remix&&typeof D.createRemixedDeck==='function'
-      ?D.createRemixedDeck(preset.faction,Date.now()^U.hash(preset.id),Store.data.decks.length%4)
-      :preset.cards;
+    const produced=remix&&typeof D.remixPresetDeck==='function'
+      ?D.remixPresetDeck(preset,Date.now()^U.hash(preset.id))
+      :{cards:preset.cards,reserve:preset.reserve||{}};
+    if(!produced){toast('Le modèle remélangé est indisponible.','bad');return;}
+    const chosen=produced.cards,reserve=produced.reserve||{};
     const result=E.validateDeck(chosen,null,preset.faction);
     if(!result.valid){toast('Deck proposé invalide : '+result.errors[0],'bad');return;}
-    const reserve=remix?{}:(preset.reserve||{});
+    const reserveCount=Object.values(reserve).reduce((a,b)=>a+b,0);
+    if(reserveCount!==(preset.boxCount||45)-30){toast('Réserve incohérente : import annulé.','bad');return;}
     // Only add copies to the collection; never delete or mutate previous decks.
     for(const [cardId,n] of Object.entries(chosen)){
       const extra=Math.max(0,Number(reserve[cardId])||0);
@@ -459,7 +462,7 @@
       cards:U.clone(chosen),createdAt:new Date().toISOString()};
     Store.data.decks.push(deck);state.selectedDeckId=deck.id;state.deckFilters.type='ALL';
     Store.save();AudioSys.cue('rare');render();
-    toast(remix?'Nouveau mélange sauvegardé sans remplacer les autres decks.':preset.name+' importé avec sa réserve de 15 cartes.','good');
+    toast((remix?'Nouveau mélange':'Deck '+preset.name)+' enregistré, avec '+reserveCount+' alternatives.','good');
   }
 
   function changeDeckIdentity(id){
