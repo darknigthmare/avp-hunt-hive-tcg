@@ -194,5 +194,5 @@ test('PWA charge les vagues dans l ordre et ne remplace pas le contrat d illustr
   assert(sw.includes('/src/expansion-wave2.js'));
   assert(allow.includes('src/expansion-wave2.js'));
   assert(build.includes('const expectedCardCount = 158;'));
-  assert(build.includes('live.cards.length!==656'));
+  assert(build.includes('live.cards.length!==891'));
 });

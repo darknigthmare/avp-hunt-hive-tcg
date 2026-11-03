@@ -21,7 +21,7 @@
     if(v.auraHealth!==undefined)out.auraHealth=integer(v.auraHealth,-1000000);
     out.granted=list(v.granted,64,keyword);out.tempGranted=list(v.tempGranted,64,keyword);
     out.equipment=list(v.equipment,100,id=>card(id,'EQUIPMENT'));
-    out.ammoPacks=v.ammoPacks===undefined?[]:list(v.ammoPacks,16,rawPack=>{
+    if(v.ammoPacks!==undefined)out.ammoPacks=list(v.ammoPacks,16,rawPack=>{
       const pack=record(rawPack),id=card(pack.cardId,'EQUIPMENT'),src=E.CARD.get(id);
       if(src.cardClass!=='MUNITION'||src.ammoType!==pack.ammoType)fail();
       if(pack.ammoBonus!==undefined&&pack.ammoBonus!==src.ammoBonus)fail();
@@ -31,7 +31,7 @@
     const equippedAmmo=out.equipment.filter(id=>E.CARD.get(id).cardClass==='MUNITION');
     const matches=new Map();
     for(const id of equippedAmmo)matches.set(id,(matches.get(id)||0)+1);
-    for(const pack of out.ammoPacks){
+    for(const pack of out.ammoPacks||[]){
       const rem=matches.get(pack.cardId)||0;if(!rem)fail();matches.set(pack.cardId,rem-1);
     }
     if([...matches.values()].some(n=>n!==0))fail();
@@ -44,7 +44,7 @@
     if(out.isAI!==(index===1))fail();
     for(const key of ['life','maxLife','shield','energy','maxEnergy','nextEnergy','trophies','totalTrophies','fatigue','cardsPlayed','unitsLost','turnsStarted'])out[key]=integer(v[key]);
     for(const resource of ['biomass','plasma','honor'])
-      out[resource]=v[resource]===undefined?0:integer(v[resource],0,12);
+      if(v[resource]!==undefined)out[resource]=integer(v[resource],0,12);
     if(out.life<1||out.life>out.maxLife||out.maxEnergy>D.rules.maxEnergy)fail();
     for(const key of ['deck','hand','discard'])out[key]=list(v[key],500,id=>card(id));
     out.board=list(v.board,3,u=>u===null?null:unit(u,index,ids));if(out.board.length!==3)fail();

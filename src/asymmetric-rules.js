@@ -153,9 +153,9 @@ P.validTargets=function(cardOrId,si){
 };
 P.canPlay=function(si,handIndex){
  const s=this.side(si),c=this.card(s.hand[handIndex]);
- if(c?.effect?.honorCost&&s.honor<c.effect.honorCost)
+ if(c?.effect?.honorCost&&(s.honor||0)<c.effect.honorCost)
    return {ok:false,reason:'Honneur insuffisant ('+c.effect.honorCost+' requis).'};
- if(c?.effect?.biomassCost&&s.biomass<c.effect.biomassCost)
+ if(c?.effect?.biomassCost&&(s.biomass||0)<c.effect.biomassCost)
    return {ok:false,reason:'Biomasse insuffisante ('+c.effect.biomassCost+' requise).'};
  if(c?.effect?.kind==='YAUTJA_TROPHY'&&s.trophies<(c.effect.minTrophies||1))
    return {ok:false,reason:'Obtenez un trophée en combattant pour activer ce rite.'};
@@ -285,7 +285,7 @@ P.applyEffectResolved=function(si,effect,ctx={}){
  }
  case 'HIVE_EVOLVE':{
    const u=s.board[target?.lane],c=u&&this.card(u.cardId);
-   if(!u||stage(c)!==effect.fromStage||s.biomass<effect.biomassCost
+   if(!u||stage(c)!==effect.fromStage||(s.biomass||0)<effect.biomassCost
        ||effect.hostType&&c.hostType!==effect.hostType||!hasResult(s,effect.resultCardId))break;
    const lane=target.lane;
    s.biomass-=effect.biomassCost;s.discard.push(c.id);

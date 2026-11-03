@@ -101,5 +101,5 @@ test('l’application, le build et le worker chargent les 210 recettes sans nouv
   for(const item of [sw,server,build])assert(item.includes('deck-productions.js'));
   assert(app.includes('D.remixPresetDeck'));
   assert(app.includes('reserveCount'));
-  assert(build.includes('live.expansionDecks?.length!==280'));
+  assert(build.includes('live.expansionDecks?.length!==318'));
 });

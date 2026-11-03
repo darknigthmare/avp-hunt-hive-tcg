@@ -156,11 +156,11 @@ if(live.cards.length!==891||live.expansion?.addedCount!==156||live.expansionWave
   ||live.asymmetricEdition?.addedCount!==235||live.asymmetricEdition?.specializedDecks!==38
   ||live.boosters?.length!==19
   ||live.expansionDecks?.length!==318||live.productionDeckStatus?.added!==210
-  ||new Set(live.cards.map(c=>c.id)).size!==656
+  ||new Set(live.cards.map(c=>c.id)).size!==891
   ||new Set(live.cards.slice(158).map(c=>c.sourceEntityId)).size!==494
   ||live.expansionDecks.some(p=>Object.values(p.cards).reduce((a,b)=>a+b,0)!==30
     ||Object.values(p.reserve).reduce((a,b)=>a+b,0)!==p.boxCount-30)){
-  throw new Error('Playable two-wave catalogue has an invalid inventory or 30+15 deck template.');
+  throw new Error('Playable asymmetric catalogue has an invalid card, booster or 30+reserve deck inventory.');
 }
 const expectedDistribution = Object.freeze({
   cards: cardIds.length,
