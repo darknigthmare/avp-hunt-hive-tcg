@@ -1,0 +1,93 @@
+name: AVP TCG – catalogue et gameplay asymétrique
+
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'scripts/**'
+      - 'index.html'
+      - 'sw.js'
+      - 'package*.json'
+      - 'content-plan/**'
+      - '.github/workflows/tcg-gameplay-wave-qa.yml'
+  push:
+    branches:
+      - 'codex/tcg-30-collections-alienbase-20261102'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gameplay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Syntax validation including expansion
+        run: npm run check
+      - name: Unit/integration regression suite
+        run: npm test
+      - name: Content-plan integrity
+        run: npm run validate:content-plan
+      - name: Live production-deck export matches runtime
+        run: npm run check:playable-decks
+      - name: Asymmetric card and deck exports match runtime
+        run: npm run check:asymmetric-content
+      - name: Excel catalogue matches runtime, CSV sources and rule modules
+        run: python3 scripts/verify-catalogue-xlsx.py
+      - name: Stress-test AI across five factions and 70 decks
+        run: npm run qa:balance-wave2
+      - name: Full doctrine duels and deterministic checkpoint continuations
+        run: node scripts/qa-asymmetric.mjs --out=asymmetric-qa.json
+      - name: Immutable historical art and production build
+        run: npm run build
+      - name: Preserve asymmetric QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: avp-asymmetric-qa
+          path: asymmetric-qa.json
+          if-no-files-found: ignore
+
+  browser:
+    needs: gameplay
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install dependencies, build and start local production
+        run: |
+          npm ci
+          npm run build
+          node scripts/serve.mjs dist > /tmp/avp-gameplay-server.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:4173/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/avp-gameplay-server.log
+          exit 1
+      - name: Browser desktop/mobile gameplay and pause/resume
+        run: node scripts/qa-browser.mjs http://127.0.0.1:4173
+      - name: Upload QA screenshots/logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: avp-tcg-gameplay-qa
+          path: |
+            .qa-*.png
+            /tmp/avp-gameplay-server.log
+          include-hidden-files: true
+          if-no-files-found: ignore
+          retention-days: 7

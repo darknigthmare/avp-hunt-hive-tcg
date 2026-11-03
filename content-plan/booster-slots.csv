@@ -1,0 +1,14 @@
+Gamme,Slots,RaretéGarantie,CartesParSlot,Composition,Note
+CORE,1-7,C,7,7 communes,Plan
+CORE,8,R,1,1 rare,Plan
+CORE,9,FOIL,1,1 foil pondérée,Plan
+THEME,1-5,C,5,5 communes,Plan
+THEME,6,R,1,1 rare,Plan
+THEME,7,FOIL,1,1 foil pondérée,Plan
+LEGEND,1-3,C,3,3 communes,Plan
+LEGEND,4,R,1,1 rare,Plan
+LEGEND,5,FOIL,1,1 foil Ghost possible,Plan
+BUILD,1-6,R,6,6 rares,Plan
+BUILD,7,FOIL,1,1 foil,Plan
+COLLECTOR,1-4,SR+,4,4 foils,Plan
+COLLECTOR,5,UR+,1,1 premium,Plan

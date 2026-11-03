@@ -60,6 +60,36 @@
     return {valid:errors.length===0,errors,total};
   }
 
+  function analyzeDeck(deckMap, identity=null){
+    // Non-destructive recommendations: existing decks and saves remain intact.
+    const validation=validateDeck(deckMap,null,identity),classes={},costs={low:0,mid:0,high:0};
+    let units=0,pilots=0,vehicles=0,weapons=0,equipment=0,actions=0,locations=0;
+    for(const [id,count] of Object.entries(deckMap||{})){
+      const c=CARD.get(id);if(!c||!Number.isSafeInteger(count)||count<=0)continue;
+      const kind=c.cardClass||({UNIT:'PERSONNAGE',TACTIC:'ACTION',EQUIPMENT:'EQUIPEMENT',LOCATION:'LIEU'}[c.type])||c.type;
+      classes[kind]=(classes[kind]||0)+count;
+      if(c.type==='UNIT')units+=count;
+      if(kind==='PERSONNAGE')pilots+=count;
+      if(c.crewRequired)vehicles+=count;
+      if(kind==='ARME')weapons+=count;
+      if(c.type==='EQUIPMENT')equipment+=count;
+      if(c.type==='TACTIC')actions+=count;
+      if(c.type==='LOCATION')locations+=count;
+      costs[c.cost<=2?'low':c.cost<=4?'mid':'high']+=count;
+    }
+    const warnings=[];
+    if(vehicles>pilots)warnings.push('Prévoir au moins 1 Personnage pilote par Véhicule ('+pilots+'/'+vehicles+').');
+    if(costs.low<5)warnings.push('Courbe de départ fragile : moins de 5 cartes coûtant 2 énergie ou moins.');
+    if(units<10)warnings.push('Moins de 10 unités : risque de voies vides.');
+    if(equipment>units)warnings.push('Davantage d’Armes/Équipements que de porteurs potentiels.');
+    if(actions<3)warnings.push('Très peu d’Actions pour répondre aux menaces.');
+    if(locations>4)warnings.push('Beaucoup de Lieux : un seul est actif à la fois.');
+    if(costs.high>11)warnings.push('Nombreuses cartes à 5 énergie et plus : démarrage lent.');
+    return {valid:validation.valid,total:validation.total,classes,curve:costs,
+      pilots,vehicles,weapons,equipment,actions,locations,warnings,
+      advice:warnings.length?warnings[0]:'Composition équilibrée : adaptez-la à votre tactique.'};
+  }
+
   function rarityRoll(minRank, rng, pity=0){
     let weights;
     if(minRank<=1) weights=[['C',67],['R',26],['SR',5.4],['UR',1.3],['SCR',.25],['PR',.045],['GR',.005]];
@@ -82,15 +112,51 @@
   }
 
   function openBooster(packId, opts={}){
-    const pack=D.boosters.find(p=>p.id===packId); if(!pack) throw new Error('Booster inconnu');
-    const seed=opts.seed ?? (Date.now()^U.hash(packId)); const rng=U.rng(seed);
-    const pity=opts.pity||0; const used=new Set(); const pulls=[];
-    for(let i=0;i<9;i++){
-      const minRank=i<6?1:2;
-      let rarity=rarityRoll(minRank,rng,i===8?pity:0);
-      if(i===8 && pity>=9 && RANK[rarity]<4) rarity='UR';
-      const card=pickCardFromSet(pack.set,rarity,rng,used,i===8&&pity>=9?4:minRank); used.add(card.id);
-      pulls.push({cardId:card.id,foil:i===8 || (i>5&&rng()<.22),slot:i,rolledRarity:rarity});
+    const pack=D.boosters.find(p=>p.id===packId);if(!pack)throw new Error('Booster inconnu');
+    const seed=opts.seed ?? (Date.now()^U.hash(packId)),rng=U.rng(seed);
+    const pity=opts.pity||0,used=new Set(),pulls=[];
+    // Preserve the original 9-card release algorithm byte-for-byte in behavior.
+    // The new 5/7/9-card set previews use local rarity slots only.
+    if(!pack.preview){
+      for(let i=0;i<9;i++){
+        const minRank=i<6?1:2;
+        let rarity=rarityRoll(minRank,rng,i===8?pity:0);
+        if(i===8&&pity>=9&&RANK[rarity]<4)rarity='UR';
+        const card=pickCardFromSet(pack.set,rarity,rng,used,i===8&&pity>=9?4:minRank);
+        used.add(card.id);pulls.push({cardId:card.id,foil:i===8||(i>5&&rng()<.22),slot:i,rolledRarity:rarity});
+      }
+    }else{
+      const length=pack.cardsPerBooster;
+      if(![5,7,9].includes(length))throw new Error('Format de booster non pris en charge');
+      const pool=D.cards.filter(c=>c.set===pack.set
+        &&(!pack.poolTag||c.tags?.includes(pack.poolTag))
+        &&(!pack.primaryFaction||c.faction===pack.primaryFaction));
+      if(pool.length<length)throw new Error('Pool de booster insuffisant : '+pack.set);
+      const rank=c=>RANK[c.rarity]||0;
+      const choose=(lower,upper=99)=>{
+        let candidates=pool.filter(c=>!used.has(c.id)&&rank(c)>=lower&&rank(c)<=upper);
+        if(!candidates.length)candidates=pool.filter(c=>!used.has(c.id)&&rank(c)>=lower);
+        if(!candidates.length)candidates=pool.filter(c=>!used.has(c.id));
+        if(!candidates.length)candidates=pool.filter(c=>rank(c)>=lower);
+        if(!candidates.length)throw new Error('Pool sans carte sélectionnable');
+        const card=U.choice(candidates,rng);used.add(card.id);
+        pulls.push({cardId:card.id,foil:rank(card)>=3,slot:pulls.length,rolledRarity:card.rarity});
+      };
+      const premium=pack.profile==='collector'||pack.profile==='construction';
+      for(let i=0;i<length;i++){
+        const last=i===length-1;
+        const penultimate=i===length-2;
+        const minRank=last?(pity>=9?4:3):premium?(pack.profile==='collector'?3:2):penultimate?2:1;
+        choose(minRank,last?99:premium?99:Math.max(minRank,1));
+      }
+      // Guarantee the pity slot in the same set, even after using a unique UR in a prior slot.
+      if(pity>=9&&Math.max(...pulls.map(p=>RANK[CARD.get(p.cardId).rarity]))<4){
+        const high=pool.filter(c=>rank(c)>=4).sort((a,b)=>rank(a)-rank(b));
+        if(!high.length)throw new Error('Aucune UR locale pour la protection de malchance');
+        const replacement=U.choice(high,rng);
+        const last=pulls[pulls.length-1];
+        last.cardId=replacement.id;last.rolledRarity=replacement.rarity;last.foil=true;
+      }
     }
     pulls.sort((a,b)=>RANK[CARD.get(a.cardId).rarity]-RANK[CARD.get(b.cardId).rarity]);
     return {pack,seed,pulls,bestRank:Math.max(...pulls.map(p=>RANK[CARD.get(p.cardId).rarity]))};
@@ -98,7 +164,9 @@
 
   function buildAiDeck(factions=['XENO'], difficulty=1, seed=1){
     const rng=U.rng(seed);
-    let pool=D.cards.filter(c=>allowedForIdentity(c,factions) && (c.set!=='PX00'||difficulty>=2.1));
+    // Dependency-bearing cards are assembled by the asymmetric doctrine builder.
+    // Generic mixed-faction/campaign decks must not pick an isolated fusion or ammo.
+    let pool=D.cards.filter(c=>allowedForIdentity(c,factions) && !c.tags?.includes('asymmetric') && (c.set!=='PX00'||difficulty>=2.1));
     if(!pool.length) pool=D.cards.filter(c=>c.faction==='XENO');
     // A Human assault deck needs a formation and equipment, not an unrelated
     // mixture of crews, situational quarantine cards and slow locations.
@@ -151,7 +219,18 @@
         if(take){deck[donor]-=take;if(!deck[donor])delete deck[donor];deck.T_AVP_ALLIANCE=(deck.T_AVP_ALLIANCE||0)+take;needed-=take;}
         if(!needed)break;
       }
-      if(needed)throw new Error('Hybrid AI tactic package is incomplete.');
+      // New hybrid cards enlarge the pool; maintain the original 3 Alliance
+      // guarantee without requiring all three old donor tactics to be drawn.
+      if(needed){
+        const replaceable=Object.keys(deck).filter(id=>id!=='T_AVP_ALLIANCE'&&id!=='L_AURIGA');
+        for(const id of replaceable){
+          if(!needed)break;
+          const count=Math.min(needed,deck[id]);
+          deck[id]-=count;if(!deck[id])delete deck[id];
+          deck.T_AVP_ALLIANCE=(deck.T_AVP_ALLIANCE||0)+count;needed-=count;
+        }
+      }
+      if(needed)throw new Error('Hybrid AI cannot be normalized.');
     }
     return deck;
   }
@@ -183,7 +262,7 @@
     side(i){return this.state.sides[i];}
     enemy(i){return this.state.sides[1-i];}
     locationLocked(sideIndex){return this.side(sideIndex).board.some(u=>u&&this.card(u.cardId).effect?.aura?.kind==='LOCK_LOCATION');}
-    isOffensiveTactic(card){if(card?.type!=='TACTIC')return false;const k=card.effect?.kind;return card.effect?.target==='ENEMY_UNIT'||['DAMAGE_TARGET','TRANSFORM_DAMAGED','EXECUTE','STUN_TARGET','DAMAGE_LANE','STUN_ALL_DAMAGED','SILENCE_FACTION','DEBUFF_ALL','DAMAGE_ALL','DAMAGE_ALL_HEROES','DAMAGE_STRONGEST','DAMAGE_FACTION','DAMAGE_DEBUFFED'].includes(k);}
+    isOffensiveTactic(card){if(card?.type!=='TACTIC')return false;const k=card.effect?.kind;return card.effect?.target==='ENEMY_UNIT'||['DAMAGE_TARGET','TRANSFORM_DAMAGED','EXECUTE','STUN_TARGET','DAMAGE_LANE','STUN_ALL_DAMAGED','SILENCE_FACTION','DEBUFF_ALL','DAMAGE_ALL','DAMAGE_ALL_HEROES','DAMAGE_STRONGEST','DAMAGE_FACTION','DAMAGE_DEBUFFED','DAMAGE_ALL_ENEMY_UNITS','ARMOR_BREAK'].includes(k);}
 
     ensureOpeningPlayable(sideIndex){
       const s=this.side(sideIndex);
@@ -209,6 +288,17 @@
       const c=this.card(cardId); const kws=new Set(c.keywords||[]);
       return {uid:U.uid('unit'),cardId,owner:sideIndex,currentHealth:c.health,attackBonus:0,healthBonus:0,tempAttack:0,granted:this.modifiers.includes('trophyRush')&&sideIndex===1?['TROPHY']:[],tempGranted:[],equipment:[],ready:kws.has('RUSH'),attacked:false,cloaked:kws.has('CLOAK'),armorUsed:false,stunned:0,debuffed:false,kills:0,mutated:false,mutations:[],rebornUsed:false,forced:false,tacticShieldUsed:false};
     }
+    hasCrew(sideIndex,vehicleCard,vehicleUnit=null){
+      // A single living Personnage is assigned to at most one vehicle.
+      // The order of occupied lanes gives a stable assignment for old checkpoints.
+      const board=this.side(sideIndex).board;
+      const pilots=board.filter(u=>u&&this.card(u.cardId).cardClass==='PERSONNAGE'
+        &&this.isFaction(u,vehicleCard.faction));
+      const vehicles=board.filter(u=>u&&this.card(u.cardId).crewRequired
+        &&this.isFaction(u,vehicleCard.faction));
+      if(vehicleUnit)return vehicles.indexOf(vehicleUnit)>=0&&vehicles.indexOf(vehicleUnit)<pilots.length;
+      return vehicles.length<pilots.length;
+    }
     allKeywords(u){const set=new Set(this.card(u.cardId).keywords||[]);for(const k of u.granted||[])set.add(k);for(const k of u.tempGranted||[])set.add(k);for(const eqId of u.equipment||[])for(const k of this.card(eqId).keywords||[])set.add(k);return set;}
     has(u,k){return !!u&&this.allKeywords(u).has(k);}
     factionsOf(u){const c=this.card(u.cardId);return new Set([c.faction,...(c.effect?.dualFaction||[]),...(u.extraFactions||[])]);}
@@ -224,6 +314,9 @@
       if(side.location?.cardId==='L_HADLEYS_HOPE'&&this.card(u.cardId).tags.includes('uscm'))val+=200;
       if(side.location?.cardId==='L_PROTO_LAB'&&(this.isFaction(u,'HUMAN')||this.isFaction(u,'YAUTJA')))val+=200;
       if(side.location?.cardId==='L_XENO_HIVE'&&this.has(u,'HIVE'))val+=100;
+      const location=side.location&&this.card(side.location.cardId)?.effect?.locationBuff;
+      if(location&&this.isFaction(u,location.faction))val+=location.health||0;
+      if(this.card(u.cardId).crewRequired&&this.hasCrew(sideIndex,this.card(u.cardId),u))val+=200;
       return Math.max(1,val);
     }
     syncHealthAuras(){
@@ -245,10 +338,13 @@
         }while(casualties.length);
       }finally{this.syncingHealthAuras=false;}
     }
-    unitAttack(sideIndex,u,target=null){
+    unitAttack(sideIndex,u,target=null,unclamped=false){
       const c=this.card(u.cardId);let val=c.attack+(u.attackBonus||0)+(u.tempAttack||0);
       for(const e of u.equipment)val+=this.card(e).attack||0;
       const side=this.side(sideIndex);
+      const field=side.location&&this.card(side.location.cardId)?.effect?.locationBuff;
+      if(field&&this.isFaction(u,field.faction))val+=field.attack||0;
+      if(c.crewRequired&&this.hasCrew(sideIndex,c,u))val+=200;
       if(this.has(u,'SQUAD')) val+=side.board.filter(x=>x&&x.uid!==u.uid&&this.isFaction(x,'HUMAN')).length*250;
       for(const ally of side.board.filter(Boolean)){
         const aura=this.card(ally.cardId).effect?.aura;
@@ -266,7 +362,7 @@
       }
       if(target&&this.has(u,'HUNTER')&&this.card(target.cardId).attack>c.attack)val+=300;
       if(target&&c.effect?.lowHealthAttack&&u.currentHealth<=1000)val+=c.effect.lowHealthAttack;
-      return Math.max(0,Math.round(val));
+      return unclamped?val:Math.max(0,Math.round(val));
     }
     effectiveCost(sideIndex,card){
       const s=this.side(sideIndex);let cost=card.cost;
@@ -285,6 +381,7 @@
     deploymentError(sideIndex,card){
       if(!card||card.type!=='UNIT')return 'Seules les unités peuvent être invoquées.';
       const allies=this.side(sideIndex).board.filter(Boolean);
+      if(card.crewRequired&&!this.hasCrew(sideIndex,card))return 'Véhicule : déployez d’abord un Personnage pilote de cette faction.';
       if(card.keywords.includes('UNIQUE')&&allies.some(u=>u.cardId===card.id))return 'Cette unité Unique est déjà en jeu.';
       if(allies.some(u=>{const other=this.card(u.cardId);return (card.effect?.exclusiveTag&&other.tags.includes(card.effect.exclusiveTag))||(other.effect?.exclusiveTag&&card.tags.includes(other.effect.exclusiveTag));}))return 'Une royauté incompatible est déjà en jeu.';
       return null;
@@ -294,10 +391,24 @@
       if(!c)return out;
       if(c.type==='UNIT'){if(this.deploymentError(sideIndex,c))return out;for(let lane=0;lane<3;lane++)if(!s.board[lane])out.push({kind:'FRIENDLY_LANE',lane});return out;}
       if(c.type==='LOCATION')return [{kind:'NONE'}];
-      if(c.type==='EQUIPMENT'){for(let lane=0;lane<3;lane++)if(s.board[lane]&&(!c.effect?.requiresFaction||this.isFaction(s.board[lane],c.effect.requiresFaction)))out.push({kind:'FRIENDLY_UNIT',lane});return out;}
+      if(c.type==='EQUIPMENT'){
+        for(let lane=0;lane<3;lane++){
+          const wearer=s.board[lane];if(!wearer)continue;
+          if(c.effect?.requiresFaction&&!this.isFaction(wearer,c.effect.requiresFaction))continue;
+          if(c.tags?.includes('asymmetric')&&c.slot==='WEAPON'&&(!this.isFaction(wearer,c.faction)||!['PERSONNAGE','VEHICULE'].includes(this.card(wearer.cardId).cardClass)))continue;
+          // The new dedicated weapon slot is separate from 1.0.0 equipment.
+          if(c.slot==='WEAPON'&&wearer.equipment.some(id=>this.card(id)?.slot==='WEAPON'))continue;
+          out.push({kind:'FRIENDLY_UNIT',lane});
+        }
+        return out;
+      }
       const target=c.effect?.target;
       if(!target)return [{kind:'NONE'}];
-      if(target==='FRIENDLY_UNIT')for(let lane=0;lane<3;lane++)if(s.board[lane])out.push({kind:'FRIENDLY_UNIT',lane});
+      if(target==='FRIENDLY_UNIT')for(let lane=0;lane<3;lane++)if(s.board[lane]){
+        if(c.effect?.kind==='REPOSITION'&&s.board.every(Boolean))continue;
+        if(c.effect?.kind==='REPAIR_UNIT'&&s.board[lane].currentHealth>=this.unitMaxHealth(sideIndex,s.board[lane]))continue;
+        out.push({kind:'FRIENDLY_UNIT',lane});
+      }
       if(target==='ENEMY_UNIT')for(let lane=0;lane<3;lane++)if(e.board[lane]&&(!e.board[lane].cloaked||c.effect.kind==='REVEAL_AND_BUFF'||this.canSeeCloak(sideIndex,e.board[lane]))){
         if(c.effect.kind==='EXECUTE'&&e.board[lane].currentHealth>c.effect.threshold)continue;
         if(c.effect.kind==='TRANSFORM_DAMAGED'&&(this.has(e.board[lane],'SYNTHETIC')||e.board[lane].currentHealth>=this.unitMaxHealth(1-sideIndex,e.board[lane])))continue;
@@ -413,6 +524,50 @@
         case 'HYBRIDIZE': if(friendly()){this.buffUnit(sideIndex,lane,effect.attack||0,effect.health||0,[]);u.extraFactions=[...(u.extraFactions||[]),'HYBRID'];}break;
         case 'DAMAGE_RANDOM_ENEMY': {const lanes=enemy.board.map((x,i)=>x?i:null).filter(x=>x!==null);if(lanes.length)this.damageUnit(1-sideIndex,U.choice(lanes,this.rng),effect.amount,ctx);else this.damageHero(1-sideIndex,effect.amount,ctx);break;}
         case 'NEXT_ENERGY': s.nextEnergy+=(effect.amount||1);break;
+        case 'REPAIR_SELF': {
+          if(ctx.unit&&s.board.includes(ctx.unit)){
+            ctx.unit.currentHealth=Math.min(this.unitMaxHealth(sideIndex,ctx.unit),ctx.unit.currentHealth+(effect.amount||0));
+          }
+          break;
+        }
+        case 'REPAIR_UNIT': {
+          if(friendly())u.currentHealth=Math.min(this.unitMaxHealth(sideIndex,u),u.currentHealth+(effect.amount||0));
+          break;
+        }
+        case 'REPOSITION': {
+          if(friendly()){
+            const free=s.board.findIndex(x=>!x);
+            if(free>=0&&free!==lane){
+              s.board[free]=u;s.board[lane]=null;
+              this.log(this.card(u.cardId).name+' change de voie.','EFFECT');
+            }
+          }
+          break;
+        }
+        case 'SCAN_REVEAL': {
+          for(const x of enemy.board.filter(Boolean))x.cloaked=false;
+          if(effect.draw)this.draw(sideIndex,effect.draw);
+          break;
+        }
+        case 'SUPPLY_SEARCH': {
+          this.searchDeck(sideIndex,c=>c.type==='EQUIPMENT'&&c.cost<=(effect.maxCost||10));
+          break;
+        }
+        case 'FORTIFY': {
+          s.shield=Math.min(1200,s.shield+(effect.amount||0));
+          break;
+        }
+        case 'ARMOR_BREAK': {
+          if(hostile()){
+            u.armorUsed=true;
+            this.damageUnit(1-sideIndex,lane,effect.amount||0,{...ctx,noMutation:true});
+          }
+          break;
+        }
+        case 'DAMAGE_ALL_ENEMY_UNITS': {
+          for(let i=0;i<3;i++)if(enemy.board[i])this.damageUnit(1-sideIndex,i,effect.amount||0,ctx);
+          break;
+        }
       }
       this.checkEnd();
     }
@@ -438,7 +593,8 @@
       this.syncHealthAuras();
       const s=this.side(sideIndex),u=s.board[lane];if(!u)return 0;let dmg=Math.max(0,Math.round(amount));
       const pathogen=this.isPathogen(ctx);if(pathogen&&this.has(u,'SYNTHETIC'))return 0;
-      if(dmg>0&&this.has(u,'ARMOR')&&!u.armorUsed){dmg=Math.max(0,dmg-400);u.armorUsed=true;}
+      if(dmg>0&&this.has(u,'ARMOR')&&!u.armorUsed
+         &&!(ctx.unit&&this.has(ctx.unit,'PIERCING'))){dmg=Math.max(0,dmg-400);u.armorUsed=true;}
       u.currentHealth-=dmg;if(dmg>0){u.cloaked=false;if(pathogen&&!ctx.noMutation)this.applyMutation(sideIndex,u);}
       const c=this.card(u.cardId);if(dmg>0&&c.effect?.onDamaged?.kind==='DEBUFF_SELF')u.attackBonus-=c.effect.onDamaged.attack||0;
       if(u.currentHealth<=0)this.destroyUnit(sideIndex,lane,{sourceSide:ctx.sourceSide,sourceUnit:ctx.unit});
@@ -461,7 +617,7 @@
       finally{this.resolvingDeaths=false;}
     }
     resolveDeath({sideIndex,lane,ctx,s,u,c}){
-      if(ctx.sourceUnit){ctx.sourceUnit.kills=(ctx.sourceUnit.kills||0)+1;if(this.has(ctx.sourceUnit,'TROPHY'))this.gainTrophy(ctx.sourceUnit.owner);const killEffect=this.card(ctx.sourceUnit.cardId).effect?.onKill;if(killEffect?.kind==='DRAW_IF_FACTION'&&this.isFaction(u,killEffect.faction))this.draw(ctx.sourceUnit.owner,killEffect.count||1);}
+      if(ctx.sourceUnit&&ctx.sourceUnit.owner===1-sideIndex&&!ctx.sacrifice&&!ctx.transform&&!ctx.noDeath){ctx.sourceUnit.kills=(ctx.sourceUnit.kills||0)+1;if(this.has(ctx.sourceUnit,'TROPHY'))this.gainTrophy(ctx.sourceUnit.owner);const killEffect=this.card(ctx.sourceUnit.cardId).effect?.onKill;if(killEffect?.kind==='DRAW_IF_FACTION'&&this.isFaction(u,killEffect.faction))this.draw(ctx.sourceUnit.owner,killEffect.count||1);}
       if(s.location?.cardId==='L_SEVASTOPOL'&&this.has(u,'SYNTHETIC'))this.draw(sideIndex,1);
       if(s.location?.cardId==='L_GUNNISON'||this.modifiers.includes('deathPing'))this.damageHero(sideIndex,100,{kind:'DEATH_PING'});
       if(!ctx.noDeath){
@@ -474,6 +630,7 @@
     gainTrophy(sideIndex){const s=this.side(sideIndex);s.trophies++;s.totalTrophies++;this.log(`${s.name} gagne un Trophée (${s.trophies}).`,'TROPHY');for(let lane=0;lane<3;lane++){const u=s.board[lane],fx=u&&this.card(u.cardId).effect?.onTrophy;if(fx?.kind==='BUFF_SELF')this.buffUnit(sideIndex,lane,fx.attack||0,fx.health||0,fx.grant||[]);}if(s.trophies%2===0)this.draw(sideIndex,1);if(s.location?.cardId==='L_PRESERVE')this.healHero(sideIndex,200);}
     legalAttacks(sideIndex,lane){
       const s=this.side(sideIndex),e=this.enemy(sideIndex),u=s.board[lane];if(!u||!u.ready||u.attacked||u.stunned>0||u.stunBlocked||this.state.active!==sideIndex||this.state.winner!==null)return [];
+      if(this.card(u.cardId).crewRequired&&!this.hasCrew(sideIndex,this.card(u.cardId),u))return [];
       const targets=[];const flying=this.has(u,'FLYING');
       for(let i=0;i<3;i++){if(!e.board[i])continue;if(!flying&&i!==lane)continue;if(e.board[i].cloaked&&!this.canSeeCloak(sideIndex,e.board[i]))continue;targets.push({kind:'UNIT',lane:i});}
       const guards=e.board.map((x,i)=>x&&this.has(x,'GUARD')?i:null).filter(i=>i!==null);
@@ -515,6 +672,8 @@
       if(!first)this.draw(sideIndex,1);
       if(s.location?.cardId==='L_DERELICT'&&s.hand.length<6)s.hand.push('X_OVOMORPH');
       if(s.location?.cardId==='L_YAUTJA_SHIP')this.healHero(sideIndex,s.board.filter(u=>u&&this.isFaction(u,'YAUTJA')).length*150);
+      const upkeep=s.location&&this.card(s.location.cardId)?.effect?.locationUpkeep;
+      if(upkeep?.heal)this.healHero(sideIndex,upkeep.heal);
       for(let lane=0;lane<3;lane++){const u=s.board[lane];if(u)this.applyEffect(sideIndex,this.card(u.cardId).effect?.turnStart,{lane,unit:u,card:this.card(u.cardId)});}
       if(this.modifiers.includes('pathogen'))for(let i=0;i<3;i++){const u=s.board[i];if(u&&!this.has(u,'SYNTHETIC')){u.attackBonus-=100;u.debuffed=true;u.permanentDebuffed=true;}}
       if(this.modifiers.includes('enemyBrood')&&sideIndex===1&&this.state.round%2===0)this.summonFirstFree(1,'X_FACEHUGGER');
@@ -543,9 +702,9 @@
       const allies=s.board.filter(Boolean),enemies=e.board.filter(Boolean);
       const unit=target?.kind==='FRIENDLY_UNIT'?s.board[target.lane]:e.board[target?.lane];
       const value=(si,u)=>u?1+this.card(u.cardId).cost+(this.unitAttack(si,u)+Math.max(0,u.currentHealth))/1800+u.equipment.length*.6:0;
-      const damage=(si,u,amount,pathogen=this.isPathogen({card}))=>{
+      const damage=(si,u,amount,pathogen=this.isPathogen({card}),piercing=false)=>{
         if(!u||(pathogen&&this.has(u,'SYNTHETIC')))return 0;
-        return Math.max(0,amount-(this.has(u,'ARMOR')&&!u.armorUsed?400:0));
+        return Math.max(0,amount-(this.has(u,'ARMOR')&&!u.armorUsed&&!piercing?400:0));
       };
       const impact=(si,u,amount)=>{
         const dealt=damage(si,u,amount);if(!dealt)return 0;
@@ -587,8 +746,8 @@
         const preview={...unit,equipment:[...unit.equipment,card.id],currentHealth:unit.currentHealth+(card.health||0),armorUsed:card.keywords.includes('ARMOR')?false:unit.armorUsed};
         const lane=s.board.indexOf(unit),opponent=e.board[lane];
         if(opponent){
-          const dealtBefore=damage(1-sideIndex,opponent,this.unitAttack(sideIndex,unit,opponent),this.has(unit,'PATHOGEN'));
-          const dealtAfter=damage(1-sideIndex,opponent,this.unitAttack(sideIndex,preview,opponent),this.has(preview,'PATHOGEN'));
+          const dealtBefore=damage(1-sideIndex,opponent,this.unitAttack(sideIndex,unit,opponent),this.has(unit,'PATHOGEN'),this.has(unit,'PIERCING'));
+          const dealtAfter=damage(1-sideIndex,opponent,this.unitAttack(sideIndex,preview,opponent),this.has(preview,'PATHOGEN'),this.has(preview,'PIERCING'));
           const killBefore=dealtBefore>=opponent.currentHealth||(dealtBefore>0&&this.has(unit,'DEATHTOUCH')&&!this.card(opponent.cardId).tags.includes('boss'));
           const killAfter=dealtAfter>=opponent.currentHealth||(dealtAfter>0&&this.has(preview,'DEATHTOUCH')&&!this.card(opponent.cardId).tags.includes('boss'));
           const receivedBefore=damage(sideIndex,unit,this.unitAttack(1-sideIndex,opponent,unit),this.has(opponent,'PATHOGEN'));
@@ -622,7 +781,13 @@
           case 'L_VAL_VERDE': score=hasFuture(c=>c.type==='UNIT'&&c.faction==='YAUTJA')?2.4:0;break;
           case 'L_LA1997': score=e.life<5000?factionCount('YAUTJA')*.9:0;break;
           case 'L_SEVASTOPOL': score=allies.filter(u=>this.has(u,'SYNTHETIC')).length*.9;break;
-          default: score=0;
+          default: {
+            const field=card.effect?.locationBuff;
+            score=field?allies.filter(u=>this.isFaction(u,field.faction)).length*((field.attack||0)+(field.health||0))/400
+              +Number(available.some(c=>c?.type==='UNIT'&&c.faction===field.faction))*1.8
+              +Math.min(card.effect?.locationUpkeep?.heal||0,s.maxLife-s.life)/220:0;
+            break;
+          }
         }
         if(s.location)score-=1.5;
       }else if(card.type==='TACTIC'){
@@ -685,6 +850,13 @@
           // healing effects from becoming free positive scores at full health.
           case 'HEAL_HERO': score=Math.min(fx.amount||0,s.maxLife-s.life)/300;break;
           case 'HEAL_TARGET': score=unit?Math.min(fx.amount||0,this.unitMaxHealth(sideIndex,unit)-unit.currentHealth)/300:0;break;
+          case 'REPAIR_UNIT': score=unit?Math.min(fx.amount||0,this.unitMaxHealth(sideIndex,unit)-unit.currentHealth)/300:0;break;
+          case 'REPOSITION': score=unit&&openSlots?(!unit.ready?1.5:0.8):0;break;
+          case 'SCAN_REVEAL': score=enemies.filter(u=>u.cloaked).length*1.3+drawScore(fx.draw||0);break;
+          case 'SUPPLY_SEARCH': score=s.deck.some(id=>this.card(id)?.type==='EQUIPMENT')?2.4:0;break;
+          case 'FORTIFY': score=Math.min(fx.amount||0,1200-s.shield)/450*(s.life<s.maxLife*.7?1.6:0.7);break;
+          case 'ARMOR_BREAK': score=unit?impact(1-sideIndex,unit,fx.amount||0)+(this.has(unit,'ARMOR')&&!unit.armorUsed?1.3:0):0;break;
+          case 'DAMAGE_ALL_ENEMY_UNITS': score=enemies.reduce((n,u)=>n+impact(1-sideIndex,u,fx.amount||0),0);break;
           default: score=0;
         }
         if(this.isOffensiveTactic(card)&&enemies.some(u=>this.card(u.cardId).effect?.shieldTactic&&!u.tacticShieldUsed))score=Math.min(score,1);
@@ -702,7 +874,8 @@
       if(!att)return null;
       const ac=this.card(att.cardId);
       const value=(si,u)=>1+this.card(u.cardId).cost+(this.unitAttack(si,u)+Math.max(0,u.currentHealth))/1800+u.equipment.length*.6;
-      const damage=(source,target,amount)=>this.has(source,'PATHOGEN')&&this.has(target,'SYNTHETIC')?0:Math.max(0,amount-(this.has(target,'ARMOR')&&!target.armorUsed?400:0));
+      const damage=(source,target,amount)=>this.has(source,'PATHOGEN')&&this.has(target,'SYNTHETIC')?0:
+        Math.max(0,amount-(this.has(target,'ARMOR')&&!target.armorUsed&&!this.has(source,'PIERCING')?400:0));
       let best=null,bestScore=0;
       for(const target of this.legalAttacks(sideIndex,lane)){
         let score=0;
@@ -766,5 +939,5 @@
     serialize(){return U.clone(this.state);}
   }
 
-  window.AVPEngine={U,CARD,RANK,expandDeck,allowedForIdentity,validateDeck,openBooster,buildAiDeck,Battle};
+  window.AVPEngine={U,CARD,RANK,expandDeck,allowedForIdentity,validateDeck,analyzeDeck,openBooster,buildAiDeck,Battle};
 })();

@@ -1,0 +1,39 @@
+DeckID,Nom,Faction,Doctrine,Focus,CartesDuel,Réserve,TotalBoite,Statut,Sources
+asym_human_pulse_1,USCM — PULSE / Ravitaillement,HUMAN,MUNITIONS,pulse,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_human_pulse_2,USCM — PULSE / Armement avancé,HUMAN,MUNITIONS,pulse,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_human_smart_1,USCM — SMART / Ravitaillement,HUMAN,MUNITIONS,smart,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_human_smart_2,USCM — SMART / Armement avancé,HUMAN,MUNITIONS,smart,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_human_flame_1,USCM — FLAME / Ravitaillement,HUMAN,MUNITIONS,flame,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_human_flame_2,USCM — FLAME / Armement avancé,HUMAN,MUNITIONS,flame,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_human_shot_1,USCM — SHOT / Ravitaillement,HUMAN,MUNITIONS,shot,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_human_shot_2,USCM — SHOT / Armement avancé,HUMAN,MUNITIONS,shot,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_human_pistol_1,USCM — PISTOL / Ravitaillement,HUMAN,MUNITIONS,pistol,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_human_pistol_2,USCM — PISTOL / Armement avancé,HUMAN,MUNITIONS,pistol,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_human_sniper_1,USCM — SNIPER / Ravitaillement,HUMAN,MUNITIONS,sniper,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_human_sniper_2,USCM — SNIPER / Armement avancé,HUMAN,MUNITIONS,sniper,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_human_grenade_1,USCM — GRENADE / Ravitaillement,HUMAN,MUNITIONS,grenade,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_human_grenade_2,USCM — GRENADE / Armement avancé,HUMAN,MUNITIONS,grenade,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_human_laser_1,USCM — F44AA / Ravitaillement,HUMAN,MUNITIONS,f44aa,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_human_laser_2,USCM — F44AA / Armement avancé,HUMAN,MUNITIONS,f44aa,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_xeno_human_1,Cycle HUMAN — Incubation,XENO,FUSION,HUMAN,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_xeno_human_2,Cycle HUMAN — Parasitage,XENO,FUSION,HUMAN,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_xeno_human_3,Cycle HUMAN — Mue,XENO,FUSION,HUMAN,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_xeno_human_4,Cycle HUMAN — Rituel,XENO,FUSION,HUMAN,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_xeno_quad_1,Cycle QUAD — Incubation,XENO,FUSION,QUAD,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_xeno_quad_2,Cycle QUAD — Parasitage,XENO,FUSION,QUAD,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_xeno_quad_3,Cycle QUAD — Mue,XENO,FUSION,QUAD,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_xeno_quad_4,Cycle QUAD — Rituel,XENO,FUSION,QUAD,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_xeno_yautja_1,Cycle YAUTJA — Incubation,XENO,FUSION,YAUTJA,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_xeno_yautja_2,Cycle YAUTJA — Parasitage,XENO,FUSION,YAUTJA,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_xeno_yautja_3,Cycle YAUTJA — Mue,XENO,FUSION,YAUTJA,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_xeno_yautja_4,Cycle YAUTJA — Rituel,XENO,FUSION,YAUTJA,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_yautja_1,Chasse Yautja — Plasma,YAUTJA,HONNEUR,YA27,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_yautja_2,Chasse Yautja — Trophées,YAUTJA,HONNEUR,YA27,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_yautja_3,Chasse Yautja — Honneur,YAUTJA,HONNEUR,YA27,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_yautja_4,Chasse Yautja — Ancien,YAUTJA,HONNEUR,YA27,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_yautja_5,Chasse Yautja — Blooding,YAUTJA,HONNEUR,YA27,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_yautja_6,Chasse Yautja — Rituels,YAUTJA,HONNEUR,YA27,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_yautja_7,Chasse Yautja — Duels,YAUTJA,HONNEUR,YA27,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_yautja_8,Chasse Yautja — Ciblage,YAUTJA,HONNEUR,YA27,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_yautja_9,Chasse Yautja — Clan,YAUTJA,HONNEUR,YA27,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_yautja_10,Chasse Yautja — Traque,YAUTJA,HONNEUR,YA27,30,15,45,JOUABLE,src/asymmetric-decks.js

@@ -11,7 +11,7 @@ const BASE_PUBLIC_FILES = Object.freeze([
   'index.html', 'manifest.webmanifest', 'sw.js', 'robots.txt',
   'assets/styles.css', 'assets/icon.svg', 'assets/icon-192.png',
   'assets/icon-512.png', 'assets/icon-maskable-512.png',
-  'src/data.js', 'src/alien-base.js', 'src/art-manifest.js', 'src/engine.js', 'src/duel-save.js', 'src/app.js',
+  'src/data.js', 'src/alien-base.js', 'src/expansion.js', 'src/expansion-wave2.js', 'src/deck-productions.js', 'src/asymmetric-cards.js', 'src/asymmetric-decks.js', 'src/art-manifest.js', 'src/engine.js', 'src/asymmetric-rules.js', 'src/duel-save.js', 'src/app.js',
 ]);
 const ART_PATH = /^assets\/art\/(?:manifest\.json|(?:cards|scenes)\/[a-z0-9][a-z0-9_-]*-v[1-9][0-9]*\.webp)$/;
 if (!Array.isArray(ART_PUBLIC_FILES) || ART_PUBLIC_FILES.some((file) => !ART_PATH.test(file))) {

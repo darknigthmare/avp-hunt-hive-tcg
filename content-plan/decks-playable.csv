@@ -1,0 +1,281 @@
+DeckID,PlanDeckID,Nom,Gamme,SetCible,Faction,CartesJouables,Reserve,TotalBoite,CartesDuSetCible,SetCibleDisponible,Statut,Source
+preset_xeno_1,,Couvée offensive,ARCHETYPE,,XENO,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_xeno_2,,Cycle parasitaire,ARCHETYPE,,XENO,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_xeno_3,,Défense organique,ARCHETYPE,,XENO,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_xeno_4,,Éveil de la Reine,ARCHETYPE,,XENO,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_yautja_1,,Chasse au trophée,ARCHETYPE,,YAUTJA,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_yautja_2,,Arsenal de clan,ARCHETYPE,,YAUTJA,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_yautja_3,,Traque urbaine,ARCHETYPE,,YAUTJA,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_yautja_4,,Rites et vaisseaux,ARCHETYPE,,YAUTJA,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_human_1,,USCM mobile,ARCHETYPE,,HUMAN,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_human_2,,Convoi blindé,ARCHETYPE,,HUMAN,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_human_3,,Défense Seegson,ARCHETYPE,,HUMAN,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_human_4,,Survivants des colonies,ARCHETYPE,,HUMAN,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_engineer_1,,Laboratoire pathogène,ARCHETYPE,,ENGINEER,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_engineer_2,,Cycle du Deacon,ARCHETYPE,,ENGINEER,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_engineer_3,,Sujets de mutation,ARCHETYPE,,ENGINEER,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_engineer_4,,Génèse contrôlée,ARCHETYPE,,ENGINEER,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_hybrid_1,,Convergence biologique,ARCHETYPE,,HYBRID,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_hybrid_2,,Mue expérimentale,ARCHETYPE,,HYBRID,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_hybrid_3,,Anomalies dangereuses,ARCHETYPE,,HYBRID,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+preset_hybrid_4,,Infection croisée,ARCHETYPE,,HYBRID,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_human_01,,Nostromo — Extraction,ARCHETYPE,NX01,HUMAN,30,15,45,5,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_human_02,,USCM — Quadrillage,ARCHETYPE,CW02,HUMAN,30,15,45,9,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_human_03,,Convoi blindé,ARCHETYPE,MC12,HUMAN,30,15,45,1,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_human_04,,Seegson — Riposte,ARCHETYPE,IS08,HUMAN,30,15,45,5,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_human_05,,Weyland — Récupération,ARCHETYPE,WY11,HUMAN,30,15,45,1,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_human_06,,Personnel de la frontière,ARCHETYPE,TF28,HUMAN,30,15,45,11,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_human_07,,Arsenal mobile,ARCHETYPE,FE20,HUMAN,30,15,45,1,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_human_08,,Contre-mesures synthétiques,ARCHETYPE,DD21,HUMAN,30,15,45,4,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_human_09,,Opération MNEMOSYNE,ARCHETYPE,HA29,HUMAN,30,15,45,3,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_human_10,,Défense de colonie,ARCHETYPE,RO09,HUMAN,30,15,45,2,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_xeno_01,,Nid des sentinelles,ARCHETYPE,TF28,XENO,30,15,45,4,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_xeno_02,,Ruche souterraine,ARCHETYPE,CW02,XENO,30,15,45,11,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_xeno_03,,Chasseurs de la forge,ARCHETYPE,CM19,XENO,30,15,45,2,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_xeno_04,,Reines de Guerre,ARCHETYPE,FE20,XENO,30,15,45,2,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_xeno_05,,Essaim en transit,ARCHETYPE,EX23,XENO,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_xeno_06,,Éclaireurs acides,ARCHETYPE,HA29,XENO,30,15,45,5,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_xeno_07,,Morphologie obscure,ARCHETYPE,IS08,XENO,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_xeno_08,,Cycle rapide,ARCHETYPE,KN26,XENO,30,15,45,2,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_xeno_09,,Résine profonde,ARCHETYPE,AV04,XENO,30,15,45,1,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_xeno_10,,Gardes royales,ARCHETYPE,NX01,XENO,30,15,45,4,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_yautja_01,,Clan ancestral,ARCHETYPE,HG03,YAUTJA,30,15,45,15,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_yautja_02,,Berserker — Réserve,ARCHETYPE,PR14,YAUTJA,30,15,45,3,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_yautja_03,,Traque urbaine,ARCHETYPE,P213,YAUTJA,30,15,45,1,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_yautja_04,,Arsenal de tournoi,ARCHETYPE,PH24,YAUTJA,30,15,45,1,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_yautja_05,,Rituels de chasse,ARCHETYPE,YA27,YAUTJA,30,15,45,6,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_yautja_06,,Missions spatiales,ARCHETYPE,BD17,YAUTJA,30,15,45,1,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_yautja_07,,Trophées d’honneur,ARCHETYPE,AV04,YAUTJA,30,15,45,7,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_yautja_08,,Lames cérémonielles,ARCHETYPE,KK18,YAUTJA,30,15,45,1,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_yautja_09,,Chasse solitaire,ARCHETYPE,PY15,YAUTJA,30,15,45,1,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_yautja_10,,Maîtres plasma,ARCHETYPE,ST16,YAUTJA,30,15,45,1,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_engineer_01,,Inoculation tactique,ARCHETYPE,EV05,ENGINEER,30,15,45,29,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_engineer_02,,Génèse expérimentale,ARCHETYPE,EV05,ENGINEER,30,15,45,29,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_engineer_03,,Études du Deacon,ARCHETYPE,EV05,ENGINEER,30,15,45,29,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_engineer_04,,Pathogène défensif,ARCHETYPE,EV05,ENGINEER,30,15,45,29,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_engineer_05,,Scientifiques dissidents,ARCHETYPE,TF28,ENGINEER,30,15,45,0,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_engineer_06,,Quarantaine LV-223,ARCHETYPE,EV05,ENGINEER,30,15,45,29,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_engineer_07,,Sujets néomorphes,ARCHETYPE,EV05,ENGINEER,30,15,45,29,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_engineer_08,,Propagation lente,ARCHETYPE,EV05,ENGINEER,30,15,45,29,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_engineer_09,,Évolution forcée,ARCHETYPE,EV05,ENGINEER,30,15,45,29,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_engineer_10,,Laboratoire antique,ARCHETYPE,EV05,ENGINEER,30,15,45,29,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_hybrid_01,,Alliance improbable,ARCHETYPE,AV04,HYBRID,30,15,45,15,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_hybrid_02,,Lignée hybride,ARCHETYPE,EV05,HYBRID,30,15,45,6,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_hybrid_03,,Convergence monstrueuse,ARCHETYPE,R407,HYBRID,30,15,45,1,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_hybrid_04,,Mutations interdites,ARCHETYPE,TF28,HYBRID,30,15,45,5,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_hybrid_05,,Bio-synthèse,ARCHETYPE,HA29,HYBRID,30,15,45,3,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_hybrid_06,,AVP — Troisième voie,ARCHETYPE,AV04,HYBRID,30,15,45,14,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_hybrid_07,,Contamination croisée,ARCHETYPE,EV05,HYBRID,30,15,45,6,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_hybrid_08,,Rupture du cycle,ARCHETYPE,R407,HYBRID,30,15,45,1,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_hybrid_09,,Unité chimère,ARCHETYPE,AV04,HYBRID,30,15,45,14,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+wave2_hybrid_10,,Derniers survivants,ARCHETYPE,EV05,HYBRID,30,15,45,6,SANS_CIBLE,JOUABLE_PRECONSTRUIT,src/expansion-wave2.js
+production_sta-nx01-1,STA-NX01-1,Origines Hostiles — Fondation,STARTER,NX01,XENO,30,15,45,4,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-nx01-2,CON-NX01-2,Origines Hostiles — Déploiement rapide,CONSTRUCTION,NX01,XENO,30,45,75,4,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-nx01-3,CON-NX01-3,Origines Hostiles — Contrôle tactique,CONSTRUCTION,NX01,XENO,30,45,75,3,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-nx01-4,CON-NX01-4,Origines Hostiles — Synergies,CONSTRUCTION,NX01,XENO,30,45,75,4,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-nx01-5,SPE-NX01-5,Origines Hostiles — Opération spéciale,SPECIAL,NX01,XENO,30,20,50,4,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-nx01-6,LIG-NX01-6,Origines Hostiles — Ligue standard,LIGUE,NX01,XENO,30,15,45,4,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-nx01-7,LIG-NX01-7,Origines Hostiles — Ligue expert,LIGUE,NX01,XENO,30,15,45,3,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_sta-cw02-1,STA-CW02-1,Guerre Coloniale — Fondation,STARTER,CW02,HUMAN,30,15,45,7,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-cw02-2,CON-CW02-2,Guerre Coloniale — Déploiement rapide,CONSTRUCTION,CW02,HUMAN,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-cw02-3,CON-CW02-3,Guerre Coloniale — Contrôle tactique,CONSTRUCTION,CW02,HUMAN,30,45,75,7,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-cw02-4,CON-CW02-4,Guerre Coloniale — Synergies,CONSTRUCTION,CW02,HUMAN,30,45,75,9,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-cw02-5,SPE-CW02-5,Guerre Coloniale — Opération spéciale,SPECIAL,CW02,HUMAN,30,20,50,7,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-cw02-6,LIG-CW02-6,Guerre Coloniale — Ligue standard,LIGUE,CW02,HUMAN,30,15,45,5,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-cw02-7,LIG-CW02-7,Guerre Coloniale — Ligue expert,LIGUE,CW02,HUMAN,30,15,45,8,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_sta-hg03-1,STA-HG03-1,Terrains de Chasse — Fondation,STARTER,HG03,YAUTJA,30,15,45,18,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-hg03-2,CON-HG03-2,Terrains de Chasse — Déploiement rapide,CONSTRUCTION,HG03,YAUTJA,30,45,75,17,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-hg03-3,CON-HG03-3,Terrains de Chasse — Contrôle tactique,CONSTRUCTION,HG03,YAUTJA,30,45,75,16,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-hg03-4,CON-HG03-4,Terrains de Chasse — Synergies,CONSTRUCTION,HG03,YAUTJA,30,45,75,14,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-hg03-5,SPE-HG03-5,Terrains de Chasse — Opération spéciale,SPECIAL,HG03,YAUTJA,30,20,50,13,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-hg03-6,LIG-HG03-6,Terrains de Chasse — Ligue standard,LIGUE,HG03,YAUTJA,30,15,45,16,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-hg03-7,LIG-HG03-7,Terrains de Chasse — Ligue expert,LIGUE,HG03,YAUTJA,30,15,45,16,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_sta-av04-1,STA-AV04-1,Rite de Sang — Fondation,STARTER,AV04,HYBRID,30,15,45,14,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-av04-2,CON-AV04-2,Rite de Sang — Déploiement rapide,CONSTRUCTION,AV04,HYBRID,30,45,75,15,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-av04-3,CON-AV04-3,Rite de Sang — Contrôle tactique,CONSTRUCTION,AV04,HYBRID,30,45,75,13,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-av04-4,CON-AV04-4,Rite de Sang — Synergies,CONSTRUCTION,AV04,HYBRID,30,45,75,15,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-av04-5,SPE-AV04-5,Rite de Sang — Opération spéciale,SPECIAL,AV04,HYBRID,30,20,50,14,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-av04-6,LIG-AV04-6,Rite de Sang — Ligue standard,LIGUE,AV04,HYBRID,30,15,45,13,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-av04-7,LIG-AV04-7,Rite de Sang — Ligue expert,LIGUE,AV04,HYBRID,30,15,45,14,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_sta-ev05-1,STA-EV05-1,Évolution Parfaite — Fondation,STARTER,EV05,ENGINEER,30,15,45,29,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ev05-2,CON-EV05-2,Évolution Parfaite — Déploiement rapide,CONSTRUCTION,EV05,ENGINEER,30,45,75,29,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ev05-3,CON-EV05-3,Évolution Parfaite — Contrôle tactique,CONSTRUCTION,EV05,ENGINEER,30,45,75,29,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ev05-4,CON-EV05-4,Évolution Parfaite — Synergies,CONSTRUCTION,EV05,ENGINEER,30,45,75,29,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-ev05-5,SPE-EV05-5,Évolution Parfaite — Opération spéciale,SPECIAL,EV05,ENGINEER,30,20,50,29,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-ev05-6,LIG-EV05-6,Évolution Parfaite — Ligue standard,LIGUE,EV05,ENGINEER,30,15,45,29,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-ev05-7,LIG-EV05-7,Évolution Parfaite — Ligue expert,LIGUE,EV05,ENGINEER,30,15,45,29,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-f306-1,STR-F306-1,Cendres de Fiorina — Fondation,STRUCTURE,F306,XENO,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-f306-2,CON-F306-2,Cendres de Fiorina — Déploiement rapide,CONSTRUCTION,F306,XENO,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-f306-3,CON-F306-3,Cendres de Fiorina — Contrôle tactique,CONSTRUCTION,F306,XENO,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-f306-4,CON-F306-4,Cendres de Fiorina — Synergies,CONSTRUCTION,F306,XENO,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-f306-5,SPE-F306-5,Cendres de Fiorina — Opération spéciale,SPECIAL,F306,XENO,30,20,50,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-f306-6,LIG-F306-6,Cendres de Fiorina — Ligue standard,LIGUE,F306,XENO,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-f306-7,LIG-F306-7,Cendres de Fiorina — Ligue expert,LIGUE,F306,XENO,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-r407-1,STR-R407-1,Les Héritiers de l'Auriga — Fondation,STRUCTURE,R407,HYBRID,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-r407-2,CON-R407-2,Les Héritiers de l'Auriga — Déploiement rapide,CONSTRUCTION,R407,HYBRID,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-r407-3,CON-R407-3,Les Héritiers de l'Auriga — Contrôle tactique,CONSTRUCTION,R407,HYBRID,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-r407-4,CON-R407-4,Les Héritiers de l'Auriga — Synergies,CONSTRUCTION,R407,HYBRID,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-r407-5,SPE-R407-5,Les Héritiers de l'Auriga — Opération spéciale,SPECIAL,R407,HYBRID,30,20,50,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-r407-6,LIG-R407-6,Les Héritiers de l'Auriga — Ligue standard,LIGUE,R407,HYBRID,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-r407-7,LIG-R407-7,Les Héritiers de l'Auriga — Ligue expert,LIGUE,R407,HYBRID,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-is08-1,STR-IS08-1,Terreur à Sevastopol — Fondation,STRUCTURE,IS08,HUMAN,30,15,45,3,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-is08-2,CON-IS08-2,Terreur à Sevastopol — Déploiement rapide,CONSTRUCTION,IS08,HUMAN,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-is08-3,CON-IS08-3,Terreur à Sevastopol — Contrôle tactique,CONSTRUCTION,IS08,HUMAN,30,45,75,3,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-is08-4,CON-IS08-4,Terreur à Sevastopol — Synergies,CONSTRUCTION,IS08,HUMAN,30,45,75,4,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-is08-5,SPE-IS08-5,Terreur à Sevastopol — Opération spéciale,SPECIAL,IS08,HUMAN,30,20,50,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-is08-6,LIG-IS08-6,Terreur à Sevastopol — Ligue standard,LIGUE,IS08,HUMAN,30,15,45,3,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-is08-7,LIG-IS08-7,Terreur à Sevastopol — Ligue expert,LIGUE,IS08,HUMAN,30,15,45,4,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-ro09-1,STR-RO09-1,Renaissance Noire — Fondation,STRUCTURE,RO09,ENGINEER,30,15,45,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ro09-2,CON-RO09-2,Renaissance Noire — Déploiement rapide,CONSTRUCTION,RO09,ENGINEER,30,45,75,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ro09-3,CON-RO09-3,Renaissance Noire — Contrôle tactique,CONSTRUCTION,RO09,ENGINEER,30,45,75,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ro09-4,CON-RO09-4,Renaissance Noire — Synergies,CONSTRUCTION,RO09,ENGINEER,30,45,75,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-ro09-5,SPE-RO09-5,Renaissance Noire — Opération spéciale,SPECIAL,RO09,ENGINEER,30,20,50,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-ro09-6,LIG-RO09-6,Renaissance Noire — Ligue standard,LIGUE,RO09,ENGINEER,30,15,45,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-ro09-7,LIG-RO09-7,Renaissance Noire — Ligue expert,LIGUE,RO09,ENGINEER,30,15,45,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-ea10-1,STR-EA10-1,La Menace sur Terre — Fondation,STRUCTURE,EA10,XENO,30,15,45,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ea10-2,CON-EA10-2,La Menace sur Terre — Déploiement rapide,CONSTRUCTION,EA10,XENO,30,45,75,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ea10-3,CON-EA10-3,La Menace sur Terre — Contrôle tactique,CONSTRUCTION,EA10,XENO,30,45,75,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ea10-4,CON-EA10-4,La Menace sur Terre — Synergies,CONSTRUCTION,EA10,XENO,30,45,75,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-ea10-5,SPE-EA10-5,La Menace sur Terre — Opération spéciale,SPECIAL,EA10,XENO,30,20,50,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-ea10-6,LIG-EA10-6,La Menace sur Terre — Ligue standard,LIGUE,EA10,XENO,30,15,45,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-ea10-7,LIG-EA10-7,La Menace sur Terre — Ligue expert,LIGUE,EA10,XENO,30,15,45,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-wy11-1,STR-WY11-1,Directives Weyland-Yutani — Fondation,STRUCTURE,WY11,HUMAN,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-wy11-2,CON-WY11-2,Directives Weyland-Yutani — Déploiement rapide,CONSTRUCTION,WY11,HUMAN,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-wy11-3,CON-WY11-3,Directives Weyland-Yutani — Contrôle tactique,CONSTRUCTION,WY11,HUMAN,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-wy11-4,CON-WY11-4,Directives Weyland-Yutani — Synergies,CONSTRUCTION,WY11,HUMAN,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-wy11-5,SPE-WY11-5,Directives Weyland-Yutani — Opération spéciale,SPECIAL,WY11,HUMAN,30,20,50,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-wy11-6,LIG-WY11-6,Directives Weyland-Yutani — Ligue standard,LIGUE,WY11,HUMAN,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-wy11-7,LIG-WY11-7,Directives Weyland-Yutani — Ligue expert,LIGUE,WY11,HUMAN,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-mc12-1,STR-MC12-1,Arsenal Colonial — Fondation,STRUCTURE,MC12,HUMAN,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-mc12-2,CON-MC12-2,Arsenal Colonial — Déploiement rapide,CONSTRUCTION,MC12,HUMAN,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-mc12-3,CON-MC12-3,Arsenal Colonial — Contrôle tactique,CONSTRUCTION,MC12,HUMAN,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-mc12-4,CON-MC12-4,Arsenal Colonial — Synergies,CONSTRUCTION,MC12,HUMAN,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-mc12-5,SPE-MC12-5,Arsenal Colonial — Opération spéciale,SPECIAL,MC12,HUMAN,30,20,50,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-mc12-6,LIG-MC12-6,Arsenal Colonial — Ligue standard,LIGUE,MC12,HUMAN,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-mc12-7,LIG-MC12-7,Arsenal Colonial — Ligue expert,LIGUE,MC12,HUMAN,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-p213-1,STR-P213-1,Chasseurs de Los Angeles — Fondation,STRUCTURE,P213,YAUTJA,30,15,45,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-p213-2,CON-P213-2,Chasseurs de Los Angeles — Déploiement rapide,CONSTRUCTION,P213,YAUTJA,30,45,75,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-p213-3,CON-P213-3,Chasseurs de Los Angeles — Contrôle tactique,CONSTRUCTION,P213,YAUTJA,30,45,75,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-p213-4,CON-P213-4,Chasseurs de Los Angeles — Synergies,CONSTRUCTION,P213,YAUTJA,30,45,75,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-p213-5,SPE-P213-5,Chasseurs de Los Angeles — Opération spéciale,SPECIAL,P213,YAUTJA,30,20,50,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-p213-6,LIG-P213-6,Chasseurs de Los Angeles — Ligue standard,LIGUE,P213,YAUTJA,30,15,45,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-p213-7,LIG-P213-7,Chasseurs de Los Angeles — Ligue expert,LIGUE,P213,YAUTJA,30,15,45,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-pr14-1,STR-PR14-1,Planète Réserve — Fondation,STRUCTURE,PR14,YAUTJA,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-pr14-2,CON-PR14-2,Planète Réserve — Déploiement rapide,CONSTRUCTION,PR14,YAUTJA,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-pr14-3,CON-PR14-3,Planète Réserve — Contrôle tactique,CONSTRUCTION,PR14,YAUTJA,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-pr14-4,CON-PR14-4,Planète Réserve — Synergies,CONSTRUCTION,PR14,YAUTJA,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-pr14-5,SPE-PR14-5,Planète Réserve — Opération spéciale,SPECIAL,PR14,YAUTJA,30,20,50,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-pr14-6,LIG-PR14-6,Planète Réserve — Ligue standard,LIGUE,PR14,YAUTJA,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-pr14-7,LIG-PR14-7,Planète Réserve — Ligue expert,LIGUE,PR14,YAUTJA,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-py15-1,STR-PY15-1,La Proie des Grandes Plaines — Fondation,STRUCTURE,PY15,YAUTJA,30,15,45,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-py15-2,CON-PY15-2,La Proie des Grandes Plaines — Déploiement rapide,CONSTRUCTION,PY15,YAUTJA,30,45,75,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-py15-3,CON-PY15-3,La Proie des Grandes Plaines — Contrôle tactique,CONSTRUCTION,PY15,YAUTJA,30,45,75,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-py15-4,CON-PY15-4,La Proie des Grandes Plaines — Synergies,CONSTRUCTION,PY15,YAUTJA,30,45,75,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-py15-5,SPE-PY15-5,La Proie des Grandes Plaines — Opération spéciale,SPECIAL,PY15,YAUTJA,30,20,50,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-py15-6,LIG-PY15-6,La Proie des Grandes Plaines — Ligue standard,LIGUE,PY15,YAUTJA,30,15,45,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-py15-7,LIG-PY15-7,La Proie des Grandes Plaines — Ligue expert,LIGUE,PY15,YAUTJA,30,15,45,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-st16-1,STR-ST16-1,Expériences Stargazer — Fondation,STRUCTURE,ST16,HUMAN,30,15,45,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-st16-2,CON-ST16-2,Expériences Stargazer — Déploiement rapide,CONSTRUCTION,ST16,HUMAN,30,45,75,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-st16-3,CON-ST16-3,Expériences Stargazer — Contrôle tactique,CONSTRUCTION,ST16,HUMAN,30,45,75,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-st16-4,CON-ST16-4,Expériences Stargazer — Synergies,CONSTRUCTION,ST16,HUMAN,30,45,75,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-st16-5,SPE-ST16-5,Expériences Stargazer — Opération spéciale,SPECIAL,ST16,HUMAN,30,20,50,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-st16-6,LIG-ST16-6,Expériences Stargazer — Ligue standard,LIGUE,ST16,HUMAN,30,15,45,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-st16-7,LIG-ST16-7,Expériences Stargazer — Ligue expert,LIGUE,ST16,HUMAN,30,15,45,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-bd17-1,STR-BD17-1,Exil dans les Badlands — Fondation,STRUCTURE,BD17,YAUTJA,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-bd17-2,CON-BD17-2,Exil dans les Badlands — Déploiement rapide,CONSTRUCTION,BD17,YAUTJA,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-bd17-3,CON-BD17-3,Exil dans les Badlands — Contrôle tactique,CONSTRUCTION,BD17,YAUTJA,30,45,75,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-bd17-4,CON-BD17-4,Exil dans les Badlands — Synergies,CONSTRUCTION,BD17,YAUTJA,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-bd17-5,SPE-BD17-5,Exil dans les Badlands — Opération spéciale,SPECIAL,BD17,YAUTJA,30,20,50,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-bd17-6,LIG-BD17-6,Exil dans les Badlands — Ligue standard,LIGUE,BD17,YAUTJA,30,15,45,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-bd17-7,LIG-BD17-7,Exil dans les Badlands — Ligue expert,LIGUE,BD17,YAUTJA,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-kk18-1,STR-KK18-1,Chasse à Travers les Siècles — Fondation,STRUCTURE,KK18,YAUTJA,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-kk18-2,CON-KK18-2,Chasse à Travers les Siècles — Déploiement rapide,CONSTRUCTION,KK18,YAUTJA,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-kk18-3,CON-KK18-3,Chasse à Travers les Siècles — Contrôle tactique,CONSTRUCTION,KK18,YAUTJA,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-kk18-4,CON-KK18-4,Chasse à Travers les Siècles — Synergies,CONSTRUCTION,KK18,YAUTJA,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-kk18-5,SPE-KK18-5,Chasse à Travers les Siècles — Opération spéciale,SPECIAL,KK18,YAUTJA,30,20,50,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-kk18-6,LIG-KK18-6,Chasse à Travers les Siècles — Ligue standard,LIGUE,KK18,YAUTJA,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-kk18-7,LIG-KK18-7,Chasse à Travers les Siècles — Ligue expert,LIGUE,KK18,YAUTJA,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-cm19-1,STR-CM19-1,Ruines de Hadley's Hope — Fondation,STRUCTURE,CM19,XENO,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-cm19-2,CON-CM19-2,Ruines de Hadley's Hope — Déploiement rapide,CONSTRUCTION,CM19,XENO,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-cm19-3,CON-CM19-3,Ruines de Hadley's Hope — Contrôle tactique,CONSTRUCTION,CM19,XENO,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-cm19-4,CON-CM19-4,Ruines de Hadley's Hope — Synergies,CONSTRUCTION,CM19,XENO,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-cm19-5,SPE-CM19-5,Ruines de Hadley's Hope — Opération spéciale,SPECIAL,CM19,XENO,30,20,50,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-cm19-6,LIG-CM19-6,Ruines de Hadley's Hope — Ligue standard,LIGUE,CM19,XENO,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-cm19-7,LIG-CM19-7,Ruines de Hadley's Hope — Ligue expert,LIGUE,CM19,XENO,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-fe20-1,STR-FE20-1,Équipes de Feu — Fondation,STRUCTURE,FE20,HUMAN,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-fe20-2,CON-FE20-2,Équipes de Feu — Déploiement rapide,CONSTRUCTION,FE20,HUMAN,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-fe20-3,CON-FE20-3,Équipes de Feu — Contrôle tactique,CONSTRUCTION,FE20,HUMAN,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-fe20-4,CON-FE20-4,Équipes de Feu — Synergies,CONSTRUCTION,FE20,HUMAN,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-fe20-5,SPE-FE20-5,Équipes de Feu — Opération spéciale,SPECIAL,FE20,HUMAN,30,20,50,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-fe20-6,LIG-FE20-6,Équipes de Feu — Ligue standard,LIGUE,FE20,HUMAN,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-fe20-7,LIG-FE20-7,Équipes de Feu — Ligue expert,LIGUE,FE20,HUMAN,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-dd21-1,STR-DD21-1,Descente Tactique — Fondation,STRUCTURE,DD21,HUMAN,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-dd21-2,CON-DD21-2,Descente Tactique — Déploiement rapide,CONSTRUCTION,DD21,HUMAN,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-dd21-3,CON-DD21-3,Descente Tactique — Contrôle tactique,CONSTRUCTION,DD21,HUMAN,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-dd21-4,CON-DD21-4,Descente Tactique — Synergies,CONSTRUCTION,DD21,HUMAN,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-dd21-5,SPE-DD21-5,Descente Tactique — Opération spéciale,SPECIAL,DD21,HUMAN,30,20,50,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-dd21-6,LIG-DD21-6,Descente Tactique — Ligue standard,LIGUE,DD21,HUMAN,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-dd21-7,LIG-DD21-7,Descente Tactique — Ligue expert,LIGUE,DD21,HUMAN,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-ri22-1,STR-RI22-1,Incursion de l'Inconnu — Fondation,STRUCTURE,RI22,XENO,30,15,45,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ri22-2,CON-RI22-2,Incursion de l'Inconnu — Déploiement rapide,CONSTRUCTION,RI22,XENO,30,45,75,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ri22-3,CON-RI22-3,Incursion de l'Inconnu — Contrôle tactique,CONSTRUCTION,RI22,XENO,30,45,75,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ri22-4,CON-RI22-4,Incursion de l'Inconnu — Synergies,CONSTRUCTION,RI22,XENO,30,45,75,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-ri22-5,SPE-RI22-5,Incursion de l'Inconnu — Opération spéciale,SPECIAL,RI22,XENO,30,20,50,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-ri22-6,LIG-RI22-6,Incursion de l'Inconnu — Ligue standard,LIGUE,RI22,XENO,30,15,45,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-ri22-7,LIG-RI22-7,Incursion de l'Inconnu — Ligue expert,LIGUE,RI22,XENO,30,15,45,1,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-ex23-1,STR-EX23-1,Guerre d'Extinction — Fondation,STRUCTURE,EX23,XENO,30,15,45,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ex23-2,CON-EX23-2,Guerre d'Extinction — Déploiement rapide,CONSTRUCTION,EX23,XENO,30,45,75,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ex23-3,CON-EX23-3,Guerre d'Extinction — Contrôle tactique,CONSTRUCTION,EX23,XENO,30,45,75,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ex23-4,CON-EX23-4,Guerre d'Extinction — Synergies,CONSTRUCTION,EX23,XENO,30,45,75,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-ex23-5,SPE-EX23-5,Guerre d'Extinction — Opération spéciale,SPECIAL,EX23,XENO,30,20,50,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-ex23-6,LIG-EX23-6,Guerre d'Extinction — Ligue standard,LIGUE,EX23,XENO,30,15,45,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-ex23-7,LIG-EX23-7,Guerre d'Extinction — Ligue expert,LIGUE,EX23,XENO,30,15,45,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-ph24-1,STR-PH24-1,Légendes des Chasseurs — Fondation,STRUCTURE,PH24,YAUTJA,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ph24-2,CON-PH24-2,Légendes des Chasseurs — Déploiement rapide,CONSTRUCTION,PH24,YAUTJA,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ph24-3,CON-PH24-3,Légendes des Chasseurs — Contrôle tactique,CONSTRUCTION,PH24,YAUTJA,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ph24-4,CON-PH24-4,Légendes des Chasseurs — Synergies,CONSTRUCTION,PH24,YAUTJA,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-ph24-5,SPE-PH24-5,Légendes des Chasseurs — Opération spéciale,SPECIAL,PH24,YAUTJA,30,20,50,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-ph24-6,LIG-PH24-6,Légendes des Chasseurs — Ligue standard,LIGUE,PH24,YAUTJA,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-ph24-7,LIG-PH24-7,Légendes des Chasseurs — Ligue expert,LIGUE,PH24,YAUTJA,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-cb25-1,STR-CB25-1,Chroniques Dessinées — Fondation,STRUCTURE,CB25,HUMAN,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-cb25-2,CON-CB25-2,Chroniques Dessinées — Déploiement rapide,CONSTRUCTION,CB25,HUMAN,30,45,75,3,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-cb25-3,CON-CB25-3,Chroniques Dessinées — Contrôle tactique,CONSTRUCTION,CB25,HUMAN,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-cb25-4,CON-CB25-4,Chroniques Dessinées — Synergies,CONSTRUCTION,CB25,HUMAN,30,45,75,3,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-cb25-5,SPE-CB25-5,Chroniques Dessinées — Opération spéciale,SPECIAL,CB25,HUMAN,30,20,50,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-cb25-6,LIG-CB25-6,Chroniques Dessinées — Ligue standard,LIGUE,CB25,HUMAN,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-cb25-7,LIG-CB25-7,Chroniques Dessinées — Ligue expert,LIGUE,CB25,HUMAN,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-kn26-1,STR-KN26-1,Bestiaire de Collection — Fondation,STRUCTURE,KN26,XENO,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-kn26-2,CON-KN26-2,Bestiaire de Collection — Déploiement rapide,CONSTRUCTION,KN26,XENO,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-kn26-3,CON-KN26-3,Bestiaire de Collection — Contrôle tactique,CONSTRUCTION,KN26,XENO,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-kn26-4,CON-KN26-4,Bestiaire de Collection — Synergies,CONSTRUCTION,KN26,XENO,30,45,75,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-kn26-5,SPE-KN26-5,Bestiaire de Collection — Opération spéciale,SPECIAL,KN26,XENO,30,20,50,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-kn26-6,LIG-KN26-6,Bestiaire de Collection — Ligue standard,LIGUE,KN26,XENO,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-kn26-7,LIG-KN26-7,Bestiaire de Collection — Ligue expert,LIGUE,KN26,XENO,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-ya27-1,STR-YA27-1,Les Royaumes Yautja — Fondation,STRUCTURE,YA27,YAUTJA,30,15,45,3,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ya27-2,CON-YA27-2,Les Royaumes Yautja — Déploiement rapide,CONSTRUCTION,YA27,YAUTJA,30,45,75,4,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ya27-3,CON-YA27-3,Les Royaumes Yautja — Contrôle tactique,CONSTRUCTION,YA27,YAUTJA,30,45,75,5,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ya27-4,CON-YA27-4,Les Royaumes Yautja — Synergies,CONSTRUCTION,YA27,YAUTJA,30,45,75,5,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-ya27-5,SPE-YA27-5,Les Royaumes Yautja — Opération spéciale,SPECIAL,YA27,YAUTJA,30,20,50,5,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-ya27-6,LIG-YA27-6,Les Royaumes Yautja — Ligue standard,LIGUE,YA27,YAUTJA,30,15,45,6,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-ya27-7,LIG-YA27-7,Les Royaumes Yautja — Ligue expert,LIGUE,YA27,YAUTJA,30,15,45,3,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-tf28-1,STR-TF28-1,Frontière Tantalus — Fondation,STRUCTURE,TF28,HUMAN,30,15,45,9,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-tf28-2,CON-TF28-2,Frontière Tantalus — Déploiement rapide,CONSTRUCTION,TF28,HUMAN,30,45,75,12,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-tf28-3,CON-TF28-3,Frontière Tantalus — Contrôle tactique,CONSTRUCTION,TF28,HUMAN,30,45,75,8,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-tf28-4,CON-TF28-4,Frontière Tantalus — Synergies,CONSTRUCTION,TF28,HUMAN,30,45,75,11,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-tf28-5,SPE-TF28-5,Frontière Tantalus — Opération spéciale,SPECIAL,TF28,HUMAN,30,20,50,8,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-tf28-6,LIG-TF28-6,Frontière Tantalus — Ligue standard,LIGUE,TF28,HUMAN,30,15,45,8,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-tf28-7,LIG-TF28-7,Frontière Tantalus — Ligue expert,LIGUE,TF28,HUMAN,30,15,45,9,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-ha29-1,STR-HA29-1,Éclosion MNEMOSYNE — Fondation,STRUCTURE,HA29,XENO,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ha29-2,CON-HA29-2,Éclosion MNEMOSYNE — Déploiement rapide,CONSTRUCTION,HA29,XENO,30,45,75,3,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ha29-3,CON-HA29-3,Éclosion MNEMOSYNE — Contrôle tactique,CONSTRUCTION,HA29,XENO,30,45,75,3,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ha29-4,CON-HA29-4,Éclosion MNEMOSYNE — Synergies,CONSTRUCTION,HA29,XENO,30,45,75,4,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-ha29-5,SPE-HA29-5,Éclosion MNEMOSYNE — Opération spéciale,SPECIAL,HA29,XENO,30,20,50,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-ha29-6,LIG-HA29-6,Éclosion MNEMOSYNE — Ligue standard,LIGUE,HA29,XENO,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-ha29-7,LIG-HA29-7,Éclosion MNEMOSYNE — Ligue expert,LIGUE,HA29,XENO,30,15,45,2,OUI,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_str-ww30-1,STR-WW30-1,Guerres des Ruches — Fondation,STRUCTURE,WW30,HYBRID,30,15,45,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ww30-2,CON-WW30-2,Guerres des Ruches — Déploiement rapide,CONSTRUCTION,WW30,HYBRID,30,45,75,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ww30-3,CON-WW30-3,Guerres des Ruches — Contrôle tactique,CONSTRUCTION,WW30,HYBRID,30,45,75,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_con-ww30-4,CON-WW30-4,Guerres des Ruches — Synergies,CONSTRUCTION,WW30,HYBRID,30,45,75,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_spe-ww30-5,SPE-WW30-5,Guerres des Ruches — Opération spéciale,SPECIAL,WW30,HYBRID,30,20,50,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-ww30-6,LIG-WW30-6,Guerres des Ruches — Ligue standard,LIGUE,WW30,HYBRID,30,15,45,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv
+production_lig-ww30-7,LIG-WW30-7,Guerres des Ruches — Ligue expert,LIGUE,WW30,HYBRID,30,15,45,0,NON,JOUABLE_BASE_SUR_CATALOGUE_ACTUEL,content-plan/decks.csv

@@ -1,0 +1,22 @@
+{
+  "schema": "avp-tcg/http-qa-v1",
+  "files": 195,
+  "failures": [],
+  "bytes": 18998661,
+  "byteIdenticalFiles": 195,
+  "securityHeaders": true,
+  "sourceHashes": {
+    "data.js": "1f56beb03dcc345a0562891d0abb5de3e3528eb8589667c13dffa3a418d8811e",
+    "expansion.js": "12cfc1aa7c73a7c5d5406d1389d371ff76da0ae0a69d9c96cee4bb7ea7875fda",
+    "expansion-wave2.js": "0332e1d864fe8d596defdf0299aeb49de2dd84346eb4233e70fa7ee615b47392",
+    "deck-productions.js": "1cc8a6dba2a63e19f27a9cad7608a954a4cd40efc2c1d99dc34dd520046aedad",
+    "asymmetric-cards.js": "e8c044419177e89d6776e09b921fb955d564a5a303b31a55d1f4513579520ac8",
+    "asymmetric-decks.js": "79075501b76fa15b5eda4e880289576d3793ee628916a74193a4a843f383c221"
+  },
+  "title": true,
+  "csp": true,
+  "serviceWorkerScope": "/",
+  "privateDocumentStatus": 404,
+  "headRequest": true,
+  "passed": true
+}

@@ -1,0 +1,82 @@
+{
+  "schema": "avp-tcg/merge-validation-v1",
+  "date": "2026-11-03",
+  "pullRequest": "https://github.com/darknigthmare/avp-hunt-hive-tcg/pull/4",
+  "inputs": {
+    "pullRequestHead": "15b2e1e63cf347e0c02c4ff5bc22a6b34a867b23",
+    "mainHead": "7ad055eb4f2562c9188f4840e80b281412372a5b",
+    "commonAncestor": "e7a9c8ee6017c25afceacccf580eeb8661257e97",
+    "pullRequestTree": "c111b56207edcebe859d19b4c17580b3397a74f0",
+    "mainTree": "42de6285a1b689a07ee7a1fb883dcede4e6ef816"
+  },
+  "localValidation": {
+    "syntax": "PASS",
+    "unitIntegration": {
+      "tests": 244,
+      "passed": 244,
+      "failed": 0
+    },
+    "contentPlan": "PASS",
+    "playableDeckExport": "PASS",
+    "asymmetricExport": "PASS",
+    "pwaAndHttp": {
+      "tests": 16,
+      "passed": 16,
+      "publicFiles": 196,
+      "criticalShellRoutes": 20
+    },
+    "workbook": {
+      "status": "PASS",
+      "sheets": 27,
+      "cards": 891,
+      "decks": 318,
+      "positions": 17160,
+      "csvCellsCompared": 402489,
+      "sourceFingerprints": 31,
+      "sha256": "c2aad2acf8e8e292fb461b32fcb5b9f5f4d13303cf460c7aad0629d22de89e97"
+    },
+    "asymmetricDuels": {
+      "totalGames": 177,
+      "completedGames": 177,
+      "unfinishedGames": 0,
+      "checkpointRoundTrips": 4256,
+      "deterministicContinuations": 1130,
+      "maxHalfTurns": 51,
+      "passed": true
+    },
+    "wave2Sample": {
+      "games": 50,
+      "crashes": 0,
+      "unfinished": 1,
+      "scriptExitCode": 0,
+      "note": "The existing wave2 sample tolerates its capped duel; competitive balance is not certified."
+    },
+    "browser": {
+      "localExecution": false,
+      "reason": "Chrome/Chromium is unavailable locally. Both desktop/mobile gameplay and Codex suites are combined in GitHub Actions."
+    }
+  },
+  "preserved": {
+    "cards": 891,
+    "decks": 318,
+    "boosters": 19,
+    "historicalCards": 158,
+    "historicalCodexLinks": 158,
+    "publicCodexDossiers": 68,
+    "catalogueWorkbookUnchanged": true,
+    "gameRulesUnchangedFromPrHead": true,
+    "existingArtworkUnchanged": true
+  },
+  "sourceHashes": {
+    "index.html": "4895d89613ea34343bc4ca4e38c6277b487025f133f214048954fff438d85974",
+    "src/app.js": "49e2d730c5a08861cb85528933e97911721185430f83e3f27afa88f1db33c600",
+    "src/alien-base.js": "4469c593a4bfc7a86556e916b8d7193d9ba0355caafe87b9bf4df9550391c7f5",
+    "assets/styles.css": "8fbdba8dd9bcda8cf448bf092bde19e07753e17e015b65fac0b15e5c646c8aef",
+    "scripts/build.mjs": "9080da1c692ba03aeb617f6a21481c15b244cf26d3c1256b9d21552f1fd89d8c",
+    "scripts/serve.mjs": "c44efd71842f4f52c627e359f7eab837249da9d814c019d744098bb258f6b2c9",
+    "scripts/qa-browser.mjs": "714b8d3586ffaa55115fe0092ce41b9651fe4de799c631249ad0f91f0193572c",
+    "sw.js": "397f81f14502b541909f5359933bfbf1bc0db95443e66c02bfeb5697e43c5d6d",
+    "package.json": "ba416b527a9d816b9258ed65098304e0f89f0fa00bfd876470dc0f7c33a7e849",
+    "tests/pwa.test.mjs": "18d06357ca5df58b05204c4f6f08c52e05eabb1d7935ec12c2a5424d32bc9b2c"
+  }
+}

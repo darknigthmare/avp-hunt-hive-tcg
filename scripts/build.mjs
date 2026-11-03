@@ -122,7 +122,7 @@ const expected = '23a462d5fec16bf2feede14d1d69f1829e188db85df7860b3324127d2701d7
 if (hash !== expected) throw new Error('Standalone provenance hash mismatch.');
 
 const index = await readFile(resolve(root, 'index.html'), 'utf8');
-for (const asset of ['/assets/styles.css', '/src/data.js', '/src/alien-base.js', '/src/art-manifest.js', '/src/engine.js', '/src/app.js', '/manifest.webmanifest']) {
+for (const asset of ['/assets/styles.css', '/src/data.js', '/src/alien-base.js', '/src/expansion.js', '/src/expansion-wave2.js', '/src/deck-productions.js', '/src/asymmetric-cards.js', '/src/asymmetric-decks.js', '/src/art-manifest.js', '/src/engine.js', '/src/asymmetric-rules.js', '/src/duel-save.js', '/src/app.js', '/manifest.webmanifest']) {
   if (!index.includes(asset)) throw new Error(`index.html is missing ${asset}`);
 }
 
@@ -133,7 +133,7 @@ const cards = dataContext.window.AVP_DATA?.cards;
 if (!Array.isArray(cards) || cards.length !== expectedCardCount) {
   throw new Error(`Expected ${expectedCardCount} cards in src/data.js.`);
 }
-// The public offline snapshot must have a link for every shipped card.
+// The public offline snapshot must have a link for every historical card.
 new Script(await readFile(resolve(root, 'src', 'alien-base.js'), 'utf8'), { filename: 'src/alien-base.js' })
   .runInContext(dataContext, { timeout: 2_000 });
 const alienBase = dataContext.window.AVP_ALIEN_BASE;
@@ -158,6 +158,31 @@ if (
 const cardIds = cards.map((card) => card?.id);
 if (cardIds.some((id) => typeof id !== 'string' || !id.trim()) || new Set(cardIds).size !== expectedCardCount) {
   throw new Error('Card IDs in src/data.js are missing or duplicated.');
+}
+// Run the optional playable wave in a SEPARATE VM; the original 158-card
+// artwork provenance contract must continue validating its immutable baseline.
+const expansionContext=createContext({window:{},Intl,Date,Math});
+new Script(await readFile(resolve(root,'src','data.js'),'utf8'),{filename:'src/data.js'})
+  .runInContext(expansionContext,{timeout:2000});
+new Script(await readFile(resolve(root,'src','expansion.js'),'utf8'),{filename:'src/expansion.js'})
+  .runInContext(expansionContext,{timeout:2500});
+new Script(await readFile(resolve(root,'src','expansion-wave2.js'),'utf8'),
+  {filename:'src/expansion-wave2.js'}).runInContext(expansionContext,{timeout:3000});
+new Script(await readFile(resolve(root,'src','deck-productions.js'),'utf8'),
+  {filename:'src/deck-productions.js'}).runInContext(expansionContext,{timeout:3000});
+for(const file of ['asymmetric-cards.js','asymmetric-decks.js'])new Script(
+  await readFile(resolve(root,'src',file),'utf8'),{filename:'src/'+file}
+).runInContext(expansionContext,{timeout:3000});
+const live=expansionContext.window.AVP_DATA;
+if(live.cards.length!==891||live.expansion?.addedCount!==156||live.expansionWave2?.addedCount!==342
+  ||live.asymmetricEdition?.addedCount!==235||live.asymmetricEdition?.specializedDecks!==38
+  ||live.boosters?.length!==19
+  ||live.expansionDecks?.length!==318||live.productionDeckStatus?.added!==210
+  ||new Set(live.cards.map(c=>c.id)).size!==891
+  ||new Set(live.cards.slice(158).map(c=>c.sourceEntityId)).size!==494
+  ||live.expansionDecks.some(p=>Object.values(p.cards).reduce((a,b)=>a+b,0)!==30
+    ||Object.values(p.reserve).reduce((a,b)=>a+b,0)!==p.boxCount-30)){
+  throw new Error('Playable asymmetric catalogue has an invalid card, booster or 30+reserve deck inventory.');
 }
 const expectedDistribution = Object.freeze({
   cards: cardIds.length,
@@ -392,10 +417,18 @@ const required = [
   'assets/icon-192.png',
   'assets/icon-512.png',
   'src/data.js',
+  'src/alien-base.js',
+  'src/expansion.js',
+  'src/expansion-wave2.js',
+  'src/deck-productions.js',
+  'src/asymmetric-cards.js',
+  'src/asymmetric-decks.js',
   'src/art-manifest.js',
   'assets/art/manifest.json',
   'assets/art/scenes/home-hero-v1.webp',
   'src/engine.js',
+  'src/asymmetric-rules.js',
+  'src/duel-save.js',
   'src/app.js',
 ];
 for (const file of required) {

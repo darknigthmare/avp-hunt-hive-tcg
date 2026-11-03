@@ -235,6 +235,10 @@ html{scroll-padding-top:calc(var(--top) + 16px);scroll-padding-bottom:92px}
 .fan-project-notice{max-width:1680px;margin:0 auto;padding:18px 20px calc(90px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:#07100e;color:#c8d3cf;text-align:center;font-size:12px;line-height:1.55}
 .fan-project-notice strong,.fan-project-notice span{display:block}
 .fan-project-notice strong{color:#f0f5f2;letter-spacing:.02em}
+.weapon-status,.card-mechanics{margin:16px 0;padding:14px;border:1px solid var(--line2);border-radius:10px;overflow-wrap:anywhere}
+.weapon-status p{margin:8px 0 0;line-height:1.5}
+.card-mechanics h3{margin:0 0 12px}
+.card-mechanics .glossary{grid-template-columns:1fr}
 @media(min-width:761px){.fan-project-notice{padding-bottom:22px}}
 
 /* Référentiel documentaire Alien_base : distinct des cartes jouables. */
