@@ -62,11 +62,28 @@ function fusionHostLane(b,si,effect,faceLane){
    &&b.card(u.cardId).cardClass==='HOTE'&&b.card(u.cardId).hostType===effect.hostType
    &&!b.has(u,'SYNTHETIC'));
 }
+P.combatWeaponState=function(sideIndex,u){
+ const weapon=(u?.equipment||[]).map(id=>this.card(id)).find(c=>c?.slot==='WEAPON')||null;
+ const installedMods=(u?.equipment||[]).map(id=>this.card(id)).filter(c=>c?.cardClass==='MODIFICATION');
+ let mode='NONE',available=0,required=0,ready=true,reason='Attaque de base';
+ if(weapon?.ammoType){
+   mode='AMMO';required=weapon.ammoPerAttack||1;
+   available=(u.ammoPacks||[]).reduce((n,p)=>n+(p.ammoType===weapon.ammoType?p.remaining:0),0);
+   ready=available>=required;
+   reason=ready?'Arme chargée':'Munitions compatibles insuffisantes : attaque de base uniquement';
+ }else if(weapon?.plasmaPerAttack){
+   mode='PLASMA';required=weapon.plasmaPerAttack;available=this.side(sideIndex)?.plasma||0;
+   ready=available>=required;reason=ready?'Plasma disponible':'Plasma insuffisant : attaque de base uniquement';
+ }else if(weapon){
+   mode='MELEE';reason='Arme sans consommation de munitions';
+ }
+ return {weapon,mode,available,required,ready,reason,ammoType:weapon?.ammoType||null,
+   compatibleRounds:mode==='AMMO'?available:0,installedMods,
+   activeMods:ready&&weapon?installedMods.filter(c=>c.compatibleFamilies.includes(weapon.weaponFamily)):[]};
+};
 function loadableWeapon(b,u,sideIndex){
- const s=b.side(sideIndex);
- return (u?.equipment||[]).map(id=>b.card(id)).find(c=>c?.slot==='WEAPON'
-  &&(c.ammoType?isAvailableAmmo(u,c.ammoType,c.ammoPerAttack||1)
-   :c.plasmaPerAttack?s.plasma>=c.plasmaPerAttack:true));
+ const state=b.combatWeaponState(sideIndex,u);
+ return state.ready?state.weapon:null;
 }
 function fireable(b,u,sideIndex){
  const s=b.side(sideIndex),w=loadableWeapon(b,u,sideIndex);
@@ -128,8 +145,11 @@ P.makeUnit=function(...args){
 };
 P.allKeywords=function(u){
  const side=u?.owner??0;
+ const shot=fireable(this,u,side);
  const equipment=(u?.equipment||[]).filter(id=>{
-   const c=this.card(id);if(c?.slot!=='WEAPON')return true;
+   const c=this.card(id);
+   if(c?.cardClass==='MODIFICATION')return !!shot&&c.compatibleFamilies.includes(shot.weapon.weaponFamily);
+   if(c?.slot!=='WEAPON')return true;
    return (!c.ammoType||isAvailableAmmo(u,c.ammoType,c.ammoPerAttack||1))
      &&(!c.plasmaPerAttack||(this.side(side)?.plasma||0)>=c.plasmaPerAttack);
  });
@@ -138,7 +158,9 @@ P.allKeywords=function(u){
  return older.allKeywords.call(this,{...u,equipment});
 };
 P.unitAttack=function(si,u,target=null){
- let val=older.unitAttack.call(this,si,u,target);
+ // Apply the weapon and ammunition adjustments before the final zero floor.
+ // Otherwise a severe negative modifier is lost and bonus rounds create damage.
+ let val=older.unitAttack.call(this,si,u,target,true);
  const shot=fireable(this,u,si);
  for(const id of u.equipment||[]){
   const c=this.card(id);
@@ -224,7 +246,7 @@ P.playCardResolved=function(si,handIndex,target={kind:'NONE'}){
  const result=older.playCardResolved.call(this,si,handIndex,target);
  if(result.ok&&c?.cardClass==='MUNITION'){
    const u=this.side(si).board[target.lane];
-   if(u){retireEmptyPacks(this,si,u);u.ammoPacks.push({cardId:c.id,ammoType:c.ammoType,remaining:c.rounds,ammoBonus:c.ammoBonus||0});this.notify();}
+   if(u){retireEmptyPacks(this,si,u);u.ammoPacks??=[];u.ammoPacks.push({cardId:c.id,ammoType:c.ammoType,remaining:c.rounds,ammoBonus:c.ammoBonus||0});this.notify();}
  }
  return result;
 };
@@ -251,7 +273,8 @@ P.attackResolved=function(si,lane,target){
 };
 P.resolveDeath=function(payload){
  const u=payload.ctx?.sourceUnit,owner=u?.owner;
- const honored=u&&owner!==undefined&&this.card(u.cardId)?.faction==='YAUTJA';
+ const honored=u&&owner===1-payload.sideIndex&&!payload.ctx?.sacrifice&&!payload.ctx?.transform&&!payload.ctx?.noDeath
+   &&this.isFaction(u,'YAUTJA');
  const result=older.resolveDeath.call(this,payload);
  if(honored){
    const side=this.side(owner);side.honor=clamp((side.honor||0)+1,12);
@@ -261,6 +284,23 @@ P.resolveDeath=function(payload){
 };
 P.aiScore=function(card,target={kind:'NONE'},si=1){
  const s=this.side(si),kind=card?.effect?.kind;
+ if(card?.cardClass==='OEUF'||card?.cardClass==='HOTE'){
+   const formation=s.board.filter(Boolean).map(u=>this.card(u.cardId));
+   const parasites=formation.filter(c=>isEgg(c)||stage(c)==='FACEHUGGER');
+   const hosts=formation.filter(c=>c.cardClass==='HOTE');
+   const free=s.board.filter(u=>!u).length;
+   // Preserve room for both fusion materials rather than occupying every lane
+   // with eggs or hosts that cannot turn into an attacking unit on their own.
+   if(card.cardClass==='OEUF'){
+     if(parasites.length)return 0;
+     return hosts.length?8:5.5;
+   }
+   if(hosts.some(c=>c.hostType===card.hostType)||(!parasites.length&&(hosts.length||free<=1)))return 0;
+   const recipe=s.hand.map(id=>this.card(id)).find(c=>c?.effect?.kind==='HIVE_FUSION'
+     &&c.effect.hostType===card.hostType&&hasResult(s,c.effect.resultCardId));
+   if(hosts.length&&!recipe)return 0;
+   return recipe&&parasites.length?8:parasites.length?7:4;
+ }
  if(card?.cardClass==='MUNITION'){
    const u=s.board[target?.lane];if(!u)return 0;
    const weapon=u.equipment.map(id=>this.card(id)).find(x=>x?.ammoType===card.ammoType);

@@ -11,7 +11,7 @@
   const card=(id,type)=>{if(!E.CARD.has(id)||(type&&E.CARD.get(id).type!==type))fail();return id;};
   const keyword=k=>{if(!Object.hasOwn(D.keywords,k))fail();return k;};
   const faction=f=>{if(!Object.hasOwn(D.factions,f))fail();return f;};
-  function unit(raw,owner,ids){
+  function unit(raw,owner,ids,legacyAttachments){
     const v=record(raw),out={uid:text(v.uid,80),cardId:card(v.cardId,'UNIT'),owner:integer(v.owner,owner,owner)};
     if(!out.uid||ids.has(out.uid))fail();ids.add(out.uid);
     for(const key of ['currentHealth','attackBonus','healthBonus','tempAttack','stunned','kills'])out[key]=integer(v[key],key.endsWith('Bonus')||key==='tempAttack'?-1000000:0);
@@ -20,14 +20,43 @@
     for(const key of ['stunBlocked','infested','permanentDebuffed'])if(v[key]!==undefined)out[key]=bool(v[key]);
     if(v.auraHealth!==undefined)out.auraHealth=integer(v.auraHealth,-1000000);
     out.granted=list(v.granted,64,keyword);out.tempGranted=list(v.tempGranted,64,keyword);
+    if(v.extraFactions!==undefined)out.extraFactions=list(v.extraFactions,100,faction);
     out.equipment=list(v.equipment,100,id=>card(id,'EQUIPMENT'));
     if(v.ammoPacks!==undefined)out.ammoPacks=list(v.ammoPacks,16,rawPack=>{
       const pack=record(rawPack),id=card(pack.cardId,'EQUIPMENT'),src=E.CARD.get(id);
-      if(src.cardClass!=='MUNITION'||src.ammoType!==pack.ammoType)fail();
+      // A documentary correction can rename a calibre without discarding an
+      // existing magazine. Only that card's explicit historical type migrates.
+      const knownType=pack.ammoType===src.ammoType||(src.legacyAmmoType&&pack.ammoType===src.legacyAmmoType);
+      if(src.cardClass!=='MUNITION'||!knownType)fail();
       if(pack.ammoBonus!==undefined&&pack.ammoBonus!==src.ammoBonus)fail();
       return {cardId:id,ammoType:src.ammoType,
         remaining:integer(pack.remaining,0,src.rounds),ammoBonus:src.ammoBonus||0};
     });
+    else if(D.asymmetricEdition)out.ammoPacks=[];
+    const attachments=out.equipment.map(id=>E.CARD.get(id));
+    const weapons=attachments.filter(c=>c.slot==='WEAPON');
+    const mods=attachments.filter(c=>c.cardClass==='MODIFICATION');
+    const carrier=E.CARD.get(out.cardId);
+    const carrierFactions=new Set([carrier.faction,...(carrier.effect?.dualFaction||[]),...(out.extraFactions||[])]);
+    const incompatibleWeapons=weapons.filter(c=>c.tags?.includes('asymmetric')&&(!carrierFactions.has(c.faction)||!['PERSONNAGE','VEHICULE'].includes(carrier.cardClass)));
+    if(incompatibleWeapons.length){
+      const weapon=incompatibleWeapons[0];
+      if(!legacyAttachments){
+        const exception=record(v.legacyWeaponAttachment);
+        if(exception.carrierUid!==out.uid||exception.carrierCardId!==out.cardId||exception.weaponCardId!==weapon.id)fail();
+      }
+      // The historical engine allowed this attachment. Preserve exactly the
+      // existing carrier and weapon without extending the live equip rules.
+      // If either identity changes or the weapon is removed, this exception
+      // stops applying; all slot, module and ammunition checks still run.
+      out.legacyWeaponAttachment={carrierUid:out.uid,carrierCardId:out.cardId,weaponCardId:weapon.id};
+    }
+    if(attachments.some(c=>c.cardClass==='MUNITION')&&(carrier.faction!=='HUMAN'||!['PERSONNAGE','VEHICULE'].includes(carrier.cardClass)))fail();
+    if(weapons.length>1||mods.length>3||new Set(mods.map(c=>c.modSocket)).size!==mods.length)fail();
+    if(mods.some(c=>!weapons.some(w=>c.compatibleFamilies.includes(w.weaponFamily))))fail();
+    // Old checkpoints can contain spent magazines; only live reserves occupy
+    // the six ammunition slots and those exhausted cards remain recoverable.
+    if((out.ammoPacks||[]).filter(pack=>pack.remaining>0).length>6)fail();
     const equippedAmmo=out.equipment.filter(id=>E.CARD.get(id).cardClass==='MUNITION');
     const matches=new Map();
     for(const id of equippedAmmo)matches.set(id,(matches.get(id)||0)+1);
@@ -36,18 +65,19 @@
     }
     if([...matches.values()].some(n=>n!==0))fail();
     out.mutations=list(v.mutations,100,m=>({attack:integer(record(m).attack),expiresAt:integer(m.expiresAt)}));
-    if(v.extraFactions!==undefined)out.extraFactions=list(v.extraFactions,100,faction);
     return out;
   }
-  function side(raw,index,ids){
+  function side(raw,index,ids,legacyAttachments){
     const v=record(raw),out={name:text(v.name,160),isAI:bool(v.isAI)};
     if(out.isAI!==(index===1))fail();
     for(const key of ['life','maxLife','shield','energy','maxEnergy','nextEnergy','trophies','totalTrophies','fatigue','cardsPlayed','unitsLost','turnsStarted'])out[key]=integer(v[key]);
-    for(const resource of ['biomass','plasma','honor'])
+    for(const resource of ['biomass','plasma','honor']){
       if(v[resource]!==undefined)out[resource]=integer(v[resource],0,12);
+      else if(D.asymmetricEdition)out[resource]=0;
+    }
     if(out.life<1||out.life>out.maxLife||out.maxEnergy>D.rules.maxEnergy)fail();
     for(const key of ['deck','hand','discard'])out[key]=list(v[key],500,id=>card(id));
-    out.board=list(v.board,3,u=>u===null?null:unit(u,index,ids));if(out.board.length!==3)fail();
+    out.board=list(v.board,3,u=>u===null?null:unit(u,index,ids,legacyAttachments));if(out.board.length!==3)fail();
     out.location=v.location===null?null:{cardId:card(record(v.location).cardId,'LOCATION')};
     out.flags={};record(v.flags);
     for(const key of ['bouvetUsed','sulacoUsed','aurigaUsed','nostromoUsed','valVerdeUsed','modCloak'])if(v.flags[key]!==undefined)out.flags[key]=bool(v.flags[key]);
@@ -61,6 +91,8 @@
   function validate(raw){
     const v=record(raw);if(v.schema!=='avp-duel'||v.version!==1)fail();
     const out={schema:'avp-duel',version:1,id:text(v.id,80),rngState:integer(v.rngState,0,4294967295)};
+    const sourceRules=v.rulesVersion===undefined?1:integer(v.rulesVersion,1,2);
+    if(D.asymmetricEdition)out.rulesVersion=2;
     if(!/^[a-zA-Z0-9_-]+$/.test(out.id))fail();
     if(typeof v.difficulty!=='number'||!Number.isFinite(v.difficulty)||v.difficulty<.5||v.difficulty>5)fail();out.difficulty=v.difficulty;
     const modifiers=new Set(D.campaign.flatMap(m=>m.modifiers));
@@ -68,13 +100,13 @@
     const s=record(v.state);if(s.winner!==null)fail();
     out.state={active:integer(s.active,0,1),round:integer(s.round,1,1000000),halfTurn:integer(s.halfTurn),winner:null,reason:text(s.reason,200),startedAt:integer(s.startedAt,0,8640000000000000)};
     if(out.state.active!==out.state.halfTurn%2||out.state.round!==Math.floor(out.state.halfTurn/2)+1)fail();
-    const ids=new Set();out.state.sides=list(s.sides,2,(v,i)=>side(v,i,ids));if(out.state.sides.length!==2)fail();
+    const ids=new Set();out.state.sides=list(s.sides,2,(v,i)=>side(v,i,ids,sourceRules===1));if(out.state.sides.length!==2)fail();
     out.state.log=list(s.log,60,l=>({id:text(record(l).id,80),text:text(l.text,600),tone:['INFO','SYSTEM','EFFECT','PLAYER','ENEMY','DANGER','SUCCESS','COMBAT','TROPHY','TURN'].includes(l.tone)?l.tone:'INFO',time:integer(l.time,0,8640000000000000)}));
     return out;
   }
   function capture(battle){
     if(battle.resolutionDepth||battle.pendingDeaths.length||battle.resolvingDeaths)throw new Error('Le duel est en cours de résolution.');
-    return validate({schema:'avp-duel',version:1,id:battle.id,rngState:battle.rng.getState(),difficulty:battle.difficulty,modifiers:battle.modifiers,state:battle.state});
+    return validate({schema:'avp-duel',version:1,rulesVersion:D.asymmetricEdition?2:undefined,id:battle.id,rngState:battle.rng.getState(),difficulty:battle.difficulty,modifiers:battle.modifiers,state:battle.state});
   }
   function restore(raw,callbacks={}){
     const v=validate(raw),b=Object.create(E.Battle.prototype);

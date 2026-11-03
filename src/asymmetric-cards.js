@@ -23,7 +23,10 @@ const families={
   pistol:{source:'item.vp70-combat-pistol',ammunition:'9MM',display:'Chargeurs 9 mm',mods:['VISEUR','CROSSE','CHARGEUR']},
   sniper:{source:'item.m42a-scope-rifle',ammunition:'PRECISION',display:'Munitions de précision',mods:['VISEUR','CROSSE','CANON']},
   grenade:{source:'item.m40-hedp-grenade',ammunition:'GRENADE',display:'Grenades de lanceur',mods:['VISEUR','CANON']},
-  laser:{source:'item.f44aa-pulse-rifle',ammunition:'CELLULE',display:'Cellules énergétiques',mods:['VISEUR','CANON','CHARGEUR']}
+  // Le F44AA est un fusil à impulsion balistique, pas un laser. La famille
+  // F44AA est une compatibilité de jeu ; aucun calibre non attesté n'est inventé.
+  f44aa:{source:'item.f44aa-pulse-rifle',ammunition:'F44AA',legacyAmmoType:'CELLULE',display:'Cartouches F44AA',mods:['VISEUR','CANON','CHARGEUR'],
+    primarySource:'https://www.wetaworkshop.com/projects/alien-romulus'}
 };
 const clsType={PERSONNAGE:'UNIT',CREATURE:'UNIT',OEUF:'UNIT',HOTE:'UNIT',
   MUNITION:'EQUIPMENT',MODIFICATION:'EQUIPMENT',ARME:'EQUIPMENT',EQUIPEMENT:'EQUIPMENT',
@@ -49,12 +52,15 @@ function create(faction,cardClass,name,stats={}){
     eggLine:stats.eggLine||null,evolutionStage:stats.evolutionStage||null,hostType:stats.hostType||null,
     summonByFusion:!!stats.summonByFusion,
     sourceEntityId:source,sourcePolicy:'asymmetric-mechanics-proposed-not-lore-fact',
+    sourceRelation:stats.sourceRelation||'ADAPTATION_TCG',
+    sourceNote:stats.sourceNote||'Référence documentaire utilisée comme inspiration ; ce nom, ces statistiques et ces effets sont une création du TCG.',
+    sourcePrimaryUrl:stats.sourcePrimaryUrl||null,
     source:{workbook:'darknigthmare/alien_base@e65b75a6bfd1284dbac746102fdbae4fc5a3786b',
       sheet:'data/entities.v1.json',entry:source,prototype:false},
     collectorNo:set+'-MX-'+String(idx).padStart(3,'0'),
     index:D.cards.length,artSeed:hash(id),slug:id.toLowerCase().replaceAll('_','-')
   };
-  for(const key of ['weaponFamily','ammoType','weaponRange','modAffix','hostRole','hostSpecies','special']){
+  for(const key of ['weaponFamily','ammoType','legacyAmmoType','weaponRange','modAffix','hostRole','hostSpecies','special']){
     if(stats[key]!==undefined)card[key]=stats[key];
   }
   card.searchText=[name,cardClass,type,faction,set,card.text,...card.tags].join(' ').toLowerCase();
@@ -86,7 +92,7 @@ for(const [name,source,cost,kind] of humanRoles){
 const humanWeapons=[
  ['M41A — rafale courte','pulse','CW02',1,300],
  ['M41A — canon de siège','pulse','MC12',3,470],
- ['M41A2 — cadence renforcée','pulse','FE20',2,390],
+ ['M41A2 — cadence renforcée','pulse','FE20',2,390,'item.m41a2-pulse-rifle'],
  ['M56 Smartgun — suivi gyrostabilisé','smart','CW02',3,520],
  ['M56 Smartgun — suppression','smart','MC12',4,620],
  ['M240 — jet incendiaire','flame','CW02',2,380],
@@ -97,35 +103,37 @@ const humanWeapons=[
  ['VP70 — double action','pistol','CW02',2,330],
  ['M42A — couverture de précision','sniper','MC12',3,520],
  ['M42A — surveillance longue','sniper','DD21',4,600],
- ['M40 — lanceur de grenades','grenade','CW02',3,590],
- ['M40 — charge de brèche','grenade','MC12',4,690],
- ['F44AA — pulse carbine','laser','RO09',3,550]
+ ['Lance-grenades — chargement M40','grenade','CW02',3,590],
+ ['Lance-grenades — brèche M40','grenade','MC12',4,690],
+ ['F44AA — fusil à impulsion','f44aa','RO09',3,550]
 ];
-for(const [name,fam,set,cost,attack] of humanWeapons){
+for(const [name,fam,set,cost,attack,sourceOverride] of humanWeapons){
   const f=families[fam];
-  create('HUMAN','ARME',name,{source:f.source,set,cost,attack,slot:'WEAPON',weaponFamily:fam,
+  create('HUMAN','ARME',name,{source:sourceOverride||f.source,sourcePrimaryUrl:f.primarySource,set,cost,attack,slot:'WEAPON',weaponFamily:fam,
     ammoType:f.ammunition,ammoPerAttack:1+(cost>=4?1:0),tags:['ranged','firearm',fam],
     text:'Arme à distance : +'+attack+' ATK lorsque le porteur possède '+f.display+' ; chaque attaque dépense '+(1+(cost>=4?1:0))+' charge(s). Compatible avec les mods '+f.mods.join(', ')+'.'});
 }
 const ammoTiers=[['Standard',3,0,'C'],['Réserve tactique',5,25,'R'],['Perforantes',2,120,'SR']];
 for(const [family,f] of Object.entries(families))for(let i=0;i<ammoTiers.length;i++){
   const [tier,rounds,bonus,rarity]=ammoTiers[i];
-  const set=family==='laser'?'RO09':family==='flame'?'IS08':family==='pulse'||family==='smart'?'CW02':'MC12';
-  create('HUMAN','MUNITION',f.display+' — '+tier,{source:f.source,set,cost:1+(i===2?1:0),rarity,ammoType:f.ammunition,rounds,
+  const set=family==='f44aa'?'RO09':family==='flame'?'IS08':family==='pulse'||family==='smart'?'CW02':'MC12';
+  create('HUMAN','MUNITION',f.display+' — '+tier,{source:f.source,sourcePrimaryUrl:f.primarySource,set,cost:1+(i===2?1:0),rarity,ammoType:f.ammunition,legacyAmmoType:f.legacyAmmoType,rounds,
     ammoBonus:bonus,tags:['energy','ammunition','reload'],text:'Attachez au Personnage équipé ou non. Fournit '+rounds+' charges de '+f.display+
       (bonus?' ; une attaque chargée gagne +'+bonus+' ATK.':'')+' ; les armes de corps à corps n’en consomment pas.'});
 }
 const modSockets=[
- ['VISEUR','Viseur réglable','item.motion-tracker',1,120],
- ['CROSSE','Crosse stabilisée','item.m3-personnel-armor',1,75],
- ['CANON','Canon renforcé','item.m41a-pulse-rifle',2,160],
- ['CHARGEUR','Chargeur allégé','item.ammo-satchel',1,100]
+ ['VISEUR','Viseur réglable',1,120],
+ ['CROSSE','Crosse stabilisée',1,75],
+ ['CANON','Canon renforcé',2,160],
+ ['CHARGEUR','Chargeur allégé',1,100]
 ];
-for(const [family,f] of Object.entries(families))for(const [socket,label,source,cost,attack] of modSockets){
+for(const [family,f] of Object.entries(families))for(const [socket,label,cost,attack] of modSockets){
   if(!f.mods.includes(socket))continue;
-  const set=family==='laser'?'RO09':family==='flame'?'IS08':family==='pulse'||family==='smart'?'CW02':'MC12';
+  const set=family==='f44aa'?'RO09':family==='flame'?'IS08':family==='pulse'||family==='smart'?'CW02':'MC12';
   create('HUMAN','MODIFICATION',label+' — '+family.toUpperCase(),{
-    source,set,cost,slot:'MOD',modSocket:socket,compatibleFamilies:[family],
+    source:f.source,sourcePrimaryUrl:f.primarySource,sourceRelation:'MODULE_TCG_SUR_ARME',
+    sourceNote:'Module original du TCG ; la référence désigne son arme compatible, pas un accessoire canon attesté.',
+    set,cost,slot:'MOD',modSocket:socket,compatibleFamilies:[family],
     attack,health:socket==='CROSSE'?100:0,weaponFamily:family,
     effect:socket==='VISEUR'?{seeCloak:true}:{},
     text:'Module '+socket+' compatible '+family.toUpperCase()+
@@ -135,7 +143,7 @@ for(const [family,f] of Object.entries(families))for(let i=0;i<2;i++){
  const technique=i===0?'Tir contrôlé':'Tir de suppression';
  const damage=i===0?450:650;
  create('HUMAN','ATTAQUE',technique+' — '+family.toUpperCase(),{
-   source:f.source,set:family==='laser'?'RO09':family==='flame'?'IS08':'CW02',cost:1+i,
+   source:f.source,sourcePrimaryUrl:f.primarySource,set:family==='f44aa'?'RO09':family==='flame'?'IS08':'CW02',cost:1+i,
    effect:{kind:'WEAPON_TECHNIQUE',target:'ENEMY_UNIT',weaponFamily:family,ammoType:f.ammunition,ammoCost:1+i,damage},
    text:'Attaque spéciale : nécessite une arme '+family.toUpperCase()+' et '+(1+i)+' charge(s) de '+f.display+
     '. Dépense les charges et inflige '+damage+' dégâts à une unité ennemie.'});
@@ -268,7 +276,7 @@ const plasmaWeapons=[
  ['Burner rifle','item.yautja.burner_rifle',1,495,'HG03'],
  ['Lanceur de plasma rapide','item.yautja.plasma_caster',1,370,'YA27'],
  ['Canon de cérémonie','item.yautja.plasma_caster',2,780,'YA27'],
- ['Module de visée guidée','item.yautja.tri_laser_targeting',1,410,'HG03'],
+ ['Canon plasma à visée guidée','item.yautja.plasma_caster',1,410,'HG03'],
  ['Frappe de canon lourd','item.yautja.gatling_plasma',3,880,'PH24'],
  ['Émetteur de tournoi','item.yautja.plasma_turret',1,440,'PH24'],
  ['Plasma de l’Ancien','item.yautja.plasma_caster',2,700,'YA27']
@@ -307,7 +315,7 @@ for(let i=0;i<10;i++)create('YAUTJA','HONNEUR',[
 for(let i=0;i<8;i++)create('YAUTJA','EQUIPEMENT',[
  'Bio-masque multi-spectre','Capteur de trophées','Blindage du Blooded','Lame d’honneur',
  'Module de traque','Récupérateur thermique','Bague des anciens','Écran énergétique'
-][i],{source:i%2?'item.yautja.thermal_mask':'item.yautja.medicomp',
+][i],{source:i===0?'item.yautja.thermal_mask':i%2?'item.yautja.thermal_mask':'item.yautja.medicomp',
  set:i%2?'HG03':'YA27',cost:1+i%3,health:100+i*45,attack:i%3===0?140:0,
  effect:i%2===0?{seeCloak:true}:{onEquip:{kind:'GAIN_HONOR',amount:1}},
  text:'Équipement de chasse : protection et détection, parfois générateur d’honneur lors de l’installation.'});

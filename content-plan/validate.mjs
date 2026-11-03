@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Tests documentaires (Node 20+, sans dépendance externe) : les cartes ne sont pas encore jouables.
+// Contrôles des données : catalogue actif et programme éditorial restent distincts.
 import {readFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {dirname,join} from 'node:path';
@@ -32,7 +32,12 @@ assert.equal(asyncSlots.length,m.implementation.asymmetricDeckCardPositions);
 assert.equal(new Set(asyncCards.map(c=>c.CardID)).size,asyncCards.length);
 assert.equal(new Set(liveCards.map(c=>c.CardID)).size,liveCards.length);
 const allLive=new Set(liveCards.map(c=>c.CardID));
-for(const c of asyncCards){assert(allLive.has(c.CardID),c.CardID);assert(sourceSet.has(c.RegistreAlienBaseID),c.CardID);}
+for(const c of asyncCards){
+ assert(allLive.has(c.CardID),c.CardID);assert(sourceSet.has(c.RegistreAlienBaseID),c.CardID);
+ assert(['ADAPTATION_TCG','MODULE_TCG_SUR_ARME'].includes(c.RelationSource),'Relation documentaire manquante : '+c.CardID);
+ assert(c.NoteSource,'Qualification de la source manquante : '+c.CardID);
+ if(c.SourcePrimaireURL)assert.equal(new URL(c.SourcePrimaireURL).protocol,'https:',c.CardID);
+}
 const dk=new Map(asyncDecks.map(d=>[d.DeckID,d]));
 const seats=new Map();
 for(const line of asyncSlots){assert(dk.has(line.DeckID));assert(allLive.has(line.CardID));

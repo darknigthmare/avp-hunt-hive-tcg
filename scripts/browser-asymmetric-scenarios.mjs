@@ -73,6 +73,10 @@ export async function asymmetricBrowserScenarios(){
   assert(b.side(0).board[0].ammoPacks.reduce((n,p)=>n+p.remaining,0)===charges-1,'Resume preserves remaining ammo');
   click('[data-action="battle-inspect"][data-side="0"][data-lane="0"]');
   assert(document.querySelector('[role="dialog"]')?.innerText.includes('charge(s)'),'Unit details show ammo');
+  const weaponPanel=document.querySelector('[aria-label="État de l’armement"]');
+  assert(weaponPanel?.innerText.includes(gun.name)&&weaponPanel.innerText.includes('Coût :'),'Unit details show weapon and firing cost');
+  assert(document.querySelector('[role="dialog"]')?.innerText.includes('Bonus d’attaque actif.'),'Unit details distinguish active modification bonuses');
+  assert(document.documentElement.scrollWidth<=window.innerWidth+1,'Equipment details fit the viewport');
   document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
 
   const egg=get(c=>c.cardClass==='OEUF'&&c.eggLine==='COMMON');

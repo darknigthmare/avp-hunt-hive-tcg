@@ -1,0 +1,418 @@
+{
+  "sourceRepository": "darknigthmare/avp-hunt-hive-tcg",
+  "sourceCommit": "89a45d877fb4e946235471c8a76eb0c78c9cb91c",
+  "description": "Captured by the exact historical engine after successful playCard calls, before stricter asymmetric weapon carrier rules.",
+  "cases": [
+    {
+      "name": "human-with-yautja-plasma",
+      "carrierId": "H_HICKS",
+      "weaponId": "MX_YA_011",
+      "checkpoint": {
+        "schema": "avp-duel",
+        "version": 1,
+        "id": "battle-mw0hokh6-uwtt02",
+        "rngState": 3151634151,
+        "difficulty": 1,
+        "modifiers": [],
+        "state": {
+          "active": 0,
+          "round": 1,
+          "halfTurn": 0,
+          "winner": null,
+          "reason": "",
+          "startedAt": 1793698344618,
+          "sides": [
+            {
+              "name": "Commandant",
+              "isAI": false,
+              "life": 8000,
+              "maxLife": 8000,
+              "shield": 0,
+              "energy": 8,
+              "maxEnergy": 10,
+              "nextEnergy": 0,
+              "trophies": 0,
+              "totalTrophies": 0,
+              "fatigue": 0,
+              "cardsPlayed": 1,
+              "unitsLost": 0,
+              "turnsStarted": 1,
+              "biomass": 0,
+              "plasma": 7,
+              "honor": 0,
+              "deck": [
+                "MX_HU_029",
+                "H_HUDSON",
+                "BX_0003",
+                "MX_HU_006",
+                "MX_HU_054",
+                "BX_0230",
+                "MX_HU_033",
+                "MX_HU_034",
+                "MX_HU_077",
+                "H_DALLAS",
+                "AX_HU_141",
+                "BX_0026",
+                "BX_0021",
+                "MX_HU_015",
+                "MX_HU_031",
+                "T_H_FIRETEAM",
+                "T_H_FROSTY",
+                "MX_HU_034",
+                "MX_HU_053",
+                "MX_HU_076",
+                "MX_HU_055",
+                "AX_HU_006",
+                "BX_0002",
+                "MX_HU_013",
+                "MX_HU_014"
+              ],
+              "hand": [
+                "MX_HU_014",
+                "MX_HU_032",
+                "MX_HU_030",
+                "BX_0006",
+                "BX_0056"
+              ],
+              "discard": [],
+              "board": [
+                {
+                  "uid": "unit-mw0hokhf-ar48z3",
+                  "cardId": "H_HICKS",
+                  "owner": 0,
+                  "currentHealth": 1823,
+                  "attackBonus": 0,
+                  "healthBonus": 0,
+                  "tempAttack": 0,
+                  "stunned": 0,
+                  "kills": 0,
+                  "ready": false,
+                  "attacked": false,
+                  "cloaked": false,
+                  "armorUsed": false,
+                  "debuffed": false,
+                  "mutated": false,
+                  "rebornUsed": false,
+                  "forced": false,
+                  "tacticShieldUsed": false,
+                  "auraHealth": 0,
+                  "granted": [],
+                  "tempGranted": [],
+                  "equipment": [
+                    "MX_YA_011"
+                  ],
+                  "ammoPacks": [],
+                  "mutations": []
+                },
+                null,
+                null
+              ],
+              "location": null,
+              "flags": {},
+              "status": {},
+              "rebornUsed": {}
+            },
+            {
+              "name": "Directive adverse",
+              "isAI": true,
+              "life": 8000,
+              "maxLife": 8000,
+              "shield": 0,
+              "energy": 0,
+              "maxEnergy": 0,
+              "nextEnergy": 0,
+              "trophies": 0,
+              "totalTrophies": 0,
+              "fatigue": 0,
+              "cardsPlayed": 0,
+              "unitsLost": 0,
+              "turnsStarted": 0,
+              "biomass": 0,
+              "plasma": 0,
+              "honor": 0,
+              "deck": [
+                "MX_XE_027",
+                "BX_0027",
+                "MX_XE_041",
+                "MX_XE_008",
+                "BX_0043",
+                "BX_0031",
+                "MX_XE_016",
+                "MX_XE_019",
+                "MX_XE_027",
+                "AX_XE_080",
+                "BX_0307",
+                "MX_XE_041",
+                "T_X_EGGMORPH",
+                "MX_XE_017",
+                "MX_XE_027",
+                "MX_XE_012",
+                "AX_XE_081",
+                "MX_XE_050",
+                "MX_XE_041",
+                "BX_0033",
+                "X_OVOMORPH",
+                "MX_XE_049",
+                "MX_XE_018",
+                "MX_XE_011"
+              ],
+              "hand": [
+                "MX_XE_005",
+                "MX_XE_062",
+                "MX_XE_066",
+                "MX_XE_035",
+                "MX_XE_035",
+                "MX_XE_057"
+              ],
+              "discard": [],
+              "board": [
+                null,
+                null,
+                null
+              ],
+              "location": null,
+              "flags": {},
+              "status": {},
+              "rebornUsed": {}
+            }
+          ],
+          "log": [
+            {
+              "id": "log-mw0hokhg-pbfuar",
+              "text": "Commandant équipe Dwayne Hicks avec Plasmacaster de campagne.",
+              "tone": "PLAYER",
+              "time": 1793698344628
+            },
+            {
+              "id": "log-mw0hokhf-vz27ch",
+              "text": "Dwayne Hicks est invoqué sur la voie 1.",
+              "tone": "EFFECT",
+              "time": 1793698344627
+            },
+            {
+              "id": "log-mw0hokhf-nfbj3z",
+              "text": "Duel engagé — 8 000 PV contre 8 000 PV.",
+              "tone": "SYSTEM",
+              "time": 1793698344627
+            },
+            {
+              "id": "log-mw0hokh7-hdskca",
+              "text": "Tour de Commandant — 1 énergie.",
+              "tone": "TURN",
+              "time": 1793698344619
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "xeno-with-human-rifle-and-module",
+      "carrierId": "X_WARRIOR",
+      "weaponId": "MX_HU_013",
+      "checkpoint": {
+        "schema": "avp-duel",
+        "version": 1,
+        "id": "battle-mw0hokhi-b47zmu",
+        "rngState": 3151634151,
+        "difficulty": 1,
+        "modifiers": [],
+        "state": {
+          "active": 0,
+          "round": 1,
+          "halfTurn": 0,
+          "winner": null,
+          "reason": "",
+          "startedAt": 1793698344630,
+          "sides": [
+            {
+              "name": "Commandant",
+              "isAI": false,
+              "life": 8000,
+              "maxLife": 8000,
+              "shield": 0,
+              "energy": 9,
+              "maxEnergy": 10,
+              "nextEnergy": 0,
+              "trophies": 0,
+              "totalTrophies": 0,
+              "fatigue": 0,
+              "cardsPlayed": 2,
+              "unitsLost": 0,
+              "turnsStarted": 1,
+              "biomass": 0,
+              "plasma": 7,
+              "honor": 0,
+              "deck": [
+                "MX_HU_029",
+                "H_HUDSON",
+                "BX_0003",
+                "MX_HU_006",
+                "MX_HU_054",
+                "BX_0230",
+                "MX_HU_033",
+                "MX_HU_034",
+                "MX_HU_077",
+                "H_DALLAS",
+                "AX_HU_141",
+                "BX_0026",
+                "BX_0021",
+                "MX_HU_015",
+                "MX_HU_031",
+                "T_H_FIRETEAM",
+                "T_H_FROSTY",
+                "MX_HU_034",
+                "MX_HU_053",
+                "MX_HU_076",
+                "MX_HU_055",
+                "AX_HU_006",
+                "BX_0002",
+                "MX_HU_013",
+                "MX_HU_014"
+              ],
+              "hand": [
+                "MX_HU_014",
+                "MX_HU_032",
+                "MX_HU_030",
+                "BX_0006",
+                "BX_0056"
+              ],
+              "discard": [],
+              "board": [
+                {
+                  "uid": "unit-mw0hokhi-fjpvls",
+                  "cardId": "X_WARRIOR",
+                  "owner": 0,
+                  "currentHealth": 1423,
+                  "attackBonus": 0,
+                  "healthBonus": 0,
+                  "tempAttack": 0,
+                  "stunned": 0,
+                  "kills": 0,
+                  "ready": false,
+                  "attacked": false,
+                  "cloaked": false,
+                  "armorUsed": false,
+                  "debuffed": false,
+                  "mutated": false,
+                  "rebornUsed": false,
+                  "forced": false,
+                  "tacticShieldUsed": false,
+                  "auraHealth": 0,
+                  "granted": [],
+                  "tempGranted": [],
+                  "equipment": [
+                    "MX_HU_013",
+                    "MX_HU_054"
+                  ],
+                  "ammoPacks": [],
+                  "mutations": []
+                },
+                null,
+                null
+              ],
+              "location": null,
+              "flags": {},
+              "status": {},
+              "rebornUsed": {}
+            },
+            {
+              "name": "Directive adverse",
+              "isAI": true,
+              "life": 8000,
+              "maxLife": 8000,
+              "shield": 0,
+              "energy": 0,
+              "maxEnergy": 0,
+              "nextEnergy": 0,
+              "trophies": 0,
+              "totalTrophies": 0,
+              "fatigue": 0,
+              "cardsPlayed": 0,
+              "unitsLost": 0,
+              "turnsStarted": 0,
+              "biomass": 0,
+              "plasma": 0,
+              "honor": 0,
+              "deck": [
+                "MX_XE_027",
+                "BX_0027",
+                "MX_XE_041",
+                "MX_XE_008",
+                "BX_0043",
+                "BX_0031",
+                "MX_XE_016",
+                "MX_XE_019",
+                "MX_XE_027",
+                "AX_XE_080",
+                "BX_0307",
+                "MX_XE_041",
+                "T_X_EGGMORPH",
+                "MX_XE_017",
+                "MX_XE_027",
+                "MX_XE_012",
+                "AX_XE_081",
+                "MX_XE_050",
+                "MX_XE_041",
+                "BX_0033",
+                "X_OVOMORPH",
+                "MX_XE_049",
+                "MX_XE_018",
+                "MX_XE_011"
+              ],
+              "hand": [
+                "MX_XE_005",
+                "MX_XE_062",
+                "MX_XE_066",
+                "MX_XE_035",
+                "MX_XE_035",
+                "MX_XE_057"
+              ],
+              "discard": [],
+              "board": [
+                null,
+                null,
+                null
+              ],
+              "location": null,
+              "flags": {},
+              "status": {},
+              "rebornUsed": {}
+            }
+          ],
+          "log": [
+            {
+              "id": "log-mw0hokhi-hjos2g",
+              "text": "Commandant équipe Warrior Xénomorphe avec Crosse stabilisée — PULSE.",
+              "tone": "PLAYER",
+              "time": 1793698344630
+            },
+            {
+              "id": "log-mw0hokhi-tlvh53",
+              "text": "Commandant équipe Warrior Xénomorphe avec M41A — rafale courte.",
+              "tone": "PLAYER",
+              "time": 1793698344630
+            },
+            {
+              "id": "log-mw0hokhi-4ou7gh",
+              "text": "Warrior Xénomorphe est invoqué sur la voie 1.",
+              "tone": "EFFECT",
+              "time": 1793698344630
+            },
+            {
+              "id": "log-mw0hokhi-09j8ym",
+              "text": "Duel engagé — 8 000 PV contre 8 000 PV.",
+              "tone": "SYSTEM",
+              "time": 1793698344630
+            },
+            {
+              "id": "log-mw0hokhi-beatoi",
+              "text": "Tour de Commandant — 1 énergie.",
+              "tone": "TURN",
+              "time": 1793698344630
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

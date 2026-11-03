@@ -1,0 +1,165 @@
+{
+  "fileName": "AVP_HUNT_HIVE_TCG_Catalogue_318_Decks.xlsx",
+  "generatedAt": "2026-11-03T09:53:30.161Z",
+  "sourceAlienBase": "e65b75a6bfd1284dbac746102fdbae4fc5a3786b",
+  "sourceHashes": {
+    "content-plan/manifest.json": "b05de3dee44d52967d33983ee40e8f76de1bfd8f334b39fd67b4c026dc681bfd",
+    "src/engine.js": "2bf7610cf28e6a92fdbce4ea903e4e472f1ef25b10695caccb81aeaef92abf22",
+    "src/asymmetric-rules.js": "266d00a7a30d13679ac53d24e8804a3a0aef76a32cd2696da316e1641326dac9",
+    "src/duel-save.js": "8f5a81eb53606d4df42057c4e08ea3c3dd039c0970eb866ec062134263c20887",
+    "src/data.js": "1f56beb03dcc345a0562891d0abb5de3e3528eb8589667c13dffa3a418d8811e",
+    "src/expansion.js": "12cfc1aa7c73a7c5d5406d1389d371ff76da0ae0a69d9c96cee4bb7ea7875fda",
+    "src/expansion-wave2.js": "0332e1d864fe8d596defdf0299aeb49de2dd84346eb4233e70fa7ee615b47392",
+    "src/deck-productions.js": "1cc8a6dba2a63e19f27a9cad7608a954a4cd40efc2c1d99dc34dd520046aedad",
+    "src/asymmetric-cards.js": "e8c044419177e89d6776e09b921fb955d564a5a303b31a55d1f4513579520ac8",
+    "src/asymmetric-decks.js": "79075501b76fa15b5eda4e880289576d3793ee628916a74193a4a843f383c221",
+    "content-plan/sets.csv": "9e94f747e76f98a88ce0c7420164c7422335339331df4de90cc3ce8c1c5a7197",
+    "content-plan/printings.csv": "a425e26165d38798eba4d00205ef34b7bb3beb252f53cadd37acd3361ecca792",
+    "content-plan/rarities.csv": "b59b19dd9e58df20d60fdf3294b2de1753bcc5fdef9105b7f1656223e98a7b0d",
+    "content-plan/booster-slots.csv": "ee6c1b45a9d252dc14c6621fcb132dcf559eb9cd2dc250bdbdb010ede4489ef1",
+    "content-plan/rarity-odds.csv": "f00d35c2d118eab07e67428cb5c22d387d68df6ff0d4311066297d76833012ed",
+    "content-plan/pack-formats.csv": "b12e69ed6870980c7a4b70e30e174ed199840218776ef2c9b61706cd6ac1df63",
+    "content-plan/formats-reference.csv": "800be6cbe3c6ff142d48f58bf680f4f9bb8339a5a19c042174ac6fa2b679d6a7",
+    "content-plan/decks.csv": "40f592e1d2a7c2ecc6e6df59bd92bee7452634d8d37c2583d120ce1c31a74b23",
+    "content-plan/decklists.csv": "1b0b61a849da9778942f171f680ac1210739c5648a943f0d1c4dd0b5f60d3fc3",
+    "content-plan/products.csv": "a6cc79fc70c33991e13187ca5073a56cc803da919129b9f575bb1a329ee97b17",
+    "content-plan/alien-base-sources.csv": "76ed946f84dc0cf6797fab4193dd7db79ba4f6d600ac37dd04b07eceb9f13b71",
+    "content-plan/legacy-cards.csv": "518efae5c4c5801707f1680bc764fdbdc5fb67503ef2aadee1fe47bb9ccacefb",
+    "content-plan/research-backlog.csv": "b6ecbb9040b841d1281ed61c8de9f546525e6434c79a3019826b2140c9065453",
+    "content-plan/gameplay-live.csv": "4484128d408453d7cc5ae1330ec50e572b7ee1c77b6e4bebd61a9aed88292567",
+    "content-plan/live-set-progress.csv": "592f314c08e04bbc31f2a21fade88fe1f89a1ad10a75b81df8e0b111df0731e7",
+    "content-plan/decks-playable.csv": "c3fcd5917902f132319ee25393c68a372b8fbbc0b36ea200400e5f2f9971b2f9",
+    "content-plan/decklists-playable.csv": "f2b2903ea961a164a38d411b9770f1d09e6074c78eaf8d83e7e834173aa60497",
+    "content-plan/asymmetric-cards.csv": "d903fae7f713c71a73df8d9193baf19a926c03367da637e37aeb0c280ec5e7b9",
+    "content-plan/asymmetric-decks.csv": "764635689428a3983a714a49601c5693d7a3dca3c44f6127bc607e47b07240cb",
+    "content-plan/asymmetric-decklists.csv": "c97d8803a9d62cfb4abc0b7c4c3711b956cc1c678c3c5f8f7aa699eb3547c8c0",
+    "content-plan/asymmetric-mechanics.csv": "df4d8a51326eaac79f297cd236d1ecdf34a4ab4d4d013d83a643a8c34ce535fe"
+  },
+  "sheetCount": 27,
+  "sheets": {
+    "01_EXTENSIONS": {
+      "records": 30,
+      "columns": 18
+    },
+    "02_CARTES_ET_FOILS": {
+      "records": 2853,
+      "columns": 22
+    },
+    "03_RARETES": {
+      "records": 14,
+      "columns": 11
+    },
+    "04_BOOSTERS": {
+      "records": 13,
+      "columns": 6
+    },
+    "05_PROBABILITES": {
+      "records": 46,
+      "columns": 5
+    },
+    "06_GAMMES": {
+      "records": 5,
+      "columns": 6
+    },
+    "07_REFERENCE_YGO": {
+      "records": 10,
+      "columns": 6
+    },
+    "08_DECKS": {
+      "records": 210,
+      "columns": 16
+    },
+    "09_DECKS_RESERVES": {
+      "records": 12300,
+      "columns": 8
+    },
+    "10_PRODUITS": {
+      "records": 180,
+      "columns": 12
+    },
+    "11_SOURCE_ALIENBASE": {
+      "records": 652,
+      "columns": 8
+    },
+    "12_CARTES_HISTORIQUES": {
+      "records": 158,
+      "columns": 13
+    },
+    "13_BACKLOG_MEDIAS": {
+      "records": 16,
+      "columns": 6
+    },
+    "14_GAMEPLAY_JOUABLE": {
+      "records": 891,
+      "columns": 21
+    },
+    "15_SUIVI_DES_SETS": {
+      "records": 31,
+      "columns": 15
+    },
+    "16_DECKS_JOUABLES": {
+      "records": 280,
+      "columns": 13
+    },
+    "17_LISTES_JOUABLES": {
+      "records": 15450,
+      "columns": 12
+    },
+    "18_CARTES_ASYMETRIQUES": {
+      "records": 235,
+      "columns": 32
+    },
+    "19_DECKS_ASYMETRIQUES": {
+      "records": 38,
+      "columns": 10
+    },
+    "20_LISTES_ASYMETRIQUES": {
+      "records": 1710,
+      "columns": 9
+    },
+    "21_REGLES_ASYMETRIQUES": {
+      "records": 16,
+      "columns": 6
+    },
+    "22_DECKS_318": {
+      "records": 318,
+      "columns": 16
+    },
+    "23_COMPATIBILITES": {
+      "records": 286,
+      "columns": 11
+    },
+    "24_CHAINES_RUCHE": {
+      "records": 113,
+      "columns": 14
+    },
+    "25_RESSOURCES_YAUTJA": {
+      "records": 70,
+      "columns": 14
+    },
+    "26_REGLES_DETAILLEES": {
+      "records": 46,
+      "columns": 6
+    }
+  },
+  "cards": 891,
+  "decks": 318,
+  "boosters": 19,
+  "positions": 17160,
+  "compatibilities": 286,
+  "hiveCombinations": 113,
+  "rules": 46,
+  "activeRarities": 7,
+  "activeBoosterRows": 19,
+  "renderedSheets": 27,
+  "checks": [
+    "CSV card IDs and stats match runtime",
+    "Every main/reserve slot matches runtime",
+    "Summary and faction formulas match independent counts",
+    "Source edit changes summary and restored correctly",
+    "All source hashes unchanged through export"
+  ],
+  "output": "content-plan/AVP_HUNT_HIVE_TCG_Catalogue_318_Decks.xlsx",
+  "authoringSourceHash": "abcbda1de7debe7ad785a58ad1a7f4cd9f808f36bee44c0b1adbb441c7e813d3",
+  "xlsxSha256": "c2aad2acf8e8e292fb461b32fcb5b9f5f4d13303cf460c7aad0629d22de89e97"
+}

@@ -1,8 +1,10 @@
-# AVP HUNT // HIVE TCG — Collections à tailles variables (v2)
+# AVP HUNT // HIVE TCG — Catalogue, decks et collections
 
-**Mise à jour de la PR #4 :** le catalogue de 30 extensions n'impose plus 100 cartes à chaque set. Les données de production restent **proposées / non jouables** : les 158 cartes actuellement jouables, leurs 7 raretés implémentées, leurs sauvegardes et leur deckbuilder de 30 cartes sont préservés.
+**Catalogue consolidé pour la PR #4 au 3 novembre 2026 : 891 cartes jouables, 318 recettes de decks, 17 160 positions et 19 boosters.** Les 235 cartes MX développent les mécaniques Humains, Ruche et Yautja. Le programme éditorial de **30 sets, 2 602 concepts, 2 853 impressions et 14 finitions** reste suivi séparément. Les 158 cartes historiques, les **7 raretés actives**, les sauvegardes et le format de duel de 30 cartes sont préservés.
 
-## Formats et tailles
+Le classeur versionné [AVP_HUNT_HIVE_TCG_Catalogue_318_Decks.xlsx](AVP_HUNT_HIVE_TCG_Catalogue_318_Decks.xlsx) réunit **27 onglets**. Les tables filtrables conservent les données de conception et les exports du moteur. Les onglets 22 à 26 ajoutent l’index des 318 recettes, **286 compatibilités d’armement**, **113 entrées de chaînes de la Ruche**, les ressources Yautja et **46 règles détaillées**. Les deux tables de relations totalisent **399 entrées**.
+
+## Formats proposés pour les 30 extensions
 
 | Gamme | Taille des extensions AVP | Cartes par paquet | Composition envisagée | Modèle officiel documenté |
 |---|---|---:|---|---|
@@ -12,7 +14,7 @@
 | Booster de construction | 60 | 7 | 6 R + 1 foil | [Tactical Masters (60/7)](https://www.yugioh-card.com/en/products/tama/) |
 | Collection premium | 132, 146 ou 177 | 5 | 5 foils / prestige | [Ghosts From the Past (132)](https://www.yugioh-card.com/en/products/ghosts-from-the-past/), [Glorious Gallery (146)](https://www.yugioh-card.com/en/products/blgg/), [Monster Mayhem (177)](https://www.yugioh-card.com/en/products/blmm/) |
 
-Les tailles AVP 70/80/90/120 sont **nos décisions éditoriales**, pas des nombres attribués à ces produits officiels.
+Les tailles AVP 70/80/90/120 sont des décisions éditoriales du projet. Les 19 boosters actifs utilisent leurs propres pools et règles de tirage, exportés dans la table des boosters actifs du classeur ; ce tableau décrit le programme des collections.
 
 ## Starter et decks de structure
 
@@ -30,59 +32,78 @@ Exemples officiels de tailles variables : [Starter Codebreaker (45)](https://www
 
 ## Fichiers et décomptes
 
-- **30 sets**, **2 853 impressions**, **2 602 identités de nouvelles cartes** et **251 variantes foil** sans changement de statistiques.
-- **210 recettes**, dont 5 starters, 25 structures, 90 constructions, 30 decks spéciaux et 60 decks de ligue ; **12 300 lignes** contenant zones PRINCIPAL et RÉSERVE.
-- **180 produits**, dont boosters, displays, coffrets et decks, avec des quantités cohérentes selon leur gamme.
-- **14 raretés** prévues ; **652 références Alien_base** et **158 cartes historiques** conservées sans changement.
-- `sets.csv`, `printings.csv`, `decks.csv`, `decklists.csv`, `products.csv`, `booster-slots.csv`, `rarity-odds.csv`, `pack-formats.csv`, `formats-reference.csv`, `manifest.json` : contenus synchronisés.
+| Ensemble | Décompte | Sources |
+| --- | ---: | --- |
+| Catalogue actif complet | 891 cartes | `gameplay-live.csv` |
+| Cartes MX, incluses dans le catalogue actif | 235 cartes : 99 Humains, 66 Ruche, 70 Yautja | `asymmetric-cards.csv` |
+| Recettes précédant les doctrines MX | 280 recettes, 15 450 positions | `decks-playable.csv`, `decklists-playable.csv` |
+| Doctrines asymétriques | 38 recettes, 1 710 positions | `asymmetric-decks.csv`, `asymmetric-decklists.csv` |
+| Ensemble des recettes actives | **318 recettes, 17 160 positions** | Onglet `22_DECKS_318` et les deux ensembles de listes ci-dessus |
+| Programme éditorial | 30 sets, 2 602 concepts, 2 853 impressions dont 251 variantes foil | `sets.csv`, `printings.csv` |
+| Recettes du programme éditorial | 210 recettes, 12 300 positions planifiées | `decks.csv`, `decklists.csv` |
+| Produits du programme éditorial | 180 références de produits | `products.csv` |
+| Finitions et distribution prévues | 14 finitions, profils et probabilités indicatifs | `rarities.csv`, `booster-slots.csv`, `rarity-odds.csv`, `pack-formats.csv` |
+| Références documentaires et origine | 652 références Alien_base, 158 cartes historiques | `alien-base-sources.csv`, `legacy-cards.csv` |
+
+Les 210 recettes éditoriales se répartissent en 5 starters, 25 structures, 90 kits de construction, 30 decks spéciaux et 60 decks de ligue. Leurs adaptations jouables figurent parmi les 280 recettes de production. Les **12 300 positions planifiées ne s’ajoutent pas aux 17 160 positions jouables** : elles décrivent un autre catalogue de composition.
+
+`live-set-progress.csv` suit les 30 sets et l’archive PX00. Les decks sans suffisamment de cartes propres à leur œuvre portent la mention **composition transversale provisoire**. Le suivi signale aussi les cibles éditoriales à recalibrer ; un nombre de cartes supérieur à une cible ne certifie pas une extension complète.
 
 ## Génération du classeur Excel et validation
 
-Depuis la racine du repo avec Python + `artifact_tool` :
+Depuis la racine du dépôt, avec le runtime documentaire configuré :
 
 ```bash
-python content-plan/build_xlsx.py
+node scripts/sync-production-decks.mjs --write
+node scripts/sync-asymmetric-content.mjs --write
+python3 content-plan/build_xlsx.py
 ```
 
-Recrée le classeur **exhaustif** `content-plan/AVP_HUNT_HIVE_TCG_30_Collections.xlsx` à partir des CSV versionnés. Le binaire Excel n'est **pas commité**, mais ses données et son générateur le sont.
+Recrée `content-plan/AVP_HUNT_HIVE_TCG_Catalogue_318_Decks.xlsx` à partir des CSV versionnés et du catalogue exécuté. Le classeur est versionné avec le générateur JavaScript. Le point d’entrée Python prépare un environnement temporaire puis lance `@oai/artifact-tool` avec les variables `CODEX_PRIMARY_RUNTIME_NODE` et `CODEX_PRIMARY_RUNTIME_NODE_MODULES`. Les modes de génération et les rapports sont décrits dans [XLSX_GENERATION.md](XLSX_GENERATION.md).
 
-Avec Node 20+ :
+Le générateur contrôle les noms, coûts et statistiques des 891 cartes, puis compare chaque position principale et de réserve au moteur. L’index des 318 decks représente **17 160 positions**. Les compteurs de synthèse sont des formules Excel ; un changement temporaire de donnée vérifie leur recalcul avant restauration et export. Un aperçu est rendu pour chaque onglet.
+
+Contrôles des sources avec Node 24, comme dans GitHub Actions :
 
 ```bash
-node content-plan/validate.mjs
+npm run validate:content-plan
+npm run check:playable-decks
+npm run check:asymmetric-content
 ```
 
 Vérifie tous les décomptes, l'unicité, les IDs de cartes et de références, les 30 cartes PRINCIPAL, les réserves, les factions et les quantités vendues par produit. Les taux foil sont **indicatifs et non activés** : ils doivent être renormalisés pour les finitions réellement présentes dans chaque set et simulés avant intégration.
 
 Les références écran, jeux sous licence, comics/romans, figurines et fan lore sont distinguées. Les 2 602 cartes proposées **ne sont pas attestées fidèles 1:1** scène par scène avant validation éditoriale. Aucun fetch vers le dépôt privé Alien_base n'est effectué depuis le navigateur.
 
-## État d'implémentation — vague 2 (pas d'illustrations)
+## Historique et organisation des onglets
 
-La PR #4 conserve les **158 cartes historiques** et ajoute **156 cartes AX_** puis **342 cartes BX_** : **656 cartes jouables**. Les 498 cartes ajoutées recouvrent **494 identités documentaires distinctes**, tandis que les 158 fiches de cartes historiques correspondent aux 158 autres IDs `card.avp.*` de la source. Au total, les **652 identifiants** de `Alien_base` sont représentés, **sans validation automatique canon 1:1**.
+| Étape | Contenu ajouté ou consolidé | Total à cette étape |
+| --- | --- | --- |
+| Origine | Standalone et trois starters historiques | 158 cartes |
+| Vague AX | 156 cartes | 314 cartes |
+| Vague BX et recettes de production | 342 cartes, 70 modèles de factions puis 210 recettes des collections | 656 cartes, 280 recettes, 16 boosters |
+| Édition MX | 235 cartes, 38 doctrines et 3 boosters | **891 cartes, 318 recettes, 19 boosters** |
 
-Les **70 nouveaux modèles/variantes de decks** contiennent chacun 30 cartes de duel + 15 alternatives de construction, et **16 boosters jouables** utilisent 9 cartes (historiques), puis 9/7/5 cartes pour les nouveaux pools en aperçu. Les **14 finitions** décrites dans le plan restent à implémenter ultérieurement (le jeu continue d'utiliser ses sept raretés historiques).
+Les 498 cartes AX/BX couvrent 494 identités documentaires distinctes. Les 158 cartes historiques correspondent aux 158 autres identifiants `card.avp.*` de la source, soit 652 références représentées avant l’ajout des adaptations MX.
 
-- `gameplay-live.csv` : correspondance *exhaustive de 656 cartes* : ID, classe, faction, set, type, coûts, stats, référence documentaire, statut de jouabilité et statut d'illustration.
-- `live-set-progress.csv` : **30 sets planifiés + PX00 archivage** avec nombre de concepts actifs, boosters ouverts et écart avec la feuille de route.
-- Important : **impressions** et **identités de gameplay** ne sont pas comparables 1:1. Certains sets (notamment Tantalus) peuvent demander une révision du nombre de concepts prévu ; ce suivi signale ces dépassements.
-- La modification des packs n'altère pas les sauvegardes ni les cartes historiques. Les nouveaux boosters sont verrouillés tant que leur pool est trop limité et sont clairement étiquetés comme **aperçus**.
-- **Aucune illustration générée ou retouchée** pendant cette phase ; les nouveaux visuels ne sont que des placeholders procéduraux existants.
+Les onglets **16_DECKS_JOUABLES** et **17_LISTES_JOUABLES** conservent les 280 recettes de production et leurs listes. Les onglets **18 à 21** décrivent les cartes, decks, positions et mécanismes MX. L’onglet **22_DECKS_318** réunit toutes les recettes actives, avec leur `PlanDeckID` lorsqu’il existe. Les identifiants des cartes et recettes restent stables entre les vagues.
 
-## Synchronisation des decks réellement jouables (2026-11-03)
+Les règles de munitions, modules, fusion biologique, biomasse, plasma et honneur sont des adaptations de gameplay documentées. Les visuels précédents restent inchangés ; **aucune illustration nouvelle n’est ajoutée dans cette consolidation**.
 
-Les fichiers **`decks.csv`** et **`decklists.csv`** décrivent les 210 recettes *planifiées* du programme Yu-Gi-Oh!-like. Les nouveaux fichiers **`decks-playable.csv`** et **`decklists-playable.csv`** décrivent exactement les 280 modèles **activés en jeu**, avec 30 cartes de duel et réserves de 15/20/45 cartes selon la gamme. Ils totalisent **15 450 positions** et n'utilisent que les identités de cartes existant dans le moteur.
+## Consolidation du 3 novembre 2026
 
-Les decks de production conservent le **`PlanDeckID`** des 210 recettes. Lorsque le set n'a pas encore de cartes propres dans sa faction, la fiche est explicitement étiquetée comme **composition transversale provisoire** ; cela ne rend pas artificiellement l'extension complète.
+Le remélange des doctrines conserve les ressources et résultats nécessaires aux actions de leur deck principal : familles de tir et calibres correspondants, lignée d’hôte, œuf royal si requis, résultats de fusion ou de mue disponibles, biomasse et plasma. Les chargeurs vides libèrent leurs emplacements, les techniques refusent les mauvaises familles d’armes et les évolutions valident l’invocation avant le sacrifice.
 
-La commande `node scripts/sync-production-decks.mjs --check` confronte les CSV au catalogue de jeu réel. La commande `--write` les régénère après une modification. Le classeur Python ajoute désormais deux onglets **16_DECKS_JOUABLES** et **17_LISTES_JOUABLES** et un tableau de bord séparant les objectifs éditoriaux de l'implémentation en jeu.
+Les compatibilités et combinaisons du classeur sont calculées à partir des propriétés des cartes en jeu. Ce sont des règles du TCG : les identifiants Alien_base documentent l’inspiration des cartes et ne certifient pas que ces effets sont canoniques. L’export complet conserve les 652 références de `alien_base@e65b75a6bfd1284dbac746102fdbae4fc5a3786b`.
 
-**État vérifiable :** 656 cartes, 16 boosters, 280 decks, 7 raretés actuellement jouables, pour 30 sets planifiés plus PX00. Les illustrations originales 1:1, les 14 traitements de collection et les nouveaux concepts encore manquants sont exclus de cette livraison.
+La consolidation inclut les textes de règles et effets complets des cartes, les 19 boosters actifs, les 7 raretés implémentées, 286 compatibilités d'armement et 113 entrées décrivant les chaînes de la Ruche. Les colonnes `RelationSource`, `NoteSource` et `SourcePrimaireURL` qualifient les inspirations des 235 cartes MX. Les modules renvoient à leur arme compatible ; une référence de module ne prétend pas documenter un accessoire canon.
 
+Le F44AA utilise désormais la famille de cartouches `F44AA` sans calibre supposé, avec migration des trois anciens chargeurs `CELLULE`. Tous les identifiants de cartes et de recettes demeurent conservés. Les anciennes parties sont migrées avant validation, y compris les armes légalement attachées sous les anciennes règles de porteur.
 
-## Édition asymétrique 1.3 — 3 factions, sans illustration
+À sec, les bonus offensifs de l’arme et de ses modules cessent de s’appliquer ; le porteur conserve ses capacités de base. Les nouvelles sauvegardes refusent les montages incompatibles, tandis qu’une exception de migration reste limitée à l’arme déjà attachée dans une ancienne partie. Les fiches affichent les charges, les coûts de tir/riposte, les modules actifs, les matériaux et les résultats nécessaires.
 
-Les nouveaux onglets **18_CARTES_ASYMETRIQUES**, **19_DECKS_ASYMETRIQUES**, **20_LISTES_ASYMETRIQUES** et **21_REGLES_ASYMETRIQUES** décrivent la livraison additionnelle (235 cartes, 38 decks, 1 710 positions, 3 boosters). `gameplay-live.csv` contient désormais **891 cartes réellement jouables** ; `live-set-progress.csv` distingue les cartes de doctrine et les concepts des 30 extensions encore incomplets. `decks-playable.csv` garde les 280 recettes déjà intégrées et `asymmetric-decks.csv` fournit les 38 suivantes.
+## Validation de ce lot
 
-La nouvelle mécanique reprend des principes de **cartes Équipement et d'énergie à attacher**, ainsi que d'invocation par matériaux, sans reprendre de règles, noms de cartes ou illustrations d'un jeu commercial. Les statistiques, charges et effets sont originaux. Toutes les références de provenance servent à retrouver l'entrée du registre `Alien_base`, pas à prouver que les capacités de combat du TCG sont officielles.
+La vérification locale du moteur et des sauvegardes est **PASS** : **177 duels terminés, 4 256 captures/restaurations et 1 130 continuations déterministes**, selon [le rapport de continuation](../reports/qa/continuation-2026-11-03.json). Les tableaux et formules du classeur disposent d’un [rapport de validation](../reports/qa/workbook-validation-2026-11-03.json).
 
-Les cartes historiques et les visuels d'avant cette phase sont inchangés. Les nouvelles cartes utilisent les substituts SVG existants. **Aucune illustration générée dans cette phase.**
+La validation navigateur ordinateur/mobile ainsi que GitHub Actions et l’aperçu Vercel restent **en attente sur le nouveau commit**. Le navigateur local est indisponible ; les scénarios sont présents dans le workflow et doivent réussir sur la révision effectivement publiée.

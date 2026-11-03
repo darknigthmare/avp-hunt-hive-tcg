@@ -1,6 +1,6 @@
 {
   "schema": "avp-tcg/collection-plan-v2",
-  "date": "2026-11-02",
+  "date": "2026-11-03",
   "repo": "darknigthmare/avp-hunt-hive-tcg",
   "alienBaseRepository": "darknigthmare/alien_base",
   "alienBaseMain": "e65b75a6bfd1284dbac746102fdbae4fc5a3786b",
@@ -20,15 +20,17 @@
     "starterDecks": 5,
     "structureDecks": 25
   },
-  "protection": "LEGACY_158_PRESERVED / GAMEPLAY_WAVES_1_2_ADDITIVE",
+  "protection": "LEGACY_158_PRESERVED / ALL_891_CARD_IDS_PRESERVED",
   "caveats": [
     "Différencier cartes uniques / catalogue / paquet / contenu de boîte",
     "Les decks de jeu restent à 30 cartes, le reste des produits est une réserve de construction hors duel",
-    "Proposition documentaire; 2602 concepts et 210 decks restent un plan éditorial distinct des 498 nouvelles cartes effectivement intégrées",
+    "Les 2602 concepts restent un programme éditorial ; les 210 recettes de production jouables emploient les cartes actives disponibles et ne rendent pas tous les concepts jouables",
     "Fidelite 1:1 non revendiquee sans source primaire pour chaque sujet",
     "Finitions CSS/WebGL à développer séparément",
     "Raretés premium ne changent ni statistiques ni ID de carte",
-    "Les 2 602 concepts d'extensions sont un plan indépendant; les cartes AX_/BX_ jouables attendent un rapprochement éditorial avec les identités planifiées."
+    "Les 2 602 concepts d'extensions sont un plan indépendant; les cartes AX_/BX_ jouables attendent un rapprochement éditorial avec les identités planifiées.",
+    "Les 235 cartes MX utilisent des références d'inspiration documentées ; les modules pointent vers leur arme compatible sans attester un accessoire canon.",
+    "La famille de munitions F44AA est une compatibilité de jeu, sans calibre canon supposé."
   ],
   "setSizes": {
     "NX01": 120,
@@ -155,6 +157,10 @@
     "liveCardsCSV": "content-plan/gameplay-live.csv",
     "asymmetricCardCSV": "content-plan/asymmetric-cards.csv",
     "asymmetricDeckCSV": "content-plan/asymmetric-decks.csv",
-    "asymmetricDecklistCSV": "content-plan/asymmetric-decklists.csv"
+    "asymmetricDecklistCSV": "content-plan/asymmetric-decklists.csv",
+    "totalPlayableDeckCardPositions": 17160,
+    "catalogueWorkbook": "content-plan/AVP_HUNT_HIVE_TCG_Catalogue_318_Decks.xlsx",
+    "catalogueWorkbookSheets": 27,
+    "sourceRelationPolicy": "ADAPTATION_TCG / MODULE_TCG_SUR_ARME — ne constitue pas une correspondance canon 1:1"
   }
 }

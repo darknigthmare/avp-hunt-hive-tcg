@@ -552,10 +552,10 @@ asym_human_grenade_1,PRINCIPAL,10,BX_0312,MANTIS-4,PERSONNAGE,HUMAN,HA29,1
 asym_human_grenade_1,PRINCIPAL,11,MX_HU_001,Éclaireur colonial,PERSONNAGE,HUMAN,CW02,1
 asym_human_grenade_1,PRINCIPAL,12,MX_HU_010,Détachement de sûreté,PERSONNAGE,HUMAN,CW02,1
 asym_human_grenade_1,PRINCIPAL,13,MX_HU_011,Secouriste de frontière,PERSONNAGE,HUMAN,CW02,1
-asym_human_grenade_1,PRINCIPAL,14,MX_HU_026,M40 — lanceur de grenades,ARME,HUMAN,CW02,1
-asym_human_grenade_1,PRINCIPAL,15,MX_HU_026,M40 — lanceur de grenades,ARME,HUMAN,CW02,1
-asym_human_grenade_1,PRINCIPAL,16,MX_HU_027,M40 — charge de brèche,ARME,HUMAN,MC12,1
-asym_human_grenade_1,PRINCIPAL,17,MX_HU_027,M40 — charge de brèche,ARME,HUMAN,MC12,1
+asym_human_grenade_1,PRINCIPAL,14,MX_HU_026,Lance-grenades — chargement M40,ARME,HUMAN,CW02,1
+asym_human_grenade_1,PRINCIPAL,15,MX_HU_026,Lance-grenades — chargement M40,ARME,HUMAN,CW02,1
+asym_human_grenade_1,PRINCIPAL,16,MX_HU_027,Lance-grenades — brèche M40,ARME,HUMAN,MC12,1
+asym_human_grenade_1,PRINCIPAL,17,MX_HU_027,Lance-grenades — brèche M40,ARME,HUMAN,MC12,1
 asym_human_grenade_1,PRINCIPAL,18,MX_HU_047,Grenades de lanceur — Standard,MUNITION,HUMAN,MC12,1
 asym_human_grenade_1,PRINCIPAL,19,MX_HU_047,Grenades de lanceur — Standard,MUNITION,HUMAN,MC12,1
 asym_human_grenade_1,PRINCIPAL,20,MX_HU_048,Grenades de lanceur — Réserve tactique,MUNITION,HUMAN,MC12,1
@@ -598,10 +598,10 @@ asym_human_grenade_2,PRINCIPAL,11,BX_0320,Manœuvre — Balise lumineuse,ACTION,
 asym_human_grenade_2,PRINCIPAL,12,H_WORKING_JOE,Working Joe,PERSONNAGE,HUMAN,NX01,1
 asym_human_grenade_2,PRINCIPAL,13,MX_HU_009,Pilote de navette,PERSONNAGE,HUMAN,CW02,1
 asym_human_grenade_2,PRINCIPAL,14,MX_HU_011,Secouriste de frontière,PERSONNAGE,HUMAN,CW02,1
-asym_human_grenade_2,PRINCIPAL,15,MX_HU_026,M40 — lanceur de grenades,ARME,HUMAN,CW02,1
-asym_human_grenade_2,PRINCIPAL,16,MX_HU_026,M40 — lanceur de grenades,ARME,HUMAN,CW02,1
-asym_human_grenade_2,PRINCIPAL,17,MX_HU_027,M40 — charge de brèche,ARME,HUMAN,MC12,1
-asym_human_grenade_2,PRINCIPAL,18,MX_HU_027,M40 — charge de brèche,ARME,HUMAN,MC12,1
+asym_human_grenade_2,PRINCIPAL,15,MX_HU_026,Lance-grenades — chargement M40,ARME,HUMAN,CW02,1
+asym_human_grenade_2,PRINCIPAL,16,MX_HU_026,Lance-grenades — chargement M40,ARME,HUMAN,CW02,1
+asym_human_grenade_2,PRINCIPAL,17,MX_HU_027,Lance-grenades — brèche M40,ARME,HUMAN,MC12,1
+asym_human_grenade_2,PRINCIPAL,18,MX_HU_027,Lance-grenades — brèche M40,ARME,HUMAN,MC12,1
 asym_human_grenade_2,PRINCIPAL,19,MX_HU_047,Grenades de lanceur — Standard,MUNITION,HUMAN,MC12,1
 asym_human_grenade_2,PRINCIPAL,20,MX_HU_047,Grenades de lanceur — Standard,MUNITION,HUMAN,MC12,1
 asym_human_grenade_2,PRINCIPAL,21,MX_HU_048,Grenades de lanceur — Réserve tactique,MUNITION,HUMAN,MC12,1
@@ -643,21 +643,21 @@ asym_human_laser_1,PRINCIPAL,11,H_HUDSON,William Hudson,PERSONNAGE,HUMAN,CW02,1
 asym_human_laser_1,PRINCIPAL,12,H_LAMBERT,Joan Lambert,PERSONNAGE,HUMAN,NX01,1
 asym_human_laser_1,PRINCIPAL,13,MX_HU_009,Pilote de navette,PERSONNAGE,HUMAN,CW02,1
 asym_human_laser_1,PRINCIPAL,14,MX_HU_010,Détachement de sûreté,PERSONNAGE,HUMAN,CW02,1
-asym_human_laser_1,PRINCIPAL,15,MX_HU_028,F44AA — pulse carbine,ARME,HUMAN,RO09,1
-asym_human_laser_1,PRINCIPAL,16,MX_HU_028,F44AA — pulse carbine,ARME,HUMAN,RO09,1
-asym_human_laser_1,PRINCIPAL,17,MX_HU_028,F44AA — pulse carbine,ARME,HUMAN,RO09,1
-asym_human_laser_1,PRINCIPAL,18,MX_HU_050,Cellules énergétiques — Standard,MUNITION,HUMAN,RO09,1
-asym_human_laser_1,PRINCIPAL,19,MX_HU_050,Cellules énergétiques — Standard,MUNITION,HUMAN,RO09,1
-asym_human_laser_1,PRINCIPAL,20,MX_HU_050,Cellules énergétiques — Standard,MUNITION,HUMAN,RO09,1
-asym_human_laser_1,PRINCIPAL,21,MX_HU_051,Cellules énergétiques — Réserve tactique,MUNITION,HUMAN,RO09,1
-asym_human_laser_1,PRINCIPAL,22,MX_HU_051,Cellules énergétiques — Réserve tactique,MUNITION,HUMAN,RO09,1
-asym_human_laser_1,PRINCIPAL,23,MX_HU_052,Cellules énergétiques — Perforantes,MUNITION,HUMAN,RO09,1
-asym_human_laser_1,PRINCIPAL,24,MX_HU_052,Cellules énergétiques — Perforantes,MUNITION,HUMAN,RO09,1
-asym_human_laser_1,PRINCIPAL,25,MX_HU_073,Viseur réglable — LASER,MODIFICATION,HUMAN,RO09,1
-asym_human_laser_1,PRINCIPAL,26,MX_HU_074,Canon renforcé — LASER,MODIFICATION,HUMAN,RO09,1
-asym_human_laser_1,PRINCIPAL,27,MX_HU_075,Chargeur allégé — LASER,MODIFICATION,HUMAN,RO09,1
-asym_human_laser_1,PRINCIPAL,28,MX_HU_090,Tir contrôlé — LASER,ATTAQUE,HUMAN,RO09,1
-asym_human_laser_1,PRINCIPAL,29,MX_HU_091,Tir de suppression — LASER,ATTAQUE,HUMAN,RO09,1
+asym_human_laser_1,PRINCIPAL,15,MX_HU_028,F44AA — fusil à impulsion,ARME,HUMAN,RO09,1
+asym_human_laser_1,PRINCIPAL,16,MX_HU_028,F44AA — fusil à impulsion,ARME,HUMAN,RO09,1
+asym_human_laser_1,PRINCIPAL,17,MX_HU_028,F44AA — fusil à impulsion,ARME,HUMAN,RO09,1
+asym_human_laser_1,PRINCIPAL,18,MX_HU_050,Cartouches F44AA — Standard,MUNITION,HUMAN,RO09,1
+asym_human_laser_1,PRINCIPAL,19,MX_HU_050,Cartouches F44AA — Standard,MUNITION,HUMAN,RO09,1
+asym_human_laser_1,PRINCIPAL,20,MX_HU_050,Cartouches F44AA — Standard,MUNITION,HUMAN,RO09,1
+asym_human_laser_1,PRINCIPAL,21,MX_HU_051,Cartouches F44AA — Réserve tactique,MUNITION,HUMAN,RO09,1
+asym_human_laser_1,PRINCIPAL,22,MX_HU_051,Cartouches F44AA — Réserve tactique,MUNITION,HUMAN,RO09,1
+asym_human_laser_1,PRINCIPAL,23,MX_HU_052,Cartouches F44AA — Perforantes,MUNITION,HUMAN,RO09,1
+asym_human_laser_1,PRINCIPAL,24,MX_HU_052,Cartouches F44AA — Perforantes,MUNITION,HUMAN,RO09,1
+asym_human_laser_1,PRINCIPAL,25,MX_HU_073,Viseur réglable — F44AA,MODIFICATION,HUMAN,RO09,1
+asym_human_laser_1,PRINCIPAL,26,MX_HU_074,Canon renforcé — F44AA,MODIFICATION,HUMAN,RO09,1
+asym_human_laser_1,PRINCIPAL,27,MX_HU_075,Chargeur allégé — F44AA,MODIFICATION,HUMAN,RO09,1
+asym_human_laser_1,PRINCIPAL,28,MX_HU_090,Tir contrôlé — F44AA,ATTAQUE,HUMAN,RO09,1
+asym_human_laser_1,PRINCIPAL,29,MX_HU_091,Tir de suppression — F44AA,ATTAQUE,HUMAN,RO09,1
 asym_human_laser_1,PRINCIPAL,30,MX_HU_095,Révision de terrain,ACTION,HUMAN,MC12,1
 asym_human_laser_1,RESERVE,1,AX_HU_021,Bolt Gun,ARME,HUMAN,CW02,1
 asym_human_laser_1,RESERVE,2,AX_HU_143,Commando de récupération,PERSONNAGE,HUMAN,HA29,1
@@ -688,21 +688,21 @@ asym_human_laser_2,PRINCIPAL,11,H_HUDSON,William Hudson,PERSONNAGE,HUMAN,CW02,1
 asym_human_laser_2,PRINCIPAL,12,MX_HU_001,Éclaireur colonial,PERSONNAGE,HUMAN,CW02,1
 asym_human_laser_2,PRINCIPAL,13,MX_HU_009,Pilote de navette,PERSONNAGE,HUMAN,CW02,1
 asym_human_laser_2,PRINCIPAL,14,MX_HU_010,Détachement de sûreté,PERSONNAGE,HUMAN,CW02,1
-asym_human_laser_2,PRINCIPAL,15,MX_HU_028,F44AA — pulse carbine,ARME,HUMAN,RO09,1
-asym_human_laser_2,PRINCIPAL,16,MX_HU_028,F44AA — pulse carbine,ARME,HUMAN,RO09,1
-asym_human_laser_2,PRINCIPAL,17,MX_HU_028,F44AA — pulse carbine,ARME,HUMAN,RO09,1
-asym_human_laser_2,PRINCIPAL,18,MX_HU_050,Cellules énergétiques — Standard,MUNITION,HUMAN,RO09,1
-asym_human_laser_2,PRINCIPAL,19,MX_HU_050,Cellules énergétiques — Standard,MUNITION,HUMAN,RO09,1
-asym_human_laser_2,PRINCIPAL,20,MX_HU_051,Cellules énergétiques — Réserve tactique,MUNITION,HUMAN,RO09,1
-asym_human_laser_2,PRINCIPAL,21,MX_HU_051,Cellules énergétiques — Réserve tactique,MUNITION,HUMAN,RO09,1
-asym_human_laser_2,PRINCIPAL,22,MX_HU_051,Cellules énergétiques — Réserve tactique,MUNITION,HUMAN,RO09,1
-asym_human_laser_2,PRINCIPAL,23,MX_HU_052,Cellules énergétiques — Perforantes,MUNITION,HUMAN,RO09,1
-asym_human_laser_2,PRINCIPAL,24,MX_HU_052,Cellules énergétiques — Perforantes,MUNITION,HUMAN,RO09,1
-asym_human_laser_2,PRINCIPAL,25,MX_HU_073,Viseur réglable — LASER,MODIFICATION,HUMAN,RO09,1
-asym_human_laser_2,PRINCIPAL,26,MX_HU_074,Canon renforcé — LASER,MODIFICATION,HUMAN,RO09,1
-asym_human_laser_2,PRINCIPAL,27,MX_HU_075,Chargeur allégé — LASER,MODIFICATION,HUMAN,RO09,1
-asym_human_laser_2,PRINCIPAL,28,MX_HU_090,Tir contrôlé — LASER,ATTAQUE,HUMAN,RO09,1
-asym_human_laser_2,PRINCIPAL,29,MX_HU_091,Tir de suppression — LASER,ATTAQUE,HUMAN,RO09,1
+asym_human_laser_2,PRINCIPAL,15,MX_HU_028,F44AA — fusil à impulsion,ARME,HUMAN,RO09,1
+asym_human_laser_2,PRINCIPAL,16,MX_HU_028,F44AA — fusil à impulsion,ARME,HUMAN,RO09,1
+asym_human_laser_2,PRINCIPAL,17,MX_HU_028,F44AA — fusil à impulsion,ARME,HUMAN,RO09,1
+asym_human_laser_2,PRINCIPAL,18,MX_HU_050,Cartouches F44AA — Standard,MUNITION,HUMAN,RO09,1
+asym_human_laser_2,PRINCIPAL,19,MX_HU_050,Cartouches F44AA — Standard,MUNITION,HUMAN,RO09,1
+asym_human_laser_2,PRINCIPAL,20,MX_HU_051,Cartouches F44AA — Réserve tactique,MUNITION,HUMAN,RO09,1
+asym_human_laser_2,PRINCIPAL,21,MX_HU_051,Cartouches F44AA — Réserve tactique,MUNITION,HUMAN,RO09,1
+asym_human_laser_2,PRINCIPAL,22,MX_HU_051,Cartouches F44AA — Réserve tactique,MUNITION,HUMAN,RO09,1
+asym_human_laser_2,PRINCIPAL,23,MX_HU_052,Cartouches F44AA — Perforantes,MUNITION,HUMAN,RO09,1
+asym_human_laser_2,PRINCIPAL,24,MX_HU_052,Cartouches F44AA — Perforantes,MUNITION,HUMAN,RO09,1
+asym_human_laser_2,PRINCIPAL,25,MX_HU_073,Viseur réglable — F44AA,MODIFICATION,HUMAN,RO09,1
+asym_human_laser_2,PRINCIPAL,26,MX_HU_074,Canon renforcé — F44AA,MODIFICATION,HUMAN,RO09,1
+asym_human_laser_2,PRINCIPAL,27,MX_HU_075,Chargeur allégé — F44AA,MODIFICATION,HUMAN,RO09,1
+asym_human_laser_2,PRINCIPAL,28,MX_HU_090,Tir contrôlé — F44AA,ATTAQUE,HUMAN,RO09,1
+asym_human_laser_2,PRINCIPAL,29,MX_HU_091,Tir de suppression — F44AA,ATTAQUE,HUMAN,RO09,1
 asym_human_laser_2,PRINCIPAL,30,MX_HU_093,Intégration d’équipement,ACTION,HUMAN,MC12,1
 asym_human_laser_2,RESERVE,1,AX_HU_012,M42A Scope Rifle,ARME,HUMAN,CW02,1
 asym_human_laser_2,RESERVE,2,AX_HU_021,Bolt Gun,ARME,HUMAN,CW02,1
@@ -717,7 +717,7 @@ asym_human_laser_2,RESERVE,10,BX_0248,Taser,EQUIPEMENT,HUMAN,RO09,1
 asym_human_laser_2,RESERVE,11,H_LAMBERT,Joan Lambert,PERSONNAGE,HUMAN,NX01,1
 asym_human_laser_2,RESERVE,12,L_SULACO,USS Sulaco — Hangar,LIEU,HUMAN,CW02,1
 asym_human_laser_2,RESERVE,13,MX_HU_007,Sergent de garnison,PERSONNAGE,HUMAN,CW02,1
-asym_human_laser_2,RESERVE,14,MX_HU_074,Canon renforcé — LASER,MODIFICATION,HUMAN,RO09,1
+asym_human_laser_2,RESERVE,14,MX_HU_074,Canon renforcé — F44AA,MODIFICATION,HUMAN,RO09,1
 asym_human_laser_2,RESERVE,15,MX_HU_095,Révision de terrain,ACTION,HUMAN,MC12,1
 asym_xeno_human_1,PRINCIPAL,1,AX_XE_080,Drone,CREATURE,XENO,CW02,1
 asym_xeno_human_1,PRINCIPAL,2,AX_XE_081,Warrior,CREATURE,XENO,CW02,1
@@ -1454,7 +1454,7 @@ asym_yautja_5,PRINCIPAL,12,MX_YA_010,Garde du mausolée,PERSONNAGE,YAUTJA,YA27,1
 asym_yautja_5,PRINCIPAL,13,MX_YA_013,Canon plasma jumelé,ARME,YAUTJA,AV04,1
 asym_yautja_5,PRINCIPAL,14,MX_YA_015,Tourelle plasma portative,ARME,YAUTJA,PH24,1
 asym_yautja_5,PRINCIPAL,15,MX_YA_017,Lanceur de plasma rapide,ARME,YAUTJA,YA27,1
-asym_yautja_5,PRINCIPAL,16,MX_YA_019,Module de visée guidée,ARME,YAUTJA,HG03,1
+asym_yautja_5,PRINCIPAL,16,MX_YA_019,Canon plasma à visée guidée,ARME,YAUTJA,HG03,1
 asym_yautja_5,PRINCIPAL,17,MX_YA_024,Cartouche énergétique de clan,RESERVE_PLASMA,YAUTJA,HG03,1
 asym_yautja_5,PRINCIPAL,18,MX_YA_028,Réservoir secondaire,RESERVE_PLASMA,YAUTJA,HG03,1
 asym_yautja_5,PRINCIPAL,19,MX_YA_029,Accumulation de charge,RESERVE_PLASMA,YAUTJA,YA27,1
@@ -1541,7 +1541,7 @@ asym_yautja_7,PRINCIPAL,9,MX_YA_010,Garde du mausolée,PERSONNAGE,YAUTJA,YA27,1
 asym_yautja_7,PRINCIPAL,10,MX_YA_013,Canon plasma jumelé,ARME,YAUTJA,AV04,1
 asym_yautja_7,PRINCIPAL,11,MX_YA_014,Pistolet de plasma,ARME,YAUTJA,HG03,1
 asym_yautja_7,PRINCIPAL,12,MX_YA_016,Burner rifle,ARME,YAUTJA,HG03,1
-asym_yautja_7,PRINCIPAL,13,MX_YA_019,Module de visée guidée,ARME,YAUTJA,HG03,1
+asym_yautja_7,PRINCIPAL,13,MX_YA_019,Canon plasma à visée guidée,ARME,YAUTJA,HG03,1
 asym_yautja_7,PRINCIPAL,14,MX_YA_024,Cartouche énergétique de clan,RESERVE_PLASMA,YAUTJA,HG03,1
 asym_yautja_7,PRINCIPAL,15,MX_YA_026,Réserve de chasseur,RESERVE_PLASMA,YAUTJA,YA27,1
 asym_yautja_7,PRINCIPAL,16,MX_YA_028,Réservoir secondaire,RESERVE_PLASMA,YAUTJA,HG03,1
@@ -1588,7 +1588,7 @@ asym_yautja_8,PRINCIPAL,11,MX_YA_007,Gardien du Conseil,PERSONNAGE,YAUTJA,YA27,1
 asym_yautja_8,PRINCIPAL,12,MX_YA_011,Plasmacaster de campagne,ARME,YAUTJA,HG03,1
 asym_yautja_8,PRINCIPAL,13,MX_YA_015,Tourelle plasma portative,ARME,YAUTJA,PH24,1
 asym_yautja_8,PRINCIPAL,14,MX_YA_016,Burner rifle,ARME,YAUTJA,HG03,1
-asym_yautja_8,PRINCIPAL,15,MX_YA_019,Module de visée guidée,ARME,YAUTJA,HG03,1
+asym_yautja_8,PRINCIPAL,15,MX_YA_019,Canon plasma à visée guidée,ARME,YAUTJA,HG03,1
 asym_yautja_8,PRINCIPAL,16,MX_YA_025,Recharge du plasma central,RESERVE_PLASMA,YAUTJA,HG03,1
 asym_yautja_8,PRINCIPAL,17,MX_YA_027,Condensateur de ciblage,RESERVE_PLASMA,YAUTJA,HG03,1
 asym_yautja_8,PRINCIPAL,18,MX_YA_028,Réservoir secondaire,RESERVE_PLASMA,YAUTJA,HG03,1
@@ -1610,7 +1610,7 @@ asym_yautja_8,RESERVE,3,BX_0333,Chopper Predator,PERSONNAGE,YAUTJA,AV04,1
 asym_yautja_8,RESERVE,4,BX_0342,Double canon à plasma de Wolf,EQUIPEMENT,YAUTJA,AV04,1
 asym_yautja_8,RESERVE,5,EQ_COMBISTICK,Combi-stick,ARME,YAUTJA,HG03,1
 asym_yautja_8,RESERVE,6,MX_YA_017,Lanceur de plasma rapide,ARME,YAUTJA,YA27,1
-asym_yautja_8,RESERVE,7,MX_YA_019,Module de visée guidée,ARME,YAUTJA,HG03,1
+asym_yautja_8,RESERVE,7,MX_YA_019,Canon plasma à visée guidée,ARME,YAUTJA,HG03,1
 asym_yautja_8,RESERVE,8,MX_YA_028,Réservoir secondaire,RESERVE_PLASMA,YAUTJA,HG03,1
 asym_yautja_8,RESERVE,9,MX_YA_041,Prix du clan,TROPHEE,YAUTJA,YA27,1
 asym_yautja_8,RESERVE,10,MX_YA_053,Challenge de l’arène,HONNEUR,YAUTJA,YA27,1
@@ -1677,7 +1677,7 @@ asym_yautja_10,PRINCIPAL,10,MX_YA_006,Artilleur plasma,PERSONNAGE,YAUTJA,PH24,1
 asym_yautja_10,PRINCIPAL,11,MX_YA_009,Héritier de la chasse,PERSONNAGE,YAUTJA,BD17,1
 asym_yautja_10,PRINCIPAL,12,MX_YA_016,Burner rifle,ARME,YAUTJA,HG03,1
 asym_yautja_10,PRINCIPAL,13,MX_YA_018,Canon de cérémonie,ARME,YAUTJA,YA27,1
-asym_yautja_10,PRINCIPAL,14,MX_YA_019,Module de visée guidée,ARME,YAUTJA,HG03,1
+asym_yautja_10,PRINCIPAL,14,MX_YA_019,Canon plasma à visée guidée,ARME,YAUTJA,HG03,1
 asym_yautja_10,PRINCIPAL,15,MX_YA_022,Plasma de l’Ancien,ARME,YAUTJA,YA27,1
 asym_yautja_10,PRINCIPAL,16,MX_YA_023,Cellule plasma de poignet,RESERVE_PLASMA,YAUTJA,YA27,1
 asym_yautja_10,PRINCIPAL,17,MX_YA_025,Recharge du plasma central,RESERVE_PLASMA,YAUTJA,HG03,1

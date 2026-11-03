@@ -13,8 +13,8 @@ asym_human_sniper_1,USCM — SNIPER / Ravitaillement,HUMAN,MUNITIONS,sniper,30,1
 asym_human_sniper_2,USCM — SNIPER / Armement avancé,HUMAN,MUNITIONS,sniper,30,15,45,JOUABLE,src/asymmetric-decks.js
 asym_human_grenade_1,USCM — GRENADE / Ravitaillement,HUMAN,MUNITIONS,grenade,30,15,45,JOUABLE,src/asymmetric-decks.js
 asym_human_grenade_2,USCM — GRENADE / Armement avancé,HUMAN,MUNITIONS,grenade,30,15,45,JOUABLE,src/asymmetric-decks.js
-asym_human_laser_1,USCM — LASER / Ravitaillement,HUMAN,MUNITIONS,laser,30,15,45,JOUABLE,src/asymmetric-decks.js
-asym_human_laser_2,USCM — LASER / Armement avancé,HUMAN,MUNITIONS,laser,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_human_laser_1,USCM — F44AA / Ravitaillement,HUMAN,MUNITIONS,f44aa,30,15,45,JOUABLE,src/asymmetric-decks.js
+asym_human_laser_2,USCM — F44AA / Armement avancé,HUMAN,MUNITIONS,f44aa,30,15,45,JOUABLE,src/asymmetric-decks.js
 asym_xeno_human_1,Cycle HUMAN — Incubation,XENO,FUSION,HUMAN,30,15,45,JOUABLE,src/asymmetric-decks.js
 asym_xeno_human_2,Cycle HUMAN — Parasitage,XENO,FUSION,HUMAN,30,15,45,JOUABLE,src/asymmetric-decks.js
 asym_xeno_human_3,Cycle HUMAN — Mue,XENO,FUSION,HUMAN,30,15,45,JOUABLE,src/asymmetric-decks.js

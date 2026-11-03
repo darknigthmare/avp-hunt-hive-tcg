@@ -338,7 +338,7 @@
         }while(casualties.length);
       }finally{this.syncingHealthAuras=false;}
     }
-    unitAttack(sideIndex,u,target=null){
+    unitAttack(sideIndex,u,target=null,unclamped=false){
       const c=this.card(u.cardId);let val=c.attack+(u.attackBonus||0)+(u.tempAttack||0);
       for(const e of u.equipment)val+=this.card(e).attack||0;
       const side=this.side(sideIndex);
@@ -362,7 +362,7 @@
       }
       if(target&&this.has(u,'HUNTER')&&this.card(target.cardId).attack>c.attack)val+=300;
       if(target&&c.effect?.lowHealthAttack&&u.currentHealth<=1000)val+=c.effect.lowHealthAttack;
-      return Math.max(0,Math.round(val));
+      return unclamped?val:Math.max(0,Math.round(val));
     }
     effectiveCost(sideIndex,card){
       const s=this.side(sideIndex);let cost=card.cost;
@@ -395,6 +395,7 @@
         for(let lane=0;lane<3;lane++){
           const wearer=s.board[lane];if(!wearer)continue;
           if(c.effect?.requiresFaction&&!this.isFaction(wearer,c.effect.requiresFaction))continue;
+          if(c.tags?.includes('asymmetric')&&c.slot==='WEAPON'&&(!this.isFaction(wearer,c.faction)||!['PERSONNAGE','VEHICULE'].includes(this.card(wearer.cardId).cardClass)))continue;
           // The new dedicated weapon slot is separate from 1.0.0 equipment.
           if(c.slot==='WEAPON'&&wearer.equipment.some(id=>this.card(id)?.slot==='WEAPON'))continue;
           out.push({kind:'FRIENDLY_UNIT',lane});
@@ -616,7 +617,7 @@
       finally{this.resolvingDeaths=false;}
     }
     resolveDeath({sideIndex,lane,ctx,s,u,c}){
-      if(ctx.sourceUnit){ctx.sourceUnit.kills=(ctx.sourceUnit.kills||0)+1;if(this.has(ctx.sourceUnit,'TROPHY'))this.gainTrophy(ctx.sourceUnit.owner);const killEffect=this.card(ctx.sourceUnit.cardId).effect?.onKill;if(killEffect?.kind==='DRAW_IF_FACTION'&&this.isFaction(u,killEffect.faction))this.draw(ctx.sourceUnit.owner,killEffect.count||1);}
+      if(ctx.sourceUnit&&ctx.sourceUnit.owner===1-sideIndex&&!ctx.sacrifice&&!ctx.transform&&!ctx.noDeath){ctx.sourceUnit.kills=(ctx.sourceUnit.kills||0)+1;if(this.has(ctx.sourceUnit,'TROPHY'))this.gainTrophy(ctx.sourceUnit.owner);const killEffect=this.card(ctx.sourceUnit.cardId).effect?.onKill;if(killEffect?.kind==='DRAW_IF_FACTION'&&this.isFaction(u,killEffect.faction))this.draw(ctx.sourceUnit.owner,killEffect.count||1);}
       if(s.location?.cardId==='L_SEVASTOPOL'&&this.has(u,'SYNTHETIC'))this.draw(sideIndex,1);
       if(s.location?.cardId==='L_GUNNISON'||this.modifiers.includes('deathPing'))this.damageHero(sideIndex,100,{kind:'DEATH_PING'});
       if(!ctx.noDeath){

@@ -137,9 +137,11 @@ function put(id,name,faction,category,focus,variant){
    description:'Doctrine '+category+' : 30 cartes, 15 alternatives. Ressources asymétriques.'};
  created.push(p);D.expansionDecks.push(p);plans.set(p.id,{faction,doctrine});
 }
-const humanFamilies=['pulse','smart','flame','shot','pistol','sniper','grenade','laser'];
+const humanFamilies=['pulse','smart','flame','shot','pistol','sniper','grenade','f44aa'];
 for(const family of humanFamilies)for(let v=1;v<=2;v++){
- put('human_'+family+'_'+v,'USCM — '+family.toUpperCase()+' / '+(v===1?'Ravitaillement':'Armement avancé'),
+ // Les identifiants des recettes restent stables pour les profils existants.
+ const stableFamilyId=family==='f44aa'?'laser':family;
+ put('human_'+stableFamilyId+'_'+v,'USCM — '+family.toUpperCase()+' / '+(v===1?'Ravitaillement':'Armement avancé'),
   'HUMAN','MUNITIONS',family,v);
 }
 for(const hostType of ['HUMAN','QUAD','YAUTJA'])for(let v=1;v<=4;v++){

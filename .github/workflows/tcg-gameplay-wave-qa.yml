@@ -41,6 +41,8 @@ jobs:
         run: npm run check:playable-decks
       - name: Asymmetric card and deck exports match runtime
         run: npm run check:asymmetric-content
+      - name: Excel catalogue matches runtime, CSV sources and rule modules
+        run: python3 scripts/verify-catalogue-xlsx.py
       - name: Stress-test AI across five factions and 70 decks
         run: npm run qa:balance-wave2
       - name: Full doctrine duels and deterministic checkpoint continuations
