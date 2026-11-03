@@ -17,6 +17,7 @@ const APP_SHELL = [
   '/src/data.js',
   '/src/expansion.js',
   '/src/expansion-wave2.js',
+  '/src/deck-productions.js',
   '/src/art-manifest.js',
   '/src/engine.js',
   '/src/duel-save.js',
