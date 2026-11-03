@@ -114,3 +114,21 @@ Les `cardClass` ajoutées ne remplacent pas les quatre types historiques du mote
 La présence d'une entité dans `Alien_base` n'atteste **pas** son statut canon ni la fidélité 1:1 de l'effet proposé. Les entrées originales Tantalus / Hive Ascension sont marquées comme créations du projet. Les modèles physiques de 45 cartes ne modifient **pas** le format de duel de 30 cartes.
 
 Contrôles dédiés : `node --test tests/expansion-gameplay.test.mjs`. Les cartes nouvellement jouables ne couvrent pas encore les **2 602 identités** de conception planifiées dans `content-plan/`. Elles constituent une première vague vérifiable, à équilibrer et illustrer avant mise en production.
+
+## Catalogue jouable — 280 decks préconstruits, sans illustrations nouvelles (v1.2.1)
+
+**Les 210 recettes des 30 extensions sont devenues sélectionnables dans le jeu**, en plus des 70 modèles existants, sans modifier les 158 cartes historiques. Elles sont composées uniquement des 656 cartes effectivement jouables, et non des futures identités encore présentes au stade de conception dans l'Excel.
+
+| Gamme de deck | Recettes en jeu | Deck de duel | Cartes de réserve | Total en boîte |
+| --- | ---: | ---: | ---: | ---: |
+| Starter | 5 | 30 | 15 | 45 |
+| Structure | 25 | 30 | 15 | 45 |
+| Construction | 90 | 30 | 45 | 75 |
+| Spécial | 30 | 30 | 20 | 50 |
+| Ligue | 60 | 30 | 15 | 45 |
+
+Le jeu propose désormais **280 decks** au choix (70 antérieurs + 210 nouveaux). Les nouvelles recettes préservent au moins **5 unités de coût faible** au démarrage. Chacune est contrôlée pour les limites de copies, la faction, les réserves et l'import non destructif. La fonction de remélange régénère également la réserve adéquate.
+
+**Important :** toutes les 30 extensions ne sont pas encore disponibles sous forme de boosters complets. Pour celles qui n'ont pas encore assez de cartes jouables de leur œuvre propre, le deck porte la mention **composition transversale provisoire**. Le gameplay conserve **16 boosters actifs**, **7 raretés implémentées**, et **656 cartes actives**. Les **14 finitions** et les **2 853 impressions** de la feuille de route restent des objectifs éditoriaux, sans promotion fictive du lore.
+
+**Fichiers et validations :** `src/deck-productions.js`, `tests/production-decks.test.mjs`, `content-plan/decks-playable.csv` (280 fiches), `content-plan/decklists-playable.csv` (15 450 positions), `scripts/sync-production-decks.mjs`. Lancer `npm run check:playable-decks` pour vérifier la parfaite correspondance avec le moteur et `npm run validate:content-plan` pour la cohérence de l'Excel. Tous les nouveaux visuels restent des SVG de substitution procéduraux.

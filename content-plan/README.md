@@ -67,3 +67,13 @@ Les **70 nouveaux modèles/variantes de decks** contiennent chacun 30 cartes de 
 - Important : **impressions** et **identités de gameplay** ne sont pas comparables 1:1. Certains sets (notamment Tantalus) peuvent demander une révision du nombre de concepts prévu ; ce suivi signale ces dépassements.
 - La modification des packs n'altère pas les sauvegardes ni les cartes historiques. Les nouveaux boosters sont verrouillés tant que leur pool est trop limité et sont clairement étiquetés comme **aperçus**.
 - **Aucune illustration générée ou retouchée** pendant cette phase ; les nouveaux visuels ne sont que des placeholders procéduraux existants.
+
+## Synchronisation des decks réellement jouables (2026-11-03)
+
+Les fichiers **`decks.csv`** et **`decklists.csv`** décrivent les 210 recettes *planifiées* du programme Yu-Gi-Oh!-like. Les nouveaux fichiers **`decks-playable.csv`** et **`decklists-playable.csv`** décrivent exactement les 280 modèles **activés en jeu**, avec 30 cartes de duel et réserves de 15/20/45 cartes selon la gamme. Ils totalisent **15 450 positions** et n'utilisent que les identités de cartes existant dans le moteur.
+
+Les decks de production conservent le **`PlanDeckID`** des 210 recettes. Lorsque le set n'a pas encore de cartes propres dans sa faction, la fiche est explicitement étiquetée comme **composition transversale provisoire** ; cela ne rend pas artificiellement l'extension complète.
+
+La commande `node scripts/sync-production-decks.mjs --check` confronte les CSV au catalogue de jeu réel. La commande `--write` les régénère après une modification. Le classeur Python ajoute désormais deux onglets **16_DECKS_JOUABLES** et **17_LISTES_JOUABLES** et un tableau de bord séparant les objectifs éditoriaux de l'implémentation en jeu.
+
+**État vérifiable :** 656 cartes, 16 boosters, 280 decks, 7 raretés actuellement jouables, pour 30 sets planifiés plus PX00. Les illustrations originales 1:1, les 14 traitements de collection et les nouveaux concepts encore manquants sont exclus de cette livraison.
