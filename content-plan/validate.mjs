@@ -32,6 +32,31 @@ assert.equal(asyncSlots.length,m.implementation.asymmetricDeckCardPositions);
 assert.equal(new Set(asyncCards.map(c=>c.CardID)).size,asyncCards.length);
 assert.equal(new Set(liveCards.map(c=>c.CardID)).size,liveCards.length);
 const allLive=new Set(liveCards.map(c=>c.CardID));
+const completeCards=csv('complete-cards.csv'),completeDecks=csv('complete-decks.csv'),completeSlots=csv('complete-decklists.csv');
+const arsenal=csv('coverage-arsenal.csv'),hive=csv('coverage-hive.csv'),domains=csv('coverage-domains.csv');
+assert.equal(completeCards.length,m.implementation.completeCards);
+assert.equal(completeDecks.length,m.implementation.completeDecks);
+assert.equal(completeSlots.length,m.implementation.completeDeckCardPositions);
+assert.equal(arsenal.length,m.implementation.arsenalCoverageEntries);
+assert.equal(hive.length,m.implementation.hiveCoverageEntries);
+assert.equal(liveDecks.length+asyncDecks.length+completeDecks.length,m.implementation.totalDeckPresetsPlayable);
+assert.equal(liveSlots.length+asyncSlots.length+completeSlots.length,m.implementation.totalPlayableDeckCardPositions);
+assert.equal(domains.reduce((n,d)=>n+Number(d.TotalCartes),0),liveCards.length);
+const liveProgress=csv('live-set-progress.csv');
+assert.equal(liveProgress.reduce((n,s)=>n+Number(s.TotalJouable),0),liveCards.length);
+for(const set of liveProgress)assert.equal(Number(set.TotalJouable),liveCards.filter(c=>c.Set===set.Set).length,set.Set);
+for(const c of completeCards){assert(allLive.has(c.CardID),c.CardID);assert(c.SourceID&&c.Règle,c.CardID);}
+for(const entry of arsenal)for(const field of ['AnciennesCartes','CartesActives','Munitions','Modules','Supports'])
+ for(const id of (entry[field]||'').split('|').filter(Boolean))assert(allLive.has(id),'Unknown arsenal reference '+id);
+for(const entry of hive)for(const field of ['AnciennesCartes','CartesActives','CartesÉvolution'])
+ for(const id of (entry[field]||'').split('|').filter(Boolean))assert(allLive.has(id),'Unknown hive reference '+id);
+for(const deck of completeDecks){
+ const slots=completeSlots.filter(s=>s.DeckID===deck.DeckID);
+ assert.equal(slots.filter(s=>s.Zone==='PRINCIPAL').length,30,deck.DeckID);
+ assert.equal(slots.filter(s=>s.Zone==='RESERVE').length,Number(deck.Réserve),deck.DeckID);
+ assert.equal(slots.length,Number(deck.TotalBoite),deck.DeckID);
+ for(const s of slots)assert(allLive.has(s.CardID),s.CardID);
+}
 for(const c of asyncCards){
  assert(allLive.has(c.CardID),c.CardID);assert(sourceSet.has(c.RegistreAlienBaseID),c.CardID);
  assert(['ADAPTATION_TCG','MODULE_TCG_SUR_ARME'].includes(c.RelationSource),'Relation documentaire manquante : '+c.CardID);

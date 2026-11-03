@@ -6,6 +6,7 @@ import { basename, dirname, join, resolve } from 'node:path';
 import { tmpdir } from 'node:os';
 import { setTimeout as delay } from 'node:timers/promises';
 import { asymmetricBrowserScenarios } from './browser-asymmetric-scenarios.mjs';
+import { collectionBrowserScenarios } from './browser-collection-scenarios.mjs';
 
 const DEFAULT_URL = 'http://127.0.0.1:4173';
 const EXPECTED_TITLE = 'AVP: HUNT // HIVE TCG';
@@ -330,7 +331,7 @@ function inspectCodexByCdp(cdp){
   const result={registry:false,catalogue:false,initialRows:0,filterWorked:false,detailOpened:false,linksPresent:false,weaponsMode:false,weaponsDetailOpen:false,leadsMode:false,leadsDetailOpen:false,apexMode:false,apexDetail:false,apexCardLink:false,apexCautions:false,mediaMode:false,mediaDetail:false,noHorizontalOverflow:false};
   try{
    const data=window.AVP_ALIEN_BASE;
-   result.registry=data?.registry?.v2===632&&Object.keys(data.byCardId||{}).length===158;
+   result.registry=data?.registry?.v2===652&&data?.revision==='2026-11-02-tcg-v3-unified'&&data?.codex?.registryUpdates?.status==='MERGED_REFERENCE_IDS_RESEARCH_ONLY'&&Object.keys(data.byCardId||{}).length===158;
    result.catalogue=data?.codex?.entries?.length===68;
    const app=window.AVP_APP;
    if(!app)return {...result,error:'AVP_APP missing'};
@@ -458,6 +459,12 @@ async function inspectProfile(cdp, url, profile, outputPath, diagnostics) {
   await writeFile(gameplayScreenshot,Buffer.from(battleScreenshot.data,'base64'));
   checks.noGameplayRuntimeExceptions=diagnostics.exceptions.length===0&&diagnostics.consoleErrors.length===0;
   checks.noSevereLogs=diagnostics.severeLogs.length===0;
+  const collection=await evaluateByValue(cdp,`(${collectionBrowserScenarios.toString()})()`);
+  checks.collectionViews=collection.passed;
+  checks.collectionNoRuntimeErrors=diagnostics.exceptions.length===0&&diagnostics.consoleErrors.length===0&&diagnostics.severeLogs.length===0;
+  const collectionScreenshot=outputPath.replace(/\.png$/, '-collection.png');
+  const collectionImage=await cdp.send('Page.captureScreenshot',{format:'png',fromSurface:true,captureBeyondViewport:false});
+  await writeFile(collectionScreenshot,Buffer.from(collectionImage.data,'base64'));
   inspection.codex = await inspectCodexByCdp(cdp);
   checks.codexNavigation = inspection.codex.registry && inspection.codex.catalogue && inspection.codex.initialRows === 18;
   checks.codexFiltering = inspection.codex.filterWorked;
@@ -485,6 +492,8 @@ async function inspectProfile(cdp, url, profile, outputPath, diagnostics) {
     screenshot: outputPath,
     gameplay,
     gameplayScreenshot,
+    collection,
+    collectionScreenshot,
     codexScreenshot: codexImage,
   };
 }

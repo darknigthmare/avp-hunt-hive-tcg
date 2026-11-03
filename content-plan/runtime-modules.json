@@ -1,0 +1,10 @@
+{
+  "schema": "avp-tcg/runtime-modules-v1",
+  "data": [
+    "data", "expansion", "expansion-wave2", "deck-productions",
+    "asymmetric-cards", "asymmetric-decks",
+    "arsenal-cards", "arsenal-decks", "hive-cards", "hive-decks"
+  ],
+  "rules": ["engine", "asymmetric-rules", "arsenal-rules", "hive-rules", "duel-save"],
+  "interface": ["alien-base", "art-manifest", "collection", "app"]
+}

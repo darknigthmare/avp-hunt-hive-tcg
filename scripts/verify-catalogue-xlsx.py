@@ -37,10 +37,12 @@ CSV_SHEETS = [
     ("19_DECKS_ASYMETRIQUES", "asymmetric-decks.csv"),
     ("20_LISTES_ASYMETRIQUES", "asymmetric-decklists.csv"),
     ("21_REGLES_ASYMETRIQUES", "asymmetric-mechanics.csv"),
+    ("27_ARSENAL_COUVERTURE", "coverage-arsenal.csv"),
+    ("28_RUCHE_COUVERTURE", "coverage-hive.csv"),
+    ("29_DECKS_COMPLEMENTS", "complete-decks.csv"),
+    ("30_LISTES_COMPLEMENTS", "complete-decklists.csv"),
+    ("31_COUVERTURE_DOMAINES", "coverage-domains.csv"),
 ]
-DATA_MODULES = ["data", "expansion", "expansion-wave2", "deck-productions",
-                "asymmetric-cards", "asymmetric-decks"]
-RULE_MODULES = ["engine", "asymmetric-rules", "duel-save"]
 
 
 def require(condition, message):
@@ -115,7 +117,8 @@ def read_runtime(root):
     script = r"""
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=process.argv[1],ctx=vm.createContext({window:{},Intl,Date,Math});
-for(const name of ['data','expansion','expansion-wave2','deck-productions','asymmetric-cards','asymmetric-decks'])
+const modules=JSON.parse(fs.readFileSync(path.join(root,'content-plan/runtime-modules.json'),'utf8'));
+for(const name of modules.data)
   new vm.Script(fs.readFileSync(path.join(root,'src',name+'.js'),'utf8'),{filename:name+'.js'}).runInContext(ctx,{timeout:15000});
 const d=ctx.window.AVP_DATA;
 process.stdout.write(JSON.stringify({cards:d.cards,decks:d.expansionDecks,boosters:d.boosters,
@@ -128,13 +131,14 @@ process.stdout.write(JSON.stringify({cards:d.cards,decks:d.expansionDecks,booste
 
 def verify(root):
     manifest = json.loads((root / "content-plan/manifest.json").read_text())
+    modules = json.loads((root / "content-plan/runtime-modules.json").read_text())
     report_path = root / "reports/qa" / f"workbook-validation-{manifest['date']}.json"
     report = json.loads(report_path.read_text())
     workbook_path = root / manifest["implementation"]["catalogueWorkbook"]
     require(report["xlsxSha256"] == digest(workbook_path), "Excel differs from its validation report; rebuild the catalogue")
     require(report["authoringSourceHash"] == digest(root / "content-plan/build_xlsx.mjs"), "Excel builder changed; rebuild the catalogue")
-    required_sources = {"content-plan/manifest.json"}
-    required_sources.update("src/" + name + ".js" for name in DATA_MODULES + RULE_MODULES)
+    required_sources = {"content-plan/manifest.json", "content-plan/runtime-modules.json", "content-plan/complete-cards.csv", "src/collection.js"}
+    required_sources.update("src/" + name + ".js" for name in modules["data"] + modules["rules"])
     required_sources.update("content-plan/" + file for _, file in CSV_SHEETS)
     require(required_sources <= report["sourceHashes"].keys(), "Workbook report is missing source fingerprints")
     for name, expected in report["sourceHashes"].items():
@@ -177,7 +181,7 @@ def verify(root):
                 address = cell_address(row, headers[header])
                 require((values.get(address) or "") == expected, f"Runtime rule mismatch in {name}!{address}")
 
-    deck_sheet = sheets["22_DECKS_318"]
+    deck_sheet = sheets["22_DECKS_COMPLETS"]
     positions = 0
     for row, deck in enumerate(runtime["decks"], 2):
         main, reserve = sum(deck["cards"].values()), sum(deck.get("reserve", {}).values())
@@ -197,6 +201,13 @@ def verify(root):
         require(sheets["00_PILOTAGE"].get(f"C{row}") == expected, f"Summary cache mismatch in C{row}")
     for address in [f"C{row}" for row in range(6, 17) if row not in (8, 9)]:
         require(formulas["00_PILOTAGE"].get(address), f"Summary formula missing: {address}")
+    for row, faction in enumerate(["HUMAN", "XENO", "YAUTJA", "ENGINEER", "HYBRID", "NEUTRAL"], 20):
+        require(sheets["00_PILOTAGE"].get(f"C{row}") == sum(c["faction"] == faction for c in cards.values()),
+                f"Faction card summary mismatch in C{row}")
+        require(sheets["00_PILOTAGE"].get(f"D{row}") == sum(d["faction"] == faction for d in runtime["decks"]),
+                f"Faction deck summary mismatch in D{row}")
+        require(formulas["00_PILOTAGE"].get(f"C{row}") and formulas["00_PILOTAGE"].get(f"D{row}"),
+                f"Faction formulas missing at row {row}")
     require("Actif03" in tables and "Actif04" in tables, "Active rarities/boosters tables missing")
     return {"status": "PASS", "sheets": len(sheets), "cards": len(cards), "decks": len(runtime["decks"]),
             "positions": positions, "csvCellsCompared": checked_cells, "sourceFingerprints": len(report["sourceHashes"]),

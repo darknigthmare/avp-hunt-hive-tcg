@@ -4,21 +4,17 @@ import assert from 'node:assert/strict';
 import {readFile,writeFile} from 'node:fs/promises';
 import {resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {createContext,Script} from 'node:vm';
+import {loadRuntime} from './runtime-loader.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
-const ctx=createContext({window:{},Intl,Date,Math});
-for(const file of ['data.js','expansion.js','expansion-wave2.js','deck-productions.js','asymmetric-cards.js','asymmetric-decks.js']){
- new Script(await readFile(resolve(root,'src',file),'utf8'),{filename:'src/'+file}).runInContext(ctx,{timeout:8000});
-}
-const D=ctx.window.AVP_DATA;
-if(D.cards.length!==891||D.asymmetricDecks.length!==38)throw Error('Unexpected live asymmetric inventory');
+const D=loadRuntime().AVP_DATA;
+if(D.cards.length<891||D.asymmetricDecks.length!==38)throw Error('Unexpected live asymmetric inventory');
 const parseCSV=function parseCSV(raw){const rows=[];let row=[],cell="",q=false;for(let i=0;i<raw.length;i++){const c=raw[i];if(q){if(c==='"'&&raw[i+1]==='"'){cell+='"';i++}else if(c==='"')q=false;else cell+=c;}else if(c==='"')q=true;else if(c===','){row.push(cell);cell="";}else if(c==='\n'){row.push(cell);rows.push(row);row=[];cell="";}else if(c!=='\r')cell+=c;}if(cell!==""||row.length){row.push(cell);rows.push(row)}return rows};
 const encCSV=function encCSV(rows){return rows.map(row=>row.map(x=>{const s=String(x??"");return /[",\n\r]/.test(s)?'"'+s.replaceAll('"','""')+'"':s}).join(",")).join("\n")+"\n"};
 const liveFile=resolve(root,'content-plan','gameplay-live.csv');
 const oldBase=parseCSV(await readFile(liveFile,'utf8'));
-assert.equal(oldBase.length,892);
+assert(oldBase.length>=892);
 assert(oldBase.slice(1,657).every((r,i)=>r[0]===D.cards[i].id),'Historical 656 changed unexpectedly');
-const extra=D.cards.slice(656);
+const extra=D.cards.slice(656,891);
 const cards=[["CardID","Nom","Classe","Type","Faction","Set","Rareté","Énergie","ATK","PV","FamilleArme","Munitions","Charges","CoûtParTir","AttaquePlasma","SocketMod","FamillesCompatibles","StadeHive","TypeHôte","ÉclosionŒuf","FusionExclusive","Effet","RegistreAlienBaseID","SourcePolicy","Illustration","RelationSource","NoteSource","SourcePrimaireURL"]];
 for(const c of extra)cards.push([c.id,c.name,c.cardClass,c.type,c.faction,c.set,c.rarity,c.cost,c.attack,c.health,c.weaponFamily||'',c.ammoType||'',c.rounds||'',c.ammoPerAttack||'',c.plasmaPerAttack||'',c.modSocket||'',c.compatibleFamilies?.join('|')||'',c.evolutionStage||'',c.hostType||'',c.requiresEgg?'OUI':'NON',c.summonByFusion?'OUI':'NON',c.effect?.kind||c.effect?.onPlay?.kind||c.effect?.onEquip?.kind||'AUCUN',c.sourceEntityId,c.sourcePolicy,'PLACEHOLDER_SVG_EXTRANT',c.sourceRelation||'',c.sourceNote||'',c.sourcePrimaryUrl||'']);
 const decks=[['DeckID','Nom','Faction','Doctrine','Focus','CartesDuel','Réserve','TotalBoite','Statut','Sources']];
@@ -31,7 +27,7 @@ for(const p of D.asymmetricDecks){
  }
 }
 const origin='https://github.com/darknigthmare/alien_base/blob/e65b75a6bfd1284dbac746102fdbae4fc5a3786b/data/entities.v1.json';
-const append=extra.map(c=>[c.id,c.name,c.type,c.cardClass,c.faction,c.set,c.rarity,c.cost,c.attack,c.health,c.sourceEntityId,'mechanics-v1.3',c.effect?.kind||c.effect?.onPlay?.kind||c.effect?.onEquip?.kind||'AUCUN','ASYMETRIC_235_JOUABLE','PLACEHOLDER_SVG','MECANIQUES_TCG_NON_CANON',origin]);
+const append=D.cards.slice(656).map(c=>[c.id,c.name,c.type,c.cardClass,c.faction,c.set,c.rarity,c.cost,c.attack,c.health,c.sourceEntityId,c.id.startsWith('MX_')?'mechanics-v1.3':'mechanics-v1.4',c.effect?.kind||c.effect?.onPlay?.kind||c.effect?.onEquip?.kind||'AUCUN',c.id.startsWith('MX_')?'ASYMETRIC_235_JOUABLE':'ARSENAL_RUCHE_JOUABLE','PLACEHOLDER_SVG',c.sourcePolicy||'MECANIQUES_TCG_NON_CANON',c.sourcePrimaryUrl||origin]);
 const snapshots=[['asymmetric-cards.csv',encCSV(cards)],['asymmetric-decks.csv',encCSV(decks)],['asymmetric-decklists.csv',encCSV(slots)],['gameplay-live.csv',encCSV([...oldBase.slice(0,657),...append])]];
 for(const [file,content] of snapshots){
  const path=resolve(root,'content-plan',file);

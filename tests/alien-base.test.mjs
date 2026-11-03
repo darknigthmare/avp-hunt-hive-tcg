@@ -28,9 +28,10 @@ test('the 158 actual TCG cards retain exact shared IDs and their balancing field
  }
 });
 
-test('the newer 632 entities are indexed without publishing extra playable cards',()=>{
+test('the merged 652 reference identities are indexed without publishing extra playable cards',()=>{
+ assert.equal(base.revision,'2026-11-02-tcg-v3-unified');
  assert.equal(base.registry.v1,68);
- assert.equal(base.registry.v2,632);
+ assert.equal(base.registry.v2,652);
  assert.equal(base.registry.verifiedLoreLinks,9);
  assert.equal(base.registry.documentaryProposals,28);
  assert.equal(base.registry.gameContentAdditions,0);
@@ -119,10 +120,10 @@ test('the Codex offers mutually exclusive history/arsenal/leads UI modes',async(
  assert.ok(css.includes('.alien-codex-tabs'));
 });
 
-test('latest unmerged Alien_base updates are visible without adding any playable card',()=>{
+test('merged Alien_base reference IDs remain research-only without adding any playable card',()=>{
  const update=base.codex.registryUpdates;
- assert.equal(base.registry.v2,632);
- assert.equal(update.status,'UNMERGED_RESEARCH_DELTA');
+ assert.equal(base.registry.v2,652);
+ assert.equal(update.status,'MERGED_REFERENCE_IDS_RESEARCH_ONLY');
  assert.equal(update.baselineCount,632);
  assert.equal(update.candidateRegistryCount,652);
  assert.equal(update.newEntities.length,20);

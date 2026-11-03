@@ -1,0 +1,99 @@
+{
+  "schema": "avp-complete-validation-v1",
+  "date": "2026-11-03",
+  "version": "1.4.0-complete",
+  "baseMain": "b233b690ed830e3c69fa96a652801e8a94ff7f1d",
+  "catalogue": {
+    "cards": 2021,
+    "presets": 659,
+    "newCards": 1130,
+    "newRecipes": 341,
+    "boosters": 24
+  },
+  "preserved": {
+    "cards": 891,
+    "recipes": 318,
+    "boosters": 19,
+    "starters": 3,
+    "rarities": 7,
+    "campaignMissions": 8,
+    "newIllustrations": 0
+  },
+  "tests": {
+    "command": "npm test",
+    "passed": 291,
+    "failed": 0,
+    "skipped": 0,
+    "logSha256": "38cc957206dc478580dc87983b216c306b6e7806fe4a54e84499e4b78d45a628"
+  },
+  "completeQA": {
+    "report": "reports/qa/complete-2026-11-03.json",
+    "games": 715,
+    "completed": 715,
+    "checkpointRoundTrips": 18596,
+    "deterministicContinuations": 4908,
+    "maxHalfTurns": 56,
+    "runtimeSourceHashesCurrent": true
+  },
+  "historicalQA": {
+    "games": 177,
+    "completed": 177,
+    "checkpointRoundTrips": 4256,
+    "deterministicContinuations": 1130
+  },
+  "workbook": {
+    "status": "PASS",
+    "sheets": 32,
+    "cards": 2021,
+    "decks": 659,
+    "positions": 32505,
+    "csvCellsCompared": 568551,
+    "sourceFingerprints": 45,
+    "xlsxSha256": "bbd8a84a34e638cff171cee0626245354362ef103815bb6e48700ecc1d508085"
+  },
+  "build": {
+    "publicFiles": 203,
+    "criticalShellRoutes": 27,
+    "cacheRevision": "46247394c80d63e1",
+    "historicalStandaloneSha256": "23a462d5fec16bf2feede14d1d69f1829e188db85df7860b3324127d2701d78f",
+    "httpReport": "reports/qa/complete-http-2026-11-03.json"
+  },
+  "scope": {
+    "integratedArsenalReferences": 233,
+    "coveredResearchAliases": 8,
+    "researchOnlyReferences": 121,
+    "hiveSubjects": 105,
+    "hiveRoutes": 123,
+    "playableDomains": 17,
+    "vehiclesWithCrew": 43
+  },
+  "browser": {
+    "execution": "GitHub Actions on the published pull-request commit",
+    "profiles": [
+      "desktop 1440x1000",
+      "mobile 390x844"
+    ],
+    "workflows": [
+      ".github/workflows/browser-codex-qa.yml",
+      ".github/workflows/tcg-gameplay-wave-qa.yml"
+    ],
+    "evidence": "The published pull request validation section and its exact-commit check runs record the actual result.",
+    "localBrowserAvailable": false
+  },
+  "deployment": "Production follows the existing GitHub/Vercel integration after merge; inspect the deployment for the merged commit.",
+  "checks": [
+    "Syntax passed",
+    "All new cards obtainable through boosters and crafting",
+    "All 108 Hive chains executable with their own 30-card recipe",
+    "No new recipe with orphan resource dependencies",
+    "No mutation of collection by viewing or creating owned recipes",
+    "Historical catalogue and saved-duel compatibility preserved",
+    "CSV and workbook compared with executable runtime",
+    "No artwork changed"
+  ],
+  "corrections": [
+    "Collection progression drilldowns reset unrelated filters; creating owned decks never grants missing cards.",
+    "Codex mirrors the merged 652-reference public Alien_base export.",
+    "Projectile techniques retain Piercing on their final ammunition charge through damage resolution; acid death cannot duplicate the discarded magazine."
+  ]
+}

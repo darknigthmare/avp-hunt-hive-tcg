@@ -6,7 +6,7 @@
 (function(){
 'use strict';
 const E=window.AVPEngine,D=window.AVP_DATA;
-if(!D?.asymmetricEdition||!E?.Battle||D.cards.length!==891)throw new Error('Règles asymétriques : catalogue incompatible');
+if(!D?.asymmetricEdition||D.asymmetricEdition.addedCount!==235||!E?.Battle||D.cards.length<891)throw new Error('Règles asymétriques : catalogue incompatible');
 const P=E.Battle.prototype;
 const older={
  makeSide:P.makeSide,makeUnit:P.makeUnit,allKeywords:P.allKeywords,unitAttack:P.unitAttack,
@@ -194,7 +194,9 @@ P.validTargets=function(cardOrId,si){
  if(c.summonByFusion)return [];
  if(c.cardClass==='MUNITION')return s.board.map((u,lane)=>{
    const holder=u&&this.card(u.cardId);
-   return holder&&holder.faction==='HUMAN'&&['PERSONNAGE','VEHICULE'].includes(holder.cardClass)
+   const factions=holder&&new Set([holder.faction,...(holder.effect?.dualFaction||[]),...(u.extraFactions||[])]);
+   const compatible=holder&&['HUMAN','YAUTJA'].some(f=>factions.has(f))&&(c.faction==='NEUTRAL'||factions.has(c.faction));
+   return compatible&&['PERSONNAGE','VEHICULE'].includes(holder.cardClass)
       &&activeAmmoPacks(u).length<6?{kind:'FRIENDLY_UNIT',lane}:null;
  }).filter(Boolean);
  if(c.cardClass==='MODIFICATION')return s.board.map((u,lane)=>{
@@ -345,10 +347,12 @@ P.applyEffectResolved=function(si,effect,ctx={}){
      s.shield=Math.min(1200,s.shield+(effect.amount||0));}break;
  case 'WEAPON_TECHNIQUE':{
    const eligible=techniqueSource(this,si,effect);
-   if(target?.kind==='ENEMY_UNIT'&&enemy.board[target.lane]&&eligible
-       &&spendAmmo(eligible,effect.ammoType,effect.ammoCost)){
-     retireEmptyPacks(this,si,eligible);
+   if(target?.kind==='ENEMY_UNIT'&&enemy.board[target.lane]&&eligible){
+     // Keep the firing weapon's keywords active for the shot itself, including
+     // Perforation on its final charge. Ordinary attacks follow this same order.
      this.damageUnit(1-si,target.lane,effect.damage||0,{kind:'TECHNIQUE',unit:eligible,sourceSide:si});
+     spendAmmo(eligible,effect.ammoType,effect.ammoCost);
+     retireEmptyPacks(this,si,eligible);
    }break;
  }
  case 'HIVE_FUSION':{

@@ -51,9 +51,17 @@
       // stops applying; all slot, module and ammunition checks still run.
       out.legacyWeaponAttachment={carrierUid:out.uid,carrierCardId:out.cardId,weaponCardId:weapon.id};
     }
-    if(attachments.some(c=>c.cardClass==='MUNITION')&&(carrier.faction!=='HUMAN'||!['PERSONNAGE','VEHICULE'].includes(carrier.cardClass)))fail();
+    if(attachments.some(c=>c.cardClass==='MUNITION'&&(
+      !['PERSONNAGE','VEHICULE'].includes(carrier.cardClass)||
+      !['HUMAN','YAUTJA'].some(f=>carrierFactions.has(f))||
+      (c.faction!=='NEUTRAL'&&!carrierFactions.has(c.faction))
+    )))fail();
+    if(attachments.some(c=>c.cardClass==='EQUIPEMENT'&&c.tags?.includes('arsenal')&&
+      c.effect?.requiresFaction&&!carrierFactions.has(c.effect.requiresFaction)))fail();
     if(weapons.length>1||mods.length>3||new Set(mods.map(c=>c.modSocket)).size!==mods.length)fail();
-    if(mods.some(c=>!weapons.some(w=>c.compatibleFamilies.includes(w.weaponFamily))))fail();
+    if(mods.some(c=>c.compatibleEquipmentIds?.length
+      ?!attachments.some(item=>item.cardClass==='EQUIPEMENT'&&c.compatibleEquipmentIds.includes(item.id))
+      :!weapons.some(w=>c.compatibleFamilies?.includes(w.weaponFamily))))fail();
     // Old checkpoints can contain spent magazines; only live reserves occupy
     // the six ammunition slots and those exhausted cards remain recoverable.
     if((out.ammoPacks||[]).filter(pack=>pack.remaining>0).length>6)fail();

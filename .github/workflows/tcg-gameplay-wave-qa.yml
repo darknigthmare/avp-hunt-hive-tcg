@@ -1,9 +1,10 @@
-name: AVP TCG – catalogue et gameplay asymétrique
+name: AVP TCG – catalogue complet, collection et gameplay
 
 on:
   pull_request:
     paths:
       - 'src/**'
+      - 'assets/styles.css'
       - 'tests/**'
       - 'scripts/**'
       - 'index.html'
@@ -14,6 +15,7 @@ on:
   push:
     branches:
       - 'codex/tcg-30-collections-alienbase-20261102'
+      - 'feat/complete-arsenals-hive-collection-20261103'
   workflow_dispatch:
 
 permissions:
@@ -41,20 +43,26 @@ jobs:
         run: npm run check:playable-decks
       - name: Asymmetric card and deck exports match runtime
         run: npm run check:asymmetric-content
+      - name: Complete catalogue and coverage exports match runtime
+        run: npm run check:complete-content
       - name: Excel catalogue matches runtime, CSV sources and rule modules
         run: python3 scripts/verify-catalogue-xlsx.py
       - name: Stress-test AI across five factions and 70 decks
         run: npm run qa:balance-wave2
       - name: Full doctrine duels and deterministic checkpoint continuations
         run: node scripts/qa-asymmetric.mjs --out=asymmetric-qa.json
+      - name: Every complete arsenal and hive recipe, mechanics and deterministic continuations
+        run: npm run qa:complete -- --out=complete-qa.json
       - name: Immutable historical art and production build
         run: npm run build
-      - name: Preserve asymmetric QA evidence
+      - name: Preserve catalogue and gameplay QA evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: avp-asymmetric-qa
-          path: asymmetric-qa.json
+          name: avp-complete-qa
+          path: |
+            asymmetric-qa.json
+            complete-qa.json
           if-no-files-found: ignore
 
   browser:
@@ -78,7 +86,7 @@ jobs:
           done
           cat /tmp/avp-gameplay-server.log
           exit 1
-      - name: Browser desktop/mobile gameplay and pause/resume
+      - name: Browser desktop/mobile collection, gameplay and pause/resume
         run: node scripts/qa-browser.mjs http://127.0.0.1:4173
       - name: Upload QA screenshots/logs
         if: always()

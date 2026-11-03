@@ -9,8 +9,9 @@ const base=resolve(arg('--base')||join(root,'../alien_base'));
 const snapshot=JSON.parse(await readFile(join(base,'exports/avp-hunt-hive-tcg.v3.json'),'utf8'));
 assert.equal(snapshot.schema,'alien-base/tcg-public-v3');
 assert.equal(snapshot.registry.v1,68);
-assert.equal(snapshot.registry.v2,632);
-assert.equal(snapshot.codex?.registryUpdates?.status,'UNMERGED_RESEARCH_DELTA');
+assert.equal(snapshot.revision,'2026-11-02-tcg-v3-unified');
+assert.equal(snapshot.registry.v2,652);
+assert.equal(snapshot.codex?.registryUpdates?.status,'MERGED_REFERENCE_IDS_RESEARCH_ONLY');
 assert.equal(snapshot.codex.registryUpdates.candidateRegistryCount,652);
 assert.equal(snapshot.codex.registryUpdates.newEntities.length,20);
 assert.equal(snapshot.codex.registryUpdates.works.length,29);
@@ -22,11 +23,11 @@ const locals=ctx.window.AVP_DATA.cards;
 assert.equal(locals.length,158);
 assert.equal(Object.keys(snapshot.byCardId).length,locals.length);
 for(const c of locals)assert.equal(snapshot.byCardId[c.id]?.name,c.name,'ID/name mismatch '+c.id);
-const generated='/* Export public documentaire, sans accès au dépôt privé. Généré depuis Alien_base PR #19. */\nwindow.AVP_ALIEN_BASE = '+JSON.stringify(snapshot,null,2)+';\n';
+const generated='/* Export public documentaire, sans accès au dépôt privé. Généré depuis l’export public unifié d’Alien_base. */\nwindow.AVP_ALIEN_BASE = '+JSON.stringify(snapshot,null,2)+';\n';
 const output=join(root,'src/alien-base.js');
 if(process.argv.includes('--publish')){
  await writeFile(output,generated);console.log('Published AVP TCG federation v3');
 }else{
  assert.equal(await readFile(output,'utf8'),generated,'Outdated v3 snapshot; run with --publish and review the diff');
- console.log('AVP TCG v3 aligned: 158 cards, 632 baseline records, 20 Apex candidates, 29 media works, no gameplay changes');
+ console.log('AVP TCG v3 aligned: 158 cards, 652 merged reference IDs, 20 research profiles, 29 media works, no gameplay changes');
 }

@@ -1,35 +1,53 @@
 # AVP: HUNT // HIVE TCG
 
-TCG tactique fan-made, jouable hors ligne dans un navigateur moderne. L’édition asymétrique conserve les 158 cartes du standalone d’origine et porte le catalogue actif à **891 cartes, 318 recettes de decks et 19 boosters**. Le catalogue, le moteur de règles, l’interface, les styles et la couche PWA sont séparés en modules testables.
+TCG tactique fan-made, jouable hors ligne dans un navigateur moderne. L’édition **1.4.0-complete** réunit **2 021 cartes, 659 recettes de decks et 24 boosters**. Elle conserve exactement les 891 cartes de l’édition précédente, dont les 158 cartes du standalone d’origine, et ajoute des arsenaux, des cycles biologiques jouables et une Collection détaillée. [Décomptes du catalogue](content-plan/manifest.json).
 
-> Projet fan non commercial et non officiel. Les visuels d’origine restent inchangés ; cette consolidation n’ajoute aucune illustration. Les nouvelles cartes conservent leurs substituts procéduraux. La provenance des actifs et du standalone est documentée dans les fichiers dédiés.
+> Projet fan non commercial et non officiel. Aucune illustration nouvelle n’est ajoutée dans cette édition ; les nouvelles cartes utilisent les substituts procéduraux du jeu. La provenance documentaire identifie les sujets, tandis que les statistiques, modules et recettes sont des adaptations originales du TCG.
 
 ## Contenu jouable
 
-- **891 cartes jouables** : 158 historiques, 156 cartes de vague 1, 342 de vague 2 et 235 cartes asymétriques. Les classes couvrent personnages, créatures, armes, équipements, véhicules, actions, lieux, munitions, modules, attaques spécialisées, œufs, hôtes, évolutions, biomasse, plasma, trophées et honneur. Les sept raretés historiques sont conservées ; quatorze finitions sont documentées pour les futures vagues.
-- Trois decks de départ historiques intacts et **318 recettes préconstruites** : 70 modèles de factions, 210 recettes des collections et 38 doctrines asymétriques. Toutes utilisent 30 cartes principales et une réserve de 15, 20 ou 45 cartes selon le produit. Remélange déterministe, constructeur de 30 cartes et jusqu’à **32 decks sauvegardés**.
-- Duels tactiques sur trois voies contre une IA déterministe à quatre difficultés.
-- Factions asymétriques : Couvée et Sang acide, Chasse et Trophées, Escouades et technologie, Pathogène et mutation, Hybrides et synergies croisées.
-- **19 boosters jouables**, avec des paquets de 5, 7 ou 9 cartes selon leur gamme : huit pools historiques, huit aperçus d’extensions et trois doctrines asymétriques. Les aperçus sont identifiés comme partiels. Fabrication, désassemblage et protection de malchance restent disponibles.
-- Campagne de huit missions avec règles de scénario, récompenses, progression, niveaux et succès.
-- Tutoriel/règles accessibles depuis le jeu, synthèse audio locale et préférences de mouvement.
-- Sauvegarde locale v3, reprise des duels, export/import JSON validé et migration des anciennes sauvegardes.
-- PWA installable avec shell hors ligne complet, illustration d'accueil précachée et cache visuel à la demande borné à 80 images.
-- Codex Alien_base hors ligne, consultable depuis la Collection et l’Archive, avec recherches par catégorie et continuité et références associées aux cartes historiques.
+- **2 021 cartes** : 158 historiques, 156 AX, 342 BX, 235 MX, **985 cartes Arsenal** et **145 cartes de cycles**. Les 17 classes de cartes et les sept raretés actives sont recensées dans [la couverture des domaines](content-plan/coverage-domains.csv).
+- Trois decks de départ historiques intacts et **659 recettes préconstruites** : 70 modèles de factions, 210 recettes de collections, 38 doctrines asymétriques, **233 arsenaux** et **108 cycles complets**. Chaque principal contient 30 cartes ; les réserves comptent 15, 20 ou 45 cartes selon le produit. Les 341 nouvelles recettes ont chacune 15 alternatives. Remélange déterministe et jusqu’à 32 decks personnels sauvegardés.
+- **24 boosters actifs** : huit pools historiques, huit aperçus d’extensions, trois doctrines asymétriques, deux arsenaux et trois familles de cycles. Les formats de 5, 7 ou 9 cartes, la fabrication, le désassemblage et la protection de malchance restent disponibles.
+- Arsenaux humains et Yautja : armes à munitions compatibles, plasma, mêlée, projectiles réutilisables, équipements de protection ou de détection, modules et opérations associés. Les consommables représentent leur charge à usage unique.
+- **105 sujets biologiques et 123 routes de cycle**, dont 109 nouvelles recettes `HIVE_ROUTE` et 14 routes historiques référencées : éclosions, hôtes, fusions, maturation, lignées royales, gestations, eggmorphose et ponte. Les voies restent propres aux œuvres ou projets indiqués.
+- Duels tactiques sur trois voies contre une IA déterministe à quatre difficultés ; cinq identités principales, 43 véhicules avec pilotes et 50 lieux.
+- Campagne de huit missions, tutoriel, progression, récompenses, niveaux et succès ; synthèse audio locale et préférences de mouvement.
+- Sauvegarde locale v3, export/import JSON validé et reprise déterministe des duels ; migration des anciennes sauvegardes et contrôle des montages d’armes, de modules et d’appareils.
+- PWA installable, shell hors ligne complet, illustration d’accueil précachée et cache visuel à la demande borné à 80 images.
+- Codex Alien_base hors ligne depuis la Collection ou l’Archive, avec recherche par catégorie et continuité et liens documentaires des cartes historiques.
 
-Le classeur versionné [Catalogue des 318 decks](content-plan/AVP_HUNT_HIVE_TCG_Catalogue_318_Decks.xlsx) contient **27 onglets**, **17 160 positions de cartes** dans les decks et leurs réserves, et **46 règles détaillées**. Ses **399 relations** se décomposent en **286 compatibilités d’armement** et **113 entrées de chaînes de la Ruche**. Il conserve les 652 références documentaires Alien_base et distingue le catalogue actif du programme éditorial : **30 sets, 2 602 concepts, 2 853 impressions et 14 finitions prévues**, pour **7 raretés actuellement implémentées**. Les concepts planifiés ne sont pas tous des cartes jouables.
+Les fichiers [complete-cards.csv](content-plan/complete-cards.csv), [complete-decks.csv](content-plan/complete-decks.csv) et [complete-decklists.csv](content-plan/complete-decklists.csv) décrivent les **1 130 cartes et 341 recettes ajoutées**, sans remplacer les exports historiques. Le détail du périmètre et des limites figure dans [l’audit de complétude](content-plan/COMPLETENESS_AUDIT_2026-11-03.md).
 
-## Validation de la consolidation du 3 novembre 2026
+## Collection du joueur
 
-| Contrôle | État documenté |
+L’onglet **Collection** propose trois vues :
+
+| Vue | Informations disponibles |
 | --- | --- |
-| Moteur et sauvegardes, exécution locale | **PASS** : 177 duels terminés, 4 256 captures/restaurations et 1 130 continuations déterministes |
-| Préservation du contenu | 891 identifiants de cartes, 318 recettes et 19 boosters conservés ; cartes historiques, starters, raretés et campagne inchangés |
-| Catalogue Excel | 27 onglets ; cartes et positions recoupées avec le moteur, formules et empreintes des sources contrôlées |
-| Navigateur ordinateur/mobile | Les scénarios de gameplay, pause/reprise et Codex sont réunis dans `scripts/qa-browser.mjs` et exécutés par GitHub Actions sur chaque révision de PR |
-| GitHub Actions et aperçu Vercel | Consulter les contrôles du commit de la [PR #4](https://github.com/darknigthmare/avp-hunt-hive-tcg/pull/4) ; le statut de déploiement est distinct des tests du jeu |
+| **Cartes** | Catalogue consultable, exemplaires possédés, cartes manquantes, doublons, jeux de trois exemplaires, filtres par faction, type, extension, rareté et quantité ; recherche et tris. |
+| **Progression** | Possédées sur le total par faction, rareté, type de carte, extension et gamme de deck ; nombre de recettes complètes et de jeux de trois exemplaires. Une carte partagée entre plusieurs recettes d’une gamme n’est comptée qu’une fois dans sa progression globale. |
+| **Par type de deck** | Catalogue, départs et decks personnels ; recettes les plus proches, exemplaires manquants, coût de fabrication et option pour inclure la réserve. Les quantités du principal et de la réserve s’additionnent pour chaque carte. |
 
-Les preuves locales figurent dans [le rapport de continuation](reports/qa/continuation-2026-11-03.json), [les duels asymétriques](reports/qa/asymmetric-2026-11-03.json) et [la validation du classeur](reports/qa/workbook-validation-2026-11-03.json). La consolidation initiale a aussi passé les tests et le navigateur dans le [workflow 41615223534](https://github.com/darknigthmare/avp-hunt-hive-tcg/actions/runs/41615223534), sur `15b2e1e`, avant la réconciliation avec le Codex de `main`. Le [rapport de réconciliation](reports/qa/merge-validation-2026-11-03.json) documente les **244 tests réussis**, les 196 fichiers publics et les contrôles du moteur et du classeur sur la version réunie. Les tests de régression vérifient le fonctionnement ; l’équilibrage compétitif et le rapprochement éditorial des 30 sets restent des travaux distincts.
+Le détail d’une recette indique les cartes encore nécessaires. **Créer le principal avec mes cartes** est disponible quand les 30 exemplaires du principal sont déjà possédés et qu’un emplacement de sauvegarde est libre. Ce parcours ne distribue pas les cartes manquantes et ne dépense pas de poussière automatiquement. L’inventaire peut être exporté en JSON.
+
+Les fiches de cartes donnent accès aux munitions, réserves de plasma, armes ou appareils compatibles, modules, opérations, matériaux, catalyseurs et résultats d’évolution associés. Les anciennes armes restent reliées à leurs variantes Arsenal, ce qui préserve leurs identifiants et leurs règles historiques. [Modèle de collection](src/collection.js), [tests de collection](tests/collection.test.mjs).
+
+## Catalogue Excel et portée documentaire
+
+Le classeur [AVP_HUNT_HIVE_TCG_Catalogue_Complet.xlsx](content-plan/AVP_HUNT_HIVE_TCG_Catalogue_Complet.xlsx) comporte **32 onglets**, **32 505 positions de cartes** principales et de réserve, et **54 règles détaillées**. Il réunit les cartes actives, les recettes, leurs compatibilités et les chaînes de la Ruche, avec trois audits dédiés aux arsenaux, aux cycles et aux 17 domaines. Les **1 144 compatibilités et 239 entrées de combinaisons Ruche** représentent **1 383 relations**, calculées à l’export et consignées dans [le rapport du classeur](reports/qa/workbook-validation-2026-11-03.json).
+
+Le registre d’arsenal distingue **233 références intégrées**, **8 alias déjà couverts** et **121 recherches encore non admises**. Les 129 lignes du dossier de recherche ne représentent donc pas 129 absences supplémentaires. Le catalogue biologique distingue également profils d’œuvres, variantes sous licence et créations de projet. **« Complet » désigne ce périmètre documenté**, sans prétendre recenser l’ensemble illimité des publications ni certifier les adaptations comme canoniques.
+
+Le programme éditorial reste séparé : **30 sets, 2 602 concepts, 2 853 impressions et 14 finitions prévues**, avec **7 raretés actuellement implémentées**. Les concepts planifiés ne s’ajoutent pas automatiquement au total des cartes jouables. [Présentation du catalogue](content-plan/README.md).
+
+## Vérification de l’édition 1.4
+
+Les contrôles spécifiques exécutent les armes, leurs ressources, les modules d’appareil, les techniques et les routes biologiques, puis vérifient leurs sauvegardes. Les recettes et les remix sont contrôlés pour les factions, les limites de copies et les dépendances. [Tests Arsenal](tests/arsenal-coverage.test.mjs), [tests du catalogue complet](tests/complete-content.test.mjs), [rapport de QA complète](reports/qa/complete-2026-11-03.json).
+
+La QA complète est **réussie : 715 duels terminés sur 715, 18 596 captures/restaurations et 4 908 continuations déterministes**. Elle exerce chaque nouvelle recette, son remélange en siège inverse, les cinq identités d’IA et les scénarios de campagne. Le contrôle local général compte **291 tests réussis** ; le build contient **203 fichiers publics et 27 éléments critiques du shell**. La régression de dernière munition garantit que les techniques perforantes conservent leur effet pendant le tir et qu’une mort par sang acide ne duplique pas la munition défaussée. Les résultats détaillés et les empreintes des modules figurent dans son rapport. Les tests de fonctionnement et de reprise ne constituent pas une certification d’équilibrage compétitif.
+
+La validation du fichier Excel, la QA locale, les scénarios navigateur ordinateur/mobile et les contrôles de la PR ont chacun leurs preuves. **La fusion et la publication ne sont pas déduites des résultats locaux** ; consulter les contrôles de la révision effectivement proposée. Les bilans datés de l’édition 1.3 sont conservés plus bas à titre historique.
 
 ## Règles essentielles
 
@@ -47,8 +65,10 @@ npm test
 npm run validate:content-plan
 npm run check:playable-decks
 npm run check:asymmetric-content
+npm run check:complete-content
 python3 scripts/verify-catalogue-xlsx.py
 npm run qa:asymmetric
+npm run qa:complete
 npm run build
 npm run start
 ```
@@ -57,6 +77,15 @@ Puis, dans un second terminal avec Chrome ou Chromium installé :
 
 ```bash
 npm run qa:browser -- http://127.0.0.1:4173
+```
+
+Après une modification de cartes, de recettes ou de règles, régénérer les exports et le classeur avant leur vérification :
+
+```bash
+node scripts/sync-production-decks.mjs --write
+node scripts/sync-asymmetric-content.mjs --write
+node scripts/sync-complete-content.mjs --write
+python3 content-plan/build_xlsx.py
 ```
 
 La [génération et la vérification du classeur](content-plan/XLSX_GENERATION.md) décrivent les dépendances du générateur et les contrôles du fichier versionné.
@@ -122,14 +151,18 @@ L'export JSON contient aussi le duel suspendu. Un checkpoint corrompu est écart
 - `AVP_HUNT_HIVE_TCG_STANDALONE.html` : livraison originale immuable, conservée avec son SHA-256.
 - `src/data.js` : catalogue, decks de départ, boosters, campagne et règles.
 - `src/expansion.js`, `src/expansion-wave2.js` et `src/asymmetric-cards.js` : ajouts des vagues AX, BX et MX.
-- `src/deck-productions.js` et `src/asymmetric-decks.js` : recettes préconstruites et remélange avec leurs dépendances.
+- `src/deck-productions.js` et `src/asymmetric-decks.js` : recettes préconstruites historiques et remélange avec leurs dépendances.
+- `src/arsenal-cards.js`, `src/arsenal-decks.js`, `src/arsenal-rules.js` : références d’arsenal, compatibilités, munitions, appareils et techniques.
+- `src/hive-cards.js`, `src/hive-decks.js`, `src/hive-rules.js` : sujets biologiques, recettes de cycle et validation de leurs matériaux.
+- `src/collection.js` : inventaire, progressions, couverture des recettes et relations entre cartes, sans mutation de la collection.
+- `content-plan/runtime-modules.json` et `scripts/runtime-loader.mjs` : ordre commun des modules pour le catalogue, les vérifications et les exports.
 - `src/alien-base.js` : snapshot documentaire public du Codex, sans accès au dépôt privé pendant le jeu.
 - `src/art-manifest.js` et `assets/art/manifest.json` : registre client et preuve d'intégrité des 174 créations ImageGen.
 - `art-direction/` : contrat de fidélité, 58 profils morphologiques et correspondance versionnée des 174 assets.
 - `src/engine.js` : validation des decks, boosters, IA et moteur de duel.
 - `src/asymmetric-rules.js` : armes, munitions, modules, fusion, biomasse, plasma et honneur.
 - `src/duel-save.js` : checkpoints bornés, validation et restauration déterministe.
-- `src/app.js` : interface, collection, progression, tutoriel, accessibilité et sauvegardes.
+- `src/app.js` : interface des trois vues de Collection, progression, tutoriel, accessibilité et sauvegardes.
 - `assets/styles.css` : design responsive desktop/mobile.
 - `manifest.webmanifest` et `sw.js` : installation et fonctionnement hors ligne.
 - `scripts/init-art-fidelity-wave.mjs`, `validate-art-fidelity.mjs` et `art-retry-queue.mjs` : briefs privés, preuve de notation stricte et file de reprises.
@@ -144,6 +177,18 @@ L'export JSON contient aussi le duel suspendu. Un checkpoint corrompu est écart
 Le détail de récupération vérifiable figure dans [SOURCE_PROVENANCE.md](SOURCE_PROVENANCE.md). Le cadre du projet fan et l'origine des actifs sont précisés dans [FAN_PROJECT_NOTICE.md](FAN_PROJECT_NOTICE.md). La provenance, le contrat créatif et les contrôles des illustrations sont documentés dans [ARTWORK_PROVENANCE.md](ARTWORK_PROVENANCE.md).
 
 Alien, Predator et Alien vs. Predator appartiennent à leurs ayants droit respectifs. Leur mention sert uniquement à identifier l'univers auquel ce projet fan rend hommage.
+
+## Historique — validation de l’édition 1.3 au 3 novembre 2026
+
+| Contrôle | État documenté |
+| --- | --- |
+| Moteur et sauvegardes, exécution locale | **PASS** : 177 duels terminés, 4 256 captures/restaurations et 1 130 continuations déterministes |
+| Préservation du contenu | 891 identifiants de cartes, 318 recettes et 19 boosters conservés ; cartes historiques, starters, raretés et campagne inchangés |
+| Catalogue Excel | 27 onglets ; cartes et positions recoupées avec le moteur, formules et empreintes des sources contrôlées |
+| Navigateur ordinateur/mobile | Les scénarios de gameplay, pause/reprise et Codex sont réunis dans `scripts/qa-browser.mjs` et exécutés par GitHub Actions sur chaque révision de PR |
+| GitHub Actions et aperçu Vercel | Consulter les contrôles du commit de la [PR #4](https://github.com/darknigthmare/avp-hunt-hive-tcg/pull/4) ; le statut de déploiement est distinct des tests du jeu |
+
+Les preuves historiques figurent dans [le rapport de continuation](reports/qa/continuation-2026-11-03.json), [les duels asymétriques](reports/qa/asymmetric-2026-11-03.json) et le rapport de réconciliation cité ci-dessous. La consolidation initiale a aussi passé les tests et le navigateur dans le [workflow 41615223534](https://github.com/darknigthmare/avp-hunt-hive-tcg/actions/runs/41615223534), sur `15b2e1e`, avant la réconciliation avec le Codex de `main`. Le [rapport de réconciliation](reports/qa/merge-validation-2026-11-03.json) documente les **244 tests réussis**, les 196 fichiers publics et les contrôles du moteur et du classeur sur la version réunie. Les tests de régression vérifient le fonctionnement ; l’équilibrage compétitif et le rapprochement éditorial des 30 sets restent des travaux distincts.
 
 ## Historique — vague 1.1.0-wave1 depuis Alien_base
 
@@ -181,7 +226,7 @@ Toutes les 30 extensions ne sont pas encore disponibles sous forme de boosters c
 **Fichiers et validations :** `src/deck-productions.js`, `tests/production-decks.test.mjs`, `content-plan/decks-playable.csv` (280 fiches), `content-plan/decklists-playable.csv` (15 450 positions), `scripts/sync-production-decks.mjs`. Lancer `npm run check:playable-decks` pour vérifier la parfaite correspondance avec le moteur et `npm run validate:content-plan` pour la cohérence de l'Excel. Tous les nouveaux visuels restent des SVG de substitution procéduraux.
 
 
-## Édition asymétrique 1.3 — gameplay des trois grandes factions
+## Historique — édition asymétrique 1.3 et gameplay des trois grandes factions
 
 Les **656 cartes des versions précédentes sont conservées** ; **235 nouvelles cartes dédiées** forment trois économies complémentaires : **Humains : 99 cartes**, **Ruche : 66**, **Yautja : 70**, portant le catalogue à **891 cartes jouables**. Les nouvelles cartes sont enregistrées dans `src/asymmetric-cards.js`, avec référence documentaire Alien_base et statut **mécanique TCG proposée, non canon certifié**. Aucun artwork n'a été créé ou modifié.
 
@@ -195,7 +240,7 @@ Les **656 cartes des versions précédentes sont conservées** ; **235 nouvelles
 
 **Compatibilité :** les nouvelles ressources Biomasse, Plasma, Honneur et Munitions sont vérifiées lors de la capture et restauration du duel. Les checkpoints historiques v1 sont toujours acceptés, sans ajout destructif de données. Les fichiers CSV de cartes/decks/positions sont situés dans `content-plan/` et testés par `npm run validate:content-plan`.
 
-## Consolidation des règles et de l’Excel — 3 novembre 2026
+## Historique — consolidation des règles et de l’Excel 1.3, 3 novembre 2026
 
 Les chargeurs épuisés libèrent leurs emplacements pour permettre le rechargement. Les attaques spécialisées contrôlent la **famille d’arme, le calibre, les charges et la cible** avant toute dépense. Une fusion ou évolution vérifie que son résultat peut être invoqué avant de sacrifier ses matériaux. La construction des doctrines de la Ruche associe désormais les cartes de transformation à leurs résultats et respecte les œufs royaux. Le remélange des autres recettes évite les cartes spécialisées dépourvues de ressources.
 
@@ -205,23 +250,15 @@ Le **F44AA** est corrigé en fusil à impulsion balistique, conformément au reg
 
 Les checkpoints historiques restent au format `avp-duel` v1 ; le champ `rulesVersion: 2` distingue les nouvelles règles de montage. Une arme déjà légalement attachée sous l’ancien moteur reste sur son porteur après migration, avec une exception limitée à cette unité et à cette arme. Cette exception ne permet aucune nouvelle pose incompatible. Les imports de nouvelles sauvegardes contrôlent la classe et la faction du porteur, l’emplacement d’arme, la compatibilité et les emplacements des modules, les six chargeurs actifs maximum et les plafonds de ressources.
 
-Pour reconstruire le classeur après une modification du catalogue :
+Le classeur de cette étape comptait 27 onglets. Pour reconstruire le catalogue courant, utiliser la procédure complète indiquée plus haut et dans [XLSX_GENERATION.md](content-plan/XLSX_GENERATION.md).
 
-```bash
-node scripts/sync-production-decks.mjs --write
-node scripts/sync-asymmetric-content.mjs --write
-python3 content-plan/build_xlsx.py
-```
+## Encyclopédie Alien_base, fédération v3
 
-Le point d’entrée Python lance `content-plan/build_xlsx.mjs` avec `@oai/artifact-tool` dans un répertoire temporaire. L’export refuse les différences entre les CSV et le moteur, recalcule les formules et produit un aperçu des 27 onglets. Le fichier Excel est versionné avec ses sources reproductibles ; les commandes et rapports sont décrits dans [XLSX_GENERATION.md](content-plan/XLSX_GENERATION.md).
-
-## Encyclopédie Alien_base — fédération v3
-
-L’intégration du Codex préserve **les 158 cartes historiques** au sein du catalogue de **891 cartes**, ainsi que les nouveaux decks et les règles asymétriques. Son snapshot documentaire, introduit dans la PR #1, provient de la [PR #19 Alien_base](https://github.com/darknigthmare/alien_base/pull/19), empilée sur la [PR #18](https://github.com/darknigthmare/alien_base/pull/18) : un export public du registre **v1 (68 dossiers)** et les **158 correspondances avec le registre v2 (632 entités)**.
+L’intégration du Codex préserve **les 158 cartes historiques** au sein du catalogue courant de **2 021 cartes**, ainsi que les decks et les règles de gameplay. Introduit dans la PR #1 depuis les [PR #19](https://github.com/darknigthmare/alien_base/pull/19) et [#18 Alien_base](https://github.com/darknigthmare/alien_base/pull/18), son snapshot public est maintenant aligné sur [`alien_base/main@e65b75a6`](https://github.com/darknigthmare/alien_base/commit/e65b75a6bfd1284dbac746102fdbae4fc5a3786b) : **68 dossiers v1**, **652 identités de référence v2** et **158 correspondances de cartes historiques**. La révision de l’export est `2026-11-02-tcg-v3-unified`.
 
 Dans le jeu, **Collection → Codex Alien_base** (ou l'onglet Archive sur ordinateur) permet de rechercher par catégorie et continuité, consulter les œuvres et les notes de référence. Les cartes associées restent des rapprochements à examiner, pas des identités biologiques automatiquement validées. Le détail des cartes présente aussi le statut des anciennes sources, neuf liens biologiques explicites, les archives v1 possibles et 28 rapprochements inter-jeux non certifiés.
 
-Un consommateur public embarque le snapshot autonome `src/alien-base.js` ; aucun jeton ni appel réseau au dépôt privé n'est nécessaire. Pour comparer une nouvelle version de la base, cloner les deux dépôts frères, se placer sur la branche fédérée Alien_base, puis exécuter :
+Un consommateur public embarque le snapshot autonome `src/alien-base.js` ; aucun jeton ni appel réseau au dépôt privé n'est nécessaire. Pour comparer une nouvelle version de la base, cloner les deux dépôts frères, se placer sur `main` dans Alien_base, puis exécuter :
 
 ```bash
 node scripts/sync-alien-base-unified.mjs --base ../alien_base
@@ -230,8 +267,8 @@ node scripts/sync-alien-base-unified.mjs --base ../alien_base --publish
 npm run verify:release
 ```
 
-Les fiches ne confèrent pas de cartes supplémentaires ni de droits de réutiliser des images sous licence. **Les 68 dossiers publics ne signifient pas que les 632 entités privées sont certifiées 1:1.** Les anciennes références Excel doivent encore être vérifiées individuellement.
+Les fiches ne confèrent pas de cartes supplémentaires ni de droits de réutiliser des images sous licence. **L’intégration des 652 identités au registre ne certifie pas leur fidélité 1:1.** Les anciennes références Excel doivent encore être vérifiées individuellement.
 
-### Mise à jour Alien_base du 2 novembre 2026
+### Alignement avec Alien_base main — 3 novembre 2026
 
-La mise à jour du snapshot préparée le 2 novembre comparait les PR du registre privé (#21–24), qui proposaient 652 identités, aux 632 de la branche fédérée. **La consultation du Codex n'ajoute pas de carte automatiquement.** Le Codex conserve deux sections de recherche hors ligne : 20 identités Yautja/Apex et 29 œuvres ou continuités Predator, avec trois alias historiques Alpha, Samurai et Viking et trois réserves biologiques (Royal Facehugger, Crusher, Offspring). Les six rapprochements nominaux entre personnages Apex et cartes TCG restent des propositions, y compris `Y_SCAR` ; l'alias Samurai vers `Y_SAMURAI` n'est pas une preuve d'identité universelle. Les 632 IDs du snapshot fédéré et les 158 liens historiques coexistent avec les 652 références documentaires du catalogue d’extensions ; ces périmètres ne constituent pas une certification canon commune.
+La comparaison initiale du 2 novembre utilisait encore les PR #21–24 comme aperçu des 20 identités supplémentaires. L’export de `main` les déclare désormais intégrées avec le statut `MERGED_REFERENCE_IDS_RESEARCH_ONLY` ; le compteur de départ de 632 reste une information historique dans l’export. **La consultation du Codex n'ajoute pas de carte automatiquement.** Le Codex conserve deux sections de recherche hors ligne : 20 identités Yautja/Apex et 29 œuvres ou continuités Predator, avec trois alias historiques Alpha, Samurai et Viking et trois réserves biologiques (Royal Facehugger, Crusher, Offspring). Les six rapprochements nominaux entre personnages Apex et cartes TCG restent des propositions, y compris `Y_SCAR` ; l'alias Samurai vers `Y_SAMURAI` n'est pas une preuve d'identité universelle. Les statuts de recherche, les réserves documentaires et les 158 liens historiques sont conservés exactement depuis l’export public, sans promotion automatique en vérités canoniques.

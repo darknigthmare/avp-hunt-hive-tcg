@@ -13,7 +13,7 @@
     "prepare:art": "node scripts/prepare-art.mjs",
     "qa:browser": "node scripts/qa-browser.mjs",
     "test": "node --test --test-concurrency=2 tests/*.test.mjs",
-    "check": "node --check src/data.js && node --check src/alien-base.js && node --check src/expansion.js && node --check src/expansion-wave2.js && node --check src/deck-productions.js && node --check src/asymmetric-cards.js && node --check src/asymmetric-decks.js && node --check src/art-manifest.js && node --check src/engine.js && node --check src/asymmetric-rules.js && node --check src/duel-save.js && node --check src/app.js && node --check sw.js && node --check scripts/generate-art-fidelity-map.mjs && node --check scripts/init-art-fidelity-wave.mjs && node --check scripts/validate-art-fidelity.mjs && node --check scripts/art-retry-queue.mjs && node --check scripts/review-art.mjs && node --check scripts/prepare-art.mjs && node --check scripts/art-public-files.mjs && node --check scripts/qa-browser.mjs && node --check scripts/sync-production-decks.mjs && node --check scripts/qa-asymmetric.mjs && node --check scripts/browser-asymmetric-scenarios.mjs && node --check scripts/sync-asymmetric-content.mjs && node --check content-plan/build_xlsx.mjs && node --check scripts/sync-alien-base-unified.mjs && node --check scripts/check-alien-base-roundtrip.mjs",
+    "check": "node --check src/data.js && node --check src/alien-base.js && node --check src/expansion.js && node --check src/expansion-wave2.js && node --check src/deck-productions.js && node --check src/asymmetric-cards.js && node --check src/asymmetric-decks.js && node --check src/art-manifest.js && node --check src/engine.js && node --check src/asymmetric-rules.js && node --check src/duel-save.js && node --check src/app.js && node --check sw.js && node --check scripts/generate-art-fidelity-map.mjs && node --check scripts/init-art-fidelity-wave.mjs && node --check scripts/validate-art-fidelity.mjs && node --check scripts/art-retry-queue.mjs && node --check scripts/review-art.mjs && node --check scripts/prepare-art.mjs && node --check scripts/art-public-files.mjs && node --check scripts/qa-browser.mjs && node --check scripts/sync-production-decks.mjs && node --check scripts/qa-asymmetric.mjs && node --check scripts/browser-asymmetric-scenarios.mjs && node --check scripts/sync-asymmetric-content.mjs && node --check content-plan/build_xlsx.mjs && node --check scripts/sync-alien-base-unified.mjs && node --check scripts/check-alien-base-roundtrip.mjs && node --check src/arsenal-cards.js && node --check src/arsenal-decks.js && node --check src/arsenal-rules.js && node --check src/hive-cards.js && node --check src/hive-decks.js && node --check src/hive-rules.js && node --check src/collection.js && node --check scripts/runtime-loader.mjs && node --check scripts/sync-complete-content.mjs && node --check scripts/qa-complete.mjs && node --check scripts/browser-collection-scenarios.mjs",
     "balance": "node scripts/balance.mjs",
     "build": "node scripts/build.mjs",
     "verify:release": "npm run check && npm run validate:art-fidelity -- --contract-only && npm run generate:art-fidelity-map && npm test && npm run balance -- --seeds 1009,991009 --games-per-pair 100 --json --assert-release && npm run build",
@@ -30,7 +30,10 @@
     "check:asymmetric-content": "node scripts/sync-asymmetric-content.mjs --check",
     "qa:asymmetric": "node scripts/qa-asymmetric.mjs",
     "catalogue:build": "python3 content-plan/build_xlsx.py",
-    "check:alien-base": "node --test tests/alien-base.test.mjs"
+    "check:alien-base": "node --test tests/alien-base.test.mjs",
+    "check:complete-content": "node scripts/sync-complete-content.mjs --check",
+    "test:complete": "node --test tests/complete-content.test.mjs tests/collection.test.mjs tests/arsenal*.test.mjs tests/hive*.test.mjs",
+    "qa:complete": "node scripts/qa-complete.mjs"
   },
   "devDependencies": {
     "sharp": "0.35.4"

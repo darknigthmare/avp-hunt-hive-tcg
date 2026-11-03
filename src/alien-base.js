@@ -1,10 +1,10 @@
-/* Export public documentaire, sans accès au dépôt privé. Généré depuis Alien_base PR #19. */
+/* Export public documentaire, sans accès au dépôt privé. Généré depuis l’export public unifié d’Alien_base. */
 window.AVP_ALIEN_BASE = {
   "schema": "alien-base/tcg-public-v3",
-  "revision": "2026-11-01-tcg-v3",
+  "revision": "2026-11-02-tcg-v3-unified",
   "registry": {
     "v1": 68,
-    "v2": 632,
+    "v2": 652,
     "gameCards": 158,
     "verifiedLoreLinks": 9,
     "documentaryProposals": 28,
@@ -6235,7 +6235,7 @@ window.AVP_ALIEN_BASE = {
       }
     ],
     "registryUpdates": {
-      "status": "UNMERGED_RESEARCH_DELTA",
+      "status": "MERGED_REFERENCE_IDS_RESEARCH_ONLY",
       "baselineCount": 632,
       "candidateRegistryCount": 652,
       "newEntities": [
