@@ -128,7 +128,9 @@
     }else{
       const length=pack.cardsPerBooster;
       if(![5,7,9].includes(length))throw new Error('Format de booster non pris en charge');
-      const pool=D.cards.filter(c=>c.set===pack.set);
+      const pool=D.cards.filter(c=>c.set===pack.set
+        &&(!pack.poolTag||c.tags?.includes(pack.poolTag))
+        &&(!pack.primaryFaction||c.faction===pack.primaryFaction));
       if(pool.length<length)throw new Error('Pool de booster insuffisant : '+pack.set);
       const rank=c=>RANK[c.rarity]||0;
       const choose=(lower,upper=99)=>{
