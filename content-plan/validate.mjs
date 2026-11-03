@@ -22,6 +22,25 @@ const m=JSON.parse(readFileSync(join(dir,'manifest.json'),'utf8'));
 const liveDecks=csv('decks-playable.csv'),liveSlots=csv('decklists-playable.csv');
 assert.equal(liveDecks.length,m.implementation.totalDeckPresetsPlayable);
 assert.equal(liveSlots.length,m.implementation.playableDeckCardPositions);
+const asyncCards=csv('asymmetric-cards.csv'),asyncDecks=csv('asymmetric-decks.csv');
+const asyncSlots=csv('asymmetric-decklists.csv'),liveCards=csv('gameplay-live.csv');
+const sourceSet=new Set(csv('alien-base-sources.csv').map(e=>e.AlienBaseID));
+assert.equal(liveCards.length,m.implementation.totalPlayableCards);
+assert.equal(asyncCards.length,m.implementation.asymmetricCards);
+assert.equal(asyncDecks.length,m.implementation.asymmetricDecks);
+assert.equal(asyncSlots.length,m.implementation.asymmetricDeckCardPositions);
+assert.equal(new Set(asyncCards.map(c=>c.CardID)).size,asyncCards.length);
+assert.equal(new Set(liveCards.map(c=>c.CardID)).size,liveCards.length);
+const allLive=new Set(liveCards.map(c=>c.CardID));
+for(const c of asyncCards){assert(allLive.has(c.CardID),c.CardID);assert(sourceSet.has(c.RegistreAlienBaseID),c.CardID);}
+const dk=new Map(asyncDecks.map(d=>[d.DeckID,d]));
+const seats=new Map();
+for(const line of asyncSlots){assert(dk.has(line.DeckID));assert(allLive.has(line.CardID));
+  if(!seats.has(line.DeckID))seats.set(line.DeckID,{main:0,side:0});
+  seats.get(line.DeckID)[line.Zone==='PRINCIPAL'?'main':'side']++;
+}
+for(const [id,deck] of dk){const s=seats.get(id);assert(s);assert.equal(s.main,30,id);assert.equal(s.side,15,id);}
+
 assert.equal(new Set(liveDecks.map(d=>d.DeckID)).size,liveDecks.length);
 const sets=csv('sets.csv'),prints=csv('printings.csv'),decks=csv('decks.csv'),lines=csv('decklists.csv');
 const offers=csv('products.csv'),legacy=csv('legacy-cards.csv'),sources=csv('alien-base-sources.csv'),rarities=csv('rarities.csv');

@@ -77,3 +77,12 @@ Les decks de production conservent le **`PlanDeckID`** des 210 recettes. Lorsque
 La commande `node scripts/sync-production-decks.mjs --check` confronte les CSV au catalogue de jeu réel. La commande `--write` les régénère après une modification. Le classeur Python ajoute désormais deux onglets **16_DECKS_JOUABLES** et **17_LISTES_JOUABLES** et un tableau de bord séparant les objectifs éditoriaux de l'implémentation en jeu.
 
 **État vérifiable :** 656 cartes, 16 boosters, 280 decks, 7 raretés actuellement jouables, pour 30 sets planifiés plus PX00. Les illustrations originales 1:1, les 14 traitements de collection et les nouveaux concepts encore manquants sont exclus de cette livraison.
+
+
+## Édition asymétrique 1.3 — 3 factions, sans illustration
+
+Les nouveaux onglets **18_CARTES_ASYMETRIQUES**, **19_DECKS_ASYMETRIQUES**, **20_LISTES_ASYMETRIQUES** et **21_REGLES_ASYMETRIQUES** décrivent la livraison additionnelle (235 cartes, 38 decks, 1 710 positions, 3 boosters). `gameplay-live.csv` contient désormais **891 cartes réellement jouables** ; `live-set-progress.csv` distingue les cartes de doctrine et les concepts des 30 extensions encore incomplets. `decks-playable.csv` garde les 280 recettes déjà intégrées et `asymmetric-decks.csv` fournit les 38 suivantes.
+
+La nouvelle mécanique reprend des principes de **cartes Équipement et d'énergie à attacher**, ainsi que d'invocation par matériaux, sans reprendre de règles, noms de cartes ou illustrations d'un jeu commercial. Les statistiques, charges et effets sont originaux. Toutes les références de provenance servent à retrouver l'entrée du registre `Alien_base`, pas à prouver que les capacités de combat du TCG sont officielles.
+
+Les cartes historiques et les visuels d'avant cette phase sont inchangés. Les nouvelles cartes utilisent les substituts SVG existants. **Aucune illustration générée dans cette phase.**

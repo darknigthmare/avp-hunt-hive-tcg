@@ -24,6 +24,10 @@ SHEETS=[
  ("15_SUIVI_DES_SETS","live-set-progress.csv"),
  ("16_DECKS_JOUABLES","decks-playable.csv"),
  ("17_LISTES_JOUABLES","decklists-playable.csv"),
+ ("18_CARTES_ASYMETRIQUES","asymmetric-cards.csv"),
+ ("19_DECKS_ASYMETRIQUES","asymmetric-decks.csv"),
+ ("20_LISTES_ASYMETRIQUES","asymmetric-decklists.csv"),
+ ("21_REGLES_ASYMETRIQUES","asymmetric-mechanics.csv"),
 ]
 def load(filename):
  with (ROOT/filename).open(encoding="utf-8-sig",newline="") as f:
@@ -35,8 +39,12 @@ def main():
            "decks.csv":211,"decklists.csv":t["decklistRows"]+1,
            "products.csv":t["productSkus"]+1,"alien-base-sources.csv":653,"legacy-cards.csv":159,
            "gameplay-live.csv":manifest["implementation"]["totalPlayableCards"]+1,"live-set-progress.csv":32,
-           "decks-playable.csv":manifest["implementation"]["totalDeckPresetsPlayable"]+1,
-           "decklists-playable.csv":manifest["implementation"]["playableDeckCardPositions"]+1}
+           "decks-playable.csv":manifest["implementation"]["legacyTemplates"]+manifest["implementation"]["productionDecks"]+1,
+           "decklists-playable.csv":manifest["implementation"]["playableDeckCardPositions"]+1,
+           "asymmetric-cards.csv":manifest["implementation"]["asymmetricCards"]+1,
+           "asymmetric-decks.csv":manifest["implementation"]["asymmetricDecks"]+1,
+           "asymmetric-decklists.csv":manifest["implementation"]["asymmetricDeckCardPositions"]+1,
+           "asymmetric-mechanics.csv":17}
  for filename,n in expected.items():
   if len(load(filename))!=n: raise ValueError(f"{filename} : attendu {n} lignes")
  wb=Workbook.create();d=wb.worksheets.add("00_PILOTAGE")
@@ -49,11 +57,12 @@ def main():
        ["Produits",t["productSkus"]],["Sources Alien_base",t["sourceEntities"]],
        ["Cartes jouables existantes conservées",t["existingCards"]]]
  d.get_range("A3:B13").values=rows
- d.get_range("A15:B19").values=[["CATALOGUE JOUABLE","ACTIF"],
+ d.get_range("A15:B20").values=[["CATALOGUE JOUABLE","ACTIF"],
     ["Cartes disponibles",manifest["implementation"]["totalPlayableCards"]],
     ["Decks préconstruits",manifest["implementation"]["totalDeckPresetsPlayable"]],
     ["Decks de production",manifest["implementation"]["productionDecks"]],
-    ["Positions réelles de cartes",manifest["implementation"]["playableDeckCardPositions"]]]
+    ["Positions réelles de cartes",manifest["implementation"]["playableDeckCardPositions"]],
+    ["Decks asymétriques",manifest["implementation"]["asymmetricDecks"]]]
  d.get_range("A15:B15").format={"fill":"#145A63","font":{"bold":True,"color":"#FFFFFF"}}
  d.get_range("A3:B3").format={"fill":"#145A63","font":{"bold":True,"color":"#FFFFFF"}}
  d.get_range("A:A").format.column_width=39
