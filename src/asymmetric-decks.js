@@ -33,12 +33,12 @@ function generate(faction,id,plan){
  if(count(reserve)!==15)throw Error('Reserve incomplete '+id);
  return {main,reserve};
 }
-const created=[];
+const created=[],plans=new Map(),previousRemix=D.remixPresetDeck;
 function put(id,name,faction,category,focus,plan){
  const d=generate(faction,id,plan);
  const p={id:'asym_'+id,name,faction,category,focus,cards:d.main,reserve:d.reserve,count:30,boxCount:45,
    description:'Doctrine '+category+' : 30 cartes, 15 alternatives. Ressources asymétriques.'};
- created.push(p);D.expansionDecks.push(p);
+ created.push(p);D.expansionDecks.push(p);plans.set(p.id,{faction,plan});
 }
 const humanFamilies=['pulse','smart','flame','shot','pistol','sniper','grenade','laser'];
 for(const family of humanFamilies)for(let v=1;v<=2;v++){
@@ -91,6 +91,12 @@ for(const [id,set,name,primaryFaction,art]of packs){
    cardsPerBooster:9,profile:'principal',poolTag:'asymmetric',preview:true,
    description:'9 cartes spécialisées '+primaryFaction+' : munitions, évolutions ou ressources de chasse.'});
 }
+D.remixPresetDeck=function(preset,seed){
+ const saved=plans.get(preset?.id);
+ if(!saved)return typeof previousRemix==='function'?previousRemix(preset,seed):null;
+ const next=generate(saved.faction,preset.id+'|remix|'+seed,saved.plan);
+ return {cards:next.main,reserve:next.reserve,focusCards:0};
+};
 D.asymmetricDecks=created;D.asymmetricEdition.specializedDecks=created.length;
 D.asymmetricEdition.totalDecks=D.expansionDecks.length;
 D.asymmetricEdition.boosterIDs=packs.map(x=>x[0]);
