@@ -1,15 +1,15 @@
 # Alien_base v3 — Codex documentaire dans Hunt & Hive TCG
 
-- **Branche source** : `darknigthmare/alien_base`, [PR #19](https://github.com/darknigthmare/alien_base/pull/19), dépendant de [#18](https://github.com/darknigthmare/alien_base/pull/18).
-- **Données publiques intégrées** : 158 références de cartes stables et 68 fiches du catalogue v1 avec œuvres, statut et notes. Le registre v2 de la base contient 632 entités ; ses dossiers privés supplémentaires ne sont pas inclus dans le jeu public.
+- **Source vérifiée le 3 novembre 2026** : export `exports/avp-hunt-hive-tcg.v3.json` de [`darknigthmare/alien_base/main@e65b75a6`](https://github.com/darknigthmare/alien_base/commit/e65b75a6bfd1284dbac746102fdbae4fc5a3786b), révision `2026-11-02-tcg-v3-unified`. La fédération a été introduite par les [PR #19](https://github.com/darknigthmare/alien_base/pull/19) et [#18](https://github.com/darknigthmare/alien_base/pull/18).
+- **Données publiques intégrées** : 158 références de cartes stables et 68 fiches du catalogue v1 avec œuvres, statut et notes. Le registre v2 de la base contient désormais 652 identités de référence ; les dossiers privés supplémentaires ne sont pas inclus dans le jeu public.
 - **UI** : Collection → Codex Alien_base / onglet Archive ; recherche, catégorie, continuité, pagination, dossier détaillé, cartes associées.
 - **Traçabilité** : 9 liens `canonicalEntityId` explicites, 24 références historiques v1 candidates, 28 rapprochements inter-jeux non vérifiés, sans transfert de statistiques.
-- **Intégrité** : les 158 cartes, illustrations, decks, boosters, règles, campagne, service worker existant et sauvegarde v3 restent identiques au jeu avant cette passerelle.
+- **Intégrité de cette synchronisation documentaire** : les cartes, illustrations, decks, boosters, règles, campagne et sauvegardes ne sont pas modifiés par l’import du Codex. Les ajouts jouables de l’édition 1.4 relèvent de leurs modules et audits distincts.
 
 ## Commandes
 
 ```bash
-# Requis : checkout de la branche PR #19 du dépôt privé voisin
+# Requis : checkout main du dépôt privé voisin
 node scripts/sync-alien-base-unified.mjs --base ../alien_base
 # Après modification approuvée de l'export :
 node scripts/sync-alien-base-unified.mjs --base ../alien_base --publish
@@ -44,6 +44,8 @@ Le test navigateur a montré qu'une recherche M41A ouvrait correctement sa notic
 
 La troisième passe d'Alien_base fournit maintenant aussi **200 fiches d'armes issues du catalogue Tantalus** et **16 sujets à documenter** dans deux onglets distincts du Codex historique (68 fiches). Les 216 dossiers complémentaires exposent uniquement leurs noms, œuvres, familles et statuts documentaires. Aucun n'est certifié fidèle à 1:1 ni ajouté automatiquement comme carte, équipement débloqué ou contenu de booster. Recherche, pagination et détails sont disponibles hors ligne. Les PV, dégâts, prix et valeurs propres à Tantalus ne sont pas importés.
 
-## Comparaison du 2 novembre 2026 — nouvelles branches Apex et Hive
+## Actualisation du 3 novembre 2026 — identités Apex et Hive intégrées
 
-Source : [Alien_base PR #21](https://github.com/darknigthmare/alien_base/pull/21), [#22](https://github.com/darknigthmare/alien_base/pull/22), [#23](https://github.com/darknigthmare/alien_base/pull/23) et [#24](https://github.com/darknigthmare/alien_base/pull/24). La branche source `main` ne contenait pas encore ces modifications à la vérification. La PR de fédération du TCG suit toujours **632 entités autoritaires** ; une branche parallèle en propose **652**. Le Codex embarque une **prévisualisation non fusionnée** de 20 nouvelles identités Yautja/Apex, 29 œuvres, 3 alias Alpha/Samurai/Viking et 3 notes de prudence biologiques. Ces données ne changent ni les 158 cartes, ni les sauvegardes, ni les conditions de déblocage ; aucun visuel 1:1 n'est certifié.
+Les données issues des [PR Alien_base #21](https://github.com/darknigthmare/alien_base/pull/21), [#22](https://github.com/darknigthmare/alien_base/pull/22), [#23](https://github.com/darknigthmare/alien_base/pull/23) et [#24](https://github.com/darknigthmare/alien_base/pull/24) sont présentes dans l’export public de `main@e65b75a6`. Le Codex passe donc de l’ancien aperçu `UNMERGED_RESEARCH_DELTA` au statut **`MERGED_REFERENCE_IDS_RESEARCH_ONLY`**, avec **652 identités intégrées au registre**. Les 20 profils Yautja/Apex, 29 œuvres, 3 alias Alpha/Samurai/Viking et 3 notes biologiques gardent leurs statuts de recherche et leurs réserves d’origine. Le champ `baselineCount: 632` décrit le point de départ historique, pas le total courant.
+
+La comparaison exacte avec l’ancien export relève seulement trois changements de données : la révision, `registry.v2` et le statut global de `registryUpdates`. Les liens, noms, œuvres et annotations restent identiques. L’intégration de ces références dans le dépôt ne valide pas automatiquement leur lore ni leur morphologie, et ne confère aucune carte au joueur. Le générateur, le build et les scénarios navigateur vérifient désormais le contrat de l’export unifié.

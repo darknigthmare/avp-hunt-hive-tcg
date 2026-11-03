@@ -1,18 +1,27 @@
 {
-  "fileName": "AVP_HUNT_HIVE_TCG_Catalogue_318_Decks.xlsx",
-  "generatedAt": "2026-11-03T09:53:30.161Z",
+  "fileName": "AVP_HUNT_HIVE_TCG_Catalogue_Complet.xlsx",
+  "generatedAt": "2026-11-03T12:24:58.295Z",
   "sourceAlienBase": "e65b75a6bfd1284dbac746102fdbae4fc5a3786b",
   "sourceHashes": {
-    "content-plan/manifest.json": "b05de3dee44d52967d33983ee40e8f76de1bfd8f334b39fd67b4c026dc681bfd",
+    "content-plan/manifest.json": "011c40f7423f4991f21413e42487243260129afa9b400a009f8dc8fdddebb0d9",
+    "content-plan/runtime-modules.json": "ea061803a50ac43193f2e1f212c1d410af2e5f9208db67a0465f737e75366e89",
+    "content-plan/complete-cards.csv": "f8b8aaa841e558982de1813d976716b201efc9f47c457f543ccdf34588acfe39",
     "src/engine.js": "2bf7610cf28e6a92fdbce4ea903e4e472f1ef25b10695caccb81aeaef92abf22",
-    "src/asymmetric-rules.js": "266d00a7a30d13679ac53d24e8804a3a0aef76a32cd2696da316e1641326dac9",
-    "src/duel-save.js": "8f5a81eb53606d4df42057c4e08ea3c3dd039c0970eb866ec062134263c20887",
+    "src/asymmetric-rules.js": "3e1f6abf09635c7b0eb819f03d431d1b1eebd2d3eaa07a4fb1745126be21e129",
+    "src/arsenal-rules.js": "549acfbd07306055e6eed24183bcfedf3dc9594971c8429a438ef4887b7ad9ea",
+    "src/hive-rules.js": "cf58ca7991a6453d5d096e507d67bd44c2cfa666191804b6a99de46a713cebbe",
+    "src/duel-save.js": "9d9b2af2082eb299a228374db864996d41667d851514829eb632406113942d30",
+    "src/collection.js": "bb21d9311577215c91dc10d7a5ba7dcd0b477883da31a4390370744b5ca1edfc",
     "src/data.js": "1f56beb03dcc345a0562891d0abb5de3e3528eb8589667c13dffa3a418d8811e",
     "src/expansion.js": "12cfc1aa7c73a7c5d5406d1389d371ff76da0ae0a69d9c96cee4bb7ea7875fda",
     "src/expansion-wave2.js": "0332e1d864fe8d596defdf0299aeb49de2dd84346eb4233e70fa7ee615b47392",
     "src/deck-productions.js": "1cc8a6dba2a63e19f27a9cad7608a954a4cd40efc2c1d99dc34dd520046aedad",
     "src/asymmetric-cards.js": "e8c044419177e89d6776e09b921fb955d564a5a303b31a55d1f4513579520ac8",
-    "src/asymmetric-decks.js": "79075501b76fa15b5eda4e880289576d3793ee628916a74193a4a843f383c221",
+    "src/asymmetric-decks.js": "ee238d320c2f9040882d762f2aefbbddc16a8b541f4048be4e5b360b795d6cd3",
+    "src/arsenal-cards.js": "493c88feee7a0265cf91bf0e9f6b509ee2b9ee0785777a843be78f596ee400f3",
+    "src/arsenal-decks.js": "db23f66163ee1b879769416a685c2fda27d711b4977cf3f1d77ac80bc70002f0",
+    "src/hive-cards.js": "d3173bbeca0e2301d8a54ea564610dc9c55d2431fa67bbd378d562b4851197a8",
+    "src/hive-decks.js": "1954e3fcfba12bc8a7735302cbfa984e601807c49911974fc003ac479defaea3",
     "content-plan/sets.csv": "9e94f747e76f98a88ce0c7420164c7422335339331df4de90cc3ce8c1c5a7197",
     "content-plan/printings.csv": "a425e26165d38798eba4d00205ef34b7bb3beb252f53cadd37acd3361ecca792",
     "content-plan/rarities.csv": "b59b19dd9e58df20d60fdf3294b2de1753bcc5fdef9105b7f1656223e98a7b0d",
@@ -26,16 +35,21 @@
     "content-plan/alien-base-sources.csv": "76ed946f84dc0cf6797fab4193dd7db79ba4f6d600ac37dd04b07eceb9f13b71",
     "content-plan/legacy-cards.csv": "518efae5c4c5801707f1680bc764fdbdc5fb67503ef2aadee1fe47bb9ccacefb",
     "content-plan/research-backlog.csv": "b6ecbb9040b841d1281ed61c8de9f546525e6434c79a3019826b2140c9065453",
-    "content-plan/gameplay-live.csv": "4484128d408453d7cc5ae1330ec50e572b7ee1c77b6e4bebd61a9aed88292567",
-    "content-plan/live-set-progress.csv": "592f314c08e04bbc31f2a21fade88fe1f89a1ad10a75b81df8e0b111df0731e7",
+    "content-plan/gameplay-live.csv": "ce4e90e85c4ec1d5edffa988f4d8a1f1bdd31753b849c705264c8b998fd15a10",
+    "content-plan/live-set-progress.csv": "ed2624ba394410b6cb51cb3ff215fed7f6aa815e6ccd648cb33ec0e1f91a39ce",
     "content-plan/decks-playable.csv": "c3fcd5917902f132319ee25393c68a372b8fbbc0b36ea200400e5f2f9971b2f9",
     "content-plan/decklists-playable.csv": "f2b2903ea961a164a38d411b9770f1d09e6074c78eaf8d83e7e834173aa60497",
     "content-plan/asymmetric-cards.csv": "d903fae7f713c71a73df8d9193baf19a926c03367da637e37aeb0c280ec5e7b9",
     "content-plan/asymmetric-decks.csv": "764635689428a3983a714a49601c5693d7a3dca3c44f6127bc607e47b07240cb",
     "content-plan/asymmetric-decklists.csv": "c97d8803a9d62cfb4abc0b7c4c3711b956cc1c678c3c5f8f7aa699eb3547c8c0",
-    "content-plan/asymmetric-mechanics.csv": "df4d8a51326eaac79f297cd236d1ecdf34a4ab4d4d013d83a643a8c34ce535fe"
+    "content-plan/asymmetric-mechanics.csv": "df4d8a51326eaac79f297cd236d1ecdf34a4ab4d4d013d83a643a8c34ce535fe",
+    "content-plan/coverage-arsenal.csv": "862eea18a3c8c17045b574c69595dfbfd8cc4ab8d8bf5c965d81b770caaeaafc",
+    "content-plan/coverage-hive.csv": "0348a02da6dbfad0f4b66abd0b67afc93ac178f8cc58526dd640297ad65ba38c",
+    "content-plan/complete-decks.csv": "f2c38b41d2c6dafcfdc359342d10d4cc80d033e9e626d6703b63de7ef4828786",
+    "content-plan/complete-decklists.csv": "4a945196c0b590c91362367cad39191293307426dabbda636463560f82b8ecf2",
+    "content-plan/coverage-domains.csv": "38c4de3eb4074ad33ee6de94546f5005b81436f2ca086af6eb5ad36b12ad9c96"
   },
-  "sheetCount": 27,
+  "sheetCount": 32,
   "sheets": {
     "01_EXTENSIONS": {
       "records": 30,
@@ -90,12 +104,12 @@
       "columns": 6
     },
     "14_GAMEPLAY_JOUABLE": {
-      "records": 891,
+      "records": 2021,
       "columns": 21
     },
     "15_SUIVI_DES_SETS": {
       "records": 31,
-      "columns": 15
+      "columns": 17
     },
     "16_DECKS_JOUABLES": {
       "records": 280,
@@ -121,45 +135,67 @@
       "records": 16,
       "columns": 6
     },
-    "22_DECKS_318": {
-      "records": 318,
+    "22_DECKS_COMPLETS": {
+      "records": 659,
       "columns": 16
     },
     "23_COMPATIBILITES": {
-      "records": 286,
+      "records": 1144,
       "columns": 11
     },
     "24_CHAINES_RUCHE": {
-      "records": 113,
+      "records": 239,
       "columns": 14
     },
     "25_RESSOURCES_YAUTJA": {
-      "records": 70,
+      "records": 346,
       "columns": 14
     },
     "26_REGLES_DETAILLEES": {
-      "records": 46,
+      "records": 54,
       "columns": 6
+    },
+    "27_ARSENAL_COUVERTURE": {
+      "records": 362,
+      "columns": 12
+    },
+    "28_RUCHE_COUVERTURE": {
+      "records": 105,
+      "columns": 10
+    },
+    "29_DECKS_COMPLEMENTS": {
+      "records": 341,
+      "columns": 9
+    },
+    "30_LISTES_COMPLEMENTS": {
+      "records": 15345,
+      "columns": 9
+    },
+    "31_COUVERTURE_DOMAINES": {
+      "records": 17,
+      "columns": 10
     }
   },
-  "cards": 891,
-  "decks": 318,
-  "boosters": 19,
-  "positions": 17160,
-  "compatibilities": 286,
-  "hiveCombinations": 113,
-  "rules": 46,
+  "cards": 2021,
+  "decks": 659,
+  "boosters": 24,
+  "positions": 32505,
+  "compatibilities": 1144,
+  "hiveCombinations": 239,
+  "rules": 54,
   "activeRarities": 7,
-  "activeBoosterRows": 19,
-  "renderedSheets": 27,
+  "activeBoosterRows": 24,
+  "renderedSheets": 32,
   "checks": [
     "CSV card IDs and stats match runtime",
     "Every main/reserve slot matches runtime",
     "Summary and faction formulas match independent counts",
     "Source edit changes summary and restored correctly",
-    "All source hashes unchanged through export"
+    "All source hashes unchanged through export",
+    "Rules refreshed with identical source hashes and unchanged catalogue formulas"
   ],
-  "output": "content-plan/AVP_HUNT_HIVE_TCG_Catalogue_318_Decks.xlsx",
-  "authoringSourceHash": "abcbda1de7debe7ad785a58ad1a7f4cd9f808f36bee44c0b1adbb441c7e813d3",
-  "xlsxSha256": "c2aad2acf8e8e292fb461b32fcb5b9f5f4d13303cf460c7aad0629d22de89e97"
+  "output": "content-plan/AVP_HUNT_HIVE_TCG_Catalogue_Complet.xlsx",
+  "authoringSourceHash": "ffbed1f08add37798929657e93cbd884cfafb86085dc7a4caf64f269244b667d",
+  "xlsxSha256": "bbd8a84a34e638cff171cee0626245354362ef103815bb6e48700ecc1d508085",
+  "rulesRefreshedAt": "2026-11-03T12:27:02.278Z"
 }

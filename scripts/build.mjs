@@ -122,7 +122,7 @@ const expected = '23a462d5fec16bf2feede14d1d69f1829e188db85df7860b3324127d2701d7
 if (hash !== expected) throw new Error('Standalone provenance hash mismatch.');
 
 const index = await readFile(resolve(root, 'index.html'), 'utf8');
-for (const asset of ['/assets/styles.css', '/src/data.js', '/src/alien-base.js', '/src/expansion.js', '/src/expansion-wave2.js', '/src/deck-productions.js', '/src/asymmetric-cards.js', '/src/asymmetric-decks.js', '/src/art-manifest.js', '/src/engine.js', '/src/asymmetric-rules.js', '/src/duel-save.js', '/src/app.js', '/manifest.webmanifest']) {
+for (const asset of ['/assets/styles.css', '/src/data.js', '/src/alien-base.js', '/src/expansion.js', '/src/expansion-wave2.js', '/src/deck-productions.js', '/src/asymmetric-cards.js', '/src/asymmetric-decks.js', '/src/arsenal-cards.js', '/src/arsenal-decks.js', '/src/hive-cards.js', '/src/hive-decks.js', '/src/art-manifest.js', '/src/engine.js', '/src/asymmetric-rules.js', '/src/arsenal-rules.js', '/src/hive-rules.js', '/src/duel-save.js', '/src/collection.js', '/src/app.js', '/manifest.webmanifest']) {
   if (!index.includes(asset)) throw new Error(`index.html is missing ${asset}`);
 }
 
@@ -141,11 +141,12 @@ if (
   alienBase?.schema !== 'alien-base/tcg-public-v3' ||
   !alienBase.byCardId ||
   alienBase.registry?.v1 !== 68 ||
-  alienBase.registry?.v2 !== 632 ||
+  alienBase.revision !== '2026-11-02-tcg-v3-unified' ||
+  alienBase.registry?.v2 !== 652 ||
   alienBase.codex?.entries?.length !== 68 ||
   alienBase.codex?.researchWeapons?.length !== 200 ||
   alienBase.codex?.researchLeads?.length !== 16 ||
-  alienBase.codex?.registryUpdates?.status !== 'UNMERGED_RESEARCH_DELTA' ||
+  alienBase.codex?.registryUpdates?.status !== 'MERGED_REFERENCE_IDS_RESEARCH_ONLY' ||
   alienBase.codex?.registryUpdates?.candidateRegistryCount !== 652 ||
   alienBase.codex?.registryUpdates?.newEntities?.length !== 20 ||
   alienBase.codex?.registryUpdates?.works?.length !== 29 ||
@@ -183,6 +184,23 @@ if(live.cards.length!==891||live.expansion?.addedCount!==156||live.expansionWave
   ||live.expansionDecks.some(p=>Object.values(p.cards).reduce((a,b)=>a+b,0)!==30
     ||Object.values(p.reserve).reduce((a,b)=>a+b,0)!==p.boxCount-30)){
   throw new Error('Playable asymmetric catalogue has an invalid card, booster or 30+reserve deck inventory.');
+}
+// Validate the historical catalogue first, then the new dedicated arsenals/routes.
+const historicalCatalogue = JSON.stringify(live.cards);
+for (const file of ['arsenal-cards', 'arsenal-decks', 'hive-cards', 'hive-decks']) {
+  new Script(await readFile(resolve(root, 'src', file + '.js'), 'utf8'), {filename: file + '.js'})
+    .runInContext(expansionContext, {timeout: 10000});
+}
+const currentPlan = JSON.parse(await readFile(resolve(root, 'content-plan', 'manifest.json'), 'utf8')).implementation;
+if (JSON.stringify(live.cards.slice(0, 891)) !== historicalCatalogue ||
+    live.cards.length !== currentPlan.totalPlayableCards ||
+    live.expansionDecks.length !== currentPlan.totalDeckPresetsPlayable ||
+    live.boosters.length !== currentPlan.playableBoosters ||
+    new Set(live.cards.map(c => c.id)).size !== live.cards.length ||
+    !live.arsenalCoverage?.entries?.length || !live.hiveCoverage?.entries?.length ||
+    live.expansionDecks.some(p => Object.values(p.cards).reduce((a,b)=>a+b,0)!==30 ||
+      Object.values(p.reserve || {}).reduce((a,b)=>a+b,0)!==p.boxCount-30)) {
+  throw new Error('Arsenal/Hive catalogue differs from its preserved baseline or content manifest.');
 }
 const expectedDistribution = Object.freeze({
   cards: cardIds.length,
@@ -428,6 +446,13 @@ const required = [
   'assets/art/scenes/home-hero-v1.webp',
   'src/engine.js',
   'src/asymmetric-rules.js',
+  'src/arsenal-cards.js',
+  'src/arsenal-decks.js',
+  'src/hive-cards.js',
+  'src/hive-decks.js',
+  'src/arsenal-rules.js',
+  'src/hive-rules.js',
+  'src/collection.js',
   'src/duel-save.js',
   'src/app.js',
 ];

@@ -154,13 +154,20 @@ test('the service worker precaches a bounded critical shell, not the full art li
     '/assets/icon-192.png', '/assets/icon-512.png', '/assets/icon-maskable-512.png',
     '/src/data.js', '/src/alien-base.js', '/src/expansion.js', '/src/expansion-wave2.js',
     '/src/deck-productions.js', '/src/asymmetric-cards.js', '/src/asymmetric-decks.js',
+    '/src/arsenal-cards.js',
+    '/src/arsenal-decks.js',
+    '/src/hive-cards.js',
+    '/src/hive-decks.js',
+    '/src/arsenal-rules.js',
+    '/src/hive-rules.js',
+    '/src/collection.js',
     '/src/art-manifest.js', '/src/engine.js', '/src/asymmetric-rules.js',
     '/src/duel-save.js', '/src/app.js', '/assets/art/scenes/home-hero-v1.webp',
   ];
   assert.deepEqual([...worker.shell].sort(), [...critical].sort(), 'The offline shell must retain Codex and every gameplay module');
   assert.ok(PUBLIC_FILES.filter((file) => file.startsWith('assets/art/')).length >= 175);
   assert.equal(worker.shell.some((file) => file.startsWith('/assets/art/cards/')), false);
-  assert.ok(worker.shell.length <= 20, 'The install shell must stay small on mobile');
+  assert.ok(worker.shell.length <= 27, 'The install shell must stay small on mobile');
   await worker.dispatch('install').done;
   assert.ok(!worker.shell.includes('/index.html'), 'Vercel redirects this alias');
   assert.equal(worker.stores.get(worker.cacheName).size, worker.shell.length);

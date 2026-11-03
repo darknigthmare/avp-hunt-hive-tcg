@@ -1,0 +1,342 @@
+DeckID,Nom,Faction,Gamme,Focus,CartesDuel,Réserve,TotalBoite,Origine
+arsenal_yautja_d88f37f5,Arsenal Yautja — Module Falcon Drone,YAUTJA,ARSENAL,card.avp.eq_falcon_drone,30,15,45,ARSENAL
+arsenal_human_0aa2f354,Arsenal humain — Power Loader,HUMAN,ARSENAL,card.avp.eq_power_loader,30,15,45,ARSENAL
+arsenal_yautja_dcd06b22,Arsenal Yautja — Razor Whip,YAUTJA,ARSENAL,card.avp.eq_razor_whip,30,15,45,ARSENAL
+arsenal_human_cd6719aa,Arsenal humain — Balise de pistage,HUMAN,ARSENAL,ha.equipment.balise-de-pistage,30,15,45,ARSENAL
+arsenal_human_12f8f53a,Arsenal humain — Balise lumineuse,HUMAN,ARSENAL,ha.equipment.balise-lumineuse,30,15,45,ARSENAL
+arsenal_human_18b31cf4,Arsenal humain — Canon gyrostabilisé VIGIE,HUMAN,ARSENAL,ha.equipment.canon-gyrostabilise-vigie,30,15,45,ARSENAL
+arsenal_human_575a687e,Arsenal humain — Capteur optique,HUMAN,ARSENAL,ha.equipment.capteur-optique,30,15,45,ARSENAL
+arsenal_human_ebf542dc,Arsenal humain — Carabine cinétique R-9,HUMAN,ARSENAL,ha.equipment.carabine-cinetique-r-9,30,15,45,ARSENAL
+arsenal_human_37edb484,Arsenal humain — Clé à choc,HUMAN,ARSENAL,ha.equipment.cle-a-choc,30,15,45,ARSENAL
+arsenal_human_7927de4c,Arsenal humain — Détecteur inertiel,HUMAN,ARSENAL,ha.equipment.detecteur-inertiel,30,15,45,ARSENAL
+arsenal_human_2a7a2683,Arsenal humain — Filet électrostatique,HUMAN,ARSENAL,ha.equipment.filet-electrostatique,30,15,45,ARSENAL
+arsenal_human_cc5cc491,Arsenal humain — Fusil automatique K-12,HUMAN,ARSENAL,ha.equipment.fusil-automatique-k-12,30,15,45,ARSENAL
+arsenal_human_b7da51f6,Arsenal humain — Injecteur sédatif,HUMAN,ARSENAL,ha.equipment.injecteur-sedatif,30,15,45,ARSENAL
+arsenal_human_30b50c3d,Arsenal humain — Interface de maintenance,HUMAN,ARSENAL,ha.equipment.interface-de-maintenance,30,15,45,ARSENAL
+arsenal_human_b99490bd,Arsenal humain — Lampe de travail,HUMAN,ARSENAL,ha.equipment.lampe-de-travail,30,15,45,ARSENAL
+arsenal_human_3e41b96a,Arsenal humain — Lance thermique T-4,HUMAN,ARSENAL,ha.equipment.lance-thermique-t-4,30,15,45,ARSENAL
+arsenal_human_5ff271d7,Arsenal humain — Magasin limité,HUMAN,ARSENAL,ha.equipment.magasin-limite,30,15,45,ARSENAL
+arsenal_human_1883a1fb,Arsenal humain — Masque étanche,HUMAN,ARSENAL,ha.equipment.masque-etanche,30,15,45,ARSENAL
+arsenal_human_bfe2ca9b,Arsenal humain — Perche de contention,HUMAN,ARSENAL,ha.equipment.perche-de-contention,30,15,45,ARSENAL
+arsenal_human_3f64cdfe,Arsenal humain — Pinces industrielles,HUMAN,ARSENAL,ha.equipment.pinces-industrielles,30,15,45,ARSENAL
+arsenal_human_f6029837,Arsenal humain — Projecteur UV,HUMAN,ARSENAL,ha.equipment.projecteur-uv,30,15,45,ARSENAL
+arsenal_human_2d26be15,Arsenal humain — Réservoir dorsal,HUMAN,ARSENAL,ha.equipment.reservoir-dorsal,30,15,45,ARSENAL
+arsenal_human_32e384ff,Arsenal humain — Scanner biologique,HUMAN,ARSENAL,ha.equipment.scanner-biologique,30,15,45,ARSENAL
+arsenal_human_bb586dba,Arsenal humain — Visière de suivi,HUMAN,ARSENAL,ha.equipment.visiere-de-suivi,30,15,45,ARSENAL
+arsenal_human_b99542eb,Arsenal humain — .357 Magnum Revolver,HUMAN,ARSENAL,item.357-magnum-revolver,30,15,45,ARSENAL
+arsenal_human_555b6873,Arsenal humain — Access Tuner,HUMAN,ARSENAL,item.access-tuner,30,15,45,ARSENAL
+arsenal_human_8f6aadd9,Arsenal humain — AK-4047 Pulse Rifle,HUMAN,ARSENAL,item.ak-4047-pulse-rifle,30,15,45,ARSENAL
+arsenal_human_197dfe72,Arsenal humain — AM-16 Gruppa,HUMAN,ARSENAL,item.am-16-gruppa,30,15,45,ARSENAL
+arsenal_human_c5aee941,Arsenal humain — Ammo Satchel,HUMAN,ARSENAL,item.ammo-satchel,30,15,45,ARSENAL
+arsenal_human_23e77b42,Arsenal humain — APE Suit,HUMAN,ARSENAL,item.ape-suit,30,15,45,ARSENAL
+arsenal_human_e1570378,Arsenal humain — ATARAX Control Rig,HUMAN,ARSENAL,item.atarax-control-rig,30,15,45,ARSENAL
+arsenal_human_239caa10,Arsenal humain — Bolt Gun,HUMAN,ARSENAL,item.bolt-gun,30,15,45,ARSENAL
+arsenal_human_f6dc869c,Arsenal humain — Catch Pole,HUMAN,ARSENAL,item.catch-pole,30,15,45,ARSENAL
+arsenal_human_61fd4d0d,Arsenal humain — Colony Beacon,HUMAN,ARSENAL,item.colony-beacon,30,15,45,ARSENAL
+arsenal_human_6fd221dc,Arsenal humain — Combat Knife,HUMAN,ARSENAL,item.combat-knife,30,15,45,ARSENAL
+arsenal_human_afc928bc,Arsenal humain — Compound Bow,HUMAN,ARSENAL,item.compound-bow,30,15,45,ARSENAL
+arsenal_human_36f66ebf,Arsenal humain — Cryo Lance,HUMAN,ARSENAL,item.cryo-lance,30,15,45,ARSENAL
+arsenal_human_3e4aaa1b,Arsenal humain — Cryo Mine,HUMAN,ARSENAL,item.cryo-mine,30,15,45,ARSENAL
+arsenal_human_9435284f,Arsenal humain — Cutting Torch,HUMAN,ARSENAL,item.cutting-torch,30,15,45,ARSENAL
+arsenal_human_7cdbd6c1,Arsenal humain — DKT-59 Misha,HUMAN,ARSENAL,item.dkt-59-misha,30,15,45,ARSENAL
+arsenal_human_579feda1,Arsenal humain — Drone Controller,HUMAN,ARSENAL,item.drone-controller,30,15,45,ARSENAL
+arsenal_human_db5ad749,Arsenal humain — EDS-93 Zadak Plasma Discharger,HUMAN,ARSENAL,item.eds-93-zadak-plasma-discharger,30,15,45,ARSENAL
+arsenal_human_e75a3bb6,Arsenal humain — Electroshock Trap,HUMAN,ARSENAL,item.electroshock-trap,30,15,45,ARSENAL
+arsenal_human_5814af2a,Arsenal humain — ES-4 Electroshock Pistol,HUMAN,ARSENAL,item.es-4-electroshock-pistol,30,15,45,ARSENAL
+arsenal_human_84ba92a3,Arsenal humain — EVI-87 Zvezda Plasma Rifle,HUMAN,ARSENAL,item.evi-87-zvezda-plasma-rifle,30,15,45,ARSENAL
+arsenal_human_f6ffd57f,Arsenal humain — F44AA Pulse Rifle,HUMAN,ARSENAL,item.f44aa-pulse-rifle,30,15,45,ARSENAL
+arsenal_human_d1339a9d,Arsenal humain — Fire Axe,HUMAN,ARSENAL,item.fire-axe,30,15,45,ARSENAL
+arsenal_human_7b0da846,Arsenal humain — Flashlight,HUMAN,ARSENAL,item.flashlight,30,15,45,ARSENAL
+arsenal_human_a502cc02,Arsenal humain — Foundry Nailgun,HUMAN,ARSENAL,item.foundry-nailgun,30,15,45,ARSENAL
+arsenal_human_5a9b2167,Arsenal humain — Frontier Revolver,HUMAN,ARSENAL,item.frontier-revolver,30,15,45,ARSENAL
+arsenal_human_a7cc2c40,Arsenal humain — Harpoon Gun,HUMAN,ARSENAL,item.harpoon-gun,30,15,45,ARSENAL
+arsenal_human_d691a67b,Arsenal humain — Hazmat Suit,HUMAN,ARSENAL,item.hazmat-suit,30,15,45,ARSENAL
+arsenal_human_f81f5a60,Arsenal humain — Heavy Pulse Rifle,HUMAN,ARSENAL,item.heavy-pulse-rifle,30,15,45,ARSENAL
+arsenal_human_166a35fc,Arsenal humain — Heckler & Koch VP70,HUMAN,ARSENAL,item.heckler-koch-vp70,30,15,45,ARSENAL
+arsenal_human_119e824f,Arsenal humain — Incinerator Fuel Pack,HUMAN,ARSENAL,item.incinerator-fuel-pack,30,15,45,ARSENAL
+arsenal_human_8a5d6103,Arsenal humain — Ithaca Model 37,HUMAN,ARSENAL,item.ithaca-model-37,30,15,45,ARSENAL
+arsenal_human_d8dd9b40,Arsenal humain — Kit de confinement biologique,HUMAN,ARSENAL,item.kit-de-confinement-biologique,30,15,45,ARSENAL
+arsenal_human_675d24a2,Arsenal humain — Kramer Short-Barrel,HUMAN,ARSENAL,item.kramer-short-barrel,30,15,45,ARSENAL
+arsenal_human_4fd02e3a,Arsenal humain — L33 Pike,HUMAN,ARSENAL,item.l33-pike,30,15,45,ARSENAL
+arsenal_human_8d84fca4,Arsenal humain — L59 Minigun,HUMAN,ARSENAL,item.l59-minigun,30,15,45,ARSENAL
+arsenal_human_5748f5b0,Arsenal humain — LEM MP11 Stormsurge,HUMAN,ARSENAL,item.lem-mp11-stormsurge,30,15,45,ARSENAL
+arsenal_human_90e1fc16,Arsenal humain — M12 RPG,HUMAN,ARSENAL,item.m12-rpg,30,15,45,ARSENAL
+arsenal_human_1d5c20ff,Arsenal humain — M240 Incinerator Unit,HUMAN,ARSENAL,item.m240-incinerator-unit,30,15,45,ARSENAL
+arsenal_human_0a489293,Arsenal humain — M3 Personnel Armor,HUMAN,ARSENAL,item.m3-personnel-armor,30,15,45,ARSENAL
+arsenal_human_eecd795c,Arsenal humain — M37A2 Pump Shotgun,HUMAN,ARSENAL,item.m37a2-pump-shotgun,30,15,45,ARSENAL
+arsenal_human_e3410cae,Arsenal humain — M39 Submachine Gun,HUMAN,ARSENAL,item.m39-submachine-gun,30,15,45,ARSENAL
+arsenal_human_57817cf6,Arsenal humain — M40 HEDP Grenade,HUMAN,ARSENAL,item.m40-hedp-grenade,30,15,45,ARSENAL
+arsenal_human_be2852ec,Arsenal humain — M41A Pulse Rifle,HUMAN,ARSENAL,item.m41a-pulse-rifle,30,15,45,ARSENAL
+arsenal_human_43feef0c,Arsenal humain — M41A2 Pulse Rifle,HUMAN,ARSENAL,item.m41a2-pulse-rifle,30,15,45,ARSENAL
+arsenal_human_403e7886,Arsenal humain — M42A Scope Rifle,HUMAN,ARSENAL,item.m42a-scope-rifle,30,15,45,ARSENAL
+arsenal_human_4ebb28c5,Arsenal humain — M4A3 Service Pistol,HUMAN,ARSENAL,item.m4a3-service-pistol,30,15,45,ARSENAL
+arsenal_human_cb35533c,Arsenal humain — M5 RPG,HUMAN,ARSENAL,item.m5-rpg,30,15,45,ARSENAL
+arsenal_human_ac461782,Arsenal humain — M51 Breaching Scattergun,HUMAN,ARSENAL,item.m51-breaching-scattergun,30,15,45,ARSENAL
+arsenal_human_7141b1aa,Arsenal humain — M56 Smartgun,HUMAN,ARSENAL,item.m56-smartgun,30,15,45,ARSENAL
+arsenal_human_94544419,Arsenal humain — M6B Rocket Launcher,HUMAN,ARSENAL,item.m6b-rocket-launcher,30,15,45,ARSENAL
+arsenal_human_542c65f8,Arsenal humain — M83 SADAR,HUMAN,ARSENAL,item.m83-sadar,30,15,45,ARSENAL
+arsenal_human_becfa26c,Arsenal humain — M94 Impact Grenade,HUMAN,ARSENAL,item.m94-impact-grenade,30,15,45,ARSENAL
+arsenal_human_cfb1283d,Arsenal humain — Maintenance Jack,HUMAN,ARSENAL,item.maintenance-jack,30,15,45,ARSENAL
+arsenal_human_7976a318,Arsenal humain — Mark 7 Mod 2 CQB Pistol,HUMAN,ARSENAL,item.mark-7-mod-2-cqb-pistol,30,15,45,ARSENAL
+arsenal_human_0ac6f682,Arsenal humain — Medkit,HUMAN,ARSENAL,item.medkit,30,15,45,ARSENAL
+arsenal_human_0546f592,Arsenal humain — Microburst,HUMAN,ARSENAL,item.microburst,30,15,45,ARSENAL
+arsenal_human_0cb1f8cb,Arsenal humain — Motion Tracker,HUMAN,ARSENAL,item.motion-tracker,30,15,45,ARSENAL
+arsenal_human_6f765bcf,Arsenal humain — N79 EVA Laser,HUMAN,ARSENAL,item.n79-eva-laser,30,15,45,ARSENAL
+arsenal_human_80fb31d7,Arsenal humain — Neuro-Link Disruptor,HUMAN,ARSENAL,item.neuro-link-disruptor,30,15,45,ARSENAL
+arsenal_human_fd9470e0,Arsenal humain — Neuro-Link Helmet,HUMAN,ARSENAL,item.neuro-link-helmet,30,15,45,ARSENAL
+arsenal_human_c5dd6b60,Arsenal humain — P.649 HEL,HUMAN,ARSENAL,item.p-649-hel,30,15,45,ARSENAL
+arsenal_human_07898ede,Arsenal humain — Pathogen Containment Projector,HUMAN,ARSENAL,item.pathogen-containment-projector,30,15,45,ARSENAL
+arsenal_human_447b6865,Arsenal humain — Pathogen Scanner,HUMAN,ARSENAL,item.pathogen-scanner,30,15,45,ARSENAL
+arsenal_human_2d8953fd,Arsenal humain — Plasma Rifle,HUMAN,ARSENAL,item.plasma-rifle,30,15,45,ARSENAL
+arsenal_human_0448151f,Arsenal humain — Portable Battery,HUMAN,ARSENAL,item.portable-battery,30,15,45,ARSENAL
+arsenal_human_74590e9a,Arsenal humain — Portable Quarantine,HUMAN,ARSENAL,item.portable-quarantine,30,15,45,ARSENAL
+arsenal_human_8203fe09,Arsenal humain — Portable Sentry,HUMAN,ARSENAL,item.portable-sentry,30,15,45,ARSENAL
+arsenal_human_beb9f4b2,Arsenal humain — PPZ-49 Vol,HUMAN,ARSENAL,item.ppz-49-vol,30,15,45,ARSENAL
+arsenal_human_424c6ca7,Arsenal humain — Pressure Suit,HUMAN,ARSENAL,item.pressure-suit,30,15,45,ARSENAL
+arsenal_human_9726ed51,Arsenal humain — Rapid Responder,HUMAN,ARSENAL,item.rapid-responder,30,15,45,ARSENAL
+arsenal_human_d4641930,Arsenal humain — Rebreather,HUMAN,ARSENAL,item.rebreather,30,15,45,ARSENAL
+arsenal_human_ff723f5d,Arsenal humain — Reef Caster,HUMAN,ARSENAL,item.reef-caster,30,15,45,ARSENAL
+arsenal_human_c75b7045,Arsenal humain — Ripper Acid Projector,HUMAN,ARSENAL,item.ripper-acid-projector,30,15,45,ARSENAL
+arsenal_human_909af138,Arsenal humain — Ripper Xenoarmor,HUMAN,ARSENAL,item.ripper-xenoarmor,30,15,45,ARSENAL
+arsenal_human_e24eb3fd,Arsenal humain — Seismic Surveyor,HUMAN,ARSENAL,item.seismic-surveyor,30,15,45,ARSENAL
+arsenal_human_1c478afb,Arsenal humain — Signal Jammer,HUMAN,ARSENAL,item.signal-jammer,30,15,45,ARSENAL
+arsenal_human_14ce2590,Arsenal humain — Smith & Wesson Model 39,HUMAN,ARSENAL,item.smith-wesson-model-39,30,15,45,ARSENAL
+arsenal_human_6fca9a4a,Arsenal humain — Sonic Harpoon,HUMAN,ARSENAL,item.sonic-harpoon,30,15,45,ARSENAL
+arsenal_human_f43c1503,Arsenal humain — Stun Baton,HUMAN,ARSENAL,item.stun-baton,30,15,45,ARSENAL
+arsenal_human_1af72a35,Arsenal humain — SVAT-92 Sokol,HUMAN,ARSENAL,item.svat-92-sokol,30,15,45,ARSENAL
+arsenal_human_dc7775e2,Arsenal humain — Synthetic Repair Kit,HUMAN,ARSENAL,item.synthetic-repair-kit,30,15,45,ARSENAL
+arsenal_human_907b597c,Arsenal humain — Thunderbolt Mk.2 Autocannon,HUMAN,ARSENAL,item.thunderbolt-mk-2-autocannon,30,15,45,ARSENAL
+arsenal_human_e0fc8aab,Arsenal humain — Trauma Kit,HUMAN,ARSENAL,item.trauma-kit,30,15,45,ARSENAL
+arsenal_human_b74e5757,Arsenal humain — Type 21 Tactical Shotgun,HUMAN,ARSENAL,item.type-21-tactical-shotgun,30,15,45,ARSENAL
+arsenal_human_a48dba29,Arsenal humain — Type 76 Auto Shotgun,HUMAN,ARSENAL,item.type-76-auto-shotgun,30,15,45,ARSENAL
+arsenal_human_1aca99a0,Arsenal humain — Type 88 Heavy Assault Rifle,HUMAN,ARSENAL,item.type-88-heavy-assault-rifle,30,15,45,ARSENAL
+arsenal_human_da8d0b38,Arsenal humain — Type 99 Incinerator,HUMAN,ARSENAL,item.type-99-incinerator,30,15,45,ARSENAL
+arsenal_human_b9ba769b,Arsenal humain — UA 571-C Sentry Gun,HUMAN,ARSENAL,item.ua-571-c-sentry-gun,30,15,45,ARSENAL
+arsenal_human_27241c7c,Arsenal humain — VP70 Combat Pistol,HUMAN,ARSENAL,item.vp70-combat-pistol,30,15,45,ARSENAL
+arsenal_human_879c9ab9,Arsenal humain — Welding Kit,HUMAN,ARSENAL,item.welding-kit,30,15,45,ARSENAL
+arsenal_human_c6dbc1a3,Arsenal humain — X45 Bombard,HUMAN,ARSENAL,item.x45-bombard,30,15,45,ARSENAL
+arsenal_yautja_35b97a27,Arsenal Yautja — Dissolving Blue Acid Solvent Flask,YAUTJA,ARSENAL,item.yautja.acid_solvent,30,15,45,ARSENAL
+arsenal_yautja_86e1396c,Arsenal Yautja — Alpha Bone Sickle,YAUTJA,ARSENAL,item.yautja.alpha_sickle,30,15,45,ARSENAL
+arsenal_yautja_76e072e1,Arsenal Yautja — Audio Lure & Voice Mimicry Module,YAUTJA,ARSENAL,item.yautja.audio_lure,30,15,45,ARSENAL
+arsenal_yautja_7fa21e48,Arsenal Yautja — Yautja Steel Bear Trap,YAUTJA,ARSENAL,item.yautja.bear_trap,30,15,45,ARSENAL
+arsenal_yautja_89187999,Arsenal Yautja — Ceremonial Yautja Broadsword,YAUTJA,ARSENAL,item.yautja.broadsword,30,15,45,ARSENAL
+arsenal_yautja_855cab47,Arsenal Yautja — Burner Plasma Rifle,YAUTJA,ARSENAL,item.yautja.burner_rifle,30,15,45,ARSENAL
+arsenal_yautja_9719a584,Arsenal Yautja — Active Camouflage Cloaking Device,YAUTJA,ARSENAL,item.yautja.cloak,30,15,45,ARSENAL
+arsenal_yautja_794aaee8,Arsenal Yautja — Combi-Stick,YAUTJA,ARSENAL,item.yautja.combistick,30,15,45,ARSENAL
+arsenal_yautja_e6fc98c6,Arsenal Yautja — Yautja Compound Bow,YAUTJA,ARSENAL,item.yautja.compound_bow,30,15,45,ARSENAL
+arsenal_yautja_84198b58,Arsenal Yautja — Homing Bolt Crossbow,YAUTJA,ARSENAL,item.yautja.crossbow,30,15,45,ARSENAL
+arsenal_yautja_3005f59b,Arsenal Yautja — Ceremonial Yautja Daggers,YAUTJA,ARSENAL,item.yautja.daggers,30,15,45,ARSENAL
+arsenal_yautja_2c9ee2bf,Arsenal Yautja — Dual Shoulder Plasma Cannons,YAUTJA,ARSENAL,item.yautja.dual_caster,30,15,45,ARSENAL
+arsenal_yautja_17e56450,Arsenal Yautja — Sonic EMP Disruption Mine,YAUTJA,ARSENAL,item.yautja.emp_mine,30,15,45,ARSENAL
+arsenal_yautja_24c0c50e,Arsenal Yautja — Lance-traits du Feral,YAUTJA,ARSENAL,item.yautja.feral_bolt_launcher_2022,30,15,45,ARSENAL
+arsenal_yautja_ed4a6c74,Arsenal Yautja — Feral Shield & Cut Blade,YAUTJA,ARSENAL,item.yautja.feral_shield,30,15,45,ARSENAL
+arsenal_yautja_1b1efc77,Arsenal Yautja — Gatling Plasma Heavy Cannon,YAUTJA,ARSENAL,item.yautja.gatling_plasma,30,15,45,ARSENAL
+arsenal_yautja_2e51d1d8,Arsenal Yautja — Yautja Glaive Spear,YAUTJA,ARSENAL,item.yautja.glaive,30,15,45,ARSENAL
+arsenal_yautja_4616eb62,Arsenal Yautja — Samurai Yautja Katana,YAUTJA,ARSENAL,item.yautja.katana,30,15,45,ARSENAL
+arsenal_yautja_9f91284e,Arsenal Yautja — Medicomp Bio-Gel Injection Kit,YAUTJA,ARSENAL,item.yautja.medicomp,30,15,45,ARSENAL
+arsenal_yautja_50bd4e4b,Arsenal Yautja — Razor-Wire Netgun,YAUTJA,ARSENAL,item.yautja.netgun,30,15,45,ARSENAL
+arsenal_yautja_86fd59b0,Arsenal Yautja — Tactical Nuke Wrist Computer,YAUTJA,ARSENAL,item.yautja.nuke_gauntlet,30,15,45,ARSENAL
+arsenal_yautja_54851e89,Arsenal Yautja — Pirate Arm Hook,YAUTJA,ARSENAL,item.yautja.pirate_hook,30,15,45,ARSENAL
+arsenal_yautja_89952c5f,Arsenal Yautja — Shoulder Plasma Caster (Single),YAUTJA,ARSENAL,item.yautja.plasma_caster,30,15,45,ARSENAL
+arsenal_yautja_b481a22d,Arsenal Yautja — Proximity Plasma Trip-Mines,YAUTJA,ARSENAL,item.yautja.plasma_mines,30,15,45,ARSENAL
+arsenal_yautja_32ac1258,Arsenal Yautja — Handheld Plasma Pistol,YAUTJA,ARSENAL,item.yautja.plasma_pistol,30,15,45,ARSENAL
+arsenal_yautja_0f19d251,Arsenal Yautja — Plasma Deployable Sentry Turret,YAUTJA,ARSENAL,item.yautja.plasma_turret,30,15,45,ARSENAL
+arsenal_yautja_accd5fd9,Arsenal Yautja — Vertebrae Plasma Whip,YAUTJA,ARSENAL,item.yautja.plasma_whip,30,15,45,ARSENAL
+arsenal_yautja_62969931,Arsenal Yautja — Autodestruction du brassard,YAUTJA,ARSENAL,item.yautja.self_destruct,30,15,45,ARSENAL
+arsenal_yautja_1d9c7dbf,Arsenal Yautja — 6-Blade Telescopic Shuriken,YAUTJA,ARSENAL,item.yautja.shuriken,30,15,45,ARSENAL
+arsenal_yautja_2ccdc3bd,Arsenal Yautja — Extended Single Scythe Wristblade,YAUTJA,ARSENAL,item.yautja.single_scythe,30,15,45,ARSENAL
+arsenal_yautja_1584649b,Arsenal Yautja — Smart Disc,YAUTJA,ARSENAL,item.yautja.smart_disc,30,15,45,ARSENAL
+arsenal_yautja_3b4116ed,Arsenal Yautja — Laser Needle SpearGun,YAUTJA,ARSENAL,item.yautja.speargun,30,15,45,ARSENAL
+arsenal_yautja_a596ac72,Arsenal Yautja — Super Scythe Arm Cleaver,YAUTJA,ARSENAL,item.yautja.super_cleaver,30,15,45,ARSENAL
+arsenal_yautja_c4d581ec,Arsenal Yautja — Thermal Multi-Vision Bio-Mask,YAUTJA,ARSENAL,item.yautja.thermal_mask,30,15,45,ARSENAL
+arsenal_yautja_2fbb9c01,Arsenal Yautja — Viseur à trois points,YAUTJA,ARSENAL,item.yautja.tri_laser_targeting,30,15,45,ARSENAL
+arsenal_yautja_7222e1b9,Arsenal Yautja — Tri-Blade Maul,YAUTJA,ARSENAL,item.yautja.tri_maul,30,15,45,ARSENAL
+arsenal_yautja_9d059abd,Arsenal Yautja — Viking Double-Headed Battle Axe,YAUTJA,ARSENAL,item.yautja.viking_axe,30,15,45,ARSENAL
+arsenal_yautja_3b591d73,Arsenal Yautja — Bone War Club,YAUTJA,ARSENAL,item.yautja.war_club,30,15,45,ARSENAL
+arsenal_yautja_0d4cae20,Arsenal Yautja — Double canon à plasma de Wolf,YAUTJA,ARSENAL,item.yautja.wolf_dual_plasma_2007,30,15,45,ARSENAL
+arsenal_yautja_6341faf1,Arsenal Yautja — Ordinateur de poignet,YAUTJA,ARSENAL,item.yautja.wrist_computer,30,15,45,ARSENAL
+arsenal_yautja_55534e28,Arsenal Yautja — Wrist Blades,YAUTJA,ARSENAL,item.yautja.wristblades,30,15,45,ARSENAL
+arsenal_human_3761f740,Arsenal humain — Compression Helmet,HUMAN,ARSENAL,profile.whw.equipment.alien1979-compression-helmet,30,15,45,ARSENAL
+arsenal_human_7bc740a0,Arsenal humain — Compression Suit,HUMAN,ARSENAL,profile.whw.equipment.alien1979-compression-suit,30,15,45,ARSENAL
+arsenal_human_25d41c56,Arsenal humain — Flamethrower — Nostromo,HUMAN,ARSENAL,profile.whw.equipment.alien1979-flamethrower,30,15,45,ARSENAL
+arsenal_human_35664fde,Arsenal humain — Flashlight — Dallas,HUMAN,ARSENAL,profile.whw.equipment.alien1979-flashlight,30,15,45,ARSENAL
+arsenal_human_e27e9678,Arsenal humain — Harpoon Gun — Nostromo,HUMAN,ARSENAL,profile.whw.equipment.alien1979-harpoon-gun,30,15,45,ARSENAL
+arsenal_human_c32144c7,Arsenal humain — Pistol — Dallas,HUMAN,ARSENAL,profile.whw.equipment.alien1979-pistol,30,15,45,ARSENAL
+arsenal_human_ff8b2ff2,Arsenal humain — Ammo Bag,HUMAN,ARSENAL,profile.whw.equipment.aliens1986-ammo-bag,30,15,45,ARSENAL
+arsenal_human_b35a90e1,Arsenal humain — Flame Thrower,HUMAN,ARSENAL,profile.whw.equipment.aliens1986-flamethrower,30,15,45,ARSENAL
+arsenal_human_15267cfd,Arsenal humain — Flashlight,HUMAN,ARSENAL,profile.whw.equipment.aliens1986-flashlight,30,15,45,ARSENAL
+arsenal_human_d5e3b4d7,Arsenal humain — Headset,HUMAN,ARSENAL,profile.whw.equipment.aliens1986-headset,30,15,45,ARSENAL
+arsenal_human_e206c48e,Arsenal humain — Helmet,HUMAN,ARSENAL,profile.whw.equipment.aliens1986-helmet,30,15,45,ARSENAL
+arsenal_human_5672ca78,Arsenal humain — Knife,HUMAN,ARSENAL,profile.whw.equipment.aliens1986-knife,30,15,45,ARSENAL
+arsenal_human_818391d7,Arsenal humain — Sentry Laptop,HUMAN,ARSENAL,profile.whw.equipment.aliens1986-laptop,30,15,45,ARSENAL
+arsenal_human_812ba4a2,Arsenal humain — Motion Detector,HUMAN,ARSENAL,profile.whw.equipment.aliens1986-motion-detector,30,15,45,ARSENAL
+arsenal_human_4c403154,Arsenal humain — Pistol,HUMAN,ARSENAL,profile.whw.equipment.aliens1986-pistol,30,15,45,ARSENAL
+arsenal_human_c6a16293,Arsenal humain — Pulse Rifle,HUMAN,ARSENAL,profile.whw.equipment.aliens1986-pulse-rifle,30,15,45,ARSENAL
+arsenal_human_70d3dcdf,Arsenal humain — Sentry Gun,HUMAN,ARSENAL,profile.whw.equipment.aliens1986-sentry-gun,30,15,45,ARSENAL
+arsenal_human_28ca3537,Arsenal humain — Shotgun,HUMAN,ARSENAL,profile.whw.equipment.aliens1986-shotgun,30,15,45,ARSENAL
+arsenal_human_1cbd5a00,Arsenal humain — Shoulder Lamp,HUMAN,ARSENAL,profile.whw.equipment.aliens1986-shoulder-lamp,30,15,45,ARSENAL
+arsenal_human_6a363a1e,Arsenal humain — Smartgun — Vasquez,HUMAN,ARSENAL,profile.whw.equipment.aliens1986-smartgun,30,15,45,ARSENAL
+arsenal_human_74137177,Arsenal humain — Smartgun Harness,HUMAN,ARSENAL,profile.whw.equipment.aliens1986-smartgun-harness,30,15,45,ARSENAL
+arsenal_human_9ad33b46,Arsenal humain — Pistol — Vasquez,HUMAN,ARSENAL,profile.whw.equipment.aliens1986-vasquez-pistol,30,15,45,ARSENAL
+arsenal_human_3ef0cffa,Arsenal humain — Welding Torch,HUMAN,ARSENAL,profile.whw.equipment.aliens1986-welding-torch,30,15,45,ARSENAL
+arsenal_human_a06f52ba,Arsenal humain — Black Camo Armor Set,HUMAN,ARSENAL,profile.whw.equipment.dd-black-camo-armor-set,30,15,45,ARSENAL
+arsenal_human_e8624731,Arsenal humain — Cryopod — opening cinematics,HUMAN,ARSENAL,profile.whw.equipment.dd-cryopod,30,15,45,ARSENAL
+arsenal_human_e4379470,Arsenal humain — Motion Tracker,HUMAN,ARSENAL,profile.whw.equipment.dd-motion-tracker,30,15,45,ARSENAL
+arsenal_human_9c9ce2a3,Arsenal humain — Pulse Rifle — cinematic prop,HUMAN,ARSENAL,profile.whw.equipment.dd-pulse-rifle,30,15,45,ARSENAL
+arsenal_human_e44fecb2,Arsenal humain — RPG,HUMAN,ARSENAL,profile.whw.equipment.dd-rpg,30,15,45,ARSENAL
+arsenal_human_4ca88b22,Arsenal humain — Service Pistol,HUMAN,ARSENAL,profile.whw.equipment.dd-service-pistol,30,15,45,ARSENAL
+arsenal_human_84b5f3af,Arsenal humain — Sniper Rifle,HUMAN,ARSENAL,profile.whw.equipment.dd-sniper-rifle,30,15,45,ARSENAL
+arsenal_human_6a9975ec,Arsenal humain — Sniper Silencer,HUMAN,ARSENAL,profile.whw.equipment.dd-sniper-silencer,30,15,45,ARSENAL
+arsenal_human_7eded9a6,Arsenal humain — Stun Baton — synthetics,HUMAN,ARSENAL,profile.whw.equipment.dd-synthetic-stun-baton,30,15,45,ARSENAL
+arsenal_human_153a1c99,Arsenal humain — Transition Table,HUMAN,ARSENAL,profile.whw.equipment.earth-transition-table,30,15,45,ARSENAL
+arsenal_human_84e0564d,Arsenal humain — Backpack · accessoire Amanda,HUMAN,ARSENAL,profile.whw.equipment.isolation-backpack,30,15,45,ARSENAL
+arsenal_human_c97aebd7,Arsenal humain — Bolt Gun,HUMAN,ARSENAL,profile.whw.equipment.isolation-bolt-gun,30,15,45,ARSENAL
+arsenal_human_3eabdb2d,Arsenal humain — EMP Mine,HUMAN,ARSENAL,profile.whw.equipment.isolation-emp-mine,30,15,45,ARSENAL
+arsenal_human_0bfec1a9,Arsenal humain — Flamethrower,HUMAN,ARSENAL,profile.whw.equipment.isolation-flamethrower,30,15,45,ARSENAL
+arsenal_human_df3d8511,Arsenal humain — Flare,HUMAN,ARSENAL,profile.whw.equipment.isolation-flare,30,15,45,ARSENAL
+arsenal_human_e9c23b95,Arsenal humain — Flashbang,HUMAN,ARSENAL,profile.whw.equipment.isolation-flashbang,30,15,45,ARSENAL
+arsenal_human_422d6795,Arsenal humain — Flashlight,HUMAN,ARSENAL,profile.whw.equipment.isolation-flashlight,30,15,45,ARSENAL
+arsenal_human_324b9ea7,Arsenal humain — Gas Torch,HUMAN,ARSENAL,profile.whw.equipment.isolation-gas-torch,30,15,45,ARSENAL
+arsenal_human_fa420f98,Arsenal humain — Ion Torch,HUMAN,ARSENAL,profile.whw.equipment.isolation-ion-torch,30,15,45,ARSENAL
+arsenal_human_cb4327aa,Arsenal humain — Maintenance Jack,HUMAN,ARSENAL,profile.whw.equipment.isolation-maintenance-jack,30,15,45,ARSENAL
+arsenal_human_42a1d9ea,Arsenal humain — Medikit,HUMAN,ARSENAL,profile.whw.equipment.isolation-medikit,30,15,45,ARSENAL
+arsenal_human_a1f92633,Arsenal humain — Molotov,HUMAN,ARSENAL,profile.whw.equipment.isolation-molotov,30,15,45,ARSENAL
+arsenal_human_d9dd2698,Arsenal humain — Motion Tracker,HUMAN,ARSENAL,profile.whw.equipment.isolation-motion-tracker,30,15,45,ARSENAL
+arsenal_human_17cf68dd,Arsenal humain — Noisemaker,HUMAN,ARSENAL,profile.whw.equipment.isolation-noisemaker,30,15,45,ARSENAL
+arsenal_human_3664c60a,Arsenal humain — Pipe Bomb,HUMAN,ARSENAL,profile.whw.equipment.isolation-pipe-bomb,30,15,45,ARSENAL
+arsenal_human_161cde8e,Arsenal humain — Plasma Torch,HUMAN,ARSENAL,profile.whw.equipment.isolation-plasma-torch,30,15,45,ARSENAL
+arsenal_human_3187fae8,Arsenal humain — Revolver,HUMAN,ARSENAL,profile.whw.equipment.isolation-revolver,30,15,45,ARSENAL
+arsenal_human_ed5f79a3,Arsenal humain — Security Access Tuner,HUMAN,ARSENAL,profile.whw.equipment.isolation-security-access-tuner,30,15,45,ARSENAL
+arsenal_human_88a5ae3f,Arsenal humain — Shotgun,HUMAN,ARSENAL,profile.whw.equipment.isolation-shotgun,30,15,45,ARSENAL
+arsenal_human_af9d19d3,Arsenal humain — Smokebomb,HUMAN,ARSENAL,profile.whw.equipment.isolation-smoke-bomb,30,15,45,ARSENAL
+arsenal_human_521d63b4,Arsenal humain — Stun Baton,HUMAN,ARSENAL,profile.whw.equipment.isolation-stun-baton,30,15,45,ARSENAL
+arsenal_human_90f5e5c9,Arsenal humain — David8 Helmet,HUMAN,ARSENAL,profile.whw.equipment.prometheus-david8-helmet,30,15,45,ARSENAL
+arsenal_human_b2d8602e,Arsenal humain — Draco Double Burner,HUMAN,ARSENAL,profile.whw.equipment.resurrection-draco-double-burner,30,15,45,ARSENAL
+arsenal_human_bf70c502,Arsenal humain — Lacrima 99 Shockrifle,HUMAN,ARSENAL,profile.whw.equipment.resurrection-lacrima99-shockrifle,30,15,45,ARSENAL
+arsenal_human_7e0af0e0,Arsenal humain — Airlock Door Opener,HUMAN,ARSENAL,profile.whw.equipment.romulus-airlock-door-opener,30,15,45,ARSENAL
+arsenal_human_67858a6c,Arsenal humain — Body Heat Temp Meter,HUMAN,ARSENAL,profile.whw.equipment.romulus-body-heat-temp-meter,30,15,45,ARSENAL
+arsenal_human_8f11102c,Arsenal humain — Cryo Frame,HUMAN,ARSENAL,profile.whw.equipment.romulus-cryoframe,30,15,45,ARSENAL
+arsenal_human_deef731a,Arsenal humain — Door Opener,HUMAN,ARSENAL,profile.whw.equipment.romulus-door-opener,30,15,45,ARSENAL
+arsenal_human_a54879e6,Arsenal humain — F44AA Pulse Rifle,HUMAN,ARSENAL,profile.whw.equipment.romulus-f44aa,30,15,45,ARSENAL
+arsenal_human_3cb7e8f5,Arsenal humain — Laser,HUMAN,ARSENAL,profile.whw.equipment.romulus-laser,30,15,45,ARSENAL
+arsenal_human_fd1e332b,Arsenal humain — Meteor Holder,HUMAN,ARSENAL,profile.whw.equipment.romulus-meteor-holder,30,15,45,ARSENAL
+arsenal_human_e20581ca,Arsenal humain — Microphone,HUMAN,ARSENAL,profile.whw.equipment.romulus-microphone,30,15,45,ARSENAL
+arsenal_human_7c2b257d,Arsenal humain — Taser,HUMAN,ARSENAL,profile.whw.equipment.romulus-taser,30,15,45,ARSENAL
+arsenal_human_4483b26b,Arsenal humain — Temperature Scanner,HUMAN,ARSENAL,profile.whw.equipment.romulus-temperature-scanner,30,15,45,ARSENAL
+arsenal_human_c3396d0d,Arsenal humain — X Ray Torch,HUMAN,ARSENAL,profile.whw.equipment.romulus-xray-torch,30,15,45,ARSENAL
+arsenal_human_3d0b5ceb,Arsenal humain — OCAP-91 Volcan,HUMAN,ARSENAL,weapon-147-ocap-91-volcan,30,15,45,ARSENAL
+arsenal_human_2a5a04a9,Arsenal humain — X1 Fireball,HUMAN,ARSENAL,weapon-171-x1-fireball,30,15,45,ARSENAL
+arsenal_human_a87240b5,Arsenal humain — LEM StG24 Storm Rifle,HUMAN,ARSENAL,weapon-172-lem-stg24-storm-rifle,30,15,45,ARSENAL
+arsenal_human_dc4653ba,Arsenal humain — U1A2 GL Conversion,HUMAN,ARSENAL,weapon-173-u1a2-gl-conversion,30,15,45,ARSENAL
+arsenal_human_71406e54,Arsenal humain — 4C2 Astra,HUMAN,ARSENAL,weapon-174-4c2-astra,30,15,45,ARSENAL
+arsenal_human_3024f61c,Arsenal humain — 2B1 Vajra,HUMAN,ARSENAL,weapon-175-2b1-vajra,30,15,45,ARSENAL
+arsenal_human_f2083034,Arsenal humain — 6A Jaipur Submachine Gun,HUMAN,ARSENAL,weapon-176-6a-jaipur-smg,30,15,45,ARSENAL
+arsenal_human_8cbdb62b,Arsenal humain — 8A7 Dambulla Machine Pistol,HUMAN,ARSENAL,weapon-177-8a7-dambulla-machine-pistol,30,15,45,ARSENAL
+hive_bio_pathogen_abomination,Cycle — Abomination,ENGINEER,CYCLE_COMPLET,bio.pathogen.abomination,30,15,45,RUCHE
+hive_bio_pathogen_deacon_line,Cycle — Deacon Line,ENGINEER,CYCLE_COMPLET,bio.pathogen.deacon-line,30,15,45,RUCHE
+hive_bio_pathogen_engineer_hybrid,Cycle — Engineer hybrid,HYBRID,CYCLE_COMPLET,bio.pathogen.engineer-hybrid,30,15,45,RUCHE
+hive_bio_pathogen_harbinger,Cycle — Harbinger,ENGINEER,CYCLE_COMPLET,bio.pathogen.harbinger,30,15,45,RUCHE
+hive_bio_pathogen_neomorph,Cycle — Neomorph,ENGINEER,CYCLE_COMPLET,bio.pathogen.neomorph,30,15,45,RUCHE
+hive_bio_pathogen_offspring,Cycle — Offspring,HYBRID,CYCLE_COMPLET,bio.pathogen.offspring,30,15,45,RUCHE
+hive_bio_pathogen_pathogen_blight,Cycle — Pathogen Blight,ENGINEER,CYCLE_COMPLET,bio.pathogen.pathogen-blight,30,15,45,RUCHE
+hive_bio_pathogen_pathogen_brute,Cycle — Pathogen Brute,ENGINEER,CYCLE_COMPLET,bio.pathogen.pathogen-brute,30,15,45,RUCHE
+hive_bio_pathogen_pathogen_mimic,Cycle — Pathogen Mimic,ENGINEER,CYCLE_COMPLET,bio.pathogen.pathogen-mimic,30,15,45,RUCHE
+hive_bio_pathogen_pathogen_popper,Cycle — Pathogen Popper,ENGINEER,CYCLE_COMPLET,bio.pathogen.pathogen-popper,30,15,45,RUCHE
+hive_bio_pathogen_pathogen_runner,Cycle — Pathogen Runner,ENGINEER,CYCLE_COMPLET,bio.pathogen.pathogen-runner,30,15,45,RUCHE
+hive_bio_pathogen_protomorph,Cycle — Protomorph,ENGINEER,CYCLE_COMPLET,bio.pathogen.protomorph,30,15,45,RUCHE
+hive_bio_pathogen_trilobite_echo,Cycle — Trilobite Echo,ENGINEER,CYCLE_COMPLET,bio.pathogen.trilobite-echo,30,15,45,RUCHE
+hive_bio_xenomorph_arcology_lurker,Cycle — Arcology Lurker,XENO,CYCLE_COMPLET,bio.xenomorph.arcology-lurker,30,15,45,RUCHE
+hive_bio_xenomorph_atarax_ripper,Cycle — ATARAX Ripper,XENO,CYCLE_COMPLET,bio.xenomorph.atarax-ripper,30,15,45,RUCHE
+hive_bio_xenomorph_big_chap,Cycle — Drone / Big Chap,XENO,CYCLE_COMPLET,bio.xenomorph.big-chap,30,15,45,RUCHE
+hive_bio_xenomorph_boiler,Cycle — Boiler,XENO,CYCLE_COMPLET,bio.xenomorph.boiler,30,15,45,RUCHE
+hive_bio_xenomorph_burster,Cycle — Burster,XENO,CYCLE_COMPLET,bio.xenomorph.burster,30,15,45,RUCHE
+hive_bio_xenomorph_caravan_stalker,Cycle — Caravan Stalker,XENO,CYCLE_COMPLET,bio.xenomorph.caravan-stalker,30,15,45,RUCHE
+hive_bio_xenomorph_carrier,Cycle — Carrier,XENO,CYCLE_COMPLET,bio.xenomorph.carrier,30,15,45,RUCHE
+hive_bio_xenomorph_chestburster,Cycle — Chestburster,XENO,CYCLE_COMPLET,bio.xenomorph.chestburster,30,15,45,RUCHE
+hive_bio_xenomorph_crusher,Cycle — Crusher,XENO,CYCLE_COMPLET,bio.xenomorph.crusher,30,15,45,RUCHE
+hive_bio_xenomorph_drone,Cycle — Drone,XENO,CYCLE_COMPLET,bio.xenomorph.drone,30,15,45,RUCHE
+hive_bio_xenomorph_dust_runner,Cycle — Dust Runner,XENO,CYCLE_COMPLET,bio.xenomorph.dust-runner,30,15,45,RUCHE
+hive_bio_xenomorph_exploder,Cycle — Exploder,XENO,CYCLE_COMPLET,bio.xenomorph.exploder,30,15,45,RUCHE
+hive_bio_xenomorph_facehugger,Cycle — Facehugger,XENO,CYCLE_COMPLET,bio.xenomorph.facehugger,30,15,45,RUCHE
+hive_bio_xenomorph_foundry_crusher,Cycle — Foundry Crusher,XENO,CYCLE_COMPLET,bio.xenomorph.foundry-crusher,30,15,45,RUCHE
+hive_bio_xenomorph_foundry_drone,Cycle — Foundry Drone,XENO,CYCLE_COMPLET,bio.xenomorph.foundry-drone,30,15,45,RUCHE
+hive_bio_xenomorph_k_series_yellow_xenomorph,Cycle — K-Series Yellow Xenomorph,XENO,CYCLE_COMPLET,bio.xenomorph.k-series-yellow-xenomorph,30,15,45,RUCHE
+hive_bio_xenomorph_lurker,Cycle — Lurker,XENO,CYCLE_COMPLET,bio.xenomorph.lurker,30,15,45,RUCHE
+hive_bio_xenomorph_monica_line,Cycle — Monica Line,XENO,CYCLE_COMPLET,bio.xenomorph.monica-line,30,15,45,RUCHE
+hive_bio_xenomorph_neuro_xeno_drone,Cycle — Neuro-Xeno Drone,XENO,CYCLE_COMPLET,bio.xenomorph.neuro-xeno-drone,30,15,45,RUCHE
+hive_bio_xenomorph_ovomorph,Cycle — Ovomorphe,XENO,CYCLE_COMPLET,bio.xenomorph.ovomorph,30,15,45,RUCHE
+hive_bio_xenomorph_pale_crucible_hunter,Cycle — Pale Crucible Hunter,XENO,CYCLE_COMPLET,bio.xenomorph.pale-crucible-hunter,30,15,45,RUCHE
+hive_bio_xenomorph_praetorian,Cycle — Prétorien,XENO,CYCLE_COMPLET,bio.xenomorph.praetorian,30,15,45,RUCHE
+hive_bio_xenomorph_predalien,Cycle — Predalien,HYBRID,CYCLE_COMPLET,bio.xenomorph.predalien,30,15,45,RUCHE
+hive_bio_xenomorph_prowler,Cycle — Prowler,XENO,CYCLE_COMPLET,bio.xenomorph.prowler,30,15,45,RUCHE
+hive_bio_xenomorph_queen,Cycle — Reine Xénomorphe,XENO,CYCLE_COMPLET,bio.xenomorph.queen,30,15,45,RUCHE
+hive_bio_xenomorph_ravager,Cycle — Ravager,XENO,CYCLE_COMPLET,bio.xenomorph.ravager,30,15,45,RUCHE
+hive_bio_xenomorph_red_xenomorph,Cycle — Red Xenomorph,XENO,CYCLE_COMPLET,bio.xenomorph.red-xenomorph,30,15,45,RUCHE
+hive_bio_xenomorph_reef_spitter,Cycle — Reef Spitter,XENO,CYCLE_COMPLET,bio.xenomorph.reef-spitter,30,15,45,RUCHE
+hive_bio_xenomorph_reef_stalker,Cycle — Reef Stalker,XENO,CYCLE_COMPLET,bio.xenomorph.reef-stalker,30,15,45,RUCHE
+hive_bio_xenomorph_ripper_queen,Cycle — Ripper Queen,XENO,CYCLE_COMPLET,bio.xenomorph.ripper-queen,30,15,45,RUCHE
+hive_bio_xenomorph_runner,Cycle — Runner,XENO,CYCLE_COMPLET,bio.xenomorph.runner,30,15,45,RUCHE
+hive_bio_xenomorph_salvage_hive_brute,Cycle — Salvage Hive Brute,XENO,CYCLE_COMPLET,bio.xenomorph.salvage-hive-brute,30,15,45,RUCHE
+hive_bio_xenomorph_siege_royal,Cycle — Siege Royal,HYBRID,CYCLE_COMPLET,bio.xenomorph.siege-royal,30,15,45,RUCHE
+hive_bio_xenomorph_specimen_six_line,Cycle — Specimen Six Line,XENO,CYCLE_COMPLET,bio.xenomorph.specimen-six-line,30,15,45,RUCHE
+hive_bio_xenomorph_spitter,Cycle — Spitter,XENO,CYCLE_COMPLET,bio.xenomorph.spitter,30,15,45,RUCHE
+hive_bio_xenomorph_warden,Cycle — Warden,XENO,CYCLE_COMPLET,bio.xenomorph.warden,30,15,45,RUCHE
+hive_bio_xenomorph_warrior,Cycle — Warrior,XENO,CYCLE_COMPLET,bio.xenomorph.warrior,30,15,45,RUCHE
+hive_bio_xenomorph_xenoborg,Cycle — Xenoborg,XENO,CYCLE_COMPLET,bio.xenomorph.xenoborg,30,15,45,RUCHE
+hive_profile_whw_extended_acm_boiler,Cycle — Boiler — Colonial Marines,XENO,CYCLE_COMPLET,profile.whw.extended.acm-boiler,30,15,45,RUCHE
+hive_profile_whw_extended_acm_crusher,Cycle — Crusher — Colonial Marines,XENO,CYCLE_COMPLET,profile.whw.extended.acm-crusher,30,15,45,RUCHE
+hive_profile_whw_extended_acm_lurker,Cycle — Lurker — Colonial Marines,XENO,CYCLE_COMPLET,profile.whw.extended.acm-lurker,30,15,45,RUCHE
+hive_profile_whw_extended_acm_queen,Cycle — Reine — Colonial Marines,XENO,CYCLE_COMPLET,profile.whw.extended.acm-queen,30,15,45,RUCHE
+hive_profile_whw_extended_acm_raven,Cycle — Raven — Colonial Marines,XENO,CYCLE_COMPLET,profile.whw.extended.acm-raven,30,15,45,RUCHE
+hive_profile_whw_extended_acm_spitter,Cycle — Spitter — Colonial Marines,XENO,CYCLE_COMPLET,profile.whw.extended.acm-spitter,30,15,45,RUCHE
+hive_profile_whw_extended_ari_facehugger,Cycle — Facehugger — Rogue Incursion,XENO,CYCLE_COMPLET,profile.whw.extended.ari-facehugger,30,15,45,RUCHE
+hive_profile_whw_extended_burster,Cycle — Burster — Fireteam Elite,XENO,CYCLE_COMPLET,profile.whw.extended.burster,30,15,45,RUCHE
+hive_profile_whw_extended_covenant_xenomorph,Cycle — Xénomorphe — Alien: Covenant,XENO,CYCLE_COMPLET,profile.whw.extended.covenant-xenomorph,30,15,45,RUCHE
+hive_profile_whw_extended_crusher,Cycle — Crusher — Fireteam Elite,XENO,CYCLE_COMPLET,profile.whw.extended.crusher,30,15,45,RUCHE
+hive_profile_whw_extended_dark_descent_praetorian,Cycle — Prétorien — Dark Descent,XENO,CYCLE_COMPLET,profile.whw.extended.dark-descent-praetorian,30,15,45,RUCHE
+hive_profile_whw_extended_deacon,Cycle — Deacon — Prometheus,ENGINEER,CYCLE_COMPLET,profile.whw.extended.deacon,30,15,45,RUCHE
+hive_profile_whw_extended_fireteam_queen,Cycle — Reine — Fireteam Elite,XENO,CYCLE_COMPLET,profile.whw.extended.fireteam-queen,30,15,45,RUCHE
+hive_profile_whw_extended_fireteam_runner,Cycle — Runner — Fireteam Elite,XENO,CYCLE_COMPLET,profile.whw.extended.fireteam-runner,30,15,45,RUCHE
+hive_profile_whw_extended_kenner_scorpion,Cycle — Scorpion Alien — Kenner / NECA,XENO,CYCLE_COMPLET,profile.whw.extended.kenner-scorpion,30,15,45,RUCHE
+hive_profile_whw_extended_kenner_snake,Cycle — Snake Alien — Kenner / NECA,XENO,CYCLE_COMPLET,profile.whw.extended.kenner-snake,30,15,45,RUCHE
+hive_profile_whw_extended_neomorph,Cycle — Neomorph — Alien: Covenant,ENGINEER,CYCLE_COMPLET,profile.whw.extended.neomorph,30,15,45,RUCHE
+hive_profile_whw_extended_newborn,Cycle — Newborn — Alien Resurrection,HYBRID,CYCLE_COMPLET,profile.whw.extended.newborn,30,15,45,RUCHE
+hive_profile_whw_extended_pathogen_brute,Cycle — Pathogen Brute,ENGINEER,CYCLE_COMPLET,profile.whw.extended.pathogen-brute,30,15,45,RUCHE
+hive_profile_whw_extended_pathogen_runner,Cycle — Pathogen Runner,ENGINEER,CYCLE_COMPLET,profile.whw.extended.pathogen-runner,30,15,45,RUCHE
+hive_profile_whw_extended_praetorian,Cycle — Prétorien — Fireteam Elite,XENO,CYCLE_COMPLET,profile.whw.extended.praetorian,30,15,45,RUCHE
+hive_profile_whw_extended_predalien,Cycle — Predalien — AVP: Requiem,HYBRID,CYCLE_COMPLET,profile.whw.extended.predalien,30,15,45,RUCHE
+hive_profile_whw_extended_prowler,Cycle — Prowler — Fireteam Elite,XENO,CYCLE_COMPLET,profile.whw.extended.prowler,30,15,45,RUCHE
+hive_profile_whw_extended_queen_aliens,Cycle — Reine — Aliens,XENO,CYCLE_COMPLET,profile.whw.extended.queen-aliens,30,15,45,RUCHE
+hive_profile_whw_extended_runner,Cycle — Runner — Alien 3,XENO,CYCLE_COMPLET,profile.whw.extended.runner,30,15,45,RUCHE
+hive_profile_whw_extended_spitter,Cycle — Spitter — Fireteam Elite,XENO,CYCLE_COMPLET,profile.whw.extended.spitter,30,15,45,RUCHE
+hive_ha_bio_runner,Cycle — Runner,XENO,CYCLE_COMPLET,ha.bio.runner,30,15,45,RUCHE
+hive_ha_bio_worker,Cycle — Worker,XENO,CYCLE_COMPLET,ha.bio.worker,30,15,45,RUCHE
+hive_ha_bio_spitter,Cycle — Spitter,XENO,CYCLE_COMPLET,ha.bio.spitter,30,15,45,RUCHE
+hive_ha_bio_praetorian,Cycle — Praetorian,XENO,CYCLE_COMPLET,ha.bio.praetorian,30,15,45,RUCHE
+hive_ha_bio_royal_facehugger,Cycle — Superfacehugger Royal,XENO,CYCLE_COMPLET,ha.bio.royal-facehugger,30,15,45,RUCHE
+hive_ha_bio_prowler,Cycle — Prowler,XENO,CYCLE_COMPLET,ha.bio.prowler,30,15,45,RUCHE
+hive_ha_bio_burster,Cycle — Burster,XENO,CYCLE_COMPLET,ha.bio.burster,30,15,45,RUCHE
+hive_ha_bio_crusher,Cycle — Crusher,XENO,CYCLE_COMPLET,ha.bio.crusher,30,15,45,RUCHE
+hive_ha_bio_palatine,Cycle — Palatine (Garde Royal Suprême),XENO,CYCLE_COMPLET,ha.bio.palatine,30,15,45,RUCHE
+hive_ha_bio_offspring,Cycle — Offspring (Hybride Z-01),HYBRID,CYCLE_COMPLET,ha.bio.offspring,30,15,45,RUCHE
+hive_card_avp_x_queen_mother,Cycle — Queen Mother,XENO,CYCLE_COMPLET,card.avp.x_queen_mother,30,15,45,RUCHE
+hive_card_avp_x_scorched,Cycle — Scorched Xenomorph,XENO,CYCLE_COMPLET,card.avp.x_scorched,30,15,45,RUCHE
+hive_card_avp_x_grid,Cycle — Grid,HYBRID,CYCLE_COMPLET,card.avp.x_grid,30,15,45,RUCHE
+hive_card_avp_x_red,Cycle — Red Xenomorph,XENO,CYCLE_COMPLET,card.avp.x_red,30,15,45,RUCHE
+hive_card_avp_x_gorilla,Cycle — Gorilla Alien,XENO,CYCLE_COMPLET,card.avp.x_gorilla,30,15,45,RUCHE
+hive_card_avp_x_bull,Cycle — Bull Alien,XENO,CYCLE_COMPLET,card.avp.x_bull,30,15,45,RUCHE
+hive_card_avp_x_mantis,Cycle — Mantis Alien,XENO,CYCLE_COMPLET,card.avp.x_mantis,30,15,45,RUCHE
+hive_card_avp_x_snake,Cycle — Snake Alien,XENO,CYCLE_COMPLET,card.avp.x_snake,30,15,45,RUCHE
+hive_card_avp_x_flying_queen,Cycle — Flying Queen,XENO,CYCLE_COMPLET,card.avp.x_flying_queen,30,15,45,RUCHE
+hive_card_avp_x_stalker,Cycle — Stalker,XENO,CYCLE_COMPLET,card.avp.x_stalker,30,15,45,RUCHE
+hive_card_avp_x_path_stalker,Cycle — Pathogen Stalker,ENGINEER,CYCLE_COMPLET,card.avp.x_path_stalker,30,15,45,RUCHE
+hive_card_avp_x_path_queen,Cycle — Pathogen Queen,ENGINEER,CYCLE_COMPLET,card.avp.x_path_queen,30,15,45,RUCHE
+hive_card_avp_x_siren,Cycle — Siren,XENO,CYCLE_COMPLET,card.avp.x_siren,30,15,45,RUCHE
+hive_card_avp_h_newborn,Cycle — Newborn,HYBRID,CYCLE_COMPLET,card.avp.h_newborn,30,15,45,RUCHE
+hive_card_avp_h_white_hybrid,Cycle — White Hybrid,HYBRID,CYCLE_COMPLET,card.avp.h_white_hybrid,30,15,45,RUCHE
+hive_card_avp_h_alien_king,Cycle — King Alien,HYBRID,CYCLE_COMPLET,card.avp.h_alien_king,30,15,45,RUCHE
+hive_card_avp_e_hammerpede,Cycle — Hammerpede,ENGINEER,CYCLE_COMPLET,card.avp.e_hammerpede,30,15,45,RUCHE
+hive_card_avp_e_black_goo_mutant,Cycle — Mutant au Pathogène,ENGINEER,CYCLE_COMPLET,card.avp.e_black_goo_mutant,30,15,45,RUCHE
+hive_reproduction_yautja,Ruche — Parasitisme d’un hôte Yautja,XENO,CYCLE_COMPLET,bio.xenomorph.predalien,30,15,45,RUCHE
+hive_reproduction_eggmorph,Ruche — Cocons et eggmorphose,XENO,CYCLE_COMPLET,bio.xenomorph.ovomorph,30,15,45,RUCHE
+hive_reproduction_queen,Ruche — Dynastie et ponte,XENO,CYCLE_COMPLET,bio.xenomorph.queen,30,15,45,RUCHE

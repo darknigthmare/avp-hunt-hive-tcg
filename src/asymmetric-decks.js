@@ -40,7 +40,10 @@ function supportedBy(c,main){
  return true;
 }
 function generate(faction,id,doctrine){
- const random=rng(hash(id)),main={},pool=D.cards.filter(c=>c.faction===faction);
+ // These 38 recipes retain their original pool when later editions are loaded.
+ // Otherwise a new support card can enter an old recipe whose registry and
+ // dependency rules were captured before that card existed.
+ const random=rng(hash(id)),main={},pool=[...registry.values()].filter(c=>c.faction===faction);
  const copies=predicate=>Object.entries(main).reduce((n,[key,q])=>n+(predicate(registry.get(key))?q:0),0);
  const add=(card,quantity)=>{
    if(!card||(main[card.id]||0)+quantity>D.rules.maxCopies)throw Error('Package impossible '+id);

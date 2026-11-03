@@ -1,5 +1,35 @@
 # Changelog
 
+## 2026-11-03 — Édition 1.4 : arsenaux, cycles et Collection détaillée
+
+**État courant : 2 021 cartes, 659 recettes, 32 505 positions principales/de réserve et 24 boosters.** Ajout de **1 130 cartes** (985 Arsenal + 145 cycles), **341 recettes** (233 arsenaux + 108 cycles) et cinq boosters. Les 891 cartes précédentes, leurs identifiants, les trois départs historiques et les sept raretés sont préservés exactement.
+
+### Arsenaux et cycles jouables
+
+- Couverture des 134 armes et 113 équipements historiques humains/Yautja ; 233 références concrètes intégrées avec variantes de gameplay, ressources et modules associés. Huit alias documentaires déjà couverts sont séparés des 121 recherches non admises.
+- Ajout de 127 armes, 87 appareils, 191 munitions, 344 modules, sept réserves plasma et 229 techniques, opérations ou consommables. Compatibilités explicites par arme ou appareil ; aucune cartouche imposée à la mêlée, aux appareils ou aux projectiles réutilisables.
+- Services conditionnés à l’appareil installé ; modules d’appareil distincts des modules d’arme ; plasma, tirs de filet et manœuvres de mêlée résolus par le moteur et conservés dans les sauvegardes.
+- Couverture biologique de 105 sujets et 123 routes : 109 nouvelles recettes `HIVE_ROUTE` et 14 routes historiques. Matériaux, hôtes secondaires, catalyseurs, résultat disponible, biomasse et emplacement sont vérifiés avant la transformation.
+- Préservation des copies supplémentaires nécessaires aux reproductions après consommation du premier Œuf ; IA conservant les places utiles aux matériaux de cycle.
+- Decks et remélanges avec toutes leurs ressources ; 30 cartes principales et 15 alternatives pour chaque nouvelle recette. Nouveaux boosters Arsenal humain/Yautja et cycles Xénomorphes/Ingénieurs/Hybrides.
+- Validation des munitions selon la faction du porteur, y compris ses affiliations supplémentaires, et contrôle des modules d’appareil dans les reprises. Pool des 38 anciennes doctrines figé pour préserver leur remélange historique.
+
+### Collection et catalogue
+
+- Trois vues de Collection : **Cartes**, **Progression**, **Par type de deck**. Possédées sur le total, exemplaires, doublons, jeux de trois cartes, filtres et tris par type, gamme, faction, extension et rareté.
+- Progression des recettes en quantités exactes ; principal et réserve additionnés lorsqu’elle est incluse, cartes manquantes et coût de fabrication affichés. Création du principal depuis les cartes déjà possédées, sans attribution gratuite d’un manque.
+- Navigation entre cartes et ressources compatibles, modules, opérations, matériaux et résultats d’évolution ; export JSON de l’inventaire.
+- Classeur courant `AVP_HUNT_HIVE_TCG_Catalogue_Complet.xlsx` : **32 onglets et 54 règles**, tables de couverture Arsenal/Ruche/domaines et index des 659 recettes. Les relations détaillées sont comptées depuis le moteur lors de l’export.
+- Chargement commun par `runtime-modules.json`, synchronisation `sync-complete-content.mjs`, tests et QA complète ; couverture des 17 classes de cartes, dont 43 véhicules pilotés.
+
+### Portée et preuves
+
+Les règles sont des adaptations TCG, avec provenance et limites documentaires explicites ; les profils de projet, concepts, variantes d’œuvres et recherches non admises restent identifiables. Aucune illustration nouvelle n’est ajoutée.
+
+Finalisation du 3 novembre : filtres de progression Collection réinitialisés correctement, création des decks limitée aux cartes possédées et Codex aligné sur les 652 références fusionnées d’Alien_base. Les techniques perforantes conservent désormais Perforation pendant leur dernière charge ; deux régressions couvrent ce tir et la mort acide du porteur sans double défausse.
+
+Validation locale : **291 tests réussis, 715 duels terminés, 18 596 reprises et 4 908 continuations déterministes**. Le build contient 203 fichiers publics et 27 éléments critiques du shell. Les validations de cette édition sont consignées dans `reports/qa/complete-2026-11-03.json` et `reports/qa/workbook-validation-2026-11-03.json`, ainsi que dans les contrôles de la révision proposée. Cette entrée ne préjuge pas de la fusion ni du déploiement. Le périmètre détaillé est décrit dans [l’audit de complétude](content-plan/COMPLETENESS_AUDIT_2026-11-03.md). Les résultats des lots antérieurs ci-dessous restent historiques.
+
 ## 2026-11-03 — Réconciliation du Codex et du gameplay pour la PR #4
 
 - Réunion du Codex Alien_base intégré dans `main` et du catalogue asymétrique : **891 cartes, 318 recettes et 19 boosters**, avec les 158 liens documentaires historiques conservés.

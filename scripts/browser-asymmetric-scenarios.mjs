@@ -18,6 +18,9 @@ export async function asymmetricBrowserScenarios(){
   document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
   assert(!document.getElementById('app').inert,'Onboarding releases the playable interface');
   A.state.screen='decks';A.render();
+  assert(E.CARD.size===D.cards.length&&D.cards.every(c=>E.CARD.has(c.id)),'Every live catalogue card is registered in the engine');
+  const presetOptions=Array.from(document.querySelectorAll('#expansion-deck-preset option'),option=>option.value);
+  assert(presetOptions.length===D.expansionDecks.length&&D.expansionDecks.every(p=>presetOptions.includes(p.id)),'Every live recipe is offered by the deck selector');
   for(const faction of ['HUMAN','XENO','YAUTJA']){
     const preset=D.asymmetricDecks.find(p=>p.faction===faction);
     document.querySelector('#expansion-deck-preset').value=preset.id;
@@ -31,8 +34,22 @@ export async function asymmetricBrowserScenarios(){
     assert((E.analyzeDeck(imported.cards,faction).asymmetric||[]).length===0,'No missing resources in '+faction+' remix');
   }
   assert(A.Store.data.decks.length===6,'Import and remix create separate saved decks');
+  let completeImports=0;
+  for(const group of [D.arsenalDecks,D.hiveDecks]){
+    assert(group?.length>0,'The complete arsenal and hive recipes are loaded');
+    for(const faction of new Set(group.map(p=>p.faction))){
+      const preset=group.find(p=>p.faction===faction);
+      document.querySelector('#expansion-deck-preset').value=preset.id;
+      click('[data-action="import-expansion-deck"]');
+      const imported=A.Store.data.decks.at(-1);
+      assert(E.validateDeck(imported.cards,A.Store.data.collection,faction).valid,'Imported complete recipe '+preset.id);
+      assert(JSON.stringify(imported.cards)===JSON.stringify(preset.cards),'Complete recipe keeps its exact main deck '+preset.id);
+      completeImports++;
+    }
+  }
+  assert(A.Store.data.decks.length===6+completeImports,'Every complete recipe import is saved separately');
   const makeFixture=(faction,configure)=>{
-    const p=D.asymmetricDecks.find(p=>p.faction===faction),enemy=D.asymmetricDecks.find(p=>p.faction!==faction);
+    const p=D.asymmetricDecks.find(p=>p.faction===faction)||D.expansionDecks.find(p=>p.faction===faction),enemy=D.asymmetricDecks.find(p=>p.faction!==faction);
     const b=new E.Battle({playerDeck:p.cards,aiDeck:enemy.cards,seed:71103,difficulty:1});
     for(const side of b.state.sides){side.board=[null,null,null];side.hand=[];side.energy=10;side.maxEnergy=10;}
     configure(b);
@@ -94,6 +111,22 @@ export async function asymmetricBrowserScenarios(){
   play(evolution.id,0);assert(b.side(0).board[0].cardId===evolution.effect.resultCardId,'Hive evolution resolves through UI');
   assert(b.side(0).biomass===2,'Hive biomass costs persist after evolution');
 
+  const origin=get(c=>c.effect?.kind==='HIVE_ROUTE'&&c.effect.biomassGain>0&&!c.effect.secondaryIds.length&&!c.effect.catalystIds.length);
+  assert(Boolean(origin),'A complete source-specific gestation route is present');
+  const route=origin.effect;
+  b=makeFixture(origin.faction,x=>{
+    assert(Boolean(x.summonAt(0,route.materialIds[0],0)),'The route has a fieldable starting material');
+    x.side(0).hand=[origin.id];x.side(0).biomass=route.biomassCost;
+    x.side(0).deck=[route.resultCardId,...x.side(0).deck.filter(id=>id!==route.resultCardId)];
+  });
+  play(origin.id,0);
+  assert(b.side(0).board[0].cardId===route.resultCardId,'HIVE_ROUTE transforms its exact material through the interface');
+  assert(b.side(0).biomass===route.biomassGain,'HIVE_ROUTE applies exact biomass cost and gain');
+  assert(!b.side(0).deck.includes(route.resultCardId)&&b.side(0).discard.includes(route.materialIds[0]),'HIVE_ROUTE consumes the available result and material once');
+  const routeCheckpoint=S.capture(b);
+  click('[data-action="pause-battle"]');click('[data-action="resume-battle"]');
+  assert(JSON.stringify(S.capture(A.state.battleContext.battle))===JSON.stringify(routeCheckpoint),'New gestation routes survive pause and resume');
+
   const hunter=get(c=>c.id.startsWith('MX_')&&c.faction==='YAUTJA'&&c.cardClass==='PERSONNAGE');
   const caster=get(c=>c.cardClass==='ARME'&&c.plasmaPerAttack>0);
   const reserve=get(c=>c.cardClass==='RESERVE_PLASMA'&&c.effect.amount>=caster.plasmaPerAttack);
@@ -116,7 +149,8 @@ export async function asymmetricBrowserScenarios(){
   window.scrollTo(0,0);
   const overflow=document.documentElement.scrollWidth>window.innerWidth+1;
   assert(!overflow,'Battle has no horizontal page overflow');
-  return {passed:true,checks:checks.length,steps:checks,deckImports:6,
-    scenarios:['human-ammo-mod-technique','hive-egg-fusion-evolution','yautja-plasma-honor','pause-resume'],
+  return {passed:true,checks:checks.length,steps:checks,deckImports:6,completeImports,
+    catalogue:{cards:D.cards.length,recipes:D.expansionDecks.length},
+    scenarios:['human-ammo-mod-technique','hive-egg-fusion-evolution','hive-route-gestation','yautja-plasma-honor','pause-resume'],
     viewport:{width:window.innerWidth,height:window.innerHeight},horizontalOverflow:overflow};
 }

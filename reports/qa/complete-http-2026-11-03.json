@@ -1,0 +1,1243 @@
+{
+  "date": "2026-11-03",
+  "publicFiles": 203,
+  "passed": true,
+  "privatePathsDenied": [
+    {
+      "path": "/package.json",
+      "status": 404
+    },
+    {
+      "path": "/AGENTS.md",
+      "status": 404
+    },
+    {
+      "path": "/content-plan/manifest.json",
+      "status": 404
+    },
+    {
+      "path": "/.git/config",
+      "status": 404
+    }
+  ],
+  "results": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes": 2585,
+      "sha256": "6276000e084f5504a6711bc6aa049ec0c49f33c767e4388f5b6937d2e943fe26"
+    },
+    {
+      "path": "manifest.webmanifest",
+      "status": 200,
+      "bytes": 965,
+      "sha256": "bf457fe0fc997c45bc8a1d459267c02799801e6d474b2399157f0899fee48a6f"
+    },
+    {
+      "path": "sw.js",
+      "status": 200,
+      "bytes": 5153,
+      "sha256": "0d8b2a588a4be5d520766e98cac987b5231fd0fb6b97bcc2e92817ed97891d7f"
+    },
+    {
+      "path": "robots.txt",
+      "status": 200,
+      "bytes": 23,
+      "sha256": "16ceb5ee3e0dc13aa9adf31a3ebbe45a1d965b8c2b9f72eaf84e5911e140ed95"
+    },
+    {
+      "path": "assets/styles.css",
+      "status": 200,
+      "bytes": 55131,
+      "sha256": "f568f230963b7a5d801a0f5902f64141b12dbdccc9ce20ad261ce0356bf2151c"
+    },
+    {
+      "path": "assets/icon.svg",
+      "status": 200,
+      "bytes": 1323,
+      "sha256": "eb8da46acb296d11624f7f43d7c1e321102105d7d4d297b61e4b1c74d7c5ace0"
+    },
+    {
+      "path": "assets/icon-192.png",
+      "status": 200,
+      "bytes": 31606,
+      "sha256": "53c4d12742d77a1b7168e7e6d82d6203ded03af12d2293fd9bdf91dd7362ad00"
+    },
+    {
+      "path": "assets/icon-512.png",
+      "status": 200,
+      "bytes": 162817,
+      "sha256": "024de3ed9b16b91e3a930aef09ddc4e3a9ba26b46a32934650d23526be38bb01"
+    },
+    {
+      "path": "assets/icon-maskable-512.png",
+      "status": 200,
+      "bytes": 123081,
+      "sha256": "1366733de827290c09256807634e82bb36836bf8a69460f765c78200516f8424"
+    },
+    {
+      "path": "src/data.js",
+      "status": 200,
+      "bytes": 184240,
+      "sha256": "1f56beb03dcc345a0562891d0abb5de3e3528eb8589667c13dffa3a418d8811e"
+    },
+    {
+      "path": "src/alien-base.js",
+      "status": 200,
+      "bytes": 232531,
+      "sha256": "8026bbc5df77cca6b771eb29ba8afd1a7ca884fbd7fdb161fd01a6bb89853a5b"
+    },
+    {
+      "path": "src/expansion.js",
+      "status": 200,
+      "bytes": 32571,
+      "sha256": "12cfc1aa7c73a7c5d5406d1389d371ff76da0ae0a69d9c96cee4bb7ea7875fda"
+    },
+    {
+      "path": "src/expansion-wave2.js",
+      "status": 200,
+      "bytes": 87923,
+      "sha256": "0332e1d864fe8d596defdf0299aeb49de2dd84346eb4233e70fa7ee615b47392"
+    },
+    {
+      "path": "src/deck-productions.js",
+      "status": 200,
+      "bytes": 11955,
+      "sha256": "1cc8a6dba2a63e19f27a9cad7608a954a4cd40efc2c1d99dc34dd520046aedad"
+    },
+    {
+      "path": "src/asymmetric-cards.js",
+      "status": 200,
+      "bytes": 25665,
+      "sha256": "e8c044419177e89d6776e09b921fb955d564a5a303b31a55d1f4513579520ac8"
+    },
+    {
+      "path": "src/asymmetric-decks.js",
+      "status": 200,
+      "bytes": 10785,
+      "sha256": "ee238d320c2f9040882d762f2aefbbddc16a8b541f4048be4e5b360b795d6cd3"
+    },
+    {
+      "path": "src/arsenal-cards.js",
+      "status": 200,
+      "bytes": 134897,
+      "sha256": "493c88feee7a0265cf91bf0e9f6b509ee2b9ee0785777a843be78f596ee400f3"
+    },
+    {
+      "path": "src/arsenal-decks.js",
+      "status": 200,
+      "bytes": 6781,
+      "sha256": "db23f66163ee1b879769416a685c2fda27d711b4977cf3f1d77ac80bc70002f0"
+    },
+    {
+      "path": "src/hive-cards.js",
+      "status": 200,
+      "bytes": 39661,
+      "sha256": "d3173bbeca0e2301d8a54ea564610dc9c55d2431fa67bbd378d562b4851197a8"
+    },
+    {
+      "path": "src/hive-decks.js",
+      "status": 200,
+      "bytes": 7722,
+      "sha256": "1954e3fcfba12bc8a7735302cbfa984e601807c49911974fc003ac479defaea3"
+    },
+    {
+      "path": "src/art-manifest.js",
+      "status": 200,
+      "bytes": 26999,
+      "sha256": "759b66c0315645ca14adb0d210a75653149502847db90bacd2f73ea96b909020"
+    },
+    {
+      "path": "src/engine.js",
+      "status": 200,
+      "bytes": 75350,
+      "sha256": "2bf7610cf28e6a92fdbce4ea903e4e472f1ef25b10695caccb81aeaef92abf22"
+    },
+    {
+      "path": "src/asymmetric-rules.js",
+      "status": 200,
+      "bytes": 23430,
+      "sha256": "3e1f6abf09635c7b0eb819f03d431d1b1eebd2d3eaa07a4fb1745126be21e129"
+    },
+    {
+      "path": "src/arsenal-rules.js",
+      "status": 200,
+      "bytes": 5828,
+      "sha256": "549acfbd07306055e6eed24183bcfedf3dc9594971c8429a438ef4887b7ad9ea"
+    },
+    {
+      "path": "src/hive-rules.js",
+      "status": 200,
+      "bytes": 7702,
+      "sha256": "cf58ca7991a6453d5d096e507d67bd44c2cfa666191804b6a99de46a713cebbe"
+    },
+    {
+      "path": "src/duel-save.js",
+      "status": 200,
+      "bytes": 9411,
+      "sha256": "9d9b2af2082eb299a228374db864996d41667d851514829eb632406113942d30"
+    },
+    {
+      "path": "src/collection.js",
+      "status": 200,
+      "bytes": 14254,
+      "sha256": "bb21d9311577215c91dc10d7a5ba7dcd0b477883da31a4390370744b5ca1edfc"
+    },
+    {
+      "path": "src/app.js",
+      "status": 200,
+      "bytes": 145461,
+      "sha256": "9ea891504c1a6478e99d3a68291247c20337cf9214abd96c4e7737685468fed5"
+    },
+    {
+      "path": "assets/art/manifest.json",
+      "status": 200,
+      "bytes": 125946,
+      "sha256": "9497cf5a41742f46d3ee5c7c0cbaaddc023b0e9d479e6057b706dd909607d5b9"
+    },
+    {
+      "path": "assets/art/cards/e_black_goo_mutant-v1.webp",
+      "status": 200,
+      "bytes": 103928,
+      "sha256": "2c3e5f5c87cb8bc2826c1c53e56bb8c5ec04b79a97c3b2a85021a231cb3be965"
+    },
+    {
+      "path": "assets/art/cards/e_david-v1.webp",
+      "status": 200,
+      "bytes": 94242,
+      "sha256": "6ee36f83e2613b0304039501995ba0e3f15d889456541b14d04af9a6c2c89939"
+    },
+    {
+      "path": "assets/art/cards/e_engineer-v1.webp",
+      "status": 200,
+      "bytes": 138922,
+      "sha256": "cb5c7fd32f807f05e2fcaa66516e3a19413814f23e9b8884af8de44558e2fe24"
+    },
+    {
+      "path": "assets/art/cards/e_hammerpede-v1.webp",
+      "status": 200,
+      "bytes": 123482,
+      "sha256": "58c027ad22573b7fcfc9328b853d1db50d0fffc5ec4e61bed83b9ea257ea3560"
+    },
+    {
+      "path": "assets/art/cards/e_space_jockey-v1.webp",
+      "status": 200,
+      "bytes": 129614,
+      "sha256": "c9c84d793168791891cbfdb76b047c1a54790b54cbfda438db8219da51afe27a"
+    },
+    {
+      "path": "assets/art/cards/e_trilobite-v1.webp",
+      "status": 200,
+      "bytes": 86718,
+      "sha256": "0bbfb36d893bf26693d976f0ec6b61fe8addaacde63df278aded7933cc7086cd"
+    },
+    {
+      "path": "assets/art/cards/e_walter-v1.webp",
+      "status": 200,
+      "bytes": 60666,
+      "sha256": "e161492e0223e125302b512ac0ab7535b5181183fcaca179dc2597b3d25335a4"
+    },
+    {
+      "path": "assets/art/cards/eq_acid_carapace-v1.webp",
+      "status": 200,
+      "bytes": 120290,
+      "sha256": "4ee8dccdddb0607a3b96fdf22e748d9ecc9e7f1870b795b7763ca665ae02d871"
+    },
+    {
+      "path": "assets/art/cards/eq_ampule-v1.webp",
+      "status": 200,
+      "bytes": 104852,
+      "sha256": "d8be2c8cc8ef5c5fd1d884b0ff24137ba0e17e1e1aa03bac72ee836ed1ee92c2"
+    },
+    {
+      "path": "assets/art/cards/eq_biomask-v1.webp",
+      "status": 200,
+      "bytes": 117296,
+      "sha256": "bd95795d8db9f3744ee0f9be0b19bb7346b8c29282f89e239d71df37a747624c"
+    },
+    {
+      "path": "assets/art/cards/eq_combistick-v1.webp",
+      "status": 200,
+      "bytes": 83770,
+      "sha256": "3bc71799407e6057529a081ebc1aed7cd3878cd25c471ad6363f7a69d08111fa"
+    },
+    {
+      "path": "assets/art/cards/eq_engineer_suit-v1.webp",
+      "status": 200,
+      "bytes": 91294,
+      "sha256": "9dc65fdcae31dee3f4562189a3524ddde9dfbeaf594e2fa1f9f1dacc0c44d9a0"
+    },
+    {
+      "path": "assets/art/cards/eq_falcon_drone-v1.webp",
+      "status": 200,
+      "bytes": 84796,
+      "sha256": "723e38a0f8fcdd0c14c82688aac437d87d9ebb3ca7be961de34f6fd88179ff92"
+    },
+    {
+      "path": "assets/art/cards/eq_flamer-v1.webp",
+      "status": 200,
+      "bytes": 132580,
+      "sha256": "d8c4e18045d1c69205b49e2f74f56fb7002011c78df44a0983b9c8c4c75a677f"
+    },
+    {
+      "path": "assets/art/cards/eq_marine_armor-v1.webp",
+      "status": 200,
+      "bytes": 54568,
+      "sha256": "ea194c999606b184ef7fd106145327f8917c16108820e9cfa01d0b401a2c0635"
+    },
+    {
+      "path": "assets/art/cards/eq_medicomp-v1.webp",
+      "status": 200,
+      "bytes": 105896,
+      "sha256": "6da5ee045358ab1c8ede883354c4031b1035ba8f4b5d89ab38a99a0c1cb9b579"
+    },
+    {
+      "path": "assets/art/cards/eq_motion_tracker-v1.webp",
+      "status": 200,
+      "bytes": 94466,
+      "sha256": "037c6e197d46a42415c5f353a377b2cc780b8b8f741cc6f018f9814aa929e0fd"
+    },
+    {
+      "path": "assets/art/cards/eq_net_gun-v1.webp",
+      "status": 200,
+      "bytes": 108074,
+      "sha256": "9662d41ffa353b8b27de48040e4716cfbae070f98d69f76e3394b248d7d47cec"
+    },
+    {
+      "path": "assets/art/cards/eq_plasmacaster-v1.webp",
+      "status": 200,
+      "bytes": 87040,
+      "sha256": "9fb0cf75fd1c46d6392498d5aa63f3f17d3c14169c993d634a1117728ba63e7d"
+    },
+    {
+      "path": "assets/art/cards/eq_power_loader-v1.webp",
+      "status": 200,
+      "bytes": 109364,
+      "sha256": "f6344121cec67e558468dd6eef0551c20663a92e0edb439982e86e25cbc1ec27"
+    },
+    {
+      "path": "assets/art/cards/eq_pulse_rifle-v1.webp",
+      "status": 200,
+      "bytes": 53460,
+      "sha256": "e5b0de26e6ac8d19d31d7bda27fba3dc72bea684ddb3afbb405a8f59e53f2c73"
+    },
+    {
+      "path": "assets/art/cards/eq_razor_whip-v1.webp",
+      "status": 200,
+      "bytes": 114148,
+      "sha256": "14975293bd7c6d656af8008dace89f9e02a3469445fa3f871b6bf92fa4e92cb6"
+    },
+    {
+      "path": "assets/art/cards/eq_smart_disc-v1.webp",
+      "status": 200,
+      "bytes": 80072,
+      "sha256": "f55dabb4e0c125d056e3c9b90a5fce0df537d6e8e02c339c730fd3a95fb5aef5"
+    },
+    {
+      "path": "assets/art/cards/eq_smartgun-v1.webp",
+      "status": 200,
+      "bytes": 94008,
+      "sha256": "1ba691543028c252d40eee53d031131dd47c755a723e684eb1ec24ff2b2a5655"
+    },
+    {
+      "path": "assets/art/cards/eq_wristblades-v1.webp",
+      "status": 200,
+      "bytes": 100162,
+      "sha256": "d327a607d72e76a81af8f2d66bda52afa3b698eaeb4a4247d02052a1ed95e91e"
+    },
+    {
+      "path": "assets/art/cards/h_alexa-v1.webp",
+      "status": 200,
+      "bytes": 140132,
+      "sha256": "e665a365f08cb8124ab9df76c57a16e55ec14375b1d3aebb7d619fe09970b8c0"
+    },
+    {
+      "path": "assets/art/cards/h_alien_king-v1.webp",
+      "status": 200,
+      "bytes": 122638,
+      "sha256": "974520aed3e6865e67bb5e12e5f460559efb9012336e9d0482c159802211e032"
+    },
+    {
+      "path": "assets/art/cards/h_apone-v1.webp",
+      "status": 200,
+      "bytes": 101408,
+      "sha256": "7baa9a801a672464d20d34c23e00b259fe4feec2a3b2e7c93db0fb79bdc5091d"
+    },
+    {
+      "path": "assets/art/cards/h_ash-v1.webp",
+      "status": 200,
+      "bytes": 53242,
+      "sha256": "37d1266e19b071de82b077c110f465566074f2c79bca6a0983b31b156ce156d7"
+    },
+    {
+      "path": "assets/art/cards/h_bishop-v1.webp",
+      "status": 200,
+      "bytes": 91768,
+      "sha256": "245a6c9f4db5d99ca357e51f8badd82e76d087b67e31cb3657dd08321354d09d"
+    },
+    {
+      "path": "assets/art/cards/h_colonial_marine-v1.webp",
+      "status": 200,
+      "bytes": 81364,
+      "sha256": "256d91f3704bcb601aaded2e9ed1653035181d437b7dbdb96a6aca794c580116"
+    },
+    {
+      "path": "assets/art/cards/h_combat_synth-v1.webp",
+      "status": 200,
+      "bytes": 88314,
+      "sha256": "d9a910f45b021bf75520145087d3fa57c9a3a795cf1e493b6e73d844c4845820"
+    },
+    {
+      "path": "assets/art/cards/h_dallas-v1.webp",
+      "status": 200,
+      "bytes": 71714,
+      "sha256": "013bdebe61a3f51db5816ffb0f815d633eecd34bd82d34bb3a343c8f09799232"
+    },
+    {
+      "path": "assets/art/cards/h_dutch-v1.webp",
+      "status": 200,
+      "bytes": 102450,
+      "sha256": "f8b899679ebba7017cbac0ae9fe7ad1b58189e5e997a22a28d6d7e6b050de229"
+    },
+    {
+      "path": "assets/art/cards/h_harrigan-v1.webp",
+      "status": 200,
+      "bytes": 148118,
+      "sha256": "460e091192c6d39200892e69add07345516a4d752d5f12849a23078ed88d33c3"
+    },
+    {
+      "path": "assets/art/cards/h_hicks-v1.webp",
+      "status": 200,
+      "bytes": 82590,
+      "sha256": "9f469d1d3417ecc3829aaf7399b7562b26171fd870f806dadfcf51e55efed51d"
+    },
+    {
+      "path": "assets/art/cards/h_hudson-v1.webp",
+      "status": 200,
+      "bytes": 97504,
+      "sha256": "3fd3ec60b6a1eeabbf586c5b44be88f1d85a472f7776ae70ab16a61308e8531d"
+    },
+    {
+      "path": "assets/art/cards/h_lambert-v1.webp",
+      "status": 200,
+      "bytes": 67802,
+      "sha256": "02af1253cb025182de8f7eff410385135dadedc8983351df9c518fd7b7debd08"
+    },
+    {
+      "path": "assets/art/cards/h_machiko-v1.webp",
+      "status": 200,
+      "bytes": 80032,
+      "sha256": "adcfaa231bf8db157821cd80c5bb2920ecc34abec871d5bd3e31038bc7278fa9"
+    },
+    {
+      "path": "assets/art/cards/h_naru-v1.webp",
+      "status": 200,
+      "bytes": 107994,
+      "sha256": "c989741427cb54cb7cfd146f16e5ba3a462826e2cfcca41f6fdfac942ae9aead"
+    },
+    {
+      "path": "assets/art/cards/h_newborn-v1.webp",
+      "status": 200,
+      "bytes": 86770,
+      "sha256": "2dc281f587bd0bf46a10cd14713c60001c4ef704ea35aa3ccd1123c5a5230b0f"
+    },
+    {
+      "path": "assets/art/cards/h_newt-v1.webp",
+      "status": 200,
+      "bytes": 71526,
+      "sha256": "30ef883493c321b2523c654a300a75833d01aa058db2f576f23189673db067d6"
+    },
+    {
+      "path": "assets/art/cards/h_parker-v1.webp",
+      "status": 200,
+      "bytes": 105812,
+      "sha256": "2f22e0841103a344f9cc36cff08d567b8563b8b2313f07d26db49cd3ffa05fb8"
+    },
+    {
+      "path": "assets/art/cards/h_powerloader_ripley-v1.webp",
+      "status": 200,
+      "bytes": 103976,
+      "sha256": "e8f37a6f12c1b5d3378d3b5e1eeca408b069cec162f3c8bdf129c2b26a860cdf"
+    },
+    {
+      "path": "assets/art/cards/h_predalien-v1.webp",
+      "status": 200,
+      "bytes": 141024,
+      "sha256": "62e1e069a86e43f9e1795722f428e3162b2212db5b0106d924754d6956f29f3f"
+    },
+    {
+      "path": "assets/art/cards/h_ripley-v1.webp",
+      "status": 200,
+      "bytes": 70752,
+      "sha256": "892c1b9c6e9bc4df63bd39d4fc5d8529acc482530b97ad19df30c93c1c217414"
+    },
+    {
+      "path": "assets/art/cards/h_ripley8-v1.webp",
+      "status": 200,
+      "bytes": 76244,
+      "sha256": "f875c0afe9955ac609eb8fbd98fa6cc7450a6871590f7ae3c28aa123e2dad022"
+    },
+    {
+      "path": "assets/art/cards/h_royce-v1.webp",
+      "status": 200,
+      "bytes": 110684,
+      "sha256": "33435fdf9be0483592468141db970ef0dc7f7da2c0e7ebc87a3c46a09c2748a8"
+    },
+    {
+      "path": "assets/art/cards/h_smartgunner-v1.webp",
+      "status": 200,
+      "bytes": 78150,
+      "sha256": "df23ac76e8a673e90c7e421bec835c83ef4ac8386e87bff41d9743e24d5be4f6"
+    },
+    {
+      "path": "assets/art/cards/h_vasquez-v1.webp",
+      "status": 200,
+      "bytes": 84236,
+      "sha256": "1e6aed85da84a6753d2ea2b8a00543cd1069bbddbf48138b0338a58c6d89a4dd"
+    },
+    {
+      "path": "assets/art/cards/h_weyland_op-v1.webp",
+      "status": 200,
+      "bytes": 47662,
+      "sha256": "06fc4a8bda56c9301201a279f9c7928e7e53711cad963345bb45f939e49951fb"
+    },
+    {
+      "path": "assets/art/cards/h_white_hybrid-v1.webp",
+      "status": 200,
+      "bytes": 122520,
+      "sha256": "abcb2b54e971efe5898e05999e9f6538d2524c6a651605e9fc8de7a865fa0922"
+    },
+    {
+      "path": "assets/art/cards/h_working_joe-v1.webp",
+      "status": 200,
+      "bytes": 67030,
+      "sha256": "a1da8d1d390ba1e7c69676c1b361a16d88d788caa30cfcb00c9499638fad02b4"
+    },
+    {
+      "path": "assets/art/cards/l_auriga-v1.webp",
+      "status": 200,
+      "bytes": 123794,
+      "sha256": "1ba159bc932579ec04955a1ed75a4ffb6d7154d5ba37985dc3253fddb7276e60"
+    },
+    {
+      "path": "assets/art/cards/l_bouvet-v1.webp",
+      "status": 200,
+      "bytes": 98018,
+      "sha256": "b89963f2204ef2e41885723fa6b70655bfeb070f63f5b72448aa81c030cb25d2"
+    },
+    {
+      "path": "assets/art/cards/l_derelict-v1.webp",
+      "status": 200,
+      "bytes": 98776,
+      "sha256": "c33493101a7ceaf190605bedf6ebabe763d564ae77889b27175eefc8c1554df6"
+    },
+    {
+      "path": "assets/art/cards/l_fiorina-v1.webp",
+      "status": 200,
+      "bytes": 97342,
+      "sha256": "c021ea902364cb830c87edb74fa20fa670ae6123a265b1dcb5e343030ad6a884"
+    },
+    {
+      "path": "assets/art/cards/l_gunnison-v1.webp",
+      "status": 200,
+      "bytes": 95764,
+      "sha256": "d28191609aac3fd313b0195a010d3d61c0f05f571ca42d1cece33ccc1ec54e23"
+    },
+    {
+      "path": "assets/art/cards/l_hadleys_hope-v1.webp",
+      "status": 200,
+      "bytes": 86454,
+      "sha256": "ee2238f9e05cb12b0d82b40d43d1670bdfb722ca5869b7b9e9bb020d09ba3866"
+    },
+    {
+      "path": "assets/art/cards/l_juggernaut-v1.webp",
+      "status": 200,
+      "bytes": 68974,
+      "sha256": "8f040a484aa5995e5a40cb3b834cdff37ab212850f4f093f451285055aa994dc"
+    },
+    {
+      "path": "assets/art/cards/l_la1997-v1.webp",
+      "status": 200,
+      "bytes": 95380,
+      "sha256": "bbf17e3d986ee4a976f729f6164895379a6e8c8f04ebcc117b1e33eb2a05f56b"
+    },
+    {
+      "path": "assets/art/cards/l_nostromo-v1.webp",
+      "status": 200,
+      "bytes": 81336,
+      "sha256": "365854092936842a1250710aa70a4e1c4fa1394e09b10c9d011add929098ab8d"
+    },
+    {
+      "path": "assets/art/cards/l_preserve-v1.webp",
+      "status": 200,
+      "bytes": 107996,
+      "sha256": "36d7a20b5d7b59f126c9e9f6e44e2a52080fc17ff3db137a8bcdc86bd9af16fb"
+    },
+    {
+      "path": "assets/art/cards/l_processor-v1.webp",
+      "status": 200,
+      "bytes": 83292,
+      "sha256": "10c0c80b862703557203e2c65a93065480439c2d5221ee0aac0b1678720ce1dc"
+    },
+    {
+      "path": "assets/art/cards/l_proto_lab-v1.webp",
+      "status": 200,
+      "bytes": 111068,
+      "sha256": "f2b36eb18b07898159064d7c1fa75fdbe0f0aa0873b07339c201d4490316efb4"
+    },
+    {
+      "path": "assets/art/cards/l_sevastopol-v1.webp",
+      "status": 200,
+      "bytes": 80254,
+      "sha256": "8b78109bc98d0d4f1d03e1c6735185de89c1acff595bcfb5df733b9b6390700e"
+    },
+    {
+      "path": "assets/art/cards/l_sulaco-v1.webp",
+      "status": 200,
+      "bytes": 102952,
+      "sha256": "5dbdcd3ba4172cc626c2009dd30e87cf6bbdb7e3066e27d651195864ea6e4d29"
+    },
+    {
+      "path": "assets/art/cards/l_val_verde-v1.webp",
+      "status": 200,
+      "bytes": 73904,
+      "sha256": "d34c95df95e583a38dc78bc4c4b4c1b573dd57af0b3c72a45c38383fa699bdc9"
+    },
+    {
+      "path": "assets/art/cards/l_xeno_hive-v1.webp",
+      "status": 200,
+      "bytes": 76686,
+      "sha256": "6a9373d7980125cd73eebb33449a797eaa5a0d374c8eeda59f5dd3f6642003f6"
+    },
+    {
+      "path": "assets/art/cards/l_yautja_ship-v1.webp",
+      "status": 200,
+      "bytes": 59258,
+      "sha256": "a0f1c9cf755a6505d40154175fb198c619180633fe31fa1a6891667fb457c9b3"
+    },
+    {
+      "path": "assets/art/cards/t_avp_3ww-v1.webp",
+      "status": 200,
+      "bytes": 129712,
+      "sha256": "66e09b88bbb7719e0b81ab7f1a8cd46a4d82e3eb41e04db843687b885901a943"
+    },
+    {
+      "path": "assets/art/cards/t_avp_alliance-v1.webp",
+      "status": 200,
+      "bytes": 101756,
+      "sha256": "13cb6290810e6ba94464a5f038ffc15f6aa30a496e0733968570b7d7c2411143"
+    },
+    {
+      "path": "assets/art/cards/t_avp_hybridize-v1.webp",
+      "status": 200,
+      "bytes": 112254,
+      "sha256": "863f6cfa95bd941f3059611d4c84d2adf5f3259617da4940c9a61ab4da4e1162"
+    },
+    {
+      "path": "assets/art/cards/t_avp_whoever-v1.webp",
+      "status": 200,
+      "bytes": 109490,
+      "sha256": "6be587094fe665cd843c80995a875b55a03de11e3fa77a4ae099d1b4e4dd14e6"
+    },
+    {
+      "path": "assets/art/cards/t_e_black_goo-v1.webp",
+      "status": 200,
+      "bytes": 98140,
+      "sha256": "0c4aa00c4cea16f7f39061628c1d2f1808570ccb78e4279da937dde10d94ba4a"
+    },
+    {
+      "path": "assets/art/cards/t_e_creation-v1.webp",
+      "status": 200,
+      "bytes": 81408,
+      "sha256": "5a602f1410b793cea849993e5d470e5d1eb997153f88d6f1127d4016918e53f8"
+    },
+    {
+      "path": "assets/art/cards/t_e_orrery-v1.webp",
+      "status": 200,
+      "bytes": 103548,
+      "sha256": "1f37a34651527714ee6e835dee640e1704f11f3e891a92a5f17d517a402777c7"
+    },
+    {
+      "path": "assets/art/cards/t_e_sacrifice-v1.webp",
+      "status": 200,
+      "bytes": 86794,
+      "sha256": "0914fc51723d2be177769e0a59d024ea99bc05353b41cb2114d689737dd29c73"
+    },
+    {
+      "path": "assets/art/cards/t_h_evac-v1.webp",
+      "status": 200,
+      "bytes": 69986,
+      "sha256": "1d44794ec0680c32b5741a0318bd6ef7390048e92d63d8d00d89ced6eb650b15"
+    },
+    {
+      "path": "assets/art/cards/t_h_fireteam-v1.webp",
+      "status": 200,
+      "bytes": 89506,
+      "sha256": "7ff6eabff44f2b86903ccf4b34d7020c20ff04ab51a139e9f1846c63121e48e5"
+    },
+    {
+      "path": "assets/art/cards/t_h_flamer-v1.webp",
+      "status": 200,
+      "bytes": 130940,
+      "sha256": "ac2c2dfb21ffa895a1df4c7c50d0879c254ea91c15d9d91e6a32160e330459d0"
+    },
+    {
+      "path": "assets/art/cards/t_h_frosty-v1.webp",
+      "status": 200,
+      "bytes": 95690,
+      "sha256": "dcece4b361bb6a692d25418a566c84d32993b1f6a3b3d0f9fc3d893a0ee5d9bb"
+    },
+    {
+      "path": "assets/art/cards/t_h_motion-v1.webp",
+      "status": 200,
+      "bytes": 75696,
+      "sha256": "7a414d7957979d0485983286a08b0309dce19d95bf7c6434660a52d88198bd3e"
+    },
+    {
+      "path": "assets/art/cards/t_h_nuke-v1.webp",
+      "status": 200,
+      "bytes": 104302,
+      "sha256": "836cf5cdc1f6a3c4260d2452526586b0f16a42d82254fe961c0bf7efdace8900"
+    },
+    {
+      "path": "assets/art/cards/t_h_quarantine-v1.webp",
+      "status": 200,
+      "bytes": 48138,
+      "sha256": "80f78de37fa5f14bbe5b5b00773479a8fec74d2773792a1b6f1c059896bd00e5"
+    },
+    {
+      "path": "assets/art/cards/t_h_seal_door-v1.webp",
+      "status": 200,
+      "bytes": 78476,
+      "sha256": "18d34065c40b892bdfd0319f310ba9abd21ce5b461039229c2080060a54cd28e"
+    },
+    {
+      "path": "assets/art/cards/t_x_acid_blood-v1.webp",
+      "status": 200,
+      "bytes": 92824,
+      "sha256": "616cc2b1b0f188ab43f60bd21b814303b9127f90fcf19d400bd46b158d7cdf5f"
+    },
+    {
+      "path": "assets/art/cards/t_x_cut_power-v1.webp",
+      "status": 200,
+      "bytes": 60910,
+      "sha256": "1501334c778e9fd99374a00ec5df37d52660d7eae2fd206963c4f3f15ae61826"
+    },
+    {
+      "path": "assets/art/cards/t_x_eggmorph-v1.webp",
+      "status": 200,
+      "bytes": 95148,
+      "sha256": "5c7f652b9f1e0cd53636df1a48f30ba914812b70c5492ae072362f5ff67d3f8a"
+    },
+    {
+      "path": "assets/art/cards/t_x_perfect-v1.webp",
+      "status": 200,
+      "bytes": 100594,
+      "sha256": "37c9d066896941a4897a2ec053201688f85a5eae7e4f7931d25c85c1733c8c70"
+    },
+    {
+      "path": "assets/art/cards/t_x_resin-v1.webp",
+      "status": 200,
+      "bytes": 110138,
+      "sha256": "2d774839a7009cf4a3de3ad133456f601d8fe6a39d9d6a2356ec2bc5de9c02ea"
+    },
+    {
+      "path": "assets/art/cards/t_x_royal_jelly-v1.webp",
+      "status": 200,
+      "bytes": 119262,
+      "sha256": "19d3f15deb887e080733ce3199d391926a3f655685e54e3d1ca26f33575a57bf"
+    },
+    {
+      "path": "assets/art/cards/t_x_swarm-v1.webp",
+      "status": 200,
+      "bytes": 80534,
+      "sha256": "49f667c4d467c362a0a7bd7b043e46334250fcb924fc8058963b68f91da52c4f"
+    },
+    {
+      "path": "assets/art/cards/t_x_vent_ambush-v1.webp",
+      "status": 200,
+      "bytes": 82996,
+      "sha256": "0e3af0378f3262021d5fc88a18f0fd7be0c45aeb1ebbd56cf75dfa6ed0924c00"
+    },
+    {
+      "path": "assets/art/cards/t_y_blooding-v1.webp",
+      "status": 200,
+      "bytes": 90106,
+      "sha256": "6c177fe9358178c60b9c6f0b10317529f7596869397bc9963d4761218241dcb1"
+    },
+    {
+      "path": "assets/art/cards/t_y_challenge-v1.webp",
+      "status": 200,
+      "bytes": 95672,
+      "sha256": "14020f2c43fd8f3a554ae971a3cf82f940430f179d7378fa9d3cd02d95c1f89c"
+    },
+    {
+      "path": "assets/art/cards/t_y_claim_trophy-v1.webp",
+      "status": 200,
+      "bytes": 83168,
+      "sha256": "e731effd7f1bd8ffef8589cee213ed220dd412fefd1f4619da5644f5efd7073b"
+    },
+    {
+      "path": "assets/art/cards/t_y_cloak-v1.webp",
+      "status": 200,
+      "bytes": 97338,
+      "sha256": "44a8d924a68bde008efa5a35f820cfd2ae95b89d96d114297b624b79aa4129cd"
+    },
+    {
+      "path": "assets/art/cards/t_y_hunt_code-v1.webp",
+      "status": 200,
+      "bytes": 94218,
+      "sha256": "1d3ee40e2a7b7c4be206c3973705f5388c91245859c449628cdc9f05ad07f20a"
+    },
+    {
+      "path": "assets/art/cards/t_y_net_trap-v1.webp",
+      "status": 200,
+      "bytes": 120366,
+      "sha256": "2957011ccfe8395de49bded6bc96f9fca1755a19a82ffe50f2b9a35de24723c1"
+    },
+    {
+      "path": "assets/art/cards/t_y_self_destruct-v1.webp",
+      "status": 200,
+      "bytes": 85808,
+      "sha256": "a0c508fc6a003845f8b67bc68c7093538b146111fd9097951a7d317f5d7fd8ed"
+    },
+    {
+      "path": "assets/art/cards/t_y_thermal-v1.webp",
+      "status": 200,
+      "bytes": 94974,
+      "sha256": "c4453ce40341a2adcfbd7e9640995a64c002af48e20b162cb39a31b2fedefb77"
+    },
+    {
+      "path": "assets/art/cards/x_big_chap-v1.webp",
+      "status": 200,
+      "bytes": 71078,
+      "sha256": "76b0da312615b9822b2d8bde1cfc76434de3f6a8f71556b1ab8ac0dee7779de8"
+    },
+    {
+      "path": "assets/art/cards/x_bull-v1.webp",
+      "status": 200,
+      "bytes": 133306,
+      "sha256": "4fd1f8346fbbbe054241ef74f557f295676259b7d40a5753d26a2ad52b542c98"
+    },
+    {
+      "path": "assets/art/cards/x_chestburster-v1.webp",
+      "status": 200,
+      "bytes": 66354,
+      "sha256": "dc3c0362e136923ff8e6d06f8924859b88d9b0878effce513ca577d9a6b39ffe"
+    },
+    {
+      "path": "assets/art/cards/x_deacon-v1.webp",
+      "status": 200,
+      "bytes": 126860,
+      "sha256": "77520ae6fa5866635f5e434fa874b0789d49f2cd0bbd7cdad393ae536524f379"
+    },
+    {
+      "path": "assets/art/cards/x_drone-v1.webp",
+      "status": 200,
+      "bytes": 114652,
+      "sha256": "3d70ad925148d88926dde928cd8c1848e203d3f832e1094aba35edcd522f944d"
+    },
+    {
+      "path": "assets/art/cards/x_facehugger-v1.webp",
+      "status": 200,
+      "bytes": 86442,
+      "sha256": "260ffc706f7482cbf1645be2c260675a0b066f31c3ccbd81f67cc6c8316574a1"
+    },
+    {
+      "path": "assets/art/cards/x_flying_queen-v1.webp",
+      "status": 200,
+      "bytes": 110476,
+      "sha256": "4981d40c4f44553e6a875e19ecf320d75a5886e2061f9cf107f7d28def351bd8"
+    },
+    {
+      "path": "assets/art/cards/x_gorilla-v1.webp",
+      "status": 200,
+      "bytes": 89796,
+      "sha256": "6b2a2afc2c673daa264fcf5effbca761bcf17c8012d5c110226fb180ec4882ec"
+    },
+    {
+      "path": "assets/art/cards/x_grid-v1.webp",
+      "status": 200,
+      "bytes": 134646,
+      "sha256": "f174946c22f99a3413d041d36f4518c71321c40b3c95bf37ff584f2b9089efcc"
+    },
+    {
+      "path": "assets/art/cards/x_mantis-v1.webp",
+      "status": 200,
+      "bytes": 108530,
+      "sha256": "8e39b4a59ebd32f248b4ccb5181f8e804029282351f29a5dc4972fab6643d4b6"
+    },
+    {
+      "path": "assets/art/cards/x_neomorph-v1.webp",
+      "status": 200,
+      "bytes": 91848,
+      "sha256": "130d0ffa9a6dedaba04ba7892c58e9b64be987f25ee9ccecdb5bbe0f9d5fc60a"
+    },
+    {
+      "path": "assets/art/cards/x_ovomorph-v1.webp",
+      "status": 200,
+      "bytes": 89868,
+      "sha256": "09ecb50badcdf41e92bf8281310668a81e94883d74cb6b83af6cb137ef1f40aa"
+    },
+    {
+      "path": "assets/art/cards/x_path_brute-v1.webp",
+      "status": 200,
+      "bytes": 92524,
+      "sha256": "b95b8c94ba6f377665047fe732e90b710d1508118806fa4ce22f5dfe9bdc2029"
+    },
+    {
+      "path": "assets/art/cards/x_path_queen-v1.webp",
+      "status": 200,
+      "bytes": 123556,
+      "sha256": "746d1e67a78b04e090f4cd82e3700616383625433a283027460dae842dc150c9"
+    },
+    {
+      "path": "assets/art/cards/x_path_stalker-v1.webp",
+      "status": 200,
+      "bytes": 80920,
+      "sha256": "320b6ce61d92ae2a7c52fef0e92c1ab42dcd52f3fdd9b3cef0450af37b1acca7"
+    },
+    {
+      "path": "assets/art/cards/x_popper-v1.webp",
+      "status": 200,
+      "bytes": 63108,
+      "sha256": "210e8c12ed37607f855d9f56112cb817f4f388678c6e8be8ca3b1ffac4e91438"
+    },
+    {
+      "path": "assets/art/cards/x_praetorian-v1.webp",
+      "status": 200,
+      "bytes": 98630,
+      "sha256": "5bae06e817cb250b2161db62932f902405808d9d5e20490be42d402edd04db9b"
+    },
+    {
+      "path": "assets/art/cards/x_queen-v1.webp",
+      "status": 200,
+      "bytes": 115222,
+      "sha256": "b6ea96c5c43a75232e809b32127fc8cb9f03a1970fac1511e7cc922639582f66"
+    },
+    {
+      "path": "assets/art/cards/x_queen_mother-v1.webp",
+      "status": 200,
+      "bytes": 153524,
+      "sha256": "70b1b7541f88a3216c52a27d0ea8101ee621ffb1b91aafc17884633ae4be8af5"
+    },
+    {
+      "path": "assets/art/cards/x_red-v1.webp",
+      "status": 200,
+      "bytes": 130138,
+      "sha256": "e64a2a8105d12eb3b68525f4da3ca746070bbc2d3b4e5b740c54f05fbe750841"
+    },
+    {
+      "path": "assets/art/cards/x_runner-v1.webp",
+      "status": 200,
+      "bytes": 106856,
+      "sha256": "94c2f431987c2e1c8c3eee0c5d1a652c79c5eabe065f9a459b6de103a8e73e5d"
+    },
+    {
+      "path": "assets/art/cards/x_scorched-v1.webp",
+      "status": 200,
+      "bytes": 148314,
+      "sha256": "4ff59bf959ad2e915c97e1860e6bb184d69a46bafaaaa8c6b2c95425dbdf1381"
+    },
+    {
+      "path": "assets/art/cards/x_siren-v1.webp",
+      "status": 200,
+      "bytes": 106080,
+      "sha256": "6634ff8416593370f712ce0a8898cdbcbb4e6cc263def1a19ee355d1aba85cb5"
+    },
+    {
+      "path": "assets/art/cards/x_snake-v1.webp",
+      "status": 200,
+      "bytes": 127314,
+      "sha256": "49a33b7f54dfa81eff4a775315659b4e422f9970465731e0998c4655da42da08"
+    },
+    {
+      "path": "assets/art/cards/x_spitter-v1.webp",
+      "status": 200,
+      "bytes": 118786,
+      "sha256": "80c8e9f2a248020bdffa341dc6afef13fe672f71ff5763baa4f363d422a9fc7a"
+    },
+    {
+      "path": "assets/art/cards/x_stalker-v1.webp",
+      "status": 200,
+      "bytes": 32468,
+      "sha256": "96fb6082bf4456805f86026b5f01b8935abe3bca37d58d507d27f0e983e8ee52"
+    },
+    {
+      "path": "assets/art/cards/x_warden-v1.webp",
+      "status": 200,
+      "bytes": 100730,
+      "sha256": "421d5a7527732fdb4150276019f69efd783a6de68b6231da290e500ce6c65a9c"
+    },
+    {
+      "path": "assets/art/cards/x_warrior-v1.webp",
+      "status": 200,
+      "bytes": 107178,
+      "sha256": "9e85020c042f68e922b28ca0a6b7eecb9c6ea2f4ae5b549966a012663daa62de"
+    },
+    {
+      "path": "assets/art/cards/y_ahab-v1.webp",
+      "status": 200,
+      "bytes": 84888,
+      "sha256": "aebc1b4ba1caf541d3481a2c274b075128c13549fd850c34fb36f0222644be81"
+    },
+    {
+      "path": "assets/art/cards/y_ancient-v1.webp",
+      "status": 200,
+      "bytes": 145168,
+      "sha256": "1e319514ae7f842fc9bf848597500ffeab351df3cee26168dc6eedb91c1a34e6"
+    },
+    {
+      "path": "assets/art/cards/y_bad_blood-v1.webp",
+      "status": 200,
+      "bytes": 113168,
+      "sha256": "ad9b96071245ea1e5e2f199c20d731b834782a7427257e149bc3ec51985c2674"
+    },
+    {
+      "path": "assets/art/cards/y_berserker-v1.webp",
+      "status": 200,
+      "bytes": 129796,
+      "sha256": "ba2c434d40a8bed6933e58e155afa0cad2f2005bd26dcdb340921afa2bfbdaed"
+    },
+    {
+      "path": "assets/art/cards/y_celtic-v1.webp",
+      "status": 200,
+      "bytes": 155890,
+      "sha256": "28d322defd0244acf0f4d1994d080ebd617791fbd9c491adefc70b7f05d1b934"
+    },
+    {
+      "path": "assets/art/cards/y_chopper-v1.webp",
+      "status": 200,
+      "bytes": 162768,
+      "sha256": "56c219a4017dd81f716d55df76d7f30f08bdf6414e26d24b66ed28a454409020"
+    },
+    {
+      "path": "assets/art/cards/y_city_hunter-v1.webp",
+      "status": 200,
+      "bytes": 144724,
+      "sha256": "bb769a63302fb2292a361b3d8b0c718c16e87c9bc143d2b56324e565f1dc966b"
+    },
+    {
+      "path": "assets/art/cards/y_clan_leader-v1.webp",
+      "status": 200,
+      "bytes": 125450,
+      "sha256": "89c248f8d0fe05a856706501b145bd8aaa64dde5d4971d4b94b77bf236816c15"
+    },
+    {
+      "path": "assets/art/cards/y_elder-v1.webp",
+      "status": 200,
+      "bytes": 106468,
+      "sha256": "49c0eada860936ccbbc5f1a4078947c4568532b0591460cbe8785e49058fd535"
+    },
+    {
+      "path": "assets/art/cards/y_elite-v1.webp",
+      "status": 200,
+      "bytes": 108602,
+      "sha256": "e64800fd8ecbc33d4a033f37979f435d0f8efc63a3beb85cfa243fde1bba20be"
+    },
+    {
+      "path": "assets/art/cards/y_emissary_a-v1.webp",
+      "status": 200,
+      "bytes": 85748,
+      "sha256": "9a51ef776db0a81dd0759415fbd49baab60560ee63dcb0af625bd86fea5056d0"
+    },
+    {
+      "path": "assets/art/cards/y_emissary_b-v1.webp",
+      "status": 200,
+      "bytes": 117414,
+      "sha256": "24bc369d429a1cbad4fbdbe59ee72d91ed805b7e902a93ecf4c92a8f0c2fd86b"
+    },
+    {
+      "path": "assets/art/cards/y_enforcer-v1.webp",
+      "status": 200,
+      "bytes": 102366,
+      "sha256": "08423291fdc8202a36fd1a0fd870a02b8fa3d41d8ce76232bcaaf796c8cf4107"
+    },
+    {
+      "path": "assets/art/cards/y_falconer-v1.webp",
+      "status": 200,
+      "bytes": 93624,
+      "sha256": "918ae8df0e375f96146e633348cf2ac17d8d12980e3ae40fd68938f659e97676"
+    },
+    {
+      "path": "assets/art/cards/y_feral-v1.webp",
+      "status": 200,
+      "bytes": 158134,
+      "sha256": "7d0b895ac55475c478bf7a814840727949c18fdd8beea04a1d58bc03654f73d4"
+    },
+    {
+      "path": "assets/art/cards/y_gladiator-v1.webp",
+      "status": 200,
+      "bytes": 100456,
+      "sha256": "c0b149f7e8c3890c709333a2349e4d0efadeb6ed21c27be87c708a64315cc435"
+    },
+    {
+      "path": "assets/art/cards/y_hound-v1.webp",
+      "status": 200,
+      "bytes": 115152,
+      "sha256": "359312749cebbdb5f0fd8e09902592a15a208c8c9749714d7a5c66a98974d476"
+    },
+    {
+      "path": "assets/art/cards/y_jungle_hunter-v1.webp",
+      "status": 200,
+      "bytes": 57706,
+      "sha256": "b67a3f0fe809973e0302d73b795cb80f4c083918aad7d39b41ae8e527962a3e1"
+    },
+    {
+      "path": "assets/art/cards/y_samurai-v1.webp",
+      "status": 200,
+      "bytes": 109950,
+      "sha256": "0a7d086da1188b4751a22b2f315fae3d824478f7ac6b8ea8b6ab77cf0124f092"
+    },
+    {
+      "path": "assets/art/cards/y_scar-v1.webp",
+      "status": 200,
+      "bytes": 157540,
+      "sha256": "c02dacc5df2e16fca0f067ad8035ceccad93555f38550a2d0cebbd4e7d264921"
+    },
+    {
+      "path": "assets/art/cards/y_scientist-v1.webp",
+      "status": 200,
+      "bytes": 110612,
+      "sha256": "cd3bf2cac4366fdf60639be4926349cfda7bb592d01a2f565034d023b047bc48"
+    },
+    {
+      "path": "assets/art/cards/y_shesh_kuk-v1.webp",
+      "status": 200,
+      "bytes": 126232,
+      "sha256": "42c7a62110e32e0a2ffe2a5cd4fbec56f282cde764223858906ddcf69a07745b"
+    },
+    {
+      "path": "assets/art/cards/y_temple_guard-v1.webp",
+      "status": 200,
+      "bytes": 97294,
+      "sha256": "c911e7bc093fb811dca1c51c9d7db26b3c70f44a896d0a5ef7396de0a66bc0ad"
+    },
+    {
+      "path": "assets/art/cards/y_tracker-v1.webp",
+      "status": 200,
+      "bytes": 177498,
+      "sha256": "90e55cc34dcb59f929f41b8583791b17566449225ea4edd67e5abed01f8b1f3d"
+    },
+    {
+      "path": "assets/art/cards/y_unblooded-v1.webp",
+      "status": 200,
+      "bytes": 93578,
+      "sha256": "8fb2840d82b22bbe8e1ee82ea4964b9a74e1c3da925c577132c10d28742a1ad9"
+    },
+    {
+      "path": "assets/art/cards/y_wolf-v1.webp",
+      "status": 200,
+      "bytes": 143504,
+      "sha256": "062841c1252bfad12a40ea80e6017447aa3dd9ed67b0801cc451cee136faff9c"
+    },
+    {
+      "path": "assets/art/cards/y_yaquita-v1.webp",
+      "status": 200,
+      "bytes": 104046,
+      "sha256": "a84376f752a51a5afbbb0f5f555014506cd18efd8d1e3448110ba64223da301c"
+    },
+    {
+      "path": "assets/art/cards/y_young_blood-v1.webp",
+      "status": 200,
+      "bytes": 99806,
+      "sha256": "ba93451241b28f73ca09ef3cdceff72fae6d672120050c8ee868e1f74ffb603e"
+    },
+    {
+      "path": "assets/art/scenes/battle-board-v1.webp",
+      "status": 200,
+      "bytes": 181834,
+      "sha256": "b3161260be94713029c2173027a7fbc1a8dc105f065861c29821c0a4f189a020"
+    },
+    {
+      "path": "assets/art/scenes/booster-av04-v1.webp",
+      "status": 200,
+      "bytes": 129592,
+      "sha256": "012c7836cc6dd9dd869555952594d95af33c64bb361726a68af41c17a5ecaee1"
+    },
+    {
+      "path": "assets/art/scenes/booster-cw02-v1.webp",
+      "status": 200,
+      "bytes": 79620,
+      "sha256": "2c062a621dfc25b848fbb8d9150b75203412fdc502541a92ad801d79c82ded15"
+    },
+    {
+      "path": "assets/art/scenes/booster-ev05-v1.webp",
+      "status": 200,
+      "bytes": 146794,
+      "sha256": "950f275f5380a35e8d765ea0b30f0b50c128282e90e19f1277337bf46b053794"
+    },
+    {
+      "path": "assets/art/scenes/booster-hg03-v1.webp",
+      "status": 200,
+      "bytes": 116028,
+      "sha256": "d333470392d2bccbebe3c4c214dab5ae2afaeb4ef77ce1b692a33a2d4489fc6a"
+    },
+    {
+      "path": "assets/art/scenes/booster-nx01-v1.webp",
+      "status": 200,
+      "bytes": 74280,
+      "sha256": "6dee9cbd93f5a5bc53fe218fa0cdfdf809d89137cd7e0c2ea8e64a2f9c81d1b1"
+    },
+    {
+      "path": "assets/art/scenes/booster-px00-v1.webp",
+      "status": 200,
+      "bytes": 90414,
+      "sha256": "5a8ad14aa608a1043e4548de56eebe2dacae9a9b90daff5c7d6ebbef279c5652"
+    },
+    {
+      "path": "assets/art/scenes/campaign-mission-01-v1.webp",
+      "status": 200,
+      "bytes": 72464,
+      "sha256": "ef282900703cc83c908dd0d196d39943807fb7050dc2e97389d14b2ca518bb59"
+    },
+    {
+      "path": "assets/art/scenes/campaign-mission-02-v1.webp",
+      "status": 200,
+      "bytes": 162510,
+      "sha256": "3357bce7ae78d01db5a36043d1662f8c2d81ed1396596e8758bb4144e60261c6"
+    },
+    {
+      "path": "assets/art/scenes/campaign-mission-03-v1.webp",
+      "status": 200,
+      "bytes": 109442,
+      "sha256": "93084f8a79141a2eab2de8daf62da6a6f8710e12555f4e026b27a71679d03284"
+    },
+    {
+      "path": "assets/art/scenes/campaign-mission-04-v1.webp",
+      "status": 200,
+      "bytes": 131408,
+      "sha256": "a3085f1e9d15d4773f289152c114f0cca0ef05dc690afa2b22c589c79d85a803"
+    },
+    {
+      "path": "assets/art/scenes/campaign-mission-05-v1.webp",
+      "status": 200,
+      "bytes": 170122,
+      "sha256": "87baf36071c0df88962a46319330614c387d48e394aac384a31a2e1694b4a8a2"
+    },
+    {
+      "path": "assets/art/scenes/campaign-mission-06-v1.webp",
+      "status": 200,
+      "bytes": 108356,
+      "sha256": "6a14be6b9dab380b3cec8dcbc2406117b91ba8d46627ab9813cd9626840e16c4"
+    },
+    {
+      "path": "assets/art/scenes/campaign-mission-07-v1.webp",
+      "status": 200,
+      "bytes": 125974,
+      "sha256": "76825f27553aec9c83da5b61dbac6ba6f13ab5902aa4ef7523183b09899b990d"
+    },
+    {
+      "path": "assets/art/scenes/campaign-mission-08-v1.webp",
+      "status": 200,
+      "bytes": 207266,
+      "sha256": "22ab64800e56c39f6ad72dcc8f3cd53d25e56ee615dd4fe81a22bb376292fc92"
+    },
+    {
+      "path": "assets/art/scenes/home-hero-v1.webp",
+      "status": 200,
+      "bytes": 104042,
+      "sha256": "ee2a61cfa71072984d375d801096e1e8c58db2538437d807fe2b5ed3b8f77ba3"
+    }
+  ]
+}
