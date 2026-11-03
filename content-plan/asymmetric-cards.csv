@@ -98,45 +98,45 @@ MX_HU_096,Brouillage optique,ACTION,TACTIC,HUMAN,MC12,SR,2,0,0,,,,,,,,,,NON,NON,
 MX_HU_097,Transfert de position,ACTION,TACTIC,HUMAN,MC12,C,2,0,0,,,,,,,,,,NON,NON,REPOSITION,item.motion-tracker,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
 MX_HU_098,Protocole de ravitaillement,ACTION,TACTIC,HUMAN,MC12,C,2,0,0,,,,,,,,,,NON,NON,DRAW,faction.uscm,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
 MX_HU_099,Écran défensif avancé,ACTION,TACTIC,HUMAN,MC12,C,2,0,0,,,,,,,,,,NON,NON,FORTIFY,item.m3-personnel-armor,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_001,Ovomorphe dormant,OEUF,UNIT,XENO,NX01,C,0,0,300,,,,,,,,EGG,,NON,NON,AUCUN,bio.xenomorph.ovomorph,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_002,Ovomorphe d’incubation,OEUF,UNIT,XENO,CW02,C,1,0,400,,,,,,,,EGG,,NON,NON,AUCUN,bio.xenomorph.ovomorph,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_003,Œuf de colonie,OEUF,UNIT,XENO,CW02,C,2,0,500,,,,,,,,EGG,,NON,NON,AUCUN,bio.xenomorph.ovomorph,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_004,Œuf d’urgence,OEUF,UNIT,XENO,NX01,R,0,0,300,,,,,,,,EGG,,NON,NON,AUCUN,bio.xenomorph.ovomorph,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_005,Œuf de la galerie royale,OEUF,UNIT,XENO,CW02,C,1,0,400,,,,,,,,EGG,,NON,NON,AUCUN,bio.xenomorph.ovomorph,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_006,Œuf des tunnels,OEUF,UNIT,XENO,CW02,C,2,0,500,,,,,,,,EGG,,NON,NON,AUCUN,bio.xenomorph.ovomorph,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_007,Ovomorphe du transport,OEUF,UNIT,XENO,NX01,C,0,0,300,,,,,,,,EGG,,NON,NON,AUCUN,bio.xenomorph.ovomorph,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_008,Ovomorphe du nid profond,OEUF,UNIT,XENO,CW02,SR,1,0,400,,,,,,,,EGG,,NON,NON,AUCUN,bio.xenomorph.ovomorph,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_009,Facehugger éclaireur,CREATURE,UNIT,XENO,NX01,C,1,100,390,,,,,,,,FACEHUGGER,,OUI,NON,AUCUN,bio.xenomorph.facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_010,Facehugger des parois,CREATURE,UNIT,XENO,CW02,C,1,115,425,,,,,,,,FACEHUGGER,,OUI,NON,AUCUN,bio.xenomorph.facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_011,Facehugger royal,CREATURE,UNIT,XENO,NX01,C,1,130,460,,,,,,,,FACEHUGGER,,OUI,NON,AUCUN,ha.bio.royal-facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_012,Facehugger de colonie,CREATURE,UNIT,XENO,CW02,R,1,145,495,,,,,,,,FACEHUGGER,,OUI,NON,AUCUN,bio.xenomorph.facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_013,Facehugger de tunnel,CREATURE,UNIT,XENO,NX01,C,1,160,530,,,,,,,,FACEHUGGER,,OUI,NON,AUCUN,bio.xenomorph.facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_014,Facehugger nocturne,CREATURE,UNIT,XENO,CW02,C,1,175,565,,,,,,,,FACEHUGGER,,OUI,NON,AUCUN,bio.xenomorph.facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_015,Facehugger transporté,CREATURE,UNIT,XENO,NX01,C,1,190,600,,,,,,,,FACEHUGGER,,OUI,NON,AUCUN,bio.xenomorph.facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_016,Facehugger de la mère,CREATURE,UNIT,XENO,CW02,SR,1,205,635,,,,,,,,FACEHUGGER,,OUI,NON,AUCUN,bio.xenomorph.facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_017,Hôte — Colon capturé,HOTE,UNIT,XENO,CW02,UR,1,0,300,,,,,,,,HOST,HUMAN,NON,NON,AUCUN,bio.human.colonial-raider,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_018,Hôte — Mécanicien capturé,HOTE,UNIT,XENO,CW02,C,2,0,470,,,,,,,,HOST,HUMAN,NON,NON,AUCUN,character.reference.russell-russ-jorden,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_019,Hôte — Scientifique capturé,HOTE,UNIT,XENO,TF28,C,3,0,640,,,,,,,,HOST,HUMAN,NON,NON,AUCUN,character.tantalus.inez-harlow,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_020,Hôte — Rongeur contaminé,HOTE,UNIT,XENO,TF28,R,1,0,300,,,,,,,,HOST,QUAD,NON,NON,AUCUN,bio.fauna.tantalus-tunnel-vermin,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_021,Hôte — Animal hôte,HOTE,UNIT,XENO,CW02,C,2,0,470,,,,,,,,HOST,QUAD,NON,NON,AUCUN,bio.fauna.wild-boar-host,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_022,Hôte — Prédateur quadrupède capturé,HOTE,UNIT,XENO,TF28,C,3,0,640,,,,,,,,HOST,QUAD,NON,NON,AUCUN,bio.fauna.korari-stalker,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_023,Hôte — Yautja capturé,HOTE,UNIT,XENO,AV04,C,1,0,300,,,,,,,,HOST,YAUTJA,NON,NON,AUCUN,character.yautja.scar_avp_2004,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_024,Hôte — Jeune Chasseur capturé,HOTE,UNIT,XENO,AV04,SR,2,0,470,,,,,,,,HOST,YAUTJA,NON,NON,AUCUN,character.yautja.feral_predator,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_025,Hôte — Ancien Chasseur capturé,HOTE,UNIT,XENO,AV04,C,3,0,640,,,,,,,,HOST,YAUTJA,NON,NON,AUCUN,character.yautja.elder_lost_tribe_1990,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_026,Chestburster colonial,CREATURE,UNIT,XENO,CW02,C,2,340,680,,,,,,,,CHESTBURSTER,HUMAN,NON,OUI,AUCUN,bio.xenomorph.chestburster,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_027,Chestburster de technicien,CREATURE,UNIT,XENO,CW02,C,2,395,780,,,,,,,,CHESTBURSTER,HUMAN,NON,OUI,AUCUN,bio.xenomorph.chestburster,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_028,Chestburster de laboratoire,CREATURE,UNIT,XENO,CW02,R,2,450,880,,,,,,,,CHESTBURSTER,HUMAN,NON,OUI,AUCUN,bio.xenomorph.chestburster,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_029,Chestburster quadrupède,CREATURE,UNIT,XENO,CW02,C,2,340,680,,,,,,,,CHESTBURSTER,QUAD,NON,OUI,AUCUN,bio.xenomorph.chestburster,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_030,Chestburster du coureur,CREATURE,UNIT,XENO,CW02,C,2,395,780,,,,,,,,CHESTBURSTER,QUAD,NON,OUI,AUCUN,bio.xenomorph.chestburster,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_031,Chestburster de chasse,CREATURE,UNIT,XENO,CW02,C,2,450,880,,,,,,,,CHESTBURSTER,QUAD,NON,OUI,AUCUN,bio.xenomorph.chestburster,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_032,Chestburster Yautja,CREATURE,UNIT,XENO,AV04,SR,2,340,680,,,,,,,,CHESTBURSTER,YAUTJA,NON,OUI,AUCUN,bio.xenomorph.predalien,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_033,Larve hybride de chasse,CREATURE,UNIT,XENO,AV04,C,2,395,780,,,,,,,,CHESTBURSTER,YAUTJA,NON,OUI,AUCUN,bio.xenomorph.predalien,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_034,Chestburster de guerrier,CREATURE,UNIT,XENO,AV04,UR,2,450,880,,,,,,,,CHESTBURSTER,YAUTJA,NON,OUI,AUCUN,bio.xenomorph.predalien,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_035,Drone de colonie,CREATURE,UNIT,XENO,CW02,C,3,650,1070,,,,,,,,DRONE,HUMAN,NON,OUI,AUCUN,bio.xenomorph.drone,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_036,Runner de la couvée,CREATURE,UNIT,XENO,F306,R,3,650,1070,,,,,,,,DRONE,QUAD,NON,OUI,AUCUN,bio.xenomorph.runner,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_037,Predalien en croissance,CREATURE,UNIT,XENO,AV04,C,3,870,1250,,,,,,,,DRONE,YAUTJA,NON,OUI,AUCUN,bio.xenomorph.predalien,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_038,Prétorien de la gelée royale,CREATURE,UNIT,XENO,CW02,C,5,1350,1900,,,,,,,,PRAETORIAN,,NON,OUI,AUCUN,bio.xenomorph.praetorian,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
-MX_XE_039,Reine de la lignée incubée,CREATURE,UNIT,XENO,CW02,C,8,1950,2800,,,,,,,,QUEEN,,NON,OUI,AUCUN,bio.xenomorph.queen,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_001,Ovomorphe dormant,OEUF,UNIT,XENO,NX01,C,0,0,760,,,,,,,,EGG,,NON,NON,DRAW,bio.xenomorph.ovomorph,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_002,Ovomorphe d’incubation,OEUF,UNIT,XENO,CW02,C,1,0,910,,,,,,,,EGG,,NON,NON,DRAW,bio.xenomorph.ovomorph,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_003,Œuf de colonie,OEUF,UNIT,XENO,CW02,C,2,0,1060,,,,,,,,EGG,,NON,NON,DRAW,bio.xenomorph.ovomorph,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_004,Œuf d’urgence,OEUF,UNIT,XENO,NX01,R,0,0,760,,,,,,,,EGG,,NON,NON,DRAW,bio.xenomorph.ovomorph,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_005,Œuf de la galerie royale,OEUF,UNIT,XENO,CW02,C,1,0,910,,,,,,,,EGG,,NON,NON,DRAW,bio.xenomorph.ovomorph,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_006,Œuf des tunnels,OEUF,UNIT,XENO,CW02,C,2,0,1060,,,,,,,,EGG,,NON,NON,DRAW,bio.xenomorph.ovomorph,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_007,Ovomorphe du transport,OEUF,UNIT,XENO,NX01,C,0,0,760,,,,,,,,EGG,,NON,NON,DRAW,bio.xenomorph.ovomorph,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_008,Ovomorphe du nid profond,OEUF,UNIT,XENO,CW02,SR,1,0,910,,,,,,,,EGG,,NON,NON,DRAW,bio.xenomorph.ovomorph,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_009,Facehugger éclaireur,CREATURE,UNIT,XENO,NX01,C,1,245,650,,,,,,,,FACEHUGGER,,OUI,NON,AUCUN,bio.xenomorph.facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_010,Facehugger des parois,CREATURE,UNIT,XENO,CW02,C,1,283,705,,,,,,,,FACEHUGGER,,OUI,NON,AUCUN,bio.xenomorph.facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_011,Facehugger royal,CREATURE,UNIT,XENO,NX01,C,1,321,760,,,,,,,,FACEHUGGER,,OUI,NON,AUCUN,ha.bio.royal-facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_012,Facehugger de colonie,CREATURE,UNIT,XENO,CW02,R,1,359,815,,,,,,,,FACEHUGGER,,OUI,NON,AUCUN,bio.xenomorph.facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_013,Facehugger de tunnel,CREATURE,UNIT,XENO,NX01,C,1,397,870,,,,,,,,FACEHUGGER,,OUI,NON,AUCUN,bio.xenomorph.facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_014,Facehugger nocturne,CREATURE,UNIT,XENO,CW02,C,1,435,925,,,,,,,,FACEHUGGER,,OUI,NON,AUCUN,bio.xenomorph.facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_015,Facehugger transporté,CREATURE,UNIT,XENO,NX01,C,1,473,980,,,,,,,,FACEHUGGER,,OUI,NON,AUCUN,bio.xenomorph.facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_016,Facehugger de la mère,CREATURE,UNIT,XENO,CW02,SR,1,511,1035,,,,,,,,FACEHUGGER,,OUI,NON,AUCUN,bio.xenomorph.facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_017,Hôte — Colon capturé,HOTE,UNIT,XENO,CW02,UR,1,0,790,,,,,,,,HOST,HUMAN,NON,NON,DRAW,bio.human.colonial-raider,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_018,Hôte — Mécanicien capturé,HOTE,UNIT,XENO,CW02,C,2,0,960,,,,,,,,HOST,HUMAN,NON,NON,DRAW,character.reference.russell-russ-jorden,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_019,Hôte — Scientifique capturé,HOTE,UNIT,XENO,TF28,C,3,0,1130,,,,,,,,HOST,HUMAN,NON,NON,DRAW,character.tantalus.inez-harlow,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_020,Hôte — Rongeur contaminé,HOTE,UNIT,XENO,TF28,R,1,0,790,,,,,,,,HOST,QUAD,NON,NON,DRAW,bio.fauna.tantalus-tunnel-vermin,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_021,Hôte — Animal hôte,HOTE,UNIT,XENO,CW02,C,2,0,960,,,,,,,,HOST,QUAD,NON,NON,DRAW,bio.fauna.wild-boar-host,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_022,Hôte — Prédateur quadrupède capturé,HOTE,UNIT,XENO,TF28,C,3,0,1130,,,,,,,,HOST,QUAD,NON,NON,DRAW,bio.fauna.korari-stalker,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_023,Hôte — Yautja capturé,HOTE,UNIT,XENO,AV04,C,1,0,790,,,,,,,,HOST,YAUTJA,NON,NON,DRAW,character.yautja.scar_avp_2004,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_024,Hôte — Jeune Chasseur capturé,HOTE,UNIT,XENO,AV04,SR,2,0,960,,,,,,,,HOST,YAUTJA,NON,NON,DRAW,character.yautja.feral_predator,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_025,Hôte — Ancien Chasseur capturé,HOTE,UNIT,XENO,AV04,C,3,0,1130,,,,,,,,HOST,YAUTJA,NON,NON,DRAW,character.yautja.elder_lost_tribe_1990,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_026,Chestburster colonial,CREATURE,UNIT,XENO,CW02,C,2,900,1470,,,,,,,,CHESTBURSTER,HUMAN,NON,OUI,AUCUN,bio.xenomorph.chestburster,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_027,Chestburster de technicien,CREATURE,UNIT,XENO,CW02,C,2,985,1620,,,,,,,,CHESTBURSTER,HUMAN,NON,OUI,AUCUN,bio.xenomorph.chestburster,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_028,Chestburster de laboratoire,CREATURE,UNIT,XENO,CW02,R,2,1070,1770,,,,,,,,CHESTBURSTER,HUMAN,NON,OUI,AUCUN,bio.xenomorph.chestburster,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_029,Chestburster quadrupède,CREATURE,UNIT,XENO,CW02,C,2,900,1470,,,,,,,,CHESTBURSTER,QUAD,NON,OUI,AUCUN,bio.xenomorph.chestburster,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_030,Chestburster du coureur,CREATURE,UNIT,XENO,CW02,C,2,985,1620,,,,,,,,CHESTBURSTER,QUAD,NON,OUI,AUCUN,bio.xenomorph.chestburster,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_031,Chestburster de chasse,CREATURE,UNIT,XENO,CW02,C,2,1070,1770,,,,,,,,CHESTBURSTER,QUAD,NON,OUI,AUCUN,bio.xenomorph.chestburster,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_032,Chestburster Yautja,CREATURE,UNIT,XENO,AV04,SR,2,900,1470,,,,,,,,CHESTBURSTER,YAUTJA,NON,OUI,AUCUN,bio.xenomorph.predalien,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_033,Larve hybride de chasse,CREATURE,UNIT,XENO,AV04,C,2,985,1620,,,,,,,,CHESTBURSTER,YAUTJA,NON,OUI,AUCUN,bio.xenomorph.predalien,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_034,Chestburster de guerrier,CREATURE,UNIT,XENO,AV04,UR,2,1070,1770,,,,,,,,CHESTBURSTER,YAUTJA,NON,OUI,AUCUN,bio.xenomorph.predalien,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_035,Drone de colonie,CREATURE,UNIT,XENO,CW02,C,3,1200,1900,,,,,,,,DRONE,HUMAN,NON,OUI,AUCUN,bio.xenomorph.drone,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_036,Runner de la couvée,CREATURE,UNIT,XENO,F306,R,3,1200,1900,,,,,,,,DRONE,QUAD,NON,OUI,AUCUN,bio.xenomorph.runner,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_037,Predalien en croissance,CREATURE,UNIT,XENO,AV04,C,3,1550,2250,,,,,,,,DRONE,YAUTJA,NON,OUI,AUCUN,bio.xenomorph.predalien,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_038,Prétorien de la gelée royale,CREATURE,UNIT,XENO,CW02,C,5,1750,2750,,,,,,,,PRAETORIAN,,NON,OUI,AUCUN,bio.xenomorph.praetorian,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
+MX_XE_039,Reine de la lignée incubée,CREATURE,UNIT,XENO,CW02,C,8,2350,3500,,,,,,,,QUEEN,,NON,OUI,AUCUN,bio.xenomorph.queen,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
 MX_XE_040,Fusion parasitaire — HUMAN 1,EVOLUTION,TACTIC,XENO,CW02,SR,1,0,0,,,,,,,,,,NON,NON,HIVE_FUSION,bio.xenomorph.facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
 MX_XE_041,Fusion parasitaire — HUMAN 2,EVOLUTION,TACTIC,XENO,CW02,C,1,0,0,,,,,,,,,,NON,NON,HIVE_FUSION,bio.xenomorph.facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT
 MX_XE_042,Fusion parasitaire — HUMAN 3,EVOLUTION,TACTIC,XENO,CW02,SR,1,0,0,,,,,,,,,,NON,NON,HIVE_FUSION,bio.xenomorph.facehugger,asymmetric-mechanics-proposed-not-lore-fact,PLACEHOLDER_SVG_EXTRANT

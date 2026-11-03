@@ -721,34 +721,34 @@ asym_human_laser_2,RESERVE,14,MX_HU_069,Crosse stabilisée — SNIPER,MODIFICATI
 asym_human_laser_2,RESERVE,15,T_H_EVAC,Évacuation d’urgence,ACTION,HUMAN,NX01,1
 asym_xeno_human_1,PRINCIPAL,1,AX_XE_091,Palatine (Garde Royal Suprême),CREATURE,XENO,HA29,1
 asym_xeno_human_1,PRINCIPAL,2,AX_XE_091,Palatine (Garde Royal Suprême),CREATURE,XENO,HA29,1
-asym_xeno_human_1,PRINCIPAL,3,AX_XE_092,Prowler,CREATURE,XENO,HA29,1
+asym_xeno_human_1,PRINCIPAL,3,AX_XE_091,Palatine (Garde Royal Suprême),CREATURE,XENO,HA29,1
 asym_xeno_human_1,PRINCIPAL,4,AX_XE_092,Prowler,CREATURE,XENO,HA29,1
 asym_xeno_human_1,PRINCIPAL,5,AX_XE_092,Prowler,CREATURE,XENO,HA29,1
-asym_xeno_human_1,PRINCIPAL,6,MX_XE_004,Œuf d’urgence,OEUF,XENO,NX01,1
-asym_xeno_human_1,PRINCIPAL,7,MX_XE_004,Œuf d’urgence,OEUF,XENO,NX01,1
-asym_xeno_human_1,PRINCIPAL,8,MX_XE_008,Ovomorphe du nid profond,OEUF,XENO,CW02,1
-asym_xeno_human_1,PRINCIPAL,9,MX_XE_008,Ovomorphe du nid profond,OEUF,XENO,CW02,1
+asym_xeno_human_1,PRINCIPAL,6,AX_XE_092,Prowler,CREATURE,XENO,HA29,1
+asym_xeno_human_1,PRINCIPAL,7,BX_0254,Reine — Colonial Marines,CREATURE,XENO,CM19,1
+asym_xeno_human_1,PRINCIPAL,8,BX_0254,Reine — Colonial Marines,CREATURE,XENO,CM19,1
+asym_xeno_human_1,PRINCIPAL,9,MX_XE_004,Œuf d’urgence,OEUF,XENO,NX01,1
 asym_xeno_human_1,PRINCIPAL,10,MX_XE_008,Ovomorphe du nid profond,OEUF,XENO,CW02,1
-asym_xeno_human_1,PRINCIPAL,11,MX_XE_014,Facehugger nocturne,CREATURE,XENO,CW02,1
-asym_xeno_human_1,PRINCIPAL,12,MX_XE_014,Facehugger nocturne,CREATURE,XENO,CW02,1
+asym_xeno_human_1,PRINCIPAL,11,MX_XE_008,Ovomorphe du nid profond,OEUF,XENO,CW02,1
+asym_xeno_human_1,PRINCIPAL,12,MX_XE_008,Ovomorphe du nid profond,OEUF,XENO,CW02,1
 asym_xeno_human_1,PRINCIPAL,13,MX_XE_014,Facehugger nocturne,CREATURE,XENO,CW02,1
-asym_xeno_human_1,PRINCIPAL,14,MX_XE_017,Hôte — Colon capturé,HOTE,XENO,CW02,1
-asym_xeno_human_1,PRINCIPAL,15,MX_XE_017,Hôte — Colon capturé,HOTE,XENO,CW02,1
+asym_xeno_human_1,PRINCIPAL,14,MX_XE_014,Facehugger nocturne,CREATURE,XENO,CW02,1
+asym_xeno_human_1,PRINCIPAL,15,MX_XE_014,Facehugger nocturne,CREATURE,XENO,CW02,1
 asym_xeno_human_1,PRINCIPAL,16,MX_XE_017,Hôte — Colon capturé,HOTE,XENO,CW02,1
-asym_xeno_human_1,PRINCIPAL,17,MX_XE_019,Hôte — Scientifique capturé,HOTE,XENO,TF28,1
-asym_xeno_human_1,PRINCIPAL,18,MX_XE_027,Chestburster de technicien,CREATURE,XENO,CW02,1
+asym_xeno_human_1,PRINCIPAL,17,MX_XE_017,Hôte — Colon capturé,HOTE,XENO,CW02,1
+asym_xeno_human_1,PRINCIPAL,18,MX_XE_017,Hôte — Colon capturé,HOTE,XENO,CW02,1
 asym_xeno_human_1,PRINCIPAL,19,MX_XE_027,Chestburster de technicien,CREATURE,XENO,CW02,1
 asym_xeno_human_1,PRINCIPAL,20,MX_XE_027,Chestburster de technicien,CREATURE,XENO,CW02,1
-asym_xeno_human_1,PRINCIPAL,21,MX_XE_035,Drone de colonie,CREATURE,XENO,CW02,1
-asym_xeno_human_1,PRINCIPAL,22,MX_XE_041,Fusion parasitaire — HUMAN 2,EVOLUTION,XENO,CW02,1
+asym_xeno_human_1,PRINCIPAL,21,MX_XE_027,Chestburster de technicien,CREATURE,XENO,CW02,1
+asym_xeno_human_1,PRINCIPAL,22,MX_XE_035,Drone de colonie,CREATURE,XENO,CW02,1
 asym_xeno_human_1,PRINCIPAL,23,MX_XE_041,Fusion parasitaire — HUMAN 2,EVOLUTION,XENO,CW02,1
 asym_xeno_human_1,PRINCIPAL,24,MX_XE_041,Fusion parasitaire — HUMAN 2,EVOLUTION,XENO,CW02,1
-asym_xeno_human_1,PRINCIPAL,25,MX_XE_050,Mue accélérée — HUMAN 2,EVOLUTION,XENO,CW02,1
+asym_xeno_human_1,PRINCIPAL,25,MX_XE_041,Fusion parasitaire — HUMAN 2,EVOLUTION,XENO,CW02,1
 asym_xeno_human_1,PRINCIPAL,26,MX_XE_050,Mue accélérée — HUMAN 2,EVOLUTION,XENO,CW02,1
-asym_xeno_human_1,PRINCIPAL,27,MX_XE_066,Convergence biologique,BIOMASSE,XENO,CW02,1
+asym_xeno_human_1,PRINCIPAL,27,MX_XE_050,Mue accélérée — HUMAN 2,EVOLUTION,XENO,CW02,1
 asym_xeno_human_1,PRINCIPAL,28,MX_XE_066,Convergence biologique,BIOMASSE,XENO,CW02,1
 asym_xeno_human_1,PRINCIPAL,29,MX_XE_066,Convergence biologique,BIOMASSE,XENO,CW02,1
-asym_xeno_human_1,PRINCIPAL,30,X_FACEHUGGER,Facehugger,CREATURE,XENO,NX01,1
+asym_xeno_human_1,PRINCIPAL,30,MX_XE_066,Convergence biologique,BIOMASSE,XENO,CW02,1
 asym_xeno_human_1,RESERVE,1,AX_XE_090,Warden,CREATURE,XENO,CW02,1
 asym_xeno_human_1,RESERVE,2,AX_XE_155,Crusher,CREATURE,XENO,HA29,1
 asym_xeno_human_1,RESERVE,3,BX_0032,Dust Runner,CREATURE,XENO,F306,1
@@ -766,22 +766,22 @@ asym_xeno_human_1,RESERVE,14,X_STALKER,Stalker,CREATURE,XENO,CW02,1
 asym_xeno_human_1,RESERVE,15,X_WARDEN,Warden,CREATURE,XENO,EV05,1
 asym_xeno_human_2,PRINCIPAL,1,AX_XE_081,Warrior,CREATURE,XENO,CW02,1
 asym_xeno_human_2,PRINCIPAL,2,AX_XE_081,Warrior,CREATURE,XENO,CW02,1
-asym_xeno_human_2,PRINCIPAL,3,AX_XE_092,Prowler,CREATURE,XENO,HA29,1
+asym_xeno_human_2,PRINCIPAL,3,AX_XE_081,Warrior,CREATURE,XENO,CW02,1
 asym_xeno_human_2,PRINCIPAL,4,AX_XE_092,Prowler,CREATURE,XENO,HA29,1
 asym_xeno_human_2,PRINCIPAL,5,AX_XE_092,Prowler,CREATURE,XENO,HA29,1
-asym_xeno_human_2,PRINCIPAL,6,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
-asym_xeno_human_2,PRINCIPAL,7,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
-asym_xeno_human_2,PRINCIPAL,8,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
-asym_xeno_human_2,PRINCIPAL,9,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
+asym_xeno_human_2,PRINCIPAL,6,AX_XE_092,Prowler,CREATURE,XENO,HA29,1
+asym_xeno_human_2,PRINCIPAL,7,BX_0007,Ceto Reef Predator,CREATURE,XENO,TF28,1
+asym_xeno_human_2,PRINCIPAL,8,BX_0307,Burster,CREATURE,XENO,HA29,1
+asym_xeno_human_2,PRINCIPAL,9,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
 asym_xeno_human_2,PRINCIPAL,10,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
-asym_xeno_human_2,PRINCIPAL,11,MX_XE_010,Facehugger des parois,CREATURE,XENO,CW02,1
-asym_xeno_human_2,PRINCIPAL,12,MX_XE_010,Facehugger des parois,CREATURE,XENO,CW02,1
+asym_xeno_human_2,PRINCIPAL,11,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
+asym_xeno_human_2,PRINCIPAL,12,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
 asym_xeno_human_2,PRINCIPAL,13,MX_XE_010,Facehugger des parois,CREATURE,XENO,CW02,1
-asym_xeno_human_2,PRINCIPAL,14,MX_XE_011,Facehugger royal,CREATURE,XENO,NX01,1
-asym_xeno_human_2,PRINCIPAL,15,MX_XE_018,Hôte — Mécanicien capturé,HOTE,XENO,CW02,1
+asym_xeno_human_2,PRINCIPAL,14,MX_XE_010,Facehugger des parois,CREATURE,XENO,CW02,1
+asym_xeno_human_2,PRINCIPAL,15,MX_XE_010,Facehugger des parois,CREATURE,XENO,CW02,1
 asym_xeno_human_2,PRINCIPAL,16,MX_XE_018,Hôte — Mécanicien capturé,HOTE,XENO,CW02,1
 asym_xeno_human_2,PRINCIPAL,17,MX_XE_018,Hôte — Mécanicien capturé,HOTE,XENO,CW02,1
-asym_xeno_human_2,PRINCIPAL,18,MX_XE_019,Hôte — Scientifique capturé,HOTE,XENO,TF28,1
+asym_xeno_human_2,PRINCIPAL,18,MX_XE_018,Hôte — Mécanicien capturé,HOTE,XENO,CW02,1
 asym_xeno_human_2,PRINCIPAL,19,MX_XE_026,Chestburster colonial,CREATURE,XENO,CW02,1
 asym_xeno_human_2,PRINCIPAL,20,MX_XE_026,Chestburster colonial,CREATURE,XENO,CW02,1
 asym_xeno_human_2,PRINCIPAL,21,MX_XE_026,Chestburster colonial,CREATURE,XENO,CW02,1
@@ -809,36 +809,36 @@ asym_xeno_human_2,RESERVE,12,T_X_SWARM,Déferlement de la Couvée,ACTION,XENO,CW
 asym_xeno_human_2,RESERVE,13,X_CHESTBURSTER,Chestburster,CREATURE,XENO,NX01,1
 asym_xeno_human_2,RESERVE,14,X_GORILLA,Gorilla Alien,CREATURE,XENO,EV05,1
 asym_xeno_human_2,RESERVE,15,X_SIREN,Siren,CREATURE,XENO,EV05,1
-asym_xeno_human_3,PRINCIPAL,1,AX_XE_086,Monica Line,CREATURE,XENO,CW02,1
+asym_xeno_human_3,PRINCIPAL,1,AX_XE_080,Drone,CREATURE,XENO,CW02,1
 asym_xeno_human_3,PRINCIPAL,2,AX_XE_086,Monica Line,CREATURE,XENO,CW02,1
 asym_xeno_human_3,PRINCIPAL,3,AX_XE_086,Monica Line,CREATURE,XENO,CW02,1
-asym_xeno_human_3,PRINCIPAL,4,BX_0253,Lurker — Colonial Marines,CREATURE,XENO,CM19,1
+asym_xeno_human_3,PRINCIPAL,4,AX_XE_086,Monica Line,CREATURE,XENO,CW02,1
 asym_xeno_human_3,PRINCIPAL,5,BX_0253,Lurker — Colonial Marines,CREATURE,XENO,CM19,1
-asym_xeno_human_3,PRINCIPAL,6,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
-asym_xeno_human_3,PRINCIPAL,7,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
+asym_xeno_human_3,PRINCIPAL,6,BX_0253,Lurker — Colonial Marines,CREATURE,XENO,CM19,1
+asym_xeno_human_3,PRINCIPAL,7,BX_0253,Lurker — Colonial Marines,CREATURE,XENO,CM19,1
 asym_xeno_human_3,PRINCIPAL,8,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
-asym_xeno_human_3,PRINCIPAL,9,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
-asym_xeno_human_3,PRINCIPAL,10,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
-asym_xeno_human_3,PRINCIPAL,11,MX_XE_011,Facehugger royal,CREATURE,XENO,NX01,1
+asym_xeno_human_3,PRINCIPAL,9,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
+asym_xeno_human_3,PRINCIPAL,10,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
+asym_xeno_human_3,PRINCIPAL,11,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
 asym_xeno_human_3,PRINCIPAL,12,MX_XE_011,Facehugger royal,CREATURE,XENO,NX01,1
 asym_xeno_human_3,PRINCIPAL,13,MX_XE_011,Facehugger royal,CREATURE,XENO,NX01,1
-asym_xeno_human_3,PRINCIPAL,14,MX_XE_012,Facehugger de colonie,CREATURE,XENO,CW02,1
-asym_xeno_human_3,PRINCIPAL,15,MX_XE_017,Hôte — Colon capturé,HOTE,XENO,CW02,1
+asym_xeno_human_3,PRINCIPAL,14,MX_XE_011,Facehugger royal,CREATURE,XENO,NX01,1
+asym_xeno_human_3,PRINCIPAL,15,MX_XE_018,Hôte — Mécanicien capturé,HOTE,XENO,CW02,1
 asym_xeno_human_3,PRINCIPAL,16,MX_XE_018,Hôte — Mécanicien capturé,HOTE,XENO,CW02,1
 asym_xeno_human_3,PRINCIPAL,17,MX_XE_018,Hôte — Mécanicien capturé,HOTE,XENO,CW02,1
-asym_xeno_human_3,PRINCIPAL,18,MX_XE_018,Hôte — Mécanicien capturé,HOTE,XENO,CW02,1
+asym_xeno_human_3,PRINCIPAL,18,MX_XE_026,Chestburster colonial,CREATURE,XENO,CW02,1
 asym_xeno_human_3,PRINCIPAL,19,MX_XE_026,Chestburster colonial,CREATURE,XENO,CW02,1
 asym_xeno_human_3,PRINCIPAL,20,MX_XE_026,Chestburster colonial,CREATURE,XENO,CW02,1
-asym_xeno_human_3,PRINCIPAL,21,MX_XE_026,Chestburster colonial,CREATURE,XENO,CW02,1
-asym_xeno_human_3,PRINCIPAL,22,MX_XE_035,Drone de colonie,CREATURE,XENO,CW02,1
+asym_xeno_human_3,PRINCIPAL,21,MX_XE_035,Drone de colonie,CREATURE,XENO,CW02,1
+asym_xeno_human_3,PRINCIPAL,22,MX_XE_041,Fusion parasitaire — HUMAN 2,EVOLUTION,XENO,CW02,1
 asym_xeno_human_3,PRINCIPAL,23,MX_XE_041,Fusion parasitaire — HUMAN 2,EVOLUTION,XENO,CW02,1
 asym_xeno_human_3,PRINCIPAL,24,MX_XE_041,Fusion parasitaire — HUMAN 2,EVOLUTION,XENO,CW02,1
-asym_xeno_human_3,PRINCIPAL,25,MX_XE_041,Fusion parasitaire — HUMAN 2,EVOLUTION,XENO,CW02,1
+asym_xeno_human_3,PRINCIPAL,25,MX_XE_050,Mue accélérée — HUMAN 2,EVOLUTION,XENO,CW02,1
 asym_xeno_human_3,PRINCIPAL,26,MX_XE_050,Mue accélérée — HUMAN 2,EVOLUTION,XENO,CW02,1
-asym_xeno_human_3,PRINCIPAL,27,MX_XE_050,Mue accélérée — HUMAN 2,EVOLUTION,XENO,CW02,1
+asym_xeno_human_3,PRINCIPAL,27,MX_XE_066,Convergence biologique,BIOMASSE,XENO,CW02,1
 asym_xeno_human_3,PRINCIPAL,28,MX_XE_066,Convergence biologique,BIOMASSE,XENO,CW02,1
 asym_xeno_human_3,PRINCIPAL,29,MX_XE_066,Convergence biologique,BIOMASSE,XENO,CW02,1
-asym_xeno_human_3,PRINCIPAL,30,MX_XE_066,Convergence biologique,BIOMASSE,XENO,CW02,1
+asym_xeno_human_3,PRINCIPAL,30,X_RUNNER,Runner,CREATURE,XENO,NX01,1
 asym_xeno_human_3,RESERVE,1,AX_XE_155,Crusher,CREATURE,XENO,HA29,1
 asym_xeno_human_3,RESERVE,2,BX_0027,Arcology Lurker,CREATURE,XENO,TF28,1
 asym_xeno_human_3,RESERVE,3,BX_0035,Foundry Drone,CREATURE,XENO,CW02,1
@@ -859,31 +859,31 @@ asym_xeno_human_4,PRINCIPAL,2,BX_0009,Tantalus Tunnel Vermin,CREATURE,XENO,TF28,
 asym_xeno_human_4,PRINCIPAL,3,BX_0009,Tantalus Tunnel Vermin,CREATURE,XENO,TF28,1
 asym_xeno_human_4,PRINCIPAL,4,BX_0273,Prowler — Fireteam Elite,CREATURE,XENO,FE20,1
 asym_xeno_human_4,PRINCIPAL,5,BX_0273,Prowler — Fireteam Elite,CREATURE,XENO,FE20,1
-asym_xeno_human_4,PRINCIPAL,6,MX_XE_002,Ovomorphe d’incubation,OEUF,XENO,CW02,1
+asym_xeno_human_4,PRINCIPAL,6,BX_0273,Prowler — Fireteam Elite,CREATURE,XENO,FE20,1
 asym_xeno_human_4,PRINCIPAL,7,MX_XE_002,Ovomorphe d’incubation,OEUF,XENO,CW02,1
 asym_xeno_human_4,PRINCIPAL,8,MX_XE_002,Ovomorphe d’incubation,OEUF,XENO,CW02,1
-asym_xeno_human_4,PRINCIPAL,9,MX_XE_006,Œuf des tunnels,OEUF,XENO,CW02,1
+asym_xeno_human_4,PRINCIPAL,9,MX_XE_002,Ovomorphe d’incubation,OEUF,XENO,CW02,1
 asym_xeno_human_4,PRINCIPAL,10,MX_XE_006,Œuf des tunnels,OEUF,XENO,CW02,1
 asym_xeno_human_4,PRINCIPAL,11,MX_XE_012,Facehugger de colonie,CREATURE,XENO,CW02,1
 asym_xeno_human_4,PRINCIPAL,12,MX_XE_012,Facehugger de colonie,CREATURE,XENO,CW02,1
 asym_xeno_human_4,PRINCIPAL,13,MX_XE_012,Facehugger de colonie,CREATURE,XENO,CW02,1
-asym_xeno_human_4,PRINCIPAL,14,MX_XE_015,Facehugger transporté,CREATURE,XENO,NX01,1
-asym_xeno_human_4,PRINCIPAL,15,MX_XE_018,Hôte — Mécanicien capturé,HOTE,XENO,CW02,1
+asym_xeno_human_4,PRINCIPAL,14,MX_XE_019,Hôte — Scientifique capturé,HOTE,XENO,TF28,1
+asym_xeno_human_4,PRINCIPAL,15,MX_XE_019,Hôte — Scientifique capturé,HOTE,XENO,TF28,1
 asym_xeno_human_4,PRINCIPAL,16,MX_XE_019,Hôte — Scientifique capturé,HOTE,XENO,TF28,1
-asym_xeno_human_4,PRINCIPAL,17,MX_XE_019,Hôte — Scientifique capturé,HOTE,XENO,TF28,1
-asym_xeno_human_4,PRINCIPAL,18,MX_XE_019,Hôte — Scientifique capturé,HOTE,XENO,TF28,1
+asym_xeno_human_4,PRINCIPAL,17,MX_XE_027,Chestburster de technicien,CREATURE,XENO,CW02,1
+asym_xeno_human_4,PRINCIPAL,18,MX_XE_027,Chestburster de technicien,CREATURE,XENO,CW02,1
 asym_xeno_human_4,PRINCIPAL,19,MX_XE_027,Chestburster de technicien,CREATURE,XENO,CW02,1
-asym_xeno_human_4,PRINCIPAL,20,MX_XE_027,Chestburster de technicien,CREATURE,XENO,CW02,1
-asym_xeno_human_4,PRINCIPAL,21,MX_XE_027,Chestburster de technicien,CREATURE,XENO,CW02,1
-asym_xeno_human_4,PRINCIPAL,22,MX_XE_035,Drone de colonie,CREATURE,XENO,CW02,1
+asym_xeno_human_4,PRINCIPAL,20,MX_XE_035,Drone de colonie,CREATURE,XENO,CW02,1
+asym_xeno_human_4,PRINCIPAL,21,MX_XE_040,Fusion parasitaire — HUMAN 1,EVOLUTION,XENO,CW02,1
+asym_xeno_human_4,PRINCIPAL,22,MX_XE_040,Fusion parasitaire — HUMAN 1,EVOLUTION,XENO,CW02,1
 asym_xeno_human_4,PRINCIPAL,23,MX_XE_040,Fusion parasitaire — HUMAN 1,EVOLUTION,XENO,CW02,1
-asym_xeno_human_4,PRINCIPAL,24,MX_XE_040,Fusion parasitaire — HUMAN 1,EVOLUTION,XENO,CW02,1
-asym_xeno_human_4,PRINCIPAL,25,MX_XE_040,Fusion parasitaire — HUMAN 1,EVOLUTION,XENO,CW02,1
-asym_xeno_human_4,PRINCIPAL,26,MX_XE_050,Mue accélérée — HUMAN 2,EVOLUTION,XENO,CW02,1
-asym_xeno_human_4,PRINCIPAL,27,MX_XE_050,Mue accélérée — HUMAN 2,EVOLUTION,XENO,CW02,1
+asym_xeno_human_4,PRINCIPAL,24,MX_XE_050,Mue accélérée — HUMAN 2,EVOLUTION,XENO,CW02,1
+asym_xeno_human_4,PRINCIPAL,25,MX_XE_050,Mue accélérée — HUMAN 2,EVOLUTION,XENO,CW02,1
+asym_xeno_human_4,PRINCIPAL,26,MX_XE_063,Réserve de gelée,BIOMASSE,XENO,CW02,1
+asym_xeno_human_4,PRINCIPAL,27,MX_XE_063,Réserve de gelée,BIOMASSE,XENO,CW02,1
 asym_xeno_human_4,PRINCIPAL,28,MX_XE_063,Réserve de gelée,BIOMASSE,XENO,CW02,1
-asym_xeno_human_4,PRINCIPAL,29,MX_XE_063,Réserve de gelée,BIOMASSE,XENO,CW02,1
-asym_xeno_human_4,PRINCIPAL,30,MX_XE_063,Réserve de gelée,BIOMASSE,XENO,CW02,1
+asym_xeno_human_4,PRINCIPAL,29,X_STALKER,Stalker,CREATURE,XENO,CW02,1
+asym_xeno_human_4,PRINCIPAL,30,X_WARRIOR,Warrior Xénomorphe,CREATURE,XENO,CW02,1
 asym_xeno_human_4,RESERVE,1,AX_XE_104,LV-1201,LIEU,XENO,CW02,1
 asym_xeno_human_4,RESERVE,2,BX_0010,Wild Boar Host,CREATURE,XENO,TF28,1
 asym_xeno_human_4,RESERVE,3,BX_0041,Runner,CREATURE,XENO,F306,1
@@ -901,28 +901,28 @@ asym_xeno_human_4,RESERVE,14,X_WARDEN,Warden,CREATURE,XENO,EV05,1
 asym_xeno_human_4,RESERVE,15,X_WARRIOR,Warrior Xénomorphe,CREATURE,XENO,CW02,1
 asym_xeno_quad_1,PRINCIPAL,1,BX_0031,Caravan Stalker,CREATURE,XENO,TF28,1
 asym_xeno_quad_1,PRINCIPAL,2,BX_0031,Caravan Stalker,CREATURE,XENO,TF28,1
-asym_xeno_quad_1,PRINCIPAL,3,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
-asym_xeno_quad_1,PRINCIPAL,4,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
-asym_xeno_quad_1,PRINCIPAL,5,MX_XE_010,Facehugger des parois,CREATURE,XENO,CW02,1
+asym_xeno_quad_1,PRINCIPAL,3,BX_0031,Caravan Stalker,CREATURE,XENO,TF28,1
+asym_xeno_quad_1,PRINCIPAL,4,BX_0039,Reef Spitter,CREATURE,XENO,TF28,1
+asym_xeno_quad_1,PRINCIPAL,5,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
 asym_xeno_quad_1,PRINCIPAL,6,MX_XE_010,Facehugger des parois,CREATURE,XENO,CW02,1
 asym_xeno_quad_1,PRINCIPAL,7,MX_XE_010,Facehugger des parois,CREATURE,XENO,CW02,1
-asym_xeno_quad_1,PRINCIPAL,8,MX_XE_016,Facehugger de la mère,CREATURE,XENO,CW02,1
-asym_xeno_quad_1,PRINCIPAL,9,MX_XE_020,Hôte — Rongeur contaminé,HOTE,XENO,TF28,1
+asym_xeno_quad_1,PRINCIPAL,8,MX_XE_010,Facehugger des parois,CREATURE,XENO,CW02,1
+asym_xeno_quad_1,PRINCIPAL,9,MX_XE_021,Hôte — Animal hôte,HOTE,XENO,CW02,1
 asym_xeno_quad_1,PRINCIPAL,10,MX_XE_021,Hôte — Animal hôte,HOTE,XENO,CW02,1
 asym_xeno_quad_1,PRINCIPAL,11,MX_XE_021,Hôte — Animal hôte,HOTE,XENO,CW02,1
-asym_xeno_quad_1,PRINCIPAL,12,MX_XE_021,Hôte — Animal hôte,HOTE,XENO,CW02,1
+asym_xeno_quad_1,PRINCIPAL,12,MX_XE_029,Chestburster quadrupède,CREATURE,XENO,CW02,1
 asym_xeno_quad_1,PRINCIPAL,13,MX_XE_029,Chestburster quadrupède,CREATURE,XENO,CW02,1
 asym_xeno_quad_1,PRINCIPAL,14,MX_XE_029,Chestburster quadrupède,CREATURE,XENO,CW02,1
-asym_xeno_quad_1,PRINCIPAL,15,MX_XE_029,Chestburster quadrupède,CREATURE,XENO,CW02,1
-asym_xeno_quad_1,PRINCIPAL,16,MX_XE_036,Runner de la couvée,CREATURE,XENO,F306,1
+asym_xeno_quad_1,PRINCIPAL,15,MX_XE_036,Runner de la couvée,CREATURE,XENO,F306,1
+asym_xeno_quad_1,PRINCIPAL,16,MX_XE_045,Fusion parasitaire — QUAD 3,EVOLUTION,XENO,CW02,1
 asym_xeno_quad_1,PRINCIPAL,17,MX_XE_045,Fusion parasitaire — QUAD 3,EVOLUTION,XENO,CW02,1
 asym_xeno_quad_1,PRINCIPAL,18,MX_XE_045,Fusion parasitaire — QUAD 3,EVOLUTION,XENO,CW02,1
-asym_xeno_quad_1,PRINCIPAL,19,MX_XE_045,Fusion parasitaire — QUAD 3,EVOLUTION,XENO,CW02,1
+asym_xeno_quad_1,PRINCIPAL,19,MX_XE_052,Mue accélérée — QUAD 2,EVOLUTION,XENO,CW02,1
 asym_xeno_quad_1,PRINCIPAL,20,MX_XE_052,Mue accélérée — QUAD 2,EVOLUTION,XENO,CW02,1
-asym_xeno_quad_1,PRINCIPAL,21,MX_XE_052,Mue accélérée — QUAD 2,EVOLUTION,XENO,CW02,1
+asym_xeno_quad_1,PRINCIPAL,21,MX_XE_061,Cycle organique,BIOMASSE,XENO,CW02,1
 asym_xeno_quad_1,PRINCIPAL,22,MX_XE_061,Cycle organique,BIOMASSE,XENO,CW02,1
 asym_xeno_quad_1,PRINCIPAL,23,MX_XE_061,Cycle organique,BIOMASSE,XENO,CW02,1
-asym_xeno_quad_1,PRINCIPAL,24,MX_XE_061,Cycle organique,BIOMASSE,XENO,CW02,1
+asym_xeno_quad_1,PRINCIPAL,24,X_FACEHUGGER,Facehugger,CREATURE,XENO,NX01,1
 asym_xeno_quad_1,PRINCIPAL,25,X_OVOMORPH,Ovomorphe,CREATURE,XENO,NX01,1
 asym_xeno_quad_1,PRINCIPAL,26,X_OVOMORPH,Ovomorphe,CREATURE,XENO,NX01,1
 asym_xeno_quad_1,PRINCIPAL,27,X_OVOMORPH,Ovomorphe,CREATURE,XENO,NX01,1
@@ -944,34 +944,34 @@ asym_xeno_quad_1,RESERVE,12,MX_XE_059,Sang acide recyclé,BIOMASSE,XENO,CW02,1
 asym_xeno_quad_1,RESERVE,13,MX_XE_064,Matrice larvaire,BIOMASSE,XENO,CW02,1
 asym_xeno_quad_1,RESERVE,14,X_BIG_CHAP,Big Chap — Organisme parfait,CREATURE,XENO,NX01,1
 asym_xeno_quad_1,RESERVE,15,X_STALKER,Stalker,CREATURE,XENO,CW02,1
-asym_xeno_quad_2,PRINCIPAL,1,BX_0261,Prétorien — Dark Descent,CREATURE,XENO,FE20,1
-asym_xeno_quad_2,PRINCIPAL,2,BX_0261,Prétorien — Dark Descent,CREATURE,XENO,FE20,1
+asym_xeno_quad_2,PRINCIPAL,1,AX_XE_154,Praetorian,CREATURE,XENO,HA29,1
+asym_xeno_quad_2,PRINCIPAL,2,BX_0031,Caravan Stalker,CREATURE,XENO,TF28,1
 asym_xeno_quad_2,PRINCIPAL,3,BX_0261,Prétorien — Dark Descent,CREATURE,XENO,FE20,1
-asym_xeno_quad_2,PRINCIPAL,4,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
-asym_xeno_quad_2,PRINCIPAL,5,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
+asym_xeno_quad_2,PRINCIPAL,4,BX_0261,Prétorien — Dark Descent,CREATURE,XENO,FE20,1
+asym_xeno_quad_2,PRINCIPAL,5,BX_0261,Prétorien — Dark Descent,CREATURE,XENO,FE20,1
 asym_xeno_quad_2,PRINCIPAL,6,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
-asym_xeno_quad_2,PRINCIPAL,7,MX_XE_007,Ovomorphe du transport,OEUF,XENO,NX01,1
-asym_xeno_quad_2,PRINCIPAL,8,MX_XE_007,Ovomorphe du transport,OEUF,XENO,NX01,1
-asym_xeno_quad_2,PRINCIPAL,9,MX_XE_010,Facehugger des parois,CREATURE,XENO,CW02,1
+asym_xeno_quad_2,PRINCIPAL,7,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
+asym_xeno_quad_2,PRINCIPAL,8,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
+asym_xeno_quad_2,PRINCIPAL,9,MX_XE_007,Ovomorphe du transport,OEUF,XENO,NX01,1
 asym_xeno_quad_2,PRINCIPAL,10,MX_XE_010,Facehugger des parois,CREATURE,XENO,CW02,1
 asym_xeno_quad_2,PRINCIPAL,11,MX_XE_010,Facehugger des parois,CREATURE,XENO,CW02,1
-asym_xeno_quad_2,PRINCIPAL,12,MX_XE_011,Facehugger royal,CREATURE,XENO,NX01,1
-asym_xeno_quad_2,PRINCIPAL,13,MX_XE_020,Hôte — Rongeur contaminé,HOTE,XENO,TF28,1
+asym_xeno_quad_2,PRINCIPAL,12,MX_XE_010,Facehugger des parois,CREATURE,XENO,CW02,1
+asym_xeno_quad_2,PRINCIPAL,13,MX_XE_022,Hôte — Prédateur quadrupède capturé,HOTE,XENO,TF28,1
 asym_xeno_quad_2,PRINCIPAL,14,MX_XE_022,Hôte — Prédateur quadrupède capturé,HOTE,XENO,TF28,1
 asym_xeno_quad_2,PRINCIPAL,15,MX_XE_022,Hôte — Prédateur quadrupède capturé,HOTE,XENO,TF28,1
-asym_xeno_quad_2,PRINCIPAL,16,MX_XE_022,Hôte — Prédateur quadrupède capturé,HOTE,XENO,TF28,1
-asym_xeno_quad_2,PRINCIPAL,17,MX_XE_030,Chestburster du coureur,CREATURE,XENO,CW02,1
+asym_xeno_quad_2,PRINCIPAL,16,MX_XE_030,Chestburster du coureur,CREATURE,XENO,CW02,1
+asym_xeno_quad_2,PRINCIPAL,17,MX_XE_031,Chestburster de chasse,CREATURE,XENO,CW02,1
 asym_xeno_quad_2,PRINCIPAL,18,MX_XE_031,Chestburster de chasse,CREATURE,XENO,CW02,1
 asym_xeno_quad_2,PRINCIPAL,19,MX_XE_031,Chestburster de chasse,CREATURE,XENO,CW02,1
-asym_xeno_quad_2,PRINCIPAL,20,MX_XE_031,Chestburster de chasse,CREATURE,XENO,CW02,1
+asym_xeno_quad_2,PRINCIPAL,20,MX_XE_043,Fusion parasitaire — QUAD 1,EVOLUTION,XENO,CW02,1
 asym_xeno_quad_2,PRINCIPAL,21,MX_XE_043,Fusion parasitaire — QUAD 1,EVOLUTION,XENO,CW02,1
 asym_xeno_quad_2,PRINCIPAL,22,MX_XE_043,Fusion parasitaire — QUAD 1,EVOLUTION,XENO,CW02,1
-asym_xeno_quad_2,PRINCIPAL,23,MX_XE_043,Fusion parasitaire — QUAD 1,EVOLUTION,XENO,CW02,1
+asym_xeno_quad_2,PRINCIPAL,23,MX_XE_051,Mue accélérée — QUAD 1,EVOLUTION,XENO,CW02,1
 asym_xeno_quad_2,PRINCIPAL,24,MX_XE_051,Mue accélérée — QUAD 1,EVOLUTION,XENO,CW02,1
-asym_xeno_quad_2,PRINCIPAL,25,MX_XE_051,Mue accélérée — QUAD 1,EVOLUTION,XENO,CW02,1
+asym_xeno_quad_2,PRINCIPAL,25,MX_XE_057,Résine de maturation,BIOMASSE,XENO,CW02,1
 asym_xeno_quad_2,PRINCIPAL,26,MX_XE_057,Résine de maturation,BIOMASSE,XENO,CW02,1
 asym_xeno_quad_2,PRINCIPAL,27,MX_XE_057,Résine de maturation,BIOMASSE,XENO,CW02,1
-asym_xeno_quad_2,PRINCIPAL,28,MX_XE_057,Résine de maturation,BIOMASSE,XENO,CW02,1
+asym_xeno_quad_2,PRINCIPAL,28,X_DRONE,Drone Xénomorphe,CREATURE,XENO,NX01,1
 asym_xeno_quad_2,PRINCIPAL,29,X_DRONE,Drone Xénomorphe,CREATURE,XENO,NX01,1
 asym_xeno_quad_2,PRINCIPAL,30,X_DRONE,Drone Xénomorphe,CREATURE,XENO,NX01,1
 asym_xeno_quad_2,RESERVE,1,AX_XE_081,Warrior,CREATURE,XENO,CW02,1
@@ -989,24 +989,24 @@ asym_xeno_quad_2,RESERVE,12,MX_XE_019,Hôte — Scientifique capturé,HOTE,XENO,
 asym_xeno_quad_2,RESERVE,13,MX_XE_052,Mue accélérée — QUAD 2,EVOLUTION,XENO,CW02,1
 asym_xeno_quad_2,RESERVE,14,T_X_ACID_BLOOD,Sang acide,ACTION,XENO,NX01,1
 asym_xeno_quad_2,RESERVE,15,T_X_PERFECT,Organisme parfait,ACTION,XENO,EV05,1
-asym_xeno_quad_3,PRINCIPAL,1,BX_0027,Arcology Lurker,CREATURE,XENO,TF28,1
+asym_xeno_quad_3,PRINCIPAL,1,AX_XE_080,Drone,CREATURE,XENO,CW02,1
 asym_xeno_quad_3,PRINCIPAL,2,BX_0027,Arcology Lurker,CREATURE,XENO,TF28,1
-asym_xeno_quad_3,PRINCIPAL,3,BX_0255,Raven — Colonial Marines,CREATURE,XENO,CM19,1
-asym_xeno_quad_3,PRINCIPAL,4,BX_0255,Raven — Colonial Marines,CREATURE,XENO,CM19,1
+asym_xeno_quad_3,PRINCIPAL,3,BX_0027,Arcology Lurker,CREATURE,XENO,TF28,1
+asym_xeno_quad_3,PRINCIPAL,4,BX_0027,Arcology Lurker,CREATURE,XENO,TF28,1
 asym_xeno_quad_3,PRINCIPAL,5,BX_0255,Raven — Colonial Marines,CREATURE,XENO,CM19,1
-asym_xeno_quad_3,PRINCIPAL,6,MX_XE_001,Ovomorphe dormant,OEUF,XENO,NX01,1
-asym_xeno_quad_3,PRINCIPAL,7,MX_XE_001,Ovomorphe dormant,OEUF,XENO,NX01,1
-asym_xeno_quad_3,PRINCIPAL,8,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
-asym_xeno_quad_3,PRINCIPAL,9,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
+asym_xeno_quad_3,PRINCIPAL,6,BX_0255,Raven — Colonial Marines,CREATURE,XENO,CM19,1
+asym_xeno_quad_3,PRINCIPAL,7,BX_0255,Raven — Colonial Marines,CREATURE,XENO,CM19,1
+asym_xeno_quad_3,PRINCIPAL,8,BX_0271,Prétorien — Fireteam Elite,CREATURE,XENO,FE20,1
+asym_xeno_quad_3,PRINCIPAL,9,MX_XE_001,Ovomorphe dormant,OEUF,XENO,NX01,1
 asym_xeno_quad_3,PRINCIPAL,10,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
-asym_xeno_quad_3,PRINCIPAL,11,MX_XE_011,Facehugger royal,CREATURE,XENO,NX01,1
-asym_xeno_quad_3,PRINCIPAL,12,MX_XE_013,Facehugger de tunnel,CREATURE,XENO,NX01,1
+asym_xeno_quad_3,PRINCIPAL,11,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
+asym_xeno_quad_3,PRINCIPAL,12,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
 asym_xeno_quad_3,PRINCIPAL,13,MX_XE_013,Facehugger de tunnel,CREATURE,XENO,NX01,1
 asym_xeno_quad_3,PRINCIPAL,14,MX_XE_013,Facehugger de tunnel,CREATURE,XENO,NX01,1
-asym_xeno_quad_3,PRINCIPAL,15,MX_XE_020,Hôte — Rongeur contaminé,HOTE,XENO,TF28,1
+asym_xeno_quad_3,PRINCIPAL,15,MX_XE_013,Facehugger de tunnel,CREATURE,XENO,NX01,1
 asym_xeno_quad_3,PRINCIPAL,16,MX_XE_020,Hôte — Rongeur contaminé,HOTE,XENO,TF28,1
 asym_xeno_quad_3,PRINCIPAL,17,MX_XE_020,Hôte — Rongeur contaminé,HOTE,XENO,TF28,1
-asym_xeno_quad_3,PRINCIPAL,18,MX_XE_021,Hôte — Animal hôte,HOTE,XENO,CW02,1
+asym_xeno_quad_3,PRINCIPAL,18,MX_XE_020,Hôte — Rongeur contaminé,HOTE,XENO,TF28,1
 asym_xeno_quad_3,PRINCIPAL,19,MX_XE_029,Chestburster quadrupède,CREATURE,XENO,CW02,1
 asym_xeno_quad_3,PRINCIPAL,20,MX_XE_029,Chestburster quadrupède,CREATURE,XENO,CW02,1
 asym_xeno_quad_3,PRINCIPAL,21,MX_XE_029,Chestburster quadrupède,CREATURE,XENO,CW02,1
@@ -1037,33 +1037,33 @@ asym_xeno_quad_3,RESERVE,15,X_SCORCHED,Scorched Xenomorph,CREATURE,XENO,EV05,1
 asym_xeno_quad_4,PRINCIPAL,1,AX_XE_080,Drone,CREATURE,XENO,CW02,1
 asym_xeno_quad_4,PRINCIPAL,2,AX_XE_080,Drone,CREATURE,XENO,CW02,1
 asym_xeno_quad_4,PRINCIPAL,3,AX_XE_080,Drone,CREATURE,XENO,CW02,1
-asym_xeno_quad_4,PRINCIPAL,4,BX_0261,Prétorien — Dark Descent,CREATURE,XENO,FE20,1
+asym_xeno_quad_4,PRINCIPAL,4,AX_XE_091,Palatine (Garde Royal Suprême),CREATURE,XENO,HA29,1
 asym_xeno_quad_4,PRINCIPAL,5,BX_0261,Prétorien — Dark Descent,CREATURE,XENO,FE20,1
-asym_xeno_quad_4,PRINCIPAL,6,MX_XE_006,Œuf des tunnels,OEUF,XENO,CW02,1
-asym_xeno_quad_4,PRINCIPAL,7,MX_XE_006,Œuf des tunnels,OEUF,XENO,CW02,1
-asym_xeno_quad_4,PRINCIPAL,8,MX_XE_009,Facehugger éclaireur,CREATURE,XENO,NX01,1
+asym_xeno_quad_4,PRINCIPAL,6,BX_0261,Prétorien — Dark Descent,CREATURE,XENO,FE20,1
+asym_xeno_quad_4,PRINCIPAL,7,BX_0261,Prétorien — Dark Descent,CREATURE,XENO,FE20,1
+asym_xeno_quad_4,PRINCIPAL,8,MX_XE_006,Œuf des tunnels,OEUF,XENO,CW02,1
 asym_xeno_quad_4,PRINCIPAL,9,MX_XE_016,Facehugger de la mère,CREATURE,XENO,CW02,1
 asym_xeno_quad_4,PRINCIPAL,10,MX_XE_016,Facehugger de la mère,CREATURE,XENO,CW02,1
 asym_xeno_quad_4,PRINCIPAL,11,MX_XE_016,Facehugger de la mère,CREATURE,XENO,CW02,1
 asym_xeno_quad_4,PRINCIPAL,12,MX_XE_021,Hôte — Animal hôte,HOTE,XENO,CW02,1
 asym_xeno_quad_4,PRINCIPAL,13,MX_XE_021,Hôte — Animal hôte,HOTE,XENO,CW02,1
 asym_xeno_quad_4,PRINCIPAL,14,MX_XE_021,Hôte — Animal hôte,HOTE,XENO,CW02,1
-asym_xeno_quad_4,PRINCIPAL,15,MX_XE_022,Hôte — Prédateur quadrupède capturé,HOTE,XENO,TF28,1
+asym_xeno_quad_4,PRINCIPAL,15,MX_XE_030,Chestburster du coureur,CREATURE,XENO,CW02,1
 asym_xeno_quad_4,PRINCIPAL,16,MX_XE_030,Chestburster du coureur,CREATURE,XENO,CW02,1
 asym_xeno_quad_4,PRINCIPAL,17,MX_XE_030,Chestburster du coureur,CREATURE,XENO,CW02,1
-asym_xeno_quad_4,PRINCIPAL,18,MX_XE_030,Chestburster du coureur,CREATURE,XENO,CW02,1
-asym_xeno_quad_4,PRINCIPAL,19,MX_XE_036,Runner de la couvée,CREATURE,XENO,F306,1
+asym_xeno_quad_4,PRINCIPAL,18,MX_XE_036,Runner de la couvée,CREATURE,XENO,F306,1
+asym_xeno_quad_4,PRINCIPAL,19,MX_XE_043,Fusion parasitaire — QUAD 1,EVOLUTION,XENO,CW02,1
 asym_xeno_quad_4,PRINCIPAL,20,MX_XE_043,Fusion parasitaire — QUAD 1,EVOLUTION,XENO,CW02,1
 asym_xeno_quad_4,PRINCIPAL,21,MX_XE_043,Fusion parasitaire — QUAD 1,EVOLUTION,XENO,CW02,1
-asym_xeno_quad_4,PRINCIPAL,22,MX_XE_043,Fusion parasitaire — QUAD 1,EVOLUTION,XENO,CW02,1
+asym_xeno_quad_4,PRINCIPAL,22,MX_XE_052,Mue accélérée — QUAD 2,EVOLUTION,XENO,CW02,1
 asym_xeno_quad_4,PRINCIPAL,23,MX_XE_052,Mue accélérée — QUAD 2,EVOLUTION,XENO,CW02,1
-asym_xeno_quad_4,PRINCIPAL,24,MX_XE_052,Mue accélérée — QUAD 2,EVOLUTION,XENO,CW02,1
+asym_xeno_quad_4,PRINCIPAL,24,MX_XE_066,Convergence biologique,BIOMASSE,XENO,CW02,1
 asym_xeno_quad_4,PRINCIPAL,25,MX_XE_066,Convergence biologique,BIOMASSE,XENO,CW02,1
 asym_xeno_quad_4,PRINCIPAL,26,MX_XE_066,Convergence biologique,BIOMASSE,XENO,CW02,1
-asym_xeno_quad_4,PRINCIPAL,27,MX_XE_066,Convergence biologique,BIOMASSE,XENO,CW02,1
+asym_xeno_quad_4,PRINCIPAL,27,X_OVOMORPH,Ovomorphe,CREATURE,XENO,NX01,1
 asym_xeno_quad_4,PRINCIPAL,28,X_OVOMORPH,Ovomorphe,CREATURE,XENO,NX01,1
 asym_xeno_quad_4,PRINCIPAL,29,X_OVOMORPH,Ovomorphe,CREATURE,XENO,NX01,1
-asym_xeno_quad_4,PRINCIPAL,30,X_OVOMORPH,Ovomorphe,CREATURE,XENO,NX01,1
+asym_xeno_quad_4,PRINCIPAL,30,X_PRAETORIAN,Praetorian,CREATURE,XENO,CW02,1
 asym_xeno_quad_4,RESERVE,1,AX_XE_083,Crusher,CREATURE,XENO,CW02,1
 asym_xeno_quad_4,RESERVE,2,AX_XE_101,Directive — Prétorien,ACTION,XENO,CW02,1
 asym_xeno_quad_4,RESERVE,3,BX_0034,Foundry Crusher,CREATURE,XENO,TF28,1
@@ -1079,32 +1079,32 @@ asym_xeno_quad_4,RESERVE,12,MX_XE_015,Facehugger transporté,CREATURE,XENO,NX01,
 asym_xeno_quad_4,RESERVE,13,MX_XE_055,Gelée royale concentrée,EVOLUTION,XENO,CW02,1
 asym_xeno_quad_4,RESERVE,14,MX_XE_061,Cycle organique,BIOMASSE,XENO,CW02,1
 asym_xeno_quad_4,RESERVE,15,MX_XE_062,Nid nourricier,BIOMASSE,XENO,CW02,1
-asym_xeno_yautja_1,PRINCIPAL,1,BX_0271,Prétorien — Fireteam Elite,CREATURE,XENO,FE20,1
-asym_xeno_yautja_1,PRINCIPAL,2,BX_0271,Prétorien — Fireteam Elite,CREATURE,XENO,FE20,1
-asym_xeno_yautja_1,PRINCIPAL,3,MX_XE_004,Œuf d’urgence,OEUF,XENO,NX01,1
-asym_xeno_yautja_1,PRINCIPAL,4,MX_XE_004,Œuf d’urgence,OEUF,XENO,NX01,1
-asym_xeno_yautja_1,PRINCIPAL,5,MX_XE_004,Œuf d’urgence,OEUF,XENO,NX01,1
-asym_xeno_yautja_1,PRINCIPAL,6,MX_XE_011,Facehugger royal,CREATURE,XENO,NX01,1
-asym_xeno_yautja_1,PRINCIPAL,7,MX_XE_011,Facehugger royal,CREATURE,XENO,NX01,1
-asym_xeno_yautja_1,PRINCIPAL,8,MX_XE_011,Facehugger royal,CREATURE,XENO,NX01,1
-asym_xeno_yautja_1,PRINCIPAL,9,MX_XE_016,Facehugger de la mère,CREATURE,XENO,CW02,1
-asym_xeno_yautja_1,PRINCIPAL,10,MX_XE_024,Hôte — Jeune Chasseur capturé,HOTE,XENO,AV04,1
-asym_xeno_yautja_1,PRINCIPAL,11,MX_XE_025,Hôte — Ancien Chasseur capturé,HOTE,XENO,AV04,1
+asym_xeno_yautja_1,PRINCIPAL,1,AX_XE_086,Monica Line,CREATURE,XENO,CW02,1
+asym_xeno_yautja_1,PRINCIPAL,2,AX_XE_092,Prowler,CREATURE,XENO,HA29,1
+asym_xeno_yautja_1,PRINCIPAL,3,BX_0271,Prétorien — Fireteam Elite,CREATURE,XENO,FE20,1
+asym_xeno_yautja_1,PRINCIPAL,4,BX_0271,Prétorien — Fireteam Elite,CREATURE,XENO,FE20,1
+asym_xeno_yautja_1,PRINCIPAL,5,BX_0271,Prétorien — Fireteam Elite,CREATURE,XENO,FE20,1
+asym_xeno_yautja_1,PRINCIPAL,6,MX_XE_004,Œuf d’urgence,OEUF,XENO,NX01,1
+asym_xeno_yautja_1,PRINCIPAL,7,MX_XE_004,Œuf d’urgence,OEUF,XENO,NX01,1
+asym_xeno_yautja_1,PRINCIPAL,8,MX_XE_004,Œuf d’urgence,OEUF,XENO,NX01,1
+asym_xeno_yautja_1,PRINCIPAL,9,MX_XE_011,Facehugger royal,CREATURE,XENO,NX01,1
+asym_xeno_yautja_1,PRINCIPAL,10,MX_XE_011,Facehugger royal,CREATURE,XENO,NX01,1
+asym_xeno_yautja_1,PRINCIPAL,11,MX_XE_011,Facehugger royal,CREATURE,XENO,NX01,1
 asym_xeno_yautja_1,PRINCIPAL,12,MX_XE_025,Hôte — Ancien Chasseur capturé,HOTE,XENO,AV04,1
 asym_xeno_yautja_1,PRINCIPAL,13,MX_XE_025,Hôte — Ancien Chasseur capturé,HOTE,XENO,AV04,1
-asym_xeno_yautja_1,PRINCIPAL,14,MX_XE_034,Chestburster de guerrier,CREATURE,XENO,AV04,1
+asym_xeno_yautja_1,PRINCIPAL,14,MX_XE_025,Hôte — Ancien Chasseur capturé,HOTE,XENO,AV04,1
 asym_xeno_yautja_1,PRINCIPAL,15,MX_XE_034,Chestburster de guerrier,CREATURE,XENO,AV04,1
 asym_xeno_yautja_1,PRINCIPAL,16,MX_XE_034,Chestburster de guerrier,CREATURE,XENO,AV04,1
-asym_xeno_yautja_1,PRINCIPAL,17,MX_XE_037,Predalien en croissance,CREATURE,XENO,AV04,1
-asym_xeno_yautja_1,PRINCIPAL,18,MX_XE_046,Fusion parasitaire — YAUTJA 1,EVOLUTION,XENO,AV04,1
+asym_xeno_yautja_1,PRINCIPAL,17,MX_XE_034,Chestburster de guerrier,CREATURE,XENO,AV04,1
+asym_xeno_yautja_1,PRINCIPAL,18,MX_XE_037,Predalien en croissance,CREATURE,XENO,AV04,1
 asym_xeno_yautja_1,PRINCIPAL,19,MX_XE_046,Fusion parasitaire — YAUTJA 1,EVOLUTION,XENO,AV04,1
 asym_xeno_yautja_1,PRINCIPAL,20,MX_XE_046,Fusion parasitaire — YAUTJA 1,EVOLUTION,XENO,AV04,1
-asym_xeno_yautja_1,PRINCIPAL,21,MX_XE_054,Mue accélérée — YAUTJA 2,EVOLUTION,XENO,AV04,1
+asym_xeno_yautja_1,PRINCIPAL,21,MX_XE_046,Fusion parasitaire — YAUTJA 1,EVOLUTION,XENO,AV04,1
 asym_xeno_yautja_1,PRINCIPAL,22,MX_XE_054,Mue accélérée — YAUTJA 2,EVOLUTION,XENO,AV04,1
-asym_xeno_yautja_1,PRINCIPAL,23,MX_XE_059,Sang acide recyclé,BIOMASSE,XENO,CW02,1
+asym_xeno_yautja_1,PRINCIPAL,23,MX_XE_054,Mue accélérée — YAUTJA 2,EVOLUTION,XENO,AV04,1
 asym_xeno_yautja_1,PRINCIPAL,24,MX_XE_059,Sang acide recyclé,BIOMASSE,XENO,CW02,1
 asym_xeno_yautja_1,PRINCIPAL,25,MX_XE_059,Sang acide recyclé,BIOMASSE,XENO,CW02,1
-asym_xeno_yautja_1,PRINCIPAL,26,X_OVOMORPH,Ovomorphe,CREATURE,XENO,NX01,1
+asym_xeno_yautja_1,PRINCIPAL,26,MX_XE_059,Sang acide recyclé,BIOMASSE,XENO,CW02,1
 asym_xeno_yautja_1,PRINCIPAL,27,X_OVOMORPH,Ovomorphe,CREATURE,XENO,NX01,1
 asym_xeno_yautja_1,PRINCIPAL,28,X_STALKER,Stalker,CREATURE,XENO,CW02,1
 asym_xeno_yautja_1,PRINCIPAL,29,X_STALKER,Stalker,CREATURE,XENO,CW02,1
@@ -1124,34 +1124,34 @@ asym_xeno_yautja_1,RESERVE,12,MX_XE_063,Réserve de gelée,BIOMASSE,XENO,CW02,1
 asym_xeno_yautja_1,RESERVE,13,X_MANTIS,Mantis Alien,CREATURE,XENO,EV05,1
 asym_xeno_yautja_1,RESERVE,14,X_OVOMORPH,Ovomorphe,CREATURE,XENO,NX01,1
 asym_xeno_yautja_1,RESERVE,15,X_SPITTER,Spitter,CREATURE,XENO,CW02,1
-asym_xeno_yautja_2,PRINCIPAL,1,BX_0307,Burster,CREATURE,XENO,HA29,1
-asym_xeno_yautja_2,PRINCIPAL,2,BX_0307,Burster,CREATURE,XENO,HA29,1
+asym_xeno_yautja_2,PRINCIPAL,1,BX_0029,Drone / Big Chap,CREATURE,XENO,NX01,1
+asym_xeno_yautja_2,PRINCIPAL,2,BX_0038,Pale Crucible Hunter,CREATURE,XENO,TF28,1
 asym_xeno_yautja_2,PRINCIPAL,3,BX_0307,Burster,CREATURE,XENO,HA29,1
-asym_xeno_yautja_2,PRINCIPAL,4,MX_XE_001,Ovomorphe dormant,OEUF,XENO,NX01,1
-asym_xeno_yautja_2,PRINCIPAL,5,MX_XE_001,Ovomorphe dormant,OEUF,XENO,NX01,1
-asym_xeno_yautja_2,PRINCIPAL,6,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
+asym_xeno_yautja_2,PRINCIPAL,4,BX_0307,Burster,CREATURE,XENO,HA29,1
+asym_xeno_yautja_2,PRINCIPAL,5,BX_0307,Burster,CREATURE,XENO,HA29,1
+asym_xeno_yautja_2,PRINCIPAL,6,MX_XE_001,Ovomorphe dormant,OEUF,XENO,NX01,1
 asym_xeno_yautja_2,PRINCIPAL,7,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
 asym_xeno_yautja_2,PRINCIPAL,8,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
-asym_xeno_yautja_2,PRINCIPAL,9,MX_XE_011,Facehugger royal,CREATURE,XENO,NX01,1
+asym_xeno_yautja_2,PRINCIPAL,9,MX_XE_003,Œuf de colonie,OEUF,XENO,CW02,1
 asym_xeno_yautja_2,PRINCIPAL,10,MX_XE_024,Hôte — Jeune Chasseur capturé,HOTE,XENO,AV04,1
 asym_xeno_yautja_2,PRINCIPAL,11,MX_XE_024,Hôte — Jeune Chasseur capturé,HOTE,XENO,AV04,1
 asym_xeno_yautja_2,PRINCIPAL,12,MX_XE_024,Hôte — Jeune Chasseur capturé,HOTE,XENO,AV04,1
-asym_xeno_yautja_2,PRINCIPAL,13,MX_XE_025,Hôte — Ancien Chasseur capturé,HOTE,XENO,AV04,1
-asym_xeno_yautja_2,PRINCIPAL,14,MX_XE_033,Larve hybride de chasse,CREATURE,XENO,AV04,1
+asym_xeno_yautja_2,PRINCIPAL,13,MX_XE_033,Larve hybride de chasse,CREATURE,XENO,AV04,1
+asym_xeno_yautja_2,PRINCIPAL,14,MX_XE_034,Chestburster de guerrier,CREATURE,XENO,AV04,1
 asym_xeno_yautja_2,PRINCIPAL,15,MX_XE_034,Chestburster de guerrier,CREATURE,XENO,AV04,1
 asym_xeno_yautja_2,PRINCIPAL,16,MX_XE_034,Chestburster de guerrier,CREATURE,XENO,AV04,1
-asym_xeno_yautja_2,PRINCIPAL,17,MX_XE_034,Chestburster de guerrier,CREATURE,XENO,AV04,1
+asym_xeno_yautja_2,PRINCIPAL,17,MX_XE_046,Fusion parasitaire — YAUTJA 1,EVOLUTION,XENO,AV04,1
 asym_xeno_yautja_2,PRINCIPAL,18,MX_XE_046,Fusion parasitaire — YAUTJA 1,EVOLUTION,XENO,AV04,1
 asym_xeno_yautja_2,PRINCIPAL,19,MX_XE_046,Fusion parasitaire — YAUTJA 1,EVOLUTION,XENO,AV04,1
-asym_xeno_yautja_2,PRINCIPAL,20,MX_XE_046,Fusion parasitaire — YAUTJA 1,EVOLUTION,XENO,AV04,1
+asym_xeno_yautja_2,PRINCIPAL,20,MX_XE_053,Mue accélérée — YAUTJA 1,EVOLUTION,XENO,AV04,1
 asym_xeno_yautja_2,PRINCIPAL,21,MX_XE_053,Mue accélérée — YAUTJA 1,EVOLUTION,XENO,AV04,1
-asym_xeno_yautja_2,PRINCIPAL,22,MX_XE_053,Mue accélérée — YAUTJA 1,EVOLUTION,XENO,AV04,1
+asym_xeno_yautja_2,PRINCIPAL,22,MX_XE_059,Sang acide recyclé,BIOMASSE,XENO,CW02,1
 asym_xeno_yautja_2,PRINCIPAL,23,MX_XE_059,Sang acide recyclé,BIOMASSE,XENO,CW02,1
 asym_xeno_yautja_2,PRINCIPAL,24,MX_XE_059,Sang acide recyclé,BIOMASSE,XENO,CW02,1
-asym_xeno_yautja_2,PRINCIPAL,25,MX_XE_059,Sang acide recyclé,BIOMASSE,XENO,CW02,1
+asym_xeno_yautja_2,PRINCIPAL,25,X_FACEHUGGER,Facehugger,CREATURE,XENO,NX01,1
 asym_xeno_yautja_2,PRINCIPAL,26,X_FACEHUGGER,Facehugger,CREATURE,XENO,NX01,1
 asym_xeno_yautja_2,PRINCIPAL,27,X_FACEHUGGER,Facehugger,CREATURE,XENO,NX01,1
-asym_xeno_yautja_2,PRINCIPAL,28,X_FACEHUGGER,Facehugger,CREATURE,XENO,NX01,1
+asym_xeno_yautja_2,PRINCIPAL,28,X_SPITTER,Spitter,CREATURE,XENO,CW02,1
 asym_xeno_yautja_2,PRINCIPAL,29,X_SPITTER,Spitter,CREATURE,XENO,CW02,1
 asym_xeno_yautja_2,PRINCIPAL,30,X_SPITTER,Spitter,CREATURE,XENO,CW02,1
 asym_xeno_yautja_2,RESERVE,1,AX_XE_100,Directive — Prowler,ACTION,XENO,CW02,1
@@ -1173,32 +1173,32 @@ asym_xeno_yautja_3,PRINCIPAL,1,BX_0307,Burster,CREATURE,XENO,HA29,1
 asym_xeno_yautja_3,PRINCIPAL,2,BX_0307,Burster,CREATURE,XENO,HA29,1
 asym_xeno_yautja_3,PRINCIPAL,3,BX_0307,Burster,CREATURE,XENO,HA29,1
 asym_xeno_yautja_3,PRINCIPAL,4,MX_XE_001,Ovomorphe dormant,OEUF,XENO,NX01,1
-asym_xeno_yautja_3,PRINCIPAL,5,MX_XE_001,Ovomorphe dormant,OEUF,XENO,NX01,1
+asym_xeno_yautja_3,PRINCIPAL,5,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
 asym_xeno_yautja_3,PRINCIPAL,6,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
 asym_xeno_yautja_3,PRINCIPAL,7,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
-asym_xeno_yautja_3,PRINCIPAL,8,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
+asym_xeno_yautja_3,PRINCIPAL,8,MX_XE_013,Facehugger de tunnel,CREATURE,XENO,NX01,1
 asym_xeno_yautja_3,PRINCIPAL,9,MX_XE_013,Facehugger de tunnel,CREATURE,XENO,NX01,1
 asym_xeno_yautja_3,PRINCIPAL,10,MX_XE_013,Facehugger de tunnel,CREATURE,XENO,NX01,1
-asym_xeno_yautja_3,PRINCIPAL,11,MX_XE_013,Facehugger de tunnel,CREATURE,XENO,NX01,1
-asym_xeno_yautja_3,PRINCIPAL,12,MX_XE_014,Facehugger nocturne,CREATURE,XENO,CW02,1
+asym_xeno_yautja_3,PRINCIPAL,11,MX_XE_023,Hôte — Yautja capturé,HOTE,XENO,AV04,1
+asym_xeno_yautja_3,PRINCIPAL,12,MX_XE_023,Hôte — Yautja capturé,HOTE,XENO,AV04,1
 asym_xeno_yautja_3,PRINCIPAL,13,MX_XE_023,Hôte — Yautja capturé,HOTE,XENO,AV04,1
-asym_xeno_yautja_3,PRINCIPAL,14,MX_XE_023,Hôte — Yautja capturé,HOTE,XENO,AV04,1
-asym_xeno_yautja_3,PRINCIPAL,15,MX_XE_023,Hôte — Yautja capturé,HOTE,XENO,AV04,1
-asym_xeno_yautja_3,PRINCIPAL,16,MX_XE_024,Hôte — Jeune Chasseur capturé,HOTE,XENO,AV04,1
-asym_xeno_yautja_3,PRINCIPAL,17,MX_XE_032,Chestburster Yautja,CREATURE,XENO,AV04,1
-asym_xeno_yautja_3,PRINCIPAL,18,MX_XE_032,Chestburster Yautja,CREATURE,XENO,AV04,1
-asym_xeno_yautja_3,PRINCIPAL,19,MX_XE_032,Chestburster Yautja,CREATURE,XENO,AV04,1
-asym_xeno_yautja_3,PRINCIPAL,20,MX_XE_037,Predalien en croissance,CREATURE,XENO,AV04,1
-asym_xeno_yautja_3,PRINCIPAL,21,MX_XE_048,Fusion parasitaire — YAUTJA 3,EVOLUTION,XENO,AV04,1
-asym_xeno_yautja_3,PRINCIPAL,22,MX_XE_048,Fusion parasitaire — YAUTJA 3,EVOLUTION,XENO,AV04,1
-asym_xeno_yautja_3,PRINCIPAL,23,MX_XE_048,Fusion parasitaire — YAUTJA 3,EVOLUTION,XENO,AV04,1
-asym_xeno_yautja_3,PRINCIPAL,24,MX_XE_054,Mue accélérée — YAUTJA 2,EVOLUTION,XENO,AV04,1
-asym_xeno_yautja_3,PRINCIPAL,25,MX_XE_054,Mue accélérée — YAUTJA 2,EVOLUTION,XENO,AV04,1
-asym_xeno_yautja_3,PRINCIPAL,26,MX_XE_060,Accumulation de biomasse,BIOMASSE,XENO,CW02,1
-asym_xeno_yautja_3,PRINCIPAL,27,MX_XE_060,Accumulation de biomasse,BIOMASSE,XENO,CW02,1
-asym_xeno_yautja_3,PRINCIPAL,28,MX_XE_060,Accumulation de biomasse,BIOMASSE,XENO,CW02,1
-asym_xeno_yautja_3,PRINCIPAL,29,X_FACEHUGGER,Facehugger,CREATURE,XENO,NX01,1
-asym_xeno_yautja_3,PRINCIPAL,30,X_FACEHUGGER,Facehugger,CREATURE,XENO,NX01,1
+asym_xeno_yautja_3,PRINCIPAL,14,MX_XE_032,Chestburster Yautja,CREATURE,XENO,AV04,1
+asym_xeno_yautja_3,PRINCIPAL,15,MX_XE_032,Chestburster Yautja,CREATURE,XENO,AV04,1
+asym_xeno_yautja_3,PRINCIPAL,16,MX_XE_032,Chestburster Yautja,CREATURE,XENO,AV04,1
+asym_xeno_yautja_3,PRINCIPAL,17,MX_XE_037,Predalien en croissance,CREATURE,XENO,AV04,1
+asym_xeno_yautja_3,PRINCIPAL,18,MX_XE_048,Fusion parasitaire — YAUTJA 3,EVOLUTION,XENO,AV04,1
+asym_xeno_yautja_3,PRINCIPAL,19,MX_XE_048,Fusion parasitaire — YAUTJA 3,EVOLUTION,XENO,AV04,1
+asym_xeno_yautja_3,PRINCIPAL,20,MX_XE_048,Fusion parasitaire — YAUTJA 3,EVOLUTION,XENO,AV04,1
+asym_xeno_yautja_3,PRINCIPAL,21,MX_XE_054,Mue accélérée — YAUTJA 2,EVOLUTION,XENO,AV04,1
+asym_xeno_yautja_3,PRINCIPAL,22,MX_XE_054,Mue accélérée — YAUTJA 2,EVOLUTION,XENO,AV04,1
+asym_xeno_yautja_3,PRINCIPAL,23,MX_XE_060,Accumulation de biomasse,BIOMASSE,XENO,CW02,1
+asym_xeno_yautja_3,PRINCIPAL,24,MX_XE_060,Accumulation de biomasse,BIOMASSE,XENO,CW02,1
+asym_xeno_yautja_3,PRINCIPAL,25,MX_XE_060,Accumulation de biomasse,BIOMASSE,XENO,CW02,1
+asym_xeno_yautja_3,PRINCIPAL,26,X_FACEHUGGER,Facehugger,CREATURE,XENO,NX01,1
+asym_xeno_yautja_3,PRINCIPAL,27,X_FACEHUGGER,Facehugger,CREATURE,XENO,NX01,1
+asym_xeno_yautja_3,PRINCIPAL,28,X_FACEHUGGER,Facehugger,CREATURE,XENO,NX01,1
+asym_xeno_yautja_3,PRINCIPAL,29,X_QUEEN,Reine Xénomorphe,CREATURE,XENO,CW02,1
+asym_xeno_yautja_3,PRINCIPAL,30,X_RUNNER,Runner,CREATURE,XENO,NX01,1
 asym_xeno_yautja_3,RESERVE,1,BX_0042,Salvage Hive Brute,CREATURE,XENO,TF28,1
 asym_xeno_yautja_3,RESERVE,2,BX_0258,Burster — Fireteam Elite,CREATURE,XENO,FE20,1
 asym_xeno_yautja_3,RESERVE,3,BX_0265,Scorpion Alien — Kenner / NECA,CREATURE,XENO,KN26,1
@@ -1219,31 +1219,31 @@ asym_xeno_yautja_4,PRINCIPAL,2,AX_XE_085,Red Xenomorph,CREATURE,XENO,CW02,1
 asym_xeno_yautja_4,PRINCIPAL,3,AX_XE_085,Red Xenomorph,CREATURE,XENO,CW02,1
 asym_xeno_yautja_4,PRINCIPAL,4,AX_XE_086,Monica Line,CREATURE,XENO,CW02,1
 asym_xeno_yautja_4,PRINCIPAL,5,AX_XE_086,Monica Line,CREATURE,XENO,CW02,1
-asym_xeno_yautja_4,PRINCIPAL,6,MX_XE_002,Ovomorphe d’incubation,OEUF,XENO,CW02,1
-asym_xeno_yautja_4,PRINCIPAL,7,MX_XE_002,Ovomorphe d’incubation,OEUF,XENO,CW02,1
-asym_xeno_yautja_4,PRINCIPAL,8,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
+asym_xeno_yautja_4,PRINCIPAL,6,AX_XE_086,Monica Line,CREATURE,XENO,CW02,1
+asym_xeno_yautja_4,PRINCIPAL,7,BX_0307,Burster,CREATURE,XENO,HA29,1
+asym_xeno_yautja_4,PRINCIPAL,8,MX_XE_002,Ovomorphe d’incubation,OEUF,XENO,CW02,1
 asym_xeno_yautja_4,PRINCIPAL,9,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
 asym_xeno_yautja_4,PRINCIPAL,10,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
-asym_xeno_yautja_4,PRINCIPAL,11,MX_XE_013,Facehugger de tunnel,CREATURE,XENO,NX01,1
+asym_xeno_yautja_4,PRINCIPAL,11,MX_XE_005,Œuf de la galerie royale,OEUF,XENO,CW02,1
 asym_xeno_yautja_4,PRINCIPAL,12,MX_XE_013,Facehugger de tunnel,CREATURE,XENO,NX01,1
 asym_xeno_yautja_4,PRINCIPAL,13,MX_XE_013,Facehugger de tunnel,CREATURE,XENO,NX01,1
-asym_xeno_yautja_4,PRINCIPAL,14,MX_XE_015,Facehugger transporté,CREATURE,XENO,NX01,1
+asym_xeno_yautja_4,PRINCIPAL,14,MX_XE_013,Facehugger de tunnel,CREATURE,XENO,NX01,1
 asym_xeno_yautja_4,PRINCIPAL,15,MX_XE_023,Hôte — Yautja capturé,HOTE,XENO,AV04,1
 asym_xeno_yautja_4,PRINCIPAL,16,MX_XE_023,Hôte — Yautja capturé,HOTE,XENO,AV04,1
 asym_xeno_yautja_4,PRINCIPAL,17,MX_XE_023,Hôte — Yautja capturé,HOTE,XENO,AV04,1
-asym_xeno_yautja_4,PRINCIPAL,18,MX_XE_024,Hôte — Jeune Chasseur capturé,HOTE,XENO,AV04,1
+asym_xeno_yautja_4,PRINCIPAL,18,MX_XE_033,Larve hybride de chasse,CREATURE,XENO,AV04,1
 asym_xeno_yautja_4,PRINCIPAL,19,MX_XE_033,Larve hybride de chasse,CREATURE,XENO,AV04,1
 asym_xeno_yautja_4,PRINCIPAL,20,MX_XE_033,Larve hybride de chasse,CREATURE,XENO,AV04,1
-asym_xeno_yautja_4,PRINCIPAL,21,MX_XE_033,Larve hybride de chasse,CREATURE,XENO,AV04,1
-asym_xeno_yautja_4,PRINCIPAL,22,MX_XE_037,Predalien en croissance,CREATURE,XENO,AV04,1
+asym_xeno_yautja_4,PRINCIPAL,21,MX_XE_037,Predalien en croissance,CREATURE,XENO,AV04,1
+asym_xeno_yautja_4,PRINCIPAL,22,MX_XE_046,Fusion parasitaire — YAUTJA 1,EVOLUTION,XENO,AV04,1
 asym_xeno_yautja_4,PRINCIPAL,23,MX_XE_046,Fusion parasitaire — YAUTJA 1,EVOLUTION,XENO,AV04,1
 asym_xeno_yautja_4,PRINCIPAL,24,MX_XE_046,Fusion parasitaire — YAUTJA 1,EVOLUTION,XENO,AV04,1
-asym_xeno_yautja_4,PRINCIPAL,25,MX_XE_046,Fusion parasitaire — YAUTJA 1,EVOLUTION,XENO,AV04,1
+asym_xeno_yautja_4,PRINCIPAL,25,MX_XE_053,Mue accélérée — YAUTJA 1,EVOLUTION,XENO,AV04,1
 asym_xeno_yautja_4,PRINCIPAL,26,MX_XE_053,Mue accélérée — YAUTJA 1,EVOLUTION,XENO,AV04,1
-asym_xeno_yautja_4,PRINCIPAL,27,MX_XE_053,Mue accélérée — YAUTJA 1,EVOLUTION,XENO,AV04,1
+asym_xeno_yautja_4,PRINCIPAL,27,MX_XE_057,Résine de maturation,BIOMASSE,XENO,CW02,1
 asym_xeno_yautja_4,PRINCIPAL,28,MX_XE_057,Résine de maturation,BIOMASSE,XENO,CW02,1
 asym_xeno_yautja_4,PRINCIPAL,29,MX_XE_057,Résine de maturation,BIOMASSE,XENO,CW02,1
-asym_xeno_yautja_4,PRINCIPAL,30,MX_XE_057,Résine de maturation,BIOMASSE,XENO,CW02,1
+asym_xeno_yautja_4,PRINCIPAL,30,X_OVOMORPH,Ovomorphe,CREATURE,XENO,NX01,1
 asym_xeno_yautja_4,RESERVE,1,AX_XE_088,Reef Stalker,CREATURE,XENO,TF28,1
 asym_xeno_yautja_4,RESERVE,2,AX_XE_098,Bioprotection — Reine Xénomorphe,EQUIPEMENT,XENO,CW02,1
 asym_xeno_yautja_4,RESERVE,3,BX_0010,Wild Boar Host,CREATURE,XENO,TF28,1
