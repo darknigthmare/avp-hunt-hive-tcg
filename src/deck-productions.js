@@ -33,8 +33,11 @@
     for(const focus of shuffled.slice(0,3)){
       if(actualFocus>=2)break;
       if((main[focus.id]||0)>=2)continue;
+      const cheap=Object.entries(main).reduce((n,[id,k])=>{const c=registry.get(id);return n+(c?.type==='UNIT'&&!c.crewRequired&&c.cost<=2?k:0);},0);
+      const candidateCheap=focus.type==='UNIT'&&!focus.crewRequired&&focus.cost<=2;
       const donor=Object.keys(main).find(id=>id!==focus.id&&main[id]>0&&registry.get(id)?.set!==setCode
         &&registry.get(id)?.cardClass===focus.cardClass
+        &&(candidateCheap||!(registry.get(id)?.type==='UNIT'&&!registry.get(id)?.crewRequired&&registry.get(id)?.cost<=2)||cheap>5)
         &&(focus.cardClass!=='PERSONNAGE'||Object.entries(main).reduce((n,[x,k])=>n+(registry.get(x)?.cardClass==='PERSONNAGE'?k:0),0)>=4));
       if(!donor)continue;
       main[donor]--;if(!main[donor])delete main[donor];
