@@ -20,7 +20,7 @@ function csv(name){
 }
 const m=JSON.parse(readFileSync(join(dir,'manifest.json'),'utf8'));
 const liveDecks=csv('decks-playable.csv'),liveSlots=csv('decklists-playable.csv');
-assert.equal(liveDecks.length,m.implementation.totalDeckPresetsPlayable);
+assert.equal(liveDecks.length,m.implementation.legacyTemplates+m.implementation.productionDecks);
 assert.equal(liveSlots.length,m.implementation.playableDeckCardPositions);
 const asyncCards=csv('asymmetric-cards.csv'),asyncDecks=csv('asymmetric-decks.csv');
 const asyncSlots=csv('asymmetric-decklists.csv'),liveCards=csv('gameplay-live.csv');
